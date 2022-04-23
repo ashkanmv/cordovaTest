@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@awesome-cordova-plugins/background-geolocation/ngx';
 import { Platform } from '@ionic/angular';
+declare let cordova: any;
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -19,12 +20,13 @@ export class AppComponent {
   constructor(private plt : Platform,private backgroundGeolocation : BackgroundGeolocation) {
     this.plt.ready().then(()=>{
       console.log('ready');
+      console.log(cordova.plugins.autoStart);
+      
+      cordova.plugins.autoStart.enable();
       this.config();
     }).catch(error=>{
       console.log(error);
     }).finally(()=>{
-      console.log('fin');
-      this.config();
     })
   }
 
@@ -39,7 +41,7 @@ export class AppComponent {
         // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
         // and the background-task may be completed.  You must do this regardless if your operations are successful or not.
         // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-        this.backgroundGeolocation.finish(); // FOR IOS ONLY
+        // this.backgroundGeolocation.finish(); // FOR IOS ONLY
       });
   
     });
