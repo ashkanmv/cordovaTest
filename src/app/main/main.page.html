@@ -1,19 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-row>
+<ion-header >
+  <ion-toolbar color="primary" class="main-page-header">
+    <ion-row class="toolbar">
       <ion-col size="4">
-        <ion-row>
-          <ion-icon slot="start" name="add"></ion-icon>
-          <ion-icon slot="start" name="add"></ion-icon>
+        <ion-row class="col1">
+          <!-- <ion-icon slot="start" src="assets/mainPage/menu-sharp.svg"></ion-icon> -->
+          <!-- <ion-icon slot="start" name="add"></ion-icon> -->
+          <ion-img src="assets/mainPage/menu-sharp.svg"></ion-img>
+          <ion-img class="notification" src="assets/mainPage/notifications-outline.png"></ion-img>
         </ion-row>
       </ion-col>
       <ion-col size="4">
-        <ion-title>Main Page</ion-title>
+        <ion-title><h1>Main Page</h1></ion-title>
       </ion-col>
-      <ion-col size="4">
-        <ion-row>
-          <ion-icon slot="start" name="add"></ion-icon>
-          <ion-icon slot="start" name="add"></ion-icon>
+      <ion-col size="3" push="1" >
+        <ion-row class="col3">
+          <ion-img class="search" src="assets/mainPage/search-circle.png"></ion-img>
+          <ion-img src="assets/mainPage/wifi.png"></ion-img>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -36,25 +38,25 @@
 <ion-content>
   <ion-grid class="main-page-content">
     <ion-row>
-      <ion-col size="4" style="display: flex;align-items: center;justify-content: center;height: 100%;">
+      <ion-col size="4" class="cols">
         <div>
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Customer-History.png"></ion-img>
+          <ion-img src="assets/mainPage/Customer-History.png"></ion-img>
           <ion-text>
             <p>Customer History</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Questionnaire.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Questionnaire.png"></ion-img>
           <ion-text>
             <p>Questionnaire</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Notification.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Notification.png"></ion-img>
           <ion-text>
             <p>Notification</p>
           </ion-text>
@@ -62,25 +64,25 @@
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/GPS-Tracking.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/GPS-Tracking.png"></ion-img>
           <ion-text>
             <p>GPS Tracking</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Online-Daily-Sale.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Online-Daily-Sale.png"></ion-img>
           <ion-text>
             <p>Online Daily Sales</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Customer-nearby.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Customer-nearby.png"></ion-img>
           <ion-text>
             <p>Customer Nearby</p>
           </ion-text>
@@ -88,25 +90,25 @@
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Salesmen Location.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Salesmen Location.png"></ion-img>
           <ion-text>
             <p>Salesmen Location</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Trace-Salesman.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Trace-Salesman.png"></ion-img>
           <ion-text>
             <p>Trace Salesman</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Daily-Status.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Daily-Status.png"></ion-img>
           <ion-text>
             <p>Daily Status</p>
           </ion-text>
@@ -114,25 +116,25 @@
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Today-Planned-Not-buying.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Today-Planned-Not-buying.png"></ion-img>
           <ion-text>
             <p>Today-Planned/ Not buying</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Loading-Truck-Stauts.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Loading-Truck-Stauts.png"></ion-img>
           <ion-text>
             <p>Loading Truck Stauts</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/ScoreCard.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/ScoreCard.png"></ion-img>
           <ion-text>
             <p>ScoreCard</p>
           </ion-text>
@@ -140,25 +142,25 @@
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Online-Sales-Hourly.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Online-Sales-Hourly.png"></ion-img>
           <ion-text>
             <p>Online Sales Hourly</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Online-Sale-for-days-hourly.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Online-Sale-for-days-hourly.png"></ion-img>
           <ion-text>
             <p>Online Sale for days hourly</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Sales-Campare-Traking-Hourly.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Sales-Campare-Traking-Hourly.png"></ion-img>
           <ion-text>
             <p>Sales Campare Traking Hourly</p>
           </ion-text>
@@ -166,17 +168,17 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Sales-hourly_Day-and-Sales-Office.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Sales-hourly_Day-and-Sales-Office.png"></ion-img>
           <ion-text>
             <p>Sales hourly_Day & Sales Office</p>
           </ion-text>
         </div>
       </ion-col>
-      <ion-col size="4">
-        <div class="ion-text-center">
-          <ion-img style="max-width: 100px;" src="assets/mainPage/Max-PPED.png"></ion-img>
+      <ion-col size="4" class="cols">
+        <div>
+          <ion-img src="assets/mainPage/Max-PPED.png"></ion-img>
           <ion-text>
             <p>Max PPED</p>
           </ion-text>

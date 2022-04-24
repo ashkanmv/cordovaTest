@@ -26,10 +26,45 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .main-page-content{
-    background-color: rgb(16, 97, 196);
+    background-color: #3880ff;
 }
 
 .main-page-content ion-img {
     background-color: #fff;
     border-radius: 30%;
+    max-width: 100px;
+}
+
+.main-page-content .cols {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;   
+    text-align: -webkit-center;
+}
+
+.toolbar .col1{
+    flex-flow: row;
+}
+
+.main-page-header{
+    background-color: #3880ff;
+    height: 70px;
+}
+
+.main-page-header ion-img{
+    max-width: 45px;
+    max-height: 45px;
+    margin: 10px ;
+}
+
+.main-page-header .notification{
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.main-page-header .col3 .search{
+    max-width: 50px;
+    max-height: 55px;
+    // max-height: 45px;
 }
