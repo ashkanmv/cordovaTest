@@ -2,35 +2,90 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list id="inbox-list" class="secondary-background">
-          <!-- <ion-list-header>Inbox</ion-list-header>
+        <!-- <ion-list id="inbox-list" class="secondary-background"> -->
+        <!-- <ion-list-header>Inbox</ion-list-header>
           <ion-note>hi@ionicframework.com</ion-note> -->
-<ion-col size="8">
-  <ion-avatar class="profile-pic">
-    <img src="assets/menu/Person1.jpg" />
-  </ion-avatar>
-  <!-- <ion-img class="profile-pic" src="assets/menu/Person1.jpg"></ion-img> -->
-</ion-col>
-<ion-col size="4">
-  <ion-row>
-    <ion-col size="4">
-      <ion-img class="notification" src="assets/mainPage/notifications-outline.png"></ion-img>
-    </ion-col>
-  </ion-row>
-  <ion-row style="background-color: bisque;">
-    ashkan
-  </ion-row>
-</ion-col>
-        </ion-list>
+        <ion-grid class="secondary-background menu-header">
+          <ion-row class="menu-header">
+            <ion-col size="8">
+              <ion-avatar class="profile-pic ion-margin-top ion-margin-start">
+                <img src="assets/menu/Person1.jpg" />
+              </ion-avatar>
+              <!-- <ion-img class="profile-pic" src="assets/menu/Person1.jpg"></ion-img> -->
+            </ion-col>
+            <ion-col size="4">
+              <ion-row class="ion-justify-content-end">
+                <ion-col size="4">
+                  <ion-img
+                    class="notification"
+                    src="assets/mainPage/notifications-outline.png"
+                  ></ion-img>
+                </ion-col>
+              </ion-row>
+              <ion-row
+                class="ion-margin-top ion-align-items-center ion-justify-content-center white-background language-toggle"
+              >
+                <b> EN </b> <ion-toggle></ion-toggle>
+                <b> FA </b>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- </ion-list> -->
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <!-- <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label> -->
-          <!-- </ion-item> -->
+        <ion-list id="labels-list" class="primary-color menu-content">
+          <ion-item color="primary" lines="none">
+            <ion-icon
+              class="ion-margin-horizontal"
+              name="home"
+              color="light"
+            ></ion-icon>
+            <ion-label class="ion-margin-horizontal">Main Page</ion-label>
+          </ion-item>
+          <ion-item color="primary" lines="none">
+            <ion-icon
+              class="ion-margin-horizontal"
+              name="person"
+              color="light"
+            ></ion-icon>
+            <ion-label class="ion-margin-horizontal">Profile</ion-label>
+          </ion-item>
+          <ion-item color="primary" lines="none">
+            <ion-icon
+              class="ion-margin-horizontal"
+              name="id-card"
+              color="light"
+            ></ion-icon>
+            <ion-label class="ion-margin-horizontal">Contact Us</ion-label>
+          </ion-item>
+          <ion-item color="primary" lines="none">
+            <ion-icon
+              class="ion-margin-horizontal"
+              name="basket"
+              color="light"
+            ></ion-icon>
+            <ion-label class="ion-margin-horizontal">About Us</ion-label>
+          </ion-item>
         </ion-list>
+        <ion-row class="primary-color">
+          <ion-col size="12">
+            <button class="Button">
+              <span class="Button-inner">
+                <ion-icon slot="start" name="add"></ion-icon>
+                <p>Example</p>
+                Log Out
+              </span>
+              <!-- badge, etc. -->
+            </button>
+            <!-- <ion-item
+              color="warning"
+              lines="none"
+              class="menu-footer ion-margin button-17"
+            >
+              <ion-label>Awesome Label</ion-label>
+            </ion-item> -->
+          </ion-col>
+        </ion-row>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

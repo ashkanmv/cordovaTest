@@ -33,7 +33,7 @@ ion-menu{
 
 // MAIN PAGE START
 
-.main-page-content{
+.primary-color{
     background-color: #0095EB;
 }
 
@@ -67,8 +67,9 @@ ion-menu{
 }
 
 .main-page-header .notification{
-    background-color: #fff;
-    border-radius: 50%;
+    // background-color: #fff;
+    // border-radius: 50%;
+    max-width: 50px;
 }
 
 .main-page-header .col3 .search{
@@ -85,11 +86,18 @@ ion-menu{
     color: #fff;
 }
 
+.white-background{
+    background-color: #fff;
+}
+
 .main-page-Title{
  font-size: 21px;   
 }
 
-
+.menu-header{
+    height: 160px;
+    min-height: 110px;
+}
 
 
 // MAIN PAGE END
@@ -104,4 +112,48 @@ ion-menu{
     // border-radius: 50%;
 }
 
+.menu-content{
+    height: 100%;
+}
+
+.language-toggle{
+    height: 55px;
+    width: 100%;
+}
+
+
+.Button {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    display: inline-block;
+    font: inherit;
+    height: auto;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+  }
+
+  .Button-inner {
+    align-items: center;
+    background: #456BD9;
+    border: 2px solid transparent;
+    border-radius: 99em;
+    color: #fff;
+    display: flex;
+    font-weight: 600;
+    height: 2.5em;
+    min-width: 2.5em;
+    padding: 0 1em;
+    position: relative; /* WebKit Bug 173872 */
+    transition: 0.2s ease;
+    width: 100%;
+  }
+  
+  
 // MENU END
