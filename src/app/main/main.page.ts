@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-main',
@@ -15,14 +14,6 @@ export class MainPage implements OnInit {
   }
 
   async openMenu(){
-    const modal = await  this.modalCtrl.create({
-      component : MenuComponent,
-      id : 'modal'
-    })
-    await modal.present();
 
-    const response = modal.onDidDismiss()
-
-    console.log(response);
   }
 }

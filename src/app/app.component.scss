@@ -117,3 +117,14 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+
+ion-item ion-img {
+  width: 35px;
+  margin: 6px 26px 32px 35px;  
+}
+
+ion-item ion-label {
+  
+  margin-bottom:32px;  
+}
