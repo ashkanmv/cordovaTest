@@ -34,6 +34,7 @@
         <!-- </ion-list> -->
 
         <ion-list id="labels-list" class="primary-color menu-content">
+          <ion-menu-toggle auto-hide="false">
           <ion-item lines="none">
             <ion-img src="assets/menu/main-page.png"></ion-img>
             <ion-label class="ion-margin-horizontal">Main Page</ion-label>
@@ -46,10 +47,11 @@
             <ion-img src="assets/menu/contact-us.png"></ion-img>
             <ion-label class="ion-margin-horizontal">Contact Us</ion-label>
           </ion-item>
-          <ion-item lines="none">
+          <ion-item lines="none" routerLink="/about-app">
             <ion-img src="assets/menu/about-us.png"></ion-img>
             <ion-label class="ion-margin-horizontal">About Us</ion-label>
           </ion-item>
+        </ion-menu-toggle>
         </ion-list>
         <ion-row class="primary-color">
           <ion-col size="12">

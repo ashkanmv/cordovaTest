@@ -10,7 +10,31 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
+  },  {
+    path: 'settings',
+    loadChildren: () => import('./menu/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./menu/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'contact-us',
+    loadChildren: () => import('./menu/contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+  },
+  {
+    path: 'about-app',
+    loadChildren: () => import('./menu/about-app/about-app.module').then( m => m.AboutAppPageModule)
+  },
+  {
+    path: 'language',
+    loadChildren: () => import('./menu/language/language.module').then( m => m.LanguagePageModule)
+  },
+  {
+    path: 'theme',
+    loadChildren: () => import('./menu/theme/theme.module').then( m => m.ThemePageModule)
   }
+
 
 ];
 
