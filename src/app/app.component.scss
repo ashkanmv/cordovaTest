@@ -137,3 +137,22 @@ ion-item ion-label {
   max-width: 55px;
     min-width: 35px;
 }
+
+.text-align-center{
+  text-align: -webkit-center;
+  margin-bottom: 2vh;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; 
+}
+
+
+
+.footer-btn-color{
+  background: #41B1F0;
+  border: 3px solid #77CDFE;
+  color: #fff;
+}
