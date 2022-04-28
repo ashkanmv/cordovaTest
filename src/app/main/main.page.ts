@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-main',
@@ -8,12 +8,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class MainPage implements OnInit {
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private menuCtrl: MenuController) { }
 
   ngOnInit() {
   }
 
   async openMenu(){
-
+    this.menuCtrl.open()
   }
 }
