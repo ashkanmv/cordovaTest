@@ -1,0 +1,80 @@
+ion-toolbar {
+    --background: #fff;
+    --color: #0095EB;
+}
+
+ion-content {
+    --background: #fff;
+    --color: #0095EB;
+}
+
+ion-title {
+    height: 100%;
+}
+
+ion-input{
+    --padding-start : 5vw;
+    --placeholder-color : #b9b9b9;
+    --background : #fff
+}
+
+.back-button {
+    max-width: 20px;
+}
+
+.shadow{
+    box-shadow: 5px 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
+}
+
+.input-shadow{
+    box-shadow: 5px 8px 16px 0 #c2e8fa, 0 6px 20px 0 #E6F5FC ;
+}
+
+.camera{
+    border-radius: 0;
+    max-width: 20px;
+    max-height: 20px;
+    position: absolute;
+    bottom: 4px;
+    left: 45px;
+}
+
+.change-password-pic{
+    max-width: 30vw;
+    margin-top: 5vh;
+}
+
+.textbox{
+    max-width: 70vw;
+    height: 7vh;
+    border-radius: 3rem;
+}
+
+.submit-btn{
+    background-color: #333894;
+    color: #fff;
+    max-width: 70vw;
+    height: 10vh;
+    margin-bottom: 4vh;
+    margin-top: 6vh;
+ }
+
+ .eye{
+    max-width: 30px;
+    position: absolute;
+    right: 10px;
+ }
+
+ .container{
+    position: relative;
+    display: flex;
+    justify-content: center;    
+ }
+
+ .eye{
+    position: absolute;
+    z-index: 50;
+    right: 18vw;
+    width: 35px;
+    top: 28px;
+ }

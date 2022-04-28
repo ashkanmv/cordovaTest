@@ -1,9 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="backButton()">
+          <ion-img class="back-button" src="assets/menu/about-app/back-button.png"></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-title>
+          <h3><b>Profile</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col size="3">
+
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-row class="ion-justify-content-center">
+    <ion-avatar class="profile-pic ion-margin-top ion-margin-start shadow">
+      <img src="assets/menu/Person1.jpg" />
+      <div style="position: relative;">
+        <img class="camera" src="assets/menu/profile/Icon awesome-camera.png">
+      </div>
+    </ion-avatar>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-img class="change-password-pic" src="assets/menu/profile/Change-password.png"></ion-img>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-input class="ion-margin-top textbox input-shadow" type="password" placeholder="Current password"></ion-input>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-input class="ion-margin-top textbox input-shadow" type="password" placeholder="New password"></ion-input>
+  </ion-row>  
+  <ion-row class="ion-justify-content-center container">
+    <ion-input class="ion-margin-top textbox input-shadow" type="password" placeholder="Re-enter new password" #input>
+    </ion-input>
+    <span class="eye"><img src="assets/menu/profile/Atoms- Icons- Eye Active.png" alt=""
+      (click)="showPassword(input)"></span>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <button class="btn submit-btn">
+      <p>Send Message</p>
+    </button>
+  </ion-row>
 </ion-content>
