@@ -1,12 +1,40 @@
 <ion-header>
-  <ion-toolbar color="primary" class="main-page-header">
+  <ion-grid class="primary-color main-page-header">
+    <ion-row>
+      <ion-col size="1">
+        <ion-img
+            class="notification"
+            src="assets/mainPage/notifications-outline.png"
+          ></ion-img>
+      </ion-col>
+      <ion-col size="1">
+        <ion-img
+        class="notification"
+        src="assets/mainPage/notifications-outline.png"
+      ></ion-img>
+      </ion-col>
+      <ion-col size="8" class=" ion-text-center ion-align-self-center">
+        <ion-title class="ion-no-padding main-page-Title">Main Page</ion-title>
+      </ion-col>
+      <ion-col size="1">
+        <ion-img
+        class="search"
+        src="assets/mainPage/search-circle.png"
+      ></ion-img>
+      </ion-col>
+      <ion-col size="1">
+        <ion-img src="assets/mainPage/wifi.png"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-toolbar color="primary" class="main-page-header">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-row class="toolbar">
       <ion-col size="4">
         <ion-row class="col1">
-          <!-- <ion-img src="assets/mainPage/menu-sharp.svg" (click)="openMenu()"></ion-img> -->
+          <ion-img src="assets/mainPage/menu-sharp.svg" (click)="openMenu()"></ion-img>
           <ion-img
             class="notification"
             src="assets/mainPage/notifications-outline.png"
@@ -26,19 +54,19 @@
         </ion-row>
       </ion-col>
     </ion-row>
-  </ion-toolbar>
+  </ion-toolbar> -->
   <ion-grid class="secondary-background white-text">
     <ion-row class="ion-justify-content-between">
-      <ion-col size="2"> 2022.04.02 </ion-col>
-      <ion-col size="2"> Saturday </ion-col>
-      <ion-col size="2"> 13 فروردین </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-start"> 2022.04.02 </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-center"> Saturday </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-end"> 13 فروردین </ion-col>
     </ion-row>
   </ion-grid>
 </ion-header>
 
 <ion-content>
-  <ion-grid class="main-page-content primary-color">
-    <ion-row>
+  <ion-grid class="main-page-content primary-color ion-padding-top">
+    <ion-row class="ion-margin-top">
       <ion-col size="4" class="cols">
         <div>
           <ion-img src="assets/mainPage/Customer-History.png"></ion-img>
