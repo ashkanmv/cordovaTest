@@ -29,16 +29,25 @@ ion-img{
 }
 
 .update{
-    background: aqua;
-    width: 99vh;
-    height: 123px;
+    background: #A3D9F8;
+    width: 80vw;
+    height: 20vh;
     position: absolute;
     bottom: 0;
-    left: 10vh;
+    left: 10vw;
     border-radius: 18px;
+    border: 1px solid #31A9EF;
 }
 
 .update-text{
-    position: relative;
-    top: 50px;
+    color: #343795;
+    position: absolute;
+    top: 8vh;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.blue-color{
+    color: #205072;
 }
