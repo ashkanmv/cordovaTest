@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="backButton()">
+          <ion-img class="back-button" src="assets/menu/about-app/back-button.png"></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-title>
+          <h3><b>Settings</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col size="3">
+
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<ion-grid>
+  <ion-row class="ion-justify-content-center ion-margin-vertical">
+    <ion-img class="main-icon" src="assets/menu/settings/setting.png"></ion-img>
+  </ion-row>
+  <ion-row class="ion-justify-content-center h-10vh">
+    <ion-col size="6" class="ion-text-center primary-color h-100 white-text">
+      <ion-text>
+        Language
+      </ion-text>
+    </ion-col>
+    <ion-col size="6" class="ion-text-center secondary-bg h-100 white-text">
+      <b>Theme</b>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>
