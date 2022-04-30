@@ -3,7 +3,10 @@
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
         <ion-button fill="clear" (click)="backButton()">
-          <ion-img class="back-button" src="assets/menu/about-app/back-button.png"></ion-img>
+          <ion-img
+            class="back-button"
+            src="assets/menu/about-app/back-button.png"
+          ></ion-img>
         </ion-button>
       </ion-col>
       <ion-col size="6" class="ion-text-center">
@@ -11,27 +14,39 @@
           <h3><b>Settings</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col size="3">
-
-      </ion-col>
+      <ion-col size="3"> </ion-col>
     </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-grid>
-  <ion-row class="ion-justify-content-center ion-margin-vertical">
-    <ion-img class="main-icon" src="assets/menu/settings/setting.png"></ion-img>
-  </ion-row>
-  <ion-row class="ion-justify-content-center h-10vh">
-    <ion-col size="6" class="ion-text-center primary-color h-100 white-text">
-      <ion-text>
-        Language
-      </ion-text>
-    </ion-col>
-    <ion-col size="6" class="ion-text-center secondary-bg h-100 white-text">
-      <b>Theme</b>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center ion-margin-vertical">
+      <ion-img
+        class="main-icon"
+        src="assets/menu/settings/setting.png"
+      ></ion-img>
+    </ion-row>
+    <ion-row class="ion-justify-content-center h-15vh">
+      <ion-col size="6" class="ion-text-center primary-color h-100 white-text">
+        <b class="center-texts"> Language </b>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center secondary-bg h-100 white-text">
+        <b class="center-texts">Theme</b>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center w-100 mt-8vh">
+      <h4 class="secondary-color">Help</h4>
+      <span class="relative">
+        <ion-img class="help" src="assets/menu/settings/help.png"></ion-img>
+      </span>
+    </ion-row>
+    <ion-row class="ion-justify-content-center mt-4vh">
+      <p class="secondary-color">Frequently Asked Questions</p>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <p class="secondary-color">Description Video</p>
+    </ion-row>
+  </ion-grid>
 </ion-content>
