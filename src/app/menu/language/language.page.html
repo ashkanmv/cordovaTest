@@ -1,9 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>language</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <ion-row class="ion-justify-content-center primary-bg">
+    <ion-col size="3" class="ion-align-self-center white-text">
+      <ion-button fill="clear" (click)="backButton()">
+        <ion-img
+          class="back-button"
+          src="assets/menu/language/back-button.png"
+        ></ion-img>
+      </ion-button>
+    </ion-col>
+    <ion-col size="6" class="ion-text-center white-text">
+      <ion-title>
+        <h3><b>Language</b></h3>
+      </ion-title>
+    </ion-col>
+    <ion-col size="3"> </ion-col>
+  </ion-row>
+  <ion-row class="h-50vh primary-bg ion-justify-content-center">
+    <ion-img class="img" src="assets/menu/language/Group 1166.png"></ion-img>
+  </ion-row>
+  <ion-row class="ion-justify-content-center primary-color h-20vh">
+    <p class="ion-align-self-center">Select your language</p>
+  </ion-row>
+  <ion-row class="ion-justify-content-center h-10vh">
+    <ion-item fill="outline">
+      <ion-select value="english" class="w-50vw">
+        <ion-select-option value="english">English</ion-select-option>
+        <ion-select-option value="persian">Persian</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-row>
 </ion-content>

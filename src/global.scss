@@ -49,10 +49,13 @@ ion-toggle {
   border-radius: 3rem;
 }
 
-.primary-color {
+.primary-bg {
   background-color: #0095EB;
 }
 
+.primary-color {
+    color: #0095EB;
+  }
 .h-5vh{
   height: 5vh;
 }
@@ -65,17 +68,28 @@ ion-toggle {
 .h-15vh{
   height: 15vh;
 }
+.h-20vh{
+  height: 20vh;
+}
+.h-50vh{
+    height: 50vh;
+}
+
 .w-5vw{
-  height: 5vw;
+  width: 5vw;
 }
 .w-10vw{
-  height: 10v2;
+  width: 10vw;
 }
 .w-15vw{
-  height: 15vw;
+  width: 15vw;
 }
 .w-20vw{
-  height: 20vw;
+  width: 20vw;
+}
+
+.w-50vw{
+    width: 50vw;
 }
 
 .w-100{
