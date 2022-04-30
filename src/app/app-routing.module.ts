@@ -9,8 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
-  },  {
+    loadChildren: () => import('./main-page/main/main.module').then( m => m.MainPageModule)
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./menu/settings/settings.module').then( m => m.SettingsPageModule)
   },
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'theme',
     loadChildren: () => import('./menu/theme/theme.module').then( m => m.ThemePageModule)
+  },
+  {
+    path: 'customer-history',
+    loadChildren: () => import('./main-page/customer-history/customer-history.module').then( m => m.CustomerHistoryPageModule)
   }
 
 
