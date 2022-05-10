@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { VariableRadiusPieChartsComponent } from './variable-radius-pie-charts.component';
+import { AreaChartsComponent } from './area-charts.component';
 
-describe('VariableRadiusPieChartsComponent', () => {
-  let component: VariableRadiusPieChartsComponent;
-  let fixture: ComponentFixture<VariableRadiusPieChartsComponent>;
+describe('AreaChartsComponent', () => {
+  let component: AreaChartsComponent;
+  let fixture: ComponentFixture<AreaChartsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VariableRadiusPieChartsComponent ],
+      declarations: [ AreaChartsComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(VariableRadiusPieChartsComponent);
+    fixture = TestBed.createComponent(AreaChartsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 
 @Component({
-  selector: 'app-variable-radius-pie-charts',
-  templateUrl: './variable-radius-pie-charts.component.html',
-  styleUrls: ['./variable-radius-pie-charts.component.scss'],
+  selector: 'app-pie-charts',
+  templateUrl: './pie-charts.component.html',
+  styleUrls: ['./pie-charts.component.scss'],
 })
 export class VariableRadiusPieChartsComponent implements OnInit {
   
