@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>customer-nearby</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="container" *ngIf="showMap">
+  <app-map id="map" [showMap]="showMap"></app-map>
+</div>
+</ion-content>

@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'theme',
     loadChildren: () => import('./menu/theme/theme.module').then( m => m.ThemePageModule)
+  },  {
+    path: 'customer-nearby',
+    loadChildren: () => import('./main-page/customer-nearby/customer-nearby.module').then( m => m.CustomerNearbyPageModule)
   }
+
 
 
 ];
