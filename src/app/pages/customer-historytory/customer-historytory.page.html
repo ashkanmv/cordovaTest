@@ -1,9 +1,63 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>customer-historytory</ion-title>
+    <ion-row class="primary-bg">
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="backButton()">
+          <ion-img
+            class="back-button"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-text-start ion-align-self-center">
+        <ion-title class="ion-no-padding main-page-Title white-text"
+          >Customer History</ion-title
+        >
+      </ion-col>
+      <ion-col
+        size="1"
+        class="ion-no-padding ion-align-self-center ion-text-end"
+      >
+        GPS
+      </ion-col>
+      <ion-col size="1" class="ion-align-self-center ion-margin-end">
+        <ion-toggle class="" color="secondary"></ion-toggle>
+      </ion-col>
+      <ion-col size="1">
+        <ion-img
+          class="search"
+          src="assets/mainPage/search-circle.png"
+        ></ion-img>
+      </ion-col>
+      <ion-col size="1" class="ion-justfy-self-end">
+        <ion-img src="assets/mainPage/wifi.png"></ion-img>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
+  <ion-grid class="secondary-bg white-text">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="3" class="ion-no-padding ion-text-start">
+        2022.04.02
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-center">
+        Saturday
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-end">
+        13 فروردین
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-header>
 
 <ion-content>
+  <!-- <ion-searchbar type="search"></ion-searchbar> -->
+  <ion-searchbar inputmode="numeric"></ion-searchbar>
 
+  <!-- <input
+    type="search"
+    name=""
+    id=""
+    placeholder="search"
+    class="customer-history-search"
+  /> -->
 </ion-content>
