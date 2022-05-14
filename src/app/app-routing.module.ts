@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'theme',
     loadChildren: () => import('./menu/theme/theme.module').then( m => m.ThemePageModule)
+  },  {
+    path: 'customer-historytory',
+    loadChildren: () => import('./pages/customer-historytory/customer-historytory.module').then( m => m.CustomerHistorytoryPageModule)
   }
+
 
 
 ];
