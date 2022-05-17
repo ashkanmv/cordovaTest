@@ -24,15 +24,23 @@
         <!-- <ion-toggle class="" color="primary"></ion-toggle> -->
         <ion-toggle color="primary" checked="true"></ion-toggle>
       </ion-col>
-      <ion-col size="1">
-        <ion-img
-          class="dropDown"
-          src="assets\pages\customer-history\Hide.png"
-        ></ion-img>
+      <ion-col size="1" class="ion-align-self-center">
+        <button class="dropDown-btn" id="trigger-button">
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+        <ion-popover class="header-drop-down" trigger="trigger-button">
+          <ng-template>
+            <ion-content class="first">50 M</ion-content>
+            <ion-content>100 M</ion-content>
+            <ion-content>500 M</ion-content>
+            <ion-content>700 M</ion-content>
+            <ion-content>1 KM</ion-content>
+          </ng-template>
+        </ion-popover>
       </ion-col>
-      <ion-col size="1" class="ion-justfy-self-end">
+      <ion-col size="1" class="ion-justfy-self-end ion-align-self-center">
         <ion-img
-          class="wifi-offline"
+          class="offline"
           src="assets\pages\customer-history\Internet Off.png"
         ></ion-img>
       </ion-col>
@@ -64,10 +72,20 @@
     <input
       type="search"
       name=""
-      id=""
+      id="trigger-search"
       placeholder="Search"
       class="search search-customer-history input-shadow"
     />
+    <ion-popover class="dropdown search-drop-down" trigger="trigger-search">
+      <ng-template>
+        <ion-content disabled class="first">DC</ion-content>
+        <ion-content>Subtitle 1</ion-content>
+        <ion-content>Subtitle 2</ion-content>
+        <ion-content>Subtitle 3</ion-content>
+        <ion-content>Subtitle 4</ion-content>
+        <ion-content>Subtitle 5</ion-content>
+      </ng-template>
+    </ion-popover>
     <span class="search-icon">
       <ion-icon name="chevron-down-outline"></ion-icon>
     </span>
@@ -75,43 +93,65 @@
 
   <ion-col class="customer-history-select">
     <ion-row class="ion-justify-content-center">
-      <ion-item lines="none" class="">
+      <ion-item id="trigger-input-1" lines="none" class="box-shadow">
         <ion-label>DC</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
-        <ion-select interface="popover">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-1"
+        >
+          <ng-template>
+            <ion-content disabled class="first">DC</ion-content>
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-item lines="none" class="">
+      <ion-item id="trigger-input-2" lines="none" class="box-shadow">
         <ion-label>Route</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
-        <ion-select interface="popover">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-2"
+        >
+          <ng-template>
+            <ion-content disabled class="first">Route</ion-content>
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-item lines="none" class="">
+      <ion-item id="trigger-input-3" lines="none" class="box-shadow">
         <ion-label>Customer</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
-        <ion-select interface="popover">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-3"
+        >
+          <ng-template>
+            <ion-content disabled class="first">Customer</ion-content>
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
       </ion-item>
     </ion-row>
+
     <ion-row class="radio-input-1 ion-justify-content-center">
-      <div class="radio-input">
+      <div class="radio-input box-shadow">
         <div class="">
           <label for="sales">Sales</label>
           <input type="radio" name="radio-input-1" id="" />
@@ -127,7 +167,7 @@
       </div>
     </ion-row>
     <ion-row class="radio-input-2 ion-justify-content-center">
-      <div class="radio-input">
+      <div class="radio-input box-shadow">
         <div class="">
           <label for="qty">Qty</label>
           <input type="radio" name="radio-input-2" id="" />
@@ -157,78 +197,166 @@
         <h4 class="address"><span>Address: </span>{{customerInfo.address}}</h4>
       </div>
       <div class="questionnair">
-        <img src="assets\pages\customer-history\Group 1309.png" alt="" />
+        <a href="#">
+          <img src="assets\pages\customer-history\Group 1309.png" alt="" />
+        </a>
       </div>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content class="ion-no-padding">
       <table>
-        <tr class="table-head">
-          <th><span>Cat</span></th>
-          <th>W4</th>
-          <th>W5</th>
-          <th>W6</th>
-          <th>W7</th>
-        </tr>
-        <tr>
-          <td><ion-icon name="chevron-down-outline"></ion-icon> DD 200</td>
-          <td></td>
-          <td>4.10</td>
-          <td></td>
-          <td>3.20</td>
-        </tr>
-        <tr>
-          <td><ion-icon name="chevron-down-outline"></ion-icon> DD 200</td>
-          <td></td>
-          <td>4.10</td>
-          <td></td>
-          <td>3.20</td>
-        </tr>
-        <tr>
-          <td><ion-icon name="chevron-down-outline"></ion-icon> DD 200</td>
-          <td></td>
-          <td>4.10</td>
-          <td></td>
-          <td>3.20</td>
-        </tr>
-        <tr>
-          <td><ion-icon name="chevron-down-outline"></ion-icon> DD 200</td>
-          <td></td>
-          <td>4.10</td>
-          <td></td>
-          <td>3.20</td>
-        </tr>
-        <tr>
-          <td><ion-icon name="chevron-down-outline"></ion-icon> DCD</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><ion-icon name="chevron-down-outline"></ion-icon> DCD</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><ion-icon name="chevron-down-outline"></ion-icon> DCD</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><ion-icon name="chevron-down-outline"></ion-icon> DCD</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <thead class="table-head">
+          <tr class="table-head-content">
+            <th><span>Cat</span></th>
+            <th>W4</th>
+            <th>W5</th>
+            <th>W6</th>
+            <th>W7</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="table-body table-body-content">
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon> DCD
+            </td>
+            <td></td>
+            <td>4.10</td>
+            <td></td>
+            <td>3.20</td>
+            <td></td>
+          </tr>
+
+          <tr (click)="toggleDtails()">
+            <td>
+              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
+
+              <ion-icon
+                class="isNotShowing"
+                name="chevron-down-outline"
+              ></ion-icon>
+
+              DD 200
+            </td>
+            <td></td>
+            <td>4.10</td>
+            <td></td>
+            <td>3.20</td>
+            <td></td>
+          </tr>
+          <div *ngIf="IsDetailsShowing" class="table-detail">
+            <table class="">
+              <thead>
+                <th>Visitor</th>
+                <th>Driver</th>
+              </thead>
+              <tbody>
+                <td>Ali Zardust</td>
+                <td>Hosein Aghai</td>
+              </tbody>
+            </table>
+          </div>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon> DD 200
+            </td>
+            <td></td>
+            <td>4.10</td>
+            <td></td>
+            <td>3.20</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon> DD 200
+            </td>
+            <td></td>
+            <td>4.10</td>
+            <td></td>
+            <td>3.20</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon> DCD
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon> DCD
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon> DCD
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon> DCD
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
       </table>
+    </ion-card-content>
+    <ion-card-content class="ion-no-padding progress-vertical">
+      <p>Qunatity</p>
+      <div class="progress-container">
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+        <div class="progress-bar"></div>
+      </div>
+      <div class="months">
+        <p>Jan</p>
+        <p>Feb</p>
+        <p>Mar</p>
+        <p>Apr</p>
+        <p>May</p>
+        <p>Jun</p>
+        <p>Aug</p>
+        <p>Sep</p>
+        <p>Oct</p>
+      </div>
+      <div class="quantity">
+        <p>0</p>
+        <p>2</p>
+        <p>4</p>
+        <p>6</p>
+        <p>8</p>
+        <p>10</p>
+        <p>12</p>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+<!-- <ion-icon name="chevron-up-outline"></ion-icon> DCD -->
 
 <!-- first radio Input with ionic -->
 <!-- <ion-row class="radio-input-1 ion-justify-content-center">
@@ -291,3 +419,120 @@
         </ion-accordion>
       </ion-accordion-group>
     </ion-card-content> -->
+
+<!-- <tr (click)="toggleDtails()">
+      <td *ngIf="isShowing; then iconUp; else iconDown  " class="">
+        <ng-template #iconDown>
+          <ion-icon class="isShowing" name="chevron-up-outline">
+          </ion-icon>
+        </ng-template>
+        <ng-template #iconUp>
+          <ion-icon
+            class="isNotShowing"
+            name="chevron-down-outline"
+          ></ion-icon>
+        </ng-template>
+        DD 200
+      </td>
+      <td></td>
+      <td>4.10</td>
+      <td></td>
+      <td>3.20</td>
+      <td></td>
+    </tr> -->
+
+<!-- <ion-row class="ion-justify-content-center">
+      <ion-item lines="none" class="box-shadow">
+        <ion-label>DC</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-select interface="popover">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row> -->
+
+<!-- <ion-row class="ion-justify-content-center">
+      <ion-item lines="none" class="box-shadow">
+        <ion-label>Route</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-select interface="popover">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item lines="none" class="box-shadow">
+        <ion-label>Customer</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-select interface="popover">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row> -->
+
+<!-- <ion-toolbar class="ion-no-padding">
+      <ion-row class="primary-bg">
+        <ion-col
+          size="7"
+          class="header header-title ion-justfy-self-start ion-align-self-center"
+        >
+          <ion-col size="2" class="ion-align-self-center">
+            <ion-button fill="clear" (click)="backButton()">
+              <ion-img
+                class="back-button"
+                src="assets\pages\customer-history\Backward arrow.png"
+              ></ion-img>
+            </ion-button>
+          </ion-col>
+          <ion-col size="8" class="ion-text-start ion-align-self-center">
+            <ion-title class="ion-no-padding main-page-Title white-text"
+              >Customer History</ion-title
+            >
+          </ion-col>
+        </ion-col>
+        <ion-col size="3" class="header header-nav ion-align-self-center">
+          <ion-col
+            size=""
+            class="ion-no-padding ion-align-self-center ion-text-end gps-text"
+          >
+            GPS
+          </ion-col>
+          <ion-col size="" class="ion-align-self-center ion-margin-end">
+            <!-- <ion-toggle class="" color="primary"></ion-toggle> -->
+<!-- <ion-toggle color="primary" checked="true"></ion-toggle>
+          </ion-col>
+          <ion-col size="">
+            <button class="dropDown-btn" id="trigger-button">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </button>
+            <ion-popover class="header-drop-down" trigger="trigger-button">
+              <ng-template>
+                <ion-content class="first">50 M</ion-content>
+                <ion-content>100 M</ion-content>
+                <ion-content>500 M</ion-content>
+                <ion-content>700 M</ion-content>
+                <ion-content>1 KM</ion-content>
+              </ng-template>
+            </ion-popover>
+          </ion-col>
+          <ion-col size="" class="ion-justfy-self-end">
+            <ion-img
+              class="offline"
+              src="assets\pages\customer-history\Internet Off.png"
+            ></ion-img>
+          </ion-col>
+          <!-- <ion-col size="1" class="ion-justfy-self-end">
+          <ion-img src="assets/mainPage/wifi.png"></ion-img>
+        </ion-col> -->
+<!-- </ion-col>
+      </ion-row>
+    </ion-toolbar>   -->

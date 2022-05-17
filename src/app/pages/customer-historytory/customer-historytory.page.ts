@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer-historytory.page.scss'],
 })
 export class CustomerHistorytoryPage implements OnInit {
+  IsDetailsShowing=false;
+  isShowing=false;
   customerInfo:   {
     shopName:string ,
     shopCode: number,
@@ -31,4 +33,10 @@ export class CustomerHistorytoryPage implements OnInit {
   backButton(){
     this.router.navigate(['/'])
   }
+  toggleDtails(){
+    this.IsDetailsShowing=!this.IsDetailsShowing;
+    this.isShowing=!this.isShowing;
+  }
+
+
 }
