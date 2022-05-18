@@ -10,16 +10,6 @@ ion-content {
     --background: #fff;
     --color: #0095EB;
 }
-// ion-col.header{
-//     display: flex;
-//     &-title{
-//         justify-content: space-between;
-//     }
-//     &-nav{
-//         // justify-content: space-around;
-//         align-items: center;
-//     }
-// }
 
 ion-title {
     height: 100%;
@@ -52,8 +42,7 @@ ion-img{
     // margin-right: 3px;
 }
 ion-img.offline{
-    // min-width: 40px;
-    // max-width: 65px;
+
     max-width: 100px;
 
 }
@@ -137,10 +126,6 @@ ion-popover.search-drop-down{
 
 }
 
-ion-card-content.progress-vertical{
-    height:200vh;
-}
-
 
 .box-shadow{
     box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
@@ -154,6 +139,9 @@ ion-card-content.progress-vertical{
 }
 
 .dropDown-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 4px;
     border-radius: 100%;
     outline: none;
@@ -163,7 +151,9 @@ ion-card-content.progress-vertical{
     // padding: 0 4vw;
     width: 5vw;
     // height: 4rem;
-    height: 10vh;
+    height:10.5vh;
+    // height: 4rem;
+    // height: 11vh;
         ion-icon{
         color:#0095EB;
         font-size: 2rem;
@@ -234,16 +224,6 @@ ion-card-content.progress-vertical{
     }
 }
 
-// ion-searchbar{
-//     --border-radius:50px;
-//     --placeholder-color	:#b9b9b9;
-//     --icon-color:#fff;
-//     --box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-//     --background:blue white;
-//     width: 70%;
-//     height: 4rem;
-// }
-
 // -------------Select-Options------------------
 
 .customer-history-select{
@@ -303,15 +283,12 @@ ion-card-content.progress-vertical{
     }
 
     ion-select-popover{
-        ion-item{
-            // --background:yellow;
-        }
+
         --background:red;
         ion-radio-group{
             --background:red;
         }
-        ion-list{
-        }
+
         >ion-item{
     --background: red;
         }
@@ -320,25 +297,7 @@ ion-card-content.progress-vertical{
     // -------------Radio Input------------------
 
 
-    .radio-input-2{
-        // ion-radio-group {
-        //     >ion-item{
-        //             width: 120px;
-        //             // height: 100%;
-        //         }
-        //         >ion-label{
-        //             width: 100px;
-        //             white-space: nowrap;
-        //         }
-        //         input[type=radio]{
-        //             padding-left: 1rem;
-        //         }
-                
-        //     }
-            
-        //     ion-list{
-        // }
-    }
+    
 
     .radio-input{
         display: flex;
@@ -445,9 +404,8 @@ ion-card{
         table{
 
             table-layout: fixed;
-            min-width: 100%;
+            width: 100%;
             margin: 0;
-
             
             tr{
                 cursor: pointer;
@@ -470,7 +428,6 @@ ion-card{
             }
             td{
                 white-space: nowrap;
-                overflow: hidden;
                 padding: 2px 0;
                 max-width: 100px;
 
@@ -506,35 +463,26 @@ ion-card{
                 ion-icon{
                     font-size: 1.2rem;
                     padding-right: 4px;
+                    // margin-top: 5px;
                 }
                 &-icon{
                     background: #dddddd;
+                    // display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
 
             // ---------table-detail--------------
             .table-detail{
                 padding: 10px 0;
-                position: relative;
-                left: 40%;
-                width: 10%;
-                // height: 200px;
-                // left: 45vw;
-                // max-width: 100%;
+                
                 
                 &>table{
+                    width: 65vw;
                     box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-
-                    // display: flex;
-                    // flex-direction: column;
-                    // justify-content: center;
-                    // align-items: center;
-                    // width: 200px ;
-                    // position:absolute;
-                    // height: 2rem;
-                    // width: 10rem;
-
-
+                    position: relative;
+                    left: 5vw;
                 }
                 thead{
                     background: #2cb2ffd8;
@@ -554,6 +502,24 @@ ion-card{
                         color: #fff;
                     }
 
+                }
+                .table-line-ver{
+                    position: absolute;
+                    // top:16vh;
+                    top:75px;
+                    // left: 2vw;
+                    left: 14px;
+                    width: 2px;
+                    height: 70px;
+                    background: #0095EB;
+                }
+                .table-line-horiz{
+                    position: absolute;
+                    top:135px;
+                    left: 16px;
+                    width:60px;
+                    height: 2px;
+                    background: #0095EB;
                 }
 
             }
@@ -582,40 +548,143 @@ ion-card{
 
             // -------------Card content Progress------------------
         }
-        ion-card-content.progress-vertical{
-            height: 15rem;
-            p{
-                padding: .5rem 0  .5rem 1.8rem ;
-            }
-            .progress-container{
-                margin-left: 2rem;
-                background: white;
-                width: 100vw;
-                height: 12rem;
-                border-left:1px solid #bdbdbdb1 ;
-                border-bottom:1px solid #bdbdbdb1 ;
-                border-top:2px dotted #bdbdbdb1 ;
-                display: flex;
-                justify-content: space-evenly;
-                align-items: flex-end;
+        
+        
+        
+    }
+    .progress-vertical{
+        height: 20rem;
+        p{
+            padding: .5rem 0  .5rem 1.8rem ;
+        }
+        .progress-container{
+            margin-left: 3vh;
+            background: white;
+            width: 100vw;
+            height: 12rem;
+            border-left:1px solid #bdbdbdb1 ;
+            border-bottom:1px solid #bdbdbdb1 ;
+            border-top:2px dotted rgba(189, 189, 189, 0.506) ;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: flex-end;
 
-            } 
-            .progress-bar{
-                background-color: #d5d5d586;
-                width: .8rem;
-                height: 100%;
+        } 
+        .progress-bar{
+            // transform: rotate(10deg);
+            height: 100%;
+            width: 1rem;
+            background-color: #d7d7d76c;
+            display: flex;
+            align-items: flex-end;
+            // background-color: #d5d5d586;
+            // width: .8rem;
+            // height: 100%;
+            .progress{
+
+                // height: 20%;
+                border-radius:  4px 4px 0 0  ;
             }
-            .months{
-                padding: 3rem 0;
-                width: 100wv;
+            .prograss-month-jan{
+                width: 100%;
                 height: 2rem;
-                background: red;
-                color: #000;
-                display: flex;
+                background: #005b90;
+            }
+            .prograss-month{
+                position: absolute;
+                bottom: -162vh;
+                font-size: 10px;
+
             }
         }
+        
+        .quantity{
+            display: flex;
+            flex-direction: column-reverse;
+            position: relative;
+            align-items: center;            
+            bottom: 5vh;
+            
+            font-size: 9px;
+            height: 5vh;
+            width: 2vw;
+            p{
+                padding: 0;
+            }
 
-    
+        }
+    }
 
+@media (max-width:1024px) {
+    .dropDown-btn{
+        height: 8.5vh;
+        // padding: 4px 0;
+    }
+}
+@media (max-width:990px) {
+    .dropDown-btn{
+        width: 6vw;
+        height: 9.5vh;
+    }
+}
+@media (max-width:768px) {
+    .dropDown-btn{
+        height: 8vh;
+    }
+}
+@media (max-width:700px) {
+    .dropDown-btn{
+
+        height: 7vh;
+    }
+}
+@media (max-width:550px) {
+    .dropDown-btn{
+        height: 6vh;
+
+    }
+}
+@media (max-width:425px) {
+    .dropDown-btn{
+        // height: 6vh;
+        width: 8vw;
+    }
+//     .progress-vertical{
+//     .progress-container{
+//     .prograss-month{
+//         bottom: -165vh;
+//     }
+//     }
+// }
 }
 
+@supports (-webkit-touch-callout: none) {
+    .progress-vertical{
+            .progress-container{
+            .prograss-month{
+                bottom: 0;
+            }
+            }
+        } 
+}
+    
+
+
+
+
+
+
+
+
+
+
+// @media (max-width:990px) {
+//     .table-detail{
+//         &>table{
+//             width:120vh;
+//             background: red;
+          
+//         }
+//     }
+// }

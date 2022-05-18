@@ -244,6 +244,8 @@
             <td></td>
           </tr>
           <div *ngIf="IsDetailsShowing" class="table-detail">
+            <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div>
             <table class="">
               <thead>
                 <th>Visitor</th>
@@ -257,7 +259,7 @@
           </div>
           <tr>
             <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> DD 200
+              <ion-icon name="chevron-down-outline"></ion-icon> FLan
             </td>
             <td></td>
             <td>4.10</td>
@@ -267,7 +269,7 @@
           </tr>
           <tr>
             <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon> DD 200
+              <ion-icon name="chevron-down-outline"></ion-icon> Totl
             </td>
             <td></td>
             <td>4.10</td>
@@ -318,42 +320,71 @@
         </tbody>
       </table>
     </ion-card-content>
-    <ion-card-content class="ion-no-padding progress-vertical">
-      <p>Qunatity</p>
-      <div class="progress-container">
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-bar"></div>
-      </div>
-      <div class="months">
-        <p>Jan</p>
-        <p>Feb</p>
-        <p>Mar</p>
-        <p>Apr</p>
-        <p>May</p>
-        <p>Jun</p>
-        <p>Aug</p>
-        <p>Sep</p>
-        <p>Oct</p>
-      </div>
-      <div class="quantity">
-        <p>0</p>
-        <p>2</p>
-        <p>4</p>
-        <p>6</p>
-        <p>8</p>
-        <p>10</p>
-        <p>12</p>
-      </div>
-    </ion-card-content>
   </ion-card>
+  <div class="ion-no-padding progress-vertical">
+    <p>Qunatity</p>
+    <div class="progress-container">
+      <!-- <ion-progress-bar class="progress-bar" value="0.5"></ion-progress-bar>
+      <ion-progress-bar class="progress-bar" value="0.5"></ion-progress-bar> -->
+      <div class="progress-bar">
+        <div class="progress prograss-month-jan"></div>
+        <div class="prograss-month">Jan</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-feb"></div>
+        <div class="prograss-month">Feb</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-mar"></div>
+        <div class="prograss-month">Mar</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-apr"></div>
+        <div class="prograss-month">Apr</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-may"></div>
+        <div class="prograss-month">May</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-jun"></div>
+        <div class="prograss-month">Jun</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-jul"></div>
+        <div class="prograss-month">Jul</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-aug"></div>
+        <div class="prograss-month">Aug</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-sep"></div>
+        <div class="prograss-month">Sep</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-oct"></div>
+        <div class="prograss-month">Oct</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-nov"></div>
+        <div class="prograss-month">Nov</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress prograss-month-dec"></div>
+        <div class="prograss-month">Dec</div>
+      </div>
+    </div>
+    <div class="quantity">
+      <p>0</p>
+      <p>2</p>
+      <p>4</p>
+      <p>6</p>
+      <p>8</p>
+      <p>10</p>
+      <p>12</p>
+    </div>
+  </div>
 </ion-content>
 
 <!-- <ion-icon name="chevron-up-outline"></ion-icon> DCD -->
