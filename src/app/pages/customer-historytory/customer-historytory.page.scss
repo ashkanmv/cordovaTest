@@ -49,10 +49,9 @@ ion-img{
     max-width: 80px;
     // margin-right: 3px;
 }
-ion-img.offline{
-
+ion-img.wifi-offline{
     max-width: 100px;
-
+    margin-left: 8px;
 }
 
 ion-toggle.ios{
@@ -109,7 +108,7 @@ ion-popover.dropdown{
         }
         
     }
-    ion-content.first{
+    ion-content.select-input-popover-title{
         cursor:auto;
         --color:#000 ;
         text-align: center;
@@ -150,22 +149,15 @@ ion-popover.search-drop-down{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 4px;
     border-radius: 100%;
-    outline: none;
     border: none;
     background-color: #fff;
-    color: #0095EB;
-    // padding: 0 4vw;
-    width: 5vw;
-    // height: 4rem;
-    height:10.5vh;
-    // height: 4rem;
-    // height: 11vh;
+    margin-top: 3px;
+    padding:1.1vw ;
+    // margin-right: 1rem;
         ion-icon{
         color:#0095EB;
         font-size: 2rem;
-        padding-top:5px;
     }
 }
 
@@ -624,40 +616,40 @@ ion-card{
         }
     }
 
-@media (max-width:1024px) {
-    .dropDown-btn{
-        height: 8.5vh;
-        // padding: 4px 0;
-    }
-}
-@media (max-width:990px) {
-    .dropDown-btn{
-        width: 6vw;
-        height: 9.5vh;
-    }
-}
-@media (max-width:768px) {
-    .dropDown-btn{
-        height: 8vh;
-    }
-}
-@media (max-width:700px) {
-    .dropDown-btn{
+// @media (max-width:1024px) {
+//     .dropDown-btn{
+//         height: 8.5vh;
+//         // padding: 4px 0;
+//     }
+// }
+// @media (max-width:990px) {
+//     .dropDown-btn{
+//         width: 6vw;
+//         height: 9.5vh;
+//     }
+// }
+// @media (max-width:768px) {
+//     .dropDown-btn{
+//         height: 8vh;
+//     }
+// }
+// @media (max-width:700px) {
+//     .dropDown-btn{
 
-        height: 7vh;
-    }
-}
-@media (max-width:550px) {
-    .dropDown-btn{
-        height: 6vh;
+//         height: 7vh;
+//     }
+// }
+// @media (max-width:550px) {
+//     .dropDown-btn{
+//         height: 6vh;
 
-    }
-}
-@media (max-width:425px) {
-    .dropDown-btn{
-        // height: 6vh;
-        width: 8vw;
-    }
+//     }
+// }
+// @media (max-width:425px) {
+//     .dropDown-btn{
+//         // height: 6vh;
+//         width: 8vw;
+//     }
 //     .progress-vertical{
 //     .progress-container{
 //     .prograss-month{
@@ -665,17 +657,17 @@ ion-card{
 //     }
 //     }
 // }
-}
+// }
 
-@supports (-webkit-touch-callout: none) {
-    .progress-vertical{
-            .progress-container{
-            .prograss-month{
-                bottom: 0;
-            }
-            }
-        } 
-}
+// @supports (-webkit-touch-callout: none) {
+//     .progress-vertical{
+//             .progress-container{
+//             .prograss-month{
+//                 bottom: 0;
+//             }
+//             }
+//         } 
+// }
     
 
 

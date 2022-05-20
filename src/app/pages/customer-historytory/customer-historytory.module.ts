@@ -13,8 +13,8 @@ import { CustomerHistorytoryPage } from './customer-historytory.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CustomerHistorytoryPageRoutingModule
+    CustomerHistorytoryPageRoutingModule,
   ],
-  declarations: [CustomerHistorytoryPage]
+  declarations: [CustomerHistorytoryPage],
 })
 export class CustomerHistorytoryPageModule {}

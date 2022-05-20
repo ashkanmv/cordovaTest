@@ -122,7 +122,7 @@ ion-popover.select-drop-down{
       
         
     }
-    ion-content.first{
+    ion-content.select-input-popover-title{
         cursor:auto;
         --color:#000 ;
         text-align: center;
@@ -190,7 +190,7 @@ ion-col.radio-input-container{
             font-size: 1.5rem;
             font-weight: bold;
             padding-bottom: .7rem;
-            // padding-left: 1rem;
+            padding-left: 1rem;
         }
         &>div{
             background: #e0e0e06c;

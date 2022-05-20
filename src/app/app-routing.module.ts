@@ -56,9 +56,20 @@ const routes: Routes = [
       import('./pages/customer-historytory/customer-historytory.module').then(
         (m) => m.CustomerHistorytoryPageModule
       ),
-  },  {
+  },
+  {
     path: 'questionnaire',
-    loadChildren: () => import('./pages/questionnaire/questionnaire.module').then( m => m.QuestionnairePageModule)
+    loadChildren: () =>
+      import('./pages/questionnaire/questionnaire.module').then(
+        (m) => m.QuestionnairePageModule
+      ),
+  },  {
+    path: 'notifications',
+    loadChildren: () => import('./pages/notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'customer-nearby',
+    loadChildren: () => import('./pages/customer-nearby/customer-nearby.module').then( m => m.CustomerNearbyPageModule)
   },
 
 ];
