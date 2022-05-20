@@ -1,3 +1,11 @@
+// to do : 1 header button size needs to get fixed.
+//  2 progress bar incomplete
+// 3 table cat column overflows 
+ // change the down icons
+
+
+
+
 ion-toolbar ion-row{
     --background: #fff;
     --color: #0095EB;
@@ -383,7 +391,7 @@ ion-card{
         display: grid;
         grid-template-columns: repeat(2,1fr);
         column-gap: .6rem;
-        .questionnair{
+        .questionnaire{
             display: flex;
             align-items: flex-end;
         }
@@ -479,7 +487,7 @@ ion-card{
                 
                 
                 &>table{
-                    width: 65vw;
+                    width: 90vw;
                     box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
                     position: relative;
                     left: 5vw;
@@ -582,21 +590,21 @@ ion-card{
             // width: .8rem;
             // height: 100%;
             .progress{
+                border-radius:  4px 4px 0 0  ;
+                width: 100%;
+                background: #005b90;
 
                 // height: 20%;
-                border-radius:  4px 4px 0 0  ;
             }
             .prograss-month-jan{
-                width: 100%;
                 height: 2rem;
-                background: #005b90;
             }
-            .prograss-month{
-                position: absolute;
-                bottom: -162vh;
-                font-size: 10px;
+            // .prograss-month{
+            //     // position: absolute;
+            //     // bottom: -162vh;
+            //     // font-size: 10px;
 
-            }
+            // }
         }
         
         .quantity{

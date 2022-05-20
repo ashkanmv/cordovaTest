@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-between header ion-no-margin">
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="backButton()">
+          <ion-img
+            class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-title>
+          <h3><b>Questionnaire</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img class="wifi-online" src="assets/mainPage/wifi.png"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-grid class="secondary-bg white-text">
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="3" class="ion-no-padding ion-text-start">
+          2022.04.02
+        </ion-col>
+        <ion-col size="3" class="ion-no-padding ion-text-center">
+          Saturday
+        </ion-col>
+        <ion-col size="3" class="ion-no-padding ion-text-end">
+          13 فروردین
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-col class="">
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-1" lines="none" class="box-shadow">
+        <ion-label>DC</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-1"
+        >
+          <ng-template>
+            <ion-content disabled class="first">DC</ion-content>
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-2" lines="none" class="box-shadow">
+        <ion-label>Route</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-2"
+        >
+          <ng-template>
+            <ion-content disabled class="first">Route</ion-content>
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-3" lines="none" class="box-shadow">
+        <ion-label>RouteDaily</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-3"
+        >
+          <ng-template>
+            <ion-content disabled class="first">RouteDaily</ion-content>
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-4" lines="none" class="box-shadow">
+        <ion-label>Customer</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-4"
+        >
+          <ng-template>
+            <ion-content disabled class="first">Customer</ion-content>
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-5" lines="none" class="box-shadow">
+        <ion-label>Customer Category</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-5"
+        >
+          <ng-template>
+            <ion-content disabled class="first">Customer Category</ion-content>
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+  </ion-col>
+
+  <ion-col class="ion-justify-content-center input-text">
+    <ion-row class="ion-justify-content-center">
+      <ion-label>Store:</ion-label>
+      <ion-input></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-label>Customer Name:</ion-label>
+      <ion-input></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-label>Address:</ion-label>
+      <ion-input></ion-input>
+    </ion-row>
+  </ion-col>
+
+  <ion-col class="radio-input-container">
+    <ion-row class="radio-input">
+      <label for="breakfast">Breakfast: </label>
+      <div class="">
+        <div class="">
+          <label for="yes">Yes</label>
+          <input type="radio" name="radio-input-2" id="" />
+        </div>
+        <div class="">
+          <label for="no">No</label>
+          <input type="radio" name="radio-input-2" id="" />
+        </div>
+      </div>
+    </ion-row>
+    <button class="btn-submit">Submit</button>
+  </ion-col>
+</ion-content>

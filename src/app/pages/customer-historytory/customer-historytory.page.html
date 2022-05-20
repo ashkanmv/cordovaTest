@@ -30,7 +30,7 @@
         </button>
         <ion-popover class="header-drop-down" trigger="trigger-button">
           <ng-template>
-            <ion-content class="first">50 M</ion-content>
+            <ion-content class="select-input-popover-title">50 M</ion-content>
             <ion-content>100 M</ion-content>
             <ion-content>500 M</ion-content>
             <ion-content>700 M</ion-content>
@@ -78,7 +78,9 @@
     />
     <ion-popover class="dropdown search-drop-down" trigger="trigger-search">
       <ng-template>
-        <ion-content disabled class="first">DC</ion-content>
+        <ion-content disabled class="select-input-popover-title"
+          >DC</ion-content
+        >
         <ion-content>Subtitle 1</ion-content>
         <ion-content>Subtitle 2</ion-content>
         <ion-content>Subtitle 3</ion-content>
@@ -99,9 +101,12 @@
         <ion-popover
           class="dropdown select-drop-down"
           trigger="trigger-input-1"
+          lines="none"
         >
           <ng-template>
-            <ion-content disabled class="first">DC</ion-content>
+            <ion-content disabled class="select-input-popover-title"
+              >DC</ion-content
+            >
             <ion-content>Subtitle 1</ion-content>
             <ion-content>Subtitle 2</ion-content>
             <ion-content>Subtitle 3</ion-content>
@@ -120,7 +125,9 @@
           trigger="trigger-input-2"
         >
           <ng-template>
-            <ion-content disabled class="first">Route</ion-content>
+            <ion-content disabled class="select-input-popover-title"
+              >Route</ion-content
+            >
             <ion-content>Subtitle 1</ion-content>
             <ion-content>Subtitle 2</ion-content>
             <ion-content>Subtitle 3</ion-content>
@@ -139,7 +146,9 @@
           trigger="trigger-input-3"
         >
           <ng-template>
-            <ion-content disabled class="first">Customer</ion-content>
+            <ion-content disabled class="select-input-popover-title"
+              >Customer</ion-content
+            >
             <ion-content>Subtitle 1</ion-content>
             <ion-content>Subtitle 2</ion-content>
             <ion-content>Subtitle 3</ion-content>
@@ -196,8 +205,8 @@
         <h4 class="sr"><span>SR: </span>{{customerInfo.sr}}</h4>
         <h4 class="address"><span>Address: </span>{{customerInfo.address}}</h4>
       </div>
-      <div class="questionnair">
-        <a href="#">
+      <div class="questionnaire">
+        <a routerLink="/questionnaire">
           <img src="assets\pages\customer-history\Group 1309.png" alt="" />
         </a>
       </div>
@@ -327,8 +336,8 @@
       <!-- <ion-progress-bar class="progress-bar" value="0.5"></ion-progress-bar>
       <ion-progress-bar class="progress-bar" value="0.5"></ion-progress-bar> -->
       <div class="progress-bar">
+        <!-- <div class="prograss-month">Jan</div> -->
         <div class="progress prograss-month-jan"></div>
-        <div class="prograss-month">Jan</div>
       </div>
       <div class="progress-bar">
         <div class="progress prograss-month-feb"></div>
@@ -547,7 +556,7 @@
             </button>
             <ion-popover class="header-drop-down" trigger="trigger-button">
               <ng-template>
-                <ion-content class="first">50 M</ion-content>
+                <ion-content class="select-input-popover-title">50 M</ion-content>
                 <ion-content>100 M</ion-content>
                 <ion-content>500 M</ion-content>
                 <ion-content>700 M</ion-content>
