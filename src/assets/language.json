@@ -1,0 +1,70 @@
+{
+    "EN" : {
+        "Customer_History" : {
+            "TitLe" : "Customer History"
+        },
+        "Questionnaire " :{
+            "Title": "Score Cards",
+            "Input-select-DC": "DC",
+            "Input-select-route": "Route",
+            "Input-select-routeDaily": "RouteDaily",
+            "Input-select-customer": "Customer",
+            "Input-select-customer-Category": "Customer Category",
+            "Input-text-store": "Store",   
+            "Input-text-customer-name": "Customer Name",  
+            "Input-text-address": "Address",  
+            "Radio-input-breakfast": "Breakfast",
+            "Radio-input-breakfast-yes": "Yes",  
+            "Radio-input-breakfast-no": "No",
+            "Submit-button" : "Submit"
+        },
+        "Gps_Tracking" :{
+            "Title": "Gps Tracking",
+            "Description":"Description",
+            "Planned(Not_Invoiced_Yet)":"Planned (Not Invoiced Yet)",
+            "Planned&Invoiced":"Planned & Invoiced",
+            "OOP_invoiced":"OOP invoiced",
+            "Visited_Not_Buy":"Visited Not Buy",
+            "SR":"SR",
+            "TRUCK":"TRUCK",
+            "Input-select-date": "Date",
+            "Input-select-RSM": "RSM",
+            "Input-select-ASM": "ASM",
+            "Input-select-SSV": "SSV",
+            "Input-select-SR": "SR",
+            "Radio-input-show-truck": "Show truck",
+            "Radio-input-show-SR": "Show SR"
+        },
+        "Customer_nearby" :{
+            "Title": "Customer nearby",
+            "Description":"Description",
+            "Normal_Customer":"Normal Customer",
+            "Promotion_Customer":"Promotion Customer",
+            "PPED_>_5%":"PPED > 5%",
+            "NOT_Buy_2_Weeks":"NOT Buy 2 Weeks",
+            "Not_Buy_2_Weeks_&_PPED_>_5%":"Not Buy 2 Weeks & PPED > 5%",
+            "TRUCK":"TRUCK",
+            "Input-select-date": "Date",
+            "Input-select-RSM": "RSM",
+            "Input-select-ASM": "ASM",
+            "Input-select-SSV": "SSV",
+            "Input-select-SR": "SR",
+            "Radio-input-show-truck": "Show truck",
+            "Radio-input-show-SR": "Show SR"
+        },
+        "Score_Card" :{
+            "Title": "Score Cards",
+            "Segment-category": "CATEGORY",
+            "Segment-channel": "CHANNEL",
+            "Segment-category%": "CATEGORY %",
+            "Segment-channel%": "CHANNEL %",
+            "Radio-input-sales": "sales",
+            "Radio-input-PPED": "PPED"   
+        }
+        
+
+    },
+    "FR":{
+        "Customer_History" : "تست"
+    }
+}

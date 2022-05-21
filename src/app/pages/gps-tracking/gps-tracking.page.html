@@ -1,0 +1,238 @@
+<ion-header>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row class="primary-bg">
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="backButton()">
+          <ion-img
+            class="back-button"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="7" class="ion-text-start ion-align-self-center">
+        <ion-title
+          class="ion-no-padding main-page-Title white-text ion-align-self-center"
+          ><h3>Gps Tracking</h3>
+        </ion-title>
+      </ion-col>
+      <ion-col size="1" class="ion-align-self-center">
+        <img
+          id="trigger-desc"
+          src="\assets\pages\customer-nearby\Description.png"
+          alt=""
+        />
+        <ion-popover
+          class="header-drop-down description-drop-down"
+          trigger="trigger-desc"
+        >
+          <ng-template>
+            <ion-content disabled class="header-input-popover-title"
+              >Description</ion-content
+            >
+            <ion-content>
+              <div class="">
+                <img src="\assets\pages\GPS-tracking\Green.png" alt="" />
+                <p>Planned (Not Invoiced Yet)</p>
+              </div>
+            </ion-content>
+            <ion-content>
+              <div class="">
+                <img src="\assets\pages\GPS-tracking\Green-1.png" alt="" />
+                <p>Planned & Invoiced</p>
+              </div>
+            </ion-content>
+            <ion-content>
+              <div class="">
+                <img src="\assets\pages\GPS-tracking\Green-2.png" alt="" />
+                <p>OOP invoiced</p>
+              </div>
+            </ion-content>
+            <ion-content>
+              <div class="">
+                <img src="\assets\pages\GPS-tracking\Green-3.png" alt="" />
+                <p>Visited Not Buy</p>
+              </div>
+            </ion-content>
+            <ion-content>
+              <div>
+                <img src="\assets\pages\GPS-tracking\Green-4.png" alt="" />
+                <p>SR</p>
+              </div>
+            </ion-content>
+            <ion-content>
+              <div>
+                <img src="\assets\pages\GPS-tracking\Green-5.png" alt="" />
+                <p>Truck</p>
+              </div>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-col>
+
+      <ion-col size="1" class="ion-align-self-center">
+        <img
+          id="trigger-hide"
+          class="hide"
+          src="\assets\pages\customer-nearby\Hide.png"
+          alt=""
+        />
+        <ion-popover
+          class="header-drop-down hide-drop-down"
+          trigger="trigger-hide"
+        >
+          <ng-template>
+            <ion-content>50 M</ion-content>
+            <ion-content>100 M</ion-content>
+            <ion-content>500 M</ion-content>
+            <ion-content>700 M</ion-content>
+            <ion-content>1 KM</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-col>
+      <ion-col size="1" class="ion-justfy-self-end ion-align-self-center">
+        <ion-img class="wifi-online" src="/assets\mainPage\wifi.png"></ion-img>
+      </ion-col>
+      <!-- <ion-col size="1" class="ion-justfy-self-end">
+        <ion-img src="assets/mainPage/wifi.png"></ion-img>
+      </ion-col> -->
+    </ion-row>
+  </ion-toolbar>
+  <ion-grid class="secondary-bg white-text">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="3" class="ion-no-padding ion-text-start">
+        2022.04.02
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-center">
+        Saturday
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-end">
+        13 فروردین
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <ion-col class="select-drop-down-container">
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-1" lines="none" class="box-shadow">
+        <ion-label>Date</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-1"
+        >
+          <ng-template>
+            <ion-content disabled class="select-input-popover-title"
+              >Date</ion-content
+            >
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-2" lines="none" class="box-shadow">
+        <ion-label>RSM</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-2"
+        >
+          <ng-template>
+            <ion-content disabled class="select-input-popover-title"
+              >RSM</ion-content
+            >
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-3" lines="none" class="box-shadow">
+        <ion-label>ASM</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-3"
+        >
+          <ng-template>
+            <ion-content disabled class="select-input-popover-title"
+              >ASM</ion-content
+            >
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-4" lines="none" class="box-shadow">
+        <ion-label>SSV</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-4"
+        >
+          <ng-template>
+            <ion-content disabled class="select-input-popover-title"
+              >SSV</ion-content
+            >
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-item id="trigger-input-5" lines="none" class="box-shadow">
+        <ion-label>SR</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-popover
+          class="dropdown select-drop-down"
+          trigger="trigger-input-5"
+        >
+          <ng-template>
+            <ion-content disabled class="select-input-popover-title"
+              >SR</ion-content
+            >
+            <ion-content>Subtitle 1</ion-content>
+            <ion-content>Subtitle 2</ion-content>
+            <ion-content>Subtitle 3</ion-content>
+            <ion-content>Subtitle 4</ion-content>
+            <ion-content>Subtitle 5</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-row>
+  </ion-col>
+
+  <ion-col class="radio-input-container">
+    <ion-row class="radio-input">
+      <div class="">
+        <div class="">
+          <label for="showTruck">Show truck</label>
+          <input type="radio" name="radio-input-2" id="" />
+        </div>
+        <div class="">
+          <label for="showSR">Show SR</label>
+          <input type="radio" name="radio-input-2" id="" />
+        </div>
+      </div>
+    </ion-row>
+  </ion-col>
+</ion-content>

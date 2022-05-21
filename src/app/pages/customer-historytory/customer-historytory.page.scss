@@ -1,0 +1,691 @@
+// to do : 1 header button size needs to get fixed.
+//  2 progress bar incomplete
+// 3 table cat column overflows and table details
+ // change the down icons
+
+
+
+
+ion-toolbar ion-row{
+    --background: #fff;
+    --color: #0095EB;
+}
+ion-toolbar.ios{
+    --ion-padding-bottom:0;
+}
+
+ion-content {
+    --background: #fff;
+    --color: #0095EB;
+}
+
+ion-title {
+    height: 100%;
+    padding-left: 15px;
+}
+ion-item{
+    --background: #fff;
+}
+
+ion-input{
+    --padding-start : 5vw;
+    --placeholder-color : #b9b9b9;
+    --background : #fff
+}
+
+ion-toggle{
+    margin-top: 3px;
+    background: #fff;
+    border-radius: 100%;
+    padding:14px 3px;
+    min-width: 40px;
+
+}
+
+
+
+ion-img{
+    min-width: 40px;
+    max-width: 80px;
+    // margin-right: 3px;
+}
+ion-img.wifi-offline{
+    max-width: 100px;
+    margin-left: 8px;
+}
+
+ion-toggle.ios{
+    height: 15px;
+    width: 20px;
+    --handle-width:15px;
+}
+ion-img .back-button.ios{
+    min-width: 40px;
+    max-width: 80px;
+    margin-right: 3px;
+}
+
+
+ion-popover.header-drop-down{
+    --backdrop-opacity:0;
+    .first{
+        --padding-top: 1rem ;
+
+    }
+    ion-content{
+        cursor: pointer;
+        --color:#005b90;
+        font-weight: bold;
+        font-size: 1.2rem;
+        --padding-top: .9rem ;
+        --padding-bottom: .9rem ;
+        --padding-start: 1.7rem ;
+        &:hover{
+            --background:#0095EB;
+        }
+
+    }
+}
+
+
+
+ion-popover.dropdown{
+    --backdrop-opacity:0;
+    --max-width:400px;
+    --min-width:200px;
+    --offset-x:18%;
+    --offset-y:-1rem;
+
+    ion-content{
+        cursor: pointer;
+        --color:#8f8f8f ;
+        --padding-top: .9rem ;
+        --padding-bottom: .9rem ;
+        --padding-start: 1.7rem ;
+        &:hover{
+            --background:#0095EB;
+            --color:#000 ;
+        }
+        
+    }
+    ion-content.select-input-popover-title{
+        cursor:auto;
+        --color:#000 ;
+        text-align: center;
+        border-bottom: 2px dashed #8f8f8f;
+        font-weight: bold;
+        --padding-start: 0 ;
+        &:hover{
+            --background:none;
+        }
+        
+    }
+}
+ion-popover.select-drop-down{
+    --width:500px;
+    --offset-x:16%;
+    // --offset-y:-1rem;
+
+}
+
+ion-popover.search-drop-down{
+    --offset-x:17%;
+
+}
+
+
+.box-shadow{
+    box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+
+}
+
+// -------------Header------------------
+
+.gps-text{
+    white-space: nowrap;
+}
+
+.dropDown-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    border: none;
+    background-color: #fff;
+    margin-top: 3px;
+    padding:1.1vw ;
+    // margin-right: 1rem;
+        ion-icon{
+        color:#0095EB;
+        font-size: 2rem;
+    }
+}
+
+
+
+.back-button {
+    max-width: 20px;
+    min-width: 20px;
+    
+
+}
+
+// -------------Body------------------
+
+
+// -------------Search------------------
+
+
+.input-shadow{
+    box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+}
+
+.search-box{
+    margin: 3rem 0;
+    .search-submit{
+        z-index: 2;
+        width: 3rem;
+        height: 4rem;
+        border-radius: 50px 0 0 50px;
+        ion-icon{
+            color: #fff;
+            font-size: 1.5rem; 
+        }
+    }
+    input::-webkit-input-placeholder{
+        justify-self: center;
+        align-self: center;
+        color: #e5e5e5df;
+    }
+  
+    .search,
+    .search-customer-history{
+        text-align: center;
+        height: 4rem;
+        width:70%;
+        outline: none;
+        border: none;
+        border-radius: 0 50px 50px 0 ;
+        &:focus{
+            ion-icon{
+                color: red;
+            }
+        }
+   
+    }
+    span{
+        position: relative;
+        top: 1.5rem;
+        right: 2rem;
+    }
+    ion-icon{
+        color:#e5e5e5;
+        // color:red;
+    }
+}
+
+// -------------Select-Options------------------
+
+.customer-history-select{
+
+    ion-row{
+        margin-bottom: .5rem;
+        >ion-item{
+            --background: #fff;
+            --padding-start:2rem;
+            --border-radius: 50px;
+            border-radius: 50px;
+            width: 80%;
+            // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+            // --background-activated:red;
+        }
+
+        
+
+        
+    }
+    ion-select{
+        height: 4rem;
+        &::part(icon) {
+            display: none;
+
+          }
+    }
+    ion-label{
+        color: #b9b9b961;
+    }
+    ion-icon{
+        color: #e5e5e5;
+        width: 1rem;
+    }
+
+
+    ion-list{
+        --background: #fff;
+        --padding-start:2rem;
+        --border-radius: 50px;
+        border-radius: 50px;
+        width: 80%;
+        // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+        ion-radio-group {
+            display: flex;
+            >ion-item{
+                width: 150px;
+                // height: 100%;
+            }
+            >ion-label{
+                width: 100px;
+                white-space: nowrap;
+            }
+          
+        }
+
+    }
+
+    ion-select-popover{
+
+        --background:red;
+        ion-radio-group{
+            --background:red;
+        }
+
+        >ion-item{
+    --background: red;
+        }
+    }
+
+    // -------------Radio Input------------------
+
+
+    
+
+    .radio-input{
+        display: flex;
+        justify-content: center;
+        background: #fff;
+        padding:1.2rem 2rem;
+        border-radius: 50px;
+        width: 80%;
+        // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+        &>:first-child{
+            margin-right: 2rem;
+        }
+        div{
+            width:80px;
+            display: flex;
+            justify-content: space-between;
+            // align-items: center;
+            label{
+                // padding-right: 3rem;
+                color:#e5e5e5df
+            }
+            input[type=radio] {
+                // border: 10px;
+                min-width: 15px;
+                height: 15px;
+                accent-color: #0095EB;
+            }
+        }
+    }
+    .radio-input-1{
+        &>.radio-input{
+            justify-content: space-between;
+            padding:1.2rem 1.5rem;
+            label{
+                padding-right: .5rem;
+            }
+
+            >div{
+                max-width: 100%;
+                align-items: center;
+                input[type=radio] {
+                    // border: 10px;
+                    min-width: 15px;
+                    padding-right: 1rem;
+                    height: 15px;
+                    accent-color: #0095EB;
+                }
+            }
+            &>:first-child{
+                margin-right: 0;
+            }
+            &>:nth-child(3){
+                label{
+                    padding-right: .8rem;
+
+                }
+            }
+        }
+    }
+
+}
+
+// -------------Card------------------
+
+
+// -------------Card Header------------------
+
+// -------------Customer History Information------------------
+
+
+
+ion-card{
+    width: 100%;
+    border-radius: 40px 40px 0 0;
+    h4{
+        color:#343785;
+        span{
+            color: #fff;
+        }
+    }
+    ion-card-header{
+        --background: #0095EB;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        column-gap: .6rem;
+        .questionnaire{
+            display: flex;
+            align-items: flex-end;
+        }
+        img{
+            max-width:120px ;
+        }
+        >div{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+    
+    // -------------Card content Table------------------
+    
+    
+    ion-card-content{
+        table{
+
+            table-layout: fixed;
+            width: 100%;
+            margin: 0;
+            
+            tr{
+                cursor: pointer;
+                z-index: 3;
+                :nth-child(3),
+                :nth-child(5){
+                    background: #c9c9c95e;
+  
+                }
+                :nth-child(1){
+                    max-width: 100px;
+                }
+                
+                &:nth-child(even){
+                    background: #b9d7e5;
+                }
+                :last-child{
+                    max-width: 25px;                
+                }
+            }
+            td{
+                white-space: nowrap;
+                padding: 2px 0;
+                max-width: 100px;
+
+            }
+            .table-head{
+                .table-head-content{
+                    font-weight: bold;
+                    color: #000;
+                    th{
+                        font-size: 1.1rem;
+                    }
+                    >:first-child{
+                        color:#0095EB;
+                            min-height: 20px;
+                        }
+                
+                }
+            }
+            .table-body{
+               >tr{
+                    >td{
+                        font-size: .9rem;
+                        color: #000;
+                        width: 50px;
+                        text-align: center;
+                        &:first-child{
+                            text-align: left;
+                            padding-left: 5px;            
+                        }
+                    }
+                }
+                
+                ion-icon{
+                    font-size: 1.2rem;
+                    padding-right: 4px;
+                    // margin-top: 5px;
+                }
+                &-icon{
+                    background: #dddddd;
+                    // display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            // ---------table-detail--------------
+            .table-detail{
+                padding: 10px 0;
+                
+                
+                &>table{
+                    // min-width: 90vw;
+                    width: 65vw;
+                    box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+                    position: relative;
+                    left: 5vw;
+                }
+                thead{
+                    background: #2cb2ffd8;
+                    :first-child{
+                        border-right:1px #0095eb4b solid ;
+                    }
+                }
+                th{
+                    color: #282828;
+                    min-width: 200px;
+                    font-size: 1.2rem;
+                }
+                tbody{
+                    text-align: center;
+                    :first-child{
+                        background: #0095EB;
+                        color: #fff;
+                    }
+
+                }
+                .table-line-ver{
+                    position: absolute;
+                    // top:16vh;
+                    top:75px;
+                    // left: 2vw;
+                    left: 14px;
+                    width: 2px;
+                    height: 70px;
+                    background: #0095EB;
+                }
+                .table-line-horiz{
+                    position: absolute;
+                    top:135px;
+                    left: 16px;
+                    width:60px;
+                    height: 2px;
+                    background: #0095EB;
+                }
+
+            }
+
+            
+            
+        }
+
+
+        // width: 100%;
+        // th{
+        //     font-size: 1rem;
+        //     color: #3a3838;
+        //     span{
+        //         color: #0095EB;
+        //     }
+        // }
+        // .table-head{
+        //     max-width: 100vw;
+        //     display: flex;
+        //     >:nth-child(odd){
+        //         // background: #d4d4d4;
+        //         background: #e9e9e9;
+        //     }
+        // }
+
+            // -------------Card content Progress------------------
+        }
+        
+        
+        
+    }
+    .progress-vertical{
+        height: 20rem;
+        p{
+            padding: .5rem 0  .5rem 1.8rem ;
+        }
+        .progress-container{
+            margin-left: 3vh;
+            background: white;
+            width: 100vw;
+            height: 12rem;
+            border-left:1px solid #bdbdbdb1 ;
+            border-bottom:1px solid #bdbdbdb1 ;
+            border-top:2px dotted rgba(189, 189, 189, 0.506) ;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: flex-end;
+
+        } 
+        .progress-bar{
+            // transform: rotate(10deg);
+            height: 100%;
+            width: 1rem;
+            background-color: #d7d7d76c;
+            display: flex;
+            align-items: flex-end;
+            // background-color: #d5d5d586;
+            // width: .8rem;
+            // height: 100%;
+            .progress{
+                border-radius:  4px 4px 0 0  ;
+                width: 100%;
+                background: #005b90;
+
+                // height: 20%;
+            }
+            .prograss-month-jan{
+                height: 2rem;
+            }
+            // .prograss-month{
+            //     // position: absolute;
+            //     // bottom: -162vh;
+            //     // font-size: 10px;
+
+            // }
+        }
+        
+        .quantity{
+            display: flex;
+            flex-direction: column-reverse;
+            position: relative;
+            align-items: center;            
+            bottom: 5vh;
+            
+            font-size: 9px;
+            height: 5vh;
+            width: 2vw;
+            p{
+                padding: 0;
+            }
+
+        }
+    }
+
+// @media (max-width:1024px) {
+//     .dropDown-btn{
+//         height: 8.5vh;
+//         // padding: 4px 0;
+//     }
+// }
+// @media (max-width:990px) {
+//     .dropDown-btn{
+//         width: 6vw;
+//         height: 9.5vh;
+//     }
+// }
+// @media (max-width:768px) {
+//     .dropDown-btn{
+//         height: 8vh;
+//     }
+// }
+// @media (max-width:700px) {
+//     .dropDown-btn{
+
+//         height: 7vh;
+//     }
+// }
+// @media (max-width:550px) {
+//     .dropDown-btn{
+//         height: 6vh;
+
+//     }
+// }
+// @media (max-width:425px) {
+//     .dropDown-btn{
+//         // height: 6vh;
+//         width: 8vw;
+//     }
+//     .progress-vertical{
+//     .progress-container{
+//     .prograss-month{
+//         bottom: -165vh;
+//     }
+//     }
+// }
+// }
+
+// @supports (-webkit-touch-callout: none) {
+//     .progress-vertical{
+//             .progress-container{
+//             .prograss-month{
+//                 bottom: 0;
+//             }
+//             }
+//         } 
+// }
+    
+
+
+
+
+
+
+
+
+
+
+// @media (max-width:990px) {
+//     .table-detail{
+//         &>table{
+//             width:120vh;
+//             background: red;
+          
+//         }
+//     }
+// }

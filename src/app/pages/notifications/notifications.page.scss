@@ -1,0 +1,78 @@
+ion-toolbar {
+    --background: #0095EB;
+    --color: #fff;
+}
+
+ion-img.back-button{
+    width: 20px;
+    z-index: 2;
+}
+ion-img.wifi-online{
+    width: 7vw;
+
+    // width: 100px;
+    // width: 20%;
+
+}
+ion-col.wifi{
+    margin-right: 4vw;
+}
+
+
+ion-title {
+    height: 100%;
+    h3{
+        font-size: 4vw;
+    }
+}
+
+ion-input{
+    --padding-start : 5vw;
+    --placeholder-color : #b9b9b9;
+    --background : #fff
+}
+
+ion-content{
+    --background: #0095EB;
+}
+
+ion-col{
+    display: flex;
+    justify-content: center;
+    h4{
+        color: #fff;
+
+    }
+}
+
+
+// -----card----------
+
+// use the img
+// ion-col.card{
+//     width: 100vw;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     img{
+//         width: 90vw;
+//     }
+// }
+//  or card
+ion-col.card{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+
+// adds
+ion-col.adds{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    background: #b9b9b9;
+}
