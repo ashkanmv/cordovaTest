@@ -117,11 +117,11 @@
             <ion-content disabled class="select-input-popover-title"
               >DC</ion-content
             >
-            <ion-content>Subtitle 1</ion-content>
-            <ion-content>Subtitle 2</ion-content>
-            <ion-content>Subtitle 3</ion-content>
-            <ion-content>Subtitle 4</ion-content>
-            <ion-content>Subtitle 5</ion-content>
+            <ion-content
+              *ngFor="let city of cities"
+              (click)="selectCity(city.City)"
+              >{{city.City}}</ion-content
+            >
           </ng-template>
         </ion-popover>
       </ion-item>
@@ -138,11 +138,9 @@
             <ion-content disabled class="select-input-popover-title"
               >Route</ion-content
             >
-            <ion-content>Subtitle 1</ion-content>
-            <ion-content>Subtitle 2</ion-content>
-            <ion-content>Subtitle 3</ion-content>
-            <ion-content>Subtitle 4</ion-content>
-            <ion-content>Subtitle 5</ion-content>
+            <ion-content *ngFor="let route of routes"
+              >{{route.routename}}</ion-content
+            >
           </ng-template>
         </ion-popover>
       </ion-item>

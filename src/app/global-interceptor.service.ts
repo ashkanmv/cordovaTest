@@ -19,12 +19,13 @@ export class GlobalInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
-      map((event) => {
-        if (event.type === HttpEventType.Response) {
-          return JSON.parse(event.body);
-        }
-      })
-    );
+    return next.handle(req);
+    // .pipe(
+    //   map((event) => {
+    //     if (event.type === HttpEventType.Response) {
+    //       return JSON.parse(event.body);
+    //     }
+    //   })
+    // );
   }
 }
