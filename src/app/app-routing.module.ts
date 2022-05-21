@@ -51,10 +51,10 @@ const routes: Routes = [
       import('./menu/theme/theme.module').then((m) => m.ThemePageModule),
   },
   {
-    path: 'customer-historytory',
+    path: 'customer-history',
     loadChildren: () =>
-      import('./pages/customer-historytory/customer-historytory.module').then(
-        (m) => m.CustomerHistorytoryPageModule
+      import('./pages/customer-history/customer-history.module').then(
+        (m) => m.CustomerHistoryPageModule
       ),
   },
   {
