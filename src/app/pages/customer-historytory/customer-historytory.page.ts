@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class CustomerHistorytoryPage implements OnInit {
   IsDetailsShowing = false;
+  IsDCDDetailsShowing = false;
+
   isShowing = false;
   customerInfo: {
     shopName: string;
@@ -34,6 +36,10 @@ export class CustomerHistorytoryPage implements OnInit {
   }
   toggleDtails() {
     this.IsDetailsShowing = !this.IsDetailsShowing;
+    this.isShowing = !this.isShowing;
+  }
+  toggleDtailsDCD() {
+    this.IsDCDDetailsShowing = !this.IsDCDDetailsShowing;
     this.isShowing = !this.isShowing;
   }
 }

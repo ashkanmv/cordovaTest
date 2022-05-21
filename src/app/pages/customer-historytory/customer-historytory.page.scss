@@ -1,6 +1,6 @@
 // to do : 1 header button size needs to get fixed.
 //  2 progress bar incomplete
-// 3 table cat column overflows 
+// 3 table cat column overflows and table details
  // change the down icons
 
 
@@ -479,7 +479,8 @@ ion-card{
                 
                 
                 &>table{
-                    width: 90vw;
+                    // min-width: 90vw;
+                    width: 65vw;
                     box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
                     position: relative;
                     left: 5vw;

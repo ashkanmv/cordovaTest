@@ -71,6 +71,14 @@ const routes: Routes = [
     path: 'customer-nearby',
     loadChildren: () => import('./pages/customer-nearby/customer-nearby.module').then( m => m.CustomerNearbyPageModule)
   },
+  {
+    path: 'gps-tracking',
+    loadChildren: () => import('./pages/gps-tracking/gps-tracking.module').then( m => m.GpsTrackingPageModule)
+  },
+  {
+    path: 'online-daily-sales',
+    loadChildren: () => import('./pages/online-daily-sales/online-daily-sales.module').then( m => m.OnlineDailySalesPageModule)
+  },
 
 ];
 

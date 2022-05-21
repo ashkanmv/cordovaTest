@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row class="primary-bg">
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="backButton()">
+          <ion-img
+            class="back-button"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="8" class="ion-text-start ion-align-self-center">
+        <ion-title
+          class="ion-no-padding main-page-Title white-text ion-align-self-center"
+          ><h3>Online Daily Sales</h3>
+        </ion-title>
+      </ion-col>
+
+      <ion-col size="1" class="ion-align-self-center">
+        <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" />
+      </ion-col>
+
+      <ion-col size="1" class="ion-justfy-self-end ion-align-self-center">
+        <ion-img class="wifi-online" src="/assets\mainPage\wifi.png"></ion-img>
+      </ion-col>
+      <!-- <ion-col size="1" class="ion-justfy-self-end">
+        <ion-img src="assets/mainPage/wifi.png"></ion-img>
+      </ion-col> -->
+    </ion-row>
+  </ion-toolbar>
+  <ion-grid class="secondary-bg white-text">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="3" class="ion-no-padding ion-text-start">
+        2022.04.02
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-center">
+        Saturday
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-end">
+        13 فروردین
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <ion-col class="ion-no-padding segment-change">
+    <ion-segment class="" (ionChange)="segmentChanged($event)">
+      <ion-segment-button class="DSD" value="DSD">
+        <ion-label>DSD</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="NON_DSD" value="NON_DSD">
+        <ion-label>NON_DSD</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-col>
+  <ion-col class="searchbar">
+    <ion-row class="search-box ion-justify-content-center">
+      <button class="search-submit primary-bg">
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+      <input
+        type="search"
+        name=""
+        id="trigger-search"
+        placeholder="Search"
+        class="search search-customer-history input-shadow"
+      />
+      <ion-popover class="dropdown search-drop-down" trigger="trigger-search">
+        <ng-template>
+          <ion-item>
+            <label for="select-all">SELECT ALL</label>
+            <ion-checkbox slot="end" value="select-all"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <label for="esfahan">ESFAHAN</label>
+            <ion-checkbox slot="end" value="esfahan"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <label for="rasht">RASHT</label>
+            <ion-checkbox slot="end" value="rasht"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <label for="tehran">TEHRAN</label>
+            <ion-checkbox slot="end" value="tehran"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <label for="karaj">KARAJ</label>
+            <ion-checkbox slot="end" value="karaj"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <label for="shiraz">SHIRAZ</label>
+            <ion-checkbox slot="end" value="shiraz"></ion-checkbox>
+          </ion-item>
+        </ng-template>
+      </ion-popover>
+      <span class="search-icon">
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </span>
+    </ion-row>
+  </ion-col>
+</ion-content>
