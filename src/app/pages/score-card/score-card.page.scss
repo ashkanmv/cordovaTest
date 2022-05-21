@@ -294,67 +294,6 @@ table{
     
 }
 
-// NON_DSD TABLE
-
-.table-title{
-    text-align: right;
-    color: #000;
-    font-size: 2rem;
-    margin-right: 15vw;
-
-}
-table.NON_DSD-table{
-    width: 90vw;
-
-
-    td{
-        height: 2rem;
-    }
-    .table-body-content{
-        >:first-child{
-            >:first-child{
-                background: #e4e4e4a9;
-            }        }
-    }
-
-    // -----------details
-    .NON_DSD-table-detail{
-        &>table{
-            background: red;
-            // min-width: 90vw;
-            // width: 70vw;
-            width: 80vw;
-            margin: 1rem 1rem;
-            box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-            position: relative;
-            // left: 5vw;
-        }
-        thead{
-            background: #87cbf3;
-            :first-child{
-                border-right:1px #0095eb4b solid ;
-            }
-        }
-        td{
-            width: 5rem;
-        }
-        th{
-            color: #282828;
-            min-width: 200px;
-            font-size: 1.2rem;
-        }
-        tbody{
-            text-align: center;
-            :first-child{
-                background: #0095EB;
-                color: #000;
-            }
-
-        }
-    }
-
-}
-
 
 
 

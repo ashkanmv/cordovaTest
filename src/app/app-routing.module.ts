@@ -79,6 +79,10 @@ const routes: Routes = [
     path: 'online-daily-sales',
     loadChildren: () => import('./pages/online-daily-sales/online-daily-sales.module').then( m => m.OnlineDailySalesPageModule)
   },
+  {
+    path: 'score-card',
+    loadChildren: () => import('./pages/score-card/score-card.module').then( m => m.ScoreCardPageModule)
+  },
 
 ];
 

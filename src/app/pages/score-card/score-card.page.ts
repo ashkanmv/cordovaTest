@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-online-daily-sales',
-  templateUrl: './online-daily-sales.page.html',
-  styleUrls: ['./online-daily-sales.page.scss'],
+  selector: 'app-score-card',
+  templateUrl: './score-card.page.html',
+  styleUrls: ['./score-card.page.scss'],
 })
-export class OnlineDailySalesPage implements OnInit {
-  IsDetailsShowing = true;
+export class ScoreCardPage implements OnInit {
+  IsDetailsShowing = false;
   IsDCDDetailsShowing = false;
   selectedSegment: string = 'NON_DSD';
+
   constructor(private router: Router) {}
+
   ngOnInit() {}
   backButton() {
     this.router.navigate(['/']);

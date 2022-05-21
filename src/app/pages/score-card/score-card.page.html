@@ -12,7 +12,7 @@
       <ion-col size="8" class="ion-text-start ion-align-self-center">
         <ion-title
           class="ion-no-padding main-page-Title white-text ion-align-self-center"
-          ><h3>Online Daily Sales</h3>
+          ><h3>Score Cards</h3>
         </ion-title>
       </ion-col>
 
@@ -43,18 +43,24 @@
   </ion-grid>
   <ion-col class="ion-no-padding segment-change">
     <ion-segment class="" (ionChange)="segmentChanged($event)">
-      <ion-segment-button class="DSD" value="DSD">
-        <ion-label>DSD</ion-label>
+      <ion-segment-button class="category" value="category">
+        <ion-label>Category</ion-label>
       </ion-segment-button>
-      <ion-segment-button class="NON_DSD" value="NON_DSD">
-        <ion-label>NON_DSD</ion-label>
+      <ion-segment-button class="channel" value="channel">
+        <ion-label>Channel</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="category%" value="category%">
+        <ion-label>Category%</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="channel%" value="channel%">
+        <ion-label>Channel%</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-col>
 </ion-header>
 <!-- -------------------------------------------------------------------------------------------- -->
 <ion-content class="ion-no-padding">
-  <ion-col class="DSD-page" *ngIf="selectedSegment == 'DSD'">
+  <ion-col class="category-page" *ngIf="selectedSegment == 'category'">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <button class="search-submit primary-bg">
@@ -104,23 +110,23 @@
       <table>
         <thead class="table-head">
           <tr class="table-head-content">
-            <th><span>Route</span></th>
-            <th>Pin</th>
-            <th>Inv</th>
-            <th>%</th>
-            <th>OOR</th>
+            <th><span></span></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody class="table-body table-body-content">
           <tr (click)="toggleDtailsDCD()">
             <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1100
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
-            <td>6</td>
-            <td>6</td>
-            <td>5</td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td></td>
           </tr>
           <div *ngIf="IsDCDDetailsShowing" class="table-detail">
@@ -128,12 +134,12 @@
             <div class="table-line-horiz"></div>
             <table class="">
               <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
+                <th></th>
+                <th></th>
               </thead>
               <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
+                <td></td>
+                <td></td>
               </tbody>
             </table>
           </div>
@@ -145,13 +151,11 @@
                 class="isNotShowing"
                 name="chevron-down-outline"
               ></ion-icon>
-
-              1103
             </td>
             <td></td>
-            <td>0</td>
             <td></td>
-            <td>1</td>
+            <td></td>
+            <td></td>
             <td></td>
           </tr>
           <div *ngIf="IsDetailsShowing" class="table-detail">
@@ -159,18 +163,18 @@
             <div class="table-line-horiz"></div>
             <table class="">
               <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
+                <th></th>
+                <th></th>
               </thead>
               <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
+                <td></td>
+                <td></td>
               </tbody>
             </table>
           </div>
           <tr>
             <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1104
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -180,7 +184,7 @@
           </tr>
           <tr>
             <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1105
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -190,7 +194,7 @@
           </tr>
           <tr>
             <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1106
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -200,7 +204,7 @@
           </tr>
           <tr>
             <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1107
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -214,7 +218,7 @@
   </ion-col>
 
   <!-- ----------------------------------------------------------------------------- -->
-  <ion-col *ngIf="selectedSegment == 'NON_DSD'" class="searchbar">
+  <ion-col *ngIf="selectedSegment == 'channel'" class="searchbar">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <button class="search-submit primary-bg">
@@ -261,37 +265,39 @@
       </ion-row>
     </ion-col>
     <ion-col>
-      <h2 class="table-title">Weight _ T</h2>
-      <table class="NON_DSD-table">
-        <tbody class="table-body table-body-content">
-          <tr>
-            <td class=""><span></span></td>
-            <td>9.61</td>
+      <table>
+        <thead class="table-head">
+          <tr class="table-head-content">
+            <th><span></span></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
-
+        </thead>
+        <tbody class="table-body table-body-content">
           <tr (click)="toggleDtailsDCD()">
             <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> KA
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
-          <div *ngIf="IsDCDDetailsShowing" class="NON_DSD-table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
+          <div *ngIf="IsDCDDetailsShowing" class="table-detail">
+            <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div>
             <table class="">
               <thead>
-                <th>Test 0</th>
-                <th>Number 0</th>
+                <th></th>
+                <th></th>
               </thead>
               <tbody>
-                <tr>
-                  <td>Test 1</td>
-                  <td>Number 1</td>
-                </tr>
-                <tr>
-                  <td>Test 2</td>
-                  <td>Number 2</td>
-                </tr>
+                <td></td>
+                <td></td>
               </tbody>
             </table>
           </div>
@@ -303,42 +309,66 @@
                 class="isNotShowing"
                 name="chevron-down-outline"
               ></ion-icon>
-
-              Distributor
             </td>
-            <td>4.59</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
-          <div *ngIf="IsDetailsShowing" class="NON_DSD-table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
+          <div *ngIf="IsDetailsShowing" class="table-detail">
+            <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div>
             <table class="">
               <thead>
-                <th>Test 0</th>
-                <th>Number 0</th>
+                <th></th>
+                <th></th>
               </thead>
               <tbody>
-                <tr>
-                  <td>Test 1</td>
-                  <td>Number 1</td>
-                </tr>
-                <tr>
-                  <td>Test 2</td>
-                  <td>Number 2</td>
-                </tr>
+                <td></td>
+                <td></td>
               </tbody>
             </table>
           </div>
           <tr>
             <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> AFH
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </td>
-            <td>0.44</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
             <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon> Total
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </td>
-            <td>0.21</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
