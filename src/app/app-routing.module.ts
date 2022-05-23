@@ -98,15 +98,21 @@ const routes: Routes = [
       import('./pages/score-card/score-card.module').then(
         (m) => m.ScoreCardPageModule
       ),
-  },  {
+  },
+  {
     path: 'max-pped',
-    loadChildren: () => import('./pages/max-pped/max-pped.module').then( m => m.MaxPPEDPageModule)
+    loadChildren: () =>
+      import('./pages/max-pped/max-pped.module').then(
+        (m) => m.MaxPPEDPageModule
+      ),
   },
   {
     path: 'salesmen-location',
-    loadChildren: () => import('./pages/salesmen-location/salesmen-location.module').then( m => m.SalesmenLocationPageModule)
+    loadChildren: () =>
+      import('./pages/salesmen-location/salesmen-location.module').then(
+        (m) => m.SalesmenLocationPageModule
+      ),
   },
-
 ];
 
 @NgModule({
