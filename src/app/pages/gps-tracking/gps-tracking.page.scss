@@ -20,11 +20,11 @@ ion-title {
     height: 100%;
     padding-left: 15px;
     h3{
-        font-size: 5vw;
+        font-size: 4vw;
     }
 }
 ion-item{
-    --background: #fff;
+    --background: #fff ;
 }
 
 ion-input{
@@ -46,6 +46,7 @@ ion-img .back-button.ios{
 
 
 ion-popover.header-drop-down{
+    cursor: pointer;
     --backdrop-opacity:0;
     ion-content{
         cursor: pointer;
@@ -186,41 +187,41 @@ ion-col.select-drop-down-container{
 }
 
 
-ion-popover.select-drop-down{
-    --backdrop-opacity:0;
-    --width:70vw;
-    // --min-width:200px;
-    --offset-x:5vw;
-    --offset-y:-2vh;
-    // --width:500px;
-    // --offset-x:16%;
+// ion-popover.select-drop-down{
+//     --backdrop-opacity:0;
+//     --width:70vw;
+//     // --min-width:200px;
+//     --offset-x:5vw;
+//     --offset-y:-2vh;
+//     // --width:500px;
+//     // --offset-x:16%;
 
-    ion-content{
-        cursor: pointer;
-        --color:#8f8f8f ;
-        --padding-top: .9rem ;
-        --padding-bottom: .9rem ;
-        --padding-start: 1.7rem ;
-        &:hover{
-            --background:#0095EB;
-            --color:#000 ;
-        }
+//     ion-content{
+//         cursor: pointer;
+//         --color:#8f8f8f ;
+//         --padding-top: .9rem ;
+//         --padding-bottom: .9rem ;
+//         --padding-start: 1.7rem ;
+//         &:hover{
+//             --background:#0095EB;
+//             --color:#000 ;
+//         }
       
         
-    }
-    ion-content.select-input-popover-title{
-        cursor:auto;
-        --color:#000 ;
-        text-align: center;
-        border-bottom: 2px dashed #8f8f8f;
-        font-weight: bold;
-        --padding-start: 0 ;
-        &:hover{
-            --background:none;
-        }
+//     }
+//     ion-content.select-input-popover-title{
+//         cursor:auto;
+//         --color:#000 ;
+//         text-align: center;
+//         border-bottom: 2px dashed #8f8f8f;
+//         font-weight: bold;
+//         --padding-start: 0 ;
+//         &:hover{
+//             --background:none;
+//         }
         
-    }
-}
+//     }
+// }
 
 
 
@@ -261,4 +262,28 @@ ion-col.radio-input-container{
           
         }
 }
+}
+
+
+ion-select.select-drop-down{
+    // --backdrop-opacity:0;
+    // --width:70vw;
+    // --offset-x:5vw;
+    // --offset-y:-2vh;
+    ion-list{
+    }
+    ion-radio-group.sc-ion-select-popover-md{
+        --background: palevioletred;
+        --padding-bottom:3rem;	}
+        
+    }
+    ion-item{--background: red;
+
+    ion-select{
+        ::part(icon){
+        color: #b30000 ;
+       }
+    
+}
+    
 }

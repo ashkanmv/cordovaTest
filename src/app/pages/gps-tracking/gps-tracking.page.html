@@ -115,10 +115,21 @@
 <ion-content>
   <ion-col class="select-drop-down-container">
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-1" lines="none" class="box-shadow">
-        <ion-label>Date</ion-label>
+      <ion-item id="trigger-input-date" lines="none" class="box-shadow">
+        <ion-label>{{Date}}</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
-        <ion-popover
+        <ion-select
+          [interfaceOptions]="customPopoverOptions"
+          interface="popover"
+          icon="none"
+          class="dropdown select-drop-down"
+        >
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+        <!-- <ion-popover
           class="dropdown select-drop-down"
           trigger="trigger-input-1"
         >
@@ -132,16 +143,16 @@
             <ion-content>Subtitle 4</ion-content>
             <ion-content>Subtitle 5</ion-content>
           </ng-template>
-        </ion-popover>
+        </ion-popover> -->
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-2" lines="none" class="box-shadow">
+      <ion-item id="trigger-input-RSM" lines="none" class="box-shadow">
         <ion-label>RSM</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
         <ion-popover
           class="dropdown select-drop-down"
-          trigger="trigger-input-2"
+          trigger="trigger-input-RSM"
         >
           <ng-template>
             <ion-content disabled class="select-input-popover-title"
@@ -157,12 +168,12 @@
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-3" lines="none" class="box-shadow">
+      <ion-item id="trigger-input-ASM" lines="none" class="box-shadow">
         <ion-label>ASM</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
         <ion-popover
           class="dropdown select-drop-down"
-          trigger="trigger-input-3"
+          trigger="trigger-input-ASM"
         >
           <ng-template>
             <ion-content disabled class="select-input-popover-title"
@@ -178,12 +189,12 @@
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-4" lines="none" class="box-shadow">
+      <ion-item id="trigger-input-SSV" lines="none" class="box-shadow">
         <ion-label>SSV</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
         <ion-popover
           class="dropdown select-drop-down"
-          trigger="trigger-input-4"
+          trigger="trigger-input-SSV"
         >
           <ng-template>
             <ion-content disabled class="select-input-popover-title"

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row class="ion-justify-content-between header ion-no-margin">
+    <ion-row class="header ion-justify-content-center ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" (click)="backButton()">
           <ion-img
@@ -9,12 +9,12 @@
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="8" class="ion-text-center">
+      <ion-col size="9" class="ion-text-center">
         <ion-title>
           <h3><b>Questionnaire</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col class="ion-align-self-center wifi" size="1">
+      <ion-col class="ion-align-self-center ion-justfy-self-end wifi" size="1">
         <ion-img class="wifi-online" src="assets/mainPage/wifi.png"></ion-img>
       </ion-col>
     </ion-row>
@@ -37,12 +37,22 @@
 <ion-content>
   <ion-col class="">
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-1" lines="none" class="box-shadow">
+      <ion-item
+        id="trigger-input-date"
+        lines="none"
+        class="box-shadow select-input"
+      >
         <ion-label>DC</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
-        <ion-popover
+        <ion-select class="drop-down select-drop-down" interface="popover">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+        <!-- <ion-popover
           class="dropdown select-drop-down"
-          trigger="trigger-input-1"
+          trigger="trigger-input-date"
         >
           <ng-template>
             <ion-content disabled class="select-input-popover-title"
@@ -54,16 +64,21 @@
             <ion-content>Subtitle 4</ion-content>
             <ion-content>Subtitle 5</ion-content>
           </ng-template>
-        </ion-popover>
+        </ion-popover> -->
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-2" lines="none" class="box-shadow">
+      <ion-item
+        disabled
+        id="trigger-input-route"
+        lines="none"
+        class="box-shadow"
+      >
         <ion-label>Route</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
         <ion-popover
           class="dropdown select-drop-down"
-          trigger="trigger-input-2"
+          trigger="trigger-input-route"
         >
           <ng-template>
             <ion-content disabled class="select-input-popover-title"
@@ -79,12 +94,17 @@
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-3" lines="none" class="box-shadow">
+      <ion-item
+        disabled
+        id="trigger-input-route-daily"
+        lines="none"
+        class="box-shadow"
+      >
         <ion-label>RouteDaily</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
         <ion-popover
           class="dropdown select-drop-down"
-          trigger="trigger-input-3"
+          trigger="trigger-input-route-daily"
         >
           <ng-template>
             <ion-content disabled class="select-input-popover-title"
@@ -100,12 +120,17 @@
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-4" lines="none" class="box-shadow">
+      <ion-item
+        disabled
+        id="trigger-input-customer"
+        lines="none"
+        class="box-shadow"
+      >
         <ion-label>Customer</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
         <ion-popover
           class="dropdown select-drop-down"
-          trigger="trigger-input-4"
+          trigger="trigger-input-customer"
         >
           <ng-template>
             <ion-content disabled class="select-input-popover-title"
@@ -120,13 +145,35 @@
         </ion-popover>
       </ion-item>
     </ion-row>
+
     <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-5" lines="none" class="box-shadow">
+      <div class="select-input-container">
+        <select
+          class="select-input"
+          name="customer-category"
+          id="customer-category"
+        >
+          <option class="input-select-label" value="" disabled selected>
+            Customer Category
+          </option>
+          <option value="Subtitle 1">Subtitle 1</option>
+          <option value="Subtitle 2">Subtitle 2</option>
+          <option value="Subtitle 3">Subtitle 3</option>
+          <option value="Subtitle 4">Subtitle 4</option>
+          <option value="Subtitle 5">Subtitle 5</option>
+        </select>
+      </div>
+      <!-- <ion-item
+        disabled
+        id="trigger-input-customer-category"
+        lines="none"
+        class="box-shadow"
+      >
         <ion-label>Customer Category</ion-label>
         <ion-icon name="chevron-down-outline"></ion-icon>
         <ion-popover
           class="dropdown select-drop-down"
-          trigger="trigger-input-5"
+          trigger="trigger-input-customer-category"
         >
           <ng-template>
             <ion-content disabled class="select-input-popover-title"
@@ -139,7 +186,7 @@
             <ion-content>Subtitle 5</ion-content>
           </ng-template>
         </ion-popover>
-      </ion-item>
+      </ion-item> -->
     </ion-row>
   </ion-col>
 

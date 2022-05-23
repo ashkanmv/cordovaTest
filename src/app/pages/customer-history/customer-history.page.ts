@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-customer-historytory',
-  templateUrl: './customer-historytory.page.html',
-  styleUrls: ['./customer-historytory.page.scss'],
+  selector: 'app-customer-history',
+  templateUrl: './customer-history.page.html',
+  styleUrls: ['./customer-history.page.scss'],
 })
-export class CustomerHistorytoryPage implements OnInit {
+export class CustomerHistoryPage implements OnInit {
   IsDetailsShowing = false;
   IsDCDDetailsShowing = false;
 

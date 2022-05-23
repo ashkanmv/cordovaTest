@@ -51,10 +51,10 @@ const routes: Routes = [
       import('./menu/theme/theme.module').then((m) => m.ThemePageModule),
   },
   {
-    path: 'customer-historytory',
+    path: 'customer-history',
     loadChildren: () =>
-      import('./pages/customer-historytory/customer-historytory.module').then(
-        (m) => m.CustomerHistorytoryPageModule
+      import('./pages/customer-history/customer-history.module').then(
+        (m) => m.CustomerHistoryPageModule
       ),
   },
   {
@@ -63,25 +63,48 @@ const routes: Routes = [
       import('./pages/questionnaire/questionnaire.module').then(
         (m) => m.QuestionnairePageModule
       ),
-  },  {
+  },
+  {
     path: 'notifications',
-    loadChildren: () => import('./pages/notifications/notifications.module').then( m => m.NotificationsPageModule)
+    loadChildren: () =>
+      import('./pages/notifications/notifications.module').then(
+        (m) => m.NotificationsPageModule
+      ),
   },
   {
     path: 'customer-nearby',
-    loadChildren: () => import('./pages/customer-nearby/customer-nearby.module').then( m => m.CustomerNearbyPageModule)
+    loadChildren: () =>
+      import('./pages/customer-nearby/customer-nearby.module').then(
+        (m) => m.CustomerNearbyPageModule
+      ),
   },
   {
     path: 'gps-tracking',
-    loadChildren: () => import('./pages/gps-tracking/gps-tracking.module').then( m => m.GpsTrackingPageModule)
+    loadChildren: () =>
+      import('./pages/gps-tracking/gps-tracking.module').then(
+        (m) => m.GpsTrackingPageModule
+      ),
   },
   {
     path: 'online-daily-sales',
-    loadChildren: () => import('./pages/online-daily-sales/online-daily-sales.module').then( m => m.OnlineDailySalesPageModule)
+    loadChildren: () =>
+      import('./pages/online-daily-sales/online-daily-sales.module').then(
+        (m) => m.OnlineDailySalesPageModule
+      ),
   },
   {
     path: 'score-card',
-    loadChildren: () => import('./pages/score-card/score-card.module').then( m => m.ScoreCardPageModule)
+    loadChildren: () =>
+      import('./pages/score-card/score-card.module').then(
+        (m) => m.ScoreCardPageModule
+      ),
+  },  {
+    path: 'max-pped',
+    loadChildren: () => import('./pages/max-pped/max-pped.module').then( m => m.MaxPPEDPageModule)
+  },
+  {
+    path: 'salesmen-location',
+    loadChildren: () => import('./pages/salesmen-location/salesmen-location.module').then( m => m.SalesmenLocationPageModule)
   },
 
 ];

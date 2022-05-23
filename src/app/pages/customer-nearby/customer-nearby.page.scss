@@ -34,7 +34,11 @@ ion-input{
 
 ion-img{
     max-width: 100px;
-    // min-width: 80px;
+    min-width: 30px;
+}
+img{
+    min-width: 30px;
+
 }
 
 ion-img .back-button.ios{
@@ -60,24 +64,32 @@ ion-popover.header-drop-down{
 
 
 ion-popover.description-drop-down{
-    --min-width:25rem;
+    --min-width:325px;
+    // --min-width:25vw;
+    // --width:25vw;
     --min-height:22rem;
     --offset-x:-8vw;
     --offset-y:1vh;
     >ion-content{
+        white-space: nowrap;
         display: flex;
         font-size: 1.2rem;
         --color: #000;
-        // --padding-start: 1rem;
-        // --padding-top: 1rem;
-        // --padding-bottom: .5rem;
         >div{
             display: flex;
             justify-content: space-between ;
             align-items: center;
-            margin-right: 5rem;
-            margin-left: 2rem;
-            text-align: center;
+            // margin-right: 4rem;
+            margin-left: 1rem; 
+            img{
+                align-self: center;
+                // margin-right: 1rem;
+            }
+            
+                >p:nth-child(2){
+                    padding-right: 2rem;
+                }
+            
         }
  
         

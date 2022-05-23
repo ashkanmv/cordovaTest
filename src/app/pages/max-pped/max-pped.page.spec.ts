@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CustomerHistorytoryPage } from './customer-historytory.page';
+import { MaxPPEDPage } from './max-pped.page';
 
-describe('CustomerHistorytoryPage', () => {
-  let component: CustomerHistorytoryPage;
-  let fixture: ComponentFixture<CustomerHistorytoryPage>;
+describe('MaxPPEDPage', () => {
+  let component: MaxPPEDPage;
+  let fixture: ComponentFixture<MaxPPEDPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomerHistorytoryPage ],
+      declarations: [ MaxPPEDPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CustomerHistorytoryPage);
+    fixture = TestBed.createComponent(MaxPPEDPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
