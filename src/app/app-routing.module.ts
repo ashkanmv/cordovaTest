@@ -5,48 +5,64 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/main',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'main',
-    loadChildren: () => import('./main-page/main/main.module').then( m => m.MainPageModule)
+    loadChildren: () =>
+      import('./main-page/main/main.module').then((m) => m.MainPageModule),
   },
   {
     path: 'settings',
-    loadChildren: () => import('./menu/settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () =>
+      import('./menu/settings/settings.module').then(
+        (m) => m.SettingsPageModule
+      ),
   },
   {
     path: 'profile',
-    loadChildren: () => import('./menu/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () =>
+      import('./menu/profile/profile.module').then((m) => m.ProfilePageModule),
   },
   {
     path: 'contact-us',
-    loadChildren: () => import('./menu/contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+    loadChildren: () =>
+      import('./menu/contact-us/contact-us.module').then(
+        (m) => m.ContactUsPageModule
+      ),
   },
   {
     path: 'about-app',
-    loadChildren: () => import('./menu/about-app/about-app.module').then( m => m.AboutAppPageModule)
+    loadChildren: () =>
+      import('./menu/about-app/about-app.module').then(
+        (m) => m.AboutAppPageModule
+      ),
   },
   {
     path: 'language',
-    loadChildren: () => import('./menu/language/language.module').then( m => m.LanguagePageModule)
+    loadChildren: () =>
+      import('./menu/language/language.module').then(
+        (m) => m.LanguagePageModule
+      ),
   },
   {
     path: 'theme',
-    loadChildren: () => import('./menu/theme/theme.module').then( m => m.ThemePageModule)
+    loadChildren: () =>
+      import('./menu/theme/theme.module').then((m) => m.ThemePageModule),
   },
   {
-    path: 'customer-history',
-    loadChildren: () => import('./main-page/customer-history/customer-history.module').then( m => m.CustomerHistoryPageModule)
-  }
-
-
+    path: 'customer-nearby',
+    loadChildren: () =>
+      import('./main-page/customer-nearby/customer-nearby.module').then(
+        (m) => m.CustomerNearbyPageModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
