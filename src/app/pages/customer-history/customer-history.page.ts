@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cities } from 'src/app/shared/common';
+import { Cities, Customer } from 'src/app/shared/common';
 import { CustomerHistoryService } from './customer-history.service';
 
 @Component({
@@ -11,7 +11,9 @@ import { CustomerHistoryService } from './customer-history.service';
 export class CustomerHistoryPage implements OnInit {
   cities: Cities[] = [];
   routes: { routename: string }[] = [];
-
+  customers: Customer[] = [];
+  Polygan: { lat: number; lng: number }[] = [];
+  cust_codes: number[] = [];
   IsDetailsShowing = false;
   IsDCDDetailsShowing = false;
 
@@ -67,5 +69,52 @@ export class CustomerHistoryPage implements OnInit {
     this.historyService
       .getRoutesByCity(city)
       .subscribe((res: { routename: string }[]) => (this.routes = res));
+  }
+
+  routeSelect(routeName: string) {
+    this.historyService
+      .getCustomersByRoute(routeName)
+      .subscribe((customers: Customer[]) => {
+        this.customers = customers;
+        console.log(this.customers);
+
+        if (this.customers.length)
+          this.customers.forEach((customer) =>
+            this.Polygan.push({
+              lat: parseFloat(customer.PointLatitude),
+              lng: parseFloat(customer.PointLongitude),
+            })
+          );
+        this.initialShopPoint(customers);
+      });
+  }
+
+  initialShopPoint(customers: Customer[]) {
+    customers.forEach((customer) => {
+      this.cust_codes.push(parseInt(customer.CustCode, 10));
+      let latLng = {
+        lat: customer.PointLatitude,
+        lng: customer.PointLongitude,
+      };
+      let contentString = `
+      <div style="direction:rtl;overflow: hidden">
+        <h1> ${customer.custName} </h1>
+        <div> 
+          <p>Tel : ${customer.Tel} </p>
+          <p>Visitor : ${customer.Visitor} </p>
+          <p>Address : ${customer.ADDRESS} </p>
+        </div>
+      </div>`;
+
+      let marker = {
+        position: latLng,
+        icon: 'assets/icon/shop1.png',
+        // map: this.map,
+      };
+      // marker.addListener("click", function () {
+      //   iw.ShowWindowInfo(marker, contentString);
+      // });
+      // this.shop_markers.push(marker);
+    });
   }
 }

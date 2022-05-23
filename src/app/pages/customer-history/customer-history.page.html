@@ -138,7 +138,9 @@
             <ion-content disabled class="select-input-popover-title"
               >Route</ion-content
             >
-            <ion-content *ngFor="let route of routes"
+            <ion-content
+              *ngFor="let route of routes"
+              (click)="routeSelect(route.routename)"
               >{{route.routename}}</ion-content
             >
           </ng-template>
