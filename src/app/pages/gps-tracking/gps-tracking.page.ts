@@ -7,10 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./gps-tracking.page.scss'],
 })
 export class GpsTrackingPage implements OnInit {
+  Date: string = 'Date';
   constructor(private router: Router) {}
 
   ngOnInit() {}
   backButton() {
     this.router.navigate(['/']);
   }
+  customPopoverOptions: any = {
+    header: 'Date',
+    // subHeader: 'Select your hair color',
+    // message: 'Only select your dominant hair color',
+  };
 }

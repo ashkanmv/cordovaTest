@@ -1,32 +1,34 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row class="primary-bg">
+    <ion-row
+      class="primary-bg ion-justify-content-between header ion-no-margin"
+    >
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" (click)="backButton()">
           <ion-img
-            class="back-button"
+            class="back-button ion-justfy-self-start ion-align-self-cente"
             src="assets\pages\customer-history\Backward arrow.png"
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="8" class="ion-text-start ion-align-self-center">
-        <ion-title
-          class="ion-no-padding main-page-Title white-text ion-align-self-center"
-          ><h3>Online Daily Sales</h3>
+      <ion-col size="7" class="ion-text-center ion-align-self-center">
+        <ion-title class="white-text">
+          <h3><b>Online Daily Sales</b></h3>
         </ion-title>
       </ion-col>
-
-      <ion-col size="1" class="ion-align-self-center">
-        <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" />
+      <ion-col></ion-col>
+      <ion-col class="ion-align-self-center reload" size="1">
+        <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
+        </ion-img>
       </ion-col>
-
-      <ion-col size="1" class="ion-justfy-self-end ion-align-self-center">
-        <ion-img class="wifi-online" src="/assets\mainPage\wifi.png"></ion-img>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img
+          class="wifi-online"
+          src="\assets\mainPage\main\wifi.png"
+        ></ion-img>
       </ion-col>
-      <!-- <ion-col size="1" class="ion-justfy-self-end">
-        <ion-img src="assets/mainPage/wifi.png"></ion-img>
-      </ion-col> -->
     </ion-row>
+    <!--  -->
   </ion-toolbar>
   <ion-grid class="secondary-bg white-text">
     <ion-row class="ion-justify-content-between">
@@ -53,7 +55,7 @@
   </ion-col>
 </ion-header>
 <!-- -------------------------------------------------------------------------------------------- -->
-<ion-content class="ion-no-padding">
+<ion-content class="ion-no-padding ion-no-margin">
   <ion-col class="DSD-page" *ngIf="selectedSegment == 'DSD'">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">

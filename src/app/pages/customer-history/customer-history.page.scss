@@ -4,7 +4,9 @@
  // change the down icons
 
 
-
+ion-img{
+    width: 100%;
+}
 
 ion-toolbar ion-row{
     --background: #fff;
@@ -38,20 +40,28 @@ ion-toggle{
     background: #fff;
     border-radius: 100%;
     padding:14px 3px;
-    min-width: 40px;
+    min-width: 30px;
 
 }
 
 
 
-ion-img{
-    min-width: 40px;
-    max-width: 80px;
-    // margin-right: 3px;
+// ion-img{
+//     min-width: 40px;
+//     max-width: 80px;
+//     // margin-right: 3px;
+// }
+// ion-img.wifi-offline{
+//     max-width: 100px;
+//     margin-left: 8px;
+// }
+
+.wifi{
+
+    min-width: 52px;    
 }
-ion-img.wifi-offline{
-    max-width: 100px;
-    margin-left: 8px;
+.hide{
+    min-width: 40px;    
 }
 
 ion-toggle.ios{
@@ -227,23 +237,46 @@ ion-popover.search-drop-down{
 // -------------Select-Options------------------
 
 .customer-history-select{
-
     ion-row{
-        margin-bottom: .5rem;
+        margin-bottom: 1rem;
         >ion-item{
             --background: #fff;
+            // --color:#b9b9b961;
+            --color:#000 ;
+            --padding-top:.5rem;
+            --padding-bottom:.5rem;
             --padding-start:2rem;
             --border-radius: 50px;
             border-radius: 50px;
             width: 80%;
-            // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-            // --background-activated:red;
+            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+            ion-icon{
+                color: #e5e5e5;
+                width: 3rem;
+                position: absolute;
+                right:3vw;
+    
+            }
+      
         }
-
-        
-
-        
     }
+
+    // ion-row{
+    //     margin-bottom: .5rem;
+    //     >ion-item{
+    //         --background: #fff;
+    //         --padding-start:2rem;
+    //         --border-radius: 50px;
+    //         border-radius: 50px;
+    //         width: 80%;
+    //         // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+    //         // --background-activated:red;
+    //     }
+
+        
+
+        
+    // }
     ion-select{
         height: 4rem;
         &::part(icon) {
@@ -370,6 +403,7 @@ ion-popover.search-drop-down{
 
 
 ion-card{
+    height: 100vh;
     width: 100%;
     border-radius: 40px 40px 0 0;
     h4{
@@ -480,7 +514,7 @@ ion-card{
                 
                 &>table{
                     // min-width: 90vw;
-                    width: 65vw;
+                    width: 90vw;
                     box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
                     position: relative;
                     left: 5vw;
@@ -680,12 +714,18 @@ ion-card{
 
 
 
-// @media (max-width:990px) {
-//     .table-detail{
-//         &>table{
-//             width:120vh;
-//             background: red;
-          
-//         }
-//     }
-// }
+@media (min-width:990px) {
+ 
+    ion-card{
+    ion-card-content{
+        table{
+        .table-detail{
+            &>table{
+                width:60vw;
+            
+            }
+        }
+        }
+    }
+    }
+}

@@ -9,19 +9,22 @@
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="8" class="ion-text-start ion-align-self-center">
+      <ion-col size="6" class="ion-text-start ion-align-self-center">
         <ion-title
           class="ion-no-padding main-page-Title white-text ion-align-self-center"
           ><h3>Score Cards</h3>
         </ion-title>
       </ion-col>
-
-      <ion-col size="1" class="ion-align-self-center">
+      <ion-col></ion-col>
+      <ion-col size="1" class="ion-align-self-center reload">
         <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" />
       </ion-col>
 
-      <ion-col size="1" class="ion-justfy-self-end ion-align-self-center">
-        <ion-img class="wifi-online" src="/assets\mainPage\wifi.png"></ion-img>
+      <ion-col size="1" class="ion-justfy-self-end ion-align-self-center wifi">
+        <ion-img
+          class="wifi-online"
+          src="/assets\mainPage\main\wifi.png"
+        ></ion-img>
       </ion-col>
       <!-- <ion-col size="1" class="ion-justfy-self-end">
         <ion-img src="assets/mainPage/wifi.png"></ion-img>
@@ -106,6 +109,24 @@
         </span>
       </ion-row>
     </ion-col>
+
+    <ion-col class="radio-input">
+      <ion-row class="radio-input-container ion-justify-content-center">
+        <div class="radio-input-box">
+          <div class="radio-input input-shadow">
+            <div class="">
+              <label for="sales">Sales</label>
+              <input type="radio" name="radio-input-1" id="" />
+            </div>
+            <div class="">
+              <label for="pped">PPED</label>
+              <input type="radio" name="radio-input-1" id="" />
+            </div>
+          </div>
+        </div>
+      </ion-row>
+    </ion-col>
+
     <ion-col>
       <table>
         <thead class="table-head">
@@ -130,8 +151,8 @@
             <td></td>
           </tr>
           <div *ngIf="IsDCDDetailsShowing" class="table-detail">
-            <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div>
+            <!-- <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div> -->
             <table class="">
               <thead>
                 <th></th>
@@ -159,8 +180,8 @@
             <td></td>
           </tr>
           <div *ngIf="IsDetailsShowing" class="table-detail">
-            <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div>
+            <!-- <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div> -->
             <table class="">
               <thead>
                 <th></th>
@@ -288,8 +309,8 @@
             <td></td>
           </tr>
           <div *ngIf="IsDCDDetailsShowing" class="table-detail">
-            <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div>
+            <!-- <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div> -->
             <table class="">
               <thead>
                 <th></th>
@@ -317,8 +338,8 @@
             <td></td>
           </tr>
           <div *ngIf="IsDetailsShowing" class="table-detail">
-            <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div>
+            <!-- <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div> -->
             <table class="">
               <thead>
                 <th></th>

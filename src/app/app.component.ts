@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@awesome-cordova-plugins/background-geolocation/ngx';
 import { Platform } from '@ionic/angular';
+import * as Highcharts from 'highcharts';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

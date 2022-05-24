@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CustomerHistoryPageRoutingModule } from './customer-history-routing.module';
+
 import { CustomerHistoryPage } from './customer-history.page';
 
 @NgModule({

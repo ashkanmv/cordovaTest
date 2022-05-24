@@ -99,6 +99,27 @@ const routes: Routes = [
         (m) => m.ScoreCardPageModule
       ),
   },
+  {
+    path: 'max-pped',
+    loadChildren: () =>
+      import('./pages/max-pped/max-pped.module').then(
+        (m) => m.MaxPPEDPageModule
+      ),
+  },
+  {
+    path: 'salesmen-location',
+    loadChildren: () =>
+      import('./pages/salesmen-location/salesmen-location.module').then(
+        (m) => m.SalesmenLocationPageModule
+      ),
+  },
+  {
+    path: 'today-planned-not-buying',
+    loadChildren: () =>
+      import(
+        './pages/today-planned-not-buying/today-planned-not-buying.module'
+      ).then((m) => m.TodayPlannedNotBuyingPageModule),
+  },
 ];
 
 @NgModule({

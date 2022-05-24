@@ -26,6 +26,8 @@
     "@types/leaflet": "^1.7.10",
     "@types/mapbox-gl-leaflet": "0.0.1",
     "cordova-android": "10.1.2",
+    "highcharts": "^10.1.0",
+    "highcharts-angular": "^3.0.0",
     "leaflet": "^1.8.0",
     "mapbox-gl": "^2.8.2",
     "mapbox-gl-leaflet": "0.0.15",
