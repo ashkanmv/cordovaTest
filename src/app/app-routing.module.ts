@@ -112,7 +112,11 @@ const routes: Routes = [
       import('./pages/salesmen-location/salesmen-location.module').then(
         (m) => m.SalesmenLocationPageModule
       ),
+  },  {
+    path: 'today-planned-not-buying',
+    loadChildren: () => import('./pages/today-planned-not-buying/today-planned-not-buying.module').then( m => m.TodayPlannedNotBuyingPageModule)
   },
+
 ];
 
 @NgModule({

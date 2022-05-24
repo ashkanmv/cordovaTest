@@ -1,32 +1,33 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row class="primary-bg">
+    <ion-row
+      class="primary-bg ion-justify-content-between header ion-no-margin"
+    >
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" (click)="backButton()">
           <ion-img
-            class="back-button"
+            class="back-button ion-justfy-self-start ion-align-self-cente"
             src="assets\pages\customer-history\Backward arrow.png"
           ></ion-img>
         </ion-button>
       </ion-col>
       <ion-col></ion-col>
-      <ion-col size="7s" class="ion-text-start ion-align-self-center">
-        <ion-title
-          class="ion-no-padding main-page-Title white-text ion-align-self-center"
-          ><h3>Max PPED</h3>
+
+      <ion-col size="8" class="ion-text-center ion-align-self-center">
+        <ion-title class="white-text">
+          <h3><b>Max PPED</b></h3>
         </ion-title>
       </ion-col>
-
-      <ion-col size="2" class="ion-align-self-center ion-justfy-self-center">
-        <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" />
+      <ion-col class="ion-align-self-center reload" size="1">
+        <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
+        </ion-img>
       </ion-col>
-
-      <ion-col size="2" class="ion-justfy-self-center ion-align-self-center">
-        <ion-img class="wifi-online" src="/assets\mainPage\wifi.png"></ion-img>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img
+          class="wifi-online"
+          src="\assets\mainPage\main\wifi.png"
+        ></ion-img>
       </ion-col>
-      <!-- <ion-col size="1" class="ion-justfy-self-end">
-        <ion-img src="assets/mainPage/wifi.png"></ion-img>
-      </ion-col> -->
     </ion-row>
   </ion-toolbar>
   <ion-grid class="secondary-bg white-text">
@@ -60,17 +61,55 @@
     *ngIf="selectedSegment == 'per-customer'"
   >
     <!-- --------------date_ picker -->
-    <ion-row>
-      <ion-col class="date-picker-container">
-        <ion-row class="date-picker-box ion-justify-content-center">
-          <img
-            id="open-modal"
-            src="\assets\pages\Max PPED\Group 1438.png"
-            class="date-picker-img"
-          />
-        </ion-row>
-      </ion-col>
-    </ion-row>
+    <ion-col>
+      <!--  -->
+      <div class="date-picker-container">
+        <div class="date-picker-box">
+          <div id="open-modal-from" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>From Date</h4>
+              <div class="">
+                2021/03/01
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div id="open-modal-to" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>To Date</h4>
+              <div class="">
+                2022/11/29
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2021-03-01"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2022-11-29"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <!--  -->
+    </ion-col>
     <!-- ------------------search_bar -->
     <ion-row>
       <ion-col class="search-bar">
@@ -446,8 +485,430 @@
       </ion-col>
     </ion-row>
   </ion-col>
-  <ion-col
-    class="per-route-segment"
-    *ngIf="selectedSegment == 'per-route'"
-  ></ion-col>
+  <ion-col class="per-route-segment" *ngIf="selectedSegment == 'per-route'">
+    <!-- --------------date_ picker -->
+    <ion-col>
+      <!--  -->
+      <div class="date-picker-container">
+        <div class="date-picker-box">
+          <div id="open-modal-from" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>From Date</h4>
+              <div class="">
+                2021/03/01
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div id="open-modal-to" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>To Date</h4>
+              <div class="">
+                2022/11/29
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2021-03-01"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2022-11-29"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <!--  -->
+    </ion-col>
+    <!-- ------------------search_bar -->
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <input
+            type="search"
+            name=""
+            id="trigger-search"
+            placeholder="Search"
+            class="search search-customer-history input-shadow"
+          />
+
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!-- -----------------------table -->
+    <ion-row>
+      <ion-col>
+        <table>
+          <thead>
+            <th class="route"><span>Rouate</span></th>
+            <th>City</th>
+            <th>Visitor Name</th>
+            <th>Sale</th>
+            <th>PPED</th>
+            <th>%</th>
+          </thead>
+          <tbody>
+            <tr (click)="toggleNestedTabelRow_1()">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon> 1131
+              </td>
+              <td>Tehran</td>
+              <td>Behnam Ezadi</td>
+              <td></td>
+              <td>3.20</td>
+              <td>19</td>
+            </tr>
+            <div
+              *ngIf="nestedTableIsShowingRow_1"
+              class="nested-table-container"
+            >
+              <div class="hor-line"></div>
+              <div class="ver-line"></div>
+              <table class="nested-table">
+                <thead>
+                  <th>Customer Number</th>
+                  <th>Customer Name</th>
+                  <th>Cluster</th>
+                  <th>Sale</th>
+                  <th>PPED</th>
+                  <th>%</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <tr class="table-lightblue-bg" (click)="toggleNestedTabelRow_2()">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon> 1107
+              </td>
+              <td>Amol</td>
+              <td>Milad Ahmadi</td>
+              <td></td>
+              <td>7.65</td>
+              <td>15</td>
+            </tr>
+            <div
+              *ngIf="nestedTableIsShowingRow_2"
+              class="nested-table-container"
+            >
+              <div class="hor-line"></div>
+              <div class="ver-line"></div>
+              <table class="nested-table">
+                <thead>
+                  <th>Customer Number</th>
+                  <th>Customer Name</th>
+                  <th>Cluster</th>
+                  <th>Sale</th>
+                  <th>PPED</th>
+                  <th>%</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <tr (click)="toggleNestedTabelRow_3()">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon> 1115
+              </td>
+              <td>Zahedan</td>
+              <td>Sina Ezati</td>
+              <td></td>
+              <td>12.05</td>
+              <td>20</td>
+            </tr>
+            <div
+              *ngIf="nestedTableIsShowingRow_3"
+              class="nested-table-container"
+            >
+              <table class="nested-table">
+                <thead>
+                  <th>Customer Number</th>
+                  <th>Customer Name</th>
+                  <th>Cluster</th>
+                  <th>Sale</th>
+                  <th>PPED</th>
+                  <th>%</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <tr class="table-lightblue-bg" (click)="toggleNestedTabelRow_4()">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon> 1107
+              </td>
+              <td>Amol</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <div
+              *ngIf="nestedTableIsShowingRow_4"
+              class="nested-table-container"
+            >
+              <table class="nested-table">
+                <thead>
+                  <th>Customer Number</th>
+                  <th>Customer Name</th>
+                  <th>Cluster</th>
+                  <th>Sale</th>
+                  <th>PPED</th>
+                  <th>%</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </tbody>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-col>
 </ion-content>

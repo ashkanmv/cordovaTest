@@ -1,6 +1,6 @@
 
 // to do 
-// description details placement
+// description details hover background
 
 ion-toolbar ion-row{
     --background: #fff;
@@ -15,11 +15,17 @@ ion-content {
     --color: #0095EB;
 }
 
-ion-title {
-    height: 100%;
-    padding-left: 15px;
+title{
+    width: 100%;
+    padding-left: 1rem;
+}
+
+ion-title{
+    width: 100%;
     h3{
-        font-size: 5vw;
+        font-size: 4vw;
+        width: 100%;
+
     }
 }
 ion-item{
@@ -33,12 +39,28 @@ ion-input{
 }
 
 ion-img{
-    max-width: 100px;
-    min-width: 30px;
+    // max-width: 100px;
+    // min-width: 30px;
+    width: 100%;
 }
-img{
-    min-width: 30px;
+// img{
+//     min-width: 30px;
 
+// }
+
+.wifi{
+
+    min-width: 40px;    
+}
+.hide{
+    min-width: 30px;    
+}
+.reload{
+
+    min-width: 40px;    
+}
+.description{
+    min-width: 40px;    
 }
 
 ion-img .back-button.ios{
@@ -64,63 +86,59 @@ ion-popover.header-drop-down{
 
 
 ion-popover.description-drop-down{
-    --min-width:325px;
-    // --min-width:25vw;
-    // --width:25vw;
-    --min-height:22rem;
-    --offset-x:-8vw;
-    --offset-y:1vh;
-    >ion-content{
-        white-space: nowrap;
-        display: flex;
-        font-size: 1.2rem;
-        --color: #000;
-        >div{
-            display: flex;
-            justify-content: space-between ;
-            align-items: center;
-            // margin-right: 4rem;
-            margin-left: 1rem; 
-            img{
-                align-self: center;
-                // margin-right: 1rem;
-            }
-            
-                >p:nth-child(2){
-                    padding-right: 2rem;
-                }
-            
-        }
+
+     // --min-width:22rem;
+     --min-width:55vw;
+     --min-height:22rem;
+     --offset-x:-5vw;
+     --offset-y:1vh;
+     >ion-content{
+         font-size: 1.2rem;
+         --color: #000;
+
+         >div{
+             p{
+                 text-align: center;
+             }
+             img{
+                 position: absolute;
+                 left: 1rem;             
+             }
+         }
+  
+         
  
-        
+ 
+         img{
+             // justify-self: flex-start;
+             max-width:3.5vw;
+             // margin-right: 6vw;
+         }
+         &:hover{
+             // --background:none;
+             --background:#119ff23f;
+            //  --------change later
 
+         }
+     }
+     ion-content.header-input-popover-title{
+         display: flex;
+         justify-content: center;
+         cursor:auto;
+         --color:#fff ;
+         --background:#119ff2;
+         text-align: center;
+         border-bottom: none;
+         font-weight: bold;
+         --padding-start: 0 ;
+         --padding-top: 1rem ;
+         --padding-bottom: 1rem ;
+         :hover{
+             --background:none;
+         }
+         
+     }
 
-        img{
-            // justify-self: flex-start;
-            max-width:3.5vw;
-            // margin-right: 6vw;
-        }
-        &:hover{
-            --background:none;
-        }
-    }
-    ion-content.header-input-popover-title{
-        display: flex;
-        justify-content: center;
-        cursor:auto;
-        --color:#fff ;
-        --background:#119ff2;
-        text-align: center;
-        border-bottom: none;
-        font-weight: bold;
-        --padding-start: 0 ;
-        --padding-top: .5rem ;
-        --padding-bottom: .5rem ;
-        :hover{
-            --background:none;
-        }
-        
-    }
 }
 ion-popover.hide-drop-down{
     --max-width:10rem;
@@ -165,4 +183,12 @@ ion-content.header-input-popover-title{
         --background:none;
     }
     
+}
+
+@media (max-width:425px) {
+    ion-popover.description-drop-down{
+        // background: red;
+        --min-width:85vw;
+        // --offset-x:0 ;
+    }
 }

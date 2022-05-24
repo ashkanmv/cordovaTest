@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./max-pped.page.scss'],
 })
 export class MaxPPEDPage implements OnInit {
+  dateNow = new Date();
+
   nestedTableIsShowingRow_1: boolean = false;
   nestedTableIsShowingRow_2: boolean = false;
   nestedTableIsShowingRow_3: boolean = false;

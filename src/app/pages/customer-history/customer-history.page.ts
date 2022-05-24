@@ -7,10 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer-history.page.scss'],
 })
 export class CustomerHistoryPage implements OnInit {
-  IsDetailsShowing = false;
-  IsDCDDetailsShowing = false;
+  IsDCD1DetailsShowing = false;
+  IsDCD2DetailsShowing = false;
+  IsDCD3DetailsShowing = false;
+  IsDCD4DetailsShowing = false;
+  IsDCD5DetailsShowing = false;
+  IsDD200DetailsShowing = false;
+  IsTotalDetailsShowing = false;
+  IsFLanDetailsShowing = false;
 
-  isShowing = false;
   customerInfo: {
     shopName: string;
     shopCode: number;
@@ -31,15 +36,38 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   ngOnInit() {}
+  // cancel() {
+  //   this.datePicker.cancel();
+  // }
+
+  // done() {
+  //   this.datePicker.confirm();
+  // }
   backButton() {
     this.router.navigate(['/']);
   }
-  toggleDtails() {
-    this.IsDetailsShowing = !this.IsDetailsShowing;
-    this.isShowing = !this.isShowing;
+  toggleDtailsDD200() {
+    this.IsDD200DetailsShowing = !this.IsDD200DetailsShowing;
   }
-  toggleDtailsDCD() {
-    this.IsDCDDetailsShowing = !this.IsDCDDetailsShowing;
-    this.isShowing = !this.isShowing;
+  toggleDtailsFLan() {
+    this.IsFLanDetailsShowing = !this.IsFLanDetailsShowing;
+  }
+  toggleDtailsTotal() {
+    this.IsTotalDetailsShowing = !this.IsTotalDetailsShowing;
+  }
+  toggleDtailsDCD1() {
+    this.IsDCD1DetailsShowing = !this.IsDCD1DetailsShowing;
+  }
+  toggleDtailsDCD2() {
+    this.IsDCD2DetailsShowing = !this.IsDCD2DetailsShowing;
+  }
+  toggleDtailsDCD3() {
+    this.IsDCD3DetailsShowing = !this.IsDCD3DetailsShowing;
+  }
+  toggleDtailsDCD4() {
+    this.IsDCD4DetailsShowing = !this.IsDCD4DetailsShowing;
+  }
+  toggleDtailsDCD5() {
+    this.IsDCD5DetailsShowing = !this.IsDCD5DetailsShowing;
   }
 }

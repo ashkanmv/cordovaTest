@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class ScoreCardPage implements OnInit {
   IsDetailsShowing = false;
   IsDCDDetailsShowing = false;
-  selectedSegment: string = 'NON_DSD';
+  selectedSegment: string = 'category';
 
   constructor(private router: Router) {}
 

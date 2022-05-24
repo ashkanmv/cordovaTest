@@ -16,8 +16,15 @@ ion-toolbar{
         min-width: 30px;
     }
     .back-button{
-        min-width: 10px;
+        min-width:15px;
     }
+}
+
+.reload{
+    min-width: 40px;
+}
+.wifi{
+    min-width: 30px;
 }
 
 ion-popover.search-popover{
@@ -34,11 +41,73 @@ ion-popover.search-popover{
 }
 // -------date picker
 
-.date-picker-img{
-    width: 4rem;
-    height: 5rem;
-    border-radius: 10px 0 0 10px;
+ion-col{
+    .date-picker-container{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // padding: 5rem 0;
+        .date-picker-box{
+        // padding: 5rem 0;
+        width: 90vw;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        border: 1px solid #a9a9a9;
+        border-radius: 10px;
+        padding-top: 1rem;
+        .date-picker{
+            height: 6rem;
+            width: 80vw;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 20px;
+            align-items: center;
+            // padding: 1rem 2rem 1rem 0 ;
+            padding-right: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+            h4{
+                color: #cfcfcf;
+                margin-left: 1rem;
+          
+            }
+            img{
+                max-height: 100%;
+                max-width: 100%;
+            }
+            >div{
+                overflow: hidden;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color: #0095EB;
+                font-size: 1.5rem;
+                font-weight: bold;
+                ion-icon{
+                    color: #a9a9a9;
+                    padding-left: 1rem;
+
+                }
+            }
+        }
+        }
+    }
+    ion-modal{
+        --background: red;
+        .ion-page{
+            --width: 2rem;
+        }
+        ion-buttons{
+            --background: red;
+        }
+    }
 }
+
 
 // ----searchbar
 
@@ -181,6 +250,21 @@ table{
 
 
         @media (min-width:992px) {
+            ion-col{
+                .date-picker-container{
+                    width: 70vw;
+                    .date-picker-box{
+                        width: 65vw;
+                        // margin-left: 10vw;
+                        .date-picker{
+                            width: 60vw;
+
+                        }
+                    }
+                }
+               
+            }
+
             table{
                 .nested-table-container{
                     .nested-table{

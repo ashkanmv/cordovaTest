@@ -1,4 +1,4 @@
-
+// table detail lines
 
 ion-toolbar ion-row{
     --background: #fff;
@@ -12,14 +12,19 @@ ion-content {
     --background: #fff;
     --color: #0095EB;
 }
+title{
+    width: 100%;
+}
 
-ion-title {
-    height: 100%;
-    padding-left: 15px;
+ion-title{
+    width: 100%;
     h3{
         font-size: 5vw;
+        width: 100%;
+
     }
 }
+
 ion-item{
     --background: #fff;
 }
@@ -30,16 +35,60 @@ ion-input{
     --background : #fff
 }
 
-ion-img{
-    max-width: 100px;
-    // min-width: 80px;
+// ion-img{
+//     max-width: 100px;
+//     // min-width: 80px;
+// }
+
+// ion-img .back-button.ios{
+//     min-width: 40px;
+//     max-width: 80px;
+//     margin-right: 3px;
+// }
+
+// ion-img.back-button{
+//     width: 20px;
+// }
+
+// .wifi-online{
+//     min-width: 50px;    
+// }
+// .reload{
+//     min-width: 50px;    
+// }
+
+// 
+.back-button {
+    max-width: 20px;
+    min-width: 20px;
+}
+.reload{
+    // max-width: 30px;
+    min-width: 40px;
+    margin-right: .1rem;
+}
+.wifi{
+    min-width: 40px;
+    margin-left: .1rem;
+
+}
+title{
+    width: 100%;
 }
 
-ion-img .back-button.ios{
-    min-width: 40px;
-    max-width: 80px;
-    margin-right: 3px;
+ion-title{
+    width: 100%;
+    h3{
+        font-size: 4vw;
+        width: 100%;
+
+    }
 }
+
+
+
+
+
 .table-detail-opaned{
     ion-icon{
         color:#0095EB;
@@ -73,7 +122,7 @@ ion-content{
     --color:#8f8f8f ;
     --padding-top: .9rem ;
     --padding-bottom: .9rem ;
-    --padding-start: 1.7rem ;
+    // --padding-start: 1.7rem ;
     &:hover{
         // --background:#0095EB;
         --color:#000 ;
@@ -121,10 +170,11 @@ ion-col.DSD-page{
 
 
 .search-box{
+    width: 90vw;
     border: 1px solid #000;
     border-radius: 10px;
     padding: 2rem 0;
-    margin: 3rem 3rem;
+    margin: 3vh 4vw;
     .search-submit{
         z-index: 2;
         width: 3rem;
@@ -144,7 +194,7 @@ ion-col.DSD-page{
     .search{
         text-align: center;
         height: 5rem;
-        width:70%;
+        width:75%;
         outline: none;
         border: none;
         border-radius: 0 10px 10px 0 ;
@@ -156,9 +206,10 @@ ion-col.DSD-page{
    
     }
     span{
-        position: relative;
-        top: 1.5rem;
-        right: 2rem;
+        // background: red;
+        position: absolute;
+        bottom: 18.5vh;
+        left: 77vw;
     }
     ion-icon{
         color:#e5e5e5;
@@ -217,7 +268,7 @@ table{
             >td{
                 font-size: 1.3rem;
                 color: #000;
-                width: 50px;
+                // width: 50px;
                 text-align: center;
                 &:first-child{
                     text-align: left;
@@ -245,7 +296,7 @@ table{
         
         &>table{
             // min-width: 90vw;
-            width: 65vw;
+            width: 89vw;
             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
             position: relative;
             left: 5vw;
@@ -304,7 +355,7 @@ table{
 
 }
 table.NON_DSD-table{
-    width: 90vw;
+    width: 100vw;
 
 
     td{
@@ -323,7 +374,7 @@ table.NON_DSD-table{
             background: red;
             // min-width: 90vw;
             // width: 70vw;
-            width: 80vw;
+            width: 90vw;
             margin: 1rem 1rem;
             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
             position: relative;
@@ -360,4 +411,28 @@ table.NON_DSD-table{
 
 
 
-   
+   @media (min-width:992px) {
+       .search-box{
+           width: 60vw;
+           margin-left: 5vw;
+           span{
+               left: 50vw;
+               bottom: 24vh;
+               z-index: 2;
+           }
+       }
+
+       .table-detail{
+        &>table{
+            width: 65vw;
+        }
+       }
+       table.NON_DSD-table{
+           width: 72vw;
+           .NON_DSD-table-detail{
+            &>table{
+                width: 68vw;
+            }
+           }
+       }
+   }
