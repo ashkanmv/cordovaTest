@@ -89,7 +89,7 @@
     <!-- no dropdown for search  -->
     <!-- <ion-popover class="dropdown search-drop-down" trigger="trigger-search">
       <ng-template>
-        <ion-content disabled class="select-input-popover-title"
+        <ion-content  class="select-input-popover-title"
           >DC</ion-content
         >
         <ion-content>Subtitle 1</ion-content>
@@ -111,94 +111,15 @@
           class="drop-down select-drop-down"
           placeholder="DC"
           interface="popover"
+          (ionChange)="selectCity($event)"
         >
-          <ion-select-option class="select-label" disabled value=""
-            >DC</ion-select-option
-          >
-          <ion-select-option
-            *ngFor="let city of cities"
-            (click)="selectCity(city.City)"
+          <ion-select-option *ngFor="let city of cities" [value]="city.City"
             >{{city.City}}
           </ion-select-option>
         </ion-select>
         <ion-icon name="chevron-down-outline"></ion-icon>
         <!--  -->
-        <!-- <ion-label>DC</ion-label>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-        <ion-popover
-          class="dropdown select-drop-down"
-          trigger="trigger-input-1"
-          lines="none"
-        >
-          <ng-template>
-            <ion-content disabled class="select-input-popover-title"
-              >DC</ion-content
-            >
-            <ion-content
-              *ngFor="let city of cities"
-              (click)="selectCity(city.City)"
-              >{{city.City}}</ion-content
-            >
-          </ng-template>
-        </ion-popover> -->
         <!--  -->
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-2" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="DC"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >DC</ion-select-option
-          >
-          <ion-select-option
-            *ngFor="let route of routes"
-            (click)="routeSelect(route.routename)"
-            >{{route.routename}}
-          </ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-        <!--  -->
-        <!-- <ion-label>Route</ion-label>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-        <ion-popover
-          class="dropdown select-drop-down"
-          trigger="trigger-input-2"
-        >
-          <ng-template>
-            <ion-content disabled class="select-input-popover-title"
-              >Route</ion-content
-            >
-            <ion-content
-              *ngFor="let route of routes"
-              (click)="routeSelect(route.routename)"
-              >{{route.routename}}</ion-content
-            >
-          </ng-template>
-        </ion-popover> -->
-        <!--  -->
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-DC" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="DC"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >DC</ion-select-option
-          >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
@@ -207,19 +128,18 @@
           class="drop-down select-drop-down"
           placeholder="Route"
           interface="popover"
+          (ionChange)="routeSelect($event)"
         >
-          <ion-select-option class="select-label" disabled value=""
-            >Route</ion-select-option
-          >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
+          <ion-select-option
+            *ngFor="let route of routes"
+            [value]="route.routename"
+            >{{route.routename}}
+          </ion-select-option>
         </ion-select>
         <ion-icon name="chevron-down-outline"></ion-icon>
       </ion-item>
     </ion-row>
+
     <ion-row class="ion-justify-content-center">
       <ion-item id="trigger-input-customer" lines="none" class="box-shadow">
         <ion-select
@@ -227,14 +147,9 @@
           placeholder="Customer"
           interface="popover"
         >
-          <ion-select-option class="select-label" disabled value=""
-            >Customer</ion-select-option
+          <ion-select-option *ngFor="let customer of customers"
+            >{{customer.custName}}</ion-select-option
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
         </ion-select>
         <ion-icon name="chevron-down-outline"></ion-icon>
       </ion-item>
@@ -582,7 +497,7 @@
     lines="none"
   >
     <ng-template>
-      <ion-content disabled class="select-input-popover-title"
+      <ion-content  class="select-input-popover-title"
         >DC</ion-content
       >
       <ion-content>Subtitle 1</ion-content>

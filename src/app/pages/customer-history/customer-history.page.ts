@@ -14,10 +14,7 @@ export class CustomerHistoryPage implements OnInit {
   customers: Customer[] = [];
   Polygan: { lat: number; lng: number }[] = [];
   cust_codes: number[] = [];
-  IsDetailsShowing = false;
-  IsDCDDetailsShowing = false;
 
-  isShowing = false;
   customerInfo: {
     shopName: string;
     shopCode: number;
@@ -46,14 +43,6 @@ export class CustomerHistoryPage implements OnInit {
   backButton() {
     this.router.navigate(['/']);
   }
-  toggleDtails() {
-    this.IsDetailsShowing = !this.IsDetailsShowing;
-    this.isShowing = !this.isShowing;
-  }
-  toggleDtailsDCD() {
-    this.IsDCDDetailsShowing = !this.IsDCDDetailsShowing;
-    this.isShowing = !this.isShowing;
-  }
 
   // http Requests
 
@@ -64,19 +53,19 @@ export class CustomerHistoryPage implements OnInit {
       .subscribe((res: Cities[]) => (this.cities = res));
   }
 
-  selectCity(city: string) {
+  selectCity(value: any) {
     this.routes = [];
     this.historyService
-      .getRoutesByCity(city)
+      .getRoutesByCity(value.detail.value)
       .subscribe((res: { routename: string }[]) => (this.routes = res));
   }
 
-  routeSelect(routeName: string) {
+  routeSelect(value: any) {
     this.historyService
-      .getCustomersByRoute(routeName)
+      .getCustomersByRoute(value.detail.value)
       .subscribe((customers: Customer[]) => {
         this.customers = customers;
-        console.log(this.customers);
+        console.log(customers);
 
         if (this.customers.length)
           this.customers.forEach((customer) =>
