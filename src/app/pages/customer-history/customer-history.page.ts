@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cities, Customer } from 'src/app/shared/common';
+import { Platform } from '@ionic/angular';
+import { Cities, Customer, Marker } from 'src/app/shared/common';
 import { CustomerHistoryService } from './customer-history.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class CustomerHistoryPage implements OnInit {
   routes: { routename: string }[] = [];
   customers: Customer[] = [];
   Polygan: { lat: number; lng: number }[] = [];
+  markers: Marker[] = [];
   cust_codes: number[] = [];
 
   customerInfo: {
@@ -25,7 +27,8 @@ export class CustomerHistoryPage implements OnInit {
   };
   constructor(
     private router: Router,
-    private historyService: CustomerHistoryService
+    private historyService: CustomerHistoryService,
+    private plt: Platform
   ) {
     this.customerInfo = {
       shopName: 'Jahan Akbary',
@@ -40,6 +43,15 @@ export class CustomerHistoryPage implements OnInit {
   ngOnInit() {
     this.getCities();
   }
+  showMap = false;
+  ionViewDidEnter() {
+    this.plt.ready().then(() => {
+      setTimeout(() => {
+        this.showMap = true;
+      }, 500);
+    });
+  }
+
   backButton() {
     this.router.navigate(['/']);
   }
@@ -65,15 +77,16 @@ export class CustomerHistoryPage implements OnInit {
       .getCustomersByRoute(value.detail.value)
       .subscribe((customers: Customer[]) => {
         this.customers = customers;
-        console.log(customers);
-
+        this.markers = [];
+        var m: any = [];
         if (this.customers.length)
-          this.customers.forEach((customer) =>
-            this.Polygan.push({
-              lat: parseFloat(customer.PointLatitude),
-              lng: parseFloat(customer.PointLongitude),
-            })
-          );
+          this.customers.forEach((customer) => {
+            m.push({
+              latitude: parseFloat(customer.PointLatitude),
+              longitude: parseFloat(customer.PointLongitude),
+            });
+          });
+        this.markers = m;
         this.initialShopPoint(customers);
       });
   }
