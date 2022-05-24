@@ -75,6 +75,9 @@
 </ion-header>
 
 <ion-content>
+  <div class="container" *ngIf="showMap">
+    <app-map id="map" [showMap]="showMap" [markers]="markers"></app-map>
+  </div>
   <ion-row class="search-box ion-justify-content-center">
     <button class="search-submit primary-bg">
       <ion-icon name="search-outline"></ion-icon>

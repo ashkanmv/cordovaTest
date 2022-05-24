@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class MapService {
+  geoapifyAPIKey = '5908d42d2c0344b2af400a77ab03ed10';
   private vehicleUrl = environment.BaseURL + '/api/v1/vehicles';
   private shopPointUrl = environment.BaseURL + '/api/v1/shoppoints';
   private invoicedUrl = environment.BaseURL + '/api/v1/invoiceds';

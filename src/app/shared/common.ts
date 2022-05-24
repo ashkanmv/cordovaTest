@@ -18,3 +18,9 @@ export class Customer {
   routename: string;
   ssv: string;
 }
+
+export interface Marker {
+  latitude: number;
+  longitude: number;
+  description?: string;
+}
