@@ -13,4 +13,6 @@ export class CustomerNearbyPage implements OnInit {
   backButton() {
     this.router.navigate(['/']);
   }
+ 
+  
 }

@@ -9,23 +9,66 @@
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="7" class="ion-text-start ion-align-self-center">
+      <!--  -->
+      <ion-col sizeLg="7" class="ion-text-start ion-align-self-center">
         <ion-title
           class="ion-no-padding main-page-Title white-text ion-align-self-center"
-          ><h3>Customer nearby</h3>
+          >Customer nearby
         </ion-title>
       </ion-col>
+      <!--  -->
       <ion-col size="1" class="ion-align-self-center description">
-        <!-- <img -->
-        <!-- id="trigger-desc" -->
-        <!-- src="\assets\pages\customer-nearby\Description.png" -->
-        <!-- alt="" -->
-        <!-- /> -->
         <ion-img
           id="trigger-desc"
           src="\assets\pages\customer-nearby\Description.png"
           alt=""
         ></ion-img>
+        <!-- <div class="select-description">
+          <div class="select-dropdown">
+            <div class="select-list">
+              <div disabled value="">Description</div>
+              <div value="normal-customer">
+                <p>Normal Customer</p>
+              </div>
+              <div value="promotion-customer">
+                <p>Promotion Customer</p>
+              </div>
+              <div value="normal-customer">
+                <p>Normal Customer</p>
+              </div>
+              <div value="normal-customer">
+                <p>Normal Customer</p>
+              </div>
+              <div value="normal-customer">
+                <p>Normal Customer</p>
+              </div>
+              <div value="normal-customer">
+                <p>Normal Customer</p>
+              </div>
+            </div>
+          </div> -->
+        <!-- <ion-select interface="popover">
+            <ion-select-option disabled value="">Description</ion-select-option>
+            <ion-select-option value="normal-customer">
+              <p>Normal Customer</p>
+            </ion-select-option>
+            <ion-select-option value="promotion-customer">
+              <p>Promotion Customer</p>
+            </ion-select-option>
+            <ion-select-option value="normal-customer">
+              <p>Normal Customer</p>
+            </ion-select-option>
+            <ion-select-option value="normal-customer">
+              <p>Normal Customer</p>
+            </ion-select-option>
+            <ion-select-option value="normal-customer">
+              <p>Normal Customer</p>
+            </ion-select-option>
+            <ion-select-option value="normal-customer">
+              <p>Normal Customer</p>
+            </ion-select-option>
+          </ion-select> -->
+        <!-- </div> -->
         <ion-popover
           class="header-drop-down description-drop-down"
           trigger="trigger-desc"
@@ -35,9 +78,9 @@
               >Description</ion-content
             >
             <ion-content>
-              <div class="">
+              <div value="normal-customer" class="">
                 <img src="\assets\pages\customer-nearby\Green.png" alt="" />
-                <p>Normal Customer</p>
+                <p value="normal-customer">Normal Customer</p>
               </div>
             </ion-content>
             <ion-content>
@@ -70,9 +113,11 @@
           </ng-template>
         </ion-popover>
       </ion-col>
+      <!--  -->
       <ion-col size="1" class="ion-align-self-center reload">
         <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" />
       </ion-col>
+      <!--  -->
       <ion-col size="1" class="ion-align-self-center">
         <img
           id="trigger-hide"
@@ -93,15 +138,13 @@
           </ng-template>
         </ion-popover>
       </ion-col>
+      <!--  -->
       <ion-col size="1" class="ion-align-self-center wifi">
         <ion-img
           class="wifi-online"
           src="/assets\mainPage\main\wifi.png"
         ></ion-img>
       </ion-col>
-      <!-- <ion-col size="1" class="ion-justfy-self-end">
-        <ion-img src="assets/mainPage/wifi.png"></ion-img>
-      </ion-col> -->
     </ion-row>
   </ion-toolbar>
   <ion-grid class="secondary-bg white-text">

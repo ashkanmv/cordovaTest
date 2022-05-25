@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-today-planned-not-buying',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./today-planned-not-buying.page.scss'],
 })
 export class TodayPlannedNotBuyingPage implements OnInit {
-  constructor() {}
-
+  constructor(private router: Router) {}
+  dateNow = new Date();
   ngOnInit() {}
   backButton() {
-    // this.router.navigate(['/']);
+    this.router.navigate(['/']);
   }
 }

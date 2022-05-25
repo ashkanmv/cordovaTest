@@ -1,0 +1,190 @@
+ion-toolbar ion-row{
+    --background: #fff;
+    --color: #0095EB;
+}
+ion-toolbar.ios{
+    --ion-padding-bottom:0;
+}
+
+ion-content {
+    --background: #fff;
+    --color: #0095EB;
+}
+
+ion-title {
+    height: 100%;
+    padding-left: 5px;
+    h3{
+        font-size: 5vw;
+    }
+}
+ion-item{
+    --background: #fff;
+}
+
+ion-input{
+    --padding-stsart : 5vw;
+    --placeholder-color : #b9b9b9;
+    --background : #fff
+}
+
+ion-img{
+    // max-width: 100px;
+    max-width: 100%;
+    // min-width: 80px;
+}
+
+.wifi{
+    min-width: 50px;
+}
+.reload{
+    min-width: 50px;
+}
+
+ion-img .back-button.ios{
+    min-width: 40px;
+    max-width: 80px;
+    margin-right: 3px;
+}
+.table-detail-opaned{
+    ion-icon{
+        color:#0095EB;
+    }
+}
+
+.back-button {
+    max-width: 20px;
+    min-width: 15px;
+    
+
+}
+
+ion-popover.search-popover{
+    --backdrop-opacity:0;
+    // --width:450px;
+    --width:60vw;
+    // height: 300px;
+    --offset-x:-1vw;
+    --offset-y:-1rem;
+    label{
+        color:#b9b9b9;
+    }
+
+}
+
+
+
+
+
+// date picker
+
+ion-col{
+    .date-picker-container{
+        // width: 100vw;
+        height: 15rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .date-picker-box{
+        width: 90vw;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #6b6b6b;
+        border-radius: 10px;
+        padding-top: 1rem;
+        label{
+            font-size: 1.5rem;
+            color: #cfcfcf;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .date-picker{
+            height: 6rem;
+            width: 80vw;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 20px;
+            align-items: center;
+            // padding: 1rem 2rem 1rem 0 ;
+            padding-right: 2rem;
+            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+
+            img{
+                max-height: 100%;
+                max-width: 100%;
+            }
+            >div{
+                color: #0095EB;
+                font-size: 1.5rem;
+                font-weight: bold;
+                ion-icon{
+                    color: #a9a9a9;
+                    padding-left: 1rem;
+
+                }
+            }
+        }
+        }
+    }
+    ion-modal{
+        --background: red;
+        .ion-page{
+            --width: 2rem;
+        }
+        ion-buttons{
+            --background: red;
+        }
+    }
+}
+
+// search
+ion-col{
+    ion-row.search-container{
+        margin-bottom: 3rem;
+        .search-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 88vw;
+            height: 20vh;
+            border: 1px solid #6b6b6b;
+            border-radius: 10px;
+            .search-submit{
+                width: 10vw;
+                height: 12vh;
+                border-radius:  10px  0 0  10px ;
+                font-size: 2rem;
+                font-weight: bolder;
+                color: #fff;
+                z-index: 2;
+            }
+            .search{
+                box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+                border: none;
+                width: 60vw;
+                height: 12vh;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                font-size: 1.3rem;
+                border-radius: 0 10px  10px 0;
+            }
+            input::-webkit-input-placeholder{
+                justify-self: center;
+                align-self: center;
+                color: #e5e5e5df;
+            }
+            span{
+                position: relative;
+                // top: 1.5rem;
+                right: 2rem;
+                color: #e5e5e5df;
+                font-size: 1.3rem;
+            }
+
+        }
+
+    }
+}

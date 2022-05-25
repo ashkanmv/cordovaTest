@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@awesome-cordova-plugins/background-geolocation/ngx';
+import {
+  BackgroundGeolocation,
+  BackgroundGeolocationConfig,
+  BackgroundGeolocationEvents,
+  BackgroundGeolocationResponse,
+} from '@awesome-cordova-plugins/background-geolocation/ngx';
 import { Platform } from '@ionic/angular';
 import * as Highcharts from 'highcharts';
 
@@ -9,37 +14,40 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private plt : Platform,private backgroundGeolocation : BackgroundGeolocation) {
-    this.plt.ready().then(()=>{
-      console.log('ready');
-      if(this.plt.is('cordova'))
-        this.config();
-    }).catch(error=>{
-      console.log(error);
-    })
+  constructor(
+    private plt: Platform,
+    private backgroundGeolocation: BackgroundGeolocation
+  ) {
+    this.plt
+      .ready()
+      .then(() => {
+        console.log('ready');
+        if (this.plt.is('cordova')) this.config();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
+  config() {
+    this.backgroundGeolocation.configure(config).then(() => {
+      this.backgroundGeolocation
+        .on(BackgroundGeolocationEvents.location)
+        .subscribe((location: BackgroundGeolocationResponse) => {
+          console.log(location);
 
-  config(){
-    this.backgroundGeolocation.configure(config)
-    .then(() => {
-  
-      this.backgroundGeolocation.on(BackgroundGeolocationEvents.location).subscribe((location: BackgroundGeolocationResponse) => {
-        console.log(location);
-  
-        // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
-        // and the background-task may be completed.  You must do this regardless if your operations are successful or not.
-        // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-        this.backgroundGeolocation.finish(); // FOR IOS ONLY
-      });
-  
+          // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
+          // and the background-task may be completed.  You must do this regardless if your operations are successful or not.
+          // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
+          this.backgroundGeolocation.finish(); // FOR IOS ONLY
+        });
     });
-  
-  // start recording location
-  this.backgroundGeolocation.start();
-  
-  // If you wish to turn OFF background-tracking, call the #stop method.
-  // this.backgroundGeolocation.stop();    
+
+    // start recording location
+    this.backgroundGeolocation.start();
+
+    // If you wish to turn OFF background-tracking, call the #stop method.
+    // this.backgroundGeolocation.stop();
   }
 }
 

@@ -25,6 +25,10 @@ export class CustomerHistoryPage implements OnInit {
     sr: string;
     address: string;
   };
+  // disabling inputs
+  disableRouteSelector: boolean;
+  disableCustomerSelector: boolean;
+
   constructor(
     private router: Router,
     private historyService: CustomerHistoryService,
@@ -38,6 +42,9 @@ export class CustomerHistoryPage implements OnInit {
       sr: 'Saeed Rostamy',
       address: 'Tehran_Zafar',
     };
+    // disabling inputs
+    this.disableRouteSelector = true;
+    this.disableCustomerSelector = true;
   }
 
   ngOnInit() {
@@ -70,6 +77,8 @@ export class CustomerHistoryPage implements OnInit {
     this.historyService
       .getRoutesByCity(value.detail.value)
       .subscribe((res: { routename: string }[]) => (this.routes = res));
+    // abling routes after selecting cities
+    this.disableRouteSelector = false;
   }
 
   routeSelect(value: any) {
@@ -89,6 +98,8 @@ export class CustomerHistoryPage implements OnInit {
         this.markers = m;
         this.initialShopPoint(customers);
       });
+    // abling customers after selecting route
+    this.disableCustomerSelector = false;
   }
 
   initialShopPoint(customers: Customer[]) {
