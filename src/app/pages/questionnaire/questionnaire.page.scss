@@ -38,7 +38,7 @@ ion-input{
 }
 
 
-ion-row{
+ion-row.select-box{
     margin-bottom: 1rem;
     >ion-item{
         --background: #fff;
@@ -62,18 +62,16 @@ ion-row{
     }
 }
 
-ion-row.header{
-    margin-top: 1rem;
-}
 
 ion-select{
-
+    width: 100%;
+    color: #0095EB;
+    --placeholder-color: #6a6a6a;
     &::part(icon) {
         display: none;
       }
-    &::part(content) {
-        display: none;
-      }
+   
+
 }
 
 ion-popover{
@@ -222,8 +220,8 @@ ion-col.input-text{
         background: #e0e0e06c;
         border-radius: 10px;
         height: 2rem;
-        --padding-top:2rem;
-        --padding-bottom:1.5rem;
+        --padding-top:1.5rem;
+        --padding-bottom:1rem;
     }
 }
 
@@ -252,11 +250,21 @@ ion-col.radio-input-container{
         }
         &>div{
             background: #e0e0e06c;
-            padding:2.2rem ;
+            padding:1.7rem ;
             border-radius: 10px;
             width: 100%;
             display: flex;
             justify-content: space-around;
+            >div{
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                input[type="radio"]{
+                    &:checked + label{
+                        color: #0095EB;
+                    }
+                }
+            }
             label{
                 font-size: 1.2rem;
                 color: #b9b9b9;
@@ -267,10 +275,10 @@ ion-col.radio-input-container{
 }
 
     .btn-submit{
-        margin-bottom: 1rem;
+        margin: 2rem 0;
         // width: 60vw;
         width: 80%;
-        height: 11vh;
+        height: 9vh;
         font-size: 2rem;
         border-radius: 50px;
         background: #0095EB;

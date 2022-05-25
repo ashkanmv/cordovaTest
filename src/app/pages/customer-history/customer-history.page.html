@@ -24,13 +24,17 @@
         <ion-toggle color="primary" checked="true"></ion-toggle>
       </ion-col>
       <ion-col size="1" class="ion-align-self-center hide">
-        <ion-img
-          id="trigger-hide"
-          class="hide"
-          src="\assets\pages\customer-nearby\Hide.png"
-        >
-        </ion-img>
-        <ion-popover
+        <ion-img src="\assets\pages\customer-nearby\Hide.png"> </ion-img>
+        <ion-item>
+          <ion-select interface="popover" value="hide">
+            <ion-select-option value="50n">50 M</ion-select-option>
+            <ion-select-option value="100m">100 M</ion-select-option>
+            <ion-select-option value="500m">500 M</ion-select-option>
+            <ion-select-option value="700m">700 M</ion-select-option>
+            <ion-select-option value="1km">1 KM</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- <ion-popover
           class="header-drop-down hide-drop-down"
           trigger="trigger-hide"
         >
@@ -41,7 +45,7 @@
             <ion-content>700 M</ion-content>
             <ion-content>1 KM</ion-content>
           </ng-template>
-        </ion-popover>
+        </ion-popover> -->
       </ion-col>
       <ion-col size="1" class="ion-justfy-self-end ion-align-self-center wifi">
         <ion-img
@@ -95,13 +99,13 @@
           interface="popover"
           (ionChange)="selectCity($event)"
         >
+          <ion-select-option disabled value="">DC</ion-select-option>
+
           <ion-select-option *ngFor="let city of cities" [value]="city.City"
             >{{city.City}}
           </ion-select-option>
         </ion-select>
         <ion-icon name="chevron-down-outline"></ion-icon>
-        <!--  -->
-        <!--  -->
       </ion-item>
     </ion-row>
     <ion-row class="ion-justify-content-center">
@@ -117,6 +121,8 @@
           (ionChange)="routeSelect($event)"
           [disabled]="disableRouteSelector"
         >
+          <ion-select-option disabled value="">Route</ion-select-option>
+
           <ion-select-option
             *ngFor="let route of routes"
             [value]="route.routename"
@@ -139,6 +145,7 @@
           interface="popover"
           [disabled]="disableCustomerSelector"
         >
+          <ion-select-option disabled value="">Customer</ion-select-option>
           <ion-select-option *ngFor="let customer of customers"
             >{{customer.custName}}</ion-select-option
           >
@@ -149,34 +156,44 @@
 
     <ion-row class="radio-input-1 ion-justify-content-center">
       <div class="radio-input box-shadow">
-        <div class="">
-          <label for="sales">Sales</label>
+        <div class="radio-input-sales">
           <input
-            disabled
+            [disabled]="disableRadioSelector"
             type="radio"
             name="radio-input-data-type"
             id="sales"
           />
+          <label for="sales">Sales</label>
         </div>
         <div class="">
+          <input
+            [disabled]="disableRadioSelector"
+            type="radio"
+            name="radio-input-data-type"
+            id="pped"
+          />
           <label for="pped">PPED</label>
-          <input type="radio" name="radio-input-data-type" id="pped" />
         </div>
         <div class="">
+          <input
+            [disabled]="disableRadioSelector"
+            type="radio"
+            name="radio-input-data-type"
+            id="samples"
+          />
           <label for="samples">Samples</label>
-          <input type="radio" name="radio-input-data-type" id="samples" />
         </div>
       </div>
     </ion-row>
     <ion-row class="radio-input-2 ion-justify-content-center">
       <div class="radio-input box-shadow">
         <div class="">
+          <input type="radio" name="radio-input-mass" id="qty" />
           <label for="qty">Qty</label>
-          <input type="radio" name="radio-input-mass" id="" />
         </div>
         <div class="">
+          <input type="radio" name="radio-input-mass" id="kg" />
           <label for="kg">Kg</label>
-          <input type="radio" name="radio-input-mass" id="" />
         </div>
       </div>
     </ion-row>
@@ -227,20 +244,21 @@
             <td>3.20</td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail"> -->
-          <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-          <!-- <table class="">
-              <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
-          </div> -->
+          <div class="table-detail">
+            <div class="table-border">
+              <table class="">
+                <thead>
+                  <th>Visitor</th>
+                  <th>Driver</th>
+                </thead>
+                <tbody>
+                  <td>Ali Zardust</td>
+                  <td>Hosein Aghai</td>
+                </tbody>
+              </table>
+              <hr class="hr" />
+            </div>
+          </div>
           <tr>
             <td>
               <ion-icon
@@ -255,19 +273,20 @@
             <td>3.20</td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail"> -->
-          <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-          <!-- <table class="">
-              <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
+          <!-- <div class="table-detail">
+            <div class="table-border">
+              <table class="">
+                <thead>
+                  <th>Visitor</th>
+                  <th>Driver</th>
+                </thead>
+                <tbody>
+                  <td>Ali Zardust</td>
+                  <td>Hosein Aghai</td>
+                </tbody>
+              </table>
+              <hr class="hr" />
+            </div>
           </div> -->
           <tr>
             <td class="table-body-icon">
@@ -279,19 +298,20 @@
             <td>3.20</td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail"> -->
-          <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-          <!-- <table class="">
-              <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
+          <!-- <div class="table-detail">
+            <div class="table-border">
+              <table class="">
+                <thead>
+                  <th>Visitor</th>
+                  <th>Driver</th>
+                </thead>
+                <tbody>
+                  <td>Ali Zardust</td>
+                  <td>Hosein Aghai</td>
+                </tbody>
+              </table>
+              <hr class="hr" />
+            </div>
           </div> -->
           <tr>
             <td class="">
@@ -303,19 +323,20 @@
             <td>3.20</td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail"> -->
-          <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-          <!-- <table class="">
-              <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
+          <!-- <div class="table-detail">
+            <div class="table-border">
+              <table class="">
+                <thead>
+                  <th>Visitor</th>
+                  <th>Driver</th>
+                </thead>
+                <tbody>
+                  <td>Ali Zardust</td>
+                  <td>Hosein Aghai</td>
+                </tbody>
+              </table>
+              <hr class="hr" />
+            </div>
           </div> -->
           <tr>
             <td class="table-body-icon">
@@ -327,19 +348,20 @@
             <td></td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail"> -->
-          <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-          <!-- <table class="">
-              <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
+          <!-- <div class="table-detail">
+            <div class="table-border">
+              <table class="">
+                <thead>
+                  <th>Visitor</th>
+                  <th>Driver</th>
+                </thead>
+                <tbody>
+                  <td>Ali Zardust</td>
+                  <td>Hosein Aghai</td>
+                </tbody>
+              </table>
+              <hr class="hr" />
+            </div>
           </div> -->
           <tr>
             <td class="">
@@ -351,19 +373,20 @@
             <td></td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail"> -->
-          <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-          <!-- <table class="">
-              <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
+          <!-- <div class="table-detail">
+            <div class="table-border">
+              <table class="">
+                <thead>
+                  <th>Visitor</th>
+                  <th>Driver</th>
+                </thead>
+                <tbody>
+                  <td>Ali Zardust</td>
+                  <td>Hosein Aghai</td>
+                </tbody>
+              </table>
+              <hr class="hr" />
+            </div>
           </div> -->
           <tr>
             <td class="table-body-icon">
@@ -375,19 +398,20 @@
             <td></td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail"> -->
-          <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-          <!-- <table class="">
-              <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
+          <!-- <div class="table-detail">
+            <div class="table-border">
+              <table class="">
+                <thead>
+                  <th>Visitor</th>
+                  <th>Driver</th>
+                </thead>
+                <tbody>
+                  <td>Ali Zardust</td>
+                  <td>Hosein Aghai</td>
+                </tbody>
+              </table>
+              <hr class="hr" />
+            </div>
           </div> -->
           <tr>
             <td class="">
@@ -399,19 +423,20 @@
             <td></td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail"> -->
-          <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-          <!-- <table class="">
-              <thead>
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td>Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
+          <!-- <div class="table-detail">
+            <div class="table-border">
+              <table class="">
+                <thead>
+                  <th>Visitor</th>
+                  <th>Driver</th>
+                </thead>
+                <tbody>
+                  <td>Ali Zardust</td>
+                  <td>Hosein Aghai</td>
+                </tbody>
+              </table>
+              <hr class="hr" />
+            </div>
           </div> -->
         </tbody>
       </table>

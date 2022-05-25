@@ -28,6 +28,7 @@ export class CustomerHistoryPage implements OnInit {
   // disabling inputs
   disableRouteSelector: boolean;
   disableCustomerSelector: boolean;
+  disableRadioSelector: boolean;
 
   constructor(
     private router: Router,
@@ -45,6 +46,8 @@ export class CustomerHistoryPage implements OnInit {
     // disabling inputs
     this.disableRouteSelector = true;
     this.disableCustomerSelector = true;
+    this.disableCustomerSelector = true;
+    this.disableRadioSelector = true;
   }
 
   ngOnInit() {
@@ -129,5 +132,6 @@ export class CustomerHistoryPage implements OnInit {
       // });
       // this.shop_markers.push(marker);
     });
+    this.disableRadioSelector = false;
   }
 }
