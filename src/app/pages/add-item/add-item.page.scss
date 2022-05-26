@@ -45,32 +45,83 @@ ion-col{
     box-shadow: 5px 8px 16px 0 #c2e8fa, 0 6px 20px 0 #E6F5FC ;
 }  
     
+// content
 
 
 
-
-
+// 
 ion-row.item-name-img{
-    width: 90%;
+    height: 60vh;
     border-radius: 50px;
     margin: 2rem;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: green;
     ion-row.item-img{
-        background: red;
+        max-height: 100%;
+        margin-bottom: 1.5rem;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h3{
+            color: #0095EB;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
         img{
-            max-width: 40vw;
+            width: 18vw;
         }
     }
-    ion-row.item.name{
-        --background: blue;
-        ion-item{
-
+    ion-row.item-name{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 2rem;
+        ion-input{
+            text-align: center;
+            border: none;
+            outline: none;
+            border-bottom: 4px solid #3aa6ff69 ;
+            background: none;
+            font-size: 1.5rem;
+            --placeholder-color:#3aa6ff97;
         }
+
+    }
+}
+
+ion-row.item-title{
+    height: 10vh;
+    margin: 2rem;
+    border-radius: 50px;
+    ion-input{
+        border-radius: 50px;
+        --padding-top:1rem;
+        --padding-bottom:1rem;
+        font-size: 1.3rem;
+    }
+}
+ion-row.item-text{
+    height: 30vh;
+    margin: 2rem;
+    border-radius: 50px;
+    ion-input{
+        border-radius: 50px;
+        --padding-top:1rem;
+        --padding-bottom:1rem;
+        font-size: 1.3rem;
+    }
+}
+ion-row.item-submit{
+    height: 10vh;
+    margin: 2rem 4rem;
+    border-radius: 50px;    
+    .btn-submit{
+        border-radius: 50px;
+        width: 100%;
+        font-size: 1.7rem;
+        color: #fff;
     }
 }

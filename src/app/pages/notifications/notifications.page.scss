@@ -8,7 +8,8 @@ ion-img.back-button{
     z-index: 2;
 }
 ion-img.wifi-online{
-    width: 7vw;
+    // width: 7vw;
+    min-width: 30px;
 
     // width: 100px;
     // width: 20%;
@@ -16,6 +17,8 @@ ion-img.wifi-online{
 ion-col.wifi{
     margin-right: 4vw;
 }
+
+
 
 
 ion-title {
