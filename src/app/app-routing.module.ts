@@ -119,7 +119,8 @@ const routes: Routes = [
       import(
         './pages/today-planned-not-buying/today-planned-not-buying.module'
       ).then((m) => m.TodayPlannedNotBuyingPageModule),
-  },  {
+  },
+  {
     path: 'add-item',
     loadChildren: () => import('./pages/add-item/add-item.module').then( m => m.AddItemPageModule)
   },

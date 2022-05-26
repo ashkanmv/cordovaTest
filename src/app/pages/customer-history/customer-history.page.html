@@ -3,21 +3,13 @@
     <ion-row class="primary-bg">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" (click)="backButton()">
-          <ion-img
-            class="back-button"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
+          <ion-img class="back-button" src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col size="6" class="ion-text-start ion-align-self-center">
-        <ion-title class="ion-no-padding white-text"
-          >Customer History</ion-title
-        >
+        <ion-title class="ion-no-padding white-text">Customer History</ion-title>
       </ion-col>
-      <ion-col
-        size="1"
-        class="ion-no-padding ion-align-self-center ion-text-end gps-text"
-      >
+      <ion-col size="1" class="ion-no-padding ion-align-self-center ion-text-end gps-text">
         GPS
       </ion-col>
       <ion-col size="1" class="ion-align-self-center ion-margin-end">
@@ -48,10 +40,7 @@
         </ion-popover> -->
       </ion-col>
       <ion-col size="1" class="ion-justfy-self-end ion-align-self-center wifi">
-        <ion-img
-          class="wifi-offline"
-          src="assets\pages\customer-history\Internet Off.png"
-        ></ion-img>
+        <ion-img class="wifi-offline" src="assets\pages\customer-history\Internet Off.png"></ion-img>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -71,134 +60,83 @@
 </ion-header>
 
 <ion-content>
-  <div class="container" *ngIf="showMap">
-    <app-map id="map" [showMap]="showMap" [markers]="markers"></app-map>
-  </div>
   <ion-row class="search-box ion-justify-content-center">
     <button class="search-submit primary-bg">
       <ion-icon name="search-outline"></ion-icon>
     </button>
-    <input
-      type="search"
-      name=""
-      id="trigger-search"
-      placeholder="Search"
-      class="search search-customer-history input-shadow"
-    />
+    <input type="search" name="" id="trigger-search" placeholder="Search"
+      class="search search-customer-history input-shadow" />
     <span class="search-icon">
       <ion-icon name="chevron-down-outline"></ion-icon>
     </span>
   </ion-row>
 
-  <ion-grid class="customer-history-select">
-    <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-1" lines="none" class="box-shadow select-box">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="DC"
-          interface="popover"
-          (ionChange)="selectCity($event)"
-        >
-          <ion-select-option disabled value="">DC</ion-select-option>
+  <form [formGroup]="form">
+    <ion-grid class="customer-history-select">
+      <ion-row class="ion-justify-content-center">
+        <ion-item id="trigger-input-1" lines="none" class="box-shadow select-box">
+          <ion-select class="drop-down select-drop-down" placeholder="DC" interface="popover" formControlName="DC"
+            (ionChange)="selectCity($event)">
+            <ion-select-option value="">DC</ion-select-option>
+            <ion-select-option *ngFor="let city of cities" [value]="city.City">{{city.City}}
+            </ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-item id="trigger-input-route" lines="none" class="box-shadow select-box">
+          <ion-select class="drop-down select-drop-down" placeholder="Route" interface="popover" formControlName="Route"
+            (ionChange)="routeSelect($event)" [disabled]="!f.DC.value">
+            <ion-select-option value="">Route</ion-select-option>
+            <ion-select-option *ngFor="let route of routes" [value]="route.routename">{{route.routename}}
+            </ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
 
-          <ion-select-option *ngFor="let city of cities" [value]="city.City"
-            >{{city.City}}
-          </ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-item
-        id="trigger-input-route"
-        lines="none"
-        class="box-shadow select-box"
-      >
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="Route"
-          interface="popover"
-          (ionChange)="routeSelect($event)"
-          [disabled]="disableRouteSelector"
-        >
-          <ion-select-option disabled value="">Route</ion-select-option>
+      <ion-row class="ion-justify-content-center">
+        <ion-item id="trigger-input-customer" lines="none" class="box-shadow select-box">
+          <ion-select class="drop-down select-drop-down" placeholder="Customer" interface="popover" formControlName="Customer"
+          [disabled]="!f.Route.value">
+            <ion-select-option value="">Customer</ion-select-option>
+            <ion-select-option *ngFor="let customer of customers" [value]="customer.CustCode">{{customer.custName}}</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
 
-          <ion-select-option
-            *ngFor="let route of routes"
-            [value]="route.routename"
-            >{{route.routename}}
-          </ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-
-    <ion-row class="ion-justify-content-center">
-      <ion-item
-        id="trigger-input-customer"
-        lines="none"
-        class="box-shadow select-box"
-      >
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="Customer"
-          interface="popover"
-          [disabled]="disableCustomerSelector"
-        >
-          <ion-select-option disabled value="">Customer</ion-select-option>
-          <ion-select-option *ngFor="let customer of customers"
-            >{{customer.custName}}</ion-select-option
-          >
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-
-    <ion-row class="radio-input-1 ion-justify-content-center">
-      <div class="radio-input box-shadow">
-        <div class="radio-input-sales">
-          <input
-            [disabled]="disableRadioSelector"
-            type="radio"
-            name="radio-input-data-type"
-            id="sales"
-          />
-          <label for="sales">Sales</label>
+      <ion-row class="radio-input-1 ion-justify-content-center">
+        <div class="radio-input box-shadow">
+          <div class="radio-input-sales">
+            <input [disabled]="!f.Customer.value" type="radio"  value="sales" formControlName="type"/>
+            <label for="sales">Sales</label>
+          </div>
+          <div>
+            <input [disabled]="!f.Customer.value" type="radio"  value="pped" formControlName="type"/>
+            <label for="pped">PPED</label>
+          </div>
+          <div>
+            <input [disabled]="!f.Customer.value" type="radio"  value="samples" formControlName="type"/>
+            <label for="samples">Samples</label>
+          </div>
         </div>
-        <div class="">
-          <input
-            [disabled]="disableRadioSelector"
-            type="radio"
-            name="radio-input-data-type"
-            id="pped"
-          />
-          <label for="pped">PPED</label>
+      </ion-row>
+      <ion-row class="radio-input-2 ion-justify-content-center">
+        <div class="radio-input box-shadow">
+          <div>
+            <input type="radio" value="qty" formControlName="kgqty" />
+            <label for="qty">Qty</label>
+          </div>
+          <div>
+            <input type="radio" value="kg" formControlName="kgqty" />
+            <label for="kg">Kg</label>
+          </div>
         </div>
-        <div class="">
-          <input
-            [disabled]="disableRadioSelector"
-            type="radio"
-            name="radio-input-data-type"
-            id="samples"
-          />
-          <label for="samples">Samples</label>
-        </div>
-      </div>
-    </ion-row>
-    <ion-row class="radio-input-2 ion-justify-content-center">
-      <div class="radio-input box-shadow">
-        <div class="">
-          <input type="radio" name="radio-input-mass" id="qty" />
-          <label for="qty">Qty</label>
-        </div>
-        <div class="">
-          <input type="radio" name="radio-input-mass" id="kg" />
-          <label for="kg">Kg</label>
-        </div>
-      </div>
-    </ion-row>
-  </ion-grid>
-
+      </ion-row>
+    </ion-grid>
+  </form>
   <ion-card class="ion-no-margin">
     <ion-card-header>
       <h4 class="shop-name">
@@ -211,7 +149,7 @@
       <h4 class="shop-type">
         <span>Shop type: </span>{{customerInfo.shopType}}
       </h4>
-      <div class="">
+      <div>
         <h4 class="sr"><span>SR: </span>{{customerInfo.sr}}</h4>
         <h4 class="address"><span>Address: </span>{{customerInfo.address}}</h4>
       </div>
@@ -246,7 +184,7 @@
           </tr>
           <div class="table-detail">
             <div class="table-border">
-              <table class="">
+              <table>
                 <thead>
                   <th>Visitor</th>
                   <th>Driver</th>
@@ -261,10 +199,7 @@
           </div>
           <tr>
             <td>
-              <ion-icon
-                class="isNotShowing"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
               DD 200
             </td>
             <td></td>
@@ -275,7 +210,7 @@
           </tr>
           <!-- <div class="table-detail">
             <div class="table-border">
-              <table class="">
+              <table>
                 <thead>
                   <th>Visitor</th>
                   <th>Driver</th>
@@ -300,7 +235,7 @@
           </tr>
           <!-- <div class="table-detail">
             <div class="table-border">
-              <table class="">
+              <table>
                 <thead>
                   <th>Visitor</th>
                   <th>Driver</th>
@@ -314,7 +249,7 @@
             </div>
           </div> -->
           <tr>
-            <td class="">
+            <td>
               <ion-icon name="chevron-down-outline"></ion-icon> Total
             </td>
             <td></td>
@@ -325,7 +260,7 @@
           </tr>
           <!-- <div class="table-detail">
             <div class="table-border">
-              <table class="">
+              <table>
                 <thead>
                   <th>Visitor</th>
                   <th>Driver</th>
@@ -350,7 +285,7 @@
           </tr>
           <!-- <div class="table-detail">
             <div class="table-border">
-              <table class="">
+              <table>
                 <thead>
                   <th>Visitor</th>
                   <th>Driver</th>
@@ -364,7 +299,7 @@
             </div>
           </div> -->
           <tr>
-            <td class="">
+            <td>
               <ion-icon name="chevron-down-outline"></ion-icon> DCD
             </td>
             <td></td>
@@ -375,7 +310,7 @@
           </tr>
           <!-- <div class="table-detail">
             <div class="table-border">
-              <table class="">
+              <table>
                 <thead>
                   <th>Visitor</th>
                   <th>Driver</th>
@@ -400,7 +335,7 @@
           </tr>
           <!-- <div class="table-detail">
             <div class="table-border">
-              <table class="">
+              <table>
                 <thead>
                   <th>Visitor</th>
                   <th>Driver</th>
@@ -414,7 +349,7 @@
             </div>
           </div> -->
           <tr>
-            <td class="">
+            <td>
               <ion-icon name="chevron-down-outline"></ion-icon> DCD
             </td>
             <td></td>
@@ -425,7 +360,7 @@
           </tr>
           <!-- <div class="table-detail">
             <div class="table-border">
-              <table class="">
+              <table>
                 <thead>
                   <th>Visitor</th>
                   <th>Driver</th>
