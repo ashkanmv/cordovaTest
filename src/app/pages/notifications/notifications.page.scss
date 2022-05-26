@@ -35,65 +35,81 @@ ion-content{
     --background: #0095EB;
 }
 
-ion-slides {
-    height: 80vw;
-  }
-
 ion-col{
     display: flex;
     justify-content: center;
     h4{
         color: #fff;
-
+        
     }
 }
 
 
 
+
 // -----card----------
 
-// use the img
-// ion-col.card{
-//     width: 100vw;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     img{
-//         width: 90vw;
-//     }
-// }
-//  or card
-ion-col.card{
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
+ion-slides {
+    height: 100%;
+    width: 90%;
+    border-radius: 30px 30px 0 0;
+    .swiper-pagination{
+        margin-top: 2rem;
+        background: red;
+    }
+  }
+ion-col.card{
+    border-radius: 30px 30px 0 0;
+
+        width: 100vw;
+        height: 80vh;
         ion-card{
-            background: red;
-            height: 60vw;
+            // background: none;
+            width: 100%;
+            // height: 70vw;
             // width: 90vw;
-            border-radius: 30px 30px 0 0;
+            border-radius: 40px 40px 0 0;
+
+            .btn-delete{
+                position: absolute;
+                right: 10px;
+                top: 40px;
+                background: none;
+                border-radius: 50%;
+                width:50px;
+                z-index: 2;
+            }
+            .btn-edit{
+                position: absolute;
+                left: 10px;
+                top: 40px;
+                background: none;
+                border-radius: 50%;
+                width:50px;
+                z-index: 2;
+            }
             ion-card-header{
-                img{
-                    // max-width: 100%;
-                    height: 40%;
+                width: 100%;
+                padding: 0;
+                border-radius: 40px 40px 0 0;
+                >img{
+                    max-width: 100%;
+                    // height: 40vh;
                 }
-                .btn-delete{
-                    position: absolute;
-                    right: 1px;
-                    background: none;
-                    border-radius: 50%;
-                    width:50px;
-                    z-index: 2;
-                }
-                .btn-edit{
-                    position: absolute;
-                    background: none;
-                    border-radius: 50%;
-                    width:50px;
-                    z-index: 2;
-                }
+            }
+            ion-card-content{
+                padding-top: 2rem;
+                background: #fff;
+                // height: 35vh;
+                width: 100%;
+                height: 25vh;
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: #083068;
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
             }
         }
 
@@ -110,7 +126,7 @@ ion-col.notifications{
         width: 90vw;
         .btn-delete{
             position: absolute;
-            right: 1px;
+            right: 5px;
             background: none;
             border-radius: 50%;
             width:50px;
@@ -119,6 +135,7 @@ ion-col.notifications{
         }
         .btn-edit{
             position: absolute;
+            left: 5px;
             background: none;
             border-radius: 50%;
             width:50px;
@@ -130,13 +147,13 @@ ion-col.notifications{
             padding-left: 1rem;
         }
         ion-card-content{
-            padding: 2rem 4rem .5rem;
+            padding: 3rem 4rem .5rem;
             display: flex;
             align-items: center;
             padding-left:10vw ;
             h4{
                 color: #07073f;
-                font-size: 1.4rem;
+                font-size: 1rem;
                 font-weight: bold;
             }
             img{
@@ -157,3 +174,13 @@ ion-col.notifications{
 //     height: 10vh;
 //     background: #b9b9b9;
 // }
+@media (min-width:992px) {
+    ion-col.notifications{
+        ion-card{
+            width: 60vw;
+
+        }
+    }
+
+
+}

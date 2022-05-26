@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-between header ion-no-margin">
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="backButton()">
+          <ion-img
+            class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="\assets\menu\about-app\back-button.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-title>
+          <h3><b>Add Item</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img
+          class="wifi-online"
+          src="assets/mainPage/main/wifi.png"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-grid class="secondary-bg white-text">
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="3" class="ion-no-padding ion-text-start">
+          2022.04.02
+        </ion-col>
+        <ion-col size="3" class="ion-no-padding ion-text-center">
+          Saturday
+        </ion-col>
+        <ion-col size="3" class="ion-no-padding ion-text-end">
+          13 فروردین
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="item-name-img box-shadow">
+    <ion-row class="item-img">
+      <img src="\assets\pages\add-item\Add-Photo.png" alt="" />
+      <ion-label>Please Add your photo</ion-label>
+    </ion-row>
+    <ion-row class="item-name">
+      <ion-input type="text" placeholder="Item Name"></ion-input>
+    </ion-row>
+  </ion-row>
+</ion-content>
