@@ -41,7 +41,24 @@ export interface Access {
   name: string;
 }
 
+export interface UserLog {
+  user_id: string,
+  task: string,
+  version: string
+}
 
+
+
+// ENUMS
+export enum Languages {
+  EN,
+  FA
+}
+
+
+
+
+// Language
 export class Language {
   Customer_History: {
     TitLe: string;
@@ -112,9 +129,4 @@ export class Language {
     "UserPassIncorrect": string;
     "RememberMe": string;
   }
-}
-
-export enum Languages {
-  EN,
-  FA
 }
