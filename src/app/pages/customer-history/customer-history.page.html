@@ -98,10 +98,11 @@
 
       <ion-row class="ion-justify-content-center">
         <ion-item id="trigger-input-customer" lines="none" class="box-shadow select-box">
-          <ion-select class="drop-down select-drop-down" placeholder="Customer" interface="popover" formControlName="Customer"
-          [disabled]="!f.Route.value">
+          <ion-select class="drop-down select-drop-down" placeholder="Customer" interface="popover"
+            formControlName="Customer" [disabled]="!f.Route.value">
             <ion-select-option value="">Customer</ion-select-option>
-            <ion-select-option *ngFor="let customer of customers" [value]="customer.CustCode">{{customer.custName}}</ion-select-option>
+            <ion-select-option *ngFor="let customer of customers" [value]="customer.CustCode">{{customer.custName}}
+            </ion-select-option>
           </ion-select>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-item>
@@ -110,15 +111,15 @@
       <ion-row class="radio-input-1 ion-justify-content-center">
         <div class="radio-input box-shadow">
           <div class="radio-input-sales">
-            <input [disabled]="!f.Customer.value" type="radio"  value="sales" formControlName="type"/>
+            <input [disabled]="!f.Customer.value" type="radio" value="sales" formControlName="type" />
             <label for="sales">Sales</label>
           </div>
           <div>
-            <input [disabled]="!f.Customer.value" type="radio"  value="pped" formControlName="type"/>
+            <input [disabled]="!f.Customer.value" type="radio" value="pped" formControlName="type" />
             <label for="pped">PPED</label>
           </div>
           <div>
-            <input [disabled]="!f.Customer.value" type="radio"  value="samples" formControlName="type"/>
+            <input [disabled]="!f.Customer.value" type="radio" value="samples" formControlName="type" />
             <label for="samples">Samples</label>
           </div>
         </div>
@@ -377,13 +378,17 @@
       </table>
     </ion-card-content>
   </ion-card>
-  <ion-col>
+
+  <ion-row class="ion-justify-content-center">
     <app-area-charts></app-area-charts>
-  </ion-col>
-  <ion-col>
-    <ion-col>
-      <app-column-charts></app-column-charts>
-    </ion-col>
-    <app-pie-charts></app-pie-charts>
-  </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">    
+    <app-column-charts></app-column-charts>
+  </ion-row>
+  
+<ion-row class="ion-justify-content-center">
+  <app-pie-charts></app-pie-charts>
+</ion-row>
+
 </ion-content>

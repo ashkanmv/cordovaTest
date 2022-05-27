@@ -63,6 +63,7 @@ export class CustomerHistoryPage implements OnInit {
     if (this.Customer_Number) this.Get_CustomerFromMap(this.Customer_Number);
     else this.getCities();
     this.loadForm();
+    this.getAvgs();
   }
 
   ionViewDidEnter() {
