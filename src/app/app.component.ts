@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   BackgroundGeolocation,
   BackgroundGeolocationConfig,
@@ -6,27 +6,36 @@ import {
   BackgroundGeolocationResponse,
 } from '@awesome-cordova-plugins/background-geolocation/ngx';
 import { Platform } from '@ionic/angular';
-import * as Highcharts from 'highcharts';
+import { LanguageService } from './shared/language.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  startApp = false;
   constructor(
     private plt: Platform,
-    private backgroundGeolocation: BackgroundGeolocation
-  ) {
-    this.plt
-      .ready()
-      .then(() => {
+    private backgroundGeolocation: BackgroundGeolocation,
+    private languageService: LanguageService
+  ) {}
+  ngOnInit(): void {
+    this.loadLanguage();
+  }
+
+  loadLanguage() {
+    this.languageService.loadLanguage().subscribe(() => {
+      console.log('ash');
+      
+      this.startApp = true;
+      this.plt.ready().then(() => {
         console.log('ready');
         if (this.plt.is('cordova')) this.config();
-      })
-      .catch((error) => {
+      }).catch((error) => {
         console.log(error);
       });
+    });
   }
 
   config() {

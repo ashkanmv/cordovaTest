@@ -60,9 +60,15 @@
             "Segment-channel%": "CHANNEL %",
             "Radio-input-sales": "sales",
             "Radio-input-PPED": "PPED"   
+        },
+        "login": {
+            "title": "Login",
+            "username": "Username",
+            "password": "Password",
+            "submit": "Sign In",
+            "UserPassIncorrect": "Username or password is incorrect",
+            "RememberMe" : "Remember Me"
         }
-        
-
     },
     "FR":{
         "Customer_History" : "تست"
