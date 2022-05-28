@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
   private _storage: Storage | null = null;
@@ -23,15 +23,15 @@ export class StorageService {
     this._storage?.set(key, value);
   }
 
-  async get(key: string){
+  async get(key: string) {
     return await this._storage?.get(key);
   }
 
-  async remove(key:string){
+  async remove(key: string) {
     await this._storage.remove(key);
   }
 
-  async clearAll(){
+  async clearAll() {
     await this._storage.clear();
   }
 }

@@ -1,28 +1,61 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6" class="ion-text-center">
+        <ion-title>
+          <h3><b>Login</b></h3>
+        </ion-title>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<form [formGroup]="form" (ngSubmit)="login()">
-  <ion-item>
-    <ion-label position="floating">{{language.login.username}} <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input formControlName="Username" type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating"> {{language.login.password}} <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input formControlName="Password" type="password"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>{{language.login.RememberMe}}</ion-label>
-    <ion-checkbox slot="start" formControlName="RememberMe" ></ion-checkbox>
-  </ion-item>
-  <ion-row class="ion-justify-content-center">
-    <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
-  </ion-row>
-  <ion-button block color="primary" type="submit" [disabled]="form.invalid" *ngIf="!isLoading">
-    Login
-  </ion-button>
-</form>
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <ion-img class="danone-logo" src="\assets\pages\login\Danone.png"></ion-img>
+    <ion-item class="username box-shadow">
+      <ion-label position="floating"
+        >{{language.login.username}}
+        <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input formControlName="Username" type="text"></ion-input>
+    </ion-item>
+    <ion-item class="password box-shadow">
+      <ion-label position="floating">
+        {{language.login.password}}
+        <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input formControlName="Password" type="password"></ion-input>
+      <span class="eye"
+        ><img
+          src="assets/menu/profile/Atoms- Icons- Eye Active.png"
+          alt=""
+          (click)="showPassword(input)"
+      /></span>
+    </ion-item>
+    <ion-item class="remember-me ion-no-border">
+      <ion-label>{{language.login.RememberMe}}</ion-label>
+      <ion-checkbox slot="start" formControlName="RememberMe"></ion-checkbox>
+    </ion-item>
+    <ion-row class="ion-justify-content-center">
+      <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
+    </ion-row>
+    <ion-button
+      block
+      class="box-shadow"
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid"
+      *ngIf="!isLoading"
+    >
+      Login
+    </ion-button>
+    <div class="">
+      <h4>{{language.login.serial}}</h4>
+      <h4>{{language.login.Serial}}</h4>
+      <h6>{{language.login.rysaVer}}</h6>
+    </div>
+    <h3>{{language.login.PoweredBy}}</h3>
+    <ion-img class="logo" src="\assets\pages\login\PNG.png"></ion-img>
+  </form>
 </ion-content>
