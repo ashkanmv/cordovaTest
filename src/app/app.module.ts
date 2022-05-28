@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BackgroundGeolocation } from '@awesome-cordova-plugins/background-geolocation/ngx';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { GlobalInterceptorService } from './global-interceptor.service';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { GlobalInterceptorService } from './global-interceptor.service';
     AppRoutingModule,
     HttpClientModule,
     HighchartsChartModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     BackgroundGeolocation,

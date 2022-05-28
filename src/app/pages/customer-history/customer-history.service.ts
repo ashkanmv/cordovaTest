@@ -53,20 +53,12 @@ export class CustomerHistoryService {
     return this.http.get(this.customerbynum, { params });
   }
   getPpedByCustomer(customer_id: string) {
-    // let headers = new Headers({
-    //   'Content-Type': 'application/json',
-    //   async: 'false',
-    // });
     let params = new HttpParams();
     params = params.append('customer_id', customer_id);
     return this.http.get(this.ppedUrl, { params });
   }
 
   getSalesByCustomer(customer_id: Number) {
-    // let headers = new Headers({
-    //   'Content-Type': 'application/json',
-    //   async: 'false',
-    // });
     let params = new HttpParams();
     params = params.append('customer_id', customer_id.toString());
     return this.http.get(this.salesUrl, { params });

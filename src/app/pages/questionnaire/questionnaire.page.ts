@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cities, Customer } from 'src/app/shared/common';
 
 @Component({
   selector: 'app-questionnaire',
@@ -7,10 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./questionnaire.page.scss'],
 })
 export class QuestionnairePage implements OnInit {
-  constructor(private router: Router) {}
+  cities: Cities[] = [];
+  routes: { routename: string }[] = [];
+  customers: Customer[] = [];
 
-  ngOnInit() {}
+  public get user_id(): string {
+    return
+  }
+
+  constructor(private router: Router) { }
+
+  ngOnInit() { }
   backButton() {
     this.router.navigate(['/']);
   }
+  
 }

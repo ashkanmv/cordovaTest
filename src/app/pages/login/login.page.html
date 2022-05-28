@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="form" (ngSubmit)="login()">
+  <ion-item>
+    <ion-label position="floating">{{language.login.username}} <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input formControlName="Username" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating"> {{language.login.password}} <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input formControlName="Password" type="password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{language.login.RememberMe}}</ion-label>
+    <ion-checkbox slot="start" formControlName="RememberMe" ></ion-checkbox>
+  </ion-item>
+  <ion-row class="ion-justify-content-center">
+    <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
+  </ion-row>
+  <ion-button block color="primary" type="submit" [disabled]="form.invalid" *ngIf="!isLoading">
+    Login
+  </ion-button>
+</form>
+</ion-content>

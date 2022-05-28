@@ -37,11 +37,17 @@ ion-menu {
 
 // 
 
-// .popover-content{
-//   &::part(content){
-//       padding: 1rem ;
-//   }
-// }
+.popover-content{
+  --max-height:2rem;
+}
+.custom-popover{
+  --max-height:2rem;
+}
+
+
+ion-select-popover{
+  --max-height:2rem;
+}
 // 
 
 ion-toggle {

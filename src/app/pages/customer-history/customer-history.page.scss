@@ -49,9 +49,18 @@ ion-toggle{
 
 .wifi{
     min-width: 45px;    
+
+    ion-img{
+        width: 5vw;
+        min-width: 40px;
+    }
 }
 .hide{
     min-width: 45px;    
+    ion-img{
+        width: 4.8vw;
+        min-width: 38px;
+    }
 }
 
 ion-toggle.ios{
