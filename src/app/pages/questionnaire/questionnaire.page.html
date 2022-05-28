@@ -38,105 +38,115 @@
 </ion-header>
 
 <ion-content>
-  <ion-col class="">
-    <ion-row class="ion-justify-content-center select-box">
-      <ion-item
-        id="trigger-input-date"
-        lines="none"
-        class="box-shadow select-input"
-      >
-        <!-- <ion-label>DC</ion-label> -->
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="DC"
-          interface="popover"
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-col class="">
+      <ion-row class="ion-justify-content-center select-box">
+        <ion-item
+          id="trigger-input-date"
+          lines="none"
+          class="box-shadow select-input"
         >
-          <ion-select-option class="select-label" disabled value=""
-            >DC</ion-select-option
+          <!-- <ion-label>DC</ion-label> -->
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="DC"
+            interface="popover"
+            formControlName="DC"
+            (ionChange)="selectCity($event)"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center select-box">
-      <ion-item id="trigger-input-route" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="Route"
-          interface="popover"
+            <ion-select-option class="select-label" disabled value="">
+              DC
+            </ion-select-option>
+            <ion-select-option *ngFor="let item of cities" [value]="item.City">
+              {{item.City}}
+            </ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center select-box">
+        <ion-item id="trigger-input-route" lines="none" class="box-shadow">
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="Route"
+            interface="popover"
+            formControlName="Route"
+          >
+            <ion-select-option class="select-label" value=""
+              >Route</ion-select-option
+            >
+            <ion-select-option
+              *ngFor="let item of routes"
+              [value]="item.routename"
+              >{{item.routename}}</ion-select-option
+            >
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center select-box">
+        <ion-item
+          id="trigger-input-route-daily"
+          lines="none"
+          class="box-shadow"
         >
-          <ion-select-option class="select-label" value=""
-            >Route</ion-select-option
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="Route Daily"
+            interface="popover"
+            formControlName="RouteDaily"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center select-box">
-      <ion-item id="trigger-input-route-daily" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="Route Daily"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >RouteDaily</ion-select-option
+            <ion-select-option class="select-label" disabled value=""
+              >RouteDaily</ion-select-option
+            >
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center select-box">
+        <ion-item id="trigger-input-customer" lines="none" class="box-shadow">
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="customer"
+            interface="popover"
+            formControlName="Customer"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center select-box">
-      <ion-item id="trigger-input-customer" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="customer"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >Customer</ion-select-option
-          >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
+            <ion-select-option class="select-label" disabled value=""
+              >Customer</ion-select-option
+            >
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
 
-    <ion-row class="ion-justify-content-center select-box">
-      <ion-item
-        id="trigger-input-customer-category"
-        lines="none"
-        class="box-shadow"
-      >
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="Customer Category"
-          interface="popover"
+      <ion-row class="ion-justify-content-center select-box">
+        <ion-item
+          id="trigger-input-customer-category"
+          lines="none"
+          class="box-shadow"
         >
-          <ion-select-option size="cover" class="select-label" disabled value=""
-            >Customer Category</ion-select-option
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="Customer Category"
+            interface="popover"
+            formControlName="QuestionCategory"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-  </ion-col>
+            <ion-select-option
+              size="cover"
+              class="select-label"
+              disabled
+              value=""
+              >Customer Category</ion-select-option
+            >
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+    </ion-col>
+  </form>
 
   <ion-col class="ion-justify-content-center input-text">
     <ion-row class="ion-justify-content-center">
