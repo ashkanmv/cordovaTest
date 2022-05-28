@@ -2,8 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Data, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import { Subscription } from 'rxjs';
-import { Cities, Customer } from 'src/app/shared/common';
+import {
+  Cities,
+  Customer,
+  Language,
+  Languages,
+  Question,
+  Questioncat,
+} from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { QuestionnaireService } from './questionnaire.service';
 
@@ -18,16 +25,26 @@ export class QuestionnairePage implements OnInit {
   routes: { routename: string }[] = [];
   customers: Customer[] = [];
   routedailys: any[] = [];
+  questioncats: Questioncat[] = [];
+  questions: Question[] = [];
   userId: string;
   customerNumber: string;
-  typeSubscription: Subscription;
-  kgqtySubscription: Subscription;
+
+  public get language(): Language {
+    return this.languageService.language;
+  }
+
+  public get selectedLanguage(): Languages {
+    return this.languageService.selectedLanguage;
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private questionnaireService: QuestionnaireService,
     private storageService: StorageService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit() {
@@ -46,12 +63,6 @@ export class QuestionnairePage implements OnInit {
       QuestionCategory: [null],
       RouteDaily: [null],
     });
-    // this.typeSubscription = this.form.controls['type'].valueChanges.subscribe(
-    //   (v) => this.typeChanged(v)
-    // );
-    // this.kgqtySubscription = this.form.controls['kgqty'].valueChanges.subscribe(
-    //   (v) => this.kgqtyChanged(v)
-    // );
   }
 
   get f() {
@@ -95,29 +106,25 @@ export class QuestionnairePage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    console.log(typeof value);
-
     let cityName = typeof value == 'string' ? value : value.detail.value;
     this.questionnaireService.getRouteByUserId(cityName, this.userId).subscribe(
       (routes: { routename: string }[]) => {
         this.routes = routes;
-        console.log(routes);
         loading.dismiss();
       },
       () => loading.dismiss()
     );
   }
 
-  async selectRoute(routeName: string) {
+  async selectRoute(value: any) {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
     await loading.present();
     this.questionnaireService
-      .routedailySelectByRouteByUser(routeName, this.userId)
+      .routedailySelectByRouteByUser(value.detail.value, this.userId)
       .subscribe(
         (data: Data[]) => {
-          console.log(data);
           this.routedailys = data;
           loading.dismiss();
         },
@@ -125,12 +132,12 @@ export class QuestionnairePage implements OnInit {
       );
   }
 
-  async open_OtherForm(CustomerNumber: string) {
+  async open_OtherForm(customerNumber: string) {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
     await loading.present();
-    this.questionnaireService.getCustomersByNumber('21001009').subscribe(
+    this.questionnaireService.getCustomersByNumber(customerNumber).subscribe(
       (data: Data) => {
         console.log(data);
         loading.dismiss();
@@ -139,10 +146,53 @@ export class QuestionnairePage implements OnInit {
     );
   }
 
-  typeChanged(value: string) {}
+  async selectRouteDaily(value: any) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.questionnaireService
+      .getCustomersByRouteIdStep(value.detail.value)
+      .subscribe(
+        (customers: Customer[]) => {
+          this.customers = customers;
+          loading.dismiss();
+        },
+        () => loading.dismiss()
+      );
+  }
 
-  kgqtyChanged(value: string) {}
+  async selectCustomer(customer: any) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.questioncats = [];
+    this.questionnaireService.getQuestionCatsByUserId(this.userId).subscribe(
+      (questioncats: Questioncat[]) => {
+        this.questioncats = questioncats;
+        loading.dismiss();
+      },
+      () => loading.dismiss()
+    );
+  }
 
+  async selectQuestion(value: any) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.questionnaireService
+      .getQuestionsByCat('fa', value.detail.value)
+      .subscribe(
+        (questions: Question[]) => {
+          this.questions = questions;
+          console.log(this.questions);
+          loading.dismiss();
+        },
+        () => loading.dismiss()
+      );
+  }
   onSubmit() {}
 
   patchValue(controller: string, value: any) {

@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Languages } from 'src/app/shared/common';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

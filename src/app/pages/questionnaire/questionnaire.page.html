@@ -71,6 +71,7 @@
             placeholder="Route"
             interface="popover"
             formControlName="Route"
+            (ionChange)="selectRoute($event)"
           >
             <ion-select-option class="select-label" value=""
               >Route</ion-select-option
@@ -95,11 +96,16 @@
             placeholder="Route Daily"
             interface="popover"
             formControlName="RouteDaily"
+            (ionChange)="selectRouteDaily($event)"
           >
             <ion-select-option class="select-label" disabled value=""
               >RouteDaily</ion-select-option
             >
-            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+            <ion-select-option
+              *ngFor="let item of routedailys"
+              [value]="item.RouteID"
+              >{{item.Title}}</ion-select-option
+            >
           </ion-select>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-item>
@@ -111,11 +117,14 @@
             placeholder="customer"
             interface="popover"
             formControlName="Customer"
+            (ionChange)="selectCustomer($event)"
           >
             <ion-select-option class="select-label" disabled value=""
               >Customer</ion-select-option
             >
-            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+            <ion-select-option *ngFor="let item of customers" [value]="item"
+              >{{item.custName}}-{{item.CustCode}}</ion-select-option
+            >
           </ion-select>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-item>
@@ -132,6 +141,7 @@
             placeholder="Customer Category"
             interface="popover"
             formControlName="QuestionCategory"
+            (ionChange)="selectQuestion($event)"
           >
             <ion-select-option
               size="cover"
@@ -140,7 +150,11 @@
               value=""
               >Customer Category</ion-select-option
             >
-            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+            <ion-select-option
+              *ngFor="let item of questioncats"
+              [value]="item.QusCatID"
+              >{{item.CatName}}</ion-select-option
+            >
           </ion-select>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-item>
