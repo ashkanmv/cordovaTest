@@ -29,9 +29,7 @@ ion-toolbar{
 
 ion-popover.search-popover{
     --backdrop-opacity:0;
-    // --width:450px;
     --width:60vw;
-    // height: 300px;
     --offset-x:-5vw;
     --offset-y:-1rem;
     label{
@@ -43,30 +41,26 @@ ion-popover.search-popover{
 
 ion-col{
     .date-picker-container{
-        width: 100vw;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        // padding: 5rem 0;
         .date-picker-box{
-        // padding: 5rem 0;
-        width: 90vw;
+        width: 95%;
         height: 90%;
         display: flex;
         flex-direction: column;
-        // justify-content: center;
         align-items: center;
         border: 1px solid #a9a9a9;
         border-radius: 10px;
         padding-top: 1rem;
         .date-picker{
             height: 6rem;
-            width: 80vw;
+            width: 90%;
             display: flex;
             justify-content: space-between;
             border-radius: 20px;
             align-items: center;
-            // padding: 1rem 2rem 1rem 0 ;
             padding-right: 2rem;
             margin-bottom: 1rem;
             box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
@@ -229,19 +223,7 @@ table{
           
             
         }
-        .ver-line{
-            position: absolute;
-            left: 3.85vw;
-            top: 8vh;
-            height: 42vh;
-            width: 2px;
-            background-color: blue;
-        }
-        .hor-line{
-            height: 2px;
-            width: 2rem;
-            background-color: green;
-        }
+      
             
         
     }
@@ -250,21 +232,6 @@ table{
 
 
         @media (min-width:992px) {
-            ion-col{
-                .date-picker-container{
-                    width: 70vw;
-                    .date-picker-box{
-                        width: 65vw;
-                        // margin-left: 10vw;
-                        .date-picker{
-                            width: 60vw;
-
-                        }
-                    }
-                }
-               
-            }
-
             table{
                 .nested-table-container{
                     .nested-table{
