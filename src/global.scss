@@ -31,22 +31,19 @@ ion-menu {
   --width: 100%;
 }
 
-// ion-item {
-//   --background: #0095EB;
-// }
+
 
 // 
 
-.popover-content{
-  --max-height:2rem;
-}
-.custom-popover{
-  --max-height:2rem;
-}
+ion-select::part(icon) {
+  display: none !important;
+ }
 
+ ion-item.select-interface-option{
+   text-align: center;
+ }
 
-ion-select-popover{
-  --max-height:2rem;
+ ion-select-popover.popover-viewport{
 }
 // 
 
