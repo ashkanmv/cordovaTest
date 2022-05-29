@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cities, Customer } from 'src/app/shared/common';
+import { Language } from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
 
 @Component({
   selector: 'app-questionnaire',
@@ -12,15 +14,21 @@ export class QuestionnairePage implements OnInit {
   routes: { routename: string }[] = [];
   customers: Customer[] = [];
 
-  public get user_id(): string {
-    return
+  public get language(): Language {
+    return this.languageService.language;
   }
 
-  constructor(private router: Router) { }
+  public get user_id(): string {
+    return;
+  }
 
-  ngOnInit() { }
+  constructor(
+    private router: Router,
+    private languageService: LanguageService
+  ) {}
+
+  ngOnInit() {}
   backButton() {
     this.router.navigate(['/']);
   }
-  
 }

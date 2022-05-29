@@ -3,20 +3,20 @@
         "Customer_History" : {
             "TitLe" : "Customer History"
         },
-        "Questionnaire " :{
-            "Title": "Score Cards",
-            "Input-select-DC": "DC",
-            "Input-select-route": "Route",
-            "Input-select-routeDaily": "RouteDaily",
-            "Input-select-customer": "Customer",
-            "Input-select-customer-Category": "Customer Category",
-            "Input-text-store": "Store",   
-            "Input-text-customer-name": "Customer Name",  
-            "Input-text-address": "Address",  
-            "Radio-input-breakfast": "Breakfast",
-            "Radio-input-breakfast-yes": "Yes",  
-            "Radio-input-breakfast-no": "No",
-            "Submit-button" : "Submit"
+        "Questionnaire" :{
+            "Title": "Questionnaire",
+            "Input_select_DC": "DC",
+            "Input_select_route": "Route",
+            "Input_select_routeDaily": "RouteDaily",
+            "Input_select_customer": "Customer",
+            "Input_select_customer_Category": "Customer Category",
+            "Input_text_store": "Store",   
+            "Input_text_customer_name": "Customer Name",  
+            "Input_text_address": "Address",  
+            "Radio_input_breakfast": "Breakfast",
+            "Radio_input_breakfast_yes": "Yes",  
+            "Radio_input_breakfast_no": "No",
+            "Submit_button" : "Submit"
         },
         "Gps_Tracking" :{
             "Title": "Gps Tracking",
@@ -27,13 +27,13 @@
             "Visited_Not_Buy":"Visited Not Buy",
             "SR":"SR",
             "TRUCK":"TRUCK",
-            "Input-select-date": "Date",
-            "Input-select-RSM": "RSM",
-            "Input-select-ASM": "ASM",
-            "Input-select-SSV": "SSV",
-            "Input-select-SR": "SR",
-            "Radio-input-show-truck": "Show truck",
-            "Radio-input-show-SR": "Show SR"
+            "Input_select_date": "Date",
+            "Input_select_RSM": "RSM",
+            "Input_select_ASM": "ASM",
+            "Input_select_SSV": "SSV",
+            "Input_select_SR": "SR",
+            "Radio_input_show_truck": "Show truck",
+            "Radio_input_show_SR": "Show SR"
         },
         "Customer_nearby" :{
             "Title": "Customer nearby",
@@ -44,22 +44,22 @@
             "NOT_Buy_2_Weeks":"NOT Buy 2 Weeks",
             "Not_Buy_2_Weeks_&_PPED_>_5%":"Not Buy 2 Weeks & PPED > 5%",
             "TRUCK":"TRUCK",
-            "Input-select-date": "Date",
-            "Input-select-RSM": "RSM",
-            "Input-select-ASM": "ASM",
-            "Input-select-SSV": "SSV",
-            "Input-select-SR": "SR",
-            "Radio-input-show-truck": "Show truck",
-            "Radio-input-show-SR": "Show SR"
+            "Input_select_date": "Date",
+            "Input_select_RSM": "RSM",
+            "Input_select_ASM": "ASM",
+            "Input_select_SSV": "SSV",
+            "Input_select_SR": "SR",
+            "Radio_input_show_truck": "Show truck",
+            "Radio_input_show_SR": "Show SR"
         },
         "Score_Card" :{
             "Title": "Score Cards",
-            "Segment-category": "CATEGORY",
-            "Segment-channel": "CHANNEL",
-            "Segment-category%": "CATEGORY %",
-            "Segment-channel%": "CHANNEL %",
-            "Radio-input-sales": "sales",
-            "Radio-input-PPED": "PPED"   
+            "Segment_category": "CATEGORY",
+            "Segment_channel": "CHANNEL",
+            "Segment_category%": "CATEGORY %",
+            "Segment_channel%": "CHANNEL %",
+            "Radio_input_sales": "sales",
+            "Radio_input_PPED": "PPED"   
         },
         "login": {
             "title": "Login",
