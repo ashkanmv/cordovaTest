@@ -4,6 +4,7 @@ import { AreaChartsComponent } from '../charts/area-charts/area-charts.component
 import { ColumnChartsComponent } from '../charts/column-charts/column-charts.component';
 import { VariableRadiusPieChartsComponent } from '../charts/pie-charts/pie-charts.component';
 import { MapComponent } from '../map/map.component';
+import { PopoverComponent } from '../pages/components/popover/popover.component';
 
 @NgModule({
   imports: [HighchartsChartModule],
@@ -12,12 +13,14 @@ import { MapComponent } from '../map/map.component';
     AreaChartsComponent,
     ColumnChartsComponent,
     MapComponent,
+    PopoverComponent,
   ],
   declarations: [
     VariableRadiusPieChartsComponent,
     AreaChartsComponent,
     ColumnChartsComponent,
     MapComponent,
+    PopoverComponent,
   ],
   providers: [],
 })

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
     <ion-row class="primary-bg">
-      <ion-col size="1" class="ion-align-self-center">
+      <ion-col size="1" class="ion-align-self-center ion-no-padding">
         <ion-button fill="clear" (click)="backButton()">
           <ion-img
             class="back-button"
@@ -9,9 +9,9 @@
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="6" class="ion-text-start ion-align-self-center">
+      <ion-col size="7" class="ion-text-center ion-align-self-center">
         <ion-title class="ion-no-padding white-text"
-          >Customer History</ion-title
+          ><h3>Customer History</h3></ion-title
         >
       </ion-col>
       <ion-col
@@ -20,10 +20,13 @@
       >
         GPS
       </ion-col>
-      <ion-col size="1" class="ion-align-self-center ion-margin-end">
+      <ion-col size="1" class="ion-align-self-center">
         <ion-toggle color="primary" checked="true"></ion-toggle>
       </ion-col>
-      <ion-col size="1" class="ion-align-self-center hide">
+      <ion-col
+        size="1"
+        class="ion-align-self-center hide ion-no-padding iopn-margin-end"
+      >
         <ion-img src="\assets\pages\customer-nearby\Hide.png"> </ion-img>
         <ion-item>
           <ion-select interface="popover" value="hide">
@@ -34,20 +37,11 @@
             <ion-select-option value="1km">1 KM</ion-select-option>
           </ion-select>
         </ion-item>
-        <!-- <ion-popover
-          class="header-drop-down hide-drop-down"
-          trigger="trigger-hide"
-        >
-          <ng-template>
-            <ion-content class="select-input-popover-title">50 M</ion-content>
-            <ion-content>100 M</ion-content>
-            <ion-content>500 M</ion-content>
-            <ion-content>700 M</ion-content>
-            <ion-content>1 KM</ion-content>
-          </ng-template>
-        </ion-popover> -->
       </ion-col>
-      <ion-col size="1" class="ion-justfy-self-end ion-align-self-center wifi">
+      <ion-col
+        size="1"
+        class="ion-float-left ion-align-self-center wifi ion-no-padding"
+      >
         <ion-img
           class="wifi-offline"
           src="assets\pages\customer-history\Internet Off.png"
@@ -326,7 +320,7 @@
             <td>3.20</td>
             <td></td>
           </tr>
-          <!-- <div class="table-detail">
+          <div class="table-detail">
             <div class="table-border">
               <table>
                 <thead>
@@ -340,7 +334,7 @@
               </table>
               <hr class="hr" />
             </div>
-          </div> -->
+          </div>
           <tr>
             <td class="table-body-icon">
               <ion-icon name="chevron-down-outline"></ion-icon> DCD

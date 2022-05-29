@@ -9,23 +9,19 @@
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="6" class="ion-text-start ion-align-self-center">
+      <ion-col size="8" class="ion-text-center ion-align-self-center">
         <ion-title class="ion-no-padding white-text"
           ><h3>Gps Tracking</h3>
         </ion-title>
       </ion-col>
-      <ion-col></ion-col>
-      <ion-col size="1" class="ion-align-self-center description">
-        <img
+      <ion-col
+        size="1"
+        class="ion-align-self-center description ion-no-padding"
+      >
+        <ion-img
           id="trigger-desc"
           src="\assets\pages\customer-nearby\Description.png"
-          alt=""
-        />
-        <ion-popover trigger="trigger-desc" reference="event">
-          <ng-template>
-            <ion-content>Popover Content</ion-content>
-          </ng-template>
-        </ion-popover>
+        ></ion-img>
 
         <!-- <ion-popover
           class="header-drop-down description-drop-down"
@@ -75,13 +71,12 @@
         </ion-popover> -->
       </ion-col>
 
-      <ion-col size="1" class="ion-align-self-center hide">
-        <img
+      <ion-col size="1" class="ion-align-self-center hide ion-no-padding">
+        <ion-img
           id="trigger-hide"
-          class="hide"
+          class="hide-img"
           src="\assets\pages\customer-nearby\Hide.png"
-          alt=""
-        />
+        ></ion-img>
         <ion-popover
           class="header-drop-down hide-drop-down"
           trigger="trigger-hide"
@@ -95,7 +90,10 @@
           </ng-template>
         </ion-popover>
       </ion-col>
-      <ion-col size="1" class="ion-align-self-center wifi">
+      <ion-col
+        size="1"
+        class=".ion-float-end ion-align-self-center wifi ion-no-padding"
+      >
         <ion-img
           class="wifi-online"
           src="/assets\mainPage\main\wifi.png"
@@ -221,15 +219,15 @@
   </ion-col>
 
   <ion-col class="radio-input-container">
-    <ion-row class="radio-input">
-      <div class="">
+    <ion-row class="radio-input-container">
+      <div class="radio-input">
         <div class="">
-          <label for="showTruck">Show truck</label>
           <input type="radio" name="radio-input-2" id="" />
+          <label for="showTruck">Show truck</label>
         </div>
         <div class="">
-          <label for="showSR">Show SR</label>
           <input type="radio" name="radio-input-2" id="" />
+          <label for="showSR">Show SR</label>
         </div>
       </div>
     </ion-row>
