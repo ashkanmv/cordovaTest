@@ -26,9 +26,8 @@ export class CustomerHistoryPage implements OnInit {
 
   //ToDo
   public get Customer_Number(): string {
-    return
+    return;
   }
-
 
   customerInfo: {
     shopName: string;
@@ -63,13 +62,15 @@ export class CustomerHistoryPage implements OnInit {
     if (this.Customer_Number) this.Get_CustomerFromMap(this.Customer_Number);
     else this.getCities();
     this.loadForm();
-    this.getAvgs();
+    // this.getAvgs();
   }
 
   ionViewDidEnter() {
     this.plt.ready().then(() => {
-      this.paramSubscription = this.activatedRoute.queryParams.subscribe((params: Params) =>
-        this.form.patchValue({ Customer: params['Customer'] }))
+      this.paramSubscription = this.activatedRoute.queryParams.subscribe(
+        (params: Params) =>
+          this.form.patchValue({ Customer: params['Customer'] })
+      );
     });
   }
 
@@ -85,122 +86,127 @@ export class CustomerHistoryPage implements OnInit {
 
   loadForm() {
     this.form = this.formBuilder.group({
-      'DC': [null],
-      'Route': [null],
-      'Customer': [null],
-      'type': ['sales'],
-      'kgqty': ['qty']
+      DC: [null],
+      Route: [null],
+      Customer: [null],
+      type: ['sales'],
+      kgqty: ['qty'],
     });
-    this.typeSubscription = this.form.controls['type'].valueChanges.subscribe(v => this.typeChanged(v));
-    this.kgqtySubscription = this.form.controls['kgqty'].valueChanges.subscribe(v => this.kgqtyChanged(v));
   }
 
-  get f() { return this.form.controls }
+  get f() {
+    return this.form.controls;
+  }
 
   // http Requests
   async Get_CustomerFromMap(Customer_Number: string) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: 'Please wait...',
     });
     await loading.present();
-    this.customerHistoryService.getCustomersByNumber(Customer_Number).subscribe((customers: Customer[]) => {
-      this.customers = customers;
-      if (!customers.length)
-        return
-
-      this.patchValue('Customer', customers[0].CustCode);
-      this.patchValue('Route', customers[0].routename);
-      console.log(customers);
-      loading.dismiss();
-      this.getAvgs();
-    }, () => {
-      this.sharedService.toast('danger', 'Could not fetch cities ...');
-      loading.dismiss();
-    })
+    this.customerHistoryService.getCustomersByNumber(Customer_Number).subscribe(
+      (customers: Customer[]) => {
+        this.customers = customers;
+        if (!customers.length) return;
+        this.patchValue('Customer', customers[0].CustCode);
+        this.patchValue('Route', customers[0].routename);
+        console.log(customers);
+        loading.dismiss();
+        this.getAvgs();
+      },
+      () => {
+        this.sharedService.toast('danger', 'Could not fetch cities ...');
+        loading.dismiss();
+      }
+    );
   }
 
   async getAvgs() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: 'Please wait...',
     });
     await loading.present();
     this.customerHistoryService.getAvgs().subscribe(
       (avgs: any[]) => {
-        console.log(avgs);
-
-        // for (var i = 0; i < avgs.length; i++) {
-        //   if (avgs[i].Class == this.customer_info.CustTYPE) {
-        //     this.avg = avgs[i].avg;
-        //     if (this.kgqty == "qty") {
-        //       this.qtySelect();
-        //     } else {
-        //       this.kgSelect();
-        //     }
-        //   }
-
-        // }
+        this.typeAndQtyKgSelect();
         loading.dismiss();
-      }, () => {
+      },
+      () => {
         this.sharedService.toast('danger', 'Could not fetch Avgs ...');
         loading.dismiss();
-      });
+      }
+    );
   }
 
   async getCities() {
     this.cities = [];
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: 'Please wait...',
     });
     await loading.present();
-    this.customerHistoryService
-      .getCities()
-      .subscribe((res: Cities[]) => {
-        this.cities = res
+    this.customerHistoryService.getCities().subscribe(
+      (res: Cities[]) => {
+        this.cities = res;
         loading.dismiss();
-      }, () => {
+      },
+      () => {
         this.sharedService.toast('danger', 'Could not fetch cities ...');
         loading.dismiss();
-      });
+      }
+    );
   }
 
   async getToday() {
-    this.customerHistoryService.getToday().subscribe(val => console.log(val))
+    this.customerHistoryService.getToday().subscribe((val) => console.log(val));
   }
 
   async selectCity(value: any) {
     this.routes = [];
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.customerHistoryService.getRoutesByCity(value.detail.value).subscribe(
+      (res: { routename: string }[]) => {
+        this.routes = res;
+        loading.dismiss();
+      },
+      () => {
+        this.sharedService.toast('danger', 'Could not fetch routes ...');
+        loading.dismiss();
+      }
+    );
+  }
+
+  async routeSelect(value: any) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
     });
     await loading.present();
     this.customerHistoryService
-      .getRoutesByCity(value.detail.value)
-      .subscribe((res: { routename: string }[]) => {
-        this.routes = res;
-        loading.dismiss();
-      }, () => {
-        this.sharedService.toast('danger', 'Could not fetch routes ...');
-        loading.dismiss();
-      });
+      .getCustomersByRoute(value.detail.value)
+      .subscribe(
+        (customers: Customer[]) => {
+          this.customers = customers;
+          this.markers = [];
+          var m: any = [];
+          if (this.customers.length)
+            this.customers.forEach((customer) => {
+              m.push({
+                latitude: parseFloat(customer.PointLatitude),
+                longitude: parseFloat(customer.PointLongitude),
+              });
+            });
+          this.markers = m;
+          this.initialShopPoint(customers);
+          loading.dismiss();
+        },
+        () => loading.dismiss()
+      );
   }
 
-  routeSelect(value: any) {
-    this.customerHistoryService
-      .getCustomersByRoute(value.detail.value)
-      .subscribe((customers: Customer[]) => {
-        this.customers = customers;
-        this.markers = [];
-        var m: any = [];
-        if (this.customers.length)
-          this.customers.forEach((customer) => {
-            m.push({
-              latitude: parseFloat(customer.PointLatitude),
-              longitude: parseFloat(customer.PointLongitude),
-            });
-          });
-        this.markers = m;
-        this.initialShopPoint(customers);
-      });
+  customerSelect(value: any) {
+    this.getAvgs();
   }
 
   initialShopPoint(customers: Customer[]) {
@@ -232,15 +238,68 @@ export class CustomerHistoryPage implements OnInit {
     });
   }
 
-  typeChanged(value: string) {
+  typeAndQtyKgSelect() {
+    switch (this.f.type.value) {
+      case 'pped':
+        this.handlePped();
+        break;
 
+      case 'sales':
+        this.handleSales();
+        break;
+
+      case 'samples':
+        this.handleSamples();
+        break;
+    }
   }
 
-  kgqtyChanged(value: string) {
+  handlePped() {
+    if (this.f.kgqty.value == 'qty')
+      this.customerHistoryService
+        .getPpedByCustomer(this.f.Customer.value.CustCode)
+        .subscribe((data: Data) => {
+          console.log(data);
+        });
+    else
+      this.customerHistoryService
+        .getkgPpedByCustomer(this.f.Customer.value.CustCode)
+        .subscribe((data: Data) => {
+          console.log(data);
+        });
+  }
 
+  handleSales() {
+    if (this.f.kgqty.value == 'qty')
+      this.customerHistoryService
+        .getSamplesByCustomer(this.f.Customer.value.CustCode)
+        .subscribe((data: Data) => {
+          console.log(data);
+        });
+    else
+      this.customerHistoryService
+        .getkgSamplesByCustomer(this.f.Customer.value.CustCode)
+        .subscribe((data: Data) => {
+          console.log(data);
+        });
+  }
+
+  handleSamples() {
+    if (this.f.kgqty.value == 'qty')
+      this.customerHistoryService
+        .getSamplesByCustomer(this.f.Customer.value.CustCode)
+        .subscribe((data: Data) => {
+          console.log(data);
+        });
+    else
+      this.customerHistoryService
+        .getkgSamplesByCustomer(this.f.Customer.value.CustCode)
+        .subscribe((data: Data) => {
+          console.log(data);
+        });
   }
 
   patchValue(controller: string, value: any) {
-    this.form.patchValue({ [controller]: value })
+    this.form.patchValue({ [controller]: value });
   }
 }

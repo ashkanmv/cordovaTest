@@ -141,11 +141,12 @@
             interface="popover"
             formControlName="Customer"
             [disabled]="!f.Route.value"
+            (ionChange)="customerSelect($event)"
           >
             <ion-select-option value="">Customer</ion-select-option>
             <ion-select-option
               *ngFor="let customer of customers"
-              [value]="customer.CustCode"
+              [value]="customer"
               >{{customer.custName}}
             </ion-select-option>
           </ion-select>
@@ -161,6 +162,7 @@
               type="radio"
               value="sales"
               formControlName="type"
+              (ionChange)="typeAndQtyKgSelect()"
             />
             <label for="sales">Sales</label>
           </div>
@@ -170,6 +172,7 @@
               type="radio"
               value="pped"
               formControlName="type"
+              (ionChange)="typeAndQtyKgSelect()"
             />
             <label for="pped">PPED</label>
           </div>
@@ -179,6 +182,7 @@
               type="radio"
               value="samples"
               formControlName="type"
+              (ionChange)="typeAndQtyKgSelect()"
             />
             <label for="samples">Samples</label>
           </div>
@@ -187,11 +191,21 @@
       <ion-row class="radio-input-2 ion-justify-content-center">
         <div class="radio-input box-shadow">
           <div>
-            <input type="radio" value="qty" formControlName="kgqty" />
+            <input
+              type="radio"
+              value="qty"
+              formControlName="kgqty"
+              (ionChange)="typeAndQtyKgSelect()"
+            />
             <label for="qty">Qty</label>
           </div>
           <div>
-            <input type="radio" value="kg" formControlName="kgqty" />
+            <input
+              type="radio"
+              value="kg"
+              formControlName="kgqty"
+              (ionChange)="typeAndQtyKgSelect()"
+            />
             <label for="kg">Kg</label>
           </div>
         </div>
