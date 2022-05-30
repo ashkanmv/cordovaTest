@@ -42,7 +42,9 @@ ion-select::part(icon) {
  ion-item.select-interface-option{
    text-align: center;
  }
-
+ .popover-content {
+  width: 100rem;
+}
 //  ion-select-popover.popover-viewport{
 // }
 // 

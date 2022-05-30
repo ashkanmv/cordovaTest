@@ -44,7 +44,7 @@
     </ion-row>
   </ion-grid>
   <ion-col class="ion-no-padding segment-change">
-    <ion-segment class="" (ionChange)="segmentChanged($event)">
+    <ion-segment mode="md" class="" (ionChange)="segmentChanged($event)">
       <ion-segment-button class="DSD" value="DSD">
         <ion-label>DSD</ion-label>
       </ion-segment-button>
@@ -59,47 +59,21 @@
   <ion-col class="DSD-page" *ngIf="selectedSegment == 'DSD'">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <button class="search-submit primary-bg">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
-        <input
-          type="search"
-          name=""
-          id="trigger-search"
-          placeholder="Search"
-          class="search search-customer-history input-shadow"
-        />
-        <ion-popover class="popover search-popover" trigger="trigger-search">
-          <ng-template>
-            <ion-item>
-              <label for="select-all">SELECT ALL</label>
-              <ion-checkbox slot="end" value="select-all"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="esfahan">ESFAHAN</label>
-              <ion-checkbox slot="end" value="esfahan"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="rasht">RASHT</label>
-              <ion-checkbox slot="end" value="rasht"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="tehran">TEHRAN</label>
-              <ion-checkbox slot="end" value="tehran"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="karaj">KARAJ</label>
-              <ion-checkbox slot="end" value="karaj"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="shiraz">SHIRAZ</label>
-              <ion-checkbox slot="end" value="shiraz"></ion-checkbox>
-            </ion-item>
-          </ng-template>
-        </ion-popover>
-        <span class="search-icon">
-          <ion-icon name="chevron-down-outline"></ion-icon>
-        </span>
+        <ion-item>
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <ion-select multiple="true" interface="popover">
+            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+            <ion-select-option value="rasht">RASHT</ion-select-option>
+            <ion-select-option value="tehran">TEHRAN</ion-select-option>
+            <ion-select-option value="karaj">KARAJ</ion-select-option>
+            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          </ion-select>
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
       </ion-row>
     </ion-col>
     <ion-col>
@@ -129,17 +103,17 @@
             <div class="table-line-ver"></div>
             <div class="table-line-horiz"></div>
             <table class="">
-              <thead>
+              <thead class="blue-bg">
                 <th>Visitor</th>
                 <th>Driver</th>
               </thead>
               <tbody>
-                <td>Ali Zardust</td>
+                <td class="primary-bg">Ali Zardust</td>
                 <td>Hosein Aghai</td>
               </tbody>
             </table>
           </div>
-          <tr (click)="toggleDtails()">
+          <tr class="medium-blue-bg" (click)="toggleDtails()">
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
@@ -160,12 +134,12 @@
             <div class="table-line-ver"></div>
             <div class="table-line-horiz"></div>
             <table class="">
-              <thead>
+              <thead class="blue-bg">
                 <th>Visitor</th>
                 <th>Driver</th>
               </thead>
               <tbody>
-                <td>Ali Zardust</td>
+                <td class="primary-bg">Ali Zardust</td>
                 <td>Hosein Aghai</td>
               </tbody>
             </table>
@@ -180,7 +154,7 @@
             <td></td>
             <td></td>
           </tr>
-          <tr>
+          <tr class="medium-blue-bg">
             <td class="">
               <ion-icon name="chevron-down-outline"></ion-icon> 1105
             </td>
@@ -200,7 +174,7 @@
             <td></td>
             <td></td>
           </tr>
-          <tr>
+          <tr class="medium-blue-bg">
             <td class="">
               <ion-icon name="chevron-down-outline"></ion-icon> 1107
             </td>
@@ -219,47 +193,21 @@
   <ion-col *ngIf="selectedSegment == 'NON_DSD'" class="searchbar">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <button class="search-submit primary-bg">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
-        <input
-          type="search"
-          name=""
-          id="trigger-search"
-          placeholder="Search"
-          class="search search-customer-history input-shadow"
-        />
-        <ion-popover class="popover search-popover" trigger="trigger-search">
-          <ng-template>
-            <ion-item>
-              <label for="select-all">SELECT ALL</label>
-              <ion-checkbox slot="end" value="select-all"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="esfahan">ESFAHAN</label>
-              <ion-checkbox slot="end" value="esfahan"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="rasht">RASHT</label>
-              <ion-checkbox slot="end" value="rasht"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="tehran">TEHRAN</label>
-              <ion-checkbox slot="end" value="tehran"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="karaj">KARAJ</label>
-              <ion-checkbox slot="end" value="karaj"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="shiraz">SHIRAZ</label>
-              <ion-checkbox slot="end" value="shiraz"></ion-checkbox>
-            </ion-item>
-          </ng-template>
-        </ion-popover>
-        <span class="search-icon">
-          <ion-icon name="chevron-down-outline"></ion-icon>
-        </span>
+        <ion-item>
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <ion-select multiple="true" interface="popover">
+            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+            <ion-select-option value="rasht">RASHT</ion-select-option>
+            <ion-select-option value="tehran">TEHRAN</ion-select-option>
+            <ion-select-option value="karaj">KARAJ</ion-select-option>
+            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          </ion-select>
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
       </ion-row>
     </ion-col>
     <ion-col>
@@ -280,16 +228,16 @@
           <div *ngIf="IsDCDDetailsShowing" class="NON_DSD-table-detail">
             <div class="border">
               <table class="">
-                <thead>
-                  <th>Test 0</th>
-                  <th>Number 0</th>
-                </thead>
                 <tbody>
-                  <tr>
+                  <tr class="light-blue-bg">
+                    <td>Test 0</td>
+                    <td>Number 0</td>
+                  </tr>
+                  <tr class="white-bg">
                     <td>Test 1</td>
                     <td>Number 1</td>
                   </tr>
-                  <tr>
+                  <tr class="light-blue-bg">
                     <td>Test 2</td>
                     <td>Number 2</td>
                   </tr>
@@ -316,11 +264,11 @@
           <div *ngIf="IsDetailsShowing" class="NON_DSD-table-detail">
             <div class="border">
               <table class="">
-                <thead class="light-blue-bg">
-                  <th>Test 0</th>
-                  <th>Number 0</th>
-                </thead>
                 <tbody>
+                  <tr class="light-blue-bg">
+                    <td>Test 0</td>
+                    <td>Number 0</td>
+                  </tr>
                   <tr class="white-bg">
                     <td>Test 1</td>
                     <td>Number 1</td>

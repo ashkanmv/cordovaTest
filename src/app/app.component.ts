@@ -27,14 +27,17 @@ export class AppComponent implements OnInit {
   loadLanguage() {
     this.languageService.loadLanguage().subscribe(() => {
       console.log('ash');
-      
+
       this.startApp = true;
-      this.plt.ready().then(() => {
-        console.log('ready');
-        if (this.plt.is('cordova')) this.config();
-      }).catch((error) => {
-        console.log(error);
-      });
+      this.plt
+        .ready()
+        .then(() => {
+          console.log('ready');
+          if (this.plt.is('cordova')) this.config();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     });
   }
 

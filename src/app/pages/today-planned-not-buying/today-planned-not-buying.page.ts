@@ -7,10 +7,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./today-planned-not-buying.page.scss'],
 })
 export class TodayPlannedNotBuyingPage implements OnInit {
+  // delete later
+  IsDetailsShowing = true;
+  Is1DetailsShowing = false;
+  //
   constructor(private router: Router) {}
   dateNow = new Date();
   ngOnInit() {}
   backButton() {
     this.router.navigate(['/']);
   }
+  // delete later
+  toggleDtails() {
+    this.IsDetailsShowing = !this.IsDetailsShowing;
+  }
+  toggleDtails1() {
+    this.Is1DetailsShowing = !this.Is1DetailsShowing;
+  }
+  //
 }
