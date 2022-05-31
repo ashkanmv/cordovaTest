@@ -44,7 +44,12 @@
     </ion-row>
   </ion-grid>
   <ion-col class="ion-no-padding segment-change">
-    <ion-segment mode="md" class="" (ionChange)="segmentChanged($event)">
+    <ion-segment
+      mode="md"
+      class="ion-justify-content-between"
+      (ionChange)="segmentChanged($event)"
+      value="NON_DSD"
+    >
       <ion-segment-button class="DSD" value="DSD">
         <ion-label>DSD</ion-label>
       </ion-segment-button>

@@ -99,20 +99,24 @@ ion-title{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
+        border-bottom: 2px solid #0095EB ;
         ion-segment-button{
             --background-checked:#0095eb;
             --indicator-color:#000;
-            --border-color:#000;	
             --indicator-height:	10px;	
             padding:.5rem 0;
-            border-bottom: 2px solid #0095EB ;
             width: 100%;
+            .segment-button-checked{
+                ion-label{
+                    color: red;
+                }
+            }
             ion-label{
                 font-size: 3vw;
                 font-weight: bold;
                 color: #b9b9b9;
-                &:focus{
-                    color: red;
+                &:checked{
+                    color: #fff;
                 }
             }
         }
