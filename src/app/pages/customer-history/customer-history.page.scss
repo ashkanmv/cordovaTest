@@ -49,7 +49,8 @@ ion-toggle{
 
 ion-img{
     // width: 100%;
-    max-width: 60px;
+    max-width: 80px;
+    min-width: 30px;
 
 }
 
@@ -59,7 +60,7 @@ ion-img{
 .hide{
     width: 100%;
     ion-img{
-        max-width: 56px;
+        max-width: 75px;
     }
 }
 

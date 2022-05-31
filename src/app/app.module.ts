@@ -21,7 +21,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     AppRoutingModule,
     HttpClientModule,
     HighchartsChartModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     BackgroundGeolocation,

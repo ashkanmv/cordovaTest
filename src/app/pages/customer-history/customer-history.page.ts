@@ -28,7 +28,7 @@ export class CustomerHistoryPage implements OnInit {
   public get Customer_Number(): string {
     return;
   }
-
+  // mock data
   customerInfo: {
     shopName: string;
     shopCode: number;
@@ -47,6 +47,7 @@ export class CustomerHistoryPage implements OnInit {
     private loadingCtrl: LoadingController,
     private sharedService: SharedService
   ) {
+    // mock data
     this.customerInfo = {
       shopName: 'Jahan Akbary',
       shopCode: 21632297,
