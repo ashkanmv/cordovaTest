@@ -23,6 +23,7 @@ export class CustomerHistoryPage implements OnInit {
   paramSubscription: Subscription;
   typeSubscription: Subscription;
   kgqtySubscription: Subscription;
+  selected_ch = [];
 
   //ToDo
   public get Customer_Number(): string {
@@ -93,6 +94,13 @@ export class CustomerHistoryPage implements OnInit {
       type: ['sales'],
       kgqty: ['qty'],
     });
+
+    this.typeSubscription = this.form.controls.type.valueChanges.subscribe(
+      (type: string) => this.typeAndQtyKgSelect()
+    );
+    this.kgqtySubscription = this.form.controls.kgqty.valueChanges.subscribe(
+      (type: string) => this.typeAndQtyKgSelect()
+    );
   }
 
   get f() {
@@ -111,7 +119,6 @@ export class CustomerHistoryPage implements OnInit {
         if (!customers.length) return;
         this.patchValue('Customer', customers[0].CustCode);
         this.patchValue('Route', customers[0].routename);
-        console.log(customers);
         loading.dismiss();
         this.getAvgs();
       },
@@ -149,6 +156,7 @@ export class CustomerHistoryPage implements OnInit {
       (res: Cities[]) => {
         this.cities = res;
         loading.dismiss();
+        this.patchValue('DC', this.cities[1].City);
       },
       () => {
         this.sharedService.toast('danger', 'Could not fetch cities ...');
@@ -170,6 +178,7 @@ export class CustomerHistoryPage implements OnInit {
     this.customerHistoryService.getRoutesByCity(value.detail.value).subscribe(
       (res: { routename: string }[]) => {
         this.routes = res;
+        this.patchValue('Route', this.routes[0].routename);
         loading.dismiss();
       },
       () => {
@@ -189,6 +198,7 @@ export class CustomerHistoryPage implements OnInit {
       .subscribe(
         (customers: Customer[]) => {
           this.customers = customers;
+          this.patchValue('Cutomer', this.customers[0]);
           this.markers = [];
           var m: any = [];
           if (this.customers.length)
@@ -207,6 +217,16 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   customerSelect(value: any) {
+    console.log(value.detail.value);
+    let customer: Customer = value.detail.value;
+    this.customerInfo = {
+      address: customer.ADDRESS,
+      shopCode: +customer.CustCode,
+      shopName: customer.custName,
+      shopType: customer.CustTYPE,
+      sr: customer.Visitor,
+      tell: +customer.Tel,
+    };
     this.getAvgs();
   }
 
@@ -259,29 +279,29 @@ export class CustomerHistoryPage implements OnInit {
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getPpedByCustomer(this.f.Customer.value.CustCode)
-        .subscribe((data: Data) => {
-          console.log(data);
+        .subscribe((customerHistory: any) => {
+          this.createTotalModel(customerHistory);
         });
     else
       this.customerHistoryService
         .getkgPpedByCustomer(this.f.Customer.value.CustCode)
-        .subscribe((data: Data) => {
-          console.log(data);
+        .subscribe((customerHistory: any) => {
+          this.createTotalModel(customerHistory);
         });
   }
 
   handleSales() {
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
-        .getSamplesByCustomer(this.f.Customer.value.CustCode)
-        .subscribe((data: Data) => {
-          console.log(data);
+        .getSalesByCustomer(this.f.Customer.value.CustCode)
+        .subscribe((customerHistory: any) => {
+          this.createTotalModel(customerHistory);
         });
     else
       this.customerHistoryService
-        .getkgSamplesByCustomer(this.f.Customer.value.CustCode)
-        .subscribe((data: Data) => {
-          console.log(data);
+        .getkgSalesByCustomer(this.f.Customer.value.CustCode)
+        .subscribe((customerHistory: any) => {
+          this.createTotalModel(customerHistory);
         });
   }
 
@@ -289,15 +309,168 @@ export class CustomerHistoryPage implements OnInit {
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSamplesByCustomer(this.f.Customer.value.CustCode)
-        .subscribe((data: Data) => {
-          console.log(data);
+        .subscribe((customerHistory: any) => {
+          this.createTotalModel(customerHistory);
         });
     else
       this.customerHistoryService
         .getkgSamplesByCustomer(this.f.Customer.value.CustCode)
-        .subscribe((data: Data) => {
-          console.log(data);
+        .subscribe((customerHistory: any) => {
+          this.createTotalModel(customerHistory);
         });
+  }
+
+  customer_histories: any[] = [];
+  virtual_rows: any[] = [];
+  createTotalModel(customerHistory: any[]) {
+    this.customer_histories = [];
+    this.virtual_rows = [];
+    if (!customerHistory.length) {
+      this.sharedService.toast('warning', 'NO Value'); // JSON
+      return;
+    }
+    let index = 1;
+    let keys = Object.keys(customerHistory[0]);
+    let v_row = {
+      type: 'h',
+      show: true,
+      index: 0,
+      color: '#4682B4',
+    };
+    this.customer_histories.push(keys);
+    this.virtual_rows.push(v_row);
+    for (var i = 0; i < customerHistory.length; i++) {
+      let ch = customerHistory[i];
+      let temp = Object.keys(ch).map((key) => ch[key]);
+      if (this.form.value.kgqty == 'kg') {
+        for (let c = 1; c < temp.length; c++) {
+          temp[c] != null || temp[c] != undefined
+            ? (temp[c] = parseFloat(temp[c]).toFixed(2))
+            : (temp[c] = '');
+        }
+      }
+      this.customer_histories.push(temp);
+      let v_row1 = {
+        type: 'a',
+        show: true,
+        index: index,
+        color: 'blue',
+      };
+      index++;
+      this.customer_histories.push(temp);
+      this.virtual_rows.push(v_row1);
+      let v_row2 = {
+        type: 'b',
+        show: false,
+        index: index,
+        color: 'white',
+      };
+      index++;
+      this.virtual_rows.push(v_row2);
+    }
+    console.log(this.customer_histories);
+    console.log(this.virtual_rows);
+  }
+
+  rowClick(row: any) {
+    if (row.type == 'a') {
+      if (this.virtual_rows[row.index + 1].show) {
+        this.virtual_rows[row.index + 1].show = false;
+      } else {
+        this.virtual_rows[row.index + 1].show = true;
+      }
+      this.handleCustomerCategory(
+        this.customer_histories[row.index][0],
+        row.index
+      );
+    }
+  }
+
+  handleCustomerCategory(category: string, index: number) {
+    switch (this.f.type.value) {
+      case 'pped':
+        this.handlePpedCategory(category, index);
+        break;
+
+      case 'sales':
+        this.handleSalesCategory(category, index);
+        break;
+
+      case 'samples':
+        this.handleSamplesCategory(category, index);
+        break;
+    }
+  }
+
+  handlePpedCategory(category: string, index: number) {
+    if (this.f.kgqty.value == 'qty')
+      this.customerHistoryService
+        .getPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
+        .subscribe((data) => {
+          console.log(data);
+          this.create_model(data, index + 1);
+        });
+    else
+      this.customerHistoryService
+        .getkgPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
+        .subscribe((data) => {
+          console.log(data);
+          this.create_model(data, index + 1);
+        });
+  }
+
+  handleSalesCategory(category: string, index: number) {
+    if (this.f.kgqty.value == 'qty')
+      this.customerHistoryService
+        .getSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
+        .subscribe((data) => {
+          console.log(data);
+          this.create_model(data, index + 1);
+        });
+    else
+      this.customerHistoryService
+        .getkgSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
+        .subscribe((data) => {
+          console.log(data);
+          this.create_model(data, index + 1);
+        });
+  }
+
+  handleSamplesCategory(category: string, index: number) {
+    if (this.f.kgqty.value == 'qty')
+      this.customerHistoryService
+        .getSamplesByCustomerCategory(this.f.Customer.value.CustCode, category)
+        .subscribe((data) => {
+          console.log(data);
+          this.create_model(data, index + 1);
+        });
+    else
+      this.customerHistoryService
+        .getkgSamplesByCustomerCategory(
+          this.f.Customer.value.CustCode,
+          category
+        )
+        .subscribe((data) => {
+          console.log(data);
+          this.create_model(data, index + 1);
+        });
+  }
+
+  create_model(model, index) {
+    this.selected_ch[index] = [];
+
+    for (var i = 0; i < model.length; i++) {
+      let ch = model[i];
+      let temp = Object.keys(ch).map((key) => ch[key]);
+      if (this.f.kgqty.value == 'kg') {
+        for (var j = 1; j < temp.length; j++) {
+          if (temp[j] != null) {
+            temp[j] = parseFloat(temp[j]).toFixed(2);
+          }
+        }
+      }
+      this.selected_ch[index].push(temp);
+    }
   }
 
   patchValue(controller: string, value: any) {
