@@ -88,8 +88,8 @@ export class Language {
   };
   Questionnaire: {
     Title: string;
-    'Input-select-DC': string;
-    'Input-select-route': string;
+    Input_select_DC: string;
+    Input_select_route: string;
     'Input-select-routeDaily': string;
     'Input-select-customer': string;
     'Input-select-customer-Category': string;
