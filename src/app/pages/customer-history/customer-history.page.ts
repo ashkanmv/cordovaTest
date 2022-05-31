@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { LoadingController, Platform } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Cities, Customer, Marker } from 'src/app/shared/common';
+import { Cities, Customer, Language, Marker } from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { CustomerHistoryService } from './customer-history.service';
 
@@ -24,6 +25,10 @@ export class CustomerHistoryPage implements OnInit {
   typeSubscription: Subscription;
   kgqtySubscription: Subscription;
   selected_ch = [];
+
+  public get language(): Language {
+    return this.languageService.language;
+  }
 
   //ToDo
   public get Customer_Number(): string {
@@ -46,7 +51,8 @@ export class CustomerHistoryPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private languageService: LanguageService
   ) {
     // mock data
     this.customerInfo = {
