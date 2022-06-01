@@ -17,6 +17,7 @@ import { SearchSelectComponent } from './components/search-select/search-select.
     AreaChartsComponent,
     ColumnChartsComponent,
     MapComponent,
+    PopoverComponent,
     SearchSelectComponent,
   ],
   declarations: [

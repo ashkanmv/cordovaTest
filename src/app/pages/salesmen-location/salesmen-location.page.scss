@@ -58,7 +58,7 @@ ion-popover.hide-drop-down{
 
 ion-col{
     .date-picker-container{
-        width: 100vw;
+        width: 100%;
         height: 15rem;
         display: flex;
         justify-content: center;
@@ -66,7 +66,7 @@ ion-col{
         // padding: 5rem 0;
         .date-picker-box{
         // padding: 5rem 0;
-        width: 90vw;
+        width: 90%;
         height: 90%;
         display: flex;
         flex-direction: column;
@@ -83,7 +83,7 @@ ion-col{
         }
         .date-picker{
             height: 6rem;
-            width: 80vw;
+            width: 80%;
             display: flex;
             justify-content: space-between;
             border-radius: 20px;
@@ -126,62 +126,39 @@ ion-col{
 
 
 .salesmen-location-box{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-    ion-item.salesmen-location{
-        border-radius: 50px;
-        width: 90%;
-        height: 5rem;
-        ion-label{
-            color: #a9a9a9;
-            font-size: 1.2rem;
-            width: 100%;
-            height: 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            ion-img{
-                max-width: 50px;
-            }
-        }
-        ion-select{
-            min-width: 100%;
-            height: 100%;
-            position: absolute;
-            right: 5rem;
-        }
-        ion-item{
-            --inner-border-width: 0;
-            ion-icon{
-                margin-right: 1rem;
-            }
-        }
-    }
+    // width: 100%;
+    // display: flex;
+    // justify-content: center;
+    // margin-bottom: 3rem;
+    // ion-item.salesmen-location{
+    //     border-radius: 50px;
+    //     width: 90%;
+    //     height: 5rem;
+    //     ion-label{
+    //         color: #a9a9a9;
+    //         font-size: 1.2rem;
+    //         width: 100%;
+    //         height: 4rem;
+    //         display: flex;
+    //         justify-content: space-between;
+    //         align-items: center;
+    //         ion-img{
+    //             max-width: 50px;
+    //         }
+    //     }
+    //     ion-select{
+    //         min-width: 100%;
+    //         height: 100%;
+    //         position: absolute;
+    //         right: 5rem;
+    //     }
+    //     ion-item{
+    //         --inner-border-width: 0;
+    //         ion-icon{
+    //             margin-right: 1rem;
+    //         }
+    //     }
+    // }
    
 }
 
-@media (min-width: 991px) {
-    ion-col{
-        .date-picker-container{
-            width: 70vw;
-    
-            .date-picker-box{
-                width: 68vw;
-                .date-picker{
-                    width: 60vw;
-                }
-            }
-        }
-
-    }
-    ion-col{
-        .salesmen-location-box{
-            width: 70vw;
-            .salesmen-location{
-            width: 60vw;
-            }
-        }
-    }
-}
