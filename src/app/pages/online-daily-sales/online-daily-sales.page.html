@@ -96,7 +96,11 @@
         <tbody class="table-body table-body-content">
           <tr (click)="toggleDtailsDCD()">
             <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1100
+              <ion-icon
+                [ngClass]="{'icon-activated':IsDCDDetailsShowing}"
+                name="chevron-down-outline"
+              ></ion-icon>
+              1100
             </td>
             <td></td>
             <td>6</td>
@@ -123,7 +127,7 @@
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
               <ion-icon
-                class="isNotShowing"
+                [ngClass]="{'icon-activate':!IsDCDDetailsShowing}"
                 name="chevron-down-outline"
               ></ion-icon>
 
@@ -257,10 +261,7 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon
-                class="isNotShowing"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <ion-icon name="chevron-down-outline"></ion-icon>
 
               Distributor
             </td>
