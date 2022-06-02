@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Data, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import {
   Cities,
@@ -29,7 +29,6 @@ export class QuestionnairePage implements OnInit {
   questions: Question[] = [];
   userId: string;
   customerNumber: string;
-
   public get language(): Language {
     return this.languageService.language;
   }
@@ -41,16 +40,30 @@ export class QuestionnairePage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private questionnaireService: QuestionnaireService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
     private languageService: LanguageService
-  ) {}
+  ) {
+    let customerNumber = this.route.snapshot.queryParams['customerNumber'];
+    if (customerNumber)
+      this.open_OtherForm(customerNumber);
+    else this.get_cities();
+  }
 
   ngOnInit() {
+    this.storageService.get('user_id').then(userId => {
+      console.log(userId);
+      this.userId = userId
+      // this.get_cities();
+    })
+
     this.loadForm();
-    this.getDataFromStorage();
+    // this.getDataFromStorage();
+
   }
+  
   backButton() {
     this.router.navigate(['/']);
   }
@@ -69,20 +82,17 @@ export class QuestionnairePage implements OnInit {
     return this.form.controls;
   }
 
-  getDataFromStorage() {
-    this.storageService.get('user_id').then((userId) => {
-      this.userId = userId;
-    });
-
-    this.storageService
-      .get('Customer_Number')
-      .then((customerNumber: string) => {
-        if (!customerNumber) this.get_cities();
-        else this.open_OtherForm(customerNumber);
-      });
-  }
+  // getDataFromStorage() {
+  //   this.storageService
+  //     .get('Customer_Number')
+  //     .then((customerNumber: string) => {
+  //       if (!customerNumber) this.get_cities();
+  //       else this.open_OtherForm(customerNumber);
+  //     });
+  // }
 
   async get_cities() {
+    this.userId = await this.storageService.get('user_id');
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
@@ -90,10 +100,9 @@ export class QuestionnairePage implements OnInit {
     this.questionnaireService.getCityByUserId(this.userId).subscribe(
       (cities: Cities[]) => {
         this.cities = cities;
-        if (cities.length) {
+        if (cities.length)
           this.patchValue('DC', cities[0].City);
-          this.selectCity(cities[0].City);
-        }
+
         loading.dismiss();
       },
       () => loading.dismiss()
@@ -138,8 +147,12 @@ export class QuestionnairePage implements OnInit {
     });
     await loading.present();
     this.questionnaireService.getCustomersByNumber(customerNumber).subscribe(
-      (data: Data) => {
-        console.log(data);
+      (customers: Customer[]) => {
+        if (customers.length) {
+          this.customers = customers;
+          this.patchValue('Customer', customers[0])
+        }
+
         loading.dismiss();
       },
       () => loading.dismiss()
@@ -193,7 +206,7 @@ export class QuestionnairePage implements OnInit {
         () => loading.dismiss()
       );
   }
-  onSubmit() {}
+  onSubmit() { }
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });

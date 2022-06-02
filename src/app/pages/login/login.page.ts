@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
     private backgroundGeolocation: BackgroundGeolocation,
     // private device : Device,
     private plt: Platform
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadForm();
