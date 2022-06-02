@@ -223,7 +223,6 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   customerSelect(value: any) {
-    console.log(value.detail.value);
     let customer: Customer = value.detail.value;
     this.customerInfo = {
       address: customer.ADDRESS,
@@ -287,12 +286,14 @@ export class CustomerHistoryPage implements OnInit {
         .getPpedByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
+          this.createChart(customerHistory)
         });
     else
       this.customerHistoryService
         .getkgPpedByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
+          this.createChart(customerHistory)
         });
   }
 
@@ -302,12 +303,14 @@ export class CustomerHistoryPage implements OnInit {
         .getSalesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
+          this.createChart(customerHistory)
         });
     else
       this.customerHistoryService
         .getkgSalesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
+          this.createChart(customerHistory)
         });
   }
 
@@ -317,12 +320,14 @@ export class CustomerHistoryPage implements OnInit {
         .getSamplesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
+          this.createChart(customerHistory)
         });
     else
       this.customerHistoryService
         .getkgSamplesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
+          this.createChart(customerHistory)
         });
   }
 
@@ -374,17 +379,20 @@ export class CustomerHistoryPage implements OnInit {
       index++;
       this.virtual_rows.push(v_row2);
     }
-    console.log(this.customer_histories);
-    console.log(this.virtual_rows);
   }
 
-  rowClick(row: any) {
+  async rowClick(row: any) {
     if (row.type == 'a') {
       if (this.virtual_rows[row.index + 1].show) {
         this.virtual_rows[row.index + 1].show = false;
+        return
       } else {
         this.virtual_rows[row.index + 1].show = true;
       }
+      const loading = await this.loadingCtrl.create({
+        message: 'loading Details ...' // JSON
+      })
+      loading.present();
       this.handleCustomerCategory(
         this.customer_histories[row.index][0],
         row.index
@@ -413,15 +421,13 @@ export class CustomerHistoryPage implements OnInit {
       this.customerHistoryService
         .getPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
-          console.log(data);
-          this.create_model(data, index + 1);
+          this.createModel(data, index + 1);
         });
     else
       this.customerHistoryService
         .getkgPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
-          console.log(data);
-          this.create_model(data, index + 1);
+          this.createModel(data, index + 1);
         });
   }
 
@@ -431,14 +437,14 @@ export class CustomerHistoryPage implements OnInit {
         .getSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           console.log(data);
-          this.create_model(data, index + 1);
+          this.createModel(data, index + 1);
         });
     else
       this.customerHistoryService
         .getkgSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           console.log(data);
-          this.create_model(data, index + 1);
+          this.createModel(data, index + 1);
         });
   }
 
@@ -448,7 +454,7 @@ export class CustomerHistoryPage implements OnInit {
         .getSamplesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           console.log(data);
-          this.create_model(data, index + 1);
+          this.createModel(data, index + 1);
         });
     else
       this.customerHistoryService
@@ -458,11 +464,11 @@ export class CustomerHistoryPage implements OnInit {
         )
         .subscribe((data) => {
           console.log(data);
-          this.create_model(data, index + 1);
+          this.createModel(data, index + 1);
         });
   }
 
-  create_model(model, index) {
+  createModel(model, index) {
     this.selected_ch[index] = [];
 
     for (var i = 0; i < model.length; i++) {
@@ -476,7 +482,82 @@ export class CustomerHistoryPage implements OnInit {
         }
       }
       this.selected_ch[index].push(temp);
+      this.loadingCtrl.dismiss()
     }
+  }
+  columns : any[] = [];
+  data : any[] = [];
+  createChart(model) {
+    this.columns = [];
+    this.data = [];
+    if (!model) return;
+    let format_model = [];
+    let keys = Object.keys(model[0]);
+
+    format_model.push(keys)
+    for (var i = 0; i < model.length; i++) {
+      let ch = model[i];
+      let temp = Object.keys(ch).map(key => ch[key]);
+      format_model.push(temp);
+    }
+    // this.ctx = this.canvas.nativeElement;
+    let row0 = format_model[0];
+    row0.shift();
+    let labels = row0;
+    let dataset = [];
+    for (var i = 1; i < format_model.length - 1; i++) {
+      let label = format_model[i][0];
+      let row = format_model[i];
+      row.shift();
+      let data = row;
+      for (var k = 0; k < data.length; k++) {
+        if (data[k] == null) {
+          data[k] = 0;
+        }
+      }
+      let obj = {
+        name: label,
+        // backgroundColor: this.backgroundColor[i - 1],
+        data: data
+      }
+      dataset.push(obj);
+    }
+
+
+    let rowl = format_model[format_model.length - 1];
+    rowl.shift();
+    let rowv = rowl;
+    let row_avg = [];
+    for (var i = 0; i < rowv.length; i++) {
+      if (rowl[i] == null) {
+        rowl[i] = 0;
+      }
+    }
+    this.columns = labels;
+    this.data = dataset;
+    
+    
+    // this.chart = new Chart(this.ctx, {
+    //   type: 'bar',
+    //   data: {
+    //     labels: labels,
+    //     datasets: dataset
+    //   },
+    //   options: {
+    //     scales: {
+    //       yAxes: [{
+    //         stacked: true,
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: 'Kilogram'
+    //         }
+    //       }],
+    //       xAxes: [{
+    //         stacked: true
+    //       }],
+    //     }
+    //   }
+    // });`
   }
 
   patchValue(controller: string, value: any) {
