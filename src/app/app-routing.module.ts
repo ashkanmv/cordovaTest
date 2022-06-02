@@ -136,7 +136,11 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./pages/login/login.module').then((m) => m.LoginPageModule),
+  },  {
+    path: 'sales-hourly-day',
+    loadChildren: () => import('./pages/sales-hourly-day/sales-hourly-day.module').then( m => m.SalesHourlyDayPageModule)
   },
+
 ];
 
 @NgModule({

@@ -9,7 +9,7 @@
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="7" class="ion-text-center ion-align-self-center">
+      <ion-col size="6" class="ion-text-center ion-align-self-center">
         <ion-title class="ion-no-padding white-text"
           ><h3>Customer History</h3></ion-title
         >
@@ -20,7 +20,10 @@
       >
         GPS
       </ion-col>
-      <ion-col size="1" class="ion-align-self-center">
+      <ion-col
+        size="2"
+        class="ion-align-self-center ion-justify-content-center toggle"
+      >
         <ion-toggle color="primary" checked="true"></ion-toggle>
       </ion-col>
       <ion-col
@@ -28,10 +31,15 @@
         class="ion-align-self-center hide ion-no-padding iopn-margin-end"
       >
         <ion-img src="\assets\pages\customer-nearby\Hide.png"> </ion-img>
-        <ion-item>
-          <ion-select interface="popover" value="hide">
-            <ion-select-option value="50n">50 M</ion-select-option>
+        <ion-item class="distance">
+          <ion-select
+            interface="popover"
+            value="hide"
+            class="custom-options"
+            [interfaceOptions]="{cssClass: 'my-custom-class'}"
+          >
             <ion-select-option value="100m">100 M</ion-select-option>
+            <ion-select-option value="50n">50 M</ion-select-option>
             <ion-select-option value="500m">500 M</ion-select-option>
             <ion-select-option value="700m">700 M</ion-select-option>
             <ion-select-option value="1km">1 KM</ion-select-option>
@@ -84,11 +92,7 @@
   <form [formGroup]="form">
     <ion-grid class="customer-history-select">
       <ion-row class="ion-justify-content-center">
-        <ion-item
-          id="trigger-input-1"
-          lines="none"
-          class="box-shadow select-box"
-        >
+        <ion-item lines="none" class="box-shadow select-box">
           <ion-select
             class="drop-down select-drop-down"
             placeholder="DC"
@@ -216,40 +220,56 @@
   </form>
   <ion-card class="ion-no-margin">
     <ion-card-header>
-      <h4 class="shop-name">
-        <span>Shop name: </span>{{customerInfo.shopName}}
-      </h4>
-      <h4 class="shop-code">
-        <span>Shop code: </span>{{customerInfo.shopCode}}
-      </h4>
-      <h4 class="tell"><span>Tell: </span>{{customerInfo.tell}}</h4>
-      <h4 class="shop-type">
-        <span>Shop type: </span>{{customerInfo.shopType}}
-      </h4>
-      <div>
-        <h4 class="sr"><span>SR: </span>{{customerInfo.sr}}</h4>
-        <h4 class="address"><span>Address: </span>{{customerInfo.address}}</h4>
-      </div>
-      <div class="questionnaire">
-        <a routerLink="/questionnaire">
-          <img src="assets\pages\customer-history\Group 1309.png" alt="" />
-        </a>
-      </div>
+      <ion-row class="customerInfo">
+        <ion-row>
+          <ion-col size="6">
+            <h4 class="shop-name">
+              <span>Shop name: </span>{{customerInfo.shopName}}
+            </h4>
+          </ion-col>
+          <ion-col size="6">
+            <h4 class="shop-code">
+              <span>Shop code: </span>{{customerInfo.shopCode}}
+            </h4>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <h4 class="tell"><span>Tell: </span>{{customerInfo.tell}}</h4>
+          </ion-col>
+          <ion-col size="6">
+            <h4 class="shop-type">
+              <span>Shop type: </span>{{customerInfo.shopType}}
+            </h4>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8">
+            <h4 class="sr"><span>SR: </span>{{customerInfo.sr}}</h4>
+            <h4 class="address">
+              <span>Address: </span>{{customerInfo.address}}
+            </h4>
+          </ion-col>
+          <ion-col size="4" class="questionnaire">
+            <a routerLink="/questionnaire">
+              <img src="assets\pages\customer-history\Group 1309.png" alt="" />
+            </a>
+          </ion-col>
+        </ion-row>
+      </ion-row>
     </ion-card-header>
+
     <ion-card-content class="ion-no-padding">
       <ion-row
         class="table-container"
         *ngFor="let row of virtual_rows; let i = index"
         (click)="rowClick(row)"
-        [ngClass]="{'firstrow': i==0}"
+        [ngClass]="{'firstrow': i==0 ,'oddRows': 1 === i % 4}"
       >
-        <ng-container
-          class=""
-          *ngIf="row.show && (row.type=='a' || row.type=='h')"
-        >
+        <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
           <ion-col
             *ngFor="let item of customer_histories[row.index]; let j = index"
-            [ngClass]="{'firstculomn': j==0 && i!=0}"
+            [ngClass]="{'firstculomn': j==0 && i!=0 }"
           >
             {{ item }}
           </ion-col>

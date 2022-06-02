@@ -197,6 +197,8 @@ ion-col.select-drop-down-container{
 
     ion-select{
         width: 100%;
+
+        justify-content: center;
         &::part(icon) {
             display: none;
           }

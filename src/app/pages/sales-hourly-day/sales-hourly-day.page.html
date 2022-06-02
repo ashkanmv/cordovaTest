@@ -1,0 +1,335 @@
+<ion-header>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row
+      class="primary-bg ion-justify-content-between header ion-no-margin"
+    >
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="backButton()">
+          <ion-img
+            class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col> </ion-col>
+      <ion-col size="8" class="ion-text-center ion-align-self-center">
+        <ion-title class="white-text ion-no-padding">
+          <h3><b>Sales hourly_Day & Sales Office</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col class="ion-align-self-center reload" size="1">
+        <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
+        </ion-img>
+      </ion-col>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img
+          class="wifi-online"
+          src="\assets\mainPage\main\wifi.png"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  <ion-grid class="secondary-bg white-text">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="3" class="ion-no-padding ion-text-start">
+        2022.04.02
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-center">
+        Saturday
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-end">
+        13 فروردین
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-col class="ion-no-padding segment-change">
+    <ion-segment
+      mode="md"
+      class="ion-justify-content-between"
+      (ionChange)="segmentChanged($event)"
+      value="dsd-hourly-city"
+    >
+      <ion-segment-button class="dsd-hourly-city" value="dsd-hourly-city">
+        <ion-label>DSD HOURLY CITY</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="dsd-hourly-days" value="dsd-hourly-days">
+        <ion-label>DSD HOURLY DAYS</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-col>
+</ion-header>
+
+<ion-content>
+  <ion-col
+    class="dsd-hourly-days-segment"
+    *ngIf="selectedSegment == 'dsd-hourly-city'"
+  >
+    <!-- --------------date_ picker -->
+    <ion-col>
+      <div class="date-picker-container">
+        <div class="date-picker-box">
+          <div id="open-modal-from" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>From Date</h4>
+              <div class="">
+                2021/03/01
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div id="open-modal-to" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>To Date</h4>
+              <div class="">
+                2022/11/29
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2021-03-01"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2022-11-29"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <!--  -->
+    </ion-col>
+    <!-- ------------------search_bar -->
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <ion-item>
+            <button class="search-submit primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <ion-select multiple="true" interface="popover">
+              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
+              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+              <ion-select-option value="rasht">RASHT</ion-select-option>
+              <ion-select-option value="tehran">TEHRAN</ion-select-option>
+              <ion-select-option value="karaj">KARAJ</ion-select-option>
+              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+            </ion-select>
+            <span class="search-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </span>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!-- -----------------------table -->
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <table>
+          <thead>
+            <th class="city"><span>City</span></th>
+            <th>H8</th>
+            <th>H9</th>
+            <th>H10</th>
+            <th>H11</th>
+            <th>H12</th>
+            <th>H13</th>
+            <th>H14</th>
+            <th>H15</th>
+            <th>H16</th>
+            <th>H17</th>
+            <th>Total</th>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let data of salesHourlyCity; let i= index"
+              [ngClass]="{'oddRows' : 0 === i % 2 }"
+            >
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon>{{data.city}}
+              </td>
+              <td>{{data.H8}}</td>
+              <td>{{data.H9}}</td>
+              <td>{{data.H10}}</td>
+              <td>{{data.H11}}</td>
+              <td>{{data.H12}}</td>
+              <td>{{data.H13}}</td>
+              <td>{{data.H14}}</td>
+              <td>{{data.H15}}</td>
+              <td>{{data.H16}}</td>
+              <td>{{data.H17}}</td>
+              <td>{{data.total}}</td>
+              <td>{{data.H12}}</td>
+              <td>{{data.H13}}</td>
+              <td>{{data.H14}}</td>
+              <td>{{data.H15}}</td>
+              <td>{{data.H16}}</td>
+              <td>{{data.H17}}</td>
+              <td>{{data.total}}</td>
+            </tr>
+            <div class="nested-table-container"></div>
+          </tbody>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+  <ion-col
+    class="dsd-hourly-city-segment"
+    *ngIf="selectedSegment == 'dsd-hourly-days'"
+  >
+    <!-- --------------date_ picker -->
+    <ion-col>
+      <!--  -->
+      <div class="date-picker-container">
+        <div class="date-picker-box">
+          <div id="open-modal-from" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>From Date</h4>
+              <div class="">
+                2021/03/01
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div id="open-modal-to" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>To Date</h4>
+              <div class="">
+                2022/11/29
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2021-03-01"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2022-11-29"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <!--  -->
+    </ion-col>
+    <!-- ------------------search_bar -->
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <ion-item>
+            <button class="search-submit primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <ion-select multiple="true" interface="popover">
+              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
+              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+              <ion-select-option value="rasht">RASHT</ion-select-option>
+              <ion-select-option value="tehran">TEHRAN</ion-select-option>
+              <ion-select-option value="karaj">KARAJ</ion-select-option>
+              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+            </ion-select>
+            <span class="search-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </span>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!-- -----------------------table -->
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <table>
+          <thead>
+            <th class="days"><span>Customer Number</span></th>
+            <th>Cluster</th>
+            <th>Store Name</th>
+            <th>Sale</th>
+            <th>PPED</th>
+            <th>%</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon> 1131
+              </td>
+              <td>Tehran</td>
+              <td>Behnam Ezadi</td>
+              <td></td>
+              <td>3.20</td>
+              <td>19</td>
+            </tr>
+            <div class="nested-table-container">
+              <div class="border-right"></div>
+            </div>
+            <tr class="table-lightblue-bg">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon> 1107
+              </td>
+              <td>Amol</td>
+              <td>Milad Ahmadi</td>
+              <td></td>
+              <td>7.65</td>
+              <td>15</td>
+            </tr>
+            <div class="nested-table-container">
+              <div class="border-right"></div>
+            </div>
+            <tr>
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon> 1115
+              </td>
+              <td>Zahedan</td>
+              <td>Sina Ezati</td>
+              <td></td>
+              <td>12.05</td>
+              <td>20</td>
+            </tr>
+            <div class="nested-table-container"></div>
+            <tr class="table-lightblue-bg">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon> 1107
+              </td>
+              <td>Amol</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <div class="nested-table-container"></div>
+          </tbody>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-content>
+
+<!-- ----------------------- -->
