@@ -8,6 +8,7 @@ import { CustomerHistoryPageRoutingModule } from './customer-history-routing.mod
 
 import { CustomerHistoryPage } from './customer-history.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     IonicModule,
     CustomerHistoryPageRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule
   ],
   declarations: [CustomerHistoryPage],
 })

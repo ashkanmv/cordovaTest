@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { LoadingController, Platform } from '@ionic/angular';
-import { Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Cities, Customer, Language, Marker } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -25,6 +26,12 @@ export class CustomerHistoryPage implements OnInit {
   typeSubscription: Subscription;
   kgqtySubscription: Subscription;
   selected_ch = [];
+
+  // Search
+  searching: boolean;
+  items: Observable<any[]>;
+  input = new Subject<string | null>();
+  value: any;
 
   public get language(): Language {
     return this.languageService.language;
@@ -54,6 +61,11 @@ export class CustomerHistoryPage implements OnInit {
     private sharedService: SharedService,
     private languageService: LanguageService
   ) {
+    this.input.subscribe((term) => {
+      if (!term) return;
+      this.searching = true;
+      this.items = this.customerHistoryService.getCustomerSearch(term)?.pipe(map(_ => _), tap(() => this.searching = false));
+    })
     // mock data
     this.customerInfo = {
       shopName: 'Jahan Akbary',
