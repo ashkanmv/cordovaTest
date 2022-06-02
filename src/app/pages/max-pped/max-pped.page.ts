@@ -9,13 +9,31 @@ import { Router } from '@angular/router';
 })
 export class MaxPPEDPage implements OnInit {
   dateNow = new Date();
+  selectedSegment: string = 'per-customer';
+
+  routeData: {
+    route: number;
+    city: string;
+    visitorName: string;
+    sale: number;
+    PPED: number;
+    percentage: number;
+  };
 
   nestedTableIsShowingRow_1: boolean = false;
   nestedTableIsShowingRow_2: boolean = false;
   nestedTableIsShowingRow_3: boolean = false;
   nestedTableIsShowingRow_4: boolean = false;
-  constructor(private router: Router) {}
-  selectedSegment: string = 'per-customer';
+  constructor(private router: Router) {
+    this.routeData = {
+      route: 1131,
+      city: 'Tehran',
+      visitorName: 'Behnam Ezadi',
+      sale: 3.12,
+      PPED: 19,
+      percentage: 782,
+    };
+  }
 
   ngOnInit() {}
   backButton() {
