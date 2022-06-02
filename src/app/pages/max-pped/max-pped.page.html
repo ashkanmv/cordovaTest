@@ -59,7 +59,9 @@
     </ion-segment>
   </ion-col>
 </ion-header>
-
+<!-- -------------------------------per-route----------------------------------------- -->
+<!-- -------------------------------per-route----------------------------------------- -->
+<!-- -------------------------------per-route----------------------------------------- -->
 <ion-content>
   <ion-col class="per-route-segment" *ngIf="selectedSegment == 'per-route'">
     <!-- --------------date_ picker -->
@@ -136,7 +138,7 @@
     </ion-row>
     <!-- -----------------------table -->
     <ion-row>
-      <ion-col>
+      <ion-col class="ion-no-padding">
         <table>
           <thead>
             <th class="route"><span>Route</span></th>
@@ -146,23 +148,24 @@
             <th>PPED</th>
             <th>%</th>
           </thead>
-          <tbody>
+          <tbody
+            *ngFor="let data of routeData; let i = index"
+            [ngClass]="{'oddRows' : 0 === i % 2 }"
+          >
             <tr (click)="toggleNestedTabelRow_1()">
               <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon>
-                {{routeData.route}}
+                <ion-icon name="chevron-down-outline"></ion-icon>{{data.route}}
               </td>
-              <td>{{routeData.city}}</td>
-              <td>{{routeData.visitorName}}</td>
-              <td>{{routeData.sale}}</td>
-              <td>{{routeData.PPED}}</td>
-              <td>{{routeData.percentage}}</td>
+              <td>{{data.city}}</td>
+              <td>{{data.visitorName}}</td>
+              <td>{{data.sale}}</td>
+              <td>{{data.PPED}}</td>
+              <td>{{data.percentage}}</td>
             </tr>
             <div
               *ngIf="nestedTableIsShowingRow_1"
               class="nested-table-container"
             >
-              <hr />
               <div class="border-right">
                 <table class="nested-table">
                   <thead>
@@ -183,6 +186,7 @@
                       <td></td>
                     </tr>
                   </tbody>
+                  <hr />
                 </table>
               </div>
             </div>
@@ -191,6 +195,9 @@
       </ion-col>
     </ion-row>
   </ion-col>
+  <!-- -------------------------------per-customer----------------------------------------- -->
+  <!-- -------------------------------per-customer----------------------------------------- -->
+  <!-- -------------------------------per-customer----------------------------------------- -->
   <ion-col
     class="per-customer-segment"
     *ngIf="selectedSegment == 'per-customer'"
@@ -270,7 +277,7 @@
     </ion-row>
     <!-- -----------------------table -->
     <ion-row>
-      <ion-col>
+      <ion-col class="ion-no-padding">
         <table>
           <thead>
             <th class="route"><span>Customer Number</span></th>
@@ -280,22 +287,24 @@
             <th>PPED</th>
             <th>%</th>
           </thead>
-          <tbody>
+          <tbody
+            *ngFor="let data of routeData; let i = index"
+            [ngClass]="{'oddRows' : 0 === i % 2 }"
+          >
             <tr (click)="toggleNestedTabelRow_1()">
               <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon> 1131
+                <ion-icon name="chevron-down-outline"></ion-icon>{{data.route}}
               </td>
-              <td>Tehran</td>
-              <td>Behnam Ezadi</td>
-              <td></td>
-              <td>3.20</td>
-              <td>19</td>
+              <td>{{data.city}}</td>
+              <td>{{data.visitorName}}</td>
+              <td>{{data.sale}}</td>
+              <td>{{data.PPED}}</td>
+              <td>{{data.percentage}}</td>
             </tr>
             <div
               *ngIf="nestedTableIsShowingRow_1"
               class="nested-table-container"
             >
-              <hr />
               <div class="border-right">
                 <table class="nested-table">
                   <thead>
@@ -315,309 +324,10 @@
                       <td></td>
                       <td></td>
                     </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
                   </tbody>
+                  <hr />
                 </table>
               </div>
-            </div>
-            <tr class="table-lightblue-bg" (click)="toggleNestedTabelRow_2()">
-              <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon> 1107
-              </td>
-              <td>Amol</td>
-              <td>Milad Ahmadi</td>
-              <td></td>
-              <td>7.65</td>
-              <td>15</td>
-            </tr>
-            <div
-              *ngIf="nestedTableIsShowingRow_2"
-              class="nested-table-container"
-            >
-              <hr />
-              <div class="border-right">
-                <table class="nested-table">
-                  <thead>
-                    <th>Customer Number</th>
-                    <th>Customer Name</th>
-                    <th>Cluster</th>
-                    <th>Sale</th>
-                    <th>PPED</th>
-                    <th>%</th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <tr (click)="toggleNestedTabelRow_3()">
-              <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon> 1115
-              </td>
-              <td>Zahedan</td>
-              <td>Sina Ezati</td>
-              <td></td>
-              <td>12.05</td>
-              <td>20</td>
-            </tr>
-            <div
-              *ngIf="nestedTableIsShowingRow_3"
-              class="nested-table-container"
-            >
-              <table class="nested-table">
-                <thead>
-                  <th>Customer Number</th>
-                  <th>Customer Name</th>
-                  <th>Cluster</th>
-                  <th>Sale</th>
-                  <th>PPED</th>
-                  <th>%</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <tr class="table-lightblue-bg" (click)="toggleNestedTabelRow_4()">
-              <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon> 1107
-              </td>
-              <td>Amol</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <div
-              *ngIf="nestedTableIsShowingRow_4"
-              class="nested-table-container"
-            >
-              <table class="nested-table">
-                <thead>
-                  <th>Customer Number</th>
-                  <th>Customer Name</th>
-                  <th>Cluster</th>
-                  <th>Sale</th>
-                  <th>PPED</th>
-                  <th>%</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </tbody>
         </table>

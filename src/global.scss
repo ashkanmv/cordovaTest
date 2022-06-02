@@ -41,6 +41,11 @@ ion-select::part(icon) {
  ion-item.select-interface-option{
    text-align: center;
  }
+//  search bottom border
+ion-item{
+  --highlight-color-focused: white;
+
+}
  
  .popover-content {
   width: 100rem;
