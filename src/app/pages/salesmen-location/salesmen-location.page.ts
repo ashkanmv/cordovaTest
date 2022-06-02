@@ -10,17 +10,8 @@ import { PopoverComponent } from 'src/app/shared/components/popover/popover.comp
 })
 export class SalesmenLocationPage implements OnInit {
   dateNow = new Date();
-  // mock data
-  salesmansData = [];
 
-  constructor(private router: Router, public popoverctrl: PopoverController) {
-    this.salesmansData = [
-      { name: 'John' },
-      { name: 'Michael' },
-      { name: 'Michael' },
-      { name: 'Tanya' },
-    ];
-  }
+  constructor(private router: Router, public popoverctrl: PopoverController) {}
 
   ngOnInit() {}
   backButton() {
