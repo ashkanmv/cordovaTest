@@ -34,7 +34,6 @@ ion-menu {
 
 
 // 
-
 ion-select::part(icon) {
   display: none !important;
  }
@@ -42,11 +41,18 @@ ion-select::part(icon) {
  ion-item.select-interface-option{
    text-align: center;
  }
+ 
  .popover-content {
   width: 100rem;
 }
-//  ion-select-popover.popover-viewport{
-// }
+.oddRows{
+  background: #54b2e963;
+}
+.icon-activated{
+  color: #0095EB;
+  transform: rotate(180deg);
+  // transition: all .2s ease-in-out;
+}
 // 
 
 ion-toggle {

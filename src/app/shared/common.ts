@@ -90,16 +90,16 @@ export class Language {
     Title: string;
     Input_select_DC: string;
     Input_select_route: string;
-    'Input-select-routeDaily': string;
-    'Input-select-customer': string;
-    'Input-select-customer-Category': string;
-    'Input-text-store': string;
-    'Input-text-customer-name': string;
-    'Input-text-address': string;
-    'Radio-input-breakfast': string;
-    'Radio-input-breakfast-yes': string;
-    'Radio-input-breakfast-no': string;
-    'Submit-button': string;
+    Input_select_routeDaily: string;
+    Input_select_customer: string;
+    Input_select_customer_Category: string;
+    Input_text_store: string;
+    Input_text_customer_name: string;
+    Input_text_address: string;
+    Radio_input_breakfast: string;
+    Radio_input_breakfast_yes: string;
+    Radio_input_breakfast_no: string;
+    Submit_button: string;
   };
   Gps_Tracking: {
     Title: string;
@@ -151,5 +151,7 @@ export class Language {
     submit: string;
     UserPassIncorrect: string;
     RememberMe: string;
+    PoweredBy: string;
+    serial: string;
   };
 }

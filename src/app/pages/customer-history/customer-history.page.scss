@@ -22,7 +22,8 @@ ion-content {
 ion-title {
     height: 100%;
     h3{
-        font-size: 3vw;
+        // font-size: 3vw;
+        font-size: 20px;
         width: 100%;
     }
 }
@@ -40,25 +41,22 @@ ion-toggle{
     margin-top: 3px;
     background: #fff;
     border-radius: 100%;
-    padding:2.3vh .3vw;
-    // padding:13px 3px;
+    // padding:2.3vh .3vw;
+    padding:13px 3px;
     max-width: 100%;
 }
 
 ion-img{
     // width: 100%;
-    max-width: 80px;
+    max-width: 60px;
     min-width: 30px;
 
 }
 
+
 .wifi{
-    width: 100%;
-}
-.hide{
-    width: 100%;
     ion-img{
-        // max-width: 60px;
+        max-width: 66px;
     }
 }
 
@@ -200,8 +198,7 @@ ion-col.hide{
         width: 80%;
         height: 100%;
         opacity: 0;
-        ion-select{
-        }
+
     }
 }
 
@@ -301,12 +298,22 @@ ion-col.hide{
         color: #0095EB;
         --placeholder-color: #6a6a6a;
         height: 4rem;
+        
         &::part(icon) {
             display: none;
 
-          }
-    }
+        }
+  
+  
 
+        ion-item.select-interface-option{
+            ion-label{
+                color: red;
+                --color: red;
+            }
+        }
+    }
+   
     ion-icon{
         color: #e5e5e5;
         width: 1rem;
@@ -434,9 +441,15 @@ ion-card{
     }
     ion-card-header{
         --background: #0095EB;
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        column-gap: .6rem;
+        // min-height: 60vh;
+        // display: grid;
+        // grid-template-columns: repeat(2,1fr);
+        // column-gap: .6rem;
+        ion-row.customerInfo{
+            ion-row{
+                width:-webkit-fill-available;
+            }
+        }
         .questionnaire{
             display: flex;
             align-items: flex-end;
@@ -461,14 +474,11 @@ ion-card{
                 background: #d6d6d648;
             }
             ng-container{
-                background: yellow;
                 ion-col{
                     color: #3a3838;
                     height: 1rem;
-                    --background: green;
-                    :last-child{
+                    max-width: 13vw;
 
-                    }
                 }
             }
             .table-detail{
@@ -728,6 +738,12 @@ ion-card{
         }
         }
     }
+    // @media (max-width:490px) {
+    //     ion-toggle{
+          
+    //         padding:1.5vh .3vw;
+    //     }
+    // }
 
 
 

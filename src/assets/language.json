@@ -69,8 +69,7 @@
             "UserPassIncorrect": "Username or password is incorrect",
             "RememberMe" : "Remember Me",
             "PoweredBy" :"Powered by:" ,
-            "serial" :"Serial : R52J209" ,
-            "rysaVer" :"RYSA Ver 1.0.9.26" 
+            "serial" :"Serial : R52J209" 
         }
     },
     "FR":{

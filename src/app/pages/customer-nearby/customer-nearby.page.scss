@@ -19,7 +19,7 @@ ion-content {
 
 ion-title{
     width: 100%;
-    font-size: 4.5vw;
+    font-size: 3vw;
 }
 ion-item{
     --background: #fff;
@@ -32,29 +32,14 @@ ion-input{
 }
 
 ion-img{
-    // max-width: 100px;
-    // min-width: 30px;
+
     width: 100%;
-}
-// img{
-//     min-width: 30px;
-
-// }
-
-.wifi{
-
-    min-width: 40px;    
-}
-.hide{
     min-width: 30px;    
-}
-.reload{
 
-    min-width: 40px;    
 }
-.description{
-    min-width: 40px;    
-}
+
+
+
 
 ion-img .back-button.ios{
     min-width: 40px;
@@ -86,14 +71,14 @@ ion-popover.description-drop-down{
      --offset-x:-5vw;
      --offset-y:1vh;
      >ion-content{
-         font-size: 1.2rem;
+         font-size: 1.1rem;
          --color: #000;
 
          >div{
              p{
                  text-align: center;
              }
-             img{
+             ion-img{
                  position: absolute;
                  left: 1rem;             
              }
@@ -102,14 +87,15 @@ ion-popover.description-drop-down{
          
  
  
-         img{
+         ion-img{
              // justify-self: flex-start;
              max-width:3.5vw;
              // margin-right: 6vw;
          }
          &:hover{
              // --background:none;
-             --background:#119ff23f;
+            //  --background:#119ff23f;
+             --background:none;
             //  --------change later
 
          }

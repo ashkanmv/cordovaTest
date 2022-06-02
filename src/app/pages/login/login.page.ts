@@ -26,6 +26,7 @@ export class LoginPage implements OnInit {
   isLoading = false;
   orgUserId: string;
   UUid: string;
+  version = environment.Version;
   public get language(): Language {
     return this.languageService.language;
   }
