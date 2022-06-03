@@ -65,6 +65,30 @@ export interface LoginResponse {
   Message: string;
 }
 
+export interface getUserCildrenResponse {
+  Uid: number;
+  Fromdate: Date;
+  Todate: Date;
+  id: string;
+  PartyID: string;
+  ParentID: string;
+  userType: number;
+  FirstName: string;
+  LastName: string;
+  LandLine: string;
+  CellNumber: string;
+  username: string;
+  password: string;
+  status: string;
+  create_at: Date;
+  Mod_DT: Date;
+  Mod_User: number;
+  isSystemUser?: any;
+  Equivalent_User_ID: string;
+  name: string;
+  FullName: string;
+}
+
 export interface Access {
   name: string;
 }
