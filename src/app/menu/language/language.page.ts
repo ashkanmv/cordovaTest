@@ -7,13 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./language.page.scss'],
 })
 export class LanguagePage implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router : Router) { }
-
-  ngOnInit() {
-  }
-
-  backButton(){
-    this.router.navigate(['/settings'])
-  }
+  ngOnInit() {}
 }

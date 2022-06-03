@@ -34,8 +34,9 @@ ion-menu {
 
 
 // 
+// REMOVED THE IMPORTENET MARK
 ion-select::part(icon) {
-  display: none !important;
+  display: none ;
  }
 
  ion-item.select-interface-option{
@@ -46,18 +47,33 @@ ion-item{
   --highlight-color-focused: white;
 
 }
- 
- .popover-content {
-  width: 100rem;
+//  ng search 
+// arrow removed
+.ng-select.ng-select-single .ng-select-container .ng-arrow-wrapper{
+  display: none;
 }
+// border bottom removed
+.ng-select .ng-select-container:after{
+  border-bottom: none;
+}
+// padding bottom removed
+.ng-select{
+  padding-bottom: 0;
+}
+// header show content 
+.show-content{
+  transform: rotate(180deg);
+}
+// table blue rows
 .oddRows{
   background: #54b2e963;
 }
-.icon-activated{
-  color: #0095EB;
-  transform: rotate(180deg);
-  // transition: all .2s ease-in-out;
-}
+// .icon-activated{
+//   color: #0095EB;
+//   transform: rotate(180deg);
+// }
+
+
 // 
 
 ion-toggle {

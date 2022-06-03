@@ -43,25 +43,19 @@ export class QuestionnairePage implements OnInit {
     private languageService: LanguageService
   ) {
     let customerNumber = this.route.snapshot.queryParams['customerNumber'];
-    if (customerNumber)
-      this.open_OtherForm(customerNumber);
+    if (customerNumber) this.open_OtherForm(customerNumber);
     else this.get_cities();
   }
 
   ngOnInit() {
-    this.storageService.get('user_id').then(userId => {
+    this.storageService.get('user_id').then((userId) => {
       console.log(userId);
-      this.userId = userId
+      this.userId = userId;
       // this.get_cities();
-    })
+    });
 
     this.loadForm();
     // this.getDataFromStorage();
-
-  }
-  
-  backButton() {
-    this.router.navigate(['/']);
   }
 
   loadForm() {
@@ -96,8 +90,7 @@ export class QuestionnairePage implements OnInit {
     this.questionnaireService.getCityByUserId(this.userId).subscribe(
       (cities: Cities[]) => {
         this.cities = cities;
-        if (cities.length)
-          this.patchValue('DC', cities[0].City);
+        if (cities.length) this.patchValue('DC', cities[0].City);
 
         loading.dismiss();
       },
@@ -146,7 +139,7 @@ export class QuestionnairePage implements OnInit {
       (customers: Customer[]) => {
         if (customers.length) {
           this.customers = customers;
-          this.patchValue('Customer', customers[0])
+          this.patchValue('Customer', customers[0]);
         }
 
         loading.dismiss();
@@ -202,7 +195,7 @@ export class QuestionnairePage implements OnInit {
         () => loading.dismiss()
       );
   }
-  onSubmit() { }
+  onSubmit() {}
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });

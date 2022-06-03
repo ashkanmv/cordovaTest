@@ -70,9 +70,6 @@ export class SalesHourlyDayPage implements OnInit {
   ];
 
   ngOnInit() {}
-  backButton() {
-    this.router.navigate(['/']);
-  }
   segmentChanged(event: any) {
     // console.log(event.target.value);
     this.selectedSegment = event.target.value;

@@ -67,9 +67,19 @@
             "password": "Password",
             "submit": "Sign In",
             "UserPassIncorrect": "Username or password is incorrect",
-            "RememberMe": "Remember Me",
-            "PoweredBy": "Powered by:",
-            "serial": "Serial : R52J209"
+            "RememberMe" : "Remember Me",
+            "PoweredBy" :"Powered by:" ,
+            "serial" :"Serial : R52J209" 
+        },
+        "theme":{
+            "title":"Theme",
+            "dark":"Dark",
+            "light":"Light",
+            "select":"Select",
+            "automatic_dark_mode":"Automatic dark mode",
+            "text_size":"Text Size",
+            "bold_text":"Bold Text",
+            "theme_color":"Theme Color"
         }
     },
     "FR": {

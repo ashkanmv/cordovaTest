@@ -13,7 +13,4 @@ export class NotificationsPage implements OnInit {
     speed: 400,
   };
   ngOnInit() {}
-  backButton() {
-    this.router.navigate(['/']);
-  }
 }

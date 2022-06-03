@@ -12,9 +12,6 @@ export class OnlineDailySalesPage implements OnInit {
   selectedSegment: string = 'NON_DSD';
   constructor(private router: Router) {}
   ngOnInit() {}
-  backButton() {
-    this.router.navigate(['/']);
-  }
   segmentChanged(event: any) {
     // console.log(event.target.value);
     this.selectedSegment = event.target.value;

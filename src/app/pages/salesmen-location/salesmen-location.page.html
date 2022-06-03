@@ -4,7 +4,7 @@
       class="primary-bg ion-justify-content-between header ion-no-margin"
     >
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" (click)="backButton()">
+        <ion-button fill="clear" routerLink="/main">
           <ion-img
             class="back-button ion-justfy-self-start ion-align-self-cente"
             src="assets\pages\customer-history\Backward arrow.png"
@@ -18,25 +18,12 @@
       </ion-col>
       <ion-col></ion-col>
       <ion-col class="ion-align-self-center hide" size="1">
-        <app-popover></app-popover>
-        <!-- <ion-img
+        <ion-img
           id="trigger-hide"
           class="hide"
           src="\assets\pages\customer-nearby\Hide.png"
         >
         </ion-img>
-        <ion-popover
-          class="header-drop-down hide-drop-down"
-          trigger="trigger-hide"
-        >
-          <ng-template>
-            <ion-content>50 M</ion-content>
-            <ion-content>100 M</ion-content>
-            <ion-content>500 M</ion-content>
-            <ion-content>700 M</ion-content>
-            <ion-content>1 KM</ion-content>
-          </ng-template>
-        </ion-popover> -->
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
         <ion-img

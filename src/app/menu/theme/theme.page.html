@@ -1,9 +1,60 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>theme</ion-title>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3" class="ion-align-self-center">
+        <ion-button fill="clear" routerLink="/settings">
+          <ion-img
+            class="back-button"
+            src="\assets\menu\theme\Path 10.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-title>
+          <h3><b>{{language.theme.title}}</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col size="3"> </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-row>
+    <ion-col size="6"
+      ><ion-img src="\assets\menu\theme\Icon awesome-mobile-alt.png"></ion-img>
+      <h3>{{language.theme.dark}}</h3>
+      <ion-radio name="theme-color" value="{{language.theme.dark}}"
+        >{{language.theme.select}}</ion-radio
+      >
+    </ion-col>
+    <ion-col size="6"
+      ><ion-img
+        src="\assets\menu\theme\Icon awesome-mobile-alt-1.png"
+      ></ion-img>
+      <h3>{{language.theme.light}}</h3>
+      <ion-radio name="theme-color" value="{{language.theme.light}}"
+        >{{language.theme.select}}</ion-radio
+      >
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item>
+        <ion-col size="8">{{language.theme.automatic_dark_mode}}</ion-col>
+        <ion-col size="4"><ion-toggle mode="ios"></ion-toggle></ion-col>
+      </ion-item>
+    </ion-col>
+    <ion-col size="12">
+      <ion-item>
+        <ion-col size="8">{{language.theme.automatic_dark_mode}}</ion-col>
+        <ion-col size="4"><ion-toggle mode=""></ion-toggle></ion-col>
+      </ion-item>
+    </ion-col>
+    <ion-col size="12">
+      <ion-item>
+        <ion-col size="8">{{language.theme.automatic_dark_mode}}</ion-col>
+        <ion-col size="4"><ion-toggle mode="ios"></ion-toggle></ion-col>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 </ion-content>
