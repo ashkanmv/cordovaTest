@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Language, Languages } from 'src/app/shared/common';
+import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 
 @Component({
@@ -12,8 +12,8 @@ export class ThemePage implements OnInit {
     return this.languageService.language;
   }
 
-  public get selectedLanguage(): Languages {
-    return this.languageService.selectedLanguage;
+  public get selectedLanguage(): Language {
+    return this.languageService.language;
   }
   constructor(private languageService: LanguageService) {}
 
