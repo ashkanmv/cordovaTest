@@ -14,9 +14,6 @@ export class ScoreCardPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}
-  backButton() {
-    this.router.navigate(['/']);
-  }
   segmentChanged(event: any) {
     // console.log(event.target.value);
     this.selectedSegment = event.target.value;

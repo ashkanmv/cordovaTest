@@ -7,14 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./about-app.page.scss'],
 })
 export class AboutAppPage implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router : Router) { }
-
-  ngOnInit() {
-  }
-
-  backButton(){
-    this.router.navigate(['/'])
-  }
-
+  ngOnInit() {}
 }

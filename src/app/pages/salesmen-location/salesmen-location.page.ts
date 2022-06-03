@@ -14,9 +14,7 @@ export class SalesmenLocationPage implements OnInit {
   constructor(private router: Router, public popoverctrl: PopoverController) {}
 
   ngOnInit() {}
-  backButton() {
-    this.router.navigate(['/']);
-  }
+
   async presentPopover(ev: any) {
     const popover = await this.popoverctrl.create({
       component: PopoverComponent,

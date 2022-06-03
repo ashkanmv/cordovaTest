@@ -14,9 +14,6 @@ export class TodayPlannedNotBuyingPage implements OnInit {
   constructor(private router: Router) {}
   dateNow = new Date();
   ngOnInit() {}
-  backButton() {
-    this.router.navigate(['/']);
-  }
   // delete later
   toggleDtails() {
     this.IsDetailsShowing = !this.IsDetailsShowing;

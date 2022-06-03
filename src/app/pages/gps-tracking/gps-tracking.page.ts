@@ -14,9 +14,6 @@ export class GpsTrackingPage implements OnInit {
   // show/ hide content
   show = true;
   ngOnInit() {}
-  backButton() {
-    this.router.navigate(['/']);
-  }
   // async presentPopover(ev: any) {
   //   const popover = await this.popoverController.create({
   //     component: PopoverComponent,

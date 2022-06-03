@@ -10,7 +10,4 @@ export class AddItemPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}
-  backButton() {
-    this.router.navigate(['/']);
-  }
 }
