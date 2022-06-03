@@ -80,29 +80,7 @@ ion-popover{
     }
 }
 
-// ion-select{
-//     &::part(text) {
-//     color: #acb4fc;
-//   }
-// }
 
-// ion-item.input-select{
-//     ion-label{
-//         color:#0095eb ;
-
-//     }
-// }
-
-
-
-// ion-label{
-//     --color:#0095eb ;
-
-// }
-// ion-icon{
-//     color: #e5e5e5;
-//     width: 1rem;
-// }
 
 
 ion-list{
@@ -274,14 +252,14 @@ ion-col.radio-input-container{
         }
 }
 
-    .btn-submit{
-        margin: 2rem 0;
-        // width: 60vw;
-        width: 80%;
-        height: 9vh;
-        font-size: 2rem;
-        border-radius: 50px;
-        background: #0095EB;
-        color: #fff;
-    }
+}
+.btn-submit{
+    margin: 2rem 0;
+    // width: 60vw;
+    width: 80%;
+    height: 9vh;
+    font-size: 2rem;
+    border-radius: 50px;
+    background: #0095EB;
+    color: #fff;
 }

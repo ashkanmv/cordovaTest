@@ -29,6 +29,9 @@ export class QuestionnairePage implements OnInit {
   questions: Question[] = [];
   userId: string;
   customerNumber: string;
+  // ==
+  answers = [];
+  // ==
   public get language(): Language {
     return this.languageService.language;
   }
@@ -49,7 +52,13 @@ export class QuestionnairePage implements OnInit {
     let customerNumber = this.route.snapshot.queryParams['customerNumber'];
     if (customerNumber) this.open_OtherForm(customerNumber);
     else this.get_cities();
+    //
+
+    //
   }
+  //
+
+  //
 
   ngOnInit() {
     this.storageService.get('user_id').then((userId) => {
@@ -195,9 +204,25 @@ export class QuestionnairePage implements OnInit {
           this.questions = questions;
           console.log(this.questions);
           loading.dismiss();
+          this.getAnswers();
         },
         () => loading.dismiss()
       );
+  }
+
+  async getAnswers() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.questionnaireService
+      .getAnswers()
+      // .subscribe((data) => console.log(data));
+      .subscribe((data: any[]) => {
+        this.answers = data;
+        console.log(this.answers);
+      });
+    loading.dismiss();
   }
   onSubmit() {}
 
