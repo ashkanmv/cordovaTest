@@ -23,7 +23,8 @@ export class CustomerHistoryService {
     environment.BaseURL + '/api/v1/customerhistories/kgsamples';
   private avgUrl = environment.BaseURL + '/api/v1/avgs';
   private todayUrl = environment.BaseURL + '/api/v1/today';
-
+  private customersearch = environment.BaseURL+'/api/v1/customers/search';
+  
   getToday() {
     return this.http.get(this.todayUrl);
   }
@@ -130,6 +131,13 @@ export class CustomerHistoryService {
     params = params.append('category', category);
     return this.http.get(this.kgsamplesUrl, { params });
   }
+
+
+  getCustomerSearch(searchtext: string) { 
+    let params = new HttpParams();
+    params = params.append('searchtext', searchtext);
+    return this.http.get<any[]>(this.customersearch, {params});
+} 
 
   // private handleError(error: any) {
   //   // In a real world app, we might use a remote logging infrastructure

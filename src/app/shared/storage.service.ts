@@ -34,4 +34,8 @@ export class StorageService {
   async clearAll() {
     await this._storage.clear();
   }
+
+  async getKeys(){
+    return await this._storage.keys();
+  }
 }
