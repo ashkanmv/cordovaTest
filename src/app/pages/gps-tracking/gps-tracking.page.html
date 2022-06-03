@@ -26,6 +26,7 @@
         <ion-popover
           class="header-drop-down description-drop-down"
           trigger="trigger-desc"
+          showBackdrop="false"
         >
           <ng-template>
             <ion-content disabled class="header-input-popover-title"
@@ -73,22 +74,11 @@
 
       <ion-col size="1" class="ion-align-self-center hide ion-no-padding">
         <ion-img
-          id="trigger-hide"
+          (click)="show=!show"
+          [ngClass]="{'show-content': show}"
           class="hide-img"
           src="\assets\pages\customer-nearby\Hide.png"
         ></ion-img>
-        <ion-popover
-          class="header-drop-down hide-drop-down"
-          trigger="trigger-hide"
-        >
-          <ng-template>
-            <ion-content>50 M</ion-content>
-            <ion-content>100 M</ion-content>
-            <ion-content>500 M</ion-content>
-            <ion-content>700 M</ion-content>
-            <ion-content>1 KM</ion-content>
-          </ng-template>
-        </ion-popover>
       </ion-col>
       <ion-col
         size="1"
@@ -118,8 +108,8 @@
     </ion-row>
   </ion-grid>
 </ion-header>
-
-<ion-content>
+<!-- if map part of the content then move the ngif -->
+<ion-content *ngIf="show">
   <ion-col class="select-drop-down-container">
     <ion-row class="ion-justify-content-center">
       <ion-item id="trigger-input-date" lines="none" class="box-shadow">

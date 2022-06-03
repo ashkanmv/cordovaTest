@@ -11,7 +11,8 @@ export class GpsTrackingPage implements OnInit {
   Date: string = 'Date';
   popoverController: any;
   constructor(private router: Router, popoverController: PopoverController) {}
-
+  // show/ hide content
+  show = true;
   ngOnInit() {}
   backButton() {
     this.router.navigate(['/']);
