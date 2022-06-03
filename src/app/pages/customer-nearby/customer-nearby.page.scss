@@ -64,60 +64,54 @@ ion-popover.header-drop-down{
 
 
 ion-popover.description-drop-down{
-
-     // --min-width:22rem;
-     --min-width:55vw;
-     --min-height:22rem;
-     --offset-x:-5vw;
-     --offset-y:1vh;
-     >ion-content{
-         font-size: 1.1rem;
-         --color: #000;
-
-         >div{
-             p{
-                 text-align: center;
-             }
-             ion-img{
-                 position: absolute;
-                 left: 1rem;             
-             }
-         }
-  
-         
+    --min-width:55vw;
+    --min-height:22rem;
+    --offset-x:-5vw;
+    --offset-y:1vh;
+    >ion-content{
+        font-size: 1.2rem;
+        --color: #000;
+        >div{
+            border-bottom: 1px solid #b9b9b9aa;
+            p{
+                text-align: center;
+            }
+            img{
+                position: absolute;
+                left: 1rem;             
+            }
+        }
  
- 
-         ion-img{
-             // justify-self: flex-start;
-             max-width:3.5vw;
-             // margin-right: 6vw;
-         }
-         &:hover{
-             // --background:none;
-            //  --background:#119ff23f;
-             --background:none;
-            //  --------change later
+        
 
-         }
-     }
-     ion-content.header-input-popover-title{
-         display: flex;
-         justify-content: center;
-         cursor:auto;
-         --color:#fff ;
-         --background:#119ff2;
-         text-align: center;
-         border-bottom: none;
-         font-weight: bold;
-         --padding-start: 0 ;
-         --padding-top: 1rem ;
-         --padding-bottom: 1rem ;
-         :hover{
-             --background:none;
-         }
-         
-     }
 
+        img{
+            // justify-self: flex-start;
+            max-width:3.5vw;
+            // margin-right: 6vw;
+        }
+        &:hover{
+            // --background:none;
+            --background:#119ff23f;
+        }
+    }
+    ion-content.header-input-popover-title{
+        display: flex;
+        justify-content: center;
+        cursor:auto;
+        --color:#fff ;
+        --background:#119ff2;
+        text-align: center;
+        border-bottom: none;
+        font-weight: bold;
+        --padding-start: 0 ;
+        --padding-top: 1rem ;
+        --padding-bottom: 1rem ;
+        :hover{
+            --background:none;
+        }
+        
+    }
 }
 ion-popover.hide-drop-down{
     --max-width:10rem;

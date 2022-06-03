@@ -20,7 +20,7 @@ ion-content {
 ion-title {
     height: 100%;
     h3{
-        font-size:4vw;
+        font-size:3vw;
     }
 }
 ion-item{
@@ -35,7 +35,7 @@ ion-input{
 
 ion-img{
     // min-width: 80px;
-    max-width: 60px;
+    max-width: 70px;
 }
 
 ion-img .back-button.ios{
@@ -112,6 +112,7 @@ ion-popover.description-drop-down{
         
     }
 }
+
 ion-popover.hide-drop-down{
     --max-width:10rem;
     --offset-x:-10vw;

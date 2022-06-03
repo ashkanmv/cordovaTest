@@ -58,7 +58,9 @@
     </ion-segment>
   </ion-col>
 </ion-header>
-
+<!-- -----------------------------------------dsd-hourly-city--------------------------------------------------- -->
+<!-- -----------------------------------------dsd-hourly-city--------------------------------------------------- -->
+<!-- -----------------------------------------dsd-hourly-city--------------------------------------------------- -->
 <ion-content>
   <ion-col
     class="dsd-hourly-days-segment"
@@ -138,12 +140,12 @@
     </ion-row>
     <!-- -----------------------table -->
     <ion-row>
-      <ion-col class="ion-no-padding">
+      <ion-col class="ion-no-padding table-container">
         <table>
           <thead>
             <th class="city"><span>City</span></th>
-            <th>H8</th>
-            <th>H9</th>
+            <th>H08</th>
+            <th>H09</th>
             <th>H10</th>
             <th>H11</th>
             <th>H12</th>
@@ -173,13 +175,6 @@
               <td>{{data.H16}}</td>
               <td>{{data.H17}}</td>
               <td>{{data.total}}</td>
-              <td>{{data.H12}}</td>
-              <td>{{data.H13}}</td>
-              <td>{{data.H14}}</td>
-              <td>{{data.H15}}</td>
-              <td>{{data.H16}}</td>
-              <td>{{data.H17}}</td>
-              <td>{{data.total}}</td>
             </tr>
             <div class="nested-table-container"></div>
           </tbody>
@@ -187,6 +182,10 @@
       </ion-col>
     </ion-row>
   </ion-col>
+  <!-- -----------------------------------------dsd-hourly-days--------------------------------------------------- -->
+  <!-- -----------------------------------------dsd-hourly-days--------------------------------------------------- -->
+  <!-- -----------------------------------------dsd-hourly-days--------------------------------------------------- -->
+
   <ion-col
     class="dsd-hourly-city-segment"
     *ngIf="selectedSegment == 'dsd-hourly-days'"
@@ -266,63 +265,41 @@
     </ion-row>
     <!-- -----------------------table -->
     <ion-row>
-      <ion-col class="ion-no-padding">
+      <ion-col class="ion-no-padding table-container">
         <table>
           <thead>
-            <th class="days"><span>Customer Number</span></th>
-            <th>Cluster</th>
-            <th>Store Name</th>
-            <th>Sale</th>
-            <th>PPED</th>
-            <th>%</th>
+            <th class="route"><span>SaleDate</span></th>
+            <th>H08</th>
+            <th>H09</th>
+            <th>H10</th>
+            <th>H11</th>
+            <th>H12</th>
+            <th>H13</th>
+            <th>H14</th>
+            <th>H15</th>
+            <th>H16</th>
+            <th>H17</th>
+            <th>Total</th>
           </thead>
           <tbody>
-            <tr>
+            <tr
+              *ngFor="let data of salesHourlyCity; let i= index"
+              [ngClass]="{'oddRows' : 0 === i % 2 }"
+            >
               <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon> 1131
+                <ion-icon name="chevron-down-outline"></ion-icon>{{data.city}}
               </td>
-              <td>Tehran</td>
-              <td>Behnam Ezadi</td>
-              <td></td>
-              <td>3.20</td>
-              <td>19</td>
-            </tr>
-            <div class="nested-table-container">
-              <div class="border-right"></div>
-            </div>
-            <tr class="table-lightblue-bg">
-              <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon> 1107
-              </td>
-              <td>Amol</td>
-              <td>Milad Ahmadi</td>
-              <td></td>
-              <td>7.65</td>
-              <td>15</td>
-            </tr>
-            <div class="nested-table-container">
-              <div class="border-right"></div>
-            </div>
-            <tr>
-              <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon> 1115
-              </td>
-              <td>Zahedan</td>
-              <td>Sina Ezati</td>
-              <td></td>
-              <td>12.05</td>
-              <td>20</td>
-            </tr>
-            <div class="nested-table-container"></div>
-            <tr class="table-lightblue-bg">
-              <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon> 1107
-              </td>
-              <td>Amol</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{data.H8}}</td>
+              <td>{{data.H9}}</td>
+              <td>{{data.H10}}</td>
+              <td>{{data.H11}}</td>
+              <td>{{data.H12}}</td>
+              <td>{{data.H13}}</td>
+              <td>{{data.H14}}</td>
+              <td>{{data.H15}}</td>
+              <td>{{data.H16}}</td>
+              <td>{{data.H17}}</td>
+              <td>{{data.total}}</td>
             </tr>
             <div class="nested-table-container"></div>
           </tbody>
