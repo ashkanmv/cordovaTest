@@ -109,117 +109,119 @@
   </ion-grid>
 </ion-header>
 <!-- if map part of the content then move the ngif -->
-<ion-content *ngIf="show">
-  <ion-col class="select-drop-down-container">
-    <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-date" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="Date"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >Date</ion-select-option
+<ion-content>
+  <ion-row *ngIf="show" class="content-container">
+    <ion-col size="12" class="select-drop-down-container">
+      <ion-row class="ion-justify-content-center">
+        <ion-item id="trigger-input-date" lines="none" class="box-shadow">
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="Date"
+            interface="popover"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-RSM" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="RSM"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >RSM</ion-select-option
+            <ion-select-option class="select-label" disabled value=""
+              >Date</ion-select-option
+            >
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-item id="trigger-input-RSM" lines="none" class="box-shadow">
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="RSM"
+            interface="popover"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-ASM" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="ASM"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >ASM</ion-select-option
+            <ion-select-option class="select-label" disabled value=""
+              >RSM</ion-select-option
+            >
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-item id="trigger-input-ASM" lines="none" class="box-shadow">
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="ASM"
+            interface="popover"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-SSV" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="SSV"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >SSV</ion-select-option
+            <ion-select-option class="select-label" disabled value=""
+              >ASM</ion-select-option
+            >
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-item id="trigger-input-SSV" lines="none" class="box-shadow">
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="SSV"
+            interface="popover"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-item id="trigger-input-SR" lines="none" class="box-shadow">
-        <ion-select
-          class="drop-down select-drop-down"
-          placeholder="SR"
-          interface="popover"
-        >
-          <ion-select-option class="select-label" disabled value=""
-            >SR</ion-select-option
+            <ion-select-option class="select-label" disabled value=""
+              >SSV</ion-select-option
+            >
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-item id="trigger-input-SR" lines="none" class="box-shadow">
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="SR"
+            interface="popover"
           >
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
-          <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-  </ion-col>
+            <ion-select-option class="select-label" disabled value=""
+              >SR</ion-select-option
+            >
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 2</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 3</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 4</ion-select-option>
+            <ion-select-option value="subtitle-">Subtitle 5</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+    </ion-col>
 
-  <ion-col class="radio-input-container">
-    <ion-row class="radio-input-container">
-      <div class="radio-input">
-        <div class="">
-          <input type="radio" name="radio-input-2" id="" />
-          <label for="showTruck">Show truck</label>
+    <ion-col class="radio-input-container">
+      <ion-row class="radio-input-container">
+        <div class="radio-input">
+          <div class="">
+            <input type="radio" name="radio-input-2" id="" />
+            <label for="showTruck">Show truck</label>
+          </div>
+          <div class="">
+            <input type="radio" name="radio-input-2" id="" />
+            <label for="showSR">Show SR</label>
+          </div>
         </div>
-        <div class="">
-          <input type="radio" name="radio-input-2" id="" />
-          <label for="showSR">Show SR</label>
-        </div>
-      </div>
-    </ion-row>
-  </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
 </ion-content>
