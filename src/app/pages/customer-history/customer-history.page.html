@@ -2,14 +2,17 @@
   <ion-toolbar class="ion-no-padding">
     <ion-row class="primary-bg">
       <ion-col size="1" class="ion-align-self-center ion-no-padding">
-        <ion-button fill="clear" (click)="backButton()">
+        <ion-button fill="clear" routerLink="/main">
           <ion-img
             class="back-button"
             src="assets\pages\customer-history\Backward arrow.png"
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="6" class="ion-text-center ion-align-self-center">
+      <ion-col
+        size="6"
+        class="ion-text-center ion-align-self-center ion-text-right"
+      >
         <ion-title class="ion-no-padding white-text">
           <h3>Customer History</h3>
         </ion-title>
@@ -27,21 +30,14 @@
         <ion-toggle color="primary" checked="true"></ion-toggle>
       </ion-col>
       <ion-col
+        (click)="show=!show"
         size="1"
-        class="ion-align-self-center hide ion-no-padding iopn-margin-end"
+        class="ion-align-self-center hide ion-no-padding"
       >
-        <app-popover></app-popover>
-        <!-- <ion-img src="\assets\pages\customer-nearby\Hide.png"> </ion-img>
-        <ion-item class="distance">
-          <ion-select interface="popover" value="hide" class="custom-options"
-            [interfaceOptions]="{cssClass: 'my-custom-class'}">
-            <ion-select-option value="100m">100 M</ion-select-option>
-            <ion-select-option value="50n">50 M</ion-select-option>
-            <ion-select-option value="500m">500 M</ion-select-option>
-            <ion-select-option value="700m">700 M</ion-select-option>
-            <ion-select-option value="1km">1 KM</ion-select-option>
-          </ion-select>
-        </ion-item> -->
+        <ion-img
+          src="\assets\pages\customer-nearby\Hide.png"
+          [ngClass]="{'show-content' : show}"
+        ></ion-img>
       </ion-col>
       <ion-col
         size="1"
@@ -69,11 +65,10 @@
   </ion-grid>
 </ion-header>
 
-<ion-content>
-  <ion-row>
-    <ion-col size="12">
+<ion-content *ngIf="show">
+  <ion-row class="search-container">
+    <ion-col class="ion-justify-content-center search-box box-shadow" size="12">
       <ng-select
-        style="max-width: 50vw"
         class="ion-align-self-center"
         [items]="items | async"
         [(ngModel)]="value"
@@ -83,15 +78,16 @@
         [minTermLength]="2"
         notFoundText="جستجوی شما نتیجه ای نداشت"
         typeToSearchText="جستجو"
-        placeholder="دیداریاب"
+        placeholder="Search"
       >
+        <!-- placeholder="دیداریاب" -->
         <ng-template
           ng-option-tmp
           let-item="item"
           let-index="index"
           let-search="searchTerm"
         >
-          <div style="margin: 10px 0">
+          <div>
             <ion-item
               [routerLink]="['/questionnaire']"
               [queryParams]="{ customerNumber : item.Number}"
@@ -105,6 +101,15 @@
           </div>
         </ng-template>
       </ng-select>
+      <span class="search-icon">
+        <ion-icon
+          [ngClass]="'icon-activated'"
+          name="chevron-down-outline"
+        ></ion-icon>
+      </span>
+      <button class="search-submit primary-bg">
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
     </ion-col>
   </ion-row>
   <!-- <ion-row class="search-box ion-justify-content-center">
@@ -158,7 +163,7 @@
             (ionChange)="routeSelect($event)"
             [disabled]="!f.DC.value"
           >
-            <ion-select-option value="">Route</ion-select-option>
+            <ion-select-option disabled value="">Route</ion-select-option>
             <ion-select-option
               *ngFor="let route of routes"
               [value]="route.routename"
@@ -183,7 +188,7 @@
             [disabled]="!f.Route.value"
             (ionChange)="customerSelect($event)"
           >
-            <ion-select-option value="">Customer</ion-select-option>
+            <ion-select-option disabled value="">Customer</ion-select-option>
             <ion-select-option
               *ngFor="let customer of customers"
               [value]="customer"

@@ -16,14 +16,14 @@ ion-toolbar.ios{
 
 ion-content {
     --background: #fff;
-    --color: #0095EB;
+    // --color: #0095EB;
 }
 
 ion-title {
     height: 100%;
     h3{
-        // font-size: 3vw;
-        font-size: 20px;
+        font-size: 3.5vw;
+        // font-size: 20px;
         width: 100%;
     }
 }
@@ -73,86 +73,14 @@ ion-img .back-button.ios{
 }
 
 
-ion-popover.header-drop-down{
-    --backdrop-opacity:0;
-    .first{
-        --padding-top: 1rem ;
-
-    }
-    ion-content{
-        cursor: pointer;
-        --color:#005b90;
-        font-weight: bold;
-        font-size: 1.2rem;
-        --padding-top: .9rem ;
-        --padding-bottom: .9rem ;
-        --padding-start: 1.7rem ;
-        &:hover{
-            --background:#0095EB;
-        }
-
-    }
+.show-content{
+    transform: rotate(180deg);
 }
 
 
 
-ion-popover.dropdown{
-    --backdrop-opacity:0;
-    --max-width:400px;
-    --min-width:200px;
-    --offset-x:18%;
-    --offset-y:-1rem;
-
-    ion-content{
-        cursor: pointer;
-        --color:#8f8f8f ;
-        --padding-top: .9rem ;
-        --padding-bottom: .9rem ;
-        --padding-start: 1.7rem ;
-        &:hover{
-            --background:#0095EB;
-            --color:#000 ;
-        }
-        
-    }
-    ion-content.select-input-popover-title{
-        cursor:auto;
-        --color:#000 ;
-        text-align: center;
-        border-bottom: 2px dashed #8f8f8f;
-        font-weight: bold;
-        --padding-start: 0 ;
-        &:hover{
-            --background:none;
-        }
-        
-    }
-}
-ion-popover.select-drop-down{
-    --width:500px;
-    --offset-x:16%;
-    // --offset-y:-1rem;
-
-}
-
-ion-popover.search-drop-down{
-    --offset-x:17%;
-
-}
 
 
-ion-popover.search-popover{
-    --backdrop-opacity:0;
-    // --width:450px;
-    --width:60vw;
-    // height: 300px;
-    --offset-x:-1vw;
-    --offset-y:-1rem;
-    label{
-        color:#b9b9b9;
-    }
-
-}
 
 
 .box-shadow{
@@ -211,50 +139,47 @@ ion-col.hide{
 .input-shadow{
     box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
 }
-
-.search-box{
-    margin: 3rem 0;
-    .search-submit{
-        z-index: 2;
-        width: 3rem;
-        height: 4rem;
-        border-radius: 50px 0 0 50px;
-        ion-icon{
-            color: #fff;
-            font-size: 1.5rem; 
+ion-row.search-container{
+    width: 80%;
+    margin: 3vh 0  3vh 10vw;
+    ion-col.search-box{
+        background: none;
+        border-radius: 50px;
+        ng-select{
+           max-width: 80%;
+           height: 100%;
+           margin-left:auto;
+           margin-right: 2vw;
+           border-bottom: none;
+           padding: .5rem 0;    
         }
-    }
-    input::-webkit-input-placeholder{
-        justify-self: center;
-        align-self: center;
-        color: #e5e5e5df;
-    }
-  
-    .search,
-    .search-customer-history{
-        text-align: center;
-        height: 4rem;
-        width:70%;
-        outline: none;
-        border: none;
-        border-radius: 0 50px 50px 0 ;
-        &:focus{
+        .search-submit{
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            width: 3rem;
+            height: 100%;
+            border-radius: 50px 0 0 50px;
             ion-icon{
-                color: red;
+                color: #fff;
+                font-size: 1.5rem; 
             }
         }
-   
-    }
-    span{
-        position: relative;
-        top: 1.5rem;
-        right: 2rem;
-    }
-    ion-icon{
-        color:#e5e5e5;
-        // color:red;
+        span{
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            ion-icon{
+                font-size: 1.5rem;
+                color: #e5e5e5;
+
+            }
+        }
     }
 }
+
+
+
 
 // -------------Select-Options------------------
 
@@ -262,8 +187,7 @@ ion-col.hide{
     ion-row{
         margin-bottom: 1rem;
         >ion-item.select-box{
-            // --background: #fff;
-            // --color:#b9b9b961;
+          
             --color:#000 ;
             --padding-top:.5rem;
             --padding-bottom:.5rem;
@@ -304,14 +228,6 @@ ion-col.hide{
 
         }
   
-  
-
-        ion-item.select-interface-option{
-            ion-label{
-                color: red;
-                --color: red;
-            }
-        }
     }
    
     ion-icon{

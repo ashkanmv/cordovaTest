@@ -13,8 +13,8 @@ import { CustomerNearbyPage } from './customer-nearby.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CustomerNearbyPageRoutingModule
+    CustomerNearbyPageRoutingModule,
   ],
-  declarations: [CustomerNearbyPage]
+  declarations: [CustomerNearbyPage],
 })
 export class CustomerNearbyPageModule {}
