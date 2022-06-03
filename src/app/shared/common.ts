@@ -78,7 +78,7 @@ export interface UserLog {
 // ENUMS
 export enum Languages {
   EN,
-  FA,
+  FR,
 }
 
 // Language

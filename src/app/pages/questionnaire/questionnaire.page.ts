@@ -33,10 +33,6 @@ export class QuestionnairePage implements OnInit {
     return this.languageService.language;
   }
 
-  public get selectedLanguage(): Languages {
-    return this.languageService.selectedLanguage;
-  }
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
