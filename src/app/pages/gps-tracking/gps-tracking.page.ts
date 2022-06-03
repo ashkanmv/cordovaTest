@@ -10,19 +10,10 @@ import { PopoverController } from '@ionic/angular';
 export class GpsTrackingPage implements OnInit {
   Date: string = 'Date';
   popoverController: any;
-  constructor(private router: Router, popoverController: PopoverController) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
   backButton() {
     this.router.navigate(['/']);
   }
-  // async presentPopover(ev: any) {
-  //   const popover = await this.popoverController.create({
-  //     component: PopoverComponent,
-  //     cssClass: 'my-custom-class',
-  //     event: ev,
-  //     translucent: true,
-  //   });
-  //   return await popover.present();
-  // }
 }
