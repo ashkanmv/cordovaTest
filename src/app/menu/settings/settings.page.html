@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
-        <ion-button fill="clear">
+        <ion-button fill="clear" routerLink="/main">
           <ion-img
             class="back-button"
             src="assets/menu/about-app/back-button.png"
@@ -35,7 +35,11 @@
       >
         <b class="center-texts"> Language </b>
       </ion-col>
-      <ion-col size="6" class="ion-text-center secondary-bg h-100 white-text">
+      <ion-col
+        routerLink="/theme"
+        size="6"
+        class="ion-text-center secondary-bg h-100 white-text"
+      >
         <b class="center-texts">Theme</b>
       </ion-col>
     </ion-row>

@@ -154,4 +154,14 @@ export class Language {
     PoweredBy: string;
     serial: string;
   };
+  theme: {
+    title: string;
+    dark: string;
+    light: string;
+    select: string;
+    automatic_dark_mode: string;
+    text_size: string;
+    bold_text: string;
+    theme_color: string;
+  };
 }
