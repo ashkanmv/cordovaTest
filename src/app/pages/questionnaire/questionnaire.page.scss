@@ -171,8 +171,20 @@ ion-row{
 
 
 
+ion-label.questions{
+    color: var(--ion-color-primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: .7rem;
+    // padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    text-align: right;
+    // background: red;
+    width: 100%;
+}
+
 // ---- text input
-ion-col.input-text{
+ion-col.text-input-container{
     margin-top: 3rem;
     display: flex;
     flex-direction: column;
@@ -203,54 +215,44 @@ ion-col.input-text{
     }
 }
 
+
+
+
+
+
+
+
+
 // radio-input
 ion-col.radio-input-container{
-    // margin-top: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // width: 100%;
-    // max-width: 10vw;
+    
     ion-row{
-        // display: flex;
-        // justify-content: center;
-        // width:80vw;
-        // width: 65vw;
-        width: 90%;
-        &>label{
-            align-self: flex-start;
-            color:#0095EB ;
-            font-size: 1.5rem;
-            font-weight: bold;
-            padding-bottom: .7rem;
-            padding-left: 1rem;
-        }
-        &>div{
-            background: #e0e0e06c;
-            padding:1.7rem ;
-            border-radius: 10px;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            >div{
-                display: flex;
-                flex-direction: row-reverse;
-                align-items: center;
-                input[type="radio"]{
-                    &:checked + label{
-                        color: #0095EB;
-                    }
-                }
+    width: 90%;
+    background: #e0e0e06c;
+    padding:1.7rem ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    >div{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        input[type="radio"]{
+            &:checked + label{
+                color: #0095EB;
             }
-            label{
-                font-size: 1.2rem;
-                color: #b9b9b9;
-                padding-right: 5vw;
-            }
-          
         }
-}
+    }
+    label{
+        font-size: 1.2rem;
+        color: #b9b9b9;
+        padding-right: 5vw;
+    }   
+    }
 
 }
 .btn-submit{
@@ -263,3 +265,95 @@ ion-col.radio-input-container{
     background: #0095EB;
     color: #fff;
 }
+// // ---- text input
+// ion-col.input-text{
+//     margin-top: 3rem;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     // width: 100vw;
+//     ion-row{
+//         // width: 65vw;
+//         width: 90%;
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         ion-label{
+//             color:#0095EB ;
+//             font-size: 1.5rem;
+//             font-weight: bold;
+//             padding-bottom: .7rem;
+//             padding-left: 1rem;
+//         }
+//     }
+    
+//     ion-input{
+//         background: #e0e0e06c;
+//         border-radius: 10px;
+//         height: 2rem;
+//         --padding-top:1.5rem;
+//         --padding-bottom:1rem;
+//     }
+// }
+
+// // radio-input
+// ion-col.radio-input-container{
+//     // margin-top: 3rem;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     // width: 100%;
+//     // max-width: 10vw;
+//     ion-row{
+//         // display: flex;
+//         // justify-content: center;
+//         // width:80vw;
+//         // width: 65vw;
+//         width: 90%;
+//         &>label{
+//             align-self: flex-start;
+//             color:#0095EB ;
+//             font-size: 1.5rem;
+//             font-weight: bold;
+//             padding-bottom: .7rem;
+//             padding-left: 1rem;
+//         }
+//         &>div{
+//             background: #e0e0e06c;
+//             padding:1.7rem ;
+//             border-radius: 10px;
+//             width: 100%;
+//             display: flex;
+//             justify-content: space-around;
+//             >div{
+//                 display: flex;
+//                 flex-direction: row-reverse;
+//                 align-items: center;
+//                 input[type="radio"]{
+//                     &:checked + label{
+//                         color: #0095EB;
+//                     }
+//                 }
+//             }
+//             label{
+//                 font-size: 1.2rem;
+//                 color: #b9b9b9;
+//                 padding-right: 5vw;
+//             }
+          
+//         }
+// }
+
+// }
+// .btn-submit{
+//     margin: 2rem 0;
+//     // width: 60vw;
+//     width: 80%;
+//     height: 9vh;
+//     font-size: 2rem;
+//     border-radius: 50px;
+//     background: #0095EB;
+//     color: #fff;
+// }
