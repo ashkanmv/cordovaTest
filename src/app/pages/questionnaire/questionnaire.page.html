@@ -162,33 +162,98 @@
   <!-- ----------------questions----------------- -->
   <ion-row *ngFor="let question of questions; let i = index">
     <ion-row>
-      <ion-col size="12" class="ion-justify-content-center input-text">
-        <ion-row class="ion-justify-content-center">
-          <ion-label>{{question.text}}</ion-label>
-          <ion-input></ion-input>
-        </ion-row>
-      </ion-col>
+      <ion-label class="questions">{{question.text}}</ion-label>
 
+      <ng-container *ngIf="question.type == 'yn'" class="radio-input-container">
+        <ion-list>
+          <ion-row *ngFor="let answer of question.answers; let j = index">
+            <div>
+              <div>
+                <input type="radio" name="radio-input-2" id="" />
+                <label for="{{answer.text}}">{{answer.text}}</label>
+              </div>
+            </div>
+          </ion-row>
+        </ion-list>
+      </ng-container>
       <ion-col
-        *ngIf="question.type == 'yn'"
+        *ngIf="question.type == 'tx'"
         size="12"
-        class="radio-input-container"
+        class="text-input-container"
       >
-        <ion-row *ngFor="let answer of answers; let j = index">
-          <label>{{question.text}}</label>
-          <div class="">
-            <div class="">
-              <input type="radio" name="radio-input-2" id="" />
-              <label for="{{answer.text}}">{{answer.text}}</label>
-            </div>
-            <div class="">
-              <input type="radio" name="radio-input-2" id="" />
-              <label for="{{answer.text}}">{{answer.text}}</label>
-            </div>
-          </div>
+        <ion-row>
+          <ion-input
+            type="text"
+            placeholder="................................................................................................................................................."
+          ></ion-input>
         </ion-row>
-        <!-- <button class="btn-submit">Submit</button> -->
       </ion-col>
+      <!-- <button class="btn-submit">Submit</button> -->
     </ion-row>
   </ion-row>
 </ion-content>
+<!-- <ion-row *ngFor="let question of questions; let i = index">
+  <ion-row>
+    <ion-col size="12" class="ion-justify-content-center input-text">
+      <ion-row class="ion-justify-content-center">
+        <ion-label>{{question.text}}</ion-label>
+        <ion-input></ion-input>
+      </ion-row>
+    </ion-col>
+
+    <ion-col
+      *ngIf="question.type == 'yn'"
+      size="12"
+      class="radio-input-container"
+    >
+      <ion-row *ngFor="let answer of answers; let j = index">
+        <label>{{question.text}}</label>
+        <div class="">
+          <div class="">
+            <input type="radio" name="radio-input-2" id="" />
+            <label for="{{answer.text}}">{{answer.text}}</label>
+          </div>
+          <div class="">
+            <input type="radio" name="radio-input-2" id="" />
+            <label for="{{answer.text}}">{{answer.text}}</label>
+          </div>
+        </div>
+      </ion-row>
+     <button class="btn-submit">Submit</button> 
+    </ion-col>
+  </ion-row>
+</ion-row> -->
+
+<!-- ======================================= -->
+<!-- <ion-row *ngFor="let question of questions; let i = index">
+  <ion-row>
+    <ion-label class="questions">{{question.text}}</ion-label>
+
+    <ng-container  *ngIf="question.type == 'yn'"  class="radio-input-container" ></ng-container>>
+     
+      <ion-row *ngFor="let answer of answers; let j = index">
+        <div>
+          <div>
+            <input type="radio" name="radio-input-2" id="" />
+            <label for="{{answer.text}}">{{answer.text}}</label>
+          </div>
+        </div>
+      </ion-row>
+    </ng-container>
+    <ion-col
+      *ngIf="question.type == 'tx'"
+      size="12"
+      class="text-input-container"
+    >
+      <ion-row>
+        <ion-input
+          type="text"
+          placeholder="................................................................................................................................................."
+        ></ion-input>
+      </ion-row>
+    </ion-col>
+     <button class="btn-submit">Submit</button> 
+    
+  </ion-row>
+</ion-row>
+</ion-content> -->
