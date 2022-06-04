@@ -167,7 +167,9 @@ ion-row.search-container{
 
 
 // -------------Select-Options------------------
-
+form{
+    width: 100%;
+}
 .customer-history-select{
     ion-row{
         margin-bottom: 1rem;

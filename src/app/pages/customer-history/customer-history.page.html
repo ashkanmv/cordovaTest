@@ -65,54 +65,58 @@
   </ion-grid>
 </ion-header>
 <!-- if map part of the content then move the ngif -->
-<ion-content *ngIf="show">
-  <ion-row class="search-container">
-    <ion-col class="ion-justify-content-center search-box box-shadow" size="12">
-      <ng-select
-        class="ion-align-self-center"
-        [items]="items | async"
-        [(ngModel)]="value"
-        [typeahead]="input"
-        loadingText="درحال جست و جو"
-        [loading]="searching"
-        [minTermLength]="2"
-        notFoundText="جستجوی شما نتیجه ای نداشت"
-        typeToSearchText="جستجو"
-        placeholder="Search"
+<ion-content>
+  <ion-row *ngIf="show" class="content-container">
+    <ion-row class="search-container">
+      <ion-col
+        class="ion-justify-content-center search-box box-shadow"
+        size="12"
       >
-        <!-- placeholder="دیداریاب" -->
-        <ng-template
-          ng-option-tmp
-          let-item="item"
-          let-index="index"
-          let-search="searchTerm"
+        <ng-select
+          class="ion-align-self-center"
+          [items]="items | async"
+          [(ngModel)]="value"
+          [typeahead]="input"
+          loadingText="درحال جست و جو"
+          [loading]="searching"
+          [minTermLength]="2"
+          notFoundText="جستجوی شما نتیجه ای نداشت"
+          typeToSearchText="جستجو"
+          placeholder="Search"
         >
-          <div>
-            <ion-item
-              [routerLink]="['/questionnaire']"
-              [queryParams]="{ customerNumber : item.Number}"
-            >
-              <ion-label class="ion-margin-start">
-                <h2>{{item.FirstName}} {{item.LastName}}</h2>
-                <h4>{{item.Number}}</h4>
-                <h4>{{item.Details}}</h4>
-              </ion-label>
-            </ion-item>
-          </div>
-        </ng-template>
-      </ng-select>
-      <span class="search-icon">
-        <ion-icon
-          [ngClass]="'icon-activated'"
-          name="chevron-down-outline"
-        ></ion-icon>
-      </span>
-      <button class="search-submit primary-bg">
-        <ion-icon name="search-outline"></ion-icon>
-      </button>
-    </ion-col>
-  </ion-row>
-  <!-- <ion-row class="search-box ion-justify-content-center">
+          <!-- placeholder="دیداریاب" -->
+          <ng-template
+            ng-option-tmp
+            let-item="item"
+            let-index="index"
+            let-search="searchTerm"
+          >
+            <div>
+              <ion-item
+                [routerLink]="['/questionnaire']"
+                [queryParams]="{ customerNumber : item.Number}"
+              >
+                <ion-label class="ion-margin-start">
+                  <h2>{{item.FirstName}} {{item.LastName}}</h2>
+                  <h4>{{item.Number}}</h4>
+                  <h4>{{item.Details}}</h4>
+                </ion-label>
+              </ion-item>
+            </div>
+          </ng-template>
+        </ng-select>
+        <span class="search-icon">
+          <ion-icon
+            [ngClass]="'icon-activated'"
+            name="chevron-down-outline"
+          ></ion-icon>
+        </span>
+        <button class="search-submit primary-bg">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row class="search-box ion-justify-content-center">
     <button class="search-submit primary-bg">
       <ion-icon name="search-outline"></ion-icon>
     </button>
@@ -128,234 +132,238 @@
     </span>
   </ion-row> -->
 
-  <form [formGroup]="form">
-    <ion-grid class="customer-history-select">
-      <ion-row class="ion-justify-content-center">
-        <ion-item lines="none" class="box-shadow select-box">
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="DC"
-            interface="popover"
-            formControlName="DC"
-            (ionChange)="selectCity($event)"
-          >
-            <ion-select-option disabled value=""
-              >{{language.Questionnaire.Input_select_DC}}</ion-select-option
+    <form [formGroup]="form">
+      <ion-grid class="customer-history-select">
+        <ion-row class="ion-justify-content-center">
+          <ion-item lines="none" class="box-shadow select-box">
+            <ion-select
+              class="drop-down select-drop-down"
+              placeholder="DC"
+              interface="popover"
+              formControlName="DC"
+              (ionChange)="selectCity($event)"
             >
-            <ion-select-option *ngFor="let city of cities" [value]="city.City"
-              >{{city.City}}
-            </ion-select-option>
-          </ion-select>
-          <ion-icon name="chevron-down-outline"></ion-icon>
-        </ion-item>
-      </ion-row>
-      <ion-row class="ion-justify-content-center">
-        <ion-item
-          id="trigger-input-route"
-          lines="none"
-          class="box-shadow select-box"
-        >
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="Route"
-            interface="popover"
-            formControlName="Route"
-            (ionChange)="routeSelect($event)"
-            [disabled]="!f.DC.value"
-          >
-            <ion-select-option disabled value="">Route</ion-select-option>
-            <ion-select-option
-              *ngFor="let route of routes"
-              [value]="route.routename"
-              >{{route.routename}}
-            </ion-select-option>
-          </ion-select>
-          <ion-icon name="chevron-down-outline"></ion-icon>
-        </ion-item>
-      </ion-row>
-
-      <ion-row class="ion-justify-content-center">
-        <ion-item
-          id="trigger-input-customer"
-          lines="none"
-          class="box-shadow select-box"
-        >
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="Customer"
-            interface="popover"
-            formControlName="Customer"
-            [disabled]="!f.Route.value"
-            (ionChange)="customerSelect($event)"
-          >
-            <ion-select-option disabled value="">Customer</ion-select-option>
-            <ion-select-option
-              *ngFor="let customer of customers"
-              [value]="customer"
-              >{{customer.custName}}
-            </ion-select-option>
-          </ion-select>
-          <ion-icon name="chevron-down-outline"></ion-icon>
-        </ion-item>
-      </ion-row>
-
-      <ion-row class="radio-input-1 ion-justify-content-center">
-        <div class="radio-input box-shadow">
-          <div class="radio-input-sales">
-            <input
-              [disabled]="!f.Customer.value"
-              type="radio"
-              value="sales"
-              formControlName="type"
-              (ionChange)="typeAndQtyKgSelect()"
-            />
-            <label for="sales">Sales</label>
-          </div>
-          <div>
-            <input
-              [disabled]="!f.Customer.value"
-              type="radio"
-              value="pped"
-              formControlName="type"
-              (ionChange)="typeAndQtyKgSelect()"
-            />
-            <label for="pped">PPED</label>
-          </div>
-          <div>
-            <input
-              [disabled]="!f.Customer.value"
-              type="radio"
-              value="samples"
-              formControlName="type"
-              (ionChange)="typeAndQtyKgSelect()"
-            />
-            <label for="samples">Samples</label>
-          </div>
-        </div>
-      </ion-row>
-      <ion-row class="radio-input-2 ion-justify-content-center">
-        <div class="radio-input box-shadow">
-          <div>
-            <input
-              type="radio"
-              value="qty"
-              formControlName="kgqty"
-              (ionChange)="typeAndQtyKgSelect()"
-            />
-            <label for="qty">Qty</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="kg"
-              formControlName="kgqty"
-              (ionChange)="typeAndQtyKgSelect()"
-            />
-            <label for="kg">Kg</label>
-          </div>
-        </div>
-      </ion-row>
-    </ion-grid>
-  </form>
-  <ion-card class="ion-no-margin">
-    <ion-card-header>
-      <ion-row class="customerInfo">
-        <ion-row>
-          <ion-col size="6">
-            <h4 class="shop-name">
-              <span>Shop name: </span>{{customerInfo.shopName}}
-            </h4>
-          </ion-col>
-          <ion-col size="6">
-            <h4 class="shop-code">
-              <span>Shop code: </span>{{customerInfo.shopCode}}
-            </h4>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="6">
-            <h4 class="tell"><span>Tell: </span>{{customerInfo.tell}}</h4>
-          </ion-col>
-          <ion-col size="6">
-            <h4 class="shop-type">
-              <span>Shop type: </span>{{customerInfo.shopType}}
-            </h4>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="8">
-            <h4 class="sr"><span>SR: </span>{{customerInfo.sr}}</h4>
-            <h4 class="address">
-              <span>Address: </span>{{customerInfo.address}}
-            </h4>
-          </ion-col>
-          <ion-col size="4" class="questionnaire">
-            <a routerLink="/questionnaire">
-              <img src="assets\pages\customer-history\Group 1309.png" alt="" />
-            </a>
-          </ion-col>
-        </ion-row>
-      </ion-row>
-    </ion-card-header>
-
-    <ion-card-content class="ion-no-padding">
-      <ion-row
-        class="table-container"
-        *ngFor="let row of virtual_rows; let i = index"
-        (click)="rowClick(row)"
-        [ngClass]="{'firstrow': i==0 ,'oddRows': 1 === i % 4}"
-      >
-        <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
-          <ion-col
-            *ngFor="let item of customer_histories[row.index]; let j = index"
-            [ngClass]="{'firstculomn': j==0 && i!=0 }"
-          >
-            {{ item }}
-          </ion-col>
-        </ng-container>
-        <ng-container *ngIf="row.show && row.type=='b'">
-          <ion-grid class="table-detail ion-no-padding">
-            <ion-row wrap *ngFor="let rows of selected_ch[row.index]">
-              <ion-col
-                *ngFor="let item of rows;let j = index"
-                [ngClass]="{'first-row-culomn': j==0 && i==0}"
+              <ion-select-option disabled value=""
+                >{{language.Questionnaire.Input_select_DC}}</ion-select-option
               >
-                {{ item }}
-              </ion-col>
-              <hr />
-            </ion-row>
-          </ion-grid>
-        </ng-container>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+              <ion-select-option *ngFor="let city of cities" [value]="city.City"
+                >{{city.City}}
+              </ion-select-option>
+            </ion-select>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </ion-item>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-item
+            id="trigger-input-route"
+            lines="none"
+            class="box-shadow select-box"
+          >
+            <ion-select
+              class="drop-down select-drop-down"
+              placeholder="Route"
+              interface="popover"
+              formControlName="Route"
+              (ionChange)="routeSelect($event)"
+              [disabled]="!f.DC.value"
+            >
+              <ion-select-option disabled value="">Route</ion-select-option>
+              <ion-select-option
+                *ngFor="let route of routes"
+                [value]="route.routename"
+                >{{route.routename}}
+              </ion-select-option>
+            </ion-select>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </ion-item>
+        </ion-row>
 
-  <ion-row class="ion-justify-content-center ion-margin-top">
-    <app-area-charts
-      [columns]="columns"
-      [series]="data"
-      *ngIf="columns.length && data.length"
-      style="max-width: 90vw"
-    >
-    </app-area-charts>
-  </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-item
+            id="trigger-input-customer"
+            lines="none"
+            class="box-shadow select-box"
+          >
+            <ion-select
+              class="drop-down select-drop-down"
+              placeholder="Customer"
+              interface="popover"
+              formControlName="Customer"
+              [disabled]="!f.Route.value"
+              (ionChange)="customerSelect($event)"
+            >
+              <ion-select-option disabled value="">Customer</ion-select-option>
+              <ion-select-option
+                *ngFor="let customer of customers"
+                [value]="customer"
+                >{{customer.custName}}
+              </ion-select-option>
+            </ion-select>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </ion-item>
+        </ion-row>
 
-  <ion-row class="ion-justify-content-center ion-margin-top">
-    <app-column-charts
-      [columns]="columns"
-      [series]="data"
-      *ngIf="columns.length && data.length"
-      style="max-width: 90vw"
-    ></app-column-charts>
-  </ion-row>
+        <ion-row class="radio-input-1 ion-justify-content-center">
+          <div class="radio-input box-shadow">
+            <div class="radio-input-sales">
+              <input
+                [disabled]="!f.Customer.value"
+                type="radio"
+                value="sales"
+                formControlName="type"
+                (ionChange)="typeAndQtyKgSelect()"
+              />
+              <label for="sales">Sales</label>
+            </div>
+            <div>
+              <input
+                [disabled]="!f.Customer.value"
+                type="radio"
+                value="pped"
+                formControlName="type"
+                (ionChange)="typeAndQtyKgSelect()"
+              />
+              <label for="pped">PPED</label>
+            </div>
+            <div>
+              <input
+                [disabled]="!f.Customer.value"
+                type="radio"
+                value="samples"
+                formControlName="type"
+                (ionChange)="typeAndQtyKgSelect()"
+              />
+              <label for="samples">Samples</label>
+            </div>
+          </div>
+        </ion-row>
+        <ion-row class="radio-input-2 ion-justify-content-center">
+          <div class="radio-input box-shadow">
+            <div>
+              <input
+                type="radio"
+                value="qty"
+                formControlName="kgqty"
+                (ionChange)="typeAndQtyKgSelect()"
+              />
+              <label for="qty">Qty</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                value="kg"
+                formControlName="kgqty"
+                (ionChange)="typeAndQtyKgSelect()"
+              />
+              <label for="kg">Kg</label>
+            </div>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </form>
+    <ion-card class="ion-no-margin">
+      <ion-card-header>
+        <ion-row class="customerInfo">
+          <ion-row>
+            <ion-col size="6">
+              <h4 class="shop-name">
+                <span>Shop name: </span>{{customerInfo.shopName}}
+              </h4>
+            </ion-col>
+            <ion-col size="6">
+              <h4 class="shop-code">
+                <span>Shop code: </span>{{customerInfo.shopCode}}
+              </h4>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <h4 class="tell"><span>Tell: </span>{{customerInfo.tell}}</h4>
+            </ion-col>
+            <ion-col size="6">
+              <h4 class="shop-type">
+                <span>Shop type: </span>{{customerInfo.shopType}}
+              </h4>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="8">
+              <h4 class="sr"><span>SR: </span>{{customerInfo.sr}}</h4>
+              <h4 class="address">
+                <span>Address: </span>{{customerInfo.address}}
+              </h4>
+            </ion-col>
+            <ion-col size="4" class="questionnaire">
+              <a routerLink="/questionnaire">
+                <img
+                  src="assets\pages\customer-history\Group 1309.png"
+                  alt=""
+                />
+              </a>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-card-header>
 
-  <ion-row class="ion-justify-content-center ion-margin-top">
-    <app-pie-charts
-      [columns]="columns"
-      [series]="data"
-      *ngIf="columns.length && data.length"
-      style="max-width: 90vw"
-    >
-    </app-pie-charts>
+      <ion-card-content class="ion-no-padding">
+        <ion-row
+          class="table-container"
+          *ngFor="let row of virtual_rows; let i = index"
+          (click)="rowClick(row)"
+          [ngClass]="{'firstrow': i==0 ,'oddRows': 1 === i % 4}"
+        >
+          <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
+            <ion-col
+              *ngFor="let item of customer_histories[row.index]; let j = index"
+              [ngClass]="{'firstculomn': j==0 && i!=0 }"
+            >
+              {{ item }}
+            </ion-col>
+          </ng-container>
+          <ng-container *ngIf="row.show && row.type=='b'">
+            <ion-grid class="table-detail ion-no-padding">
+              <ion-row wrap *ngFor="let rows of selected_ch[row.index]">
+                <ion-col
+                  *ngFor="let item of rows;let j = index"
+                  [ngClass]="{'first-row-culomn': j==0 && i==0}"
+                >
+                  {{ item }}
+                </ion-col>
+                <hr />
+              </ion-row>
+            </ion-grid>
+          </ng-container>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-row class="ion-justify-content-center ion-margin-top">
+      <app-area-charts
+        [columns]="columns"
+        [series]="data"
+        *ngIf="columns.length && data.length"
+        style="max-width: 90vw"
+      >
+      </app-area-charts>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center ion-margin-top">
+      <app-column-charts
+        [columns]="columns"
+        [series]="data"
+        *ngIf="columns.length && data.length"
+        style="max-width: 90vw"
+      ></app-column-charts>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center ion-margin-top">
+      <app-pie-charts
+        [columns]="columns"
+        [series]="data"
+        *ngIf="columns.length && data.length"
+        style="max-width: 90vw"
+      >
+      </app-pie-charts>
+    </ion-row>
   </ion-row>
 </ion-content>
