@@ -165,8 +165,10 @@
       <ion-label class="questions">{{question.text}}</ion-label>
 
       <ng-container *ngIf="question.type == 'yn'" class="radio-input-container">
+        <!-- <ion-list>
+          <ion-row *ngFor="let answer of question.answers; let j = index"> -->
         <ion-list>
-          <ion-row *ngFor="let answer of question.answers; let j = index">
+          <ion-row *ngFor="let answer of answers; let j = index">
             <div>
               <div>
                 <input type="radio" name="radio-input-2" id="" />
