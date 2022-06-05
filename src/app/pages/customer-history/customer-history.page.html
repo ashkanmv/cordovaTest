@@ -144,7 +144,7 @@
               (ionChange)="selectCity($event)"
             >
               <ion-select-option disabled value=""
-                >{{language.Questionnaire.Input_select_DC}}</ion-select-option
+                >DC</ion-select-option
               >
               <ion-select-option *ngFor="let city of cities" [value]="city.City"
                 >{{city.City}}
