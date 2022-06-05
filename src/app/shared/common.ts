@@ -1,3 +1,5 @@
+import { IconOptions } from "leaflet";
+
 export class Cities {
   City: string;
   route: number;
@@ -51,6 +53,8 @@ export interface Marker {
   latitude: number;
   longitude: number;
   description?: string;
+  icon: IconOptions;
+  customerCode?: number;
 }
 
 export interface LoginResponse {
@@ -89,6 +93,25 @@ export interface getUserCildrenResponse {
   FullName: string;
 }
 
+export interface Shop {
+  City: string;
+  CustCode: string;
+  PointLatitude: string;
+  PointLongitude: string;
+  custName: string;
+  CustTYPE: string;
+  ADDRESS: string;
+  Tel: string;
+  routename: string;
+  RouteCode: string;
+  VisitorCode: string;
+  Visitor: string;
+  TwoWeek: number;
+  SixWeekPPED: number;
+  MonthPromotion: number;
+  Distance: number;
+}
+
 export interface Access {
   name: string;
 }
@@ -97,6 +120,18 @@ export interface UserLog {
   user_id: string;
   task: string;
   version: string;
+}
+
+export interface PopoverItem {
+  title: string,
+  value: any,
+  selected?: boolean
+}
+
+export interface MapView {
+  lng: number,
+  lat: number,
+  zoom: number,
 }
 
 // ENUMS
