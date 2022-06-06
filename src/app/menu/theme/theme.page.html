@@ -19,41 +19,63 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-row>
-    <ion-col size="6"
-      ><ion-img src="\assets\menu\theme\Icon awesome-mobile-alt.png"></ion-img>
-      <h3>{{language.theme.dark}}</h3>
-      <ion-radio name="theme-color" value="{{language.theme.dark}}"
-        >{{language.theme.select}}</ion-radio
-      >
-    </ion-col>
-    <ion-col size="6"
-      ><ion-img
-        src="\assets\menu\theme\Icon awesome-mobile-alt-1.png"
-      ></ion-img>
-      <h3>{{language.theme.light}}</h3>
-      <ion-radio name="theme-color" value="{{language.theme.light}}"
-        >{{language.theme.select}}</ion-radio
-      >
-    </ion-col>
+  <ion-row class="ion-justify-content-center" class="select-theme">
+    <ion-radio-group>
+      <ion-col class="dark-theme ion-align-items-center" size="6"
+        ><ion-img
+          src="\assets\menu\theme\Icon awesome-mobile-alt.png"
+        ></ion-img>
+        <h3>{{language.theme.dark}}</h3>
+        <ion-item>
+          <ion-radio
+            name="theme-color"
+            value="{{language.theme.dark}}"
+          ></ion-radio>
+          <h3>{{language.theme.select}}</h3>
+        </ion-item>
+      </ion-col>
+      <ion-col class="light-theme" i size="6"
+        ><ion-img
+          src="\assets\menu\theme\Icon awesome-mobile-alt-1.png"
+        ></ion-img>
+        <h3>{{language.theme.light}}</h3>
+        <ion-item>
+          <ion-radio
+            name="theme-color"
+            value="{{language.theme.light}}"
+          ></ion-radio>
+          <h3>{{language.theme.select}}</h3>
+        </ion-item>
+      </ion-col>
+    </ion-radio-group>
   </ion-row>
-  <ion-row>
+  <ion-row class="theme-options ion-justify-content-center">
     <ion-col size="12">
-      <ion-item>
-        <ion-col size="8">{{language.theme.automatic_dark_mode}}</ion-col>
-        <ion-col size="4"><ion-toggle mode="ios"></ion-toggle></ion-col>
+      <ion-item class="ion-align-items-center">
+        <ion-col class="option-label" size="9"
+          >{{language.theme.automatic_dark_mode}}</ion-col
+        >
+        <ion-col size="3"><ion-toggle mode="ios"></ion-toggle></ion-col>
       </ion-item>
     </ion-col>
     <ion-col size="12">
       <ion-item>
-        <ion-col size="8">{{language.theme.automatic_dark_mode}}</ion-col>
-        <ion-col size="4"><ion-toggle mode=""></ion-toggle></ion-col>
+        <ion-col class="option-label" size="9"
+          >{{language.theme.text_size}}</ion-col
+        >
+        <ion-col size="3">
+          <a>
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </a>
+        </ion-col>
       </ion-item>
     </ion-col>
     <ion-col size="12">
       <ion-item>
-        <ion-col size="8">{{language.theme.automatic_dark_mode}}</ion-col>
-        <ion-col size="4"><ion-toggle mode="ios"></ion-toggle></ion-col>
+        <ion-col class="option-label" size="9"
+          >{{language.theme.bold_text}}</ion-col
+        >
+        <ion-col size="3"><ion-toggle mode="ios"></ion-toggle></ion-col>
       </ion-item>
     </ion-col>
   </ion-row>

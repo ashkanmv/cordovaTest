@@ -45,6 +45,7 @@ ion-select::part(icon) {
 //  search bottom border
 ion-item{
   --highlight-color-focused: var(--ion-color-light);
+  --background: none;
 
 }
 //  ng search 
@@ -69,10 +70,6 @@ ion-item{
   background: #54b2e963;
   // background: var(--ion-color-primary-rgb);
 }
-// .icon-activated{
-//   color: #0095EB;
-//   transform: rotate(180deg);
-// }
 
 
 // 
