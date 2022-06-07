@@ -1,4 +1,4 @@
-import { IconOptions } from "leaflet";
+import { IconOptions } from 'leaflet';
 
 export class Cities {
   City: string;
@@ -39,9 +39,12 @@ export interface Question {
   order: number;
   language: string;
   need_answer: boolean;
+  answer_text: string;
   status: string;
   create_at: Date;
   user_id: string;
+  pic: any;
+  answers: any;
   typeId: number;
   Mod_DT: Date;
   Mod_User: number;
@@ -123,15 +126,15 @@ export interface UserLog {
 }
 
 export interface PopoverItem {
-  title: string,
-  value: any,
-  selected?: boolean
+  title: string;
+  value: any;
+  selected?: boolean;
 }
 
 export interface MapView {
-  lng: number,
-  lat: number,
-  zoom: number,
+  lng: number;
+  lat: number;
+  zoom: number;
 }
 
 // ENUMS
