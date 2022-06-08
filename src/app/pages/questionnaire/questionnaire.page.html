@@ -159,103 +159,122 @@
       </ion-row>
     </ion-col>
   </form>
-  <!-- ----------------questions----------------- -->
-  <ion-row *ngFor="let question of questions; let i = index">
+
+  <!-- <ion-col class="ion-justify-content-center input-text">
+    <ion-row class="ion-justify-content-center">
+      <ion-label>Store:</ion-label>
+      <ion-input></ion-input>
+    </ion-row>
     <ion-row>
       <ion-label class="questions">{{question.text}}</ion-label>
 
       <ng-container *ngIf="question.type == 'yn'" class="radio-input-container">
-        <!-- <ion-list>
+         <ion-list>
           <ion-row *ngFor="let answer of question.answers; let j = index"> -->
-        <ion-list>
-          <ion-row *ngFor="let answer of answers; let j = index">
-            <div>
-              <div>
-                <input type="radio" name="radio-input-2" id="" />
-                <label for="{{answer.text}}">{{answer.text}}</label>
-              </div>
-            </div>
-          </ion-row>
-        </ion-list>
-      </ng-container>
-      <ion-col
-        *ngIf="question.type == 'tx'"
+  <ion-list>
+    <ion-row *ngFor="let answer of answers; let j = index">
+      <div>
+        <div>
+          <input type="radio" name="radio-input-2" id="" />
+          <label for="{{answer.text}}">{{answer.text}}</label>
+        </div>
+      </div>
+    </ion-row>
+  </ion-list>
+  <!-- </ng-container> -->
+  <!-- <ion-col
+        *ngIf="questioncats.type == 'tx'"
         size="12"
         class="text-input-container"
-      >
-        <ion-row>
-          <ion-input
-            type="text"
-            placeholder="................................................................................................................................................."
-          ></ion-input>
-        </ion-row>
-      </ion-col>
-      <!-- <button class="btn-submit">Submit</button> -->
+      > -->
+  <ion-col size="12" class="text-input-container">
+    <ion-row>
+      <ion-input
+        type="text"
+        placeholder="................................................................................................................................................."
+      ></ion-input>
     </ion-row>
-  </ion-row>
+  </ion-col>
+  <!-- <button class="btn-submit">Submit</button> -->
+  <!-- </ion-row> -->
+  <button class="btn-submit">Submit</button>
+  <!-- </ion-col -->
 </ion-content>
-<!-- <ion-row *ngFor="let question of questions; let i = index">
-  <ion-row>
-    <ion-col size="12" class="ion-justify-content-center input-text">
-      <ion-row class="ion-justify-content-center">
-        <ion-label>{{question.text}}</ion-label>
-        <ion-input></ion-input>
-      </ion-row>
-    </ion-col>
+-->
 
-    <ion-col
-      *ngIf="question.type == 'yn'"
-      size="12"
-      class="radio-input-container"
-    >
-      <ion-row *ngFor="let answer of answers; let j = index">
-        <label>{{question.text}}</label>
-        <div class="">
-          <div class="">
-            <input type="radio" name="radio-input-2" id="" />
-            <label for="{{answer.text}}">{{answer.text}}</label>
-          </div>
-          <div class="">
-            <input type="radio" name="radio-input-2" id="" />
-            <label for="{{answer.text}}">{{answer.text}}</label>
-          </div>
-        </div>
-      </ion-row>
-     <button class="btn-submit">Submit</button> 
-    </ion-col>
-  </ion-row>
-</ion-row> -->
+<ion-card dir="ltr" *ngFor="let question of questions; let i = index">
+  <ion-card-content>
+    <p style="white-space: pre-line" align="justify">
+      {{question.text}}<span *ngIf="getAnswerStatus(i)" style="color: red"
+        >*</span
+      >
+    </p>
 
-<!-- ======================================= -->
-<!-- <ion-row *ngFor="let question of questions; let i = index">
-  <ion-row>
-    <ion-label class="questions">{{question.text}}</ion-label>
-
-    <ng-container  *ngIf="question.type == 'yn'"  class="radio-input-container" ></ng-container>>
-     
-      <ion-row *ngFor="let answer of answers; let j = index">
-        <div>
-          <div>
-            <input type="radio" name="radio-input-2" id="" />
-            <label for="{{answer.text}}">{{answer.text}}</label>
-          </div>
-        </div>
-      </ion-row>
+    <ng-container *ngIf="question.type=='yn' ">
+      <ion-list radio-group>
+        <ion-grid>
+          <ion-row *ngFor="let answer of question.answers; let j = index">
+            <ion-col>
+              <ion-item>
+                <ion-label>{{answer.text}}</ion-label>
+                <ion-radio value="ford"></ion-radio>
+                <ion-radio (ionSelect)="radioSelect(i,j)"></ion-radio>
+                <!-- [checked]="checkValue(i,j)" -->
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ng-container *ngIf="question.has_image && active_camera(i)">
+                <ion-button (click)="onCamera(i)" [color]="get_pic_status(i)">
+                  <ion-icon name="camera"></ion-icon>
+                </ion-button>
+              </ng-container>
+            </ion-col>
+            <ion-col>
+              <ng-container *ngIf="question.has_image">
+                <div text-center *ngIf="question.pic">
+                  <img
+                    src="http://77.104.65.168:8002/answerlog/{{question.pic}}"
+                  />
+                </div>
+              </ng-container>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
     </ng-container>
-    <ion-col
-      *ngIf="question.type == 'tx'"
-      size="12"
-      class="text-input-container"
-    >
-      <ion-row>
+    <ng-container *ngIf="question.type=='ml' ">
+      <ion-item *ngFor="let answer of question.answers; let j = index">
+        <ion-label>{{answer.text}}</ion-label>
+        <ion-checkbox
+          checked="{{checkbox_value(i,j)}}"
+          color="primary"
+          (ionChange)="checkboxSelect(i,j)"
+        ></ion-checkbox>
+      </ion-item>
+    </ng-container>
+    <ng-container *ngIf="question.type=='tx' ">
+      <ion-item>
         <ion-input
           type="text"
-          placeholder="................................................................................................................................................."
+          [(ngModel)]="txtanswers[i]"
+          (keyup)="answer_textValue(i)"
+          placeholder="متن را وارد نمایید"
         ></ion-input>
-      </ion-row>
-    </ion-col>
-     <button class="btn-submit">Submit</button> 
-    
-  </ion-row>
-</ion-row>
-</ion-content> -->
+        <ion-row *ngFor="let answer of question.answers; let j = index">
+          <ion-col>
+            <ion-item>
+              <ion-radio
+                hidden="hidden"
+                (ionSelect)="radioSelect(i,j)"
+              ></ion-radio>
+              <!-- checked="{{check_value(i,j)}}" -->
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ng-container>
+  </ion-card-content>
+</ion-card>
+<!-- </ion-content> -->

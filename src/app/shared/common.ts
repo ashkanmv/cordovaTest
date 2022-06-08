@@ -1,3 +1,5 @@
+import { IconOptions } from 'leaflet';
+
 export class Cities {
   City: string;
   route: number;
@@ -37,9 +39,12 @@ export interface Question {
   order: number;
   language: string;
   need_answer: boolean;
+  answer_text: string;
   status: string;
   create_at: Date;
   user_id: string;
+  pic: any;
+  answers: any;
   typeId: number;
   Mod_DT: Date;
   Mod_User: number;
@@ -51,6 +56,8 @@ export interface Marker {
   latitude: number;
   longitude: number;
   description?: string;
+  icon: IconOptions;
+  customerCode?: number;
 }
 
 export interface LoginResponse {
@@ -65,6 +72,49 @@ export interface LoginResponse {
   Message: string;
 }
 
+export interface getUserCildrenResponse {
+  Uid: number;
+  Fromdate: Date;
+  Todate: Date;
+  id: string;
+  PartyID: string;
+  ParentID: string;
+  userType: number;
+  FirstName: string;
+  LastName: string;
+  LandLine: string;
+  CellNumber: string;
+  username: string;
+  password: string;
+  status: string;
+  create_at: Date;
+  Mod_DT: Date;
+  Mod_User: number;
+  isSystemUser?: any;
+  Equivalent_User_ID: string;
+  name: string;
+  FullName: string;
+}
+
+export interface Shop {
+  City: string;
+  CustCode: string;
+  PointLatitude: string;
+  PointLongitude: string;
+  custName: string;
+  CustTYPE: string;
+  ADDRESS: string;
+  Tel: string;
+  routename: string;
+  RouteCode: string;
+  VisitorCode: string;
+  Visitor: string;
+  TwoWeek: number;
+  SixWeekPPED: number;
+  MonthPromotion: number;
+  Distance: number;
+}
+
 export interface Access {
   name: string;
 }
@@ -75,10 +125,22 @@ export interface UserLog {
   version: string;
 }
 
+export interface PopoverItem {
+  title: string;
+  value: any;
+  selected?: boolean;
+}
+
+export interface MapView {
+  lng: number;
+  lat: number;
+  zoom: number;
+}
+
 // ENUMS
 export enum Languages {
   EN,
-  FA,
+  FR,
 }
 
 // Language

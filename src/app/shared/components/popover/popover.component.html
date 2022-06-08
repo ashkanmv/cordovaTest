@@ -1,20 +1,7 @@
-<ion-img
-  id="trigger-hide"
-  class="hide"
-  src="\assets\pages\customer-nearby\Hide.png"
->
-</ion-img>
-<ion-popover
-  show-backdrop="false"
-  dismiss-on-select="true"
-  class="header-drop-down hide-drop-down"
-  trigger="trigger-hide"
->
-  <ng-template>
-    <ion-content value="50m">50 M</ion-content>
-    <ion-content value="100m">100 M</ion-content>
-    <ion-content value="500m">500 M</ion-content>
-    <ion-content value="700m">700 M</ion-content>
-    <ion-content value="1km">1 KM</ion-content>
-  </ng-template>
-</ion-popover>
+<ion-content>
+  <ion-list *ngFor="let item of items">
+    <ion-item (click)="dismiss(item.value)">
+      <ion-label>{{item.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

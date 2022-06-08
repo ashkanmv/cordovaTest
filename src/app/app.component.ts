@@ -15,19 +15,19 @@ import { LanguageService } from './shared/language.service';
 })
 export class AppComponent implements OnInit {
   startApp = false;
+  language : boolean;
   constructor(
     private plt: Platform,
     private backgroundGeolocation: BackgroundGeolocation,
     private languageService: LanguageService
-  ) {}
+  ) { }
   ngOnInit(): void {
+    this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false ;
     this.loadLanguage();
   }
 
   loadLanguage() {
     this.languageService.loadLanguage().subscribe(() => {
-      console.log('ash');
-
       this.startApp = true;
       this.plt
         .ready()
@@ -39,6 +39,13 @@ export class AppComponent implements OnInit {
           console.log(error);
         });
     });
+  }
+
+  languageChanged() {
+    if (this.language)
+      localStorage.setItem('selectedLanguage', 'FR')
+    else localStorage.setItem('selectedLanguage', 'EN')
+
   }
 
   config() {

@@ -1,32 +1,32 @@
 {
-    "EN" : {
-        "Customer_History" : {
-            "TitLe" : "Customer History"
+    "EN": {
+        "Customer_History": {
+            "TitLe": "Customer History"
         },
-        "Questionnaire" :{
+        "Questionnaire": {
             "Title": "Questionnaire",
             "Input_select_DC": "DC",
             "Input_select_route": "Route",
             "Input_select_routeDaily": "RouteDaily",
             "Input_select_customer": "Customer",
             "Input_select_customer_Category": "Customer Category",
-            "Input_text_store": "Store",   
-            "Input_text_customer_name": "Customer Name",  
-            "Input_text_address": "Address",  
+            "Input_text_store": "Store",
+            "Input_text_customer_name": "Customer Name",
+            "Input_text_address": "Address",
             "Radio_input_breakfast": "Breakfast",
-            "Radio_input_breakfast_yes": "Yes",  
+            "Radio_input_breakfast_yes": "Yes",
             "Radio_input_breakfast_no": "No",
-            "Submit_button" : "Submit"
+            "Submit_button": "Submit"
         },
-        "Gps_Tracking" :{
+        "Gps_Tracking": {
             "Title": "Gps Tracking",
-            "Description":"Description",
-            "Planned(Not_Invoiced_Yet)":"Planned (Not Invoiced Yet)",
-            "Planned&Invoiced":"Planned & Invoiced",
-            "OOP_invoiced":"OOP invoiced",
-            "Visited_Not_Buy":"Visited Not Buy",
-            "SR":"SR",
-            "TRUCK":"TRUCK",
+            "Description": "Description",
+            "Planned(Not_Invoiced_Yet)": "Planned (Not Invoiced Yet)",
+            "Planned&Invoiced": "Planned & Invoiced",
+            "OOP_invoiced": "OOP invoiced",
+            "Visited_Not_Buy": "Visited Not Buy",
+            "SR": "SR",
+            "TRUCK": "TRUCK",
             "Input_select_date": "Date",
             "Input_select_RSM": "RSM",
             "Input_select_ASM": "ASM",
@@ -35,15 +35,15 @@
             "Radio_input_show_truck": "Show truck",
             "Radio_input_show_SR": "Show SR"
         },
-        "Customer_nearby" :{
+        "Customer_nearby": {
             "Title": "Customer nearby",
-            "Description":"Description",
-            "Normal_Customer":"Normal Customer",
-            "Promotion_Customer":"Promotion Customer",
-            "PPED_>_5%":"PPED > 5%",
-            "NOT_Buy_2_Weeks":"NOT Buy 2 Weeks",
-            "Not_Buy_2_Weeks_&_PPED_>_5%":"Not Buy 2 Weeks & PPED > 5%",
-            "TRUCK":"TRUCK",
+            "Description": "Description",
+            "Normal_Customer": "Normal Customer",
+            "Promotion_Customer": "Promotion Customer",
+            "PPED_>_5%": "PPED > 5%",
+            "NOT_Buy_2_Weeks": "NOT Buy 2 Weeks",
+            "Not_Buy_2_Weeks_&_PPED_>_5%": "Not Buy 2 Weeks & PPED > 5%",
+            "TRUCK": "TRUCK",
             "Input_select_date": "Date",
             "Input_select_RSM": "RSM",
             "Input_select_ASM": "ASM",
@@ -52,14 +52,14 @@
             "Radio_input_show_truck": "Show truck",
             "Radio_input_show_SR": "Show SR"
         },
-        "Score_Card" :{
+        "Score_Card": {
             "Title": "Score Cards",
             "Segment_category": "CATEGORY",
             "Segment_channel": "CHANNEL",
             "Segment_category%": "CATEGORY %",
             "Segment_channel%": "CHANNEL %",
             "Radio_input_sales": "sales",
-            "Radio_input_PPED": "PPED"   
+            "Radio_input_PPED": "PPED"
         },
         "login": {
             "title": "Login",
@@ -82,7 +82,77 @@
             "theme_color":"Theme Color"
         }
     },
-    "FR":{
-        "Customer_History" : "تست"
+    "FR": {
+        "Customer_History": {
+            "TitLe": "Customer History"
+        },
+        "Questionnaire": {
+            "Title": "تستتت",
+            "Input_select_DC": "تستتت",
+            "Input_select_route": "تستتت",
+            "Input_select_routeDaily": "تستتت",
+            "Input_select_customer": "تستتت",
+            "Input_select_customer_Category": "تستتت",
+            "Input_text_store": "تستتت",
+            "Input_text_customer_name": "تستتت",
+            "Input_text_address": "تستتت",
+            "Radio_input_breakfast": "تستتت",
+            "Radio_input_breakfast_yes": "تستتت",
+            "Radio_input_breakfast_no": "تستتت",
+            "Submit_button": "تستتتt"
+        },
+        "Gps_Tracking": {
+            "Title": "تستتت",
+            "Description": "تستتت",
+            "Planned(Not_Invoiced_Yet)": "تستتت",
+            "Planned&Invoiced": "تستتت",
+            "OOP_invoiced": "تستتت",
+            "Visited_Not_Buy": "تستتت",
+            "SR": "تستتت",
+            "TRUCK": "تستتت",
+            "Input_select_date": "تستتت",
+            "Input_select_RSM": "تستتت",
+            "Input_select_ASM": "تستتت",
+            "Input_select_SSV": "تستتت",
+            "Input_select_SR": "تستتت",
+            "Radio_input_show_truck": "تستتت",
+            "Radio_input_show_SR": "تستتتR"
+        },
+        "Customer_nearby": {
+            "Title": "تستتتتت",
+            "Description": "تستتتتت",
+            "Normal_Customer": "تستتتتت",
+            "Promotion_Customer": "تستتتتت",
+            "PPED_>_5%": "تستتتتت",
+            "NOT_Buy_2_Weeks": "تستتتتت",
+            "Not_Buy_2_Weeks_&_PPED_>_5%": "تستتتتت",
+            "TRUCK": "تستتتتت",
+            "Input_select_date": "تستتتتت",
+            "Input_select_RSM": "تستتتتت",
+            "Input_select_ASM": "تستتتتت",
+            "Input_select_SSV": "تستتتتت",
+            "Input_select_SR": "تستتتتت",
+            "Radio_input_show_truck": "تستتتتت",
+            "Radio_input_show_SR": "تستتتتتR"
+        },
+        "Score_Card": {
+            "Title": "تستتتت",
+            "Segment_category": "تستتتت",
+            "Segment_channel": "تستتتت",
+            "Segment_category%": "تستتتت",
+            "Segment_channel%": "تستتتت",
+            "Radio_input_sales": "تستتتت",
+            "Radio_input_PPED": "تستتتتD"
+        },
+        "login": {
+            "title": "تستتتت",
+            "username": "تستتتت",
+            "password": "تستتتت",
+            "submit": "تستتتت",
+            "UserPassIncorrect": "تستتتت",
+            "RememberMe": "تستتتت",
+            "PoweredBy": "تستتتت",
+            "serial": "تست"
+        }
     }
 }

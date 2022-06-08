@@ -8,9 +8,10 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class LanguageService {
-  static _language: Language;
-  public get selectedLanguage(): Languages { return Languages[localStorage.getItem('selectedLanguage') || Languages.EN] }
-  public get language(): Language { return LanguageService._language[this.selectedLanguage] }
+  static _language: any;
+  public get selectedLanguage(): string { return localStorage.getItem('selectedLanguage') }
+  public get selectedLanguageEnum(): string { return this.selectedLanguage == 'FR' ? Languages[Languages.FR] : Languages[Languages.EN] }
+  public get language(): Language { return LanguageService._language[this.selectedLanguageEnum] }
 
   constructor(private http: HttpClient, private storageService: StorageService) { }
 

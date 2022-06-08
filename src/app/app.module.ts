@@ -11,6 +11,7 @@ import { BackgroundGeolocation } from '@awesome-cordova-plugins/background-geolo
 import { HighchartsChartModule } from 'highcharts-angular';
 import { GlobalInterceptorService } from './global-interceptor.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     HttpClientModule,
     HighchartsChartModule,
     IonicStorageModule.forRoot(),
+    FormsModule
   ],
   providers: [
     BackgroundGeolocation,

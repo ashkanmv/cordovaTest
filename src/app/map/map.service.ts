@@ -1,12 +1,55 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { getUserCildrenResponse, Shop } from '../shared/common';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { IconOptions } from 'leaflet';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MapService {
   geoapifyAPIKey = '5908d42d2c0344b2af400a77ab03ed10';
+  shop_point : IconOptions = {
+    iconUrl: 'assets/icon/shop_green.png',
+    iconSize: [30, 30]
+  };
+  shop_NotBuyWeeks : IconOptions = {
+    iconUrl: 'assets/icon/shop_green_x.png',
+    iconSize: [30, 30]
+  };
+  shop_Max_PPED : IconOptions = {
+    iconUrl: 'assets/icon/shop_green_circle.png',
+    iconSize: [30, 30]
+  };
+  shop_Max_PPED_NotBuy : IconOptions = {
+    iconUrl: 'assets/icon/shop_green_circle_x.png',
+    iconSize: [30, 30]
+  };
+  shop_Month_Promotion : IconOptions = {
+    iconUrl: 'assets/icon/shop_blue.png',
+    iconSize: [30, 30]
+  };
+  shop_Promo_NotBuyWeeks : IconOptions = {
+    iconUrl: 'assets/icon/shop_blue_x.png',
+    iconSize: [30, 30]
+  };
+  shop_Promo_Max_PPED : IconOptions = {
+    iconUrl: 'assets/icon/shop_blue_circle.png',
+    iconSize: [30, 30]
+  };
+  shop_Promo_Max_PPED_NotBuy : IconOptions = {
+    iconUrl: 'assets/icon/shop_blue_circle_x.png',
+    iconSize: [30, 30]
+  };
+  SalesManIcon : IconOptions = {
+    iconUrl: 'assets/icon/salesman.png',
+    iconSize: [30, 30]
+  }
+
+  mapInitialized = new Subject();
+  clearMarkers = new Subject();
+  flyTo = new Subject();
   private vehicleUrl = environment.BaseURL + '/api/v1/vehicles';
   private shopPointUrl = environment.BaseURL + '/api/v1/shoppoints';
   private invoicedUrl = environment.BaseURL + '/api/v1/invoiceds';
@@ -20,8 +63,10 @@ export class MapService {
     environment.BaseURL + '/api/v1/visitorpoints/byid';
   private UserCildren = environment.BaseURL + '/api/v1/users/getchildren';
   private SrRoute = environment.BaseURL + '/api/v1/routes/getsrroute';
+  private srNearPoints = environment.BaseURL + '/api/v1/gps/srNearPoints';
+  private srNearPointsLatlng = environment.BaseURL + '/api/v1/gps/srNearPointsLatlng';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getVehicleByRouteTime(
     route_code: string,
@@ -29,78 +74,94 @@ export class MapService {
     time_end: string
   ) {
     let params = new HttpParams();
-    params.append('route_code', route_code);
-    params.append('time_first', time_first);
-    params.append('time_end', time_end);
+    params = params.append('route_code', route_code);
+    params = params.append('time_first', time_first);
+    params = params.append('time_end', time_end);
 
-    return this.http.get(this.vehicleUrl, { params }).subscribe();
+    return this.http.get(this.vehicleUrl, { params });
   }
 
   getShopPointByRouteName(route_code: string, selected_date: string) {
     let params = new HttpParams();
-    params.append('route_code', route_code);
-    params.append('date', selected_date);
+    params = params.append('route_code', route_code);
+    params = params.append('date', selected_date);
 
-    return this.http.get(this.shopPointUrl, { params }).subscribe();
+    return this.http.get(this.shopPointUrl, { params });
+  }
+
+  getShopsrNearPoints(route_code: number, distance: number) {
+    let params = new HttpParams();
+    params = params.append('route_code', route_code);
+    params = params.append('distance', distance);
+
+    return this.http.get(this.srNearPoints, { params })
+  }
+  getShopsrNearPointsLatlng(lat: number, lng: number, distance: number) {
+    let params = new HttpParams();
+    params = params.append('lat', lat);
+    params = params.append('lng', lng);
+    params = params.append('distance', distance);
+
+    return this.http.get<Shop[]>(this.srNearPointsLatlng, { params })
   }
 
   getInvoiced(cust_codes: string, selected_date: string) {
     let params = new HttpParams();
-    params.append('cust_codes', cust_codes);
-    params.append('date', selected_date);
-    return this.http.get(this.invoicedUrl, { params }).subscribe();
+    params = params.append('cust_codes', cust_codes);
+    params = params.append('date', selected_date);
+    return this.http.get(this.invoicedUrl, { params });
   }
 
   getOutOfPlan(inv_code: number, selected_date: string) {
     let params = new HttpParams();
-    params.append('inv_code', inv_code);
-    params.append('date', selected_date);
-    return this.http.get(this.invoicedUrl, { params }).subscribe();
+    params = params.append('inv_code', inv_code);
+    params = params.append('date', selected_date);
+    return this.http.get(this.invoicedUrl, { params });
   }
   getVisit_NotBuy(routecode: number, selected_date: string) {
     let params = new HttpParams();
-    params.append('routecode', routecode);
-    params.append('date', selected_date);
-    return this.http.get(this.visitednotbuy, { params }).subscribe();
+    params = params.append('routecode', routecode);
+    params = params.append('date', selected_date);
+    return this.http.get(this.visitednotbuy, { params });
   }
 
   getSrInfo(route_code: number, date: string, userId: string) {
     let params = new HttpParams();
-    params.append('route_code', route_code);
-    params.append('date', date);
-    params.append('useriD', userId);
-    return this.http.get(this.srinfoUrl, { params }).subscribe();
+    params = params.append('route_code', route_code);
+    params = params.append('date', date);
+    params = params.append('useriD', userId);
+    return this.http.get(this.srinfoUrl, { params });
   }
 
   getDc() {
-    return this.http.get(this.dcUrl).subscribe();
+    return this.http.get(this.dcUrl);
   }
 
   getSr(city: string) {
     let params = new HttpParams();
-    params.append('city', city);
-    return this.http.get(this.srUrl, { params }).subscribe();
+    params = params.append('city', city);
+    return this.http.get(this.srUrl, { params });
   }
 
   getUserCildren(user: string) {
     let params = new HttpParams();
-    params.append('user', user);
-    return this.http.get(this.UserCildren, { params }).subscribe();
+    params = params.append('user', user);
+    return this.http.get<getUserCildrenResponse[]>(this.UserCildren, { params });
   }
 
   getSrRoute(user: string, date: string) {
     let params = new HttpParams();
-    params.append('user', user);
-    params.append('date', date);
-    return this.http.get(this.SrRoute, { params }).subscribe();
+    params = params.append('user', user);
+    params = params.append('date', date);
+    return this.http.get(this.SrRoute, { params });
   }
 
   getVPByRouteTime(route_name: string, time_first: string, time_end: string) {
     let params = new HttpParams();
-    params.append('route_name', route_name);
-    params.append('time_first', time_first);
-    params.append('time_end', time_end);
-    return this.http.get(this.visitorPointUrl, { params }).subscribe();
+    params = params.append('route_name', route_name);
+    params = params.append('time_first', time_first);
+    params = params.append('time_end', time_end);
+    return this.http.get(this.visitorPointUrl, { params });
   }
   getVPByRouteTimeUser(
     routecode: string,
@@ -109,11 +170,11 @@ export class MapService {
     userId: string
   ) {
     let params = new HttpParams();
-    params.append('routecode', routecode);
-    params.append('time_first', time_first);
-    params.append('time_end', time_end);
-    params.append('useriD', userId);
-    return this.http.get(this.visitorPointUrlUser, { params }).subscribe();
+    params = params.append('routecode', routecode);
+    params = params.append('time_first', time_first);
+    params = params.append('time_end', time_end);
+    params = params.append('useriD', userId);
+    return this.http.get(this.visitorPointUrlUser, { params });
   }
 
   // private handleError(error: any) {
