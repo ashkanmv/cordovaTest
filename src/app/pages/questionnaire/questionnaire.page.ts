@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Data, Router } from '@angular/router';
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 import { LoadingController } from '@ionic/angular';
 import {
   Cities,
@@ -45,7 +46,8 @@ export class QuestionnairePage implements OnInit {
     private loadingCtrl: LoadingController,
     private languageService: LanguageService,
     private answerLogService: AnswerLogService,
-    private persianCalendarService: PersianCalendarService
+    private persianCalendarService: PersianCalendarService,
+    private camera: Camera
   ) {
     let customerNumber = this.route.snapshot.queryParams['customerNumber'];
     if (customerNumber) this.open_OtherForm(customerNumber);
@@ -54,7 +56,6 @@ export class QuestionnairePage implements OnInit {
 
   ngOnInit() {
     this.storageService.get('user_id').then((userId) => {
-      console.log(userId);
       this.userId = userId;
       // this.get_cities();
     });
@@ -296,8 +297,6 @@ export class QuestionnairePage implements OnInit {
         }
       });
     });
-    console.log(this.answerLogs);
-    console.log(this.questions);
   }
 
   searchQuestionAnswerId(question_id, answer_id, myArray) {
@@ -355,46 +354,40 @@ export class QuestionnairePage implements OnInit {
   }
 
   getPicture(type: number, i) {
-    // var options = {
-    //   sourceType: type,
-    //   cameraDirection: 0,//back
-    //   quality: 75,
-    //   destinationType: Camera.DestinationType.DATA_URL,
-    //   //sourceType: Camera.PictureSourceType.CAMERA,
-    //   allowEdit: true,
-    //   encodingType: Camera.EncodingType.JPEG,
-    //   targetWidth: 500,
-    //   targetHeight: 500,
-    //   saveToPhotoAlbum: false,
-    //   correctOrientation: true
-    // };
-    // Camera.getPicture(options).then((imageData) => {
-    //   // imageData is either a base64 encoded string or a file URI
-    //   // If it's base64:
-    //   let base64Image = "data:image/jpeg;base64," + imageData;
-    //   const fileTransfer = new Transfer();
-    //   let uploadOptions = {
-    //     fileKey: 'file',
-    //     mimeType: 'image/jpeg',
-    //     httpMethod: "PUT",
-    //   };
-    //   fileTransfer.upload(base64Image, "http://77.104.65.168:8002/api/v1/answerlogs", uploadOptions)
-    //     .then((result: any) => {
-    //       this.server = true;
-    //       this.utilService.set_server(true);
-    //       var content = JSON.parse(result.response);
-    //       this.questions[i].pic = content.destination_name;
-    //       this.answerLogs[i].img = content.destination_name;
-    //       this.answerLogs[i].wrong_pic = false;
-    //     }).catch((error: any) => {
-    //       this.server = false;
-    //       this.utilService.set_server(false);
-    //       this.utilService.presentToast(this.translateService.instant('connection_error'));
-    //       console.log(error);
-    //     });
-    // }, (err) => {
-    //   console.log(JSON.stringify(err));
-    // });
+    var options = {
+      sourceType: type,
+      cameraDirection: 0,//back
+      quality: 75,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      //sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false,
+      correctOrientation: true
+    };
+    this.camera.getPicture(options).then((imageData) => {
+      
+      // let base64Image = "data:image/jpeg;base64," + imageData;
+      // const fileTransfer: FileTransferObject = this.transfer.create();
+
+      // let uploadOptions = {
+      //   fileKey: 'file',
+      //   mimeType: 'image/jpeg',
+      //   httpMethod: "PUT",
+      // };
+      // fileTransfer.upload(base64Image, "http://77.104.65.168:8002/api/v1/answerlogs", uploadOptions)
+      //   .then((result: any) => {
+      //     var content = JSON.parse(result.response);
+      //     this.questions[i].pic = content.destination_name;
+      //     this.answerLogs[i].img = content.destination_name;
+      //     this.answerLogs[i].wrong_pic = false;
+      //   }).catch((error: any) => {
+      //     // this.utilService.presentToast(this.translateService.instant('connection_error'));
+      //     console.log(error);
+      //   });
+    });
   }
 
   check_value(i, j) {

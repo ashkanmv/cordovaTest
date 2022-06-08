@@ -12,6 +12,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { GlobalInterceptorService } from './global-interceptor.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { FormsModule } from '@angular/forms';
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     BackgroundGeolocation,
+    Camera,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalInterceptorService,
