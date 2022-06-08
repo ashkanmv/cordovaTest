@@ -1,0 +1,314 @@
+<ion-header>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row
+      class="primary-bg ion-justify-content-between header ion-no-margin"
+    >
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" routerLink="/main">
+          <ion-img
+            class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+      <ion-col size="6" class="ion-text-center ion-align-self-center">
+        <ion-title class="white-text">
+          <h3><b>Daily Status</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col></ion-col>
+      <ion-col class="ion-align-self-center reload" size="1">
+        <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
+        </ion-img>
+      </ion-col>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img
+          class="wifi-online"
+          src="\assets\mainPage\main\wifi.png"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+    <!--  -->
+  </ion-toolbar>
+  <ion-grid class="secondary-bg white-text">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="3" class="ion-no-padding ion-text-start">
+        2022.04.02
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-center">
+        Saturday
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-end">
+        13 فروردین
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-col class="ion-no-padding segment-change">
+    <ion-segment
+      mode="md"
+      class="ion-justify-content-between"
+      (ionChange)="segmentChanged($event)"
+      value="truck"
+    >
+      <ion-segment-button class="tablet" value="tablet">
+        <ion-label>Tablet</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="truck" value="truck">
+        <ion-label>Truck</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-col>
+</ion-header>
+<!-- -------------------------------------------------------------------------------------------- -->
+<ion-content class="ion-no-padding ion-no-margin">
+  <ion-col class="tablet-page" *ngIf="selectedSegment == 'tablet'">
+    <ion-col class="search-bar">
+      <ion-row class="search-box ion-justify-content-center">
+        <ion-item>
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <ion-select multiple="true" interface="popover">
+            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+            <ion-select-option value="rasht">RASHT</ion-select-option>
+            <ion-select-option value="tehran">TEHRAN</ion-select-option>
+            <ion-select-option value="karaj">KARAJ</ion-select-option>
+            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          </ion-select>
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
+      </ion-row>
+    </ion-col>
+    <ion-col>
+      <table>
+        <thead class="table-head">
+          <tr class="table-head-content">
+            <th>Name</th>
+            <th>Route</th>
+            <th>Out</th>
+            <th>In</th>
+            <th>First</th>
+            <th>Last</th>
+            <th>Vol</th>
+            <th>Pl</th>
+            <th>Pl&Inv</th>
+            <th>OOR</th>
+          </tr>
+        </thead>
+        <tbody class="table-body table-body-content">
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon
+                [ngClass]="{'icon-activated':IsDCDDetailsShowing}"
+                name="chevron-down-outline"
+              ></ion-icon>
+              1100
+            </td>
+            <td></td>
+            <td>6</td>
+            <td>6</td>
+            <td>5</td>
+            <td></td>
+          </tr>
+          <div class="table-detail">
+            <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div>
+            <table class="">
+              <thead class="blue-bg">
+                <th>Visitor</th>
+                <th>Driver</th>
+              </thead>
+              <tbody>
+                <td class="primary-bg">Ali Zardust</td>
+                <td>Hosein Aghai</td>
+              </tbody>
+            </table>
+          </div>
+          <tr class="medium-blue-bg">
+            <td>
+              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
+
+              <ion-icon
+                [ngClass]="{'icon-activate':!IsDCDDetailsShowing}"
+                name="chevron-down-outline"
+              ></ion-icon>
+
+              1103
+            </td>
+            <td></td>
+            <td>0</td>
+            <td></td>
+            <td>1</td>
+            <td></td>
+          </tr>
+          <div class="table-detail">
+            <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div>
+            <table class="">
+              <thead class="blue-bg">
+                <th>Visitor</th>
+                <th>Driver</th>
+              </thead>
+              <tbody>
+                <td class="primary-bg">Ali Zardust</td>
+                <td>Hosein Aghai</td>
+              </tbody>
+            </table>
+          </div>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon> 1104
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="medium-blue-bg">
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon> 1105
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon> 1106
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="medium-blue-bg">
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon> 1107
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-col>
+  </ion-col>
+
+  <!-- ----------------------------------------------------------------------------- -->
+  <!-- ----------------------------------------------------------------------------- -->
+  <!-- ----------------------------------------------------------------------------- -->
+  <ion-col *ngIf="selectedSegment == 'truck'" class="searchbar">
+    <ion-col class="search-bar">
+      <ion-row class="search-box ion-justify-content-center">
+        <ion-item>
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <ion-select multiple="true" interface="popover">
+            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+            <ion-select-option value="rasht">RASHT</ion-select-option>
+            <ion-select-option value="tehran">TEHRAN</ion-select-option>
+            <ion-select-option value="karaj">KARAJ</ion-select-option>
+            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          </ion-select>
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
+      </ion-row>
+    </ion-col>
+    <ion-col>
+      <h2 class="table-title">Weight _ T</h2>
+      <table class="truck-table">
+        <tbody class="table-body table-body-content">
+          <tr>
+            <td class=""><span></span></td>
+            <td>9.61</td>
+          </tr>
+
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon> KA
+            </td>
+            <td class="white-bg"></td>
+          </tr>
+          <div class="truck-table-detail">
+            <div class="border">
+              <table class="">
+                <tbody>
+                  <tr class="light-blue-bg">
+                    <td>Test 0</td>
+                    <td>Number 0</td>
+                  </tr>
+                  <tr class="white-bg">
+                    <td>Test 1</td>
+                    <td>Number 1</td>
+                  </tr>
+                  <tr class="light-blue-bg">
+                    <td>Test 2</td>
+                    <td>Number 2</td>
+                  </tr>
+                </tbody>
+                <hr class="line-1" />
+                <hr class="line-2" />
+                <hr class="line-3" />
+              </table>
+            </div>
+          </div>
+          <tr class="dark-blue-bg">
+            <td>
+              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
+
+              <ion-icon name="chevron-down-outline"></ion-icon>
+
+              Distributor
+            </td>
+            <td>4.59</td>
+          </tr>
+          <div class="truck-table-detail">
+            <div class="border">
+              <table class="">
+                <tbody>
+                  <tr class="light-blue-bg">
+                    <td>Test 0</td>
+                    <td>Number 0</td>
+                  </tr>
+                  <tr class="white-bg">
+                    <td>Test 1</td>
+                    <td>Number 1</td>
+                  </tr>
+                  <tr class="light-blue-bg">
+                    <td>Test 2</td>
+                    <td>Number 2</td>
+                  </tr>
+                </tbody>
+                <hr class="line-1" />
+                <hr class="line-2" />
+                <hr class="line-3" />
+              </table>
+            </div>
+          </div>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon> AFH
+            </td>
+            <td class="white-bg">0.44</td>
+          </tr>
+          <tr class="dark-blue-bg">
+            <td><ion-icon name="chevron-down-outline"></ion-icon> Total</td>
+            <td>0.21</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-col>
+  </ion-col>
+</ion-content>
