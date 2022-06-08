@@ -48,25 +48,28 @@
 <ion-content>
   <ion-col>
     <!--  -->
-    <div class="date-picker-container">
-      <div id="open-modal" class="date-picker-box">
+    <ion-row class="date-picker-container">
+      <ion-row id="open-modal" class="date-picker-box">
         <label for="Date-picker"> Date</label>
-        <div class="date-picker">
+        <ion-row class="date-picker">
           <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
-          <div class="">
+          <ion-col class="ion-justify-content-end">
             {{dateNow | date:'yyyy/MM/dd'}}
             <ion-icon name="chevron-down-outline"></ion-icon>
-          </div>
-        </div>
-      </div>
-    </div>
+          </ion-col>
+        </ion-row>
+      </ion-row>
+    </ion-row>
     <!--  -->
-    <ion-modal trigger="open-modal" class="ion-no-margin">
+    <ion-popover trigger="open-modal" show-backdrop="false">
       <ng-template>
-        <ion-datetime show-default-buttons="true" presentation="date">
-        </ion-datetime>
+        <ion-datetime
+          size="cover"
+          showDefaultButtons="true"
+          presentation="date"
+        ></ion-datetime>
       </ng-template>
-    </ion-modal>
+    </ion-popover>
     <!--  -->
   </ion-col>
   <ion-col class="search-bar">

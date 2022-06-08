@@ -140,6 +140,10 @@ const routes: Routes = [
     path: 'sales-hourly-day',
     loadChildren: () => import('./pages/sales-hourly-day/sales-hourly-day.module').then( m => m.SalesHourlyDayPageModule)
   },
+  {
+    path: 'trace-salesman',
+    loadChildren: () => import('./pages/trace-salesman/trace-salesman.module').then( m => m.TraceSalesmanPageModule)
+  },
 
 ];
 

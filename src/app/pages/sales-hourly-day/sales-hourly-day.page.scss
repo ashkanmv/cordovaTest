@@ -75,25 +75,31 @@ ion-col{
         border-radius: 10px;
         padding-top: 1rem;
         .date-picker{
+            flex-wrap: nowrap;
             height: 6rem;
             width: 90%;
             display: flex;
             justify-content: space-between;
             border-radius: 20px;
             align-items: center;
-            padding-right: 2rem;
+            padding-right: .5rem;
             margin-bottom: 1rem;
             box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-            h4{
-                color: #cfcfcf;
-                margin-left: 1rem;
-          
-            }
             img{
                 max-height: 100%;
                 max-width: 100%;
             }
-            >div{
+            // ion-row.date-picker-outer{
+            // }
+            h4{
+                color: #cfcfcf;
+                margin-left: 1rem;
+                position: relative;
+                bottom: 8vh;
+                left: 10vw ;
+          
+            }
+            ion-col.date-picker-inner{
                 overflow: hidden;
                 width: 100%;
                 display: flex;
