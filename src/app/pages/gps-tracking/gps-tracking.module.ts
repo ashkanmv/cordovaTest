@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { GpsTrackingPageRoutingModule } from './gps-tracking-routing.module';
 
 import { GpsTrackingPage } from './gps-tracking.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { GpsTrackingPage } from './gps-tracking.page';
     FormsModule,
     IonicModule,
     GpsTrackingPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [GpsTrackingPage]
 })

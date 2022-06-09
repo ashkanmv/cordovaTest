@@ -84,79 +84,94 @@
   </ion-grid>
 </ion-header>
 <!-- if map part of the content then move the ngif -->
-<ion-content *ngIf="show">
-  <form [formGroup]="form">
+<ion-content >
+  <div *ngIf="show">
+    <form [formGroup]="form">
     
-    <ion-col class="select-drop-down-container">
-      <ion-row class="ion-justify-content-center">
-        <ion-item id="trigger-input-date" lines="none" class="box-shadow">
-        <ion-select class="drop-down select-drop-down" placeholder="Date" interface="popover">
-          <ion-select-option class="select-label" disabled value="">Date</ion-select-option>
-          <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center" *ngIf="f.accessRsm.value">
-      <ion-item id="trigger-input-RSM" lines="none" class="box-shadow">
-        <ion-select class="drop-down select-drop-down" placeholder="RSM" interface="popover" formControlName="selectedRsm" (ionChange)="rsmSelect()">
-          <ion-select-option class="select-label" disabled value="">RSM</ion-select-option>
-          <ion-select-option *ngFor="let item of rsms" [value]="item">{{item.FullName}}</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center" *ngIf="f.accessAsm.value">
-      <ion-item id="trigger-input-ASM" lines="none" class="box-shadow">
-        <ion-select class="drop-down select-drop-down" placeholder="ASM" interface="popover" formControlName="selectedAsm" (ionChange)="asmSelect()">
-          <ion-select-option class="select-label" disabled value="">ASM</ion-select-option>
-          <ion-select-option *ngFor="let item of asms" [value]="item">{{item.FullName}}</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center" *ngIf="f.accessSsv.value">
-      <ion-item id="trigger-input-SSV" lines="none" class="box-shadow">
-        <ion-select class="drop-down select-drop-down" placeholder="SSV" interface="popover" formControlName="selectedSsv" (ionChange)="ssvSelect()">
-          <ion-select-option class="select-label" disabled value="">SSV</ion-select-option>
-          <ion-select-option *ngFor="let item of ssvs" [value]="item">{{item.FullName}}</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center" *ngIf="f.accessSr.value">
-      <ion-item id="trigger-input-SR" lines="none" class="box-shadow">
-        <ion-select class="drop-down select-drop-down" placeholder="SR" interface="popover" formControlName="selectedSr" (ionChange)="srSelect()">
-          <ion-select-option class="select-label" disabled value="">SR</ion-select-option>
-          <ion-select-option *ngFor="let item of srs" [value]="item">{{item.FullName}}</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-    <ion-row class="ion-justify-content-center" *ngIf="f.accessRoute.value">
-      <ion-item lines="none" class="box-shadow">
-        <ion-select class="drop-down select-drop-down" placeholder="route" interface="popover" formControlName="selectedRoute" (ionChange)="routeSelect()">
-          <ion-select-option class="select-label" disabled value="">Route</ion-select-option>
-          <ion-select-option *ngFor="let item of routes" [value]="item">{{item.FullName}}</ion-select-option>
-        </ion-select>
-        <ion-icon name="chevron-down-outline"></ion-icon>
-      </ion-item>
-    </ion-row>
-  </ion-col>
-  
-  <ion-col class="radio-input-container">
-    <ion-row class="radio-input-container">
-      <div class="radio-input">
-        <div class="">
-          <input type="radio" name="radio-input-2" id="" />
-          <label for="showTruck">Show truck</label>
+      <ion-col class="select-drop-down-container">
+        <ion-row class="ion-justify-content-center">
+          <ion-item id="trigger-input-date" lines="none" class="box-shadow">
+            <ion-button id="open-modal">Open Datetime Modal</ion-button>
+            <ion-modal trigger="open-modal">
+              <ng-template>
+                <ion-content>
+                  <ion-datetime (ionChange)="dateChanged($event)"></ion-datetime>
+                </ion-content>
+              </ng-template>
+            </ion-modal>
+          <!-- <ion-select class="drop-down select-drop-down" placeholder="Date" interface="popover">
+            <ion-select-option class="select-label" disabled value="">Date</ion-select-option>
+            <ion-select-option value="subtitle-1">Subtitle 1</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon> -->
+
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center" *ngIf="f.accessRsm.value">
+        <ion-item id="trigger-input-RSM" lines="none" class="box-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="RSM" interface="popover" formControlName="selectedRsm" (ionChange)="rsmSelect()">
+            <ion-select-option class="select-label" disabled value="">RSM</ion-select-option>
+            <ion-select-option *ngFor="let item of rsms" [value]="item">{{item.FullName}}</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center" *ngIf="f.accessAsm.value">
+        <ion-item id="trigger-input-ASM" lines="none" class="box-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="ASM" interface="popover" formControlName="selectedAsm" (ionChange)="asmSelect()">
+            <ion-select-option class="select-label" disabled value="">ASM</ion-select-option>
+            <ion-select-option *ngFor="let item of asms" [value]="item">{{item.FullName}}</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center" *ngIf="f.accessSsv.value">
+        <ion-item id="trigger-input-SSV" lines="none" class="box-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="SSV" interface="popover" formControlName="selectedSsv" (ionChange)="ssvSelect()">
+            <ion-select-option class="select-label" disabled value="">SSV</ion-select-option>
+            <ion-select-option *ngFor="let item of ssvs" [value]="item">{{item.FullName}}</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-justify-content-center" *ngIf="f.accessSr.value">
+        <ion-item id="trigger-input-SR" lines="none" class="box-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="SR" interface="popover" formControlName="selectedSr" (ionChange)="srSelect()">
+            <ion-select-option class="select-label" disabled value="">SR</ion-select-option>
+            <ion-select-option *ngFor="let item of srs" [value]="item">{{item.FullName}}</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row>
+      <!-- <ion-row class="ion-justify-content-center" *ngIf="f.accessRoute.value">
+        <ion-item lines="none" class="box-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="route" interface="popover" formControlName="selectedRoute" (ionChange)="routeSelect()">
+            <ion-select-option class="select-label" disabled value="">Route</ion-select-option>
+            <ion-select-option *ngFor="let item of routes" [value]="item.routecode">{{item.routecode}}</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-item>
+      </ion-row> -->
+    </ion-col>
+    
+    <ion-col class="radio-input-container">
+      <ion-row class="radio-input-container">
+        <div class="radio-input">
+          <div class="">
+            <input type="radio" name="radio-input-2" id="" />
+            <label for="showTruck">Show truck</label>
+          </div>
+          <div class="">
+            <input type="radio" name="radio-input-2" id="" />
+            <label for="showSR">Show SR</label>
+          </div>
         </div>
-        <div class="">
-          <input type="radio" name="radio-input-2" id="" />
-          <label for="showSR">Show SR</label>
-        </div>
-      </div>
-    </ion-row>
-  </ion-col>
-</form>
+      </ion-row>
+    </ion-col>
+  </form>
+  </div>
+
+<div *ngIf="showMap" style="width: 100vw; height: 100vh;">
+  <app-map [showMap]="showMap" [markers]="markers" [mapView]="mapView" [polylines]="polylines"></app-map>
+</div>
 </ion-content>

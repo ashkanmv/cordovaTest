@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { getUserCildrenResponse, Shop } from '../shared/common';
+import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, getVPByRouteResponse, Shop } from '../shared/common';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IconOptions } from 'leaflet';
 
@@ -46,6 +46,18 @@ export class MapService {
     iconUrl: 'assets/icon/salesman.png',
     iconSize: [30, 30]
   }
+  shop_red : IconOptions = {
+    iconUrl: 'assets/icon/shop_red.png',
+    iconSize: [30, 30]
+  }
+  shop_blue : IconOptions = {
+    iconUrl: 'assets/icon/shop_blue.png',
+    iconSize: [30, 30]
+  }
+  shop_orange : IconOptions = {
+    iconUrl: 'assets/icon/shop_orange.png',
+    iconSize: [30, 30]
+  }
 
   mapInitialized = new Subject();
   clearMarkers = new Subject();
@@ -86,7 +98,7 @@ export class MapService {
     params = params.append('route_code', route_code);
     params = params.append('date', selected_date);
 
-    return this.http.get(this.shopPointUrl, { params });
+    return this.http.get<Shop[]>(this.shopPointUrl, { params });
   }
 
   getShopsrNearPoints(route_code: number, distance: number) {
@@ -130,7 +142,7 @@ export class MapService {
     params = params.append('route_code', route_code);
     params = params.append('date', date);
     params = params.append('useriD', userId);
-    return this.http.get(this.srinfoUrl, { params });
+    return this.http.get<GetSrInfoResponse[]>(this.srinfoUrl, { params });
   }
 
   getDc() {
@@ -153,7 +165,7 @@ export class MapService {
     let params = new HttpParams();
     params = params.append('user', user);
     params = params.append('date', date);
-    return this.http.get(this.SrRoute, { params });
+    return this.http.get<GetSrRouteResponse[]>(this.SrRoute, { params });
   }
 
   getVPByRouteTime(route_name: string, time_first: string, time_end: string) {
@@ -174,7 +186,7 @@ export class MapService {
     params = params.append('time_first', time_first);
     params = params.append('time_end', time_end);
     params = params.append('useriD', userId);
-    return this.http.get(this.visitorPointUrlUser, { params });
+    return this.http.get<getVPByRouteResponse[]>(this.visitorPointUrlUser, { params });
   }
 
   // private handleError(error: any) {

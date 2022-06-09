@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Data, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { LatLngLiteral, LatLngTuple } from 'leaflet';
+import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
-import { getUserCildrenResponse } from 'src/app/shared/common';
+import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, MapView, Marker, Polyline, Shop } from 'src/app/shared/common';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
@@ -13,6 +15,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./gps-tracking.page.scss'],
 })
 export class GpsTrackingPage implements OnInit {
+  showMap = false;
   show = false;
   form: FormGroup;
   now_date = new Date().toISOString();
@@ -20,18 +23,43 @@ export class GpsTrackingPage implements OnInit {
   asms: getUserCildrenResponse[] = [];
   ssvs: getUserCildrenResponse[] = [];
   srs: getUserCildrenResponse[] = [];
-  routes: any[] = [];
+  custCodes: number[] = [];
+  polylines: Polyline;
+  mapView: MapView;
+  private _markers: Marker[] = [];
+  public get markers(): Marker[] { return this._markers }
+  set markers(v: Marker[]) { this._markers = v }
+  // routes: GetSrRouteResponse;
+  // routeSelectSub: Subscription;
+  mapInitSubscription: Subscription;
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private persianCalendarService: PersianCalendarService,
     private storageService: StorageService,
     private mapService: MapService,
     private loadingCtrl: LoadingController
-  ) { }
+  ) {
+    this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
+      if (initialized && this.f.selectedRoute.value) {
+        this.initialSr();
+        this.initialShopPoint();
+      }
+    })
+  }
 
   ngOnInit() {
     this.loadForm();
     this.init()
+  }
+
+  ionViewDidEnter() {
+    this.showMap = true;
+  }
+
+  ionViewWillLeave() {
+    this.showMap = false;
+    // this.routeSelectSub.unsubscribe();
+    this.mapInitSubscription.unsubscribe();
   }
 
   init() {
@@ -53,7 +81,7 @@ export class GpsTrackingPage implements OnInit {
       if (route_name)
         this.patchValue('userRouteName', route_name);
       if (this.f.selectedSr.value && this.f.userRouteName.value) {
-        this.getSrRouteAfterInit(this.f.selectedSr.value.id,this.f.selectedDate.value,this.f.userRouteName.value);
+        this.getSrRouteAfterInit(this.f.selectedSr.value.id, this.f.selectedDate.value, this.f.userRouteName.value);
       }
     })
   }
@@ -72,7 +100,7 @@ export class GpsTrackingPage implements OnInit {
       selectedSsv: [null],
       selectedSr: [null],
       selectedRoute: [null],
-      showTruck: [true],
+      showTruck: [false],
       showSr: [true],
       srTime: [this.persianCalendarService.getVPTodayFormat(new Date())],
       truckTime: [this.persianCalendarService.getVPTodayFormat(new Date())],
@@ -85,6 +113,7 @@ export class GpsTrackingPage implements OnInit {
       routeCode: [null],
       userRouteName: [null],
     });
+    // this.routeSelectSub = this.f.selectedRoute.valueChanges.subscribe(() => this.routeSelect());
   }
 
   get f() { return this.form.controls }
@@ -105,7 +134,6 @@ export class GpsTrackingPage implements OnInit {
       else if (access.name == 'gps_asm') {
         this.patchValue('accessAsm', true)
         if (flg == false) {
-          console.log('access');
           this.patchValue('selectedAsm', this.f.userId.value)
           this.asmSelect();
           flg = true;
@@ -152,8 +180,6 @@ export class GpsTrackingPage implements OnInit {
     } else
       this.mapService.getUserCildren(selected_rsm).subscribe(res => {
         this.rsms = res
-        console.log('rsms', res);
-
       })
   }
 
@@ -171,16 +197,12 @@ export class GpsTrackingPage implements OnInit {
     else
       this.mapService.getUserCildren(selected_asm).subscribe(res => {
         this.asms = res
-        console.log('asms', res);
       });
-
   }
 
   ssvSelect() {
     if (!this.f.selectedSsv.value)
       return
-    console.log(this.f.selectedSsv.value);
-
     let selected_ssv = this.f.selectedSsv.value;
     if (selected_ssv.id) {
       this.patchValue('selectedSr', selected_ssv.id)
@@ -195,6 +217,7 @@ export class GpsTrackingPage implements OnInit {
     let selected_sr = this.f.selectedSr.value;
     if (selected_sr.id) {
       this.patchValue('selectedRoute', selected_sr.id)
+      this.routeSelect();
     }
     else {
       this.mapService.getUserCildren(selected_sr)
@@ -203,18 +226,131 @@ export class GpsTrackingPage implements OnInit {
   }
 
   routeSelect() {
-    this.mapService.getSrRoute(this.f.selectedRoute.value, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value)).subscribe((values: Data[]) => {
-      console.log(values);
-      this.routes = values;
-    })
+    let selectedRoute = typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
+    this.mapService.getSrRoute(selectedRoute, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value))
+      .subscribe(values => {
+        if (values.length)
+          this.patchValue('selectedRoute', values[0]);
+
+        this.initialShopPoint();
+        this.initialSr()
+      })
   }
 
-  getSrRouteAfterInit(selected_Route: string, selected_date: Date,user_route_name : string) {
+  getSrRouteAfterInit(selected_Route: string, selected_date: Date, user_route_name: string) {
     this.mapService.getSrRoute(selected_Route, this.persianCalendarService.getTodayFormatEnd(selected_date))
-      .subscribe((values :any[]) => {
-        console.log(values);
+      .subscribe((values: any[]) => {
         this.srs = values;
       })
+  }
+
+  initialShopPoint() {
+    let selectedRoute = typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
+    this.mapService.getShopPointByRouteName(selectedRoute, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value))
+      .subscribe(shops => {
+        if (!shops.length)
+          return
+
+        this.afterInitialShopPoint(shops);
+      })
+  }
+
+  afterInitialShopPoint(shops: Shop[]) {
+    let flyTo: MapView;
+    let markers: Marker[] = [];
+    shops.forEach(shop => {
+      flyTo = {
+        lat: +shop.PointLatitude,
+        lng: +shop.PointLongitude,
+        zoom: 13
+      }
+      this.custCodes.push(parseInt(shop.CustCode, 10));
+      let marker: Marker = {
+        latitude: +shop.PointLatitude,
+        longitude: +shop.PointLongitude,
+        icon: this.selectIcon('red'),
+        customerCode: +shop.CustCode,
+        description:
+          `<div style="direction:rtl;overflow: hidden"">
+          <h1> ${shop.custName} </h1>
+          <div>
+          <p>Code : ${shop.CustCode} </p>
+            <p>Customer type : ${shop.CustTYPE} </p>
+            <p>Tel : ${shop.Tel} </p>
+            <p>Visitor : ${shop.Visitor} </p>
+            <p>Address : ${shop.ADDRESS} </p>
+          </div>
+          <table>
+            <tr class="ion-align-self-center">
+              <td style="width:40%;" ><img src="assets/mainPage/main/Customer-History.png" id="chBtn" catched="0"
+                  customer="'${shop.CustCode}'"><br>Customer<br>History</td>
+              <td style="width: 20%;"></td>
+              <td style="width: 40%;"><img src="assets/mainPage/main/Questionnaire.png" id="quBtn" catched="0"
+                  customer="'+ ${shop.CustCode}'"><br>Customer<br>Questionnaire</td>
+            </tr>
+          </table>
+        </div>`
+      };
+      markers.push(marker);
+    });
+    this.markers = markers;
+    if (flyTo)
+      this.mapView = flyTo
+  }
+
+  selectIcon(key: 'orange' | 'red' | 'blue') {
+    switch (key) {
+      case 'orange':
+        return this.mapService.shop_orange;
+      case 'blue':
+        return this.mapService.shop_blue;
+      case 'red':
+        return this.mapService.shop_red;
+    }
+  }
+
+  initialSr() {
+    if (!this.f.showSr.value && (!this.f.selectedRoute.value || !this.f.selectedRoute.value.routecode || !this.f.selectedSr.value))
+      return
+    this.mapService.getSrInfo(
+      this.f.selectedRoute.value.routecode,
+      this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
+      this.f.selectedSr.value.id).subscribe(res => {
+        let srInfo = res[0];
+        if (!srInfo)
+          return
+
+        this.getVPByRouteTimeUser(srInfo)
+      })
+  }
+
+  getVPByRouteTimeUser(srInfo: GetSrInfoResponse) {
+    this.mapService.getVPByRouteTimeUser(
+      this.f.selectedRoute.value.routecode,
+      this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
+      this.persianCalendarService.getVPTodayFormatEnd(this.f.selectedDate.value),
+      this.f.selectedSr.value.id)
+      .subscribe(res => {
+        if (!res.length)
+          return
+
+        let sr_points: LatLngTuple[] = [];
+        res.forEach(srPoint =>
+          sr_points.push([srPoint.lat, srPoint.lng])
+        );
+        this.polylines = {
+          latLng: sr_points,
+          options: {
+            color: '#A0522D',
+            opacity: 1,
+            weight: 2
+          }
+        }
+      })
+  }
+
+  dateChanged(date) {
+    this.patchValue('selectedDate', new Date(date.detail.value));
   }
 
   patchValue(controller: string, value: any) {

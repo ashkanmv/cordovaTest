@@ -4,7 +4,7 @@ import { Platform } from '@ionic/angular';
 import * as L from 'leaflet';
 import 'mapbox-gl-leaflet';
 import { Subscription } from 'rxjs';
-import { MapView, Marker } from '../shared/common';
+import { MapView, Marker, Polyline } from '../shared/common';
 import { MapService } from './map.service';
 
 @Component({
@@ -15,7 +15,6 @@ import { MapService } from './map.service';
 export class MapComponent implements OnInit {
   private map: L.Map;
   private _showMap: boolean;
-  private _markers: Marker[] = [];
   layerGroup: L.LayerGroup;
   public get showMap(): boolean {
     return this._showMap;
@@ -26,12 +25,13 @@ export class MapComponent implements OnInit {
     if (v == true) this.init();
   }
 
-  public get markers(): Marker[] {
-    return this._markers;
-  }
-
-  @Input() set markers(v: Marker[]) {
-    this.setMarkers(v);
+  private _markers: Marker[] = [];
+  public get markers(): Marker[] { return this._markers; }
+  @Input() set markers(v: Marker[]) { if (v?.length) this.setMarkers(v); }
+  private _polylines: Polyline;
+  public get polylines(): Polyline { return this._polylines; }
+  @Input() set polylines(v: Polyline) {
+    if (v) this.setPolyline(v);
   }
 
   @Input() set mapView(v: MapView) {
@@ -79,7 +79,7 @@ export class MapComponent implements OnInit {
     //   radius: 500,
     // }).addTo(this.map);
 
-    // var polygon = L.polygon([
+    // var polyline = L.polyline([
     //   [35.747956, 51.441753],
     //   [35.747843, 51.438985],
     //   [35.74672, 51.439843],
@@ -109,11 +109,14 @@ export class MapComponent implements OnInit {
     });
   }
 
+  setPolyline(polyline: Polyline) {
+    let p = L.polyline(polyline.latLng,polyline.options)
+      .addTo(this.layerGroup);
+  }
+
   setMarkers(markers: Marker[]) {
-    if (!markers.length) return;
-    
     markers.forEach((m: Marker) => {
-      var marker = L.marker([m.latitude, m.longitude], {
+      let marker = L.marker([m.latitude, m.longitude], {
         icon: L.icon(m.icon),
       }).bindPopup(m.description ?? null, { closeButton: false })
         .addTo(this.layerGroup);

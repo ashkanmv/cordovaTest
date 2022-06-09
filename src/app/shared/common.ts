@@ -1,4 +1,4 @@
-import { IconOptions } from 'leaflet';
+import { IconOptions, LatLngLiteral, LatLngTuple, PolylineOptions } from 'leaflet';
 
 export class Cities {
   City: string;
@@ -60,6 +60,63 @@ export interface Marker {
   customerCode?: number;
 }
 
+export interface Polyline {
+  latLng : LatLngTuple[];
+  options : PolylineOptions;
+}
+export interface GetSrRouteResponse {
+  routecode: string;
+  routename: string;
+}
+
+export interface GetSrInfoResponse {
+  Name: string;
+  Route: string;
+  Total_Planed: number;
+  Total_Visited: number;
+  Total_Invoiced: number;
+  Total_Oor: number;
+  Total_Visited_Not_Buy: number;
+  First_Invoiced: string;
+  Last_Invoiced: string;
+  Max_Gap_Invoiced: string;
+  Time_To_Route: string;
+  Last_invoiced_To_wh: string;
+  Dim_Id: string;
+  FromDate: Date;
+  ToDate: Date;
+  mod_cd: Date;
+  UserID: string;
+  RouteCode: string;
+  BrokerID: string;
+}
+
+export interface getVPByRouteResponse {
+    id: string;
+    lat: number;
+    lng: number;
+    user_id: string;
+    route_name: string;
+    visitor_code: string;
+    provider: string;
+    time: string;
+    accuracy: number;
+    speed: number;
+    altitude: number;
+    bearing?: any;
+    location_provider: number;
+    uuid: string;
+    status: string;
+    Create_At_Sys: Date;
+    create_at: Date;
+    Dim_Id: string;
+    FromDate: Date;
+    ToDate: Date;
+    mod_cd: Date;
+    UserID: string;
+    RouteCode: string;
+    BrokerID: string;
+}
 export interface LoginResponse {
   route_name: string;
   route_code: string;
