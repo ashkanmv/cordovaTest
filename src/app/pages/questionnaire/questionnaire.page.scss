@@ -1,8 +1,7 @@
 
-// ----------------to do : ion-popover dvider line on iphone needs to be removed
-
-
-
+// to do: 
+// multiple choice
+// when in English text align right
 ion-toolbar {
     --background: #0095EB;
     --color: #fff;
@@ -42,7 +41,6 @@ ion-row.select-box{
     margin-bottom: 1rem;
     >ion-item{
         --background: #fff;
-        // --color:#b9b9b961;
         --color:#000 ;
         --padding-top:1rem;
         --padding-bottom:1rem;
@@ -80,52 +78,6 @@ ion-popover{
     }
 }
 
-// ion-select{
-//     &::part(text) {
-//     color: #acb4fc;
-//   }
-// }
-
-// ion-item.input-select{
-//     ion-label{
-//         color:#0095eb ;
-
-//     }
-// }
-
-
-
-// ion-label{
-//     --color:#0095eb ;
-
-// }
-// ion-icon{
-//     color: #e5e5e5;
-//     width: 1rem;
-// }
-
-
-ion-list{
-    --background: #fff;
-    --padding-start:2rem;
-    --border-radius: 50px;
-    border-radius: 50px;
-    width: 80%;
-    // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-    ion-radio-group {
-        display: flex;
-        >ion-item{
-            width: 150px;
-            // height: 100%;
-        }
-        >ion-label{
-            width: 100px;
-            white-space: nowrap;
-        }
-      
-    }
-
-}
 
 
 
@@ -193,14 +145,26 @@ ion-row{
 
 
 
+ion-label.questions{
+    color: var(--ion-color-primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: .7rem;
+    // padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    text-align: right;
+    // background: red;
+    width: 100%;
+}
+
 // ---- text input
-ion-col.input-text{
-    margin-top: 3rem;
+ion-col.text-input-container{
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // width: 100vw;
+    text-align: right;    
     ion-row{
         // width: 65vw;
         width: 90%;
@@ -222,66 +186,65 @@ ion-col.input-text{
         height: 2rem;
         --padding-top:1.5rem;
         --padding-bottom:1rem;
+        --padding-end:5vh;
     }
 }
 
-// radio-input
-ion-col.radio-input-container{
-    // margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+// radio-button
+ion-list.radio-input-container{
+    background: #e0e0e06c;
+    width: 90%;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
     align-items: center;
-    // width: 100%;
-    // max-width: 10vw;
-    ion-row{
-        // display: flex;
-        // justify-content: center;
-        // width:80vw;
-        // width: 65vw;
-        width: 90%;
-        &>label{
-            align-self: flex-start;
-            color:#0095EB ;
-            font-size: 1.5rem;
+    margin-left:5vw ;
+    ion-list.radio-input-box{
+        background: none;      
+        ion-label{
+            padding:0 1rem;     
+            color: #b9b9b9;
             font-weight: bold;
-            padding-bottom: .7rem;
-            padding-left: 1rem;
+            font-size: 1.1rem;
         }
-        &>div{
-            background: #e0e0e06c;
-            padding:1.7rem ;
-            border-radius: 10px;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            >div{
-                display: flex;
-                flex-direction: row-reverse;
-                align-items: center;
-                input[type="radio"]{
-                    &:checked + label{
-                        color: #0095EB;
-                    }
-                }
-            }
-            label{
-                font-size: 1.2rem;
-                color: #b9b9b9;
-                padding-right: 5vw;
-            }
-          
-        }
-}
-
-    .btn-submit{
-        margin: 2rem 0;
-        // width: 60vw;
-        width: 80%;
-        height: 9vh;
-        font-size: 2rem;
-        border-radius: 50px;
-        background: #0095EB;
-        color: #fff;
+        .item-radio-checked ion-label {
+            --color: red;
+            color: #0095EB;
+          }
     }
 }
+
+
+
+
+
+
+.btn-submit{
+    margin: 2rem 0;
+    // width: 60vw;
+    width: 80%;
+    height: 9vh;
+    font-size: 2rem;
+    border-radius: 50px;
+    background: #0095EB;
+    color: #fff;
+}
+
+
+
+
+
+
+   
+       
+        
+
+
+
+
+
+
+
+

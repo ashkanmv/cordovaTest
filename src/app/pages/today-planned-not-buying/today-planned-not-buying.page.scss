@@ -131,8 +131,9 @@ ion-col{
                 max-height: 100%;
                 max-width: 100%;
             }
-            >div{
+            >ion-col{
                 color: #0095EB;
+                display: flex;
                 font-size: 1.5rem;
                 font-weight: bold;
                 ion-icon{

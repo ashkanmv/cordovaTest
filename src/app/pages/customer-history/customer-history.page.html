@@ -25,9 +25,15 @@
       </ion-col>
       <ion-col
         size="2"
-        class="ion-align-self-center ion-justify-content-center toggle"
+        class="ion-align-self-center ion-justify-content-center toggle ion-justify-self-end ion-float-right"
       >
-        <ion-toggle color="primary" checked="true"></ion-toggle>
+        <span class="toggle-background">
+          <ion-toggle
+            class="ion-no-padding"
+            color="primary"
+            checked="true"
+          ></ion-toggle>
+        </span>
       </ion-col>
       <ion-col
         (click)="show=!show"
@@ -64,7 +70,6 @@
     </ion-row>
   </ion-grid>
 </ion-header>
-<!-- if map part of the content then move the ngif -->
 <ion-content>
   <ion-row *ngIf="show" class="content-container">
     <ion-row class="search-container">
@@ -116,21 +121,6 @@
         </button>
       </ion-col>
     </ion-row>
-    <!-- <ion-row class="search-box ion-justify-content-center">
-    <button class="search-submit primary-bg">
-      <ion-icon name="search-outline"></ion-icon>
-    </button>
-    <input
-      type="search"
-      name=""
-      id="trigger-search"
-      placeholder="Search"
-      class="search search-customer-history input-shadow"
-    />
-    <span class="search-icon">
-      <ion-icon name="chevron-down-outline"></ion-icon>
-    </span>
-  </ion-row> -->
 
     <form [formGroup]="form">
       <ion-grid class="customer-history-select">
@@ -143,9 +133,7 @@
               formControlName="DC"
               (ionChange)="selectCity($event)"
             >
-              <ion-select-option disabled value=""
-                >{{language.Questionnaire.Input_select_DC}}</ion-select-option
-              >
+              <ion-select-option disabled value="">DC</ion-select-option>
               <ion-select-option *ngFor="let city of cities" [value]="city.City"
                 >{{city.City}}
               </ion-select-option>

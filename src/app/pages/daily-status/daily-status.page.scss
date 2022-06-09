@@ -1,0 +1,449 @@
+// table detail lines
+
+.dark-blue-bg{
+    background: #9ac2daa9;
+}
+.medium-blue-bg{
+    background: #6ab9eb8b;
+}
+.light-blue-bg{
+    background: #b6e3ffa9;
+}
+.white-bg{
+    background: #fff;
+}
+.blue-bg{
+background: #46c2fc;
+}
+
+
+
+ion-toolbar ion-row{
+    --background: #fff;
+    --color: #0095EB;
+}
+ion-toolbar.ios{
+    --ion-padding-bottom:0;
+}
+
+ion-content {
+    --background: #fff;
+    --color: #0095EB;
+}
+title{
+    width: 100%;
+}
+
+ion-title{
+    width: 100%;
+    h3{
+        font-size: 5vw;
+        width: 100%;
+
+    }
+}
+
+ion-item{
+    --background: #fff;
+}
+
+ion-input{
+    --padding-start : 5vw;
+    --placeholder-color : #b9b9b9;
+    --background : #fff
+}
+ 
+.back-button {
+    max-width: 20px;
+    min-width: 20px;
+}
+.reload{
+    // max-width: 30px;
+    min-width: 40px;
+    margin-right: .1rem;
+}
+.wifi{
+    min-width: 40px;
+    margin-left: .1rem;
+
+}
+title{
+    width: 100%;
+}
+
+ion-title{
+    width: 100%;
+    h3{
+        font-size: 3vw;
+        width: 100%;
+
+    }
+}
+
+
+
+
+
+.table-detail-opaned{
+    ion-icon{
+        color:#0095EB;
+    }
+}
+
+.back-button {
+    max-width: 20px;
+    min-width: 20px;
+    
+
+}
+
+// -----segment change---------
+ion-col.segment-change{
+    --height: 3rem;
+    ion-segment{
+        border-bottom: 2px solid #0095EB ;
+        ion-segment-button{
+            --background-checked:#0095eb;
+            --indicator-color:#000;
+            --indicator-height:	10px;	
+            padding:.5rem 0;
+            width: 100%;
+            .segment-button-checked{
+                ion-label{
+                    color: red;
+                }
+            }
+            ion-label{
+                font-size: 3vw;
+                font-weight: bold;
+                color: #b9b9b9;
+                &:checked{
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+
+ion-content{
+    cursor: pointer;
+    --color:#8f8f8f ;
+    --padding-top: .9rem ;
+    --padding-bottom: .9rem ;
+    // --padding-start: 1.7rem ;
+    &:hover{
+        // --background:#0095EB;
+        --color:#000 ;
+    }
+    
+}
+ion-content.select-input-popover-title{
+    cursor:auto;
+    --color:#000 ;
+    text-align: center;
+    border-bottom: 2px dashed #8f8f8f;
+    font-weight: bold;
+    --padding-start: 0 ;
+    &:hover{
+        --background:none;
+    }
+    
+}
+
+ion-popover.search-popover{
+    --backdrop-opacity:0;
+    // --width:450px;
+    --width:60vw;
+    // height: 300px;
+    --offset-x:-5vw;
+    --offset-y:-1rem;
+    label{
+        color:#b9b9b9;
+    }
+
+}
+
+ion-col.DSD-page{
+    height: 150vh;
+}
+
+
+
+.input-shadow{
+    box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+}
+// ----- content------------
+
+// ----searchbar
+
+.search-bar{
+.search-box{
+    width: 90%;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 2rem 0;
+    margin: 3vh 4vw;
+    &>ion-item{
+        --background: none;
+        width: 90%;
+        border-radius: 10px;
+        ion-select{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .search-submit{
+        z-index: 2;
+        width: 3rem;
+        height: 5rem;
+        border-radius: 10px 0 0 10px;
+        ion-icon{
+            color: #fff;
+            font-size: 1.5rem; 
+        }
+    }
+    input::-webkit-input-placeholder{
+        justify-self: center;
+        align-self: center;
+        color: #e5e5e5df;
+    }
+  
+    .search{
+        text-align: center;
+        height: 5rem;
+        width:75%;
+        outline: none;
+        border: none;
+        border-radius: 0 10px 10px 0 ;
+        &:focus{
+            ion-icon{
+                color: red;
+            }
+        }
+   
+    }
+    span{
+        position: absolute;
+        bottom: 18.5vh;
+        left: 77vw;
+    }
+    ion-icon{
+        color:#e5e5e5;
+    }
+}
+}
+// ---table
+table{
+
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    
+    tr{
+        cursor: pointer;
+        z-index: 3;
+        :nth-child(1){
+            max-width: 100px;
+        }
+        :last-child{
+            max-width: 25px;                
+        }
+    }
+    td{
+        white-space: nowrap;
+        padding: 2px 0;
+        max-width: 100px;
+
+    }
+    .table-head{
+        .table-head-content{
+            font-weight: bold;
+            color: #000;
+            th{
+                font-size: 1.1rem;
+            }
+            >:first-child{
+                color:#0095EB;
+                    min-height: 20px;
+                }
+        
+        }
+    }
+    .table-body{
+       >tr{
+            >td{
+                font-size: 1.3rem;
+                color: #000;
+                text-align: center;
+                &:first-child{
+                    text-align: left;
+                    padding-left: 5px;            
+                }
+            }
+        }
+        
+        ion-icon{
+            font-size: 1.2rem;
+            padding-right: 4px;
+        }
+        &-icon{
+            background: #dddddd;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    // ---------table-detail--------------
+    .table-detail{
+        padding: 10px 0;
+        
+        &>table{
+            width: 89vw;
+            box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+            position: relative;
+            left: 5vw;
+        }
+        thead{
+            :first-child{
+                border-right:1px #0095eb4b solid ;
+            }
+        }
+        th{
+            color: #282828;
+            min-width: 200px;
+            font-size: 1.2rem;
+        }
+        tbody{
+            text-align: center;
+            :first-child{
+                color: #fff;
+            }
+
+        }
+        .table-line-ver{
+            position: absolute;
+            top:75px;
+            left: 14px;
+            width: 2px;
+            height: 70px;
+        }
+        .table-line-horiz{
+            position: absolute;
+            top:135px;
+            left: 16px;
+            width:60px;
+            height: 2px;
+        }
+
+    }
+
+    
+    
+}
+
+// NON_DSD TABLE
+
+.table-title{
+    text-align: right;
+    color: #000;
+    font-size: 2rem;
+    margin-right: 15vw;
+
+}
+table.NON_DSD-table{
+    width: 100vw;
+    color: #000;
+
+
+    td{
+        height: 2rem;
+    }
+
+
+
+
+
+    // -----------details
+    .NON_DSD-table-detail{
+        .border{
+            border-left: 2px #0095EB solid;
+            margin-left: 1rem;
+            padding: 1rem 0 0;
+        &>table{
+
+            width: 90vw;
+            margin:0 1rem 1rem;
+            box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+            position: relative;
+
+            .line-1{
+                background: #0095EB;
+                position: absolute;
+                top: 1.2rem;
+                left: -1rem;
+                height: 1.5px;
+                width: 1rem;
+            }
+            .line-2{
+                background:#0095EB;
+                position: absolute;
+                top: 4.8rem;
+                left: -1rem;
+                height: 1.5px;
+                width: 1rem;
+            }
+            .line-3{
+                background: #0095EB;
+                position: absolute;
+                bottom: 1.1rem;
+                left: -1rem;
+                height: 1.5px;
+                width: 1rem;
+            }
+
+        }
+
+        td{
+            height: 10vh;
+        }
+        tbody{
+            text-align: center;
+        }
+    }
+}
+
+}
+
+
+
+
+
+
+   @media (min-width:992px) {
+       .search-box{
+           width: 60vw;
+           margin-left: 5vw;
+           span{
+               left: 50vw;
+               bottom: 24vh;
+               z-index: 2;
+           }
+       }
+
+       .table-detail{
+        &>table{
+            width: 65vw;
+        }
+       }
+       table.NON_DSD-table{
+           width: 72vw;
+           .NON_DSD-table-detail{
+               .border{
+            &>table{
+                width: 68vw;
+            }
+        }
+           }
+       }
+   }

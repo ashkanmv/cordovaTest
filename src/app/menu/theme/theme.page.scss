@@ -15,3 +15,70 @@ ion-title{
 .back-button{
     max-width: 20px;
 }
+
+ion-row.select-theme{
+    margin: 20vh 0 10vh;
+    ion-radio-group{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+  
+        ion-col{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            &.light-theme{
+                h3{
+                    color: #205172;
+                }
+
+            }
+
+        }
+
+        ion-radio{
+        margin-right: 1rem;
+        --color:var(--color-checked);
+        --color-checked:#205172;
+        background: var(--ion-color-light);
+        // background: #004f7d;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        }
+        &>ion-item{
+            font-size: 1rem;
+            // color: #205172;
+            color: red;
+        }
+        
+        ion-img{
+            max-width: 3rem;
+        }
+    }
+}
+ion-row.theme-options{
+    ion-col{
+        margin-bottom: .5rem;
+        width: 80%;
+        ion-item{
+            background: var(--ion-color-light);
+            border-radius: 10px;
+            font-weight: bold;
+            ion-col.option-label{
+                padding: 2rem 0;
+                font-size: 1.3rem;
+                font-weight: bold;
+                color:#205172 ;
+            }
+        }
+    }
+
+    ion-toggle{
+        --background: var(--ion-color-light);
+        --background-checked: #205172;
+        --handle-background:var(--ion-color-light);
+        --handle-background-checked:var(--ion-color-light);
+        --border:red ;
+    }
+}

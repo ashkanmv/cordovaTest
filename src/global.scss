@@ -44,8 +44,9 @@ ion-select::part(icon) {
  }
 //  search bottom border
 ion-item{
-  --highlight-color-focused: white;
-
+  --highlight-color-focused: var(--ion-color-light);
+  --background: none;
+  --inner-border-width:0;
 }
 //  ng search 
 // arrow removed
@@ -67,11 +68,8 @@ ion-item{
 // table blue rows
 .oddRows{
   background: #54b2e963;
+  // background: var(--ion-color-primary-rgb);
 }
-// .icon-activated{
-//   color: #0095EB;
-//   transform: rotate(180deg);
-// }
 
 
 // 
