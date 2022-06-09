@@ -5,7 +5,16 @@ import { LoadingController } from '@ionic/angular';
 import { LatLngLiteral, LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
-import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, MapView, Marker, Polyline, Shop } from 'src/app/shared/common';
+import {
+  GetSrInfoResponse,
+  GetSrRouteResponse,
+  getUserCildrenResponse,
+  GetVehicleByRouteTimeResponse,
+  MapView,
+  Marker,
+  Polyline,
+  Shop,
+} from 'src/app/shared/common';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
@@ -27,29 +36,36 @@ export class GpsTrackingPage implements OnInit {
   polylines: Polyline[] = [];
   mapView: MapView;
   private _markers: Marker[] = [];
-  public get markers(): Marker[] { return this._markers }
-  set markers(v: Marker[]) { this._markers = v }
+  public get markers(): Marker[] {
+    return this._markers;
+  }
+  set markers(v: Marker[]) {
+    this._markers = v;
+  }
   // routes: GetSrRouteResponse;
   // routeSelectSub: Subscription;
   mapInitSubscription: Subscription;
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private persianCalendarService: PersianCalendarService,
     private storageService: StorageService,
     private mapService: MapService,
     private loadingCtrl: LoadingController
   ) {
-    this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
-      if (initialized && this.f.selectedRoute.value) {
-        this.initialSr();
-        this.initialShopPoint();
+    this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
+      (initialized: boolean) => {
+        if (initialized && this.f.selectedRoute.value) {
+          this.initialSr();
+          this.initialShopPoint();
+        }
       }
-    })
+    );
   }
 
   ngOnInit() {
     this.loadForm();
-    this.init()
+    this.init();
   }
 
   ionViewDidEnter() {
@@ -63,31 +79,28 @@ export class GpsTrackingPage implements OnInit {
   }
 
   init() {
-    this.storageService.get('user_id').then(user_id => {
+    this.storageService.get('user_id').then((user_id) => {
       this.patchValue('userId', user_id);
     });
 
-    this.storageService.get('access').then(access => {
-      if (access)
-        this.accessHandler(JSON.parse(access))
-    })
+    this.storageService.get('access').then((access) => {
+      if (access) this.accessHandler(JSON.parse(access));
+    });
 
-    this.storageService.get('route_code').then(route_code => {
-      if (route_code)
-        this.patchValue('routeCode', route_code);
-    })
+    this.storageService.get('route_code').then((route_code) => {
+      if (route_code) this.patchValue('routeCode', route_code);
+    });
 
-    this.storageService.get('route_name').then(route_name => {
-      if (route_name)
-        this.patchValue('userRouteName', route_name);
+    this.storageService.get('route_name').then((route_name) => {
+      if (route_name) this.patchValue('userRouteName', route_name);
       if (this.f.selectedSr.value && this.f.userRouteName.value) {
-        this.getSrRouteAfterInit(this.f.selectedSr.value.id, this.f.selectedDate.value, this.f.userRouteName.value);
+        this.getSrRouteAfterInit(
+          this.f.selectedSr.value.id,
+          this.f.selectedDate.value,
+          this.f.userRouteName.value
+        );
       }
-    })
-  }
-
-  backButton() {
-    this.router.navigate(['/']);
+    });
   }
 
   loadForm() {
@@ -116,48 +129,45 @@ export class GpsTrackingPage implements OnInit {
     // this.routeSelectSub = this.f.selectedRoute.valueChanges.subscribe(() => this.routeSelect());
   }
 
-  get f() { return this.form.controls }
+  get f() {
+    return this.form.controls;
+  }
 
   accessHandler(accessJson: { name: string }[]) {
     var flg = false;
-    accessJson.forEach(access => {
-      if (access.name == 'gps_time')
-        this.patchValue('accessTime', true)
+    accessJson.forEach((access) => {
+      if (access.name == 'gps_time') this.patchValue('accessTime', true);
       else if (access.name == 'gps_rsm') {
-        this.patchValue('accessRsm', true)
+        this.patchValue('accessRsm', true);
         if (flg == false) {
-          this.patchValue('selectedRsm', this.f.userId.value)
+          this.patchValue('selectedRsm', this.f.userId.value);
           this.rsmSelect();
           flg = true;
         }
-      }
-      else if (access.name == 'gps_asm') {
-        this.patchValue('accessAsm', true)
+      } else if (access.name == 'gps_asm') {
+        this.patchValue('accessAsm', true);
         if (flg == false) {
-          this.patchValue('selectedAsm', this.f.userId.value)
+          this.patchValue('selectedAsm', this.f.userId.value);
           this.asmSelect();
           flg = true;
         }
-      }
-      else if (access.name == 'gps_ssv') {
-        this.patchValue('accessSsv', true)
+      } else if (access.name == 'gps_ssv') {
+        this.patchValue('accessSsv', true);
         if (flg == false) {
-          this.patchValue('selectedSsv', this.f.userId.value)
+          this.patchValue('selectedSsv', this.f.userId.value);
           this.ssvSelect();
           flg = true;
         }
-      }
-      else if (access.name == 'gps_sr') {
-        this.patchValue('accessSr', true)
+      } else if (access.name == 'gps_sr') {
+        this.patchValue('accessSr', true);
         if (flg == false) {
-          this.patchValue('selectedSr', this.f.userId.value)
+          this.patchValue('selectedSr', this.f.userId.value);
           this.srSelect();
           flg = true;
         }
-      }
-      else if (access.name == 'gps_route')
+      } else if (access.name == 'gps_route')
         if (flg == false) {
-          this.patchValue('selectedRoute', this.f.userId.value)
+          this.patchValue('selectedRoute', this.f.userId.value);
           this.routeSelect();
           flg = true;
         }
@@ -165,114 +175,130 @@ export class GpsTrackingPage implements OnInit {
   }
 
   rsmSelect() {
-    if (!this.f.selectedRsm.value)
-      return
+    if (!this.f.selectedRsm.value) return;
     let selected_rsm = this.f.selectedRsm.value;
     if (selected_rsm.id) {
-      this.patchValue('selectedAsm', selected_rsm.id)
+      this.patchValue('selectedAsm', selected_rsm.id);
       // this.asmSelect();
       // this.patchValue('selectedSsv', null)
       this.ssvs = [];
       // this.ssvSelect();
-      this.patchValue('selectedSr', null)
+      this.patchValue('selectedSr', null);
       this.srs = [];
       // this.srSelect();
     } else
-      this.mapService.getUserCildren(selected_rsm).subscribe(res => {
-        this.rsms = res
-      })
+      this.mapService.getUserCildren(selected_rsm).subscribe((res) => {
+        this.rsms = res;
+      });
   }
 
   asmSelect() {
-    if (!this.f.selectedAsm.value)
-      return
+    if (!this.f.selectedAsm.value) return;
     let selected_asm = this.f.selectedAsm.value;
     if (selected_asm.id) {
-      this.patchValue('selectedSsv', selected_asm.id)
+      this.patchValue('selectedSsv', selected_asm.id);
       // this.ssvSelect();
-      this.patchValue('selectedSr', null)
+      this.patchValue('selectedSr', null);
       this.srs = [];
       // this.srSelect();
-    }
-    else
-      this.mapService.getUserCildren(selected_asm).subscribe(res => {
-        this.asms = res
+    } else
+      this.mapService.getUserCildren(selected_asm).subscribe((res) => {
+        this.asms = res;
       });
   }
 
   ssvSelect() {
-    if (!this.f.selectedSsv.value)
-      return
+    if (!this.f.selectedSsv.value) return;
     let selected_ssv = this.f.selectedSsv.value;
     if (selected_ssv.id) {
-      this.patchValue('selectedSr', selected_ssv.id)
+      this.patchValue('selectedSr', selected_ssv.id);
       // this.srSelect();
-    }
-    else {
-      this.mapService.getUserCildren(selected_ssv).subscribe(res => this.ssvs = res);
+    } else {
+      this.mapService
+        .getUserCildren(selected_ssv)
+        .subscribe((res) => (this.ssvs = res));
     }
   }
 
   srSelect() {
     let selected_sr = this.f.selectedSr.value;
     if (selected_sr.id) {
-      this.patchValue('selectedRoute', selected_sr.id)
+      this.patchValue('selectedRoute', selected_sr.id);
       this.routeSelect();
-    }
-    else {
-      this.mapService.getUserCildren(selected_sr)
-        .subscribe(values => this.srs = values)
+    } else {
+      this.mapService
+        .getUserCildren(selected_sr)
+        .subscribe((values) => (this.srs = values));
     }
   }
 
   routeSelect() {
-    let selectedRoute = typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
-    this.mapService.getSrRoute(selectedRoute, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value))
-      .subscribe(values => {
-        if (values.length)
-          this.patchValue('selectedRoute', values[0]);
+    let selectedRoute =
+      typeof this.f.selectedRoute.value == 'object'
+        ? this.f.selectedRoute.value.routecode
+        : this.f.selectedRoute.value;
+    this.mapService
+      .getSrRoute(
+        selectedRoute,
+        this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value)
+      )
+      .subscribe((values) => {
+        if (values.length) this.patchValue('selectedRoute', values[0]);
 
         this.initialShopPoint();
         this.initialSr();
         this.initialTruck();
-      })
+      });
   }
 
-  getSrRouteAfterInit(selected_Route: string, selected_date: Date, user_route_name: string) {
-    this.mapService.getSrRoute(selected_Route, this.persianCalendarService.getTodayFormatEnd(selected_date))
+  getSrRouteAfterInit(
+    selected_Route: string,
+    selected_date: Date,
+    user_route_name: string
+  ) {
+    this.mapService
+      .getSrRoute(
+        selected_Route,
+        this.persianCalendarService.getTodayFormatEnd(selected_date)
+      )
       .subscribe((values: any[]) => {
         this.srs = values;
-      })
+      });
   }
 
   initialShopPoint() {
-    let selectedRoute = typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
-    this.mapService.getShopPointByRouteName(selectedRoute, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value))
-      .subscribe(shops => {
-        if (!shops.length)
-          return
+    let selectedRoute =
+      typeof this.f.selectedRoute.value == 'object'
+        ? this.f.selectedRoute.value.routecode
+        : this.f.selectedRoute.value;
+    this.mapService
+      .getShopPointByRouteName(
+        selectedRoute,
+        this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value)
+      )
+      .subscribe((shops) => {
+        if (!shops.length) return;
 
         this.afterInitialShopPoint(shops);
-      })
+      });
   }
 
   afterInitialShopPoint(shops: Shop[]) {
     let flyTo: MapView;
     let markers: Marker[] = [];
-    shops.forEach(shop => {
+    shops.forEach((shop) => {
       flyTo = {
         lat: +shop.PointLatitude,
         lng: +shop.PointLongitude,
-        zoom: 13
-      }
+        zoom: 13,
+      };
       this.custCodes.push(parseInt(shop.CustCode, 10));
       let marker: Marker = {
         latitude: +shop.PointLatitude,
         longitude: +shop.PointLongitude,
         icon: this.selectIcon('red'),
         customerCode: +shop.CustCode,
-        description:
-          `<div style="direction:rtl;overflow: hidden"">
+        description: `<div style="direction:rtl;overflow: hidden"">
           <h1> ${shop.custName} </h1>
           <div>
           <p>Code : ${shop.CustCode} </p>
@@ -290,13 +316,12 @@ export class GpsTrackingPage implements OnInit {
                   customer="'+ ${shop.CustCode}'"><br>Customer<br>Questionnaire</td>
             </tr>
           </table>
-        </div>`
+        </div>`,
       };
       markers.push(marker);
     });
     this.markers = markers;
-    if (flyTo)
-      this.mapView = flyTo
+    if (flyTo) this.mapView = flyTo;
   }
 
   selectIcon(key: 'orange' | 'red' | 'blue') {
@@ -311,77 +336,89 @@ export class GpsTrackingPage implements OnInit {
   }
 
   initialTruck() {
-    if (!this.f.showTruck.value)
-      return
+    if (!this.f.showTruck.value) return;
 
-    this.mapService.getVehicleByRouteTime(
-      this.f.selectedRoute.value.routename,
-      this.persianCalendarService.getTodayFormat(this.f.selectedDate.value),
-      this.persianCalendarService.getTodayFormatEnd(this.f.selectedDate.value))
-      .subscribe(res => {
-        if (!res.length)
-          return
+    this.mapService
+      .getVehicleByRouteTime(
+        this.f.selectedRoute.value.routename,
+        this.persianCalendarService.getTodayFormat(this.f.selectedDate.value),
+        this.persianCalendarService.getTodayFormatEnd(this.f.selectedDate.value)
+      )
+      .subscribe((res) => {
+        if (!res.length) return;
 
         this.afterInitialTruck(res);
-      })
+      });
   }
 
   afterInitialTruck(truckPoints: GetVehicleByRouteTimeResponse[]) {
     let truck_points: LatLngTuple[] = [];
-    truckPoints.forEach(point => truck_points.push([point.Latitude, point.Longitude]));
+    truckPoints.forEach((point) =>
+      truck_points.push([point.Latitude, point.Longitude])
+    );
 
     this.polylines.push({
       latLng: truck_points,
-      options: this.mapService.TruckPolylineOption
-    })
+      options: this.mapService.TruckPolylineOption,
+    });
     let lastTruckPoint = truckPoints[truckPoints.length - 1];
     this.markers.push({
       latitude: lastTruckPoint.Latitude,
       longitude: lastTruckPoint.Longitude,
       description: this.markerDescription('truck', lastTruckPoint),
-      icon: this.mapService.TruckIcon
-    })
+      icon: this.mapService.TruckIcon,
+    });
   }
 
   initialSr() {
-    if (!this.f.showSr.value && (!this.f.selectedRoute.value || !this.f.selectedRoute.value.routecode || !this.f.selectedSr.value))
-      return
-    this.mapService.getSrInfo(
-      this.f.selectedRoute.value.routecode,
-      this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
-      this.f.selectedSr.value.id).subscribe(res => {
+    if (
+      !this.f.showSr.value &&
+      (!this.f.selectedRoute.value ||
+        !this.f.selectedRoute.value.routecode ||
+        !this.f.selectedSr.value)
+    )
+      return;
+    this.mapService
+      .getSrInfo(
+        this.f.selectedRoute.value.routecode,
+        this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
+        this.f.selectedSr.value.id
+      )
+      .subscribe((res) => {
         let srInfo = res[0];
-        if (!srInfo)
-          return
+        if (!srInfo) return;
 
-        this.getVPByRouteTimeUser(srInfo)
-      })
+        this.getVPByRouteTimeUser(srInfo);
+      });
   }
 
   getVPByRouteTimeUser(srInfo: GetSrInfoResponse) {
-    this.mapService.getVPByRouteTimeUser(
-      this.f.selectedRoute.value.routecode,
-      this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
-      this.persianCalendarService.getVPTodayFormatEnd(this.f.selectedDate.value),
-      this.f.selectedSr.value.id)
-      .subscribe(res => {
-        if (!res.length)
-          return
+    this.mapService
+      .getVPByRouteTimeUser(
+        this.f.selectedRoute.value.routecode,
+        this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
+        this.persianCalendarService.getVPTodayFormatEnd(
+          this.f.selectedDate.value
+        ),
+        this.f.selectedSr.value.id
+      )
+      .subscribe((res) => {
+        if (!res.length) return;
 
         let sr_points: LatLngTuple[] = [];
-        res.forEach(srPoint => sr_points.push([srPoint.lat, srPoint.lng]));
+        res.forEach((srPoint) => sr_points.push([srPoint.lat, srPoint.lng]));
 
         this.polylines.push({
           latLng: sr_points,
-          options: this.mapService.SalesManPolylineOption
-        })
+          options: this.mapService.SalesManPolylineOption,
+        });
         this.markers.push({
           latitude: sr_points[sr_points.length - 1][0],
           longitude: sr_points[sr_points.length - 1][1],
           icon: this.mapService.SalesManIcon,
-          description: this.markerDescription('salesman', srInfo)
-        })
-      })
+          description: this.markerDescription('salesman', srInfo),
+        });
+      });
   }
 
   markerDescription(key: 'salesman' | 'truck', info: any) {
@@ -403,7 +440,7 @@ export class GpsTrackingPage implements OnInit {
             <p>Last invoiced To wh : ${info.Last_invoiced_To_wh} </p>
           </div>
         </div>
-        `
+        `;
 
       case 'truck':
         return `
@@ -414,7 +451,7 @@ export class GpsTrackingPage implements OnInit {
             <p>TruckNo : ${info.TruckNo} </p>
           </div>
         </div>
-        `
+        `;
     }
   }
 
