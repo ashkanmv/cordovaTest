@@ -52,11 +52,11 @@
   <ng-container *ngIf="show">
     <ion-col>
       <ion-row class="date-picker-container">
-        <ion-row id="open-modal" class="date-picker-box">
+        <ion-row class="date-picker-box">
           <label for="Date-picker"> Date</label>
           <ion-row class="date-picker">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
-            <ion-col class="ion-justify-content-end">
+            <ion-col id="open-modal" class="ion-justify-content-end">
               {{dateNow | date:'yyyy/MM/dd'}}
               <ion-icon name="chevron-down-outline"></ion-icon>
             </ion-col>
@@ -66,7 +66,6 @@
       <ion-popover trigger="open-modal" show-backdrop="false">
         <ng-template>
           <ion-datetime
-            size="cover"
             showDefaultButtons="true"
             presentation="date"
           ></ion-datetime>
