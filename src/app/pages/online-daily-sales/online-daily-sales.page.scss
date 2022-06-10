@@ -101,9 +101,9 @@ ion-title{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid #0095EB ;
+        border-bottom: 2px solid  var(--ion-color-primary) ;
         ion-segment-button{
-            --background-checked:#0095eb;
+            --background-checked: var(--ion-color-primary);
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;

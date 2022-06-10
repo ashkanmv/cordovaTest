@@ -23,7 +23,7 @@ background: #46c2fc;
 
 ion-toolbar ion-row{
     --background: var(--ion-color-light);
-    --color: #0095EB;
+    --color:  var(--ion-color-primary);
 }
 ion-toolbar.ios{
     --ion-padding-bottom:0;
@@ -31,7 +31,7 @@ ion-toolbar.ios{
 
 ion-content {
     --background: var(--ion-color-light);
-    --color: #0095EB;
+    --color:  var(--ion-color-primary);
 }
 title{
     width: 100%;
@@ -89,7 +89,7 @@ ion-title{
 
 .table-detail-opaned{
     ion-icon{
-        color:#0095EB;
+        color: var(--ion-color-primary);
     }
 }
 
@@ -104,9 +104,9 @@ ion-title{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid #0095EB ;
+        border-bottom: 2px solid  var(--ion-color-primary) ;
         ion-segment-button{
-            --background-checked:#0095eb;
+            --background-checked: var(--ion-color-primary);
             --indicator-color:var(--ion-color-medium-contrast);
             --indicator-height:	10px;	
             padding:.5rem 0;
@@ -136,7 +136,7 @@ ion-content{
     --padding-bottom: .9rem ;
     // --padding-start: 1.7rem ;
     &:hover{
-        // --background:#0095EB;
+        // --background: var(--ion-color-primary);
         --color:var(--ion-color-dark) ;
     }
     
@@ -265,7 +265,7 @@ table{
                 height: 7vh;
             }
             >:first-child{
-                color:#0095EB;
+                color: var(--ion-color-primary);
                 // min-height: 20px;
             }
         
@@ -316,7 +316,7 @@ table{
         }
         thead{
             :first-child{
-                border-right:1px #0095eb24 solid ;
+                border-right:1px  var(--ion-color-primary)24 solid ;
             }
         }
         th{
@@ -384,7 +384,7 @@ table.NON_DSD-table{
     // -----------details
     .NON_DSD-table-detail{
         .border{
-            border-left: 2px #0095EB solid;
+            border-left: 2px  var(--ion-color-primary) solid;
             margin-left: 1rem;
             padding: 1rem 0 0;
         &>table{
@@ -395,7 +395,7 @@ table.NON_DSD-table{
             position: relative;
 
             .line-1{
-                background: #0095EB;
+                background:  var(--ion-color-primary);
                 position: absolute;
                 top: 1.2rem;
                 left: -1rem;
@@ -403,7 +403,7 @@ table.NON_DSD-table{
                 width: 1rem;
             }
             .line-2{
-                background:#0095EB;
+                background: var(--ion-color-primary);
                 position: absolute;
                 top: 4.8rem;
                 left: -1rem;
@@ -411,7 +411,7 @@ table.NON_DSD-table{
                 width: 1rem;
             }
             .line-3{
-                background: #0095EB;
+                background:  var(--ion-color-primary);
                 position: absolute;
                 bottom: 1.1rem;
                 left: -1rem;

@@ -29,9 +29,9 @@ ion-toolbar{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid #0095EB ;
+        border-bottom: 2px solid  var(--ion-color-primary) ;
         ion-segment-button{
-            --background-checked:#0095eb;
+            --background-checked: var(--ion-color-primary);
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
@@ -98,7 +98,7 @@ ion-col{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                color: #0095EB;
+                color:  var(--ion-color-primary);
                 font-size: 1.5rem;
                 font-weight: bold;
                 ion-icon{
@@ -197,7 +197,7 @@ table{
 
         }
         .route{
-            color: #0095EB;
+            color:  var(--ion-color-primary);
         }
     }
     tbody{
@@ -236,7 +236,7 @@ table{
         background: var(--ion-color-light);
         align-items: center;
         .border-right{
-            border-left: 2px #0095EB solid;
+            border-left: 2px  var(--ion-color-primary) solid;
             margin-left:20px ;
         }
         .nested-table{
