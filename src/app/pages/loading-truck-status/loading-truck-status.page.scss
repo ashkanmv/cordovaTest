@@ -1,18 +1,6 @@
+.box-shadow{
+    box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
 
-.dark-blue-bg{
-    background: #9ac2daa9;
-}
-.medium-blue-bg{
-    background: #6ab9eb8b;
-}
-.light-blue-bg{
-    background: #b6e3ffa9;
-}
-.white-bg{
-    background: var(--ion-color-light);
-}
-.blue-bg{
-background: #46c2fc;
 }
 
 ion-toolbar ion-row{
@@ -126,7 +114,7 @@ ion-col{
             align-items: center;
             // padding: 1rem 2rem 1rem 0 ;
             // padding-right: 2rem;
-            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+            // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
 
             img{
                 max-height: 100%;
@@ -157,77 +145,60 @@ ion-col{
     }
 }
 
-// search
-ion-col{
-    ion-row.search-container{
-        // margin-bottom: 3rem;
-        ion-item.search-box{
-            width: 88%;
-            height: 20vh;
-            border: 1px solid #6b6b6b;
+// ----searchbar
+
+.search-bar{
+    .search-box{
+        width: 90%;
+        border: 1px solid var(--ion-color-dark);
+        border-radius: 10px;
+        padding: 2rem 0;
+        margin: 3vh 4vw;
+        &>ion-item{
+            --background: none;
+            width: 90%;
             border-radius: 10px;
-            display: flex;
-            ion-item{
-                background: none;
-                --border-style:none;
-                --inner-border-width: 0;
-                border-bottom: none;
+            ion-select{
                 width: 100%;
-                --border: 0;
-                &.search-select-rating{
-                    border: none;
-                    ion-select{
-                    width: 100%;
-                    height: 100%;
-                    .my-custom-interface{
-                        background:red ;
-                    }
-                }
-            }    
-            &.search-select-city{
-                --background: none;
-                ion-select{
-                    width: 100%;
-                    height: 100%;
-                }            }    
-            .search-submit{
-                width: 10vw;
-                height: 12vh;
-                border-radius:  10px  0 0  10px ;
-                font-size: 2rem;
-                font-weight: bolder;
-                color: var(--ion-color-light);
-                z-index: 2;
+                height: 100%;
             }
-            .search{
-                box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-                border: none;
-                width: 60vw;
-                height: 12vh;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                font-size: 1.3rem;
-                border-radius: 0 10px  10px 0;
-            }
-            input::-webkit-input-placeholder{
-                justify-self: center;
-                align-self: center;
-                color: #e5e5e5df;
-            }
-            span{
-                position: relative;
-                // top: 1.5rem;
-                right: 2rem;
-                color: #e5e5e5df;
-                font-size: 1.3rem;
-            }
-
         }
+        .search-submit{
+            z-index: 2;
+            width: 3rem;
+            height: 5rem;
+            border-radius: 10px 0 0 10px;
+            ion-icon{
+                color: var(--ion-color-light);
+                font-size: 1.5rem; 
+            }
+        }
+        input::-webkit-input-placeholder{
+            justify-self: center;
+            align-self: center;
+            color: #e5e5e5df;
+        }
+      
+        .search{
+            text-align: center;
+            height: 5rem;
+            width:75%;
+            outline: none;
+            border: none;
+            border-radius: 0 10px 10px 0 ;
 
+       
+        }
+        span{
+            position: absolute;
+            bottom: 18.5vh;
+            left: 77vw;
+        }
+        ion-icon{
+            color:var(--ion-color-light);
+        }
     }
-}
-}
+    }
 
 
 // ------------table------------------------

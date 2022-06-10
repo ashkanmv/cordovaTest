@@ -9,7 +9,7 @@
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="2"> </ion-col>
+      <ion-col size="1"> </ion-col>
       <ion-col size="7" class="ion-text-start ion-align-self-center">
         <ion-title class="ion-no-padding white-text ion-align-self-center"
           ><h3>{{language.Loading_Truck_Status.Title}}</h3>
@@ -53,7 +53,7 @@
         <label for="Date-picker"
           >{{language.Loading_Truck_Status.date_title}}</label
         >
-        <ion-row class="date-picker">
+        <ion-row class="date-picker box-shadow">
           <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
           <ion-col id="open-popover" class="ion-justify-content-end">
             {{dateNow | date:'yyyy/MM/dd'}}
@@ -84,24 +84,21 @@
     <!--  -->
   </ion-col>
   <ion-col class="search-bar">
-    <ion-row class="search-container ion-justify-content-center">
-      <ion-item class="search-box">
-        <ion-item class="search-select-city">
-          <button class="search-submit primary-bg">
-            <ion-icon name="search-outline"></ion-icon>
-          </button>
-          <ion-select multiple="true" interface="popover">
-            <!-- <ion-select-option>SELECT ALL</ion-select-option> -->
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-          </ion-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
-        </ion-item>
+    <ion-row class="search-box ion-justify-content-center">
+      <ion-item class="box-shadow">
+        <button class="search-submit primary-bg">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+        <ion-select multiple="true" interface="popover">
+          <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+          <ion-select-option value="rasht">RASHT</ion-select-option>
+          <ion-select-option value="tehran">TEHRAN</ion-select-option>
+          <ion-select-option value="karaj">KARAJ</ion-select-option>
+          <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+        </ion-select>
+        <span class="search-icon">
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </span>
       </ion-item>
     </ion-row>
   </ion-col>
