@@ -16,6 +16,7 @@ import {
   Marker,
   Polyline,
   Shop,
+  VisitedNotBuyResponse,
 } from 'src/app/shared/common';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -30,8 +31,10 @@ export class GpsTrackingPage implements OnInit {
   notPlanFLoaded = false;
   initialShopPointLoaded = false;
   invoicedFLoaded = false;
+  visitNotBuyLoaded = false;
   notPlanFShopPoints: GetInvoicedResponse[] = [];
   invoicedShopPoints: GetInvoicedResponse[] = [];
+  visitNotBuyShopPoints: VisitedNotBuyResponse[] = [];
   allShopPoints: Shop[] = [];
   showMap = false;
   show = false;
@@ -71,8 +74,9 @@ export class GpsTrackingPage implements OnInit {
     //   }
     // );
   }
-
+  parirooz = new Date();
   ngOnInit() {
+    this.parirooz = new Date(this.parirooz.setDate(this.parirooz.getDate() - 2));
     this.loadForm();
     this.init();
   }
@@ -117,7 +121,7 @@ export class GpsTrackingPage implements OnInit {
     this.form = this.formBuilder.group({
       userId: [null],
       formDate: [new Date().toISOString()],
-      selectedDate: [new Date()],
+      selectedDate: [this.parirooz], // [new Date()],
       selectedRsm: [null],
       selectedAsm: [null],
       selectedSsv: [null],
@@ -243,6 +247,14 @@ export class GpsTrackingPage implements OnInit {
   }
 
   routeSelect() {
+    this.notPlanFLoaded = false;
+    this.initialShopPointLoaded = false;
+    this.invoicedFLoaded = false;
+    this.visitNotBuyLoaded = false;
+    this.notPlanFShopPoints = [];
+    this.invoicedShopPoints = [];
+    this.visitNotBuyShopPoints = [];
+    this.allShopPoints = [];
     this.custCodes = [];
     let selectedRoute = '5500'; //typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
     this.mapService.getSrRoute(selectedRoute, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value))
@@ -254,9 +266,21 @@ export class GpsTrackingPage implements OnInit {
         this.initialSr();
         this.initialTruck();
         this.notPlanF();
+        this.visitNotBuy()
       });
   }
 
+  visitNotBuy() {
+    this.mapService.getVisit_NotBuy(
+      5500, //this.f.selectedRoute.value.routecode,
+      this.CommonUtility.getInvoicedDate(this.f.selectedDate.value))
+      .subscribe(res => {
+        console.log(res);
+        this.visitNotBuyLoaded = true;
+        this.visitNotBuyShopPoints = res;
+        this.handleDifferentShopPoints()
+      })
+  }
   notPlanF() {
     this.mapService.getOutOfPlan(
       5500, //this.f.selectedRoute.value.routecode,
@@ -322,9 +346,9 @@ export class GpsTrackingPage implements OnInit {
   }
 
   handleDifferentShopPoints() {
-    if (!this.notPlanFLoaded || !this.invoicedFLoaded || !this.initialShopPointLoaded)
+    if (!this.notPlanFLoaded || !this.invoicedFLoaded || !this.initialShopPointLoaded || !this.visitNotBuyLoaded)
       return
-      
+
     let markers: Marker[] = [];
     this.invoicedShopPoints.forEach(invoice => {
       this.custCodes.forEach(custCode => {
@@ -347,18 +371,32 @@ export class GpsTrackingPage implements OnInit {
       });
     });
 
-    this.notPlanFShopPoints.forEach(point=>{
-        let index = this.allShopPoints.findIndex(x => x.CustCode == point.CustCode);
-        if (index != -1)
-          this.allShopPoints.splice(index, 1);
-          
-        markers.push({
-          latitude: +point.PointLatitude,
-          longitude: +point.PointLongitude,
-          icon: this.selectIcon('orange'),
-          customerCode: +point.CustCode,
-          description: this.markerDescription('notPlanF', point)
-        });
+    this.notPlanFShopPoints.forEach(point => {
+      let index = this.allShopPoints.findIndex(x => x.CustCode == point.CustCode);
+      if (index != -1)
+        this.allShopPoints.splice(index, 1);
+
+      markers.push({
+        latitude: +point.PointLatitude,
+        longitude: +point.PointLongitude,
+        icon: this.selectIcon('orange'),
+        customerCode: +point.CustCode,
+        description: this.markerDescription('notPlanF', point)
+      });
+    })
+
+    this.visitNotBuyShopPoints.forEach(point => {
+      let index = this.allShopPoints.findIndex(x => x.CustCode == point.CustCode);
+      if (index != -1)
+        this.allShopPoints.splice(index, 1);
+
+      markers.push({
+        latitude: +point.PointLatitude,
+        longitude: +point.PointLongitude,
+        icon: this.selectIcon('red_black_circle'),
+        customerCode: +point.CustCode,
+        description: this.markerDescription('visitNotBuy', point)
+      });
     })
 
     let flyTo: MapView;
@@ -380,7 +418,7 @@ export class GpsTrackingPage implements OnInit {
     if (flyTo) this.mapView = flyTo;
   }
 
-  selectIcon(key: 'orange' | 'red' | 'blue') {
+  selectIcon(key: 'orange' | 'red' | 'blue' | 'red_black_circle') {
     switch (key) {
       case 'orange':
         return this.mapService.shop_orange;
@@ -388,6 +426,8 @@ export class GpsTrackingPage implements OnInit {
         return this.mapService.shop_blue;
       case 'red':
         return this.mapService.shop_red;
+      case 'red_black_circle':
+        return this.mapService.shop_red_black_circle;
     }
   }
 
@@ -466,7 +506,7 @@ export class GpsTrackingPage implements OnInit {
       });
   }
 
-  markerDescription(key: 'salesman' | 'truck' | 'shopPoint' | 'invoicedF' | 'notPlanF', info: any) {
+  markerDescription(key: 'salesman' | 'truck' | 'shopPoint' | 'invoicedF' | 'notPlanF' | 'visitNotBuy', info: any) {
     switch (key) {
       case 'salesman':
         return `
@@ -552,12 +592,31 @@ export class GpsTrackingPage implements OnInit {
                 <p>Street : ${info.Street} </p>
               </div>
                 <table>
-                  <tr align=center><td width=40%><img img src="assets/mainPage/main/Customer-History.png" id="chBtn" catched="0"
+                  <tr align=center><td width=40%><img src="assets/mainPage/main/Customer-History.png" id="chBtn" catched="0"
                       customer=" ${info.CustCode} "><br>Customer<br>History</td>
                   <td width=20%></td><td width=40%><img src="assets/mainPage/main/Questionnaire.png" id="quBtn" catched="0"
                       customer=" ${info.CustCode} "><br>Customer<br>Questionnaire</td></tr>
                 </table>
               </div>`;
+
+      case 'visitNotBuy':
+        return `
+          <div style="direction:rtl">
+            <div>
+              <p>DocNo : ${info.DocNo} </p>
+              <p>Name : ${info.Name}  ${info.GranteeName} </p>
+              <p>Code : ${info.CustCode} </p>
+              <p>SaleKG : ${info.SaleKG} </p>
+              <p>Tel : ${info.Tel} </p>
+              <p>Street : ${info.Street} </p>
+            </div>
+            <table>
+              <tr align=center><td width=40%><img src="assets/mainPage/main/Customer-History.png" id="chBtn" catched="0"
+                  customer=" ${info.CustCode} "><br>Customer<br>History</td>
+              <td width=20%></td><td width=40%><img src="assets/mainPage/main/Questionnaire.png" id="quBtn" catched="0"
+                customer=" ${info.CustCode} "><br>Customer<br>Questionnaire</td></tr>
+            </table>
+          </div>`
     }
   }
 

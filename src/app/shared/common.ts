@@ -197,6 +197,21 @@ export interface Shop {
   Distance: number;
 }
 
+export interface VisitedNotBuyResponse {
+  City: string;
+  CustCode: number;
+  PointLatitude: string;
+  PointLongitude: string;
+  custName: string;
+  CustTYPE: string;
+  ADDRESS: string;
+  Tel: string;
+  routename: string;
+  RouteCode: string;
+  VisitorCode: string;
+  Visitor: string;
+}
+
 export interface Access {
   name: string;
 }
