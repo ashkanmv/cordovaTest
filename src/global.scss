@@ -180,7 +180,7 @@ ion-toggle {
 
 
 .secondary-bg {
-  background-color: #343795;
+  background-color: var(--ion-color-secondary);
 }
 
 .white-text {
@@ -206,7 +206,7 @@ ion-toggle {
 .profile-pic {
   width: 70px;
   height: 70px;
-  border: 4px solid white;
+  border: 4px solid var(--ion-color-light);
   // border-radius: 50%;
 }
 

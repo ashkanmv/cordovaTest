@@ -3,7 +3,7 @@ ion-menu ion-content {
 }
 
 ion-item{
-    --background: #0095EB;
+    --background:  var(--ion-color-primary);
 }
 
 // what caused the white spaces on main-menu
@@ -135,7 +135,7 @@ ion-item ion-label {
 }
 
 .secondary-background{
-  --background	: #343795;
+  --background: var(--ion-color-secondary);
 }
 
 .notification{
