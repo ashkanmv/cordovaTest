@@ -28,9 +28,9 @@ export class MapComponent implements OnInit {
   private _markers: Marker[] = [];
   public get markers(): Marker[] { return this._markers; }
   @Input() set markers(v: Marker[]) { if (v?.length) this.setMarkers(v); }
-  private _polylines: Polyline;
-  public get polylines(): Polyline { return this._polylines; }
-  @Input() set polylines(v: Polyline) {
+  private _polylines: Polyline[];
+  public get polylines(): Polyline[] { return this._polylines; }
+  @Input() set polylines(v: Polyline[]) {
     if (v) this.setPolyline(v);
   }
 
@@ -109,9 +109,11 @@ export class MapComponent implements OnInit {
     });
   }
 
-  setPolyline(polyline: Polyline) {
-    let p = L.polyline(polyline.latLng,polyline.options)
-      .addTo(this.layerGroup);
+  setPolyline(polylines: Polyline[]) {
+    polylines.forEach(polyline => {
+      let p = L.polyline(polyline.latLng,polyline.options)
+        .addTo(this.layerGroup);
+    });
   }
 
   setMarkers(markers: Marker[]) {

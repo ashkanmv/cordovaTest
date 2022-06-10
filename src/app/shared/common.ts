@@ -69,6 +69,15 @@ export interface GetSrRouteResponse {
   routename: string;
 }
 
+export interface GetVehicleByRouteTimeResponse {
+  Latitude : number;
+  Longitude : number
+  Speed : any;
+  Temp : any;
+  TruckNo : any;
+  DateTime : any;
+}
+
 export interface GetSrInfoResponse {
   Name: string;
   Route: string;

@@ -5,7 +5,7 @@ import { LoadingController } from '@ionic/angular';
 import { LatLngLiteral, LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
-import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, MapView, Marker, Polyline, Shop } from 'src/app/shared/common';
+import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, MapView, Marker, Polyline, Shop } from 'src/app/shared/common';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
@@ -24,7 +24,7 @@ export class GpsTrackingPage implements OnInit {
   ssvs: getUserCildrenResponse[] = [];
   srs: getUserCildrenResponse[] = [];
   custCodes: number[] = [];
-  polylines: Polyline;
+  polylines: Polyline[] = [];
   mapView: MapView;
   private _markers: Marker[] = [];
   public get markers(): Marker[] { return this._markers }
@@ -100,7 +100,7 @@ export class GpsTrackingPage implements OnInit {
       selectedSsv: [null],
       selectedSr: [null],
       selectedRoute: [null],
-      showTruck: [false],
+      showTruck: [true],
       showSr: [true],
       srTime: [this.persianCalendarService.getVPTodayFormat(new Date())],
       truckTime: [this.persianCalendarService.getVPTodayFormat(new Date())],
@@ -233,7 +233,8 @@ export class GpsTrackingPage implements OnInit {
           this.patchValue('selectedRoute', values[0]);
 
         this.initialShopPoint();
-        this.initialSr()
+        this.initialSr();
+        this.initialTruck();
       })
   }
 
@@ -309,6 +310,39 @@ export class GpsTrackingPage implements OnInit {
     }
   }
 
+  initialTruck() {
+    if (!this.f.showTruck.value)
+      return
+
+    this.mapService.getVehicleByRouteTime(
+      this.f.selectedRoute.value.routename,
+      this.persianCalendarService.getTodayFormat(this.f.selectedDate.value),
+      this.persianCalendarService.getTodayFormatEnd(this.f.selectedDate.value))
+      .subscribe(res => {
+        if (!res.length)
+          return
+
+        this.afterInitialTruck(res);
+      })
+  }
+
+  afterInitialTruck(truckPoints: GetVehicleByRouteTimeResponse[]) {
+    let truck_points: LatLngTuple[] = [];
+    truckPoints.forEach(point => truck_points.push([point.Latitude, point.Longitude]));
+
+    this.polylines.push({
+      latLng: truck_points,
+      options: this.mapService.TruckPolylineOption
+    })
+    let lastTruckPoint = truckPoints[truckPoints.length - 1];
+    this.markers.push({
+      latitude: lastTruckPoint.Latitude,
+      longitude: lastTruckPoint.Longitude,
+      description: this.markerDescription('truck', lastTruckPoint),
+      icon: this.mapService.TruckIcon
+    })
+  }
+
   initialSr() {
     if (!this.f.showSr.value && (!this.f.selectedRoute.value || !this.f.selectedRoute.value.routecode || !this.f.selectedSr.value))
       return
@@ -335,18 +369,53 @@ export class GpsTrackingPage implements OnInit {
           return
 
         let sr_points: LatLngTuple[] = [];
-        res.forEach(srPoint =>
-          sr_points.push([srPoint.lat, srPoint.lng])
-        );
-        this.polylines = {
+        res.forEach(srPoint => sr_points.push([srPoint.lat, srPoint.lng]));
+
+        this.polylines.push({
           latLng: sr_points,
-          options: {
-            color: '#A0522D',
-            opacity: 1,
-            weight: 2
-          }
-        }
+          options: this.mapService.SalesManPolylineOption
+        })
+        this.markers.push({
+          latitude: sr_points[sr_points.length - 1][0],
+          longitude: sr_points[sr_points.length - 1][1],
+          icon: this.mapService.SalesManIcon,
+          description: this.markerDescription('salesman', srInfo)
+        })
       })
+  }
+
+  markerDescription(key: 'salesman' | 'truck', info: any) {
+    switch (key) {
+      case 'salesman':
+        return `
+        <div>
+          <h1> ${info.Name} </h1>
+          <div>
+            <p>Route : ${info.Route} </p>
+            <p>Total Planed : ${info.Total_Planed} </p>
+            <p>Total Visited : ${info.Total_Visited} </p>
+            <p>Total Invoiced : ${info.Total_Invoiced} </p>
+            <p>First Invoiced : ${info.First_Invoiced} </p>
+            <p>Last Invoiced : ${info.Last_Invoiced} </p>
+            <p>Max Gap Invoiced : ${info.Max_Gap_Invoiced} </p>
+            <p>Time To Route : ${info.Time_To_Route} </p>
+            <p>Last invoiced To wh : ${info.Last_invoiced_To_wh} </p>
+            <p>Last invoiced To wh : ${info.Last_invoiced_To_wh} </p>
+          </div>
+        </div>
+        `
+
+      case 'truck':
+        return `
+        <div style="direction:rtl">
+          <div>
+            <p>Speed : ${info.Speed} </p>
+            <p>Temp : ${info.Temp} </p>
+            <p>TruckNo : ${info.TruckNo} </p>
+          </div>
+        </div>
+        `
+    }
   }
 
   dateChanged(date) {

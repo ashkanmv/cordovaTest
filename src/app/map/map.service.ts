@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, getVPByRouteResponse, Shop } from '../shared/common';
+import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, getVPByRouteResponse, Shop } from '../shared/common';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { IconOptions } from 'leaflet';
+import { IconOptions, PolylineOptions } from 'leaflet';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +45,20 @@ export class MapService {
   SalesManIcon : IconOptions = {
     iconUrl: 'assets/icon/salesman.png',
     iconSize: [30, 30]
+  }
+  SalesManPolylineOption : PolylineOptions = {
+    color: '#A0522D',
+    opacity: 1,
+    weight: 2
+  }
+  TruckIcon : IconOptions = {
+    iconUrl: 'assets/icon/truck.png',
+    iconSize: [30, 30]
+  }
+  TruckPolylineOption : PolylineOptions = {
+    color: '#6495ED',
+    opacity: 1,
+    weight: 2
   }
   shop_red : IconOptions = {
     iconUrl: 'assets/icon/shop_red.png',
@@ -90,7 +104,7 @@ export class MapService {
     params = params.append('time_first', time_first);
     params = params.append('time_end', time_end);
 
-    return this.http.get(this.vehicleUrl, { params });
+    return this.http.get<GetVehicleByRouteTimeResponse[]>(this.vehicleUrl, { params });
   }
 
   getShopPointByRouteName(route_code: string, selected_date: string) {
