@@ -1,11 +1,11 @@
 ion-toolbar{
     --background: #0095eb;
-    --color: #fff;
+    --color: var(--ion-color-light);
 }
 
 ion-content{
     --background: #0095eb;
-    --color: #fff;
+    --color: var(--ion-color-light);
 }
 
 ion-title{

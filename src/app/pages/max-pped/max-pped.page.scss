@@ -3,7 +3,7 @@
 }
 
 ion-item{
-    --background: #fff;
+    --background: var(--ion-color-light);
 }
 
 ion-toolbar{
@@ -32,7 +32,7 @@ ion-col.segment-change{
         border-bottom: 2px solid #0095EB ;
         ion-segment-button{
             --background-checked:#0095eb;
-            --indicator-color:#000;
+            --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
@@ -46,7 +46,7 @@ ion-col.segment-change{
                 font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
-                    color: #fff;
+                    color: var(--ion-color-light);
                 }
             }
         }
@@ -128,7 +128,7 @@ ion-col{
 .search-bar{
     .search-box{
         width: 90%;
-        border: 1px solid #000;
+        border: 1px solid var(--ion-color-dark);
         border-radius: 10px;
         padding: 2rem 0;
         margin: 3vh 4vw;
@@ -149,7 +149,7 @@ ion-col{
             height: 5rem;
             border-radius: 10px 0 0 10px;
             ion-icon{
-                color: #fff;
+                color: var(--ion-color-light);
                 font-size: 1.5rem; 
             }
         }
@@ -233,7 +233,7 @@ table{
 // -------Nested Table
     .nested-table-container{
         width: 100vw;
-        background: #fff;
+        background: var(--ion-color-light);
         align-items: center;
         .border-right{
             border-left: 2px #0095EB solid;

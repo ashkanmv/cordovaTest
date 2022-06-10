@@ -7,7 +7,7 @@
 }
 
 ion-toolbar ion-row{
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
     // flex-wrap: nowrap;
 }
@@ -16,7 +16,7 @@ ion-toolbar.ios{
 }
 
 ion-content {
-    --background: #fff;
+    --background: var(--ion-color-light);
 }
 
 ion-title {
@@ -27,13 +27,13 @@ ion-title {
     }
 }
 ion-item{
-    --background: #fff;
+    --background: var(--ion-color-light);
 }
 
 ion-input{
     --padding-stsart : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
 
 ion-img{
@@ -190,7 +190,7 @@ ion-col{
                 border-radius:  10px  0 0  10px ;
                 font-size: 2rem;
                 font-weight: bolder;
-                color: #fff;
+                color: var(--ion-color-light);
                 z-index: 2;
             }
             span{
@@ -245,7 +245,7 @@ ion-col{
 //                 border-radius:  10px  0 0  10px ;
 //                 font-size: 2rem;
 //                 font-weight: bolder;
-//                 color: #fff;
+//                 color: var(--ion-color-light);
 //                 z-index: 2;
 //             }
 //             .search{
@@ -300,7 +300,7 @@ table{
     .table-head{
         .table-head-content{
             font-weight: bold;
-            color: #000;
+            color: var(--ion-color-dark);
             th{
                 font-size: 1.1rem;
             }
@@ -325,7 +325,7 @@ table{
        >tr{
             >td{
                 font-size: 1.1rem;
-                color: #000;
+                color: var(--ion-color-dark);
                 text-align: center;
                 &:first-child{
                     text-align: left;

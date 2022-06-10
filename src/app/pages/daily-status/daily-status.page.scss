@@ -10,7 +10,7 @@
     background: #b6e3ffa9;
 }
 .white-bg{
-    background: #fff;
+    background: var(--ion-color-light);
 }
 .blue-bg{
 background: #46c2fc;
@@ -22,7 +22,7 @@ background: #46c2fc;
 
 
 ion-toolbar ion-row{
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 ion-toolbar.ios{
@@ -30,7 +30,7 @@ ion-toolbar.ios{
 }
 
 ion-content {
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 title{
@@ -47,13 +47,13 @@ ion-title{
 }
 
 ion-item{
-    --background: #fff;
+    --background: var(--ion-color-light);
 }
 
 ion-input{
     --padding-start : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
  
 .back-button {
@@ -121,7 +121,7 @@ ion-col.segment-change{
                 font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
-                    color: #fff;
+                    color: var(--ion-color-light);
                 }
             }
         }
@@ -137,13 +137,13 @@ ion-content{
     // --padding-start: 1.7rem ;
     &:hover{
         // --background:#0095EB;
-        --color:#000 ;
+        --color:var(--ion-color-dark) ;
     }
     
 }
 ion-content.select-input-popover-title{
     cursor:auto;
-    --color:#000 ;
+    --color:var(--ion-color-dark) ;
     text-align: center;
     border-bottom: 2px dashed #8f8f8f;
     font-weight: bold;
@@ -183,7 +183,7 @@ ion-col.DSD-page{
 .search-bar{
 .search-box{
     width: 90%;
-    border: 1px solid #000;
+    border: 1px solid var(--ion-color-dark);
     border-radius: 10px;
     padding: 2rem 0;
     margin: 3vh 4vw;
@@ -202,7 +202,7 @@ ion-col.DSD-page{
         height: 5rem;
         border-radius: 10px 0 0 10px;
         ion-icon{
-            color: #fff;
+            color: var(--ion-color-light);
             font-size: 1.5rem; 
         }
     }
@@ -259,7 +259,7 @@ table{
     .table-head{
         .table-head-content{
             font-weight: bold;
-            color: #000;
+            color: var(--ion-color-dark);
             th{
                 font-size: 1.2rem;
                 height: 7vh;
@@ -275,7 +275,7 @@ table{
        >tr{
            >td{
                font-size: 1.3rem;
-               color: #000;
+               color: var(--ion-color-dark);
                text-align: center;
                &:first-child{
                    background: #e0e0e0b5;
@@ -305,7 +305,7 @@ table{
         padding: 3vh 0;
         height: 17vw;
         background: var(--ion-color-medium-contrast);
-        // background: #fff;
+        // background: var(--ion-color-light);
         
         &>table{
             width: 89vw;
@@ -330,7 +330,7 @@ table{
             text-align: center;
             height: 5vh;
             :first-child{
-                color: #fff;
+                color: var(--ion-color-light);
                 background: #0094ea;
             }
             td{
@@ -363,14 +363,14 @@ table{
 
 .table-title{
     text-align: right;
-    color: #000;
+    color: var(--ion-color-dark);
     font-size: 2rem;
     margin-right: 15vw;
 
 }
 table.NON_DSD-table{
     width: 100vw;
-    color: #000;
+    color: var(--ion-color-dark);
 
 
     td{

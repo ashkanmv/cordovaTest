@@ -161,7 +161,7 @@ ion-toggle {
 
 
 .main-page-content ion-img {
-  background-color: #fff;
+  background-color: var(--ion-color-light);
   border-radius: 30%;
   max-width: 100px;
 }
@@ -184,11 +184,11 @@ ion-toggle {
 }
 
 .white-text {
-  color: #fff;
+  color: var(--ion-color-light);
 }
 
 .white-background {
-  background-color: #fff;
+  background-color: var(--ion-color-light);
 }
 
 
@@ -218,7 +218,7 @@ ion-toggle {
   position: absolute;
   bottom: 0;
   height: 8vh;
-  color: #000;
+  color: var(--ion-color-dark);
   width: 100%;
 }
 
@@ -245,7 +245,7 @@ ion-toggle {
   background: #456BD9;
   border: 2px solid transparent;
   border-radius: 99em;
-  color: #fff;
+  color: var(--ion-color-light);
   display: flex;
   font-weight: 600;
   height: 2.5em;
