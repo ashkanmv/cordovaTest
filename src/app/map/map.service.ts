@@ -142,7 +142,7 @@ export class MapService {
     let params = new HttpParams();
     params = params.append('inv_code', inv_code);
     params = params.append('date', selected_date);
-    return this.http.get(this.invoicedUrl, { params });
+    return this.http.get<GetInvoicedResponse[]>(this.invoicedUrl, { params });
   }
   getVisit_NotBuy(routecode: number, selected_date: string) {
     let params = new HttpParams();
