@@ -260,14 +260,11 @@ table{
                 color:#0095EB;
                 min-height: 20px;
             }
-            >:nth-child(2){
-                width: 55%;
-
-            }
-            >:last-child{
-                width: 15%;
-                background: #dcdcdc92;
-            }
+           
+            // >:last-child{
+            //     width: 15%;
+            //     background: #dcdcdc92;
+            // }
         
         }
     }

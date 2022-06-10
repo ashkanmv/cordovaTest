@@ -10,7 +10,38 @@ import { LanguageService } from 'src/app/shared/language.service';
 })
 export class LoadingTruckStatusPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
-
+  // mock data
+  public loadingTruckData: Array<any> = [
+    {
+      route: 1100,
+      load: 4,
+      sale: 6,
+      PPED: 43,
+      remain: 0,
+    },
+    {
+      route: 1103,
+      load: 7,
+      sale: 0,
+      PPED: 3,
+      remain: 3,
+    },
+    {
+      route: 1104,
+      load: 3,
+      sale: 2,
+      PPED: 4,
+      remain: 2,
+    },
+    {
+      route: 1105,
+      load: 1,
+      sale: 8,
+      PPED: 35,
+      remain: 31,
+    },
+  ];
+  //
   dateNow = new Date();
 
   public get language(): Language {

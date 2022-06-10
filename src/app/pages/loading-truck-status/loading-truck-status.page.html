@@ -110,41 +110,37 @@
       <thead class="table-head">
         <tr class="table-head-content">
           <th><span>Route</span></th>
-          <th>Visitor</th>
-          <th>Coute</th>
+          <th>Load</th>
+          <th>Sale</th>
+          <th>PPED</th>
+          <th>Remain</th>
         </tr>
       </thead>
-      <tbody class="table-body table-body-content">
+      <tbody
+        class="table-body table-body-content"
+        *ngFor="let mockData of loadingTruckData; let i = index;"
+        [ngClass]="{'oddRows': 1 === i % 2}"
+      >
         <tr>
           <td class="table-body-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon> 1100
+            <ion-icon name="chevron-down-outline"></ion-icon> {{mockData.route}}
           </td>
-          <td></td>
-          <td>6</td>
+          <td>{{mockData.load}}</td>
+          <td>{{mockData.sale}}</td>
+          <td>{{mockData.PPED}}</td>
+          <td>{{mockData.remain}}</td>
         </tr>
-        <div class="table-detail">
+        <!-- <div *ngIf="Is1DetailsShowing" class="table-detail">
           <div class="border">
             <table class="">
-              <tbody>
-                <tr class="light-blue-bg">
-                  <td><span>Name:</span> Jahan Akbari</td>
-                  <td><span>Number:</span> 21001036</td>
-                  <td><span>Address:</span> Tehran_Zafar</td>
-                </tr>
+              <tbody
+                *ngFor="let mockDetailData of routeVisitorDetailData; let i = index;"
+                [ngClass]="{'oddRowsDetails': 0 === i % 2}"
+              >
                 <tr>
-                  <td><span>Name:</span> Jahan Akbari</td>
-                  <td><span>Number:</span> 21001036</td>
-                  <td><span>Address:</span> Tehran_Zafar</td>
-                </tr>
-                <tr class="light-blue-bg">
-                  <td><span>Name:</span> Jahan Akbari</td>
-                  <td><span>Number:</span> 21001036</td>
-                  <td><span>Address:</span> Tehran_Zafar</td>
-                </tr>
-                <tr>
-                  <td><span>Name:</span> Jahan Akbari</td>
-                  <td><span>Number :</span>Jahan</td>
-                  <td><span>Address:</span> Jahan</td>
+                  <td><span>Name:</span> {{mockDetailData.Name}}</td>
+                  <td><span>Number:</span> {{mockDetailData.Number}}</td>
+                  <td><span>Address:</span> {{mockDetailData.Address}}</td>
                 </tr>
               </tbody>
               <hr class="line-1" />
@@ -153,79 +149,7 @@
               <hr class="line-4" />
             </table>
           </div>
-        </div>
-        <tr class="medium-blue-bg">
-          <td>
-            <ion-icon
-              class="isNotShowing"
-              name="chevron-down-outline"
-            ></ion-icon>
-
-            1103
-          </td>
-          <td></td>
-          <td>0</td>
-        </tr>
-        <div class="table-detail">
-          <div class="border">
-            <table class="">
-              <tbody>
-                <tr class="light-blue-bg">
-                  <td><span>Name:</span> Jahan Akbari</td>
-                  <td><span>Number:</span> 21001036</td>
-                  <td><span>Address:</span> Tehran_Zafar</td>
-                </tr>
-                <tr>
-                  <td><span>Name:</span> Jahan Akbari</td>
-                  <td><span>Number:</span> 21001036</td>
-                  <td><span>Address:</span> Tehran_Zafar</td>
-                </tr>
-                <tr class="light-blue-bg">
-                  <td><span>Name:</span> Jahan Akbari</td>
-                  <td><span>Number:</span> 21001036</td>
-                  <td><span>Address:</span> Tehran_Zafar</td>
-                </tr>
-                <tr>
-                  <td><span>Name:</span> Jahan Akbari</td>
-                  <td><span>Number:</span> 21001036</td>
-                  <td><span>Address:</span> Tehran_Zafar</td>
-                </tr>
-              </tbody>
-              <hr class="line-1" />
-              <hr class="line-2" />
-              <hr class="line-3" />
-              <hr class="line-4" />
-            </table>
-          </div>
-        </div>
-        <tr>
-          <td class="table-body-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon> 1104
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="medium-blue-bg">
-          <td class="">
-            <ion-icon name="chevron-down-outline"></ion-icon> 1105
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="table-body-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon> 1106
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr class="medium-blue-bg">
-          <td class="">
-            <ion-icon name="chevron-down-outline"></ion-icon> 1107
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
+        </div> -->
       </tbody>
     </table>
   </ion-col>
