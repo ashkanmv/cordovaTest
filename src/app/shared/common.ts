@@ -105,6 +105,20 @@ export interface GetSrInfoResponse {
   BrokerID: string;
 }
 
+export interface getSrSalesUsersResponse {
+  Route: string;
+  Visitor: string;
+  Driver: string;
+  Pln: number;
+  Inv: number;
+  '%': string;
+  OOR: number;
+  Total: number;
+  NotINV: number;
+  Sale: number;
+  PPED: number;
+}
+
 export interface getVPByRouteResponse {
   id: string;
   lat: number;

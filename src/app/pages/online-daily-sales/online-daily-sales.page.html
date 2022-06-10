@@ -48,7 +48,7 @@
       mode="md"
       class="ion-justify-content-between"
       (ionChange)="segmentChanged($event)"
-      value="NON_DSD"
+      value="DSD"
     >
       <ion-segment-button class="DSD" value="DSD">
         <ion-label>DSD</ion-label>
@@ -61,19 +61,15 @@
 </ion-header>
 <!-- -------------------------------------------------------------------------------------------- -->
 <ion-content class="ion-no-padding ion-no-margin">
-  <ion-col class="DSD-page" *ngIf="selectedSegment == 'DSD'">
+  <ion-col class="DSD-page" *ngIf="selectedSegment === 'DSD'">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <ion-item>
+        <ion-item *ngIf="showSelect">
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select multiple="true" interface="popover">
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          <ion-select [(ngModel)]="selected_dc" multiple="true" interface="popover">
+            <ion-select-option *ngFor="let city of dropdownList" [value]="city.itemName">{{city.itemName}}</ion-select-option>
           </ion-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -81,7 +77,85 @@
         </ion-item>
       </ion-row>
     </ion-col>
-    <ion-col>
+
+    <table style="width: 100%;" class="borderSet">
+      <tr>
+          <td>
+              <table style="width: 100%;" class="borderSet" cellspacing="0" cellpadding="1">
+                  <tr class="Materhead">
+                      <th class="borderSet Materhead" style="width: 12.5%;">Route</th>
+                      <th class="borderSet Materhead" style="width: 12.5%;">Pln</th>
+                      <th class="borderSet Materhead" style="width: 12.5%;">Inv</th>
+                      <th class="borderSet Materhead" style="width: 5%;">%</th>
+                      <th class="borderSet Materhead" style="width: 8%;">OOR</th>
+                      <th class="borderSet Materhead" style="width: 12.5%;">Total</th>
+                      <th class="borderSet Materhead" style="width: 12.5%;">NotINV</th>
+                      <th class="borderSet Materhead" style="width: 14%;">Sale</th>
+                      <th class="borderSet Materhead" style="width: 14%;">PPED</th>
+                  </tr>
+              </table>
+          </td>
+      </tr>
+
+      <tr>
+          <td colspan="5">
+              <div style="height:100%; overflow:auto;">
+                  <table style="width: 100%;" *ngFor="let Master_row of ctrl.data; let i = index"
+                      class="borderSet" cellspacing="0" cellpadding="1">
+                      <tr class="borderSet" (click)="Show_Load_Detail(Master_row , i)">
+                          <td class="borderSet firstColumnMaster" style="width: 12.5%;">{{Master_row.Route}}
+                          </td>
+                          <td class="borderSet" style="width: 12.5%;">{{Master_row.Pln}}</td>
+                          <td class="borderSet" style="width: 12.5%;">{{Master_row.Inv}}</td>
+                          <td class="borderSet" style="width: 5%;">{{Master_row.Per}}</td>
+                          <td class="borderSet" style="width: 8%;">{{Master_row.OOR}}</td>
+                          <td class="borderSet" style="width: 12.5%;">{{Master_row.Total}}</td>
+                          <td class="borderSet" style="width: 12.5%;">{{Master_row.NotINV}}</td>
+                          <td class="borderSet" style="width: 14%;">{{Master_row.Sale}}</td>
+                          <td class="borderSet" style="width: 14%;">{{Master_row.PPED}}</td>
+                      </tr>
+                      <tr id="{{Master_row.Route}}_Detail" *ngIf="isVisible==i">
+                          <td colspan="9">
+                              <table style="width: 100%;" class="borderSet">
+                                  <tr>
+                                      <td>
+                                          <table style="width: 100%;" class="borderSet" cellspacing="0"
+                                              cellpadding="1">
+                                              <tr class="skuhead">
+                                                  <th class="borderSet skuhead" style="width: 50%;">Visitor
+                                                  </th>
+                                                  <th class="borderSet skuhead" style="width: 50%;">Driver
+                                                  </th>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <div style="height:auto; overflow:auto;">
+                                              <table style="width: 100%;" class="borderSet" cellspacing="0"
+                                                  cellpadding="1">
+                                                  <tr class="borderSet"
+                                                      *ngFor="let row of Load_Detail; let j = index">
+                                                      <td class="borderSet skuhead" style="width: 50%;">
+                                                          {{row.Id}}</td>
+                                                      <td class="borderSet" style="width: 50%;">{{row.Driver}}
+                                                      </td>
+                                                  </tr>
+                                              </table>
+                                          </div>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </td>
+                      </tr>
+                  </table>
+              </div>
+          </td>
+      </tr>
+  </table>
+
+    <!-- <ion-col>
       <table>
         <thead class="table-head">
           <tr class="table-head-content">
@@ -124,13 +198,10 @@
           </div>
           <tr class="medium-blue-bg">
             <td>
-              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
-
               <ion-icon
                 [ngClass]="{'icon-activate':!IsDCDDetailsShowing}"
                 name="chevron-down-outline"
               ></ion-icon>
-
               1103
             </td>
             <td></td>
@@ -195,23 +266,19 @@
           </tr>
         </tbody>
       </table>
-    </ion-col>
+    </ion-col> -->
   </ion-col>
 
   <!-- ----------------------------------------------------------------------------- -->
-  <ion-col *ngIf="selectedSegment == 'NON_DSD'" class="searchbar">
+  <ion-col *ngIf="selectedSegment === 'NON_DSD'" class="searchbar">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <ion-item>
+        <ion-item *ngIf="showSelect">
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select multiple="true" interface="popover">
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          <ion-select [(ngModel)]="selected_dcN" multiple="true" interface="popover">
+            <ion-select-option *ngFor="let city of dropdownListN" [value]="city.itemName">{{city.itemName}}</ion-select-option>
           </ion-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -219,7 +286,43 @@
         </ion-item>
       </ion-row>
     </ion-col>
-    <ion-col>
+
+    <ion-grid class="maingrid">
+      <div *ngFor="let row of virtual_rows2; let i = index" [ngClass]="{'firstrow': i==0}">
+          <ion-row>
+              <ng-container *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')">
+                  <ion-col *ngFor="let item of srsales2[row.index]; let j = index"
+                      [ngClass]="{'firstculomn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}">
+                      {{ item }}
+                  </ion-col>
+              </ng-container>
+          </ion-row>
+      </div>
+      <div style="overflow: scroll; height: 550px">
+          <div *ngFor="let row of virtual_rows2; let i = index" (click)="row_click2(row)">
+              <ion-row>
+                  <ng-container *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')">
+                      <ion-col *ngFor="let item of srsales2[row.index]; let j = index"
+                          [ngClass]="{'firstculomn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}">
+                          {{ item }}
+                      </ion-col>
+                  </ng-container>
+                  <ng-container *ngIf="row.show && row.type=='b'" style="scroll-behavior: auto">
+                      <ion-grid>
+                          <ion-row wrap *ngFor="let rows of selected_ch2[row.index]">
+                              <ion-col *ngFor="let item of rows"
+                                  style="border: 1px solid dodgerblue!important">
+                                  {{ item }}
+                              </ion-col>
+                          </ion-row>
+                      </ion-grid>
+                  </ng-container>
+              </ion-row>
+          </div>
+      </div>
+  </ion-grid>
+
+    <!-- <ion-col>
       <h2 class="table-title">Weight _ T</h2>
       <table class="NON_DSD-table">
         <tbody class="table-body table-body-content">
@@ -259,10 +362,7 @@
           </div>
           <tr class="dark-blue-bg">
             <td>
-              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
-
               <ion-icon name="chevron-down-outline"></ion-icon>
-
               Distributor
             </td>
             <td>4.59</td>
@@ -302,6 +402,6 @@
           </tr>
         </tbody>
       </table>
-    </ion-col>
+    </ion-col> -->
   </ion-col>
 </ion-content>
