@@ -16,6 +16,9 @@
 background: #46c2fc;
 }
 
+.evenCols{
+    background: #b9b9b922;
+}
 
 
 ion-toolbar ion-row{
@@ -104,7 +107,7 @@ ion-col.segment-change{
         border-bottom: 2px solid #0095EB ;
         ion-segment-button{
             --background-checked:#0095eb;
-            --indicator-color:#000;
+            --indicator-color:var(--ion-color-medium-contrast);
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
@@ -234,9 +237,8 @@ ion-col.DSD-page{
 }
 }
 // ---table
-table{
-    
 
+table{
     table-layout: fixed;
     width: 100%;
     margin: 0;
@@ -244,17 +246,14 @@ table{
     tr{
         cursor: pointer;
         z-index: 3;
-        :nth-child(1){
-            max-width: 100px;
-        }
-        :last-child{
-            max-width: 25px;                
-        }
+      
     }
     td{
-        white-space: nowrap;
         padding: 2px 0;
-        max-width: 100px;
+        max-width: 10vw;
+        &:nth-child(odd){
+            background: #f1f1f183;
+        }
 
     }
     .table-head{
@@ -262,31 +261,37 @@ table{
             font-weight: bold;
             color: #000;
             th{
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+                height: 7vh;
             }
             >:first-child{
                 color:#0095EB;
-                    min-height: 20px;
-                }
+                // min-height: 20px;
+            }
         
         }
     }
     .table-body{
        >tr{
-            >td{
-                font-size: 1.3rem;
-                color: #000;
-                text-align: center;
-                &:first-child{
-                    text-align: left;
-                    padding-left: 5px;            
+           >td{
+               font-size: 1.3rem;
+               color: #000;
+               text-align: center;
+               &:first-child{
+                   background: #e0e0e0b5;
+                   text-align: left;
+                   padding-left: 5px;            
                 }
+
             }
+           &>:first-child{
+                max-width: 1rem;
+           } 
         }
         
         ion-icon{
             font-size: 1.2rem;
-            padding-right: 4px;
+            padding:0 4px;
         }
         &-icon{
             background: #dddddd;
@@ -297,28 +302,39 @@ table{
 
     // ---------table-detail--------------
     .table-detail{
-        padding: 10px 0;
+        padding: 3vh 0;
+        height: 17vw;
+        background: var(--ion-color-medium-contrast);
+        // background: #fff;
         
         &>table{
             width: 89vw;
+            height: 10vh;
             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
             position: relative;
             left: 5vw;
         }
         thead{
             :first-child{
-                border-right:1px #0095eb4b solid ;
+                border-right:1px #0095eb24 solid ;
             }
         }
         th{
             color: #282828;
+            background: #45c9fa;
             min-width: 200px;
             font-size: 1.2rem;
+            height: 5vh;
         }
         tbody{
             text-align: center;
+            height: 5vh;
             :first-child{
                 color: #fff;
+                background: #0094ea;
+            }
+            td{
+                height: 5vh;
             }
 
         }
