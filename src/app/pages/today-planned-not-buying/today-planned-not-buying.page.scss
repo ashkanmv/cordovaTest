@@ -1,17 +1,9 @@
-.dark-blue-bg{
-    background: #9ac2daa9;
+.oddRowsDetails{
+    background: #b8e2fa;
 }
-.medium-blue-bg{
-    background: #6ab9eb8b;
-}
-.light-blue-bg{
-    background: #b6e3ffa9;
-}
-.white-bg{
-    background: #fff;
-}
-.blue-bg{
-background: #46c2fc;
+.box-shadow{
+    box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+
 }
 
 ion-toolbar ion-row{
@@ -125,7 +117,6 @@ ion-col{
             align-items: center;
             // padding: 1rem 2rem 1rem 0 ;
             // padding-right: 2rem;
-            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
 
             img{
                 max-height: 100%;
@@ -157,22 +148,26 @@ ion-col{
 }
 
 // search
-ion-col{
-    ion-row.search-container{
+    .search-container{
         // margin-bottom: 3rem;
-        ion-item.search-box{
+        .search-box{
             width: 88%;
-            height: 20vh;
+            height: 30vh;
             border: 1px solid #6b6b6b;
             border-radius: 10px;
             display: flex;
-            ion-item{
-                background: none;
-                --border-style:none;
-                --inner-border-width: 0;
-                border-bottom: none;
+            
+            ion-row.search-box-outer{
+               
+                ion-select{
+                    width: 100%;
+                    height: 100%;
+                }
+                // --border-style:none;
+                // --inner-border-width: 0;
+                // border-bottom: none;
                 width: 100%;
-                --border: 0;
+                // --border: 0;
                 &.search-select-rating{
                     border: none;
                     ion-select{
@@ -198,22 +193,6 @@ ion-col{
                 color: #fff;
                 z-index: 2;
             }
-            .search{
-                box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-                border: none;
-                width: 60vw;
-                height: 12vh;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                font-size: 1.3rem;
-                border-radius: 0 10px  10px 0;
-            }
-            input::-webkit-input-placeholder{
-                justify-self: center;
-                align-self: center;
-                color: #e5e5e5df;
-            }
             span{
                 position: relative;
                 // top: 1.5rem;
@@ -226,7 +205,78 @@ ion-col{
 
     }
 }
-}
+
+// // search
+// ion-col{
+//     ion-row.search-container{
+//         // margin-bottom: 3rem;
+//         ion-item.search-box{
+//             width: 88%;
+//             height: 20vh;
+//             border: 1px solid #6b6b6b;
+//             border-radius: 10px;
+//             display: flex;
+//             ion-item{
+//                 background: none;
+//                 --border-style:none;
+//                 --inner-border-width: 0;
+//                 border-bottom: none;
+//                 width: 100%;
+//                 --border: 0;
+//                 &.search-select-rating{
+//                     border: none;
+//                     ion-select{
+//                     width: 100%;
+//                     height: 100%;
+//                     .my-custom-interface{
+//                         background:red ;
+//                     }
+//                 }
+//             }    
+//             &.search-select-city{
+//                 --background: none;
+//                 ion-select{
+//                     width: 100%;
+//                     height: 100%;
+//                 }            }    
+//             .search-submit{
+//                 width: 10vw;
+//                 height: 12vh;
+//                 border-radius:  10px  0 0  10px ;
+//                 font-size: 2rem;
+//                 font-weight: bolder;
+//                 color: #fff;
+//                 z-index: 2;
+//             }
+//             .search{
+//                 box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+//                 border: none;
+//                 width: 60vw;
+//                 height: 12vh;
+//                 display: flex;
+//                 justify-content: space-around;
+//                 align-items: center;
+//                 font-size: 1.3rem;
+//                 border-radius: 0 10px  10px 0;
+//             }
+//             input::-webkit-input-placeholder{
+//                 justify-self: center;
+//                 align-self: center;
+//                 color: #e5e5e5df;
+//             }
+//             span{
+//                 position: relative;
+//                 // top: 1.5rem;
+//                 right: 2rem;
+//                 color: #e5e5e5df;
+//                 font-size: 1.3rem;
+//             }
+
+//         }
+
+//     }
+// }
+// }
 
 
 // ------------table------------------------
@@ -242,7 +292,7 @@ table{
        
     }
     td{
-        white-space: nowrap;
+        // white-space: nowrap;
         padding: 2px 0;
         max-width: 100px;
 
@@ -255,7 +305,8 @@ table{
                 font-size: 1.1rem;
             }
             >:first-child{
-                background: #dadada56;
+                // background: #dadada56;
+                background: #eeeff1;
                 color:#0095EB;
                 min-height: 20px;
             }
@@ -273,7 +324,7 @@ table{
     .table-body{
        >tr{
             >td{
-                font-size: 1.3rem;
+                font-size: 1.1rem;
                 color: #000;
                 text-align: center;
                 &:first-child{
@@ -281,6 +332,7 @@ table{
                     padding-left: 5px;            
                 }
             }
+            
             >:last-child{
                 background: #dcdcdc92;
             }
@@ -291,22 +343,26 @@ table{
             padding-right: 4px;
         }
         &-icon{
-            background: #dddddd;
+            background: #e0e0e0bf;
             align-items: center;
             justify-content: center;
         }
     }
     .table-detail{
+        background: var(--ion-color-light);
         .border{
             border-left: 2px #0095EB solid;
             margin-left: 1rem;
             padding: 1rem 0 0;
         &>table{
-
             width: 90vw;
             margin:0 1rem 1rem;
             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
             position: relative;
+            td{
+                white-space: nowrap;
+
+            }
             
             
             .line-1{
