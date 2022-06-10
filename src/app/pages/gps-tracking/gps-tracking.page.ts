@@ -226,7 +226,7 @@ export class GpsTrackingPage implements OnInit {
   }
 
   routeSelect() {
-    let selectedRoute = typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
+     let selectedRoute = '5500'; //typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
     this.mapService.getSrRoute(selectedRoute, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value))
       .subscribe(values => {
         if (values.length)
@@ -246,7 +246,7 @@ export class GpsTrackingPage implements OnInit {
   }
 
   initialShopPoint() {
-    let selectedRoute = typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
+    let selectedRoute = '5500'; //typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
     this.mapService.getShopPointByRouteName(selectedRoute, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value))
       .subscribe(shops => {
         if (!shops.length)
@@ -311,11 +311,11 @@ export class GpsTrackingPage implements OnInit {
   }
 
   initialTruck() {
-    if (!this.f.showTruck.value)
-      return
+    // if (!this.f.showTruck.value || !this.f.selectedRoute.value.routename)
+    //   return
 
     this.mapService.getVehicleByRouteTime(
-      this.f.selectedRoute.value.routename,
+      '5500',  // this.f.selectedRoute.value.routename,
       this.persianCalendarService.getTodayFormat(this.f.selectedDate.value),
       this.persianCalendarService.getTodayFormatEnd(this.f.selectedDate.value))
       .subscribe(res => {
@@ -344,10 +344,10 @@ export class GpsTrackingPage implements OnInit {
   }
 
   initialSr() {
-    if (!this.f.showSr.value && (!this.f.selectedRoute.value || !this.f.selectedRoute.value.routecode || !this.f.selectedSr.value))
-      return
+    // if (!this.f.showSr.value || (!this.f.selectedRoute.value || !this.f.selectedRoute.value.routecode || !this.f.selectedSr.value))
+    //   return
     this.mapService.getSrInfo(
-      this.f.selectedRoute.value.routecode,
+      5500, //this.f.selectedRoute.value.routecode,
       this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
       this.f.selectedSr.value.id).subscribe(res => {
         let srInfo = res[0];
@@ -360,7 +360,7 @@ export class GpsTrackingPage implements OnInit {
 
   getVPByRouteTimeUser(srInfo: GetSrInfoResponse) {
     this.mapService.getVPByRouteTimeUser(
-      this.f.selectedRoute.value.routecode,
+      '5500', // this.f.selectedRoute.value.routecode,
       this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
       this.persianCalendarService.getVPTodayFormatEnd(this.f.selectedDate.value),
       this.f.selectedSr.value.id)
