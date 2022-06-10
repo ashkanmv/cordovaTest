@@ -80,6 +80,14 @@
             "text_size":"Text Size",
             "bold_text":"Bold Text",
             "theme_color":"Theme Color"
+        },
+        "DatePicker":{
+            "confirm":"Done",
+            "reset":"cancel"
+        },
+        "Loading_Truck_Status":{
+            "Title":"Loading Truck Status",
+            "date_title":"Date"
         }
     },
     "FR": {

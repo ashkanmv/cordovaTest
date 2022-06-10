@@ -148,6 +148,10 @@ const routes: Routes = [
     path: 'daily-status',
     loadChildren: () => import('./pages/daily-status/daily-status.module').then( m => m.DailyStatusPageModule)
   },
+  {
+    path: 'loading-truck-status',
+    loadChildren: () => import('./pages/loading-truck-status/loading-truck-status.module').then( m => m.LoadingTruckStatusPageModule)
+  },
 
 ];
 

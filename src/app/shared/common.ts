@@ -1,4 +1,9 @@
-import { IconOptions, LatLngLiteral, LatLngTuple, PolylineOptions } from 'leaflet';
+import {
+  IconOptions,
+  LatLngLiteral,
+  LatLngTuple,
+  PolylineOptions,
+} from 'leaflet';
 
 export class Cities {
   City: string;
@@ -71,7 +76,7 @@ export interface GetSrRouteResponse {
 
 export interface GetVehicleByRouteTimeResponse {
   Latitude: number;
-  Longitude: number
+  Longitude: number;
   Speed: any;
   Temp: any;
   TruckNo: any;
@@ -322,6 +327,14 @@ export class Language {
     text_size: string;
     bold_text: string;
     theme_color: string;
+  };
+  DatePicker: {
+    confirm: string;
+    reset: string;
+  };
+  Loading_Truck_Status: {
+    Title: string;
+    date_title: string;
   };
 }
 
