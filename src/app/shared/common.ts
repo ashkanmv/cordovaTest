@@ -1,4 +1,9 @@
-import { IconOptions, LatLngLiteral, LatLngTuple, PolylineOptions } from 'leaflet';
+import {
+  IconOptions,
+  LatLngLiteral,
+  LatLngTuple,
+  PolylineOptions,
+} from 'leaflet';
 
 export class Cities {
   City: string;
@@ -61,8 +66,8 @@ export interface Marker {
 }
 
 export interface Polyline {
-  latLng : LatLngTuple[];
-  options : PolylineOptions;
+  latLng: LatLngTuple[];
+  options: PolylineOptions;
 }
 export interface GetSrRouteResponse {
   routecode: string;
@@ -70,12 +75,12 @@ export interface GetSrRouteResponse {
 }
 
 export interface GetVehicleByRouteTimeResponse {
-  Latitude : number;
-  Longitude : number
-  Speed : any;
-  Temp : any;
-  TruckNo : any;
-  DateTime : any;
+  Latitude: number;
+  Longitude: number;
+  Speed: any;
+  Temp: any;
+  TruckNo: any;
+  DateTime: any;
 }
 
 export interface GetSrInfoResponse {
@@ -101,30 +106,30 @@ export interface GetSrInfoResponse {
 }
 
 export interface getVPByRouteResponse {
-    id: string;
-    lat: number;
-    lng: number;
-    user_id: string;
-    route_name: string;
-    visitor_code: string;
-    provider: string;
-    time: string;
-    accuracy: number;
-    speed: number;
-    altitude: number;
-    bearing?: any;
-    location_provider: number;
-    uuid: string;
-    status: string;
-    Create_At_Sys: Date;
-    create_at: Date;
-    Dim_Id: string;
-    FromDate: Date;
-    ToDate: Date;
-    mod_cd: Date;
-    UserID: string;
-    RouteCode: string;
-    BrokerID: string;
+  id: string;
+  lat: number;
+  lng: number;
+  user_id: string;
+  route_name: string;
+  visitor_code: string;
+  provider: string;
+  time: string;
+  accuracy: number;
+  speed: number;
+  altitude: number;
+  bearing?: any;
+  location_provider: number;
+  uuid: string;
+  status: string;
+  Create_At_Sys: Date;
+  create_at: Date;
+  Dim_Id: string;
+  FromDate: Date;
+  ToDate: Date;
+  mod_cd: Date;
+  UserID: string;
+  RouteCode: string;
+  BrokerID: string;
 }
 export interface LoginResponse {
   route_name: string;
@@ -291,5 +296,13 @@ export class Language {
     text_size: string;
     bold_text: string;
     theme_color: string;
+  };
+  DatePicker: {
+    confirm: string;
+    reset: string;
+  };
+  Loading_Truck_Status: {
+    Title: string;
+    date_title: string;
   };
 }
