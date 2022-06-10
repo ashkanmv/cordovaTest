@@ -6,6 +6,7 @@ import { LatLngLiteral, LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import {
+  CommonUtility,
   GetSrInfoResponse,
   GetSrRouteResponse,
   getUserCildrenResponse,
@@ -24,6 +25,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./gps-tracking.page.scss'],
 })
 export class GpsTrackingPage implements OnInit {
+  CommonUtility = CommonUtility;
   showMap = false;
   show = false;
   form: FormGroup;
@@ -53,14 +55,14 @@ export class GpsTrackingPage implements OnInit {
     private mapService: MapService,
     private loadingCtrl: LoadingController
   ) {
-    this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
-      (initialized: boolean) => {
-        if (initialized && this.f.selectedRoute.value) {
-          this.initialSr();
-          this.initialShopPoint();
-        }
-      }
-    );
+    // this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
+    //   (initialized: boolean) => {
+    //     if (initialized && this.f.selectedRoute.value) {
+    //       this.initialSr();
+    //       this.initialShopPoint();
+    //     }
+    //   }
+    // );
   }
 
   ngOnInit() {
@@ -75,7 +77,8 @@ export class GpsTrackingPage implements OnInit {
   ionViewWillLeave() {
     this.showMap = false;
     // this.routeSelectSub.unsubscribe();
-    this.mapInitSubscription.unsubscribe();
+    if (this.mapInitSubscription)
+      this.mapInitSubscription.unsubscribe();
   }
 
   init() {
@@ -233,7 +236,8 @@ export class GpsTrackingPage implements OnInit {
   }
 
   routeSelect() {
-     let selectedRoute = '5500'; //typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
+    this.custCodes = [];
+    let selectedRoute = '5500'; //typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
     this.mapService.getSrRoute(selectedRoute, this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value))
       .subscribe(values => {
         if (values.length)
@@ -266,8 +270,8 @@ export class GpsTrackingPage implements OnInit {
       .subscribe(shops => {
         if (!shops.length)
           return
-
-        this.afterInitialShopPoint(shops);
+        shops.forEach(shop => this.custCodes.push(shop.CustCode, 10));
+        this.invoicedF(shops);
       });
   }
 
@@ -280,36 +284,70 @@ export class GpsTrackingPage implements OnInit {
         lng: +shop.PointLongitude,
         zoom: 13,
       };
-      this.custCodes.push(parseInt(shop.CustCode, 10));
-      let marker: Marker = {
+      this.custCodes.push(shop.CustCode, 10);
+      markers.push({
         latitude: +shop.PointLatitude,
         longitude: +shop.PointLongitude,
         icon: this.selectIcon('red'),
         customerCode: +shop.CustCode,
-        description: `<div style="direction:rtl;overflow: hidden"">
-          <h1> ${shop.custName} </h1>
-          <div>
-          <p>Code : ${shop.CustCode} </p>
-            <p>Customer type : ${shop.CustTYPE} </p>
-            <p>Tel : ${shop.Tel} </p>
-            <p>Visitor : ${shop.Visitor} </p>
-            <p>Address : ${shop.ADDRESS} </p>
-          </div>
-          <table>
-            <tr class="ion-align-self-center">
-              <td style="width:40%;" ><img src="assets/mainPage/main/Customer-History.png" id="chBtn" catched="0"
-                  customer="'${shop.CustCode}'"><br>Customer<br>History</td>
-              <td style="width: 20%;"></td>
-              <td style="width: 40%;"><img src="assets/mainPage/main/Questionnaire.png" id="quBtn" catched="0"
-                  customer="'+ ${shop.CustCode}'"><br>Customer<br>Questionnaire</td>
-            </tr>
-          </table>
-        </div>`,
-      };
-      markers.push(marker);
+        description: this.markerDescription('shopPoint', shop)
+      });
     });
-    this.markers = markers;
+    this.markers = [...this.markers, ...markers];
     if (flyTo) this.mapView = flyTo;
+    this.invoicedF(shops);
+  }
+
+  invoicedF(shops: Shop[]) {
+    if (!this.custCodes.length)
+      return
+
+    let markers: Marker[] = [];
+    this.mapService.getInvoiced(this.custCodes.join(","), this.CommonUtility.getInvoicedDate(this.f.selectedDate.value))
+      .subscribe(invoicedRes => {
+        if (!invoicedRes.length)
+          return
+
+        invoicedRes.forEach(invoice => {
+          this.custCodes.forEach(custCode => {
+            if (custCode != invoice.CustCode)
+              return
+
+            let index = shops.findIndex(x => x.CustCode == invoice.CustCode);
+            if (index < 0)
+              return
+            let cust_code_index = this.custCodes.indexOf(invoice.CustCode);
+            this.custCodes.splice(cust_code_index, 1);
+            markers.push({
+              latitude: +shops[index].PointLatitude,
+              longitude: +shops[index].PointLongitude,
+              icon: this.selectIcon('blue'),
+              customerCode: +shops[index].CustCode,
+              description: this.markerDescription('invoicedF', invoice)
+            });
+            shops.splice(index, 1);
+          });
+        });
+
+        let flyTo: MapView;
+        shops.forEach((shop) => {
+          flyTo = {
+            lat: +shop.PointLatitude,
+            lng: +shop.PointLongitude,
+            zoom: 13,
+          };
+          // this.custCodes.push(shop.CustCode, 10);
+          markers.push({
+            latitude: +shop.PointLatitude,
+            longitude: +shop.PointLongitude,
+            icon: this.selectIcon('red'),
+            customerCode: +shop.CustCode,
+            description: this.markerDescription('shopPoint', shop)
+          });
+        });
+        this.markers = [...this.markers, ...markers];
+        if (flyTo) this.mapView = flyTo;
+      })
   }
 
   selectIcon(key: 'orange' | 'red' | 'blue') {
@@ -345,17 +383,17 @@ export class GpsTrackingPage implements OnInit {
       truck_points.push([point.Latitude, point.Longitude])
     );
 
-    this.polylines.push({
+    this.polylines = [...this.polylines, {
       latLng: truck_points,
       options: this.mapService.TruckPolylineOption,
-    });
+    }];
     let lastTruckPoint = truckPoints[truckPoints.length - 1];
-    this.markers.push({
+    this.markers = [...this.markers, {
       latitude: lastTruckPoint.Latitude,
       longitude: lastTruckPoint.Longitude,
       description: this.markerDescription('truck', lastTruckPoint),
       icon: this.mapService.TruckIcon,
-    });
+    }];
   }
 
   initialSr() {
@@ -385,20 +423,20 @@ export class GpsTrackingPage implements OnInit {
         let sr_points: LatLngTuple[] = [];
         res.forEach((srPoint) => sr_points.push([srPoint.lat, srPoint.lng]));
 
-        this.polylines.push({
+        this.polylines = [...this.polylines, {
           latLng: sr_points,
           options: this.mapService.SalesManPolylineOption,
-        });
-        this.markers.push({
+        }];
+        this.markers = [...this.markers, {
           latitude: sr_points[sr_points.length - 1][0],
           longitude: sr_points[sr_points.length - 1][1],
           icon: this.mapService.SalesManIcon,
           description: this.markerDescription('salesman', srInfo),
-        });
+        }];
       });
   }
 
-  markerDescription(key: 'salesman' | 'truck', info: any) {
+  markerDescription(key: 'salesman' | 'truck' | 'shopPoint' | 'invoicedF', info: any) {
     switch (key) {
       case 'salesman':
         return `
@@ -429,6 +467,48 @@ export class GpsTrackingPage implements OnInit {
           </div>
         </div>
         `;
+
+      case 'shopPoint':
+        return `
+      <div style="direction:rtl;overflow: hidden"">
+        <h1> ${info.custName} </h1>
+        <div>
+        <p>Code : ${info.CustCode} </p>
+          <p>Customer type : ${info.CustTYPE} </p>
+          <p>Tel : ${info.Tel} </p>
+          <p>Visitor : ${info.Visitor} </p>
+          <p>Address : ${info.ADDRESS} </p>
+        </div>
+        <table>
+          <tr class="ion-align-self-center">
+            <td style="width:40%;" ><img src="assets/mainPage/main/Customer-History.png" id="chBtn" catched="0"
+                customer="'${info.CustCode}'"><br>Customer<br>History</td>
+            <td style="width: 20%;"></td>
+            <td style="width: 40%;"><img src="assets/mainPage/main/Questionnaire.png" id="quBtn" catched="0"
+                customer="'+ ${info.CustCode}'"><br>Customer<br>Questionnaire</td>
+          </tr>
+        </table>
+      </div>`;
+
+      case 'invoicedF':
+        return `
+        <div style="direction:rtl">
+          <div> 
+            <p>DocNo : ${info.DocNo} </p>
+            <p>Date : ${info.Date} </p>
+            <p>Name : ${info.Name}   ${info.GranteeName} </p>
+            <p>Code : ${info.CustCode} </p>
+            <p>SaleKG : ${info.SaleKG} </p>
+            <p>Tel : ${info.Tel} </p>
+            <p>Street : ${info.Street} </p>
+          </div>
+            <table>
+              <tr align=center><td width=40%><img src="assets/mainPage/main/Customer-History.png" id="chBtn" catched="0" 
+                  customer=" ${info.CustCode} "><br>Customer<br>History</td>
+              <td width=20%></td><td width=40%><img src="assets/mainPage/main/Questionnaire.png" id="quBtn" catched="0" 
+                  customer=" ${info.CustCode} "><br>Customer<br>Questionnaire</td></tr>
+            </table>
+        </div>`;
     }
   }
 

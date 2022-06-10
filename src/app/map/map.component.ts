@@ -30,8 +30,8 @@ export class MapComponent implements OnInit {
   @Input() set markers(v: Marker[]) { if (v?.length) this.setMarkers(v); }
   private _polylines: Polyline[];
   public get polylines(): Polyline[] { return this._polylines; }
-  @Input() set polylines(v: Polyline[]) {
-    if (v) this.setPolyline(v);
+  @Input() set polylines(v: Polyline[]) {    
+    if (v.length) this.setPolyline(v);
   }
 
   @Input() set mapView(v: MapView) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, getVPByRouteResponse, Shop } from '../shared/common';
+import { GetInvoicedResponse, GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, getVPByRouteResponse, Shop } from '../shared/common';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IconOptions, PolylineOptions } from 'leaflet';
 
@@ -135,7 +135,7 @@ export class MapService {
     let params = new HttpParams();
     params = params.append('cust_codes', cust_codes);
     params = params.append('date', selected_date);
-    return this.http.get(this.invoicedUrl, { params });
+    return this.http.get<GetInvoicedResponse[]>(this.invoicedUrl, { params });
   }
 
   getOutOfPlan(inv_code: number, selected_date: string) {
