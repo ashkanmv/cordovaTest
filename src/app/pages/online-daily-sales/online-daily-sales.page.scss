@@ -1,5 +1,13 @@
 // table detail lines
 
+.detailDarkBg{
+    background: #bcbcbc;
+}
+
+.detailLightBg{
+    background: #b8e2fa;
+}
+
 
 
 ion-toolbar ion-row{
@@ -218,13 +226,15 @@ ion-col.DSD-page{
 }
 }
 // DSD----------------------
-table.borderSet-container{
-    width: 100%;
-
-    overflow: auto;
-    table-layout: fixed;
+.borderSet-container{
+    width:160vw;
+    height: 50vh;
+    
+    overflow-x: scroll;
     table.borderSet-header{
-        width: 100%;
+        table-layout: fixed;
+        width: 180vw;
+        // width: 100%;
         th{
             font-size: 1.5rem;
             width: 10vw;
@@ -237,11 +247,53 @@ table.borderSet-container{
     table.borderSet-body{
         width: 100%;
         tr{
-            td{
-                width: 10vw;
+            td.borderSet-detail{
+                width: 10vw;   
                 text-align: center;
                 font-size: 1.2rem;
-                padding: .8rem 0;
+                padding: .5rem 0;
+            }
+        }
+        td.detailsContainer{
+            height: 20vh;
+            &>table{
+                height: 10vh;
+                width: 50%;
+                margin-left: 5vw;
+                display: grid;
+                box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
+
+                // grid-template-rows: 1fr 1fr;
+                justify-content: space-around;
+              tr.skuhead{
+                width: 90vw;
+                &.header{
+                    background: var(--ion-color-secondary-tint);
+                    padding: .5rem 0;
+
+                }
+                tr{
+                    font-size: 1.3rem;
+                    width: 90vw;
+                   display: flex;
+
+                }
+              }
+            }
+            table.borderSet-detailsContainer{
+                text-align: center;
+                // font-size: 1.4rem;
+                
+                td.visitor{
+                    width: 50%;
+                    padding: .5rem 0;
+                    
+                }
+                td.driver{
+                    width: 50%;
+                    background: var(--ion-color-light);
+                    padding: .5rem 0;
+                }
             }
         }
     }
@@ -271,8 +323,12 @@ ion-grid.maingrid{
         padding: 0;
         margin: 1rem 2rem ;
         &>ion-row{
-            padding: 1.8rem 0;
+            // padding: 1.8rem 0;
+            height: 8vh;
             ion-col.detail{
+                display: flex;
+                text-align: center;
+                justify-content: center;
                 &>:last-child{
                     background: #0095EB;
                 }
@@ -281,15 +337,7 @@ ion-grid.maingrid{
     }
 }
 
-.red{
-    background: red;
-}
-.green{
-    background: green;
-}
-.blue{
-    background: blue;
-}
+
 
 
 // -----------------

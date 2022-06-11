@@ -114,50 +114,52 @@
               class="borderSet-body"
             >
               <tr class="borderSet" (click)="Show_Load_Detail(Master_row , i)">
-                <td class="borderSet firstColumnMaster">
+                <td class="borderSet-detail firstColumnMaster">
                   <ion-icon name="chevron-down-outline"></ion-icon>
                   {{Master_row.Route}}
                 </td>
-                <td class="borderSet">{{Master_row.Pln}}</td>
-                <td class="borderSet">{{Master_row.Inv}}</td>
-                <td class="borderSet">{{Master_row.Per}}</td>
-                <td class="borderSet">{{Master_row.OOR}}</td>
-                <td class="borderSet">{{Master_row.Total}}</td>
-                <td class="borderSet">{{Master_row.NotINV}}</td>
-                <td class="borderSet">{{Master_row.Sale}}</td>
-                <td class="borderSet">{{Master_row.PPED}}</td>
+                <td class="borderSet-detail">{{Master_row.Pln}}</td>
+                <td class="borderSet-detail">{{Master_row.Inv}}</td>
+                <td class="borderSet-detail">{{Master_row.Per}}</td>
+                <td class="borderSet-detail">{{Master_row.OOR}}</td>
+                <td class="borderSet-detail">{{Master_row.Total}}</td>
+                <td class="borderSet-detail">{{Master_row.NotINV}}</td>
+                <td class="borderSet-detail">{{Master_row.Sale}}</td>
+                <td class="borderSet-detail">{{Master_row.PPED}}</td>
               </tr>
               <tr id="{{Master_row.Route}}_Detail" *ngIf="isVisible==i">
-                <td colspan="9">
+                <td colspan="9" class="detailsContainer">
                   <table class="borderSet">
-                    <tr>
+                    <tr class="skuhead header">
                       <td>
                         <table
                           class="borderSet"
                           cellspacing="0"
                           cellpadding="1"
                         >
-                          <tr class="skuhead">
-                            <th class="borderSet skuhead">Visitor</th>
+                          <tr class="ion-justify-content-around">
+                            <th class="borderSet">Visitor</th>
                             <th class="borderSet skuhead">Driver</th>
                           </tr>
                         </table>
                       </td>
                     </tr>
-                    <tr>
+                    <tr class="skuhead body">
                       <td>
                         <div>
                           <table
-                            class="borderSet"
+                            class="borderSet-detailsContainer"
                             cellspacing="0"
                             cellpadding="1"
                           >
                             <tr
-                              class="borderSet"
+                              class="borderSet ion-justify-content-around"
                               *ngFor="let row of Load_Detail; let j = index"
                             >
-                              <td class="borderSet skuhead">{{row.Id}}</td>
-                              <td class="borderSet">{{row.Driver}}</td>
+                              <td class="visitor primary-bg white-text">
+                                {{row.Id}}
+                              </td>
+                              <td class="driver">{{row.Driver}}</td>
                             </tr>
                           </table>
                         </div>
@@ -242,7 +244,11 @@
                   *ngFor="let rows of selected_ch2[row.index]; let i =index; "
                   [ngClass]="{'oddRows': 0 === i % 2}"
                 >
-                  <ion-col class="detail" *ngFor="let item of rows">
+                  <ion-col
+                    class="detail ion-align-items-center"
+                    *ngFor="let item of rows"
+                    [ngClass]="{'detailDarkBg': tableDetails(item) && 0 === i % 2}"
+                  >
                     {{ item }}
                   </ion-col>
                 </ion-row>

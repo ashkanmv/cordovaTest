@@ -248,10 +248,9 @@ export class OnlineDailySalesPage implements OnInit {
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }
-  toggleDtails() {
-    this.IsDetailsShowing = !this.IsDetailsShowing;
-  }
-  toggleDtailsDCD() {
-    this.IsDCDDetailsShowing = !this.IsDCDDetailsShowing;
+
+  tableDetails(item) {
+    console.log(item);
+    return typeof item == 'number' ? true : false;
   }
 }
