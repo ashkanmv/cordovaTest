@@ -24,57 +24,60 @@ export class OnlineDailySalesPage implements OnInit {
   showSelect = false;
   ctrl: any = {};
   srsales1 = [];
-  virtual_rows1 = []
+  virtual_rows1 = [];
   user_list = [];
   srsales2 = [];
   virtual_rows2 = [];
   selected_ch2 = [];
   isVisible = undefined;
-  Load_Detail = [{
-    Id: '',
-    Driver: '',
-  }];
+  Load_Detail = [
+    {
+      Id: '',
+      Driver: '',
+    },
+  ];
 
   constructor(
     private router: Router,
     private loadingCtrl: LoadingController,
     private storageSevice: StorageService,
     private srSalesService: SrSaleService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.selected_dcN = []
+    this.selected_dcN = [];
     this.today = new Date(this.today.setDate(this.today.getDate() - 2));
-    this.loadingCtrl.create({
-      message: 'Please wait...'
-    }).then(loadingEl => {
-      this.storageSevice.get('user_id').then(userId => {
-        if (userId) {
-          this.userId = userId
-          this.srSalesService.getUserDc(userId).subscribe(cities => {
-            cities.forEach((city, index) => {
-              this.selected_dcN.push(city.City);
-              this.dropdownListN.push({ "id": index, "itemName": city.City });
-              this.selected_dc.push(city.City);
-              this.dropdownList.push({ "id": index, "itemName": city.City });
-            })
-            this.showSelect = true;
-            loadingEl.dismiss();
-            this.getSrSalesUsersNDSD();
-            this.getSrSalesUsers();
-          })
-        }
+    this.loadingCtrl
+      .create({
+        message: 'Please wait...',
       })
-    })
+      .then((loadingEl) => {
+        this.storageSevice.get('user_id').then((userId) => {
+          if (userId) {
+            this.userId = userId;
+            this.srSalesService.getUserDc(userId).subscribe((cities) => {
+              cities.forEach((city, index) => {
+                this.selected_dcN.push(city.City);
+                this.dropdownListN.push({ id: index, itemName: city.City });
+                this.selected_dc.push(city.City);
+                this.dropdownList.push({ id: index, itemName: city.City });
+              });
+              this.showSelect = true;
+              loadingEl.dismiss();
+              this.getSrSalesUsersNDSD();
+              this.getSrSalesUsers();
+            });
+          }
+        });
+      });
   }
 
   getSrSalesUsersNDSD() {
-
-    this.srSalesService.getSrSalesUsersNDSD(this.selected_dcN.join(), this.today.toISOString())
+    this.srSalesService
+      .getSrSalesUsersNDSD(this.selected_dcN.join(), this.today.toISOString())
       .subscribe((res: Data[]) => {
-        if (res.length)
-          this.createTotalNonDsdModal(res)
-      })
+        if (res.length) this.createTotalNonDsdModal(res);
+      });
   }
 
   async getSrSalesUsers() {
@@ -82,17 +85,21 @@ export class OnlineDailySalesPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.srSalesService.getSrSalesUsers(this.userId, this.selected_dc.join(), this.today.toISOString())
-      .subscribe(res => {
-        if (res.length)
-          this.createDsdModal(res);
+    this.srSalesService
+      .getSrSalesUsers(
+        this.userId,
+        this.selected_dc.join(),
+        this.today.toISOString()
+      )
+      .subscribe((res) => {
+        if (res.length) this.createDsdModal(res);
         loading.dismiss();
-      })
+      });
   }
 
   createDsdModal(model: getSrSalesUsersResponse[]) {
     var changeObjKey = [];
-    model.forEach(element => {
+    model.forEach((element) => {
       changeObjKey.push({
         Route: element.Route,
         Visitor: element.Visitor,
@@ -104,8 +111,8 @@ export class OnlineDailySalesPage implements OnInit {
         Total: element.Total,
         NotINV: element.NotINV,
         Sale: element.Sale,
-        PPED: element.PPED
-      })
+        PPED: element.PPED,
+      });
     });
     this.ctrl.data = changeObjKey;
     this.srsales1 = [];
@@ -116,15 +123,15 @@ export class OnlineDailySalesPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srsales1.push(keys);
     this.virtual_rows1.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      this.user_list.push(Object.keys(ch).map(key => ch[key]));
-      let temp = Object.keys(ch).map(key => ch[key]);
+      this.user_list.push(Object.keys(ch).map((key) => ch[key]));
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
           temp[j] = temp[j];
@@ -134,15 +141,15 @@ export class OnlineDailySalesPage implements OnInit {
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row2);
       temp.splice(1, 2);
@@ -157,32 +164,31 @@ export class OnlineDailySalesPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srsales2.push(keys);
     this.virtual_rows2.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      let temp = Object.keys(ch).map(key => ch[key]);
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
-        if (temp[j] != null)
-          temp[j] = temp[j];
+        if (temp[j] != null) temp[j] = temp[j];
       }
       this.srsales2.push(temp);
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.srsales2.push(temp);
       this.virtual_rows2.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows2.push(v_row2);
     }
@@ -193,7 +199,12 @@ export class OnlineDailySalesPage implements OnInit {
       this.isVisible = undefined;
       return;
     }
-    this.Load_Detail = [{ Id: row.Route + ' => ' + row.Visitor, Driver: " Driver : " + row.Driver }];
+    this.Load_Detail = [
+      {
+        Id: row.Route + ' => ' + row.Visitor,
+        Driver: ' Driver : ' + row.Driver,
+      },
+    ];
     this.isVisible = index;
   }
 
@@ -204,11 +215,15 @@ export class OnlineDailySalesPage implements OnInit {
       } else {
         this.virtual_rows2[row.index + 1].show = true;
       }
-      this.srSalesService.getSrSalesNDSDDetail(this.selected_dcN, this.today.toISOString(), this.srsales2[row.index][0])
-        .subscribe(
-          customer_histories => {
-            this.createNonDsdModal(customer_histories, row.index + 1);
-          });
+      this.srSalesService
+        .getSrSalesNDSDDetail(
+          this.selected_dcN,
+          this.today.toISOString(),
+          this.srsales2[row.index][0]
+        )
+        .subscribe((customer_histories) => {
+          this.createNonDsdModal(customer_histories, row.index + 1);
+        });
     }
   }
 
@@ -216,10 +231,10 @@ export class OnlineDailySalesPage implements OnInit {
     this.selected_ch2[index] = [];
     if (model[0]) {
       let keys = Object.keys(model[0]);
-      this.srsales2.push(keys)
+      this.srsales2.push(keys);
       for (var i = 0; i < model.length; i++) {
         let ch = model[i];
-        let temp = Object.keys(ch).map(key => ch[key]);
+        let temp = Object.keys(ch).map((key) => ch[key]);
         for (var j = 1; j < temp.length; j++) {
           if (temp[j] != null) {
             temp[j] = temp[j];

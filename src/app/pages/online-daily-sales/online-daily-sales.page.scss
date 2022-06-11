@@ -1,21 +1,5 @@
 // table detail lines
 
-.dark-blue-bg{
-    background: #9ac2daa9;
-}
-.medium-blue-bg{
-    background: #6ab9eb8b;
-}
-.light-blue-bg{
-    background: #b6e3ffa9;
-}
-.white-bg{
-    background: var(--ion-color-light);
-}
-.blue-bg{
-background: #46c2fc;
-}
-
 
 
 ion-toolbar ion-row{
@@ -233,217 +217,267 @@ ion-col.DSD-page{
     }
 }
 }
-// ---table
-table{
-
-    table-layout: fixed;
+// DSD----------------------
+table.borderSet-container{
     width: 100%;
-    margin: 0;
-    
-    tr{
-        cursor: pointer;
-        z-index: 3;
-        :nth-child(1){
-            max-width: 100px;
-        }
-        :last-child{
-            max-width: 25px;                
-        }
-    }
-    td{
-        white-space: nowrap;
-        padding: 2px 0;
-        max-width: 100px;
 
-    }
-    .table-head{
-        .table-head-content{
-            font-weight: bold;
-            color: var(--ion-color-dark);
-            th{
-                font-size: 1.1rem;
-            }
-            >:first-child{
-                color:#0095EB;
-                    min-height: 20px;
-                }
-        
-        }
-    }
-    .table-body{
-       >tr{
-            >td{
-                font-size: 1.3rem;
-                color: var(--ion-color-dark);
-                text-align: center;
-                &:first-child{
-                    text-align: left;
-                    padding-left: 5px;            
-                }
-            }
-        }
-        
-        ion-icon{
-            font-size: 1.2rem;
-            padding-right: 4px;
-        }
-        &-icon{
-            background: #dddddd;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
-    // ---------table-detail--------------
-    .table-detail{
-        padding: 10px 0;
-        
-        &>table{
-            width: 89vw;
-            box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-            position: relative;
-            left: 5vw;
-        }
-        thead{
-            :first-child{
-                border-right:1px #0095eb4b solid ;
-            }
-        }
+    overflow: auto;
+    table-layout: fixed;
+    table.borderSet-header{
+        width: 100%;
         th{
-            color: #282828;
-            min-width: 200px;
-            font-size: 1.2rem;
-        }
-        tbody{
-            text-align: center;
-            :first-child{
-                color: var(--ion-color-light);
+            font-size: 1.5rem;
+            width: 10vw;
+            padding: .8rem 0;
+            span{
+                color: var(--ion-color-primary);
             }
-
         }
-        .table-line-ver{
-            position: absolute;
-            top:75px;
-            left: 14px;
-            width: 2px;
-            height: 70px;
-        }
-        .table-line-horiz{
-            position: absolute;
-            top:135px;
-            left: 16px;
-            width:60px;
-            height: 2px;
-        }
-
     }
-
-    
-    
+    table.borderSet-body{
+        width: 100%;
+        tr{
+            td{
+                width: 10vw;
+                text-align: center;
+                font-size: 1.2rem;
+                padding: .8rem 0;
+            }
+        }
+    }
 }
 
-// NON_DSD TABLE
 
-.table-title{
-    text-align: right;
+
+
+// NON_DSD -----------------
+ion-grid.maingrid{
+    width: 100%;
+    font-size: 1.3rem;
+    text-align: center;
     color: var(--ion-color-dark);
-    font-size: 2rem;
-    margin-right: 15vw;
-
-}
-table.NON_DSD-table{
-    width: 100vw;
-    color:  var(--ion-color-dark);
-
-
-    td{
-        height: 2rem;
+    .firstrow{
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: .7rem 0;
     }
+    .firstculomn{
+        padding: .7rem 0;
+        background: #d7d8da58;
+    }
+    ion-grid.details{
+        box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
 
-
-
-
-
-    // -----------details
-    .NON_DSD-table-detail{
-        .border{
-            border-left: 2px #0095EB solid;
-            margin-left: 1rem;
-            padding: 1rem 0 0;
-        &>table{
-
-            width: 90vw;
-            margin:0 1rem 1rem;
-            box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-            position: relative;
-
-            .line-1{
-                background: #0095EB;
-                position: absolute;
-                top: 1.2rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
+        padding: 0;
+        margin: 1rem 2rem ;
+        &>ion-row{
+            padding: 1.8rem 0;
+            ion-col.detail{
+                &>:last-child{
+                    background: #0095EB;
+                }
             }
-            .line-2{
-                background:#0095EB;
-                position: absolute;
-                top: 4.8rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-3{
-                background: #0095EB;
-                position: absolute;
-                bottom: 1.1rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-
-        }
-
-        td{
-            height: 10vh;
-        }
-        tbody{
-            text-align: center;
         }
     }
 }
 
+.red{
+    background: red;
+}
+.green{
+    background: green;
+}
+.blue{
+    background: blue;
 }
 
 
+// -----------------
+// // ---table
+// table{
+
+//     table-layout: fixed;
+//     width: 100%;
+//     margin: 0;
+    
+//     tr{
+//         cursor: pointer;
+//         z-index: 3;
+//         :nth-child(1){
+//             max-width: 100px;
+//         }
+//         :last-child{
+//             max-width: 25px;                
+//         }
+//     }
+//     td{
+//         white-space: nowrap;
+//         padding: 2px 0;
+//         max-width: 100px;
+
+//     }
+//     .table-head{
+//         .table-head-content{
+//             font-weight: bold;
+//             color: var(--ion-color-dark);
+//             th{
+//                 font-size: 1.1rem;
+//             }
+//             >:first-child{
+//                 color:#0095EB;
+//                     min-height: 20px;
+//                 }
+        
+//         }
+//     }
+//     .table-body{
+//        >tr{
+//             >td{
+//                 font-size: 1.3rem;
+//                 color: var(--ion-color-dark);
+//                 text-align: center;
+//                 &:first-child{
+//                     text-align: left;
+//                     padding-left: 5px;            
+//                 }
+//             }
+//         }
+        
+//         ion-icon{
+//             font-size: 1.2rem;
+//             padding-right: 4px;
+//         }
+//         &-icon{
+//             background: #dddddd;
+//             align-items: center;
+//             justify-content: center;
+//         }
+//     }
+
+//     // ---------table-detail--------------
+//     .table-detail{
+//         padding: 10px 0;
+        
+//         &>table{
+//             width: 89vw;
+//             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+//             position: relative;
+//             left: 5vw;
+//         }
+//         thead{
+//             :first-child{
+//                 border-right:1px #0095eb4b solid ;
+//             }
+//         }
+//         th{
+//             color: #282828;
+//             min-width: 200px;
+//             font-size: 1.2rem;
+//         }
+//         tbody{
+//             text-align: center;
+//             :first-child{
+//                 color: var(--ion-color-light);
+//             }
+
+//         }
+//         .table-line-ver{
+//             position: absolute;
+//             top:75px;
+//             left: 14px;
+//             width: 2px;
+//             height: 70px;
+//         }
+//         .table-line-horiz{
+//             position: absolute;
+//             top:135px;
+//             left: 16px;
+//             width:60px;
+//             height: 2px;
+//         }
+
+//     }
+
+    
+    
+// }
+
+// // NON_DSD TABLE
+
+// .table-title{
+//     text-align: right;
+//     color: var(--ion-color-dark);
+//     font-size: 2rem;
+//     margin-right: 15vw;
+
+// }
+// table.NON_DSD-table{
+//     width: 100vw;
+//     color:  var(--ion-color-dark);
+
+
+//     td{
+//         height: 2rem;
+//     }
 
 
 
 
-   @media (min-width:992px) {
-       .search-box{
-           width: 60vw;
-           margin-left: 5vw;
-           span{
-               left: 50vw;
-               bottom: 24vh;
-               z-index: 2;
-           }
-       }
 
-       .table-detail{
-        &>table{
-            width: 65vw;
-        }
-       }
-       table.NON_DSD-table{
-           width: 72vw;
-           .NON_DSD-table-detail{
-               .border{
-            &>table{
-                width: 68vw;
-            }
-        }
-           }
-       }
-   }
+//     // -----------details
+//     .NON_DSD-table-detail{
+//         .border{
+//             border-left: 2px #0095EB solid;
+//             margin-left: 1rem;
+//             padding: 1rem 0 0;
+//         &>table{
+
+//             width: 90vw;
+//             margin:0 1rem 1rem;
+//             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+//             position: relative;
+
+//             .line-1{
+//                 background: #0095EB;
+//                 position: absolute;
+//                 top: 1.2rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+//             .line-2{
+//                 background:#0095EB;
+//                 position: absolute;
+//                 top: 4.8rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+//             .line-3{
+//                 background: #0095EB;
+//                 position: absolute;
+//                 bottom: 1.1rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+
+//         }
+
+//         td{
+//             height: 10vh;
+//         }
+//         tbody{
+//             text-align: center;
+//         }
+//     }
+// }
+
+// }
+
+
+
+
+
+
+   
