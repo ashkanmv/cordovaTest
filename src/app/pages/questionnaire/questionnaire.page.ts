@@ -13,6 +13,7 @@ import {
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
+import { UtilService } from 'src/app/shared/util.service';
 import { AnswerLogService } from './answer-log.service';
 import { QuestionnaireService } from './questionnaire.service';
 
@@ -48,17 +49,22 @@ export class QuestionnairePage implements OnInit {
     private loadingCtrl: LoadingController,
     private languageService: LanguageService,
     private answerLogService: AnswerLogService,
-    private persianCalendarService: PersianCalendarService
+    private persianCalendarService: PersianCalendarService,
+    private utilService: UtilService
   ) {
     let customerNumber = this.route.snapshot.queryParams['customerNumber'];
     if (customerNumber) this.open_OtherForm(customerNumber);
     else this.get_cities();
-    //
-
-    //
   }
-  //
-
+  // added lang anf get_lang to utili service
+  get_direction() {
+    let lang = this.utilService.get_lang();
+    if (lang == 'en') {
+      return 'ltr';
+    } else {
+      return 'rtl';
+    }
+  }
   //
 
   ngOnInit() {
