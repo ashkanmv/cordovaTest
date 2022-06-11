@@ -105,6 +105,20 @@ export interface GetSrInfoResponse {
   BrokerID: string;
 }
 
+export interface getSrSalesUsersResponse {
+  Route: string;
+  Visitor: string;
+  Driver: string;
+  Pln: number;
+  Inv: number;
+  '%': string;
+  OOR: number;
+  Total: number;
+  NotINV: number;
+  Sale: number;
+  PPED: number;
+}
+
 export interface getVPByRouteResponse {
   id: string;
   lat: number;
@@ -167,9 +181,25 @@ export interface getUserCildrenResponse {
   FullName: string;
 }
 
+export interface GetInvoicedResponse {
+  CustCode: number;
+  DocDate: string;
+  Date: string;
+  DocNo: string;
+  Name: string;
+  GranteeName: string;
+  Street: string;
+  Tel: string;
+  SaleKG: number;
+  InvCode: string;
+  PointLatitude: string;
+  PointLongitude: string;
+  IsPlan: boolean;
+}
+
 export interface Shop {
   City: string;
-  CustCode: string;
+  CustCode: number;
   PointLatitude: string;
   PointLongitude: string;
   custName: string;
@@ -184,6 +214,21 @@ export interface Shop {
   SixWeekPPED: number;
   MonthPromotion: number;
   Distance: number;
+}
+
+export interface VisitedNotBuyResponse {
+  City: string;
+  CustCode: number;
+  PointLatitude: string;
+  PointLongitude: string;
+  custName: string;
+  CustTYPE: string;
+  ADDRESS: string;
+  Tel: string;
+  routename: string;
+  RouteCode: string;
+  VisitorCode: string;
+  Visitor: string;
 }
 
 export interface Access {
@@ -305,4 +350,24 @@ export class Language {
     Title: string;
     date_title: string;
   };
+}
+
+
+export class CommonUtility {
+  static getInvoicedDate(selected_date: any) {
+    let year = selected_date.getFullYear().toString();
+    let month = selected_date.getMonth() + 1;
+    if (month < 10) {
+      month = '0' + (selected_date.getMonth() + 1).toString();
+    } else {
+      month = (selected_date.getMonth() + 1).toString();
+    }
+    let day = selected_date.getDate();
+    if (day < 10) {
+      day = '0' + selected_date.getDate().toString();
+    } else {
+      day = selected_date.getDate().toString();
+    }
+    return year + month + day;
+  }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, getVPByRouteResponse, Shop } from '../shared/common';
+import { GetInvoicedResponse, GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, getVPByRouteResponse, Shop, VisitedNotBuyResponse } from '../shared/common';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IconOptions, PolylineOptions } from 'leaflet';
 
@@ -62,6 +62,10 @@ export class MapService {
   }
   shop_red : IconOptions = {
     iconUrl: 'assets/icon/shop_red.png',
+    iconSize: [30, 30]
+  }
+  shop_red_black_circle : IconOptions = {
+    iconUrl: 'assets/icon/shop_red_black_circle.png',
     iconSize: [30, 30]
   }
   shop_blue : IconOptions = {
@@ -135,20 +139,20 @@ export class MapService {
     let params = new HttpParams();
     params = params.append('cust_codes', cust_codes);
     params = params.append('date', selected_date);
-    return this.http.get(this.invoicedUrl, { params });
+    return this.http.get<GetInvoicedResponse[]>(this.invoicedUrl, { params });
   }
 
   getOutOfPlan(inv_code: number, selected_date: string) {
     let params = new HttpParams();
     params = params.append('inv_code', inv_code);
     params = params.append('date', selected_date);
-    return this.http.get(this.invoicedUrl, { params });
+    return this.http.get<GetInvoicedResponse[]>(this.invoicedUrl, { params });
   }
   getVisit_NotBuy(routecode: number, selected_date: string) {
     let params = new HttpParams();
     params = params.append('routecode', routecode);
     params = params.append('date', selected_date);
-    return this.http.get(this.visitednotbuy, { params });
+    return this.http.get<VisitedNotBuyResponse[]>(this.visitednotbuy, { params });
   }
 
   getSrInfo(route_code: number, date: string, userId: string) {
