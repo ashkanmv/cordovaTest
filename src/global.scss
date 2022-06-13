@@ -72,6 +72,10 @@ ion-item{
   background: #b4dae7;
 }
 
+.icon-activated{
+  color: var(--ion-color-primary);
+  transform: rotate(180deg);
+}
 
 // 
 

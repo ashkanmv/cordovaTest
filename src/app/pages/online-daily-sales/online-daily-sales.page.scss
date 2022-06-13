@@ -226,80 +226,80 @@ ion-col.DSD-page{
 }
 }
 // DSD----------------------
-.borderSet-container{
-    width:160vw;
-    height: 50vh;
-    
-    overflow-x: scroll;
-    table.borderSet-header{
+ion-col.table-container{
+    display: inline-block;
+    overflow: scroll;
+    table.container-table{
+        width: 160vw;
         table-layout: fixed;
-        width: 180vw;
-        // width: 100%;
-        th{
-            font-size: 1.5rem;
-            width: 10vw;
-            padding: .8rem 0;
-            span{
-                color: var(--ion-color-primary);
-            }
-        }
-    }
-    table.borderSet-body{
-        width: 100%;
-        tr{
-            td.borderSet-detail{
-                width: 10vw;   
-                text-align: center;
-                font-size: 1.2rem;
-                padding: .5rem 0;
-            }
-        }
-        td.detailsContainer{
-            height: 20vh;
-            &>table{
+        table.borderSet-header{
+            table-layout: fixed;
+            width: 160vw;
+            th{
+                font-size: 1.5rem;
+                width: 9vw;
                 height: 10vh;
-                width: 50%;
-                margin-left: 5vw;
-                display: grid;
-                box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
-
-                // grid-template-rows: 1fr 1fr;
-                justify-content: space-around;
-              tr.skuhead{
-                width: 90vw;
-                &.header{
-                    background: var(--ion-color-secondary-tint);
-                    padding: .5rem 0;
-
+                span{
+                    color: var(--ion-color-primary);
                 }
-                tr{
-                    font-size: 1.3rem;
-                    width: 90vw;
-                   display: flex;
-
-                }
-              }
             }
-            table.borderSet-detailsContainer{
-                text-align: center;
-                // font-size: 1.4rem;
-                
-                td.visitor{
-                    width: 50%;
-                    padding: .5rem 0;
-                    
+        }
+        table.borderSet-body{
+            table-layout: fixed;
+            width: 100%;
+            tr{
+                td.borderSet-detail{
+                    width: 10vw;   
+                    text-align: center;
+                    font-size: 1.2rem;
+                    height: 6vh;
                 }
-                td.driver{
+            }
+            td.detailsContainer{
+                height: 20vh;
+                &>table{
+                    height: 10vh;
                     width: 50%;
-                    background: var(--ion-color-light);
-                    padding: .5rem 0;
+                    margin-left: 5vw;
+                    display: grid;
+                    box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
+
+                    // grid-template-rows: 1fr 1fr;
+                    justify-content: space-around;
+                tr.skuhead{
+                    width: 90vw;
+                    &.header{
+                        background: var(--ion-color-secondary-tint);
+                        padding: .5rem 0;
+
+                    }
+                    tr{
+                        font-size: 1.3rem;
+                        width: 90vw;
+                    display: flex;
+
+                    }
+                }
+                }
+                table.borderSet-detailsContainer{
+                    text-align: center;
+                    // font-size: 1.4rem;
+                    
+                    td.visitor{
+                        width: 50%;
+                        padding: .5rem 0;
+                        
+                    }
+                    td.driver{
+                        width: 50%;
+                        background: var(--ion-color-light);
+                        padding: .5rem 0;
+                    }
                 }
             }
         }
     }
 }
-
-
 
 
 // NON_DSD -----------------

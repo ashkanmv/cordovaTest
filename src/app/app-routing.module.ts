@@ -152,6 +152,10 @@ const routes: Routes = [
     path: 'loading-truck-status',
     loadChildren: () => import('./pages/loading-truck-status/loading-truck-status.module').then( m => m.LoadingTruckStatusPageModule)
   },
+  {
+    path: 'online-sales-hourly',
+    loadChildren: () => import('./pages/online-sales-hourly/online-sales-hourly.module').then( m => m.OnlineSalesHourlyPageModule)
+  },
 
 ];
 

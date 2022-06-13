@@ -186,9 +186,7 @@ ion-col{
     }
 // -------------table
 ion-col.table-container{
-    width:160vw;
-    height: 50vh;
-    
+    min-height: 30vh;
     overflow-x: scroll;
     table{
         table-layout: fixed;
