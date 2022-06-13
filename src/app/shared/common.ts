@@ -350,8 +350,12 @@ export class Language {
     Title: string;
     date_title: string;
   };
+  Online_Sales_Hourly: {
+    Title: string;
+    perKilo: String;
+    perInvoices: string;
+  };
 }
-
 
 export class CommonUtility {
   static getInvoicedDate(selected_date: any) {

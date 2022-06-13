@@ -1,9 +1,339 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>online-sales-hourly</ion-title>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row
+      class="primary-bg ion-justify-content-between header ion-no-margin"
+    >
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" routerLink="/main">
+          <ion-img
+            class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+
+      <ion-col size="8" class="ion-text-center ion-align-self-center">
+        <ion-title class="white-text">
+          <h3><b>{{language.Online_Sales_Hourly.Title}}</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col class="ion-align-self-center reload" size="1">
+        <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
+        </ion-img>
+      </ion-col>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img
+          class="wifi-online"
+          src="\assets\mainPage\main\wifi.png"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
+  <ion-grid class="secondary-bg white-text">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="3" class="ion-no-padding ion-text-start">
+        2022.04.02
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-center">
+        Saturday
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-end">
+        13 فروردین
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-col class="ion-no-padding segment-change">
+    <ion-segment
+      mode="md"
+      class="ion-justify-content-between"
+      (ionChange)="segmentChanged($event)"
+      value="per-kilo"
+    >
+      <ion-segment-button class="per-kilo" value="per-kilo">
+        <ion-label>{{language.Online_Sales_Hourly.perKilo}}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="per-invoices" value="per-invoices">
+        <ion-label>{{language.Online_Sales_Hourly.perInvoices}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-col>
 </ion-header>
-
+<!-- -------------------------------per-invoices----------------------------------------- -->
+<!-- -------------------------------per-invoices----------------------------------------- -->
+<!-- -------------------------------per-invoices----------------------------------------- -->
 <ion-content>
-
+  <ion-col
+    class="per-invoices-segment"
+    *ngIf="selectedSegment == 'per-invoices'"
+  >
+    <!-- --------------date_ picker -->
+    <ion-col>
+      <div class="date-picker-container">
+        <div class="date-picker-box">
+          <div id="open-modal-from" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>From Date</h4>
+              <div class="">
+                2021/03/01
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div id="open-modal-to" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>To Date</h4>
+              <div class="">
+                2022/11/29
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2021-03-01"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2022-11-29"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <!--  -->
+    </ion-col>
+    <!-- ------------------search_bar -->
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <ion-item>
+            <button class="search-submit primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <ion-select multiple="true" interface="popover">
+              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
+              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+              <ion-select-option value="rasht">RASHT</ion-select-option>
+              <ion-select-option value="tehran">TEHRAN</ion-select-option>
+              <ion-select-option value="karaj">KARAJ</ion-select-option>
+              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+            </ion-select>
+            <span class="search-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </span>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!-- -----------------------table -->
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <table>
+          <thead>
+            <th class="route"><span>Route</span></th>
+            <th>City</th>
+            <th>Visitor Name</th>
+            <th>Sale</th>
+            <th>PPED</th>
+            <th>%</th>
+          </thead>
+          <tbody
+            *ngFor="let data of routeData; let i = index"
+            [ngClass]="{'oddRows' : 0 === i % 2 }"
+          >
+            <tr (click)="toggleNestedTabelRow_1()">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon>{{data.route}}
+              </td>
+              <td>{{data.city}}</td>
+              <td>{{data.visitorName}}</td>
+              <td>{{data.sale}}</td>
+              <td>{{data.PPED}}</td>
+              <td>{{data.percentage}}</td>
+            </tr>
+            <div
+              *ngIf="nestedTableIsShowingRow_1"
+              class="nested-table-container"
+            >
+              <div class="border-right">
+                <table class="nested-table">
+                  <thead>
+                    <th>Customer Number</th>
+                    <th>Customer Name</th>
+                    <th>Cluster</th>
+                    <th>Sale</th>
+                    <th>PPED</th>
+                    <th>%</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                  <hr />
+                </table>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+  <!-- -------------------------------per-kilo----------------------------------------- -->
+  <!-- -------------------------------per-kilo----------------------------------------- -->
+  <!-- -------------------------------per-kilo----------------------------------------- -->
+  <ion-col class="per-kilo-segment" *ngIf="selectedSegment == 'per-kilo'">
+    <!-- --------------date_ picker -->
+    <ion-col>
+      <!--  -->
+      <div class="date-picker-container">
+        <div class="date-picker-box">
+          <div id="open-modal-from" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>From Date</h4>
+              <div class="">
+                2021/03/01
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div id="open-modal-to" class="date-picker">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div class="">
+              <h4>To Date</h4>
+              <div class="">
+                2022/11/29
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2021-03-01"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime
+            value="2022-11-29"
+            show-default-buttons="true"
+            presentation="date"
+          >
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <!--  -->
+    </ion-col>
+    <!-- ------------------search_bar -->
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <ion-item>
+            <button class="search-submit primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <ion-select multiple="true" interface="popover">
+              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
+              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+              <ion-select-option value="rasht">RASHT</ion-select-option>
+              <ion-select-option value="tehran">TEHRAN</ion-select-option>
+              <ion-select-option value="karaj">KARAJ</ion-select-option>
+              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+            </ion-select>
+            <span class="search-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </span>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!-- -----------------------table -->
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <table>
+          <thead>
+            <th class="route"><span>Customer Number</span></th>
+            <th>Cluster</th>
+            <th>Store Name</th>
+            <th>Sale</th>
+            <th>PPED</th>
+            <th>%</th>
+          </thead>
+          <tbody
+            *ngFor="let data of routeData; let i = index"
+            [ngClass]="{'oddRows' : 0 === i % 2 }"
+          >
+            <tr (click)="toggleNestedTabelRow_1()">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon>{{data.route}}
+              </td>
+              <td>{{data.city}}</td>
+              <td>{{data.visitorName}}</td>
+              <td>{{data.sale}}</td>
+              <td>{{data.PPED}}</td>
+              <td>{{data.percentage}}</td>
+            </tr>
+            <div
+              *ngIf="nestedTableIsShowingRow_1"
+              class="nested-table-container"
+            >
+              <div class="border-right">
+                <table class="nested-table">
+                  <thead>
+                    <th>Customer Number</th>
+                    <th>Customer Name</th>
+                    <th>Cluster</th>
+                    <th>Sale</th>
+                    <th>PPED</th>
+                    <th>%</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                  <hr />
+                </table>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-col>
 </ion-content>
+
+<!-- ----------------------- -->

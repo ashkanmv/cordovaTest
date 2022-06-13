@@ -88,6 +88,11 @@
         "Loading_Truck_Status":{
             "Title":"Loading Truck Status",
             "date_title":"Date"
+        },
+        "Online_Sales_Hourly":{
+            "Title": "Online Daily Sales Hourly",
+            "perKilo":"DSD HOURLY KILOGRAM",
+            "perInvoices":"DSD HOURLY INVOICES"
         }
     },
     "FR": {
