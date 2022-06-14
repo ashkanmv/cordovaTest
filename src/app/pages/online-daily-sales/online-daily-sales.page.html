@@ -62,14 +62,22 @@
 <!-- -------------------------------------------------------------------------------------------- -->
 <ion-content class="ion-no-padding ion-no-margin">
   <ion-col class="DSD-page" *ngIf="selectedSegment === 'DSD'">
-    <ion-col class="search-bar">
+    <ion-col class="search-bar ion-no-padding ion-no-margin">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item *ngIf="showSelect">
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select [(ngModel)]="selected_dc" multiple="true" interface="popover">
-            <ion-select-option *ngFor="let city of dropdownList" [value]="city.itemName">{{city.itemName}}</ion-select-option>
+          <ion-select
+            [(ngModel)]="selected_dc"
+            multiple="true"
+            interface="popover"
+          >
+            <ion-select-option
+              *ngFor="let city of dropdownList"
+              [value]="city.itemName"
+              >{{city.itemName}}</ion-select-option
+            >
           </ion-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -78,195 +86,98 @@
       </ion-row>
     </ion-col>
 
-    <table style="width: 100%;" class="borderSet">
-      <tr>
+    <ion-col class="table-container ion-no-padding ion-no-margin" size="12">
+      <table class="container-table">
+        <tr>
           <td>
-              <table style="width: 100%;" class="borderSet" cellspacing="0" cellpadding="1">
-                  <tr class="Materhead">
-                      <th class="borderSet Materhead" style="width: 12.5%;">Route</th>
-                      <th class="borderSet Materhead" style="width: 12.5%;">Pln</th>
-                      <th class="borderSet Materhead" style="width: 12.5%;">Inv</th>
-                      <th class="borderSet Materhead" style="width: 5%;">%</th>
-                      <th class="borderSet Materhead" style="width: 8%;">OOR</th>
-                      <th class="borderSet Materhead" style="width: 12.5%;">Total</th>
-                      <th class="borderSet Materhead" style="width: 12.5%;">NotINV</th>
-                      <th class="borderSet Materhead" style="width: 14%;">Sale</th>
-                      <th class="borderSet Materhead" style="width: 14%;">PPED</th>
-                  </tr>
+            <table class="borderSet-header">
+              <tr class="Materhead">
+                <th class="borderSet Materhead"><span> Route </span></th>
+                <th class="borderSet Materhead">Pln</th>
+                <th class="borderSet Materhead">Inv</th>
+                <th class="borderSet Materhead">%</th>
+                <th class="borderSet Materhead">OOR</th>
+                <th class="borderSet Materhead">Total</th>
+                <th class="borderSet Materhead">NotINV</th>
+                <th class="borderSet Materhead">Sale</th>
+                <th class="borderSet Materhead">PPED</th>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <table
+                *ngFor="let Master_row of ctrl.data; let i = index"
+                [ngClass]="{'oddRows': 1 === i % 2}"
+                class="borderSet-body"
+              >
+                <tr
+                  class="borderSet"
+                  (click)="Show_Load_Detail(Master_row , i)"
+                >
+                  <td class="borderSet-detail">
+                    <ion-icon name="chevron-down-outline"></ion-icon
+                    >{{Master_row.Route}}
+                  </td>
+                  <td class="borderSet-detail">{{Master_row.Pln}}</td>
+                  <td class="borderSet-detail">{{Master_row.Inv}}</td>
+                  <td class="borderSet-detail">{{Master_row.Per}}</td>
+                  <td class="borderSet-detail">{{Master_row.OOR}}</td>
+                  <td class="borderSet-detail">{{Master_row.Total}}</td>
+                  <td class="borderSet-detail">{{Master_row.NotINV}}</td>
+                  <td class="borderSet-detail">{{Master_row.Sale}}</td>
+                  <td class="borderSet-detail">{{Master_row.PPED}}</td>
+                </tr>
+                <tr id="{{Master_row.Route}}_Detail" *ngIf="isVisible==i">
+                  <td colspan="9" class="detailsContainer">
+                    <table class="borderSet">
+                      <tr class="skuhead header">
+                        <td>
+                          <table
+                            class="borderSet"
+                            cellspacing="0"
+                            cellpadding="1"
+                          >
+                            <tr class="ion-justify-content-around">
+                              <th class="borderSet">Visitor</th>
+                              <th class="borderSet skuhead">Driver</th>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr class="skuhead body">
+                        <td>
+                          <div>
+                            <table
+                              class="borderSet-detailsContainer"
+                              cellspacing="0"
+                              cellpadding="1"
+                            >
+                              <tr
+                                class="borderSet ion-justify-content-around"
+                                *ngFor="let row of Load_Detail; let j = index"
+                              >
+                                <td class="visitor primary-bg white-text">
+                                  {{row.Id}}
+                                </td>
+                                <td class="driver">{{row.Driver}}</td>
+                              </tr>
+                            </table>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
               </table>
+            </div>
           </td>
-      </tr>
-
-      <tr>
-          <td colspan="5">
-              <div style="height:100%; overflow:auto;">
-                  <table style="width: 100%;" *ngFor="let Master_row of ctrl.data; let i = index"
-                      class="borderSet" cellspacing="0" cellpadding="1">
-                      <tr class="borderSet" (click)="Show_Load_Detail(Master_row , i)">
-                          <td class="borderSet firstColumnMaster" style="width: 12.5%;">{{Master_row.Route}}
-                          </td>
-                          <td class="borderSet" style="width: 12.5%;">{{Master_row.Pln}}</td>
-                          <td class="borderSet" style="width: 12.5%;">{{Master_row.Inv}}</td>
-                          <td class="borderSet" style="width: 5%;">{{Master_row.Per}}</td>
-                          <td class="borderSet" style="width: 8%;">{{Master_row.OOR}}</td>
-                          <td class="borderSet" style="width: 12.5%;">{{Master_row.Total}}</td>
-                          <td class="borderSet" style="width: 12.5%;">{{Master_row.NotINV}}</td>
-                          <td class="borderSet" style="width: 14%;">{{Master_row.Sale}}</td>
-                          <td class="borderSet" style="width: 14%;">{{Master_row.PPED}}</td>
-                      </tr>
-                      <tr id="{{Master_row.Route}}_Detail" *ngIf="isVisible==i">
-                          <td colspan="9">
-                              <table style="width: 100%;" class="borderSet">
-                                  <tr>
-                                      <td>
-                                          <table style="width: 100%;" class="borderSet" cellspacing="0"
-                                              cellpadding="1">
-                                              <tr class="skuhead">
-                                                  <th class="borderSet skuhead" style="width: 50%;">Visitor
-                                                  </th>
-                                                  <th class="borderSet skuhead" style="width: 50%;">Driver
-                                                  </th>
-                                              </tr>
-                                          </table>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          <div style="height:auto; overflow:auto;">
-                                              <table style="width: 100%;" class="borderSet" cellspacing="0"
-                                                  cellpadding="1">
-                                                  <tr class="borderSet"
-                                                      *ngFor="let row of Load_Detail; let j = index">
-                                                      <td class="borderSet skuhead" style="width: 50%;">
-                                                          {{row.Id}}</td>
-                                                      <td class="borderSet" style="width: 50%;">{{row.Driver}}
-                                                      </td>
-                                                  </tr>
-                                              </table>
-                                          </div>
-                                      </td>
-                                  </tr>
-                              </table>
-                          </td>
-                      </tr>
-                  </table>
-              </div>
-          </td>
-      </tr>
-  </table>
-
-    <!-- <ion-col>
-      <table>
-        <thead class="table-head">
-          <tr class="table-head-content">
-            <th><span>Route</span></th>
-            <th>Pin</th>
-            <th>Inv</th>
-            <th>%</th>
-            <th>OOR</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody class="table-body table-body-content">
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon
-                [ngClass]="{'icon-activated':IsDCDDetailsShowing}"
-                name="chevron-down-outline"
-              ></ion-icon>
-              1100
-            </td>
-            <td></td>
-            <td>6</td>
-            <td>6</td>
-            <td>5</td>
-            <td></td>
-          </tr>
-          <div class="table-detail">
-            <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div>
-            <table class="">
-              <thead class="blue-bg">
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td class="primary-bg">Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
-          </div>
-          <tr class="medium-blue-bg">
-            <td>
-              <ion-icon
-                [ngClass]="{'icon-activate':!IsDCDDetailsShowing}"
-                name="chevron-down-outline"
-              ></ion-icon>
-              1103
-            </td>
-            <td></td>
-            <td>0</td>
-            <td></td>
-            <td>1</td>
-            <td></td>
-          </tr>
-          <div class="table-detail">
-            <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div>
-            <table class="">
-              <thead class="blue-bg">
-                <th>Visitor</th>
-                <th>Driver</th>
-              </thead>
-              <tbody>
-                <td class="primary-bg">Ali Zardust</td>
-                <td>Hosein Aghai</td>
-              </tbody>
-            </table>
-          </div>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1104
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr class="medium-blue-bg">
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1105
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1106
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr class="medium-blue-bg">
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon> 1107
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
+        </tr>
       </table>
-    </ion-col> -->
+    </ion-col>
   </ion-col>
 
   <!-- ----------------------------------------------------------------------------- -->
@@ -277,8 +188,16 @@
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select [(ngModel)]="selected_dcN" multiple="true" interface="popover">
-            <ion-select-option *ngFor="let city of dropdownListN" [value]="city.itemName">{{city.itemName}}</ion-select-option>
+          <ion-select
+            [(ngModel)]="selected_dcN"
+            multiple="true"
+            interface="popover"
+          >
+            <ion-select-option
+              *ngFor="let city of dropdownListN"
+              [value]="city.itemName"
+              >{{city.itemName}}</ion-select-option
+            >
           </ion-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -287,121 +206,62 @@
       </ion-row>
     </ion-col>
 
-    <ion-grid class="maingrid">
-      <div *ngFor="let row of virtual_rows2; let i = index" [ngClass]="{'firstrow': i==0}">
+    <ion-grid class="maingrid ion-no-padding">
+      <div
+        *ngFor="let row of virtual_rows2; let i = index"
+        [ngClass]="{'firstrow': i==0}"
+      >
+        <ion-row>
+          <ng-container
+            *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')"
+          >
+            <ion-col
+              *ngFor="let item of srsales2[row.index]; let j = index"
+              [ngClass]="{'firstculomn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
+            >
+              {{ item }}
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </div>
+      <div>
+        <div
+          *ngFor="let row of virtual_rows2; let i = index"
+          (click)="row_click2(row)"
+          [ngClass]="{'oddRows': 3 === i % 4}"
+        >
           <ion-row>
-              <ng-container *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')">
-                  <ion-col *ngFor="let item of srsales2[row.index]; let j = index"
-                      [ngClass]="{'firstculomn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}">
-                      {{ item }}
+            <ng-container
+              *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')"
+            >
+              <ion-col
+                class="ion-align-self-center"
+                *ngFor="let item of srsales2[row.index]; let j = index"
+                [ngClass]="{'firstculomn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
+              >
+                {{ item }}
+              </ion-col>
+            </ng-container>
+            <ng-container *ngIf="row.show && row.type=='b'">
+              <ion-grid class="details">
+                <ion-row
+                  wrap
+                  *ngFor="let rows of selected_ch2[row.index]; let i =index; "
+                  [ngClass]="{'oddRows': 0 === i % 2}"
+                >
+                  <ion-col
+                    class="detail ion-align-items-center"
+                    *ngFor="let item of rows"
+                    [ngClass]="{'detailDarkBg': tableDetails(item) && 0 === i % 2}"
+                  >
+                    {{ item }}
                   </ion-col>
-              </ng-container>
+                </ion-row>
+              </ion-grid>
+            </ng-container>
           </ion-row>
+        </div>
       </div>
-      <div style="overflow: scroll; height: 550px">
-          <div *ngFor="let row of virtual_rows2; let i = index" (click)="row_click2(row)">
-              <ion-row>
-                  <ng-container *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')">
-                      <ion-col *ngFor="let item of srsales2[row.index]; let j = index"
-                          [ngClass]="{'firstculomn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}">
-                          {{ item }}
-                      </ion-col>
-                  </ng-container>
-                  <ng-container *ngIf="row.show && row.type=='b'" style="scroll-behavior: auto">
-                      <ion-grid>
-                          <ion-row wrap *ngFor="let rows of selected_ch2[row.index]">
-                              <ion-col *ngFor="let item of rows"
-                                  style="border: 1px solid dodgerblue!important">
-                                  {{ item }}
-                              </ion-col>
-                          </ion-row>
-                      </ion-grid>
-                  </ng-container>
-              </ion-row>
-          </div>
-      </div>
-  </ion-grid>
-
-    <!-- <ion-col>
-      <h2 class="table-title">Weight _ T</h2>
-      <table class="NON_DSD-table">
-        <tbody class="table-body table-body-content">
-          <tr>
-            <td class=""><span></span></td>
-            <td>9.61</td>
-          </tr>
-
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> KA
-            </td>
-            <td class="white-bg"></td>
-          </tr>
-          <div class="NON_DSD-table-detail">
-            <div class="border">
-              <table class="">
-                <tbody>
-                  <tr class="light-blue-bg">
-                    <td>Test 0</td>
-                    <td>Number 0</td>
-                  </tr>
-                  <tr class="white-bg">
-                    <td>Test 1</td>
-                    <td>Number 1</td>
-                  </tr>
-                  <tr class="light-blue-bg">
-                    <td>Test 2</td>
-                    <td>Number 2</td>
-                  </tr>
-                </tbody>
-                <hr class="line-1" />
-                <hr class="line-2" />
-                <hr class="line-3" />
-              </table>
-            </div>
-          </div>
-          <tr class="dark-blue-bg">
-            <td>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              Distributor
-            </td>
-            <td>4.59</td>
-          </tr>
-          <div class="NON_DSD-table-detail">
-            <div class="border">
-              <table class="">
-                <tbody>
-                  <tr class="light-blue-bg">
-                    <td>Test 0</td>
-                    <td>Number 0</td>
-                  </tr>
-                  <tr class="white-bg">
-                    <td>Test 1</td>
-                    <td>Number 1</td>
-                  </tr>
-                  <tr class="light-blue-bg">
-                    <td>Test 2</td>
-                    <td>Number 2</td>
-                  </tr>
-                </tbody>
-                <hr class="line-1" />
-                <hr class="line-2" />
-                <hr class="line-3" />
-              </table>
-            </div>
-          </div>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> AFH
-            </td>
-            <td class="white-bg">0.44</td>
-          </tr>
-          <tr class="dark-blue-bg">
-            <td><ion-icon name="chevron-down-outline"></ion-icon> Total</td>
-            <td>0.21</td>
-          </tr>
-        </tbody>
-      </table>
-    </ion-col> -->
+    </ion-grid>
   </ion-col>
 </ion-content>

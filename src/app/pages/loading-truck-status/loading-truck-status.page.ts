@@ -10,6 +10,7 @@ import { LanguageService } from 'src/app/shared/language.service';
 })
 export class LoadingTruckStatusPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+  IsDetailsShowing = true;
   // mock data
   public loadingTruckData: Array<any> = [
     {
@@ -42,6 +43,30 @@ export class LoadingTruckStatusPage implements OnInit {
     },
   ];
   //
+  // --detail
+  public routeVisitorDetailData: Array<any> = [
+    {
+      Name: ' Lola Jahan',
+      Number: 205645654,
+      Address: 'Tehran_Zafar ',
+    },
+    {
+      Name: 'Jahan Zafaru',
+      Number: 657546456,
+      Address: 'Tehran_Zafar',
+    },
+    {
+      Name: 'Jahanan Esfahani',
+      Number: 46784784,
+      Address: 'Tehran_Zafar',
+    },
+    {
+      Name: 'Hanie Jahanian',
+      Number: 85674867845,
+      Address: 'Tehran_Zafar',
+    },
+  ];
+  //delete later
   dateNow = new Date();
 
   public get language(): Language {

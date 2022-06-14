@@ -152,6 +152,18 @@ const routes: Routes = [
     path: 'loading-truck-status',
     loadChildren: () => import('./pages/loading-truck-status/loading-truck-status.module').then( m => m.LoadingTruckStatusPageModule)
   },
+  {
+    path: 'online-sales-hourly',
+    loadChildren: () => import('./pages/online-sales-hourly/online-sales-hourly.module').then( m => m.OnlineSalesHourlyPageModule)
+  },
+  {
+    path: 'online-sale-days-hourly',
+    loadChildren: () => import('./pages/online-sale-days-hourly/online-sale-days-hourly.module').then( m => m.OnlineSaleDaysHourlyPageModule)
+  },
+  {
+    path: 'sales-compare-tracking-hourly',
+    loadChildren: () => import('./pages/sales-compare-tracking-hourly/sales-compare-tracking-hourly.module').then( m => m.SalesCompareTrackingHourlyPageModule)
+  },
 
 ];
 

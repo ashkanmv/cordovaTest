@@ -165,6 +165,7 @@
   <!-- ==============================questions=================================== -->
 
   <ion-col
+    dir="{{get_direction()}}"
     dir="ltr"
     *ngFor="let question of questions; let i = index"
     class="ion-justify-content-center questions-list"
@@ -230,12 +231,13 @@
           <ion-grid>
             <ion-row *ngFor="let answer of question.answers; let j = index">
               <ion-col>
-                <ion-item>
-                  <ion-label>{{answer.text}}</ion-label>
-                  <ion-radio value="ford"></ion-radio>
-                  <ion-radio (ionSelect)="radioSelect(i,j)"></ion-radio>
-                  <!-- [checked]="checkValue(i,j)" -->
-                </ion-item>
+                <ion-radio-group>
+                  <ion-item>
+                    <ion-label>{{answer.text}}</ion-label>
+                    <ion-radio (ionSelect)="radioSelect(i,j)"></ion-radio>
+                    <!-- [checked]="checkValue(i,j)" -->
+                  </ion-item>
+                </ion-radio-group>
               </ion-col>
             </ion-row>
             <ion-row>

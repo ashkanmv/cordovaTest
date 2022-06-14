@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Data, Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
 import { MapService } from 'src/app/map/map.service';
+import { IonDatetime, PopoverController } from '@ionic/angular';
+import { Language } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
+import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
@@ -13,18 +15,26 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./salesmen-location.page.scss'],
 })
 export class SalesmenLocationPage implements OnInit {
+  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+
   dateNow = new Date();
   show = false;
   form: FormGroup;
   rsms = [];
   selectedRsm;
+  rsmPoints;
+  userIds = [];
+  public get language(): Language {
+    return this.languageService.language;
+  }
   constructor(
     private router: Router,
     public popoverctrl: PopoverController,
     private persianCalendarService: PersianCalendarService,
     private formBuilder: FormBuilder,
     private storageService: StorageService,
-    private mapService: MapService
+    private mapService: MapService,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit() {
@@ -123,17 +133,45 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   rsmSelect() {
-    this.selectedRsm = [];
-    this.mapService
-      .getallChildrenUser(this.f.myUserID.value, 'rsm', ' ')
-      .subscribe((res: Data[]) => {
-        this.rsms = res;
-        let userId = '';
-        this.rsms.forEach((rsm) => {
-          userId = userId + ',' + rsm.id;
-          this.selectedRsm.push(rsm.id);
+    if (this.rsms.length) {
+    } else {
+      this.mapService
+        .getallChildrenUser(this.f.myUserID.value, 'rsm', ' ')
+        .subscribe((res: Data[]) => {
+          this.selectedRsm = [];
+          this.rsms = res;
+          let userId = '';
+          this.rsms.forEach((v) => {
+            userId = userId + ',' + v.id;
+            this.selectedRsm.push(v.id);
+          });
+          this.rsmPoints = [];
+          this.smlRsmPoints();
+
+          this.asmSelect();
         });
+    }
+  }
+
+  smlRsmPoints() {
+    this.mapService
+      .getallChildrenUser([], 'rsm', this.selectedRsm)
+      .subscribe((res: Data[]) => {
+        this.userIds = [];
+        if (!res.length) return;
+        res.forEach((r) => this.userIds.push(r.id));
+        this.getSalesmanLocation();
       });
+  }
+
+  getSalesmanLocation() {
+    this.mapService
+      .getSalesmenLocation(
+        this.userIds,
+        this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
+        1
+      )
+      .subscribe((data) => console.log(data));
   }
 
   asmSelect() {}
@@ -155,5 +193,15 @@ export class SalesmenLocationPage implements OnInit {
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
+  }
+  // fix this later
+  confirm() {
+    // this.datetime.nativeEl.confirm();
+    this.datetime.confirm();
+  }
+
+  reset() {
+    // this.datetime.nativeEl.reset();
+    this.datetime.reset();
   }
 }

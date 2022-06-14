@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonDatetime } from '@ionic/angular';
+import { Language } from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
 
 @Component({
   selector: 'app-sales-hourly-day',
@@ -7,9 +10,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./sales-hourly-day.page.scss'],
 })
 export class SalesHourlyDayPage implements OnInit {
+  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+
   selectedSegment: string = 'dsd-hourly-city';
 
-  constructor(private router: Router) {}
+  //delete later
+  dateNow = new Date();
+
+  public get language(): Language {
+    return this.languageService.language;
+  }
+
+  constructor(private languageService: LanguageService) {}
+
   public salesHourlyCity: Array<any> = [
     {
       city: 'Esfahan',
@@ -68,8 +81,17 @@ export class SalesHourlyDayPage implements OnInit {
       total: 45459,
     },
   ];
-
   ngOnInit() {}
+
+  confirm() {
+    // this.datetime.nativeEl.confirm();
+    this.datetime.confirm();
+  }
+
+  reset() {
+    // this.datetime.nativeEl.reset();
+    this.datetime.reset();
+  }
   segmentChanged(event: any) {
     // console.log(event.target.value);
     this.selectedSegment = event.target.value;

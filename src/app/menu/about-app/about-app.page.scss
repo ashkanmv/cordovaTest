@@ -1,10 +1,10 @@
 ion-toolbar{
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 
 ion-content{
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 
@@ -40,7 +40,7 @@ ion-img{
 }
 
 .update-text{
-    color: #343795;
+    color: var(--ion-color-secondary);
     position: absolute;
     top: 8vh;
     left: 0;

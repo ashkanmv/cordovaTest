@@ -2,6 +2,10 @@
     background: #bce2fe;
 }
 
+.box-shadow{
+    box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+}
+
 ion-item{
     --background: var(--ion-color-light);
 }
@@ -56,62 +60,6 @@ ion-col.segment-change{
 
 
 
-// -------date picker
-
-ion-col{
-    .date-picker-container{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .date-picker-box{
-        width: 95%;
-        height: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid #a9a9a9;
-        border-radius: 10px;
-        padding-top: 1rem;
-        .date-picker{
-            height: 6rem;
-            width: 90%;
-            display: flex;
-            justify-content: space-between;
-            border-radius: 20px;
-            align-items: center;
-            padding-right: 2rem;
-            margin-bottom: 1rem;
-            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-            h4{
-                color: #cfcfcf;
-                margin-left: 1rem;
-          
-            }
-            img{
-                max-height: 100%;
-                max-width: 100%;
-            }
-            >div{
-                overflow: hidden;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                color:  var(--ion-color-primary);
-                font-size: 1.5rem;
-                font-weight: bold;
-                ion-icon{
-                    color: #a9a9a9;
-                    padding-left: 1rem;
-
-                }
-            }
-        }
-        }
-    }
-}
-
 
 // ----searchbar
 
@@ -160,7 +108,7 @@ ion-col{
         }
         span{
             position: absolute;
-            bottom: 5vh;
+            bottom: 3vh;
             right: 2vw;
         }
         ion-icon{
@@ -221,59 +169,18 @@ table{
         // }
     }
 
-// -------Nested Table
-    .nested-table-container{
-        width: 100vw;
+    // -------data
+    .routeDetails{
         background: var(--ion-color-light);
-        align-items: center;
-        .border-right{
-            border-left: 2px  var(--ion-color-primary) solid;
-            margin-left:20px ;
+        height: 7vh;
+        min-width: 100vw;
+        .routeDetail{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            font-size: 1.3rem;
         }
-        .nested-table{
-            width: 95vw;
-            height: 40vh;
-            margin-left: 5vw;
-            
-            >thead{
-                font-size: 1.7vw;
-                background: #d1e9fb;
-                th{
-                    padding: 1rem 0;
-                }
-                
-            }
-          
-            
-        }
-        hr{
-            position: absolute;
-            top: 10vh;
-            left: 2vw;
-            height: 2px;
-            width: 3vw;
-            background: red;
-        }
-      
-            
-        
     }
-    
+
+
 }
-
-
-        @media (min-width:992px) {
-            table{
-                .nested-table-container{
-                    .nested-table{
-                        width:67vw;
-                        >thead{
-                            font-size: 1.3vw;
-                            th{
-                                padding: .5rem;
-                            }
-                        }
-                    }
-                }
-            }
-        }

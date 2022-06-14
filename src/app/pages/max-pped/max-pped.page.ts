@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { IonDatetime } from '@ionic/angular';
+import { Language } from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
 
 @Component({
   selector: 'app-max-pped',
@@ -8,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./max-pped.page.scss'],
 })
 export class MaxPPEDPage implements OnInit {
+  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+
   dateNow = new Date();
   selectedSegment: string = 'per-customer';
 
@@ -15,7 +19,11 @@ export class MaxPPEDPage implements OnInit {
   nestedTableIsShowingRow_2: boolean = false;
   nestedTableIsShowingRow_3: boolean = false;
   nestedTableIsShowingRow_4: boolean = false;
-  constructor(private router: Router) {}
+  public get language(): Language {
+    return this.languageService.language;
+  }
+
+  constructor(private languageService: LanguageService) {}
 
   public routeData: Array<any> = [
     {
@@ -53,6 +61,17 @@ export class MaxPPEDPage implements OnInit {
   ];
 
   ngOnInit() {}
+
+  confirm() {
+    // this.datetime.nativeEl.confirm();
+    this.datetime.confirm();
+  }
+
+  reset() {
+    // this.datetime.nativeEl.reset();
+    this.datetime.reset();
+  }
+
   segmentChanged(event: any) {
     // console.log(event.target.value);
     this.selectedSegment = event.target.value;

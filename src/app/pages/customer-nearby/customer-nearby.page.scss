@@ -3,7 +3,7 @@
 // description details hover background
 
 ion-toolbar ion-row{
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 ion-toolbar.ios{
@@ -11,7 +11,7 @@ ion-toolbar.ios{
 }
 
 ion-content {
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 
@@ -22,13 +22,13 @@ ion-title{
     font-size: 3vw;
 }
 ion-item{
-    --background: #fff;
+    --background: var(--ion-color-light);
 }
 
 ion-input{
     --padding-start : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
 
 ion-img{
@@ -70,7 +70,7 @@ ion-popover.description-drop-down{
     --offset-y:1vh;
     >ion-content{
         font-size: 1.2rem;
-        --color: #000;
+        --color: var(--ion-color-dark);
         >div{
             border-bottom: 1px solid #b9b9b9aa;
             p{
@@ -99,7 +99,7 @@ ion-popover.description-drop-down{
         display: flex;
         justify-content: center;
         cursor:auto;
-        --color:#fff ;
+        --color:var(--ion-color-light) ;
         --background:#119ff2;
         text-align: center;
         border-bottom: none;
@@ -147,7 +147,7 @@ ion-popover.hide-drop-down{
 
 ion-content.header-input-popover-title{
     cursor:auto;
-    --color:#000 ;
+    --color:var(--ion-color-dark) ;
     text-align: center;
     border-bottom: 2px dashed #8f8f8f;
     font-weight: bold;

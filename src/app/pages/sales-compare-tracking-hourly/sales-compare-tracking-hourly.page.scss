@@ -268,15 +268,17 @@ ion-col.table-container{
         }
     
     // -------Nested Table
-        .nested-table-container{
-            width: 100vw;
-            align-items: center;
-           
-            
-          
-                
-            
+    .routeDetails{
+        background: var(--ion-color-light);
+        height: 7vh;
+        min-width: 100vw;
+        .routeDetail{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            font-size: 1.3rem;
         }
+    }
         
     }
 }

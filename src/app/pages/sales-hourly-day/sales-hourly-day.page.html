@@ -70,57 +70,40 @@
     <ion-col>
       <ion-row class="date-picker-container">
         <ion-row class="date-picker-box">
-          <ion-row id="open-modal-from" class="date-picker">
+          <label for="Date-picker">{{language.DatePicker.title}}</label>
+          <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
-            <h4>From Date</h4>
-            <ion-row class="date-picker-outer">
-              <ion-col class="date-picker-inner">
-                2021/03/01
-                <ion-icon name="chevron-down-outline"></ion-icon>
-              </ion-col>
-            </ion-row>
-          </ion-row>
-          <!-- -- -->
-          <ion-row id="open-modal-to" class="date-picker">
-            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
-            <h4>To Date</h4>
-            <ion-row class="date-picker-outer">
-              <ion-col class="date-picker-inner">
-                2022/11/29
-                <ion-icon name="chevron-down-outline"></ion-icon>
-              </ion-col>
-            </ion-row>
+            <ion-col id="open-popover" class="ion-justify-content-end">
+              {{dateNow | date:'yyyy/MM/dd'}}
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </ion-col>
           </ion-row>
         </ion-row>
       </ion-row>
-      <!--  -->
-
-      <ion-popover trigger="open-modal-from" show-backdrop="false">
+      <ion-popover trigger="open-popover" show-backdrop="false">
         <ng-template>
           <ion-datetime
-            value="2021-03-01"
+            size="cover"
             showDefaultButtons="true"
             presentation="date"
-          ></ion-datetime>
+          >
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
+          </ion-datetime>
         </ng-template>
       </ion-popover>
-      <ion-popover trigger="open-modal-to" show-backdrop="false">
-        <ng-template>
-          <ion-datetime
-            value="2022-11-29"
-            showDefaultButtons="true"
-            presentation="date"
-          ></ion-datetime>
-        </ng-template>
-      </ion-popover>
-
-      <!--  -->
     </ion-col>
     <!-- ------------------search_bar -->
     <ion-row>
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
-          <ion-item>
+          <ion-item class="lightBlue-shadow">
             <button class="search-submit primary-bg">
               <ion-icon name="search-outline"></ion-icon>
             </button>
@@ -193,23 +176,22 @@
   >
     <!-- --------------date_ picker -->
     <ion-col>
-      <!--  -->
-      <div class="date-picker-container">
+      <div class="date-picker-double-container">
         <div class="date-picker-box">
-          <div id="open-modal-from" class="date-picker">
+          <div id="open-popover-from" class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div class="">
-              <h4>From Date</h4>
+              <h4>{{language.DatePicker.from}}</h4>
               <div class="">
                 2021/03/01
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </div>
             </div>
           </div>
-          <div id="open-modal-to" class="date-picker">
+          <div id="open-popover-to" class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div class="">
-              <h4>To Date</h4>
+              <h4>{{language.DatePicker.to}}</h4>
               <div class="">
                 2022/11/29
                 <ion-icon name="chevron-down-outline"></ion-icon>
@@ -219,33 +201,49 @@
         </div>
       </div>
       <!--  -->
-      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+      <ion-popover
+        showBackdrop="false"
+        trigger="open-popover-from"
+        class="ion-no-margin"
+      >
         <ng-template>
-          <ion-datetime
-            value="2021-03-01"
-            show-default-buttons="true"
-            presentation="date"
-          >
+          <ion-datetime value="2021-03-01" presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
           </ion-datetime>
         </ng-template>
-      </ion-modal>
-      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+      </ion-popover>
+      <ion-popover
+        showBackdrop="false"
+        trigger="open-popover-to"
+        class="ion-no-margin"
+      >
         <ng-template>
-          <ion-datetime
-            value="2022-11-29"
-            show-default-buttons="true"
-            presentation="date"
-          >
+          <ion-datetime value="2022-11-29" presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
           </ion-datetime>
         </ng-template>
-      </ion-modal>
+      </ion-popover>
       <!--  -->
     </ion-col>
     <!-- ------------------search_bar -->
     <ion-row>
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
-          <ion-item>
+          <ion-item class="lightBlue-shadow">
             <button class="search-submit primary-bg">
               <ion-icon name="search-outline"></ion-icon>
             </button>

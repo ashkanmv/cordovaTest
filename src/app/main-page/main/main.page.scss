@@ -1,6 +1,6 @@
 
 .main-page-content ion-img {
-    background-color: #fff;
+    background-color: var(--ion-color-light);
     border-radius: 30%;
     max-width: 100px;
 }
@@ -34,7 +34,7 @@
 // }
 
 // .main-page-header .notification{
-//     // background-color: #fff;
+//     // background-color: var(--ion-color-light);
 //     // border-radius: 50%;
 //     max-width: 50px;
 // }
@@ -46,11 +46,11 @@
 // }
 
 .white-text{
-    color: #fff;
+    color: var(--ion-color-light);
 }
 
 .white-background{
-    background-color: #fff;
+    background-color: var(--ion-color-light);
 }
 
 .main-page-Title {

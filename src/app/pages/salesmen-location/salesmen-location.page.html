@@ -13,7 +13,7 @@
       </ion-col>
       <ion-col size="7" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text">
-          <h3><b>Salesmen Location</b></h3>
+          <h3><b>{{language.Salesmen_Location.Title}}</b></h3>
         </ion-title>
       </ion-col>
       <ion-col></ion-col>
@@ -55,148 +55,167 @@
 
 <ion-content>
   <div *ngIf="show">
-    <ion-col>
-      <ion-row class="date-picker-container">
-        <ion-row id="open-modal" class="date-picker-box">
-          <label for="Date-picker"> Date</label>
-          <ion-row class="date-picker">
-            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
-            <ion-col class="ion-justify-content-end">
-              {{dateNow | date:'yyyy/MM/dd'}}
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </ion-col>
+    <form [formGroup]="form">
+      <ion-col>
+        <ion-row class="date-picker-container">
+          <ion-row class="date-picker-box">
+            <label for="Date-picker">{{language.DatePicker.title}}</label>
+            <ion-row class="date-picker lightBlue-shadow">
+              <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+              <ion-col id="open-popover" class="ion-justify-content-end">
+                {{dateNow | date:'yyyy/MM/dd'}}
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </ion-col>
+            </ion-row>
           </ion-row>
         </ion-row>
-      </ion-row>
-      <ion-popover trigger="open-modal" show-backdrop="false">
-        <ng-template>
-          <ion-datetime
-            showDefaultButtons="true"
-            presentation="date"
-          ></ion-datetime>
-        </ng-template>
-      </ion-popover>
-    </ion-col>
-    <ion-col class="salesmen-location-container">
-      <div class="salesmen-location-box">
-        <ion-item class="salesmen-location box-shadow">
-          <ion-label>
-            <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
-            <ion-item>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              <ion-list>
-                <ion-radio-group
-                  allow-empty-selection
-                  name="auto"
-                  value="tesla"
+        <ion-popover trigger="open-popover" show-backdrop="false">
+          <ng-template>
+            <ion-datetime presentation="date">
+              <ion-buttons slot="buttons">
+                <ion-button (click)="reset()"
+                  >{{language.DatePicker.reset}}</ion-button
                 >
-                  <ion-item>
-                    <ion-radio
-                      allow-empty-selection
-                      mode="md"
-                      value="farhadIranloo"
-                    ></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-item>
-          </ion-label>
-          <ion-select interface="popover" multiple="true">
-            <ion-select-option *ngFor="let item of rsms" [value]="item.id"
-              >{{item.FullName}}</ion-select-option
+                <ion-button (click)="confirm()"
+                  >{{language.DatePicker.confirm}}</ion-button
+                >
+              </ion-buttons>
+            </ion-datetime>
+          </ng-template>
+        </ion-popover>
+      </ion-col>
+      <ion-col class="salesmen-location-container">
+        <div class="salesmen-location-box">
+          <ion-item class="salesmen-location lightBlue-shadow">
+            <ion-label>
+              <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
+              <ion-item>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+                <ion-list>
+                  <ion-radio-group allow-empty-selection>
+                    <ion-item>
+                      <ion-radio
+                        allow-empty-selection
+                        mode="md"
+                        value="farhadIranloo"
+                      ></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+              </ion-item>
+            </ion-label>
+            <ion-select
+              placeholder="Farhad Iranloo"
+              interface="popover"
+              multiple="true"
+              [(ngModel)]="selectedRsm"
             >
-          </ion-select>
-        </ion-item>
-      </div>
-      <div class="salesmen-location-box">
-        <ion-item class="salesmen-location box-shadow">
-          <ion-label>
-            <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
-            Ahmad Safari
-            <ion-item>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              <ion-list>
-                <ion-radio-group
-                  allow-empty-selection
-                  name="auto"
-                  value="tesla"
-                >
-                  <ion-item>
-                    <ion-radio
-                      allow-empty-selection
-                      mode="md"
-                      value="AhmadSafari"
-                    ></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-item>
-          </ion-label>
-          <ion-select interface="popover" multiple="true">
-            <ion-select-option slot="end" value="peperoni"
-              >Peperoni</ion-select-option
+              <ion-select-option *ngFor="let item of rsms" [value]="item.id"
+                >{{item.FullName}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="salesmen-location-box">
+          <ion-item class="salesmen-location lightBlue-shadow">
+            <ion-label>
+              <ion-img
+                src="\assets\pages\salesmen-location\RSM-1.png"
+              ></ion-img>
+
+              <ion-item>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+                <ion-list>
+                  <ion-radio-group allow-empty-selection>
+                    <ion-item>
+                      <ion-radio
+                        allow-empty-selection
+                        mode="md"
+                        value="AhmadSafari"
+                      ></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+              </ion-item>
+            </ion-label>
+            <ion-select
+              placeholder=" Ahmad Safari"
+              interface="popover"
+              multiple="true"
             >
-          </ion-select>
-        </ion-item>
-      </div>
-      <div class="salesmen-location-box">
-        <ion-item class="salesmen-location box-shadow">
-          <ion-label>
-            <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
-            Sina Ahmadi
-            <ion-item>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              <ion-list>
-                <ion-radio-group
-                  allow-empty-selection
-                  name="auto"
-                  value="tesla"
-                >
-                  <ion-item>
-                    <ion-radio
-                      allow-empty-selection
-                      mode="md"
-                      value="sinaAhmadi"
-                    ></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-item>
-          </ion-label>
-          <ion-select interface="popover" multiple="true">
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </div>
-      <div class="salesmen-location-box">
-        <ion-item class="salesmen-location box-shadow">
-          <ion-label>
-            <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
-            Kazem Dehghan
-            <ion-item>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              <ion-list>
-                <ion-radio-group
-                  allow-empty-selection
-                  name="auto"
-                  value="tesla"
-                >
-                  <ion-item>
-                    <ion-radio
-                      allow-empty-selection
-                      mode="md"
-                      value="kazemDehghan"
-                    ></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-item>
-          </ion-label>
-          <ion-select interface="popover" multiple="true">
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </div>
-    </ion-col>
+              <ion-select-option slot="end" value="peperoni"
+                >Peperoni</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="salesmen-location-box">
+          <ion-item class="salesmen-location lightBlue-shadow">
+            <ion-label>
+              <ion-img
+                src="\assets\pages\salesmen-location\RSM-2.png"
+              ></ion-img>
+
+              <ion-item>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+                <ion-list>
+                  <ion-radio-group allow-empty-selection>
+                    <ion-item>
+                      <ion-radio
+                        allow-empty-selection
+                        mode="md"
+                        value="sinaAhmadi"
+                      ></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+              </ion-item>
+            </ion-label>
+            <ion-select
+              placeholder="Sina Ahmadi"
+              interface="popover"
+              multiple="true"
+            >
+              <ion-select-option value="peperoni">Peperoni</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="salesmen-location-box">
+          <ion-item class="salesmen-location lightBlue-shadow">
+            <ion-label>
+              <ion-img
+                src="\assets\pages\salesmen-location\RSM-3.png"
+              ></ion-img>
+
+              <ion-item>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+                <ion-list>
+                  <ion-radio-group
+                    allow-empty-selection
+                    name="auto"
+                    value="tesla"
+                  >
+                    <ion-item>
+                      <ion-radio
+                        allow-empty-selection
+                        mode="md"
+                        value="kazemDehghan"
+                      ></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+              </ion-item>
+            </ion-label>
+            <ion-select
+              placeholder="Kazem Dehghan"
+              interface="popover"
+              multiple="true"
+            >
+              <ion-select-option value="peperoni">Peperoni</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+      </ion-col>
+    </form>
   </div>
 </ion-content>

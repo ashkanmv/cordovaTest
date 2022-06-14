@@ -68,7 +68,7 @@
     <ion-col>
       <div class="date-picker-container">
         <div class="date-picker-box">
-          <div id="open-modal-from" class="date-picker">
+          <div id="open-popover-from" class="date-picker">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div class="">
               <h4>From Date</h4>
@@ -78,7 +78,7 @@
               </div>
             </div>
           </div>
-          <div id="open-modal-to" class="date-picker">
+          <div id="open-popover-to" class="date-picker">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div class="">
               <h4>To Date</h4>
@@ -91,26 +91,42 @@
         </div>
       </div>
       <!--  -->
-      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+      <ion-popover
+        showBackdrop="false"
+        trigger="open-popover-from"
+        class="ion-no-margin"
+      >
         <ng-template>
-          <ion-datetime
-            value="2021-03-01"
-            show-default-buttons="true"
-            presentation="date"
-          >
+          <ion-datetime value="2021-03-01" presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
           </ion-datetime>
         </ng-template>
-      </ion-modal>
-      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+      </ion-popover>
+      <ion-popover
+        showBackdrop="false"
+        trigger="open-popover-to"
+        class="ion-no-margin"
+      >
         <ng-template>
-          <ion-datetime
-            value="2022-11-29"
-            show-default-buttons="true"
-            presentation="date"
-          >
+          <ion-datetime value="2022-11-29" presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
           </ion-datetime>
         </ng-template>
-      </ion-modal>
+      </ion-popover>
       <!--  -->
     </ion-col>
     <!-- ------------------search_bar -->
@@ -207,7 +223,7 @@
       <!--  -->
       <div class="date-picker-container">
         <div class="date-picker-box">
-          <div id="open-modal-from" class="date-picker">
+          <div id="open-popover-from" class="date-picker">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div class="">
               <h4>From Date</h4>
@@ -217,7 +233,7 @@
               </div>
             </div>
           </div>
-          <div id="open-modal-to" class="date-picker">
+          <div id="open-popover-to" class="date-picker">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div class="">
               <h4>To Date</h4>
@@ -230,26 +246,42 @@
         </div>
       </div>
       <!--  -->
-      <ion-modal trigger="open-modal-from" class="ion-no-margin">
+      <ion-popover
+        showBackdrop="false"
+        trigger="open-popover-from"
+        class="ion-no-margin"
+      >
         <ng-template>
-          <ion-datetime
-            value="2021-03-01"
-            show-default-buttons="true"
-            presentation="date"
-          >
+          <ion-datetime value="2021-03-01" presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
           </ion-datetime>
         </ng-template>
-      </ion-modal>
-      <ion-modal trigger="open-modal-to" class="ion-no-margin">
+      </ion-popover>
+      <ion-popover
+        showBackdrop="false"
+        trigger="open-popover-to"
+        class="ion-no-margin"
+      >
         <ng-template>
-          <ion-datetime
-            value="2022-11-29"
-            show-default-buttons="true"
-            presentation="date"
-          >
+          <ion-datetime value="2022-11-29" presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
           </ion-datetime>
         </ng-template>
-      </ion-modal>
+      </ion-popover>
       <!--  -->
     </ion-col>
     <!-- ------------------search_bar -->

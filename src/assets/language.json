@@ -83,11 +83,32 @@
         },
         "DatePicker":{
             "confirm":"Done",
-            "reset":"cancel"
+            "reset":"cancel",
+            "from":"From Date",
+            "to":"To Date",
+            "title":"Date"
+
         },
         "Loading_Truck_Status":{
             "Title":"Loading Truck Status",
             "date_title":"Date"
+        },
+        "Online_Sales_Hourly":{
+            "Title": "Online Daily Sales Hourly",
+            "perKilo":"DSD HOURLY KILOGRAM",
+            "perInvoices":"DSD HOURLY INVOICES"
+        },
+        "Online_Sale_Days_Hourly":{
+            "Title": "Online Sale for Days Hourly",
+            "perKilo":"DSD HOURLY KILOGRAM",
+            "perInvoices":"DSD HOURLY INVOICES"
+        },
+        "Salesmen_Location":{
+            "Title": "Salesmen Location",
+            "managerRed":"Farhad Iranloo",
+            "managerGreen":"Ahmad Safari",
+            "managerYellow":"Sina Ahmadi",
+            "managerBlue":"Kazem Dehghan"
         }
     },
     "FR": {

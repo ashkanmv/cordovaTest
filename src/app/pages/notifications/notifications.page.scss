@@ -1,6 +1,6 @@
 ion-toolbar {
     --background: #0095EB;
-    --color: #fff;
+    --color: var(--ion-color-light);
 }
 
 ion-img.back-button{
@@ -31,7 +31,7 @@ ion-title {
 ion-input{
     --padding-start : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
 
 ion-content{
@@ -42,7 +42,7 @@ ion-col{
     display: flex;
     justify-content: center;
     h4{
-        color: #fff;
+        color: var(--ion-color-light);
         
     }
 }
@@ -103,7 +103,7 @@ ion-col.card{
             }
             ion-card-content{
                 padding-top: 2rem;
-                background: #fff;
+                background: var(--ion-color-light);
                 // height: 35vh;
                 width: 100%;
                 height: 25vh;
