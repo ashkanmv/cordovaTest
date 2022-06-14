@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Data, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
+import { MapService } from 'src/app/map/map.service';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -15,13 +16,15 @@ export class SalesmenLocationPage implements OnInit {
   dateNow = new Date();
   show = false;
   form: FormGroup;
-
+  rsms = [];
+  selectedRsm;
   constructor(
     private router: Router,
     public popoverctrl: PopoverController,
     private persianCalendarService: PersianCalendarService,
     private formBuilder: FormBuilder,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private mapService: MapService
   ) {}
 
   ngOnInit() {
@@ -89,7 +92,7 @@ export class SalesmenLocationPage implements OnInit {
         this.patchValue('accessRsm', true);
         if (flg == false) {
           this.patchValue('myUserType', 'rsm');
-          this.rsm_select();
+          this.rsmSelect();
           flg = true;
         }
       } else if (access.name == 'gps_asm') {
@@ -97,7 +100,7 @@ export class SalesmenLocationPage implements OnInit {
         if (flg == false) {
           this.patchValue('myUserType', 'asm');
 
-          this.asm_select();
+          this.asmSelect();
 
           flg = true;
         }
@@ -105,24 +108,37 @@ export class SalesmenLocationPage implements OnInit {
         this.patchValue('accessSsv', true);
         if (flg == false) {
           this.patchValue('myUserType', 'ssv');
-          this.ssv_select();
+          this.ssvSelect();
           flg = true;
         }
       } else if (access.name == 'gps_sr') {
         this.patchValue('accessSr', true);
         if (flg == false) {
           this.patchValue('myUserType', 'sr');
-          this.sr_select();
+          this.srSelect();
           flg = true;
         }
       }
     });
   }
 
-  rsm_select() {}
-  asm_select() {}
-  ssv_select() {}
-  sr_select() {}
+  rsmSelect() {
+    this.selectedRsm = [];
+    this.mapService
+      .getallChildrenUser(this.f.myUserID.value, 'rsm', ' ')
+      .subscribe((res: Data[]) => {
+        this.rsms = res;
+        let userId = '';
+        this.rsms.forEach((rsm) => {
+          userId = userId + ',' + rsm.id;
+          this.selectedRsm.push(rsm.id);
+        });
+      });
+  }
+
+  asmSelect() {}
+  ssvSelect() {}
+  srSelect() {}
 
   async presentPopover(ev: any) {
     const popover = await this.popoverctrl.create({

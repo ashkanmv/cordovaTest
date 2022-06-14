@@ -78,14 +78,10 @@
       </ion-popover>
     </ion-col>
     <ion-col class="salesmen-location-container">
-      <!-- <app-popover *ngFor="let data of salesmansData">
-        {{data.name}}
-      </app-popover> -->
       <div class="salesmen-location-box">
         <ion-item class="salesmen-location box-shadow">
           <ion-label>
             <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
-            Farhad Iranloo
             <ion-item>
               <ion-icon name="chevron-down-outline"></ion-icon>
               <ion-list>
@@ -106,7 +102,9 @@
             </ion-item>
           </ion-label>
           <ion-select interface="popover" multiple="true">
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
+            <ion-select-option *ngFor="let item of rsms" [value]="item.id"
+              >{{item.FullName}}</ion-select-option
+            >
           </ion-select>
         </ion-item>
       </div>
