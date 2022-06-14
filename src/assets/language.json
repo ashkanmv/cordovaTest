@@ -102,6 +102,13 @@
             "Title": "Online Sale for Days Hourly",
             "perKilo":"DSD HOURLY KILOGRAM",
             "perInvoices":"DSD HOURLY INVOICES"
+        },
+        "Salesmen_Location":{
+            "Title": "Salesmen Location",
+            "managerRed":"Farhad Iranloo",
+            "managerGreen":"Ahmad Safari",
+            "managerYellow":"Sina Ahmadi",
+            "managerBlue":"Kazem Dehghan"
         }
     },
     "FR": {

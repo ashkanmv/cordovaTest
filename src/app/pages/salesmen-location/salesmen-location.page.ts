@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Data, Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import { IonDatetime, PopoverController } from '@ionic/angular';
 import { MapService } from 'src/app/map/map.service';
+import { Language } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
+import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
@@ -13,6 +15,8 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./salesmen-location.page.scss'],
 })
 export class SalesmenLocationPage implements OnInit {
+  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+
   dateNow = new Date();
   show = false;
   form: FormGroup;
@@ -20,13 +24,17 @@ export class SalesmenLocationPage implements OnInit {
   selectedRsm;
   rsmPoints;
   userIds = [];
+  public get language(): Language {
+    return this.languageService.language;
+  }
   constructor(
     private router: Router,
     public popoverctrl: PopoverController,
     private persianCalendarService: PersianCalendarService,
     private formBuilder: FormBuilder,
     private storageService: StorageService,
-    private mapService: MapService
+    private mapService: MapService,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit() {
@@ -185,5 +193,15 @@ export class SalesmenLocationPage implements OnInit {
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
+  }
+  // fix this later
+  confirm() {
+    // this.datetime.nativeEl.confirm();
+    this.datetime.confirm();
+  }
+
+  reset() {
+    // this.datetime.nativeEl.reset();
+    this.datetime.reset();
   }
 }

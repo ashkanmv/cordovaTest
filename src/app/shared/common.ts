@@ -363,6 +363,13 @@ export class Language {
     perKilo: String;
     perInvoices: string;
   };
+  Salesmen_Location: {
+    Title: string;
+    managerRed: string;
+    managerGreen: string;
+    managerYellow: string;
+    managerBlue: string;
+  };
 }
 
 export class CommonUtility {
