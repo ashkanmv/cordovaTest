@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Data, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
+import { MapService } from 'src/app/map/map.service';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -15,13 +16,17 @@ export class SalesmenLocationPage implements OnInit {
   dateNow = new Date();
   show = false;
   form: FormGroup;
-
+  rsms = [];
+  selectedRsm;
+  rsmPoints;
+  userIds = [];
   constructor(
     private router: Router,
     public popoverctrl: PopoverController,
     private persianCalendarService: PersianCalendarService,
     private formBuilder: FormBuilder,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private mapService: MapService
   ) {}
 
   ngOnInit() {
@@ -89,7 +94,7 @@ export class SalesmenLocationPage implements OnInit {
         this.patchValue('accessRsm', true);
         if (flg == false) {
           this.patchValue('myUserType', 'rsm');
-          this.rsm_select();
+          this.rsmSelect();
           flg = true;
         }
       } else if (access.name == 'gps_asm') {
@@ -97,7 +102,7 @@ export class SalesmenLocationPage implements OnInit {
         if (flg == false) {
           this.patchValue('myUserType', 'asm');
 
-          this.asm_select();
+          this.asmSelect();
 
           flg = true;
         }
@@ -119,8 +124,49 @@ export class SalesmenLocationPage implements OnInit {
     });
   }
 
-  rsm_select() {}
-  asm_select() {}
+  rsmSelect() {
+    if (this.rsms.length) {
+    } else {
+      this.mapService
+        .getallChildrenUser(this.f.myUserID.value, 'rsm', ' ')
+        .subscribe((res) => {
+          this.selectedRsm = [];
+          this.rsms = res;
+          let userId = '';
+          this.rsms.forEach((v) => {
+            userId = userId + ',' + v.id;
+            this.selectedRsm.push(v.id);
+          });
+          this.rsmPoints = [];
+          this.smlRsmPoints();
+
+          this.asmSelect();
+        });
+    }
+  }
+
+  smlRsmPoints() {
+    this.mapService
+      .getallChildrenUser([], 'rsm', this.selectedRsm)
+      .subscribe((res) => {
+        this.userIds = [];
+        if (!res.length) return;
+        res.forEach((r) => this.userIds.push(r.id));
+        this.getSalesmanLocation();
+      });
+  }
+
+  getSalesmanLocation() {
+    this.mapService
+      .getSalesmenLocation(
+        this.userIds,
+        this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
+        1
+      )
+      .subscribe((data) => console.log(data));
+  }
+
+  asmSelect() {}
   ssv_select() {}
   sr_select() {}
 

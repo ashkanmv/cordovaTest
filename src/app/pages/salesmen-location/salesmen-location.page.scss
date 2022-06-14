@@ -148,10 +148,20 @@ ion-col{
             }
         }
         ion-select{
-            min-width: 100%;
+            min-width: 90%;
             height: 100%;
             position: absolute;
             right: 5rem;
+            &::part(placeholder){
+                font-size: 1.2rem;
+                padding-left: 40%;
+                font-weight: 600;
+            }
+            &::part(text){
+                margin-left: 10%;
+                font-size: 1.1rem;
+                max-width: 80%;
+            }
         }
         ion-item{
             --inner-border-width: 0;
