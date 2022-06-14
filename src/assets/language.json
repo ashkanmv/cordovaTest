@@ -83,7 +83,10 @@
         },
         "DatePicker":{
             "confirm":"Done",
-            "reset":"cancel"
+            "reset":"cancel",
+            "from":"From Date",
+            "to":"To Date"
+
         },
         "Loading_Truck_Status":{
             "Title":"Loading Truck Status",

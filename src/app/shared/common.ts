@@ -345,6 +345,8 @@ export class Language {
   DatePicker: {
     confirm: string;
     reset: string;
+    from: string;
+    to: string;
   };
   Loading_Truck_Status: {
     Title: string;
