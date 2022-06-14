@@ -85,7 +85,8 @@
             "confirm":"Done",
             "reset":"cancel",
             "from":"From Date",
-            "to":"To Date"
+            "to":"To Date",
+            "title":"Date"
 
         },
         "Loading_Truck_Status":{

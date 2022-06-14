@@ -58,9 +58,8 @@ ion-col.segment-change{
 
 
 // -------date picker
-
 ion-col{
-    .date-picker-container{
+    .date-picker-double-container{
         width: 100%;
         display: flex;
         justify-content: center;
@@ -75,37 +74,30 @@ ion-col{
         border-radius: 10px;
         padding-top: 1rem;
         .date-picker{
-            flex-wrap: nowrap;
             height: 6rem;
             width: 90%;
             display: flex;
             justify-content: space-between;
             border-radius: 20px;
             align-items: center;
-            padding-right: .5rem;
+            padding-right: 2rem;
             margin-bottom: 1rem;
-            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+            h4{
+                color: #cfcfcf;
+                margin-left: 1rem;
+          
+            }
             img{
                 max-height: 100%;
                 max-width: 100%;
             }
-            // ion-row.date-picker-outer{
-            // }
-            h4{
-                color: #cfcfcf;
-                margin-left: 1rem;
-                position: relative;
-                bottom: 8vh;
-                left: 10vw ;
-          
-            }
-            ion-col.date-picker-inner{
+            >div{
                 overflow: hidden;
                 width: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                color: #0095EB;
+                color:  var(--ion-color-primary);
                 font-size: 1.5rem;
                 font-weight: bold;
                 ion-icon{
@@ -117,13 +109,57 @@ ion-col{
         }
         }
     }
-    ion-modal{
-        --background: red;
-        .ion-page{
-            --width: 2rem;
+}
+
+ion-col{
+    .date-picker-container{
+        // width: 100vw;
+        height: 15rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .date-picker-box{
+        width: 90%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #6b6b6b;
+        border-radius: 10px;
+        padding-top: 1rem;
+        label{
+            font-size: 1.5rem;
+            color: #cfcfcf;
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
-        ion-buttons{
-            --background: red;
+        .date-picker{
+            height: 6rem;
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 20px;
+            align-items: center;
+            // padding: 1rem 2rem 1rem 0 ;
+            // padding-right: 2rem;
+            // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
+
+            img{
+                max-height: 100%;
+                max-width: 100%;
+            }
+            >ion-col{
+                color: #0095EB;
+                display: flex;
+                font-size: 1.5rem;
+                font-weight: bold;
+                ion-icon{
+                    color: #a9a9a9;
+                    padding: 0 1rem;
+
+                }
+            }
+        }
         }
     }
 }

@@ -347,6 +347,7 @@ export class Language {
     reset: string;
     from: string;
     to: string;
+    title: string;
   };
   Loading_Truck_Status: {
     Title: string;
