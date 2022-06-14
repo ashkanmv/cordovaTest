@@ -183,7 +183,7 @@ export class MapService {
 
   getSalesmenLocation(user_ids: any, date: string, IsLastLocation: number) {
     let params = new HttpParams();
-    params = params.append('user_ids', user_ids);
+    params = params.append('user_id', user_ids);
     params = params.append('datetime', date);
     params = params.append('IsLastLocation', IsLastLocation);
 

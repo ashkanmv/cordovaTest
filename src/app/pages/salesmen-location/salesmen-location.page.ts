@@ -145,6 +145,7 @@ export class SalesmenLocationPage implements OnInit {
             userId = userId + ',' + v.id;
             this.selectedRsm.push(v.id);
           });
+          this.patchValue('userId', userId);
           this.rsmPoints = [];
           this.smlRsmPoints();
 
@@ -160,11 +161,11 @@ export class SalesmenLocationPage implements OnInit {
         this.userIds = [];
         if (!res.length) return;
         res.forEach((r) => this.userIds.push(r.id));
-        this.getSalesmanLocation();
+        this.getSalesmenLocation();
       });
   }
 
-  getSalesmanLocation() {
+  getSalesmenLocation() {
     this.mapService
       .getSalesmenLocation(
         this.userIds,
