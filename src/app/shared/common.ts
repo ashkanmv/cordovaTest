@@ -357,6 +357,11 @@ export class Language {
     perKilo: String;
     perInvoices: string;
   };
+  Online_Sale_Days_Hourly: {
+    Title: string;
+    perKilo: String;
+    perInvoices: string;
+  };
 }
 
 export class CommonUtility {

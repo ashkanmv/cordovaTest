@@ -96,6 +96,11 @@
             "Title": "Online Daily Sales Hourly",
             "perKilo":"DSD HOURLY KILOGRAM",
             "perInvoices":"DSD HOURLY INVOICES"
+        },
+        "Online_Sale_Days_Hourly":{
+            "Title": "Online Sale for Days Hourly",
+            "perKilo":"DSD HOURLY KILOGRAM",
+            "perInvoices":"DSD HOURLY INVOICES"
         }
     },
     "FR": {
