@@ -54,7 +54,7 @@
       <ion-row class="date-picker-container">
         <ion-row class="date-picker-box">
           <label for="Date-picker"> Date</label>
-          <ion-row class="date-picker">
+          <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <ion-col id="open-modal" class="ion-justify-content-end">
               {{dateNow | date:'yyyy/MM/dd'}}
@@ -75,133 +75,105 @@
     <!-- =========================================== -->
     <ion-col class="salesmen-location-container">
       <div class="salesmen-location-box">
-        <ion-item class="salesmen-location box-shadow">
-          <ion-label>
-            <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
-            RSM
-            <ion-item>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              <ion-list>
-                <ion-radio-group
-                  allow-empty-selection
-                  name="auto"
-                  value="tesla"
-                >
-                  <ion-item>
-                    <ion-radio
-                      allow-empty-selection
-                      mode="md"
-                      value="RSM"
-                    ></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-item>
-          </ion-label>
-
-          <ion-select interface="popover">
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
+        <ion-item lines="none" class="salesmen-location lightBlue-shadow">
+          <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="RSM"
+            interface="popover"
+          >
+            <ion-select-option>1</ion-select-option>
+            <ion-select-option>2</ion-select-option>
           </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+          <ion-list class="radio-group-container">
+            <ion-radio-group allow-empty-selection name="" value="">
+              <ion-item>
+                <ion-radio
+                  allow-empty-selection
+                  mode="md"
+                  value="RSM"
+                ></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </ion-item>
+
+        <!--  -->
+      </div>
+      <div class="salesmen-location-box">
+        <ion-item lines="none" class="salesmen-location lightBlue-shadow">
+          <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="ASM"
+            interface="popover"
+          >
+            <ion-select-option>1</ion-select-option>
+            <ion-select-option>2</ion-select-option>
+          </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+          <ion-list class="radio-group-container">
+            <ion-radio-group allow-empty-selection name="" value="">
+              <ion-item>
+                <ion-radio
+                  allow-empty-selection
+                  mode="md"
+                  value="ASM"
+                ></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
         </ion-item>
       </div>
       <div class="salesmen-location-box">
-        <ion-item class="salesmen-location box-shadow">
-          <ion-label>
-            <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
-            ASM
-            <ion-item>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              <ion-list>
-                <ion-radio-group
-                  allow-empty-selection
-                  name="auto"
-                  value="tesla"
-                >
-                  <ion-item>
-                    <ion-radio
-                      allow-empty-selection
-                      mode="md"
-                      value="ASM"
-                    ></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-item>
-          </ion-label>
-
-          <ion-select interface="popover">
-            <ion-select-option slot="end" value="peperoni"
-              >Peperoni</ion-select-option
-            >
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
+        <ion-item lines="none" class="salesmen-location lightBlue-shadow">
+          <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="SSV"
+            interface="popover"
+          >
+            <ion-select-option>1</ion-select-option>
+            <ion-select-option>2</ion-select-option>
           </ion-select>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+          <ion-list class="radio-group-container">
+            <ion-radio-group allow-empty-selection name="" value="">
+              <ion-item>
+                <ion-radio
+                  allow-empty-selection
+                  mode="md"
+                  value="SSV"
+                ></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
         </ion-item>
       </div>
       <div class="salesmen-location-box">
-        <ion-item class="salesmen-location box-shadow">
-          <ion-label>
-            <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
-            SSV
-            <ion-item>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              <ion-list>
-                <ion-radio-group
-                  allow-empty-selection
-                  name="auto"
-                  value="tesla"
-                >
-                  <ion-item>
-                    <ion-radio
-                      allow-empty-selection
-                      mode="md"
-                      value="SSV"
-                    ></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-item>
-          </ion-label>
-
-          <ion-select interface="popover">
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
+        <ion-item lines="none" class="salesmen-location lightBlue-shadow">
+          <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
+          <ion-select
+            class="drop-down select-drop-down"
+            placeholder="SR"
+            interface="popover"
+          >
+            <ion-select-option>1</ion-select-option>
+            <ion-select-option>2</ion-select-option>
           </ion-select>
-        </ion-item>
-      </div>
-      <div class="salesmen-location-box">
-        <ion-item class="salesmen-location box-shadow">
-          <ion-label>
-            <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
-            SR
-            <ion-item>
-              <ion-icon name="chevron-down-outline"></ion-icon>
-              <ion-list>
-                <ion-radio-group
+          <ion-icon name="chevron-down-outline"></ion-icon>
+          <ion-list class="radio-group-container">
+            <ion-radio-group allow-empty-selection name="" value="">
+              <ion-item>
+                <ion-radio
                   allow-empty-selection
-                  name="auto"
-                  value="tesla"
-                >
-                  <ion-item>
-                    <ion-radio
-                      allow-empty-selection
-                      mode="md"
-                      value="SR"
-                    ></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-item>
-          </ion-label>
-
-          <ion-select interface="popover">
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            <ion-select-option value="peperoni">Peperoni</ion-select-option>
-          </ion-select>
+                  mode="md"
+                  value="SR"
+                ></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
         </ion-item>
       </div>
     </ion-col>
