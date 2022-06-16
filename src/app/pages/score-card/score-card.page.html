@@ -66,54 +66,28 @@
   <ion-col class="category-page" *ngIf="selectedSegment == 'category'">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <button class="search-submit primary-bg">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
-        <input
-          type="search"
-          name=""
-          id="trigger-search"
-          placeholder="Search"
-          class="search input-shadow"
-        />
-        <ion-popover class="popover search-popover" trigger="trigger-search">
-          <ng-template>
-            <ion-item>
-              <label for="select-all">SELECT ALL</label>
-              <ion-checkbox slot="end" value="select-all"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="esfahan">ESFAHAN</label>
-              <ion-checkbox slot="end" value="esfahan"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="rasht">RASHT</label>
-              <ion-checkbox slot="end" value="rasht"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="tehran">TEHRAN</label>
-              <ion-checkbox slot="end" value="tehran"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="karaj">KARAJ</label>
-              <ion-checkbox slot="end" value="karaj"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="shiraz">SHIRAZ</label>
-              <ion-checkbox slot="end" value="shiraz"></ion-checkbox>
-            </ion-item>
-          </ng-template>
-        </ion-popover>
-        <span class="search-icon">
-          <ion-icon name="chevron-down-outline"></ion-icon>
-        </span>
+        <ion-item class="lightBlue-shadow">
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <ion-select multiple="true" interface="popover">
+            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+            <ion-select-option value="rasht">RASHT</ion-select-option>
+            <ion-select-option value="tehran">TEHRAN</ion-select-option>
+            <ion-select-option value="karaj">KARAJ</ion-select-option>
+            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          </ion-select>
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
       </ion-row>
     </ion-col>
 
     <ion-col class="radio-input">
       <ion-row class="radio-input-container ion-justify-content-center">
         <div class="radio-input-box">
-          <div class="radio-input input-shadow">
+          <div class="radio-input lightBlue-shadow">
             <div class="">
               <label for="sales">Sales</label>
               <input type="radio" name="radio-input-1" id="" />
@@ -250,7 +224,7 @@
           name=""
           id="trigger-search"
           placeholder="Search"
-          class="search search-customer-history input-shadow"
+          class="search search-customer-history lightBlue-shadow"
         />
         <ion-popover class="popover search-popover" trigger="trigger-search">
           <ng-template>

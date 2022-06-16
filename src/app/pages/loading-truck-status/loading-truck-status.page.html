@@ -51,7 +51,7 @@
     <ion-row class="date-picker-container">
       <ion-row class="date-picker-box">
         <label for="Date-picker">{{language.DatePicker.title}}</label>
-        <ion-row class="date-picker box-shadow">
+        <ion-row class="date-picker lightBlue-shadow">
           <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
           <ion-col id="open-popover" class="ion-justify-content-end">
             {{dateNow | date:'yyyy/MM/dd'}}
@@ -83,7 +83,7 @@
   </ion-col>
   <ion-col class="search-bar">
     <ion-row class="search-box ion-justify-content-center">
-      <ion-item class="box-shadow">
+      <ion-item class="lightBlue-shadow">
         <button class="search-submit primary-bg">
           <ion-icon name="search-outline"></ion-icon>
         </button>
@@ -127,10 +127,10 @@
         </tr>
         <div *ngIf="IsDetailsShowing" class="table-detail">
           <div class="border">
-            <table class="">
+            <table class="lightBlue-shadow">
               <tbody
                 *ngFor="let mockDetailData of routeVisitorDetailData; let i = index;"
-                [ngClass]="{'oddRowsDetails': 0 === i % 2}"
+                [ngClass]="{'oddRows': 0 === i % 2}"
               >
                 <tr>
                   <td><span>Name:</span> {{mockDetailData.Name}}</td>

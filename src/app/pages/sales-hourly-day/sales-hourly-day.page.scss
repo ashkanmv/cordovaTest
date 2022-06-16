@@ -37,11 +37,7 @@ ion-col.segment-change{
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
-            .segment-button-checked{
-                ion-label{
-                    color: red;
-                }
-            }
+           
             ion-label{
                 font-size: 3vw;
                 font-weight: bold;
@@ -140,10 +136,6 @@ ion-col{
             justify-content: space-between;
             border-radius: 20px;
             align-items: center;
-            // padding: 1rem 2rem 1rem 0 ;
-            // padding-right: 2rem;
-            // box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-
             img{
                 max-height: 100%;
                 max-width: 100%;
@@ -177,6 +169,7 @@ ion-col{
         margin: 3vh 4vw;
         &>ion-item{
             --background: none;
+            --padding-start:0;
             width: 90%;
             border-radius: 10px;
             --border-width:0;

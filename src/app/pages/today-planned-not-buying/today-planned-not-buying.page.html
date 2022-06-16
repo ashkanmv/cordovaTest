@@ -9,8 +9,7 @@
           ></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="2"> </ion-col>
-      <ion-col size="7" class="ion-text-start ion-align-self-center">
+      <ion-col size="8" class="ion-text-start ion-align-self-center">
         <ion-title class="ion-no-padding white-text ion-align-self-center"
           ><h3>Today Planned/Not Buying</h3>
         </ion-title>
@@ -47,7 +46,7 @@
     <ion-row class="date-picker-container">
       <ion-row id="open-modal" class="date-picker-box">
         <label for="Date-picker"> Date</label>
-        <ion-row class="date-picker box-shadow">
+        <ion-row class="date-picker lightBlue-shadow">
           <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
           <ion-col class="ion-justify-content-end">
             {{dateNow | date:'yyyy/MM/dd'}}
@@ -67,96 +66,49 @@
     </ion-popover>
     <!--  -->
   </ion-col>
-  <ion-row class="search-container ion-justify-content-center">
-    <ion-item class="search-box">
-      <ion-row class="search-box-outer">
-        <ion-col class="box-shadow" size="12">
-          <ion-item class="search-select-city">
-            <button class="search-submit primary-bg">
-              <ion-icon name="search-outline"></ion-icon>
-            </button>
-            <ion-select multiple="true" interface="popover">
-              <ion-select-option>SELECT ALL</ion-select-option>
-              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-              <ion-select-option value="rasht">RASHT</ion-select-option>
-              <ion-select-option value="tehran">TEHRAN</ion-select-option>
-              <ion-select-option value="karaj">KARAJ</ion-select-option>
-              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-            </ion-select>
-            <span class="search-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </span>
-          </ion-item>
-        </ion-col>
-        <ion-col class="box-shadow" size="12"
-          ><ion-item class="search-select-rating">
-            <button class="search-submit primary-bg">
-              <ion-icon name="search-outline"></ion-icon>
-            </button>
-            <ion-select
-              cssClass="my-custom-interface"
-              multiple="true"
-              interface="popover"
-            >
-              <ion-select-option>SELECT ALL</ion-select-option>
-              <ion-select-option value="rated-a+">A+</ion-select-option>
-              <ion-select-option value="rated-a">A</ion-select-option>
-              <ion-select-option value="rated-b">B</ion-select-option>
-              <ion-select-option value="rated-c">C</ion-select-option>
-              <ion-select-option value="rated-c">C</ion-select-option>
-            </ion-select>
-            <span class="search-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </span> </ion-item
-        ></ion-col>
-      </ion-row>
-    </ion-item>
-  </ion-row>
-  <!-- <ion-col class="search-bar">
-    <ion-row class="search-container ion-justify-content-center">
-      <ion-item class="search-box">
-        <ion-item class="search-select-city">
-          <button class="search-submit primary-bg">
-            <ion-icon name="search-outline"></ion-icon>
-          </button>
-          <ion-select multiple="true" interface="popover">
-            <ion-select-option>SELECT ALL</ion-select-option>
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-          </ion-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
-        </ion-item>
-      </ion-item>
-      <ion-item class="search-box">
-        <ion-item class="search-select-rating">
-          <button class="search-submit primary-bg">
-            <ion-icon name="search-outline"></ion-icon>
-          </button>
-          <ion-select
-            cssClass="my-custom-interface"
-            multiple="true"
-            interface="popover"
-          >
-            <ion-select-option>SELECT ALL</ion-select-option>
-            <ion-select-option value="rated-a+">A+</ion-select-option>
-            <ion-select-option value="rated-a">A</ion-select-option>
-            <ion-select-option value="rated-b">B</ion-select-option>
-            <ion-select-option value="rated-c">C</ion-select-option>
-            <ion-select-option value="rated-c">C</ion-select-option>
-          </ion-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
-        </ion-item>
-      </ion-item>
+  <ion-col class="ion-justify-content-center">
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <ion-col size="12" class="ion-justify-content-center">
+            <ion-item class="search-container lightBlue-shadow">
+              <button class="search-submit primary-bg">
+                <ion-icon name="search-outline"></ion-icon>
+              </button>
+              <ion-select multiple="true" interface="popover">
+                <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+                <ion-select-option value="rasht">RASHT</ion-select-option>
+                <ion-select-option value="tehran">TEHRAN</ion-select-option>
+                <ion-select-option value="karaj">KARAJ</ion-select-option>
+                <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+              </ion-select>
+              <span class="search-icon">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </span>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" class="ion-justify-content-center">
+            <ion-item class="search-container lightBlue-shadow">
+              <button class="search-submit primary-bg">
+                <ion-icon name="search-outline"></ion-icon>
+              </button>
+              <ion-select multiple="true" interface="popover">
+                <ion-select-option value="rated-a+">A+</ion-select-option>
+                <ion-select-option value="rated-a">A</ion-select-option>
+                <ion-select-option value="rated-b">B</ion-select-option>
+                <ion-select-option value="rated-c">C</ion-select-option>
+                <ion-select-option value="rated-c">C</ion-select-option>
+              </ion-select>
+              <span class="search-icon">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </span>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
     </ion-row>
-  </ion-col> -->
-  <!--  -->
+  </ion-col>
+
   <ion-col>
     <table class="table">
       <thead class="table-head">
@@ -180,7 +132,7 @@
         </tr>
         <div *ngIf="Is1DetailsShowing" class="table-detail">
           <div class="border">
-            <table class="">
+            <table class="lightBlue-shadow">
               <tbody
                 *ngFor="let mockDetailData of routeVisitorDetailData; let i = index;"
                 [ngClass]="{'oddRowsDetails': 0 === i % 2}"
