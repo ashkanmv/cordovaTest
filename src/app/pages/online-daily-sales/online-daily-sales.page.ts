@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, Platform } from '@ionic/angular';
 import { getSrSalesUsersResponse } from 'src/app/shared/common';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSaleService } from './sr-sale.service';
 
@@ -41,7 +42,10 @@ export class OnlineDailySalesPage implements OnInit {
     private router: Router,
     private loadingCtrl: LoadingController,
     private storageSevice: StorageService,
-    private srSalesService: SrSaleService
+    private srSalesService: SrSaleService,
+    private SharedService: SharedService,
+    private platform: Platform,
+    private alertCtrl: AlertController
   ) {}
 
   ngOnInit() {
@@ -252,5 +256,84 @@ export class OnlineDailySalesPage implements OnInit {
   tableDetails(item) {
     console.log(item);
     return typeof item == 'number' ? true : false;
+  }
+  //
+
+  async showAlert() {
+    if (!this.dropdownList.length) {
+      this.SharedService.toast('danger', 'کافه مورد نظر را انتخاب کنید');
+      return;
+    }
+    this.prepareInput();
+    let buttons = [
+      {
+        text: 'همه',
+        cssClass: 'all-none-button',
+        handler: () => {
+          alert.inputs = alert.inputs.map((checkbox) => {
+            checkbox.checked = true;
+            return checkbox;
+          });
+
+          return false;
+        },
+      },
+      {
+        text: 'هیچکدام',
+        cssClass: 'all-none-button',
+        handler: () => {
+          alert.inputs = alert.inputs.map((checkbox) => {
+            checkbox.checked = false;
+            return checkbox;
+          });
+          return false;
+        },
+      },
+      {
+        text: 'باشه',
+        handler: (data) => {
+          console.log(data);
+        },
+      },
+      {
+        text: 'بیخیال',
+        role: 'cancel',
+      },
+    ];
+
+    // adjust button order in four button layout for ios
+    if (this.platform.is('ios')) {
+      const okButton = { ...buttons[2] };
+      const cancelButton = { ...buttons[3] };
+      buttons = [buttons[0], buttons[1], cancelButton, okButton];
+    }
+
+    const alert = await this.alertCtrl.create({
+      header: 'انتخاب کاربر',
+      inputs: this.input,
+      cssClass: 'four-button-alert',
+      buttons: [...buttons],
+    });
+
+    await alert.present();
+  }
+
+  input = [];
+  prepareInput() {
+    if (!this.dropdownList.length) {
+      this.SharedService.toast('danger', 'کافه مورد نظر را انتخاب کنید');
+      return;
+    }
+    this.input = [];
+    this.dropdownList.forEach((u) =>
+      this.input.push({
+        label: u.itemName,
+        type: 'checkbox',
+        value: u.id,
+        checked: false,
+      })
+    );
+
+    this.loadingCtrl.dismiss();
   }
 }
