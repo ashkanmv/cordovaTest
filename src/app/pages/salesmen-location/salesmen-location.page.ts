@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Data, Router } from '@angular/router';
-import { IonDatetime, PopoverController } from '@ionic/angular';
 import { MapService } from 'src/app/map/map.service';
+import { IonDatetime, PopoverController } from '@ionic/angular';
 import { Language } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { LanguageService } from 'src/app/shared/language.service';
@@ -118,14 +118,14 @@ export class SalesmenLocationPage implements OnInit {
         this.patchValue('accessSsv', true);
         if (flg == false) {
           this.patchValue('myUserType', 'ssv');
-          this.ssv_select();
+          this.ssvSelect();
           flg = true;
         }
       } else if (access.name == 'gps_sr') {
         this.patchValue('accessSr', true);
         if (flg == false) {
           this.patchValue('myUserType', 'sr');
-          this.sr_select();
+          this.srSelect();
           flg = true;
         }
       }
@@ -137,7 +137,7 @@ export class SalesmenLocationPage implements OnInit {
     } else {
       this.mapService
         .getallChildrenUser(this.f.myUserID.value, 'rsm', ' ')
-        .subscribe((res) => {
+        .subscribe((res: Data[]) => {
           this.selectedRsm = [];
           this.rsms = res;
           let userId = '';
@@ -145,6 +145,7 @@ export class SalesmenLocationPage implements OnInit {
             userId = userId + ',' + v.id;
             this.selectedRsm.push(v.id);
           });
+          this.patchValue('userId', userId);
           this.rsmPoints = [];
           this.smlRsmPoints();
 
@@ -156,15 +157,15 @@ export class SalesmenLocationPage implements OnInit {
   smlRsmPoints() {
     this.mapService
       .getallChildrenUser([], 'rsm', this.selectedRsm)
-      .subscribe((res) => {
+      .subscribe((res: Data[]) => {
         this.userIds = [];
         if (!res.length) return;
         res.forEach((r) => this.userIds.push(r.id));
-        this.getSalesmanLocation();
+        this.getSalesmenLocation();
       });
   }
 
-  getSalesmanLocation() {
+  getSalesmenLocation() {
     this.mapService
       .getSalesmenLocation(
         this.userIds,
@@ -175,8 +176,8 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   asmSelect() {}
-  ssv_select() {}
-  sr_select() {}
+  ssvSelect() {}
+  srSelect() {}
 
   async presentPopover(ev: any) {
     const popover = await this.popoverctrl.create({

@@ -107,7 +107,6 @@ export class MapService {
     environment.BaseURL + '/api/v1/gps/srNearPointsLatlng';
   private allChildrenUser =
     environment.BaseURL + '/api/v1/users/getallchildren';
-
   private salesmenlocation =
     environment.BaseURL + '/api/v1/visitorpoints/salesmenlocation';
 
@@ -182,6 +181,34 @@ export class MapService {
     return this.http.get<GetSrInfoResponse[]>(this.srinfoUrl, { params });
   }
 
+  getSalesmenLocation(user_ids: any, date: string, IsLastLocation: number) {
+    let params = new HttpParams();
+    params = params.append('user_id', user_ids);
+    params = params.append('datetime', date);
+    params = params.append('IsLastLocation', IsLastLocation);
+
+    return this.http.get(this.salesmenlocation, { params });
+  }
+  getallChildrenUser(
+    ParentUserID: any,
+    UserType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin',
+    UserIDs: string
+  ) {
+    if (UserIDs == undefined) {
+      UserIDs = ' ';
+    }
+    if (ParentUserID.length == 0) {
+      ParentUserID = ' ';
+    }
+
+    let params = new HttpParams();
+    params = params.append('ParentUserID', ParentUserID);
+    params = params.append('UserType', UserType);
+    params = params.append('UserIDs', UserIDs);
+
+    return this.http.get(this.allChildrenUser, { params });
+  }
+
   getDc() {
     return this.http.get(this.dcUrl);
   }
@@ -228,37 +255,6 @@ export class MapService {
     return this.http.get<getVPByRouteResponse[]>(this.visitorPointUrlUser, {
       params,
     });
-  }
-
-  getSalesmenLocation(user_ids: any, date: string, IsLastLocation: number) {
-    let params = new HttpParams();
-    params = params.append('user_id', user_ids);
-    params = params.append('datetime', date);
-    params = params.append('IsLastLocation', IsLastLocation);
-
-    return this.http.get(this.salesmenlocation, { params });
-  }
-
-  getallChildrenUser(
-    ParentUserID: any,
-    UserType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin',
-    UserIDs: string
-  ) {
-    if (UserIDs == undefined) {
-      UserIDs = ' ';
-    }
-    if (ParentUserID.length == 0) {
-      ParentUserID = ' ';
-    }
-    let params = new HttpParams();
-    params = params.append('ParentUserID', ParentUserID);
-    params = params.append('UserType', UserType);
-    params = params.append('UserIDs', UserIDs);
-
-    return this.http.get<{ FullName: string; id: number }[]>(
-      this.allChildrenUser,
-      { params }
-    );
   }
 
   // private handleError(error: any) {
