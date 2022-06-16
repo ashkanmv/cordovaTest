@@ -1,0 +1,217 @@
+<ion-header>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row
+      class="primary-bg ion-justify-content-between header ion-no-margin"
+    >
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" routerLink="/main">
+          <ion-img
+            class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+
+      <ion-col size="8" class="ion-text-center ion-align-self-center">
+        <ion-title class="white-text">
+          <h3><b>{{language.Online_Sales_Hourly.Title}}</b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col class="ion-align-self-center reload" size="1">
+        <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
+        </ion-img>
+      </ion-col>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img
+          class="wifi-online"
+          src="\assets\mainPage\main\wifi.png"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  <ion-grid class="secondary-bg white-text">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="3" class="ion-no-padding ion-text-start">
+        2022.04.02
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-center">
+        Saturday
+      </ion-col>
+      <ion-col size="3" class="ion-no-padding ion-text-end">
+        13 فروردین
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-col class="ion-no-padding segment-change">
+    <ion-segment
+      mode="md"
+      class="ion-justify-content-between"
+      (ionChange)="segmentChanged($event)"
+      value="per-kilo"
+    >
+      <ion-segment-button class="per-kilo" value="per-kilo">
+        <ion-label>{{language.Online_Sales_Hourly.perKilo}}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="per-invoices" value="per-invoices">
+        <ion-label>{{language.Online_Sales_Hourly.perInvoices}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-col>
+</ion-header>
+<!-- -------------------------------per-invoices----------------------------------------- -->
+<!-- -------------------------------per-invoices----------------------------------------- -->
+<!-- -------------------------------per-invoices----------------------------------------- -->
+<ion-content>
+  <ion-col
+    class="per-invoices-segment"
+    *ngIf="selectedSegment == 'per-invoices'"
+  >
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <ion-item class="box-shadow">
+            <button class="search-submit primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <ion-select multiple="true" interface="popover">
+              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
+              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+              <ion-select-option value="rasht">RASHT</ion-select-option>
+              <ion-select-option value="tehran">TEHRAN</ion-select-option>
+              <ion-select-option value="karaj">KARAJ</ion-select-option>
+              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+            </ion-select>
+            <span class="search-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </span>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!-- -----------------------table -->
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <table>
+          <thead>
+            <th class="route"><span>Route</span></th>
+            <th>0-8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+            <th>16-24</th>
+            <th>Total</th>
+          </thead>
+          <tbody
+            *ngFor="let nData of invoicesData; let i = index"
+            [ngClass]="{'oddRows' : 0 === i % 2 }"
+          >
+            <tr (click)="toggleNestedTabelRow_1()">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon>{{nData.route}}
+              </td>
+              <td>{{nData. zeroToEight}}</td>
+              <td>{{nData.nine}}</td>
+              <td>{{nData.ten}}</td>
+              <td>{{nData.eleven}}</td>
+              <td>{{nData.twelve}}</td>
+              <td>{{nData.thirteen}}</td>
+              <td>{{nData.fourteen}}</td>
+              <td>{{nData.fifteen}}</td>
+              <td>{{nData.sixteenToTwentyFour}}</td>
+              <td>{{nData.total}}</td>
+            </tr>
+            <div *ngIf="nestedTableIsShowingRow_1" class="routeDetails">
+              <div
+                class="routeDetail ion-align-items-center ion-justify-content-center"
+              >
+                {{nData.route}} => person
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+  <!-- -------------------------------per-kilo----------------------------------------- -->
+  <!-- -------------------------------per-kilo----------------------------------------- -->
+  <!-- -------------------------------per-kilo----------------------------------------- -->
+  <ion-col class="per-kilo-segment" *ngIf="selectedSegment == 'per-kilo'">
+    <!-- ------------------search_bar -->
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <ion-item class="box-shadow">
+            <button class="search-submit primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <ion-select multiple="true" interface="popover">
+              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
+              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+              <ion-select-option value="rasht">RASHT</ion-select-option>
+              <ion-select-option value="tehran">TEHRAN</ion-select-option>
+              <ion-select-option value="karaj">KARAJ</ion-select-option>
+              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+            </ion-select>
+            <span class="search-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </span>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!-- -----------------------table -->
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <table>
+          <thead>
+            <th class="route"><span>Route</span></th>
+            <th>0-8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+            <th>16-24</th>
+            <th>Total</th>
+          </thead>
+          <tbody
+            *ngFor="let data of invoicesData; let i = index"
+            [ngClass]="{'oddRows' : 0 === i % 2 }"
+          >
+            <tr (click)="toggleNestedTabelRow_1()">
+              <td class="table-darker-bg">
+                <ion-icon name="chevron-down-outline"></ion-icon>{{data.route}}
+              </td>
+              <td>{{data. zeroToEight}}</td>
+              <td>{{data.nine}}</td>
+              <td>{{data.ten}}</td>
+              <td>{{data.eleven}}</td>
+              <td>{{data.twelve}}</td>
+              <td>{{data.thirteen}}</td>
+              <td>{{data.fourteen}}</td>
+              <td>{{data.fifteen}}</td>
+              <td>{{data.sixteenToTwentyFour}}</td>
+              <td>{{data.total}}</td>
+            </tr>
+            <div *ngIf="nestedTableIsShowingRow_1" class="routeDetails">
+              <div
+                class="routeDetail ion-align-items-center ion-justify-content-center"
+              >
+                {{data.route}} => person
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-content>
+
+<!-- ----------------------- -->

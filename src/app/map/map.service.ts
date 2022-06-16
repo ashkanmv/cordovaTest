@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { GetInvoicedResponse, GetSrInfoResponse, GetSrRouteResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, getVPByRouteResponse, Shop, VisitedNotBuyResponse } from '../shared/common';
+import {
+  GetInvoicedResponse,
+  GetSrInfoResponse,
+  GetSrRouteResponse,
+  getUserCildrenResponse,
+  GetVehicleByRouteTimeResponse,
+  getVPByRouteResponse,
+  Shop,
+  VisitedNotBuyResponse,
+} from '../shared/common';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IconOptions, PolylineOptions } from 'leaflet';
 
@@ -10,72 +19,72 @@ import { IconOptions, PolylineOptions } from 'leaflet';
 })
 export class MapService {
   geoapifyAPIKey = '5908d42d2c0344b2af400a77ab03ed10';
-  shop_point : IconOptions = {
+  shop_point: IconOptions = {
     iconUrl: 'assets/icon/shop_green.png',
-    iconSize: [30, 30]
+    iconSize: [30, 30],
   };
-  shop_NotBuyWeeks : IconOptions = {
+  shop_NotBuyWeeks: IconOptions = {
     iconUrl: 'assets/icon/shop_green_x.png',
-    iconSize: [30, 30]
+    iconSize: [30, 30],
   };
-  shop_Max_PPED : IconOptions = {
+  shop_Max_PPED: IconOptions = {
     iconUrl: 'assets/icon/shop_green_circle.png',
-    iconSize: [30, 30]
+    iconSize: [30, 30],
   };
-  shop_Max_PPED_NotBuy : IconOptions = {
+  shop_Max_PPED_NotBuy: IconOptions = {
     iconUrl: 'assets/icon/shop_green_circle_x.png',
-    iconSize: [30, 30]
+    iconSize: [30, 30],
   };
-  shop_Month_Promotion : IconOptions = {
+  shop_Month_Promotion: IconOptions = {
     iconUrl: 'assets/icon/shop_blue.png',
-    iconSize: [30, 30]
+    iconSize: [30, 30],
   };
-  shop_Promo_NotBuyWeeks : IconOptions = {
+  shop_Promo_NotBuyWeeks: IconOptions = {
     iconUrl: 'assets/icon/shop_blue_x.png',
-    iconSize: [30, 30]
+    iconSize: [30, 30],
   };
-  shop_Promo_Max_PPED : IconOptions = {
+  shop_Promo_Max_PPED: IconOptions = {
     iconUrl: 'assets/icon/shop_blue_circle.png',
-    iconSize: [30, 30]
+    iconSize: [30, 30],
   };
-  shop_Promo_Max_PPED_NotBuy : IconOptions = {
+  shop_Promo_Max_PPED_NotBuy: IconOptions = {
     iconUrl: 'assets/icon/shop_blue_circle_x.png',
-    iconSize: [30, 30]
+    iconSize: [30, 30],
   };
-  SalesManIcon : IconOptions = {
+  SalesManIcon: IconOptions = {
     iconUrl: 'assets/icon/salesman.png',
-    iconSize: [30, 30]
-  }
-  SalesManPolylineOption : PolylineOptions = {
+    iconSize: [30, 30],
+  };
+  SalesManPolylineOption: PolylineOptions = {
     color: '#A0522D',
     opacity: 1,
-    weight: 2
-  }
-  TruckIcon : IconOptions = {
+    weight: 2,
+  };
+  TruckIcon: IconOptions = {
     iconUrl: 'assets/icon/truck.png',
-    iconSize: [30, 30]
-  }
-  TruckPolylineOption : PolylineOptions = {
+    iconSize: [30, 30],
+  };
+  TruckPolylineOption: PolylineOptions = {
     color: '#6495ED',
     opacity: 1,
-    weight: 2
-  }
-  shop_red : IconOptions = {
+    weight: 2,
+  };
+  shop_red: IconOptions = {
     iconUrl: 'assets/icon/shop_red.png',
-    iconSize: [30, 30]
-  }
-  shop_red_black_circle : IconOptions = {
+    iconSize: [30, 30],
+  };
+  shop_red_black_circle: IconOptions = {
     iconUrl: 'assets/icon/shop_red_black_circle.png',
-    iconSize: [30, 30]
-  }
-  shop_blue : IconOptions = {
+    iconSize: [30, 30],
+  };
+  shop_blue: IconOptions = {
     iconUrl: 'assets/icon/shop_blue.png',
-    iconSize: [30, 30]
-  }
-  shop_orange : IconOptions = {
+    iconSize: [30, 30],
+  };
+  shop_orange: IconOptions = {
     iconUrl: 'assets/icon/shop_orange.png',
-    iconSize: [30, 30]
-  }
+    iconSize: [30, 30],
+  };
 
   mapInitialized = new Subject();
   clearMarkers = new Subject();
@@ -94,9 +103,14 @@ export class MapService {
   private UserCildren = environment.BaseURL + '/api/v1/users/getchildren';
   private SrRoute = environment.BaseURL + '/api/v1/routes/getsrroute';
   private srNearPoints = environment.BaseURL + '/api/v1/gps/srNearPoints';
-  private srNearPointsLatlng = environment.BaseURL + '/api/v1/gps/srNearPointsLatlng';
+  private srNearPointsLatlng =
+    environment.BaseURL + '/api/v1/gps/srNearPointsLatlng';
+  private allChildrenUser =
+    environment.BaseURL + '/api/v1/users/getallchildren';
+  private salesmenlocation =
+    environment.BaseURL + '/api/v1/visitorpoints/salesmenlocation';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getVehicleByRouteTime(
     route_code: string,
@@ -108,7 +122,9 @@ export class MapService {
     params = params.append('time_first', time_first);
     params = params.append('time_end', time_end);
 
-    return this.http.get<GetVehicleByRouteTimeResponse[]>(this.vehicleUrl, { params });
+    return this.http.get<GetVehicleByRouteTimeResponse[]>(this.vehicleUrl, {
+      params,
+    });
   }
 
   getShopPointByRouteName(route_code: string, selected_date: string) {
@@ -124,7 +140,7 @@ export class MapService {
     params = params.append('route_code', route_code);
     params = params.append('distance', distance);
 
-    return this.http.get(this.srNearPoints, { params })
+    return this.http.get(this.srNearPoints, { params });
   }
   getShopsrNearPointsLatlng(lat: number, lng: number, distance: number) {
     let params = new HttpParams();
@@ -132,7 +148,7 @@ export class MapService {
     params = params.append('lng', lng);
     params = params.append('distance', distance);
 
-    return this.http.get<Shop[]>(this.srNearPointsLatlng, { params })
+    return this.http.get<Shop[]>(this.srNearPointsLatlng, { params });
   }
 
   getInvoiced(cust_codes: string, selected_date: string) {
@@ -152,7 +168,9 @@ export class MapService {
     let params = new HttpParams();
     params = params.append('routecode', routecode);
     params = params.append('date', selected_date);
-    return this.http.get<VisitedNotBuyResponse[]>(this.visitednotbuy, { params });
+    return this.http.get<VisitedNotBuyResponse[]>(this.visitednotbuy, {
+      params,
+    });
   }
 
   getSrInfo(route_code: number, date: string, userId: string) {
@@ -161,6 +179,34 @@ export class MapService {
     params = params.append('date', date);
     params = params.append('useriD', userId);
     return this.http.get<GetSrInfoResponse[]>(this.srinfoUrl, { params });
+  }
+
+  getSalesmenLocation(user_ids: any, date: string, IsLastLocation: number) {
+    let params = new HttpParams();
+    params = params.append('user_id', user_ids);
+    params = params.append('datetime', date);
+    params = params.append('IsLastLocation', IsLastLocation);
+
+    return this.http.get(this.salesmenlocation, { params });
+  }
+  getallChildrenUser(
+    ParentUserID: any,
+    UserType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin',
+    UserIDs: string
+  ) {
+    if (UserIDs == undefined) {
+      UserIDs = ' ';
+    }
+    if (ParentUserID.length == 0) {
+      ParentUserID = ' ';
+    }
+
+    let params = new HttpParams();
+    params = params.append('ParentUserID', ParentUserID);
+    params = params.append('UserType', UserType);
+    params = params.append('UserIDs', UserIDs);
+
+    return this.http.get(this.allChildrenUser, { params });
   }
 
   getDc() {
@@ -176,7 +222,9 @@ export class MapService {
   getUserCildren(user: string) {
     let params = new HttpParams();
     params = params.append('user', user);
-    return this.http.get<getUserCildrenResponse[]>(this.UserCildren, { params });
+    return this.http.get<getUserCildrenResponse[]>(this.UserCildren, {
+      params,
+    });
   }
 
   getSrRoute(user: string, date: string) {
@@ -204,7 +252,9 @@ export class MapService {
     params = params.append('time_first', time_first);
     params = params.append('time_end', time_end);
     params = params.append('useriD', userId);
-    return this.http.get<getVPByRouteResponse[]>(this.visitorPointUrlUser, { params });
+    return this.http.get<getVPByRouteResponse[]>(this.visitorPointUrlUser, {
+      params,
+    });
   }
 
   // private handleError(error: any) {

@@ -345,13 +345,32 @@ export class Language {
   DatePicker: {
     confirm: string;
     reset: string;
+    from: string;
+    to: string;
+    title: string;
   };
   Loading_Truck_Status: {
     Title: string;
     date_title: string;
   };
+  Online_Sales_Hourly: {
+    Title: string;
+    perKilo: String;
+    perInvoices: string;
+  };
+  Online_Sale_Days_Hourly: {
+    Title: string;
+    perKilo: String;
+    perInvoices: string;
+  };
+  Salesmen_Location: {
+    Title: string;
+    managerRed: string;
+    managerGreen: string;
+    managerYellow: string;
+    managerBlue: string;
+  };
 }
-
 
 export class CommonUtility {
   static getInvoicedDate(selected_date: any) {

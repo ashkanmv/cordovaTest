@@ -1,5 +1,5 @@
 ion-toolbar {
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 
@@ -28,7 +28,7 @@ ion-title {
 ion-input{
     --padding-start : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
 
 
@@ -37,7 +37,7 @@ ion-col{
     display: flex;
     justify-content: center;
     h4{
-        color: #fff;
+        color: var(--ion-color-light);
         
     }
 }
@@ -122,6 +122,6 @@ ion-row.item-submit{
         border-radius: 50px;
         width: 100%;
         font-size: 1.7rem;
-        color: #fff;
+        color: var(--ion-color-light);
     }
 }

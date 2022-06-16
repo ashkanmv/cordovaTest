@@ -1,7 +1,7 @@
 // to do change search bar
 
 ion-toolbar ion-row{
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 ion-toolbar.ios{
@@ -9,7 +9,7 @@ ion-toolbar.ios{
 }
 
 ion-content {
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 
@@ -21,13 +21,13 @@ ion-title {
     }
 }
 ion-item{
-    --background: #fff;
+    --background: var(--ion-color-light);
 }
 
 ion-input{
     --padding-stsart : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
 
 ion-img{
@@ -84,13 +84,13 @@ ion-content{
     // --padding-start: 1.7rem ;
     &:hover{
         // --background:#0095EB;
-        --color:#000 ;
+        --color:var(--ion-color-dark) ;
     }
     
 }
 ion-content.select-input-popover-title{
     cursor:auto;
-    --color:#000 ;
+    --color:var(--ion-color-dark) ;
     text-align: center;
     border-bottom: 2px dashed #8f8f8f;
     font-weight: bold;
@@ -129,7 +129,7 @@ ion-col.DSD-page{
 
 
 .search-box{
-    border: 1px solid #000;
+    border: 1px solid var(--ion-color-dark);
     border-radius: 10px;
     padding: 2rem 0;
     margin: 3rem 3rem 0;
@@ -139,7 +139,7 @@ ion-col.DSD-page{
         height: 5rem;
         border-radius: 10px 0 0 10px;
         ion-icon{
-            color: #fff;
+            color: var(--ion-color-light);
             font-size: 1.5rem; 
         }
     }
@@ -185,7 +185,7 @@ ion-col{
             align-items: center;
             width: 88vw;
             height: 20vh;
-            border: 1px solid #000;
+            border: 1px solid var(--ion-color-dark);
             border-radius: 10px;
             .radio-input{
                 // box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
@@ -244,7 +244,7 @@ table{
     .table-head{
         .table-head-content{
             font-weight: bold;
-            color: #000;
+            color: var(--ion-color-dark);
             th{
                 font-size: 1.1rem;
             }
@@ -259,7 +259,7 @@ table{
        >tr{
             >td{
                 font-size: 1.3rem;
-                color: #000;
+                color: var(--ion-color-dark);
                 width: 50px;
                 text-align: center;
                 &:first-child{
@@ -308,7 +308,7 @@ table{
             text-align: center;
             :first-child{
                 background: #0095EB;
-                color: #fff;
+                color: var(--ion-color-light);
             }
 
         }

@@ -5,7 +5,7 @@
 .search-bar{
     .search-box{
         width: 90%;
-        border: 1px solid #000;
+        border: 1px solid var(--ion-color-dark);
         border-radius: 10px;
         padding: 2rem 0;
         margin: 3vh 4vw;
@@ -24,7 +24,7 @@
             height: 5rem;
             border-radius: 10px 0 0 10px;
             ion-icon{
-                color: #fff;
+                color: var(--ion-color-light);
                 font-size: 1.5rem; 
             }
         }

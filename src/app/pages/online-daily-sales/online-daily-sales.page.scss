@@ -1,25 +1,17 @@
 // table detail lines
 
-.dark-blue-bg{
-    background: #9ac2daa9;
+.detailDarkBg{
+    background: #bcbcbc;
 }
-.medium-blue-bg{
-    background: #6ab9eb8b;
-}
-.light-blue-bg{
-    background: #b6e3ffa9;
-}
-.white-bg{
-    background: #fff;
-}
-.blue-bg{
-background: #46c2fc;
+
+.detailLightBg{
+    background: #b8e2fa;
 }
 
 
 
 ion-toolbar ion-row{
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 ion-toolbar.ios{
@@ -27,7 +19,7 @@ ion-toolbar.ios{
 }
 
 ion-content {
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
 }
 title{
@@ -44,13 +36,13 @@ ion-title{
 }
 
 ion-item{
-    --background: #fff;
+    --background: var(--ion-color-light);
 }
 
 ion-input{
     --padding-start : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
  
 .back-button {
@@ -101,10 +93,10 @@ ion-title{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid #0095EB ;
+        border-bottom: 2px solid  var(--ion-color-primary) ;
         ion-segment-button{
-            --background-checked:#0095eb;
-            --indicator-color:var(--ion-color-medium-contrast);
+            --background-checked: var(--ion-color-primary);
+            --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
@@ -118,7 +110,7 @@ ion-col.segment-change{
                 font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
-                    color: #fff;
+                    color: var(--ion-color-light);
                 }
             }
         }
@@ -134,13 +126,13 @@ ion-content{
     // --padding-start: 1.7rem ;
     &:hover{
         // --background:#0095EB;
-        --color:var(--ion-color-medium-contrast) ;
+        --color:var(--ion-color-dark) ;
     }
     
 }
 ion-content.select-input-popover-title{
     cursor:auto;
-    --color:var(--ion-color-medium-contrast) ;
+    --color:var(--ion-color-dark) ;
     text-align: center;
     border-bottom: 2px dashed #8f8f8f;
     font-weight: bold;
@@ -180,7 +172,7 @@ ion-col.DSD-page{
 .search-bar{
 .search-box{
     width: 90%;
-    border: 1px solid var(--ion-color-medium-contrast);
+    border: 1px solid var(--ion-color-dark);
     border-radius: 10px;
     padding: 2rem 0;
     margin: 3vh 4vw;
@@ -199,7 +191,7 @@ ion-col.DSD-page{
         height: 5rem;
         border-radius: 10px 0 0 10px;
         ion-icon{
-            color: #fff;
+            color: var(--ion-color-light);
             font-size: 1.5rem; 
         }
     }
@@ -233,217 +225,307 @@ ion-col.DSD-page{
     }
 }
 }
-// ---table
-table{
-
-    table-layout: fixed;
-    width: 100%;
-    margin: 0;
-    
-    tr{
-        cursor: pointer;
-        z-index: 3;
-        :nth-child(1){
-            max-width: 100px;
-        }
-        :last-child{
-            max-width: 25px;                
-        }
-    }
-    td{
-        white-space: nowrap;
-        padding: 2px 0;
-        max-width: 100px;
-
-    }
-    .table-head{
-        .table-head-content{
-            font-weight: bold;
-            color: var(--ion-color-medium-contrast);
+// DSD----------------------
+ion-col.table-container{
+    display: inline-block;
+    overflow: scroll;
+    table.container-table{
+        width: 160vw;
+        table-layout: fixed;
+        table.borderSet-header{
+            table-layout: fixed;
+            width: 160vw;
             th{
-                font-size: 1.1rem;
-            }
-            >:first-child{
-                color:#0095EB;
-                    min-height: 20px;
+                font-size: 1.5rem;
+                width: 9vw;
+                height: 10vh;
+                span{
+                    color: var(--ion-color-primary);
                 }
-        
+            }
+        }
+        table.borderSet-body{
+            table-layout: fixed;
+            width: 100%;
+            tr{
+                td.borderSet-detail{
+                    width: 10vw;   
+                    text-align: center;
+                    font-size: 1.2rem;
+                    height: 6vh;
+                }
+            }
+            td.detailsContainer{
+                height: 20vh;
+                &>table{
+                    height: 10vh;
+                    width: 50%;
+                    margin-left: 5vw;
+                    display: grid;
+                    box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
+
+                    // grid-template-rows: 1fr 1fr;
+                    justify-content: space-around;
+                tr.skuhead{
+                    width: 90vw;
+                    &.header{
+                        background: var(--ion-color-secondary-tint);
+                        padding: .5rem 0;
+
+                    }
+                    tr{
+                        font-size: 1.3rem;
+                        width: 90vw;
+                    display: flex;
+
+                    }
+                }
+                }
+                table.borderSet-detailsContainer{
+                    text-align: center;
+                    // font-size: 1.4rem;
+                    
+                    td.visitor{
+                        width: 50%;
+                        padding: .5rem 0;
+                        
+                    }
+                    td.driver{
+                        width: 50%;
+                        background: var(--ion-color-light);
+                        padding: .5rem 0;
+                    }
+                }
+            }
         }
     }
-    .table-body{
-       >tr{
-            >td{
-                font-size: 1.3rem;
-                color: var(--ion-color-medium-contrast);
+}
+
+
+// NON_DSD -----------------
+ion-grid.maingrid{
+    width: 100%;
+    font-size: 1.3rem;
+    text-align: center;
+    color: var(--ion-color-dark);
+    .firstrow{
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: .7rem 0;
+    }
+    .firstculomn{
+        padding: .7rem 0;
+        background: #d7d8da58;
+    }
+    ion-grid.details{
+        box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
+
+        padding: 0;
+        margin: 1rem 2rem ;
+        &>ion-row{
+            // padding: 1.8rem 0;
+            height: 8vh;
+            ion-col.detail{
+                display: flex;
                 text-align: center;
-                &:first-child{
-                    text-align: left;
-                    padding-left: 5px;            
+                justify-content: center;
+                &>:last-child{
+                    background: #0095EB;
                 }
             }
         }
-        
-        ion-icon{
-            font-size: 1.2rem;
-            padding-right: 4px;
-        }
-        &-icon{
-            background: #dddddd;
-            align-items: center;
-            justify-content: center;
-        }
     }
+}
 
-    // ---------table-detail--------------
-    .table-detail{
-        padding: 10px 0;
+
+
+
+// -----------------
+// // ---table
+// table{
+
+//     table-layout: fixed;
+//     width: 100%;
+//     margin: 0;
+    
+//     tr{
+//         cursor: pointer;
+//         z-index: 3;
+//         :nth-child(1){
+//             max-width: 100px;
+//         }
+//         :last-child{
+//             max-width: 25px;                
+//         }
+//     }
+//     td{
+//         white-space: nowrap;
+//         padding: 2px 0;
+//         max-width: 100px;
+
+//     }
+//     .table-head{
+//         .table-head-content{
+//             font-weight: bold;
+//             color: var(--ion-color-dark);
+//             th{
+//                 font-size: 1.1rem;
+//             }
+//             >:first-child{
+//                 color:#0095EB;
+//                     min-height: 20px;
+//                 }
         
-        &>table{
-            width: 89vw;
-            box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-            position: relative;
-            left: 5vw;
-        }
-        thead{
-            :first-child{
-                border-right:1px #0095eb4b solid ;
-            }
-        }
-        th{
-            color: #282828;
-            min-width: 200px;
-            font-size: 1.2rem;
-        }
-        tbody{
-            text-align: center;
-            :first-child{
-                color: #fff;
-            }
+//         }
+//     }
+//     .table-body{
+//        >tr{
+//             >td{
+//                 font-size: 1.3rem;
+//                 color: var(--ion-color-dark);
+//                 text-align: center;
+//                 &:first-child{
+//                     text-align: left;
+//                     padding-left: 5px;            
+//                 }
+//             }
+//         }
+        
+//         ion-icon{
+//             font-size: 1.2rem;
+//             padding-right: 4px;
+//         }
+//         &-icon{
+//             background: #dddddd;
+//             align-items: center;
+//             justify-content: center;
+//         }
+//     }
 
-        }
-        .table-line-ver{
-            position: absolute;
-            top:75px;
-            left: 14px;
-            width: 2px;
-            height: 70px;
-        }
-        .table-line-horiz{
-            position: absolute;
-            top:135px;
-            left: 16px;
-            width:60px;
-            height: 2px;
-        }
+//     // ---------table-detail--------------
+//     .table-detail{
+//         padding: 10px 0;
+        
+//         &>table{
+//             width: 89vw;
+//             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+//             position: relative;
+//             left: 5vw;
+//         }
+//         thead{
+//             :first-child{
+//                 border-right:1px #0095eb4b solid ;
+//             }
+//         }
+//         th{
+//             color: #282828;
+//             min-width: 200px;
+//             font-size: 1.2rem;
+//         }
+//         tbody{
+//             text-align: center;
+//             :first-child{
+//                 color: var(--ion-color-light);
+//             }
 
-    }
+//         }
+//         .table-line-ver{
+//             position: absolute;
+//             top:75px;
+//             left: 14px;
+//             width: 2px;
+//             height: 70px;
+//         }
+//         .table-line-horiz{
+//             position: absolute;
+//             top:135px;
+//             left: 16px;
+//             width:60px;
+//             height: 2px;
+//         }
+
+//     }
 
     
     
-}
+// }
 
-// NON_DSD TABLE
+// // NON_DSD TABLE
 
-.table-title{
-    text-align: right;
-    color: var(--ion-color-medium-contrast);
-    font-size: 2rem;
-    margin-right: 15vw;
+// .table-title{
+//     text-align: right;
+//     color: var(--ion-color-dark);
+//     font-size: 2rem;
+//     margin-right: 15vw;
 
-}
-table.NON_DSD-table{
-    width: 100vw;
-    color:  var(--ion-color-medium-contrast);
-
-
-    td{
-        height: 2rem;
-    }
+// }
+// table.NON_DSD-table{
+//     width: 100vw;
+//     color:  var(--ion-color-dark);
 
 
-
-
-
-    // -----------details
-    .NON_DSD-table-detail{
-        .border{
-            border-left: 2px #0095EB solid;
-            margin-left: 1rem;
-            padding: 1rem 0 0;
-        &>table{
-
-            width: 90vw;
-            margin:0 1rem 1rem;
-            box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-            position: relative;
-
-            .line-1{
-                background: #0095EB;
-                position: absolute;
-                top: 1.2rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-2{
-                background:#0095EB;
-                position: absolute;
-                top: 4.8rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-3{
-                background: #0095EB;
-                position: absolute;
-                bottom: 1.1rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-
-        }
-
-        td{
-            height: 10vh;
-        }
-        tbody{
-            text-align: center;
-        }
-    }
-}
-
-}
+//     td{
+//         height: 2rem;
+//     }
 
 
 
 
 
+//     // -----------details
+//     .NON_DSD-table-detail{
+//         .border{
+//             border-left: 2px #0095EB solid;
+//             margin-left: 1rem;
+//             padding: 1rem 0 0;
+//         &>table{
 
-   @media (min-width:992px) {
-       .search-box{
-           width: 60vw;
-           margin-left: 5vw;
-           span{
-               left: 50vw;
-               bottom: 24vh;
-               z-index: 2;
-           }
-       }
+//             width: 90vw;
+//             margin:0 1rem 1rem;
+//             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+//             position: relative;
 
-       .table-detail{
-        &>table{
-            width: 65vw;
-        }
-       }
-       table.NON_DSD-table{
-           width: 72vw;
-           .NON_DSD-table-detail{
-               .border{
-            &>table{
-                width: 68vw;
-            }
-        }
-           }
-       }
-   }
+//             .line-1{
+//                 background: #0095EB;
+//                 position: absolute;
+//                 top: 1.2rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+//             .line-2{
+//                 background:#0095EB;
+//                 position: absolute;
+//                 top: 4.8rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+//             .line-3{
+//                 background: #0095EB;
+//                 position: absolute;
+//                 bottom: 1.1rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+
+//         }
+
+//         td{
+//             height: 10vh;
+//         }
+//         tbody{
+//             text-align: center;
+//         }
+//     }
+// }
+
+// }
+
+
+
+
+
+
+   

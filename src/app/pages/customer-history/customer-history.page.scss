@@ -5,7 +5,7 @@
 
 
 ion-toolbar ion-row{
-    --background: #fff;
+    --background: var(--ion-color-light);
     --color: #0095EB;
     padding-top:.5rem;
     padding-bottom:.5rem;
@@ -15,7 +15,7 @@ ion-toolbar.ios{
 }
 
 ion-content {
-    --background: #fff;
+    --background: var(--ion-color-light);
     // --color: #0095EB;
 }
 
@@ -28,18 +28,18 @@ ion-title {
     }
 }
 ion-item{
-    --background: #fff;
+    --background: var(--ion-color-light);
 }
 
 ion-input{
     --padding-start : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
 
 span.toggle-background{
     background: var(--ion-color-light);
-    // background: #fff;
+    // background: var(--ion-color-light);
     border-radius: 100%;
     // padding: 20px 9px 10px;
     padding: 19% 7% 10%;
@@ -102,7 +102,7 @@ ion-img .back-button.ios{
     justify-content: center;
     border-radius: 100%;
     border: none;
-    background-color: #fff;
+    background-color: var(--ion-color-light);
     margin-top: 3px;
     padding:1.1vw ;
     // margin-right: 1rem;
@@ -150,7 +150,7 @@ ion-row.search-container{
             height: 100%;
             border-radius: 50px 0 0 50px;
             ion-icon{
-                color: #fff;
+                color: var(--ion-color-light);
                 font-size: 1.5rem; 
             }
         }
@@ -179,7 +179,7 @@ form{
         margin-bottom: 1rem;
         >ion-item.select-box{
           
-            --color:#000 ;
+            --color:var(--ion-color-dark) ;
             --padding-top:.5rem;
             --padding-bottom:.5rem;
             --padding-start:2rem;
@@ -247,7 +247,7 @@ form{
     .radio-input{
         display: flex;
         justify-content: center;
-        background: #fff;
+        background: var(--ion-color-light);
         padding:1.2rem 2rem;
         border-radius: 50px;
         width: 80%;
@@ -330,7 +330,7 @@ ion-card{
     h4{
         color:#343785;
         span{
-            color: #fff;
+            color: var(--ion-color-light);
         }
     }
     ion-card-header{

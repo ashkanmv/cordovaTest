@@ -1,37 +1,19 @@
 // table detail lines
 
-.dark-blue-bg{
-    background: #9ac2daa9;
-}
-.medium-blue-bg{
-    background: #6ab9eb8b;
-}
-.light-blue-bg{
-    background: #b6e3ffa9;
-}
-.white-bg{
-    background: #fff;
-}
-.blue-bg{
-background: #46c2fc;
-}
-
-.evenCols{
-    background: #b9b9b922;
-}
 
 
 ion-toolbar ion-row{
-    --background: #fff;
-    --color: #0095EB;
+    --background: var(--ion-color-light);
+    --color:  var(--ion-color-primary);
 }
 ion-toolbar.ios{
     --ion-padding-bottom:0;
 }
 
 ion-content {
-    --background: #fff;
-    --color: #0095EB;
+    // --background: var(--ion-color-light);
+    background: #fff;
+    --color:  var(--ion-color-primary);
 }
 title{
     width: 100%;
@@ -46,14 +28,12 @@ ion-title{
     }
 }
 
-ion-item{
-    --background: #fff;
-}
+
 
 ion-input{
     --padding-start : 5vw;
     --placeholder-color : #b9b9b9;
-    --background : #fff
+    --background : var(--ion-color-light)
 }
  
 .back-button {
@@ -89,7 +69,7 @@ ion-title{
 
 .table-detail-opaned{
     ion-icon{
-        color:#0095EB;
+        color: var(--ion-color-primary);
     }
 }
 
@@ -104,25 +84,17 @@ ion-title{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid #0095EB ;
+        border-bottom: 2px solid  var(--ion-color-primary) ;
         ion-segment-button{
-            --background-checked:#0095eb;
-            --indicator-color:var(--ion-color-medium-contrast);
+            --background-checked: var(--ion-color-primary);
+            --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
-            .segment-button-checked{
-                ion-label{
-                    color: red;
-                }
-            }
             ion-label{
                 font-size: 3vw;
                 font-weight: bold;
                 color: #b9b9b9;
-                &:checked{
-                    color: #fff;
-                }
             }
         }
     }
@@ -136,14 +108,14 @@ ion-content{
     --padding-bottom: .9rem ;
     // --padding-start: 1.7rem ;
     &:hover{
-        // --background:#0095EB;
-        --color:#000 ;
+        // --background: var(--ion-color-primary);
+        --color:var(--ion-color-dark) ;
     }
     
 }
 ion-content.select-input-popover-title{
     cursor:auto;
-    --color:#000 ;
+    --color:var(--ion-color-dark) ;
     text-align: center;
     border-bottom: 2px dashed #8f8f8f;
     font-weight: bold;
@@ -183,7 +155,7 @@ ion-col.DSD-page{
 .search-bar{
 .search-box{
     width: 90%;
-    border: 1px solid #000;
+    border: 1px solid var(--ion-color-dark);
     border-radius: 10px;
     padding: 2rem 0;
     margin: 3vh 4vw;
@@ -202,7 +174,7 @@ ion-col.DSD-page{
         height: 5rem;
         border-radius: 10px 0 0 10px;
         ion-icon{
-            color: #fff;
+            color: var(--ion-color-light);
             font-size: 1.5rem; 
         }
     }
@@ -259,13 +231,17 @@ table{
     .table-head{
         .table-head-content{
             font-weight: bold;
-            color: #000;
+            color: var(--ion-color-dark);
             th{
-                font-size: 1.2rem;
+                // font-size: 1.2rem;
+                font-size: 3vw;
                 height: 7vh;
+                &:nth-child(odd){
+                    background: #f1f1f183;
+                }        
             }
             >:first-child{
-                color:#0095EB;
+                color: var(--ion-color-primary);
                 // min-height: 20px;
             }
         
@@ -274,18 +250,21 @@ table{
     .table-body{
        >tr{
            >td{
-               font-size: 1.3rem;
-               color: #000;
+            //    font-size: 1.3rem;
+               font-size: 2.7vw;
+               color: var(--ion-color-dark);
                text-align: center;
                &:first-child{
                    background: #e0e0e0b5;
                    text-align: left;
                    padding-left: 5px;            
+
                 }
 
             }
            &>:first-child{
                 max-width: 1rem;
+                font-size: 1.1rem;
            } 
         }
         
@@ -305,7 +284,7 @@ table{
         padding: 3vh 0;
         height: 17vw;
         background: var(--ion-color-medium-contrast);
-        // background: #fff;
+        // background: var(--ion-color-light);
         
         &>table{
             width: 89vw;
@@ -316,21 +295,21 @@ table{
         }
         thead{
             :first-child{
-                border-right:1px #0095eb24 solid ;
+                border-right:1px  var(--ion-color-primary)24 solid ;
             }
         }
         th{
             color: #282828;
             background: #45c9fa;
             min-width: 200px;
-            font-size: 1.2rem;
+            // font-size: 1.2rem;
             height: 5vh;
         }
         tbody{
             text-align: center;
             height: 5vh;
             :first-child{
-                color: #fff;
+                color: var(--ion-color-light);
                 background: #0094ea;
             }
             td{
@@ -363,14 +342,14 @@ table{
 
 .table-title{
     text-align: right;
-    color: #000;
+    color: var(--ion-color-dark);
     font-size: 2rem;
     margin-right: 15vw;
 
 }
 table.NON_DSD-table{
     width: 100vw;
-    color: #000;
+    color: var(--ion-color-dark);
 
 
     td{
@@ -384,7 +363,7 @@ table.NON_DSD-table{
     // -----------details
     .NON_DSD-table-detail{
         .border{
-            border-left: 2px #0095EB solid;
+            border-left: 2px  var(--ion-color-primary) solid;
             margin-left: 1rem;
             padding: 1rem 0 0;
         &>table{
@@ -395,7 +374,7 @@ table.NON_DSD-table{
             position: relative;
 
             .line-1{
-                background: #0095EB;
+                background:  var(--ion-color-primary);
                 position: absolute;
                 top: 1.2rem;
                 left: -1rem;
@@ -403,7 +382,7 @@ table.NON_DSD-table{
                 width: 1rem;
             }
             .line-2{
-                background:#0095EB;
+                background: var(--ion-color-primary);
                 position: absolute;
                 top: 4.8rem;
                 left: -1rem;
@@ -411,7 +390,7 @@ table.NON_DSD-table{
                 width: 1rem;
             }
             .line-3{
-                background: #0095EB;
+                background:  var(--ion-color-primary);
                 position: absolute;
                 bottom: 1.1rem;
                 left: -1rem;
