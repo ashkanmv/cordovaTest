@@ -34,6 +34,10 @@ ion-menu {
 
 
 // 
+.icon-activated{
+  color:#0095EB;
+  transform: rotate(180deg);
+}
 // REMOVED THE IMPORTENET MARK
 ion-select::part(icon) {
   display: none ;
@@ -72,10 +76,7 @@ ion-item{
   background: #b4dae7;
 }
 
-.icon-activated{
-  color: var(--ion-color-primary);
-  transform: rotate(180deg);
-}
+
 
 
 // 

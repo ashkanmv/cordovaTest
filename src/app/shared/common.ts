@@ -262,7 +262,14 @@ export enum Languages {
 // Language
 export class Language {
   Customer_History: {
-    TitLe: string;
+    Title: string;
+    gps: string;
+    Shop_name: string;
+    Shop_code: number;
+    Shop_type: string;
+    Tell: number;
+    SR: string;
+    Address: string;
   };
   Questionnaire: {
     Title: string;

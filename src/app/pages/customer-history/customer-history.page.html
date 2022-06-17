@@ -14,14 +14,14 @@
         class="ion-text-center ion-align-self-center ion-text-right"
       >
         <ion-title class="ion-no-padding white-text">
-          <h3>Customer History</h3>
+          <h3>{{language.Customer_History.Title}}</h3>
         </ion-title>
       </ion-col>
       <ion-col
         size="1"
         class="ion-no-padding ion-align-self-center ion-text-end gps-text"
       >
-        GPS
+        {{language.Customer_History.gps}}
       </ion-col>
       <ion-col
         size="2"
@@ -254,30 +254,40 @@
           <ion-row>
             <ion-col size="6">
               <h4 class="shop-name">
-                <span>Shop name: </span>{{customerInfo.shopName}}
+                <span>{{language.Customer_History.Shop_name}}: </span
+                >{{customerInfo.shopName}}
               </h4>
             </ion-col>
             <ion-col size="6">
               <h4 class="shop-code">
-                <span>Shop code: </span>{{customerInfo.shopCode}}
+                <span>{{language.Customer_History.Shop_code}}: </span
+                >{{customerInfo.shopCode}}
               </h4>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="6">
-              <h4 class="tell"><span>Tell: </span>{{customerInfo.tell}}</h4>
+              <h4 class="tell">
+                <span>{{language.Customer_History.Tell}}: </span
+                >{{customerInfo.tell}}
+              </h4>
             </ion-col>
             <ion-col size="6">
               <h4 class="shop-type">
-                <span>Shop type: </span>{{customerInfo.shopType}}
+                <span>{{language.Customer_History.Shop_type}}: </span
+                >{{customerInfo.shopType}}
               </h4>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="8">
-              <h4 class="sr"><span>SR: </span>{{customerInfo.sr}}</h4>
+              <h4 class="sr">
+                <span>{{language.Customer_History.SR}}: </span
+                >{{customerInfo.sr}}
+              </h4>
               <h4 class="address">
-                <span>Address: </span>{{customerInfo.address}}
+                <span>{{language.Customer_History.Address}}: </span
+                >{{customerInfo.address}}
               </h4>
             </ion-col>
             <ion-col size="4" class="questionnaire">
