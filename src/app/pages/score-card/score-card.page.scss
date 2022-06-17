@@ -211,6 +211,21 @@ ion-col{
                     font-weight: bold;
                     color: #cdcdcdd6;
                 }
+                >div{
+                    display: flex;
+                    flex-direction: row-reverse;
+                    
+                }
+                input[type=radio] {
+                    // border: 10px;
+                    min-width: 15px;
+                    height: 15px;
+                    accent-color: #0095EB;
+                    &:checked + label{
+                            color: #0095EB;
+                    }
+                }
+
 
             }
 

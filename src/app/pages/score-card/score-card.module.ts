@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ScoreCardPageRoutingModule } from './score-card-routing.module';
 
 import { ScoreCardPage } from './score-card.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ScoreCardPageRoutingModule
+    ScoreCardPageRoutingModule,
+    SharedModule,
   ],
-  declarations: [ScoreCardPage]
+  declarations: [ScoreCardPage],
 })
 export class ScoreCardPageModule {}

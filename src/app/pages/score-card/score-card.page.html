@@ -9,13 +9,12 @@
           ></ion-img>
         </ion-button>
       </ion-col>
+      <ion-col></ion-col>
       <ion-col size="6" class="ion-text-start ion-align-self-center">
-        <ion-title
-          class="ion-no-padding main-page-Title white-text ion-align-self-center"
+        <ion-title class="ion-no-padding white-text ion-align-self-center"
           ><h3>Score Cards</h3>
         </ion-title>
       </ion-col>
-      <ion-col></ion-col>
       <ion-col size="1" class="ion-align-self-center reload">
         <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" />
       </ion-col>
@@ -84,17 +83,17 @@
       </ion-row>
     </ion-col>
 
-    <ion-col class="radio-input">
+    <ion-col>
       <ion-row class="radio-input-container ion-justify-content-center">
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
-            <div class="">
+            <div class="ion-align-items-center">
+              <input type="radio" name="radio-input-cat" id="" />
               <label for="sales">Sales</label>
-              <input type="radio" name="radio-input-1" id="" />
             </div>
-            <div class="">
+            <div class="ion-align-items-center">
+              <input type="radio" name="radio-input-cat" id="" />
               <label for="pped">PPED</label>
-              <input type="radio" name="radio-input-1" id="" />
             </div>
           </div>
         </div>
@@ -216,49 +215,41 @@
   <ion-col *ngIf="selectedSegment == 'channel'" class="searchbar">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <button class="search-submit primary-bg">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
-        <input
-          type="search"
-          name=""
-          id="trigger-search"
-          placeholder="Search"
-          class="search search-customer-history lightBlue-shadow"
-        />
-        <ion-popover class="popover search-popover" trigger="trigger-search">
-          <ng-template>
-            <ion-item>
-              <label for="select-all">SELECT ALL</label>
-              <ion-checkbox slot="end" value="select-all"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="esfahan">ESFAHAN</label>
-              <ion-checkbox slot="end" value="esfahan"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="rasht">RASHT</label>
-              <ion-checkbox slot="end" value="rasht"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="tehran">TEHRAN</label>
-              <ion-checkbox slot="end" value="tehran"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="karaj">KARAJ</label>
-              <ion-checkbox slot="end" value="karaj"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <label for="shiraz">SHIRAZ</label>
-              <ion-checkbox slot="end" value="shiraz"></ion-checkbox>
-            </ion-item>
-          </ng-template>
-        </ion-popover>
-        <span class="search-icon">
-          <ion-icon name="chevron-down-outline"></ion-icon>
-        </span>
+        <ion-item class="lightBlue-shadow">
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <ion-select multiple="true" interface="popover">
+            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+            <ion-select-option value="rasht">RASHT</ion-select-option>
+            <ion-select-option value="tehran">TEHRAN</ion-select-option>
+            <ion-select-option value="karaj">KARAJ</ion-select-option>
+            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          </ion-select>
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
       </ion-row>
     </ion-col>
+
+    <ion-col>
+      <ion-row class="radio-input-container ion-justify-content-center">
+        <div class="radio-input-box">
+          <div class="radio-input lightBlue-shadow">
+            <div class="ion-align-items-center">
+              <input type="radio" name="radio-input-cat" id="" />
+              <label for="sales">Sales</label>
+            </div>
+            <div class="ion-align-items-center">
+              <input type="radio" name="radio-input-cat" id="" />
+              <label for="pped">PPED</label>
+            </div>
+          </div>
+        </div>
+      </ion-row>
+    </ion-col>
+
     <ion-col>
       <table>
         <thead class="table-head">
@@ -367,6 +358,314 @@
           </tr>
         </tbody>
       </table>
+    </ion-col>
+  </ion-col>
+  <ion-col class="category-page" *ngIf="selectedSegment == 'category%'">
+    <ion-col class="search-bar">
+      <ion-row class="search-box ion-justify-content-center">
+        <ion-item class="lightBlue-shadow">
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <ion-select multiple="true" interface="popover">
+            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+            <ion-select-option value="rasht">RASHT</ion-select-option>
+            <ion-select-option value="tehran">TEHRAN</ion-select-option>
+            <ion-select-option value="karaj">KARAJ</ion-select-option>
+            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          </ion-select>
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
+      </ion-row>
+    </ion-col>
+
+    <ion-col>
+      <ion-row class="radio-input-container ion-justify-content-center">
+        <div class="radio-input-box">
+          <div class="radio-input lightBlue-shadow">
+            <div class="ion-align-items-center">
+              <input type="radio" name="radio-input-cat" id="" />
+              <label for="sales">Sales</label>
+            </div>
+            <div class="ion-align-items-center">
+              <input type="radio" name="radio-input-cat" id="" />
+              <label for="pped">PPED</label>
+            </div>
+          </div>
+        </div>
+      </ion-row>
+    </ion-col>
+
+    <ion-col>
+      <table>
+        <thead class="table-head">
+          <tr class="table-head-content">
+            <th><span></span></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="table-body table-body-content">
+          <tr (click)="toggleDtailsDCD()">
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <div *ngIf="IsDCDDetailsShowing" class="table-detail">
+            <!-- <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div> -->
+            <table class="">
+              <thead>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+                <td></td>
+                <td></td>
+              </tbody>
+            </table>
+          </div>
+          <tr (click)="toggleDtails()">
+            <td>
+              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
+
+              <ion-icon
+                class="isNotShowing"
+                name="chevron-down-outline"
+              ></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <div *ngIf="IsDetailsShowing" class="table-detail">
+            <!-- <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div> -->
+            <table class="">
+              <thead>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+                <td></td>
+                <td></td>
+              </tbody>
+            </table>
+          </div>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-col>
+    <ion-col size="12">
+      <ion-row class="ion-justify-content-center ion-margin-top">
+        <app-pie-charts></app-pie-charts>
+      </ion-row>
+    </ion-col>
+  </ion-col>
+
+  <!-- ----------------------------------------------------------------------------- -->
+  <ion-col *ngIf="selectedSegment == 'channel%'">
+    <ion-col class="search-bar">
+      <ion-row class="search-box ion-justify-content-center">
+        <ion-item class="lightBlue-shadow">
+          <button class="search-submit primary-bg">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <ion-select multiple="true" interface="popover">
+            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
+            <ion-select-option value="rasht">RASHT</ion-select-option>
+            <ion-select-option value="tehran">TEHRAN</ion-select-option>
+            <ion-select-option value="karaj">KARAJ</ion-select-option>
+            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
+          </ion-select>
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
+      </ion-row>
+    </ion-col>
+
+    <ion-col>
+      <ion-row class="radio-input-container ion-justify-content-center">
+        <div class="radio-input-box">
+          <div class="radio-input lightBlue-shadow">
+            <div class="ion-align-items-center">
+              <input type="radio" name="radio-input-cat" id="" />
+              <label for="sales">Sales</label>
+            </div>
+            <div class="ion-align-items-center">
+              <input type="radio" name="radio-input-cat" id="" />
+              <label for="pped">PPED</label>
+            </div>
+          </div>
+        </div>
+      </ion-row>
+    </ion-col>
+
+    <ion-col>
+      <table>
+        <thead class="table-head">
+          <tr class="table-head-content">
+            <th><span></span></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="table-body table-body-content">
+          <tr (click)="toggleDtailsDCD()">
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <div *ngIf="IsDCDDetailsShowing" class="table-detail">
+            <!-- <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div> -->
+            <table class="">
+              <thead>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+                <td></td>
+                <td></td>
+              </tbody>
+            </table>
+          </div>
+          <tr (click)="toggleDtails()">
+            <td>
+              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
+
+              <ion-icon
+                class="isNotShowing"
+                name="chevron-down-outline"
+              ></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <div *ngIf="IsDetailsShowing" class="table-detail">
+            <!-- <div class="table-line-ver"></div>
+            <div class="table-line-horiz"></div> -->
+            <table class="">
+              <thead>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+                <td></td>
+                <td></td>
+              </tbody>
+            </table>
+          </div>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="table-body-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-col>
+    <ion-col size="12">
+      <ion-row class="ion-justify-content-center ion-margin-top">
+        <app-pie-charts></app-pie-charts>
+      </ion-row>
     </ion-col>
   </ion-col>
 </ion-content>
