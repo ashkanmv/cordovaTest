@@ -4,7 +4,7 @@
 
 ion-toolbar ion-row{
     --background: var(--ion-color-light);
-    --color:  var(--ion-color-primary);
+    --color: #0095EB;
 }
 ion-toolbar.ios{
     --ion-padding-bottom:0;
@@ -13,7 +13,7 @@ ion-toolbar.ios{
 ion-content {
     // --background: var(--ion-color-light);
     background: #fff;
-    --color:  var(--ion-color-primary);
+    --color: #0095EB;
 }
 title{
     width: 100%;
