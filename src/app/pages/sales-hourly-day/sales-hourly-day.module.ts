@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SalesHourlyDayPageRoutingModule } from './sales-hourly-day-routing.module';
 
 import { SalesHourlyDayPage } from './sales-hourly-day.page';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SalesHourlyDayPageRoutingModule
+    SalesHourlyDayPageRoutingModule,
+    NgSelectModule
   ],
   declarations: [SalesHourlyDayPage]
 })
