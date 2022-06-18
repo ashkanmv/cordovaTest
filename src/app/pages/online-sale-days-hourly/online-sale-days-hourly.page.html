@@ -60,7 +60,7 @@
             <ion-row id="open-popover" class="date-picker box-shadow">
               <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
               <ion-col class="ion-justify-content-end">
-                {{selected_fromdateN | date:'yyyy/MM/dd'}}
+                {{selected_dateN | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </ion-col>
             </ion-row>
@@ -68,8 +68,8 @@
         </ion-row>
         <ion-popover trigger="open-popover" show-backdrop="false">
           <ng-template>
-            <ion-datetime [value]="selected_fromdateN" presentation="date" #perInvoicesDate
-              (ionChange)="selected_fromdateN = perInvoicesDate.value; dateChanged('per-invoices')">
+            <ion-datetime [value]="selected_dateN" presentation="date" #perInvoicesDate
+              (ionChange)="selected_dateN = perInvoicesDate.value; dateChanged('per-invoices')">
               <ion-buttons slot="buttons">
                 <ion-button (click)="perInvoicesDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
                 <ion-button (click)="perInvoicesDate.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
@@ -84,7 +84,7 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="box-shadow">
-            <button class="search-submit primary-bg">
+            <button class="search-submit primary-bg" (click)="dcSelectN()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
             <!-- <ion-select multiple="true" interface="popover">
@@ -97,7 +97,7 @@
             </ion-select> -->
             <ng-select *ngIf="dropdownListN.length" [items]="dropdownListN" [multiple]="true" bindLabel="itemName"
               groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false" bindValue="itemName"
-              [(ngModel)]="selected_dc">
+              [(ngModel)]="selectedItemsN">
 
               <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
                 <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
@@ -189,15 +189,15 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="box-shadow">
-            <button class="search-submit primary-bg" (click)="onClick()">
+            <button class="search-submit primary-bg" (click)="dcSelect()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
             <!-- <ion-select multiple="true" interface="popover">
                 <ion-select-option *ngFor="let item of dropdownListN" [value]="item.itemName">{{item.itemName}}</ion-select-option>
             </ion-select> -->
-            <ng-select *ngIf="dropdownListN.length" [items]="dropdownListN" [multiple]="true" bindLabel="itemName"
+            <ng-select *ngIf="dropdownList.length" [items]="dropdownList" [multiple]="true" bindLabel="itemName"
               groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false" bindValue="itemName"
-              [(ngModel)]="selected_dc">
+              [(ngModel)]="selectedItems">
 
               <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
                 <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}

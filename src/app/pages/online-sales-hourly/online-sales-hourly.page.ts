@@ -140,7 +140,7 @@ export class OnlineSalesHourlyPage implements OnInit {
           this.dcN = dcs;
           for (var i = 0; i < this.dcN.length; i++) {
             this.selected_dcN.push(this.dcN[i].City);
-            this.dropdownListN.push({ "id": i, "itemName": this.dc[i].City, "group": this.language.Online_Sale_Days_Hourly.group });
+            this.dropdownListN.push({ "id": i, "itemName": this.dc[i].City, "group": this.language.Online_Sales_Hourly.group });
           }
           this.selectedItemsN = this.dropdownListN.map(_=>_.itemName);
           loading.dismiss()

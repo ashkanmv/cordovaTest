@@ -357,6 +357,7 @@ export class Language {
     Title: string;
     perKilo: String;
     perInvoices: string;
+    group : string;
   };
   Online_Sale_Days_Hourly: {
     Title: string;
@@ -370,6 +371,10 @@ export class Language {
     managerGreen: string;
     managerYellow: string;
     managerBlue: string;
+  };
+  Sales_hourly_Day_And_Sales_Office: {
+    Title: string;
+    group : string;
   };
 }
 
