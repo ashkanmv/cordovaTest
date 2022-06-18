@@ -119,6 +119,10 @@
         "Sales_Compare_Tracking_Hourly": {
             "Title": "Sales Compare Tracking Hourly",
             "group" : "All"
+        },
+        "Max_PPED" : {
+            "Title" : "Max PPED",
+            "group" : "All"
         }
     },
     "FR": {

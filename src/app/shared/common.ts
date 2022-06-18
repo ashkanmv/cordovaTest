@@ -379,7 +379,11 @@ export class Language {
   Sales_Compare_Tracking_Hourly: {
     Title: string;
     group: string;
-  }
+  };
+  Max_PPED : {
+    Title :string;
+    group :string;
+}
 }
 
 export class CommonUtility {
