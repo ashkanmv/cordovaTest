@@ -33,18 +33,14 @@ ion-toolbar{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid  var(--ion-color-primary) ;
+        border-bottom: 2px solid  #0095eb ;
         ion-segment-button{
-            --background-checked: var(--ion-color-primary);
+            --background-checked: #0095eb;
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
-            .segment-button-checked{
-                ion-label{
-                    color: red;
-                }
-            }
+           
             ion-label{
                 font-size: 3vw;
                 font-weight: bold;
@@ -78,9 +74,11 @@ ion-col.segment-change{
             border-radius: 10px;
             --border-width:0;
             // --highlight-height:none;
-            ion-select{
+            ng-select{
                 width: 100%;
-                height: 100%;
+                height: 10vh;
+                overflow: hidden;
+               
             }
         }
         .search-submit{
@@ -184,4 +182,39 @@ table{
     }
 
 
+}
+
+// table!!
+.firstrow{
+    // background: var(--ion-color-light);
+    &>:first-child{
+        &>:first-child{
+            color: #0095eb;
+        }
+        :nth-child(odd){
+            background: var(--ion-color-light);
+        }
+    }
+}
+
+ion-col.table-container{
+    overflow-x: scroll;
+    ion-grid.table{
+        width: 180vw;
+        ion-col{
+            min-width: 8vw;
+            height: 5vh;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .tbody{
+            ion-grid.details{
+                font-size: 1.3rem;
+            }   
+
+        }
+    }
 }

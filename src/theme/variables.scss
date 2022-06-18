@@ -76,13 +76,27 @@
   --ion-color-light-tint: #f5f6f9;
 
   
-
+  
 }
 @media (prefers-color-scheme: light) {
   .lightBlue-shadow{
     box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
   }
+  // table light columns
+  .oddColumns{
+    background: #d7d8da82;
+  }
+  // table blue rows
+  .oddRows{
+    background: #b4dae7;
+  }
+  // table darker first column 
+  .firstcolumn{
+    background: #b5b5b597 ;
+  }
+  
 }
+
 
 
 @media (prefers-color-scheme: dark) {
@@ -158,7 +172,20 @@
     .lightBlue-shadow{
       box-shadow: 5px 8px 16px 0 #272a2c, 0 6px 20px 0 #272a2c ;
     }
-
+    // table light columns
+    .oddColumns{
+      background:#1e2023a7;
+    }
+    // table blue rows
+    .oddRows{
+      background: #3c4e54;
+    }
+    // table darker first column 
+    .firstcolumn{
+      background: #191a1dc2 ;
+    }
+  
+    
   }
 
   /*
