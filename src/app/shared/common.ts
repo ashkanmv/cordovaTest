@@ -357,13 +357,13 @@ export class Language {
     Title: string;
     perKilo: String;
     perInvoices: string;
-    group : string;
+    group: string;
   };
   Online_Sale_Days_Hourly: {
     Title: string;
     perKilo: String;
     perInvoices: string;
-    group : string;
+    group: string;
   };
   Salesmen_Location: {
     Title: string;
@@ -374,8 +374,12 @@ export class Language {
   };
   Sales_hourly_Day_And_Sales_Office: {
     Title: string;
-    group : string;
+    group: string;
   };
+  Sales_Compare_Tracking_Hourly: {
+    Title: string;
+    group: string;
+  }
 }
 
 export class CommonUtility {

@@ -115,6 +115,10 @@
         "Sales_hourly_Day_And_Sales_Office" : {
             "Title": "Sales hourly_Day & Sales Office",
             "group" : "All"
+        },
+        "Sales_Compare_Tracking_Hourly": {
+            "Title": "Sales Compare Tracking Hourly",
+            "group" : "All"
         }
     },
     "FR": {
