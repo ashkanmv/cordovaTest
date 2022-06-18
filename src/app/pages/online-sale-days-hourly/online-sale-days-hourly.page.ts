@@ -7,7 +7,6 @@ import { SrSalesHourlyCityService } from './sr-sales-hourly-city.service';
 import { Data } from '@angular/router';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 
-
 @Component({
   selector: 'app-online-sale-days-hourly',
   templateUrl: './online-sale-days-hourly.page.html',
@@ -27,14 +26,14 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   selected_dc: any = [];
   selected_dcN: any = [];
   today;
-  sr1
+  sr1;
   srsales2 = [];
   virtual_rows1 = [];
   virtual_rows2 = [];
   categories1 = [];
   selected_ch1 = [];
   selected_ch2 = [];
-  type1 = "sales";
+  type1 = 'sales';
   hide = true;
   categories = [];
   user_id;
@@ -59,10 +58,12 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
 
   nestedTableIsShowingRow_1: boolean = false;
 
-  constructor(private languageService: LanguageService,
+  constructor(
+    private languageService: LanguageService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
-    private SrSalesHourlyService: SrSalesHourlyCityService) { }
+    private SrSalesHourlyService: SrSalesHourlyCityService
+  ) {}
 
   // mock  invoices data
   public invoicesData: Array<any> = [
@@ -118,11 +119,11 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storageService.get('user_id').then(user_id => {
+    this.storageService.get('user_id').then((user_id) => {
       this.user_id = Number(user_id);
       this.get_dc();
       this.get_dcN();
-    })
+    });
   }
 
   distance_select() {
@@ -135,18 +136,20 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.SrSalesHourlyService.getUserDc(this.user_id)
-      .subscribe(
-        dcs => {
-          this.dcN = dcs;
-          for (var i = 0; i < this.dcN.length; i++) {
-            this.selected_dcN.push(this.dcN[i].City);
-            this.dropdownListN.push({ "id": i, "itemName": this.dc[i].City , "group" : this.language.Online_Sale_Days_Hourly.group });
-          }
-          this.selectedItemsN = this.dropdownListN;
-          loading.dismiss()
-          this.after_get_Dcn();
+    this.SrSalesHourlyService.getUserDc(this.user_id).subscribe((dcs) => {
+      this.dcN = dcs;
+      for (var i = 0; i < this.dcN.length; i++) {
+        this.selected_dcN.push(this.dcN[i].City);
+        this.dropdownListN.push({
+          id: i,
+          itemName: this.dc[i].City,
+          group: this.language.Online_Sale_Days_Hourly.group,
         });
+      }
+      this.selectedItemsN = this.dropdownListN;
+      loading.dismiss();
+      this.after_get_Dcn();
+    });
   }
 
   async after_get_Dcn() {
@@ -154,16 +157,19 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.SrSalesHourlyService.getsrsalesuserscityhourlydate(this.user_id, this.selected_dcN.join(), this.selected_fromdateN, this.selected_todateN)
-      .subscribe(
-        (SrSales: Data[]) => {
-          if (SrSales.length) {
-            this.create_total_model2(SrSales);
-          } else {
-            this.create_total_model2('Empty');
-          }
-          loading.dismiss()
-        });
+    this.SrSalesHourlyService.getsrsalesuserscityhourlydate(
+      this.user_id,
+      this.selected_dcN.join(),
+      this.selected_fromdateN,
+      this.selected_todateN
+    ).subscribe((SrSales: Data[]) => {
+      if (SrSales.length) {
+        this.create_total_model2(SrSales);
+      } else {
+        this.create_total_model2('Empty');
+      }
+      loading.dismiss();
+    });
   }
 
   async dcSelect() {
@@ -171,17 +177,18 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.SrSalesHourlyService.getsrsalesuserscityhourlycity(this.user_id, this.selected_dc, this.selected_date)
-      .subscribe(
-        (srsales: Data[]) => {
-          if (srsales.length) {
-            this.create_total_model1(srsales);
-          } else {
-            this.create_total_model1('Empty');
-          }
-          loading.dismiss();
-        });
-
+    this.SrSalesHourlyService.getsrsalesuserscityhourlycity(
+      this.user_id,
+      this.selected_dc,
+      this.selected_date
+    ).subscribe((srsales: Data[]) => {
+      if (srsales.length) {
+        this.create_total_model1(srsales);
+      } else {
+        this.create_total_model1('Empty');
+      }
+      loading.dismiss();
+    });
   }
 
   async get_dc() {
@@ -190,18 +197,22 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
         message: 'Please wait...',
       });
       await loading.present();
-      this.SrSalesHourlyService.getUserDc(this.user_id)
-        .subscribe(
-          (dcs: Data[]) => {
-            this.dc = dcs;
-            for (var i = 0; i < this.dc.length; i++) {
-              this.selected_dc.push(this.dc[i].City);
-              this.dropdownList.push({ "id": i, "itemName": this.dc[i].City , "group" : 'dc' });
-            }
-            this.selectedItems = this.dropdownList;
-            loading.dismiss();
-            this.after_get_Dc();
-          });
+      this.SrSalesHourlyService.getUserDc(this.user_id).subscribe(
+        (dcs: Data[]) => {
+          this.dc = dcs;
+          for (var i = 0; i < this.dc.length; i++) {
+            this.selected_dc.push(this.dc[i].City);
+            this.dropdownList.push({
+              id: i,
+              itemName: this.dc[i].City,
+              group: 'dc',
+            });
+          }
+          this.selectedItems = this.dropdownList;
+          loading.dismiss();
+          this.after_get_Dc();
+        }
+      );
     } catch (error) {
       alert(error);
     }
@@ -213,16 +224,19 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     });
     await loading.present();
 
-    this.SrSalesHourlyService.getsrsalesuserscityhourlydate(this.user_id, this.selected_dcN, this.selected_fromdateN, this.selected_todateN)
-      .subscribe(
-        (srsales: Data[]) => {
-          if (srsales.length) {
-            this.create_total_model2(srsales);
-          } else {
-            this.create_total_model2('Empty');
-          }
-          loading.dismiss();
-        });
+    this.SrSalesHourlyService.getsrsalesuserscityhourlydate(
+      this.user_id,
+      this.selected_dcN,
+      this.selected_fromdateN,
+      this.selected_todateN
+    ).subscribe((srsales: Data[]) => {
+      if (srsales.length) {
+        this.create_total_model2(srsales);
+      } else {
+        this.create_total_model2('Empty');
+      }
+      loading.dismiss();
+    });
   }
 
   async SelectedDCN() {
@@ -236,17 +250,18 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     }
 
     if (this.selectedItemsN.length) {
-      this.SrSalesHourlyService.getsrsalesuserscityhourlydate(this.user_id, this.selected_dcN, this.selected_fromdateN, this.selected_todateN)
-        .subscribe(
-          (srsales: Data[]) => {
-            if (srsales.length)
-              this.create_total_model2(srsales);
+      this.SrSalesHourlyService.getsrsalesuserscityhourlydate(
+        this.user_id,
+        this.selected_dcN,
+        this.selected_fromdateN,
+        this.selected_todateN
+      ).subscribe((srsales: Data[]) => {
+        if (srsales.length) this.create_total_model2(srsales);
 
-            loading.dismiss();
-          });
-    }
-    else {
-      this.create_total_model1("Empty");
+        loading.dismiss();
+      });
+    } else {
+      this.create_total_model1('Empty');
       loading.dismiss();
     }
   }
@@ -260,34 +275,33 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srsales2.push(keys);
     this.virtual_rows2.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      let temp = Object.keys(ch).map(key => ch[key]);
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
           temp[j] = temp[j];
         }
-
       }
       this.user_list2.push(temp);
       this.srsales2.push(temp);
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows2.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows2.push(v_row2);
       this.user_list2.push(temp);
@@ -296,15 +310,17 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   }
 
   after_get_Dc() {
-    this.SrSalesHourlyService.getsrsalesuserscityhourlycity(this.user_id, this.selected_dc.join(), this.selected_date)
-      .subscribe(
-        (SrSales: Data[]) => {
-          if (SrSales.length) {
-            this.create_total_model1(SrSales);
-          } else {
-            this.create_total_model1('Empty');
-          }
-        });
+    this.SrSalesHourlyService.getsrsalesuserscityhourlycity(
+      this.user_id,
+      this.selected_dc.join(),
+      this.selected_date
+    ).subscribe((SrSales: Data[]) => {
+      if (SrSales.length) {
+        this.create_total_model1(SrSales);
+      } else {
+        this.create_total_model1('Empty');
+      }
+    });
   }
 
   create_total_model1(model) {
@@ -316,34 +332,33 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srsales1.push(keys);
     this.virtual_rows1.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      let temp = Object.keys(ch).map(key => ch[key]);
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
           temp[j] = temp[j];
         }
-
       }
       this.user_list.push(temp);
       this.srsales1.push(temp);
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row2);
       this.user_list.push(temp);
@@ -352,10 +367,8 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   }
 
   dateChanged(changed: 'per-kilo' | 'per-invoices') {
-    if (changed == 'per-kilo')
-      this.dcSelect();
-    else
-      this.dcSelectN();
+    if (changed == 'per-kilo') this.dcSelect();
+    else this.dcSelectN();
   }
 
   refresh() {
@@ -367,9 +380,7 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     return format(parseISO(value), 'MMM dd yyyy');
   }
 
-  onClick(){
+  onClick() {
     console.log(this.selected_dc);
-    
   }
-
 }
