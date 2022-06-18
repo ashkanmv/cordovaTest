@@ -102,7 +102,8 @@
         "Online_Sales_Hourly": {
             "Title": "Online Daily Sales Hourly",
             "perKilo": "DSD HOURLY KILOGRAM",
-            "perInvoices": "DSD HOURLY INVOICES"
+            "perInvoices": "DSD HOURLY INVOICES",
+            "group": "All"
         },
         "Online_Sale_Days_Hourly": {
             "Title": "Online Sale for Days Hourly",
@@ -116,6 +117,14 @@
             "managerGreen": "Ahmad Safari",
             "managerYellow": "Sina Ahmadi",
             "managerBlue": "Kazem Dehghan"
+        },
+        "Sales_hourly_Day_And_Sales_Office": {
+            "Title": "Sales hourly_Day & Sales Office",
+            "group": "All"
+        },
+        "Sales_Compare_Tracking_Hourly": {
+            "Title": "Sales Compare Tracking Hourly",
+            "group": "All"
         }
     },
     "FR": {

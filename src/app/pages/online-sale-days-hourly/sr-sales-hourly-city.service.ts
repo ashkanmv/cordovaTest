@@ -13,6 +13,8 @@ export class SrSalesHourlyCityService {
   private srsalesuserscityhourly = environment.BaseURL + '/api/v1/srsale/srsalesusercityhourlysd'
   private srsalesusercityhourlycity = environment.BaseURL + '/api/v1/srsale/srsalesusercityhourlycity'
   private srsalesusercityhourlydate = environment.BaseURL + '/api/v1/srsale/srsalesusercityhourlydate'
+  private srsalesuserscityhourlyqty = environment.BaseURL + '/api/v1/srsale/srsalesusercityhourlyqtysd'
+  private supervisorcomparetrackingyearhourly =environment.BaseURL+'/api/v1/srsale/supervisorcomparetrackingyearhourly'
   private srsalesn = environment.BaseURL + '/api/v1/srsale/srsalesn'
   private srsalesdNetail = environment.BaseURL + '/api/v1/srsale/srsalesndetail'
   private todayUrl = environment.BaseURL + '/api/v1/today';
@@ -90,4 +92,25 @@ export class SrSalesHourlyCityService {
 
     return this.http.get(this.srsalesdNetail, { params });
   }
+
+  //srUserN-DSD
+  getsrsalesuserscityhourlyqty(userid: string, city: string, date: string) {
+    let params = new HttpParams();
+    params = params.append('city', city);
+    params = params.append('userid', userid);
+    params = params.append('date', date);
+
+    return this.http.get(this.srsalesuserscityhourlyqty, { params })
+  }
+
+  //srUser
+  getSupervisorCompareTrackingYearHourly(userid: string, city: string, date: string) {
+    let params = new HttpParams();
+    params = params.append('city', city);
+    params = params.append('userid', userid);
+    params = params.append('date', date);
+
+    return this.http.get(this.supervisorcomparetrackingyearhourly, { params })
+  }
+
 }

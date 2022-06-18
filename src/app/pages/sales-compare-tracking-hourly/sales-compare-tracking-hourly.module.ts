@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SalesCompareTrackingHourlyPageRoutingModule } from './sales-compare-tracking-hourly-routing.module';
 
 import { SalesCompareTrackingHourlyPage } from './sales-compare-tracking-hourly.page';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SalesCompareTrackingHourlyPageRoutingModule
+    SalesCompareTrackingHourlyPageRoutingModule,
+    NgSelectModule
   ],
   declarations: [SalesCompareTrackingHourlyPage]
 })
