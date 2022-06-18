@@ -1,14 +1,10 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row
-      class="primary-bg ion-justify-content-between header ion-no-margin"
-    >
+    <ion-row class="primary-bg ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
+          <ion-img class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col></ion-col>
@@ -18,15 +14,12 @@
           <h3><b>{{language.Online_Sale_Days_Hourly.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col class="ion-align-self-center reload" size="1">
+      <ion-col class="ion-align-self-center reload" size="1" (click)="refresh()">
         <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
         </ion-img>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
-        <ion-img
-          class="wifi-online"
-          src="\assets\mainPage\main\wifi.png"
-        ></ion-img>
+        <ion-img class="wifi-online" src="\assets\mainPage\main\wifi.png"></ion-img>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -44,12 +37,7 @@
     </ion-row>
   </ion-grid>
   <ion-col class="ion-no-padding segment-change">
-    <ion-segment
-      mode="md"
-      class="ion-justify-content-between"
-      (ionChange)="segmentChanged($event)"
-      value="per-kilo"
-    >
+    <ion-segment mode="md" class="ion-justify-content-between" (ionChange)="segmentChanged($event)" value="per-kilo">
       <ion-segment-button class="per-kilo" value="per-kilo">
         <ion-label>{{language.Online_Sale_Days_Hourly.perKilo}}</ion-label>
       </ion-segment-button>
@@ -63,10 +51,7 @@
 <!-- -------------------------------per-invoices----------------------------------------- -->
 <!-- -------------------------------per-invoices----------------------------------------- -->
 <ion-content>
-  <ion-col
-    class="per-invoices-segment"
-    *ngIf="selectedSegment == 'per-invoices'"
-  >
+  <ion-col class="per-invoices-segment" *ngIf="selectedSegment == 'per-invoices'">
     <ion-row>
       <ion-col>
         <ion-row class="date-picker-container">
@@ -75,7 +60,7 @@
             <ion-row id="open-popover" class="date-picker box-shadow">
               <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
               <ion-col class="ion-justify-content-end">
-                {{dateNow | date:'yyyy/MM/dd'}}
+                {{selected_fromdateN | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </ion-col>
             </ion-row>
@@ -83,14 +68,11 @@
         </ion-row>
         <ion-popover trigger="open-popover" show-backdrop="false">
           <ng-template>
-            <ion-datetime presentation="date">
+            <ion-datetime [value]="selected_fromdateN" presentation="date" #perInvoicesDate
+              (ionChange)="selected_fromdateN = perInvoicesDate.value; dateChanged('per-invoices')">
               <ion-buttons slot="buttons">
-                <ion-button (click)="reset()"
-                  >{{language.DatePicker.reset}}</ion-button
-                >
-                <ion-button (click)="confirm()"
-                  >{{language.DatePicker.confirm}}</ion-button
-                >
+                <ion-button (click)="perInvoicesDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+                <ion-button (click)="perInvoicesDate.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
               </ion-buttons>
             </ion-datetime>
           </ng-template>
@@ -105,14 +87,27 @@
             <button class="search-submit primary-bg">
               <ion-icon name="search-outline"></ion-icon>
             </button>
-            <ion-select multiple="true" interface="popover">
+            <!-- <ion-select multiple="true" interface="popover">
               <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
               <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
               <ion-select-option value="rasht">RASHT</ion-select-option>
               <ion-select-option value="tehran">TEHRAN</ion-select-option>
               <ion-select-option value="karaj">KARAJ</ion-select-option>
               <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-            </ion-select>
+            </ion-select> -->
+            <ng-select *ngIf="dropdownListN.length" [items]="dropdownListN" [multiple]="true" bindLabel="itemName"
+              groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false" bindValue="itemName"
+              [(ngModel)]="selected_dc">
+
+              <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+              </ng-template>
+
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
+              </ng-template>
+
+            </ng-select>
             <span class="search-icon">
               <ion-icon name="chevron-down-outline"></ion-icon>
             </span>
@@ -134,10 +129,7 @@
             <th>H 21-24</th>
             <th>Total</th>
           </thead>
-          <tbody
-            *ngFor="let nData of invoicesData; let i = index"
-            [ngClass]="{'oddRows' : 0 === i % 2 }"
-          >
+          <tbody *ngFor="let nData of invoicesData; let i = index" [ngClass]="{'oddRows' : 0 === i % 2 }">
             <tr (click)="toggleNestedTabelRow_1()">
               <td class="table-darker-bg">
                 <ion-icon name="chevron-down-outline"></ion-icon>{{nData.route}}
@@ -151,9 +143,7 @@
               <td>{{nData.total}}</td>
             </tr>
             <div *ngIf="nestedTableIsShowingRow_1" class="routeDetails">
-              <div
-                class="routeDetail ion-align-items-center ion-justify-content-center"
-              >
+              <div class="routeDetail ion-align-items-center ion-justify-content-center">
                 {{nData.route}} => person
               </div>
             </div>
@@ -174,7 +164,7 @@
             <ion-row id="open-popover" class="date-picker box-shadow">
               <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
               <ion-col class="ion-justify-content-end">
-                {{dateNow | date:'yyyy/MM/dd'}}
+                {{selected_date | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </ion-col>
             </ion-row>
@@ -182,14 +172,11 @@
         </ion-row>
         <ion-popover trigger="open-popover" show-backdrop="false">
           <ng-template>
-            <ion-datetime presentation="date">
+            <ion-datetime [value]="selected_date" presentation="date" #perKiloDate
+              (ionChange)="selected_date = perKiloDate.value; dateChanged('per-kilo')">
               <ion-buttons slot="buttons">
-                <ion-button (click)="reset()"
-                  >{{language.DatePicker.reset}}</ion-button
-                >
-                <ion-button (click)="confirm()"
-                  >{{language.DatePicker.confirm}}</ion-button
-                >
+                <ion-button (click)="perKiloDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+                <ion-button (click)="perKiloDate.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
               </ion-buttons>
             </ion-datetime>
           </ng-template>
@@ -202,17 +189,25 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="box-shadow">
-            <button class="search-submit primary-bg">
+            <button class="search-submit primary-bg" (click)="onClick()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
-            <ion-select multiple="true" interface="popover">
-              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
-              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-              <ion-select-option value="rasht">RASHT</ion-select-option>
-              <ion-select-option value="tehran">TEHRAN</ion-select-option>
-              <ion-select-option value="karaj">KARAJ</ion-select-option>
-              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-            </ion-select>
+            <!-- <ion-select multiple="true" interface="popover">
+                <ion-select-option *ngFor="let item of dropdownListN" [value]="item.itemName">{{item.itemName}}</ion-select-option>
+            </ion-select> -->
+            <ng-select *ngIf="dropdownListN.length" [items]="dropdownListN" [multiple]="true" bindLabel="itemName"
+              groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false" bindValue="itemName"
+              [(ngModel)]="selected_dc">
+
+              <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+              </ng-template>
+
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
+              </ng-template>
+
+            </ng-select>
             <span class="search-icon">
               <ion-icon name="chevron-down-outline"></ion-icon>
             </span>
@@ -234,10 +229,7 @@
             <th>H 21-24</th>
             <th>Total</th>
           </thead>
-          <tbody
-            *ngFor="let data of invoicesData; let i = index"
-            [ngClass]="{'oddRows' : 0 === i % 2 }"
-          >
+          <tbody *ngFor="let data of invoicesData; let i = index" [ngClass]="{'oddRows' : 0 === i % 2 }">
             <tr (click)="toggleNestedTabelRow_1()">
               <td class="table-darker-bg">
                 <ion-icon name="chevron-down-outline"></ion-icon>{{data.route}}
@@ -251,9 +243,7 @@
               <td>{{data.total}}</td>
             </tr>
             <div *ngIf="nestedTableIsShowingRow_1" class="routeDetails">
-              <div
-                class="routeDetail ion-align-items-center ion-justify-content-center"
-              >
+              <div class="routeDetail ion-align-items-center ion-justify-content-center">
                 {{data.route}} => person
               </div>
             </div>

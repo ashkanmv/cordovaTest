@@ -101,7 +101,8 @@
         "Online_Sale_Days_Hourly":{
             "Title": "Online Sale for Days Hourly",
             "perKilo":"DSD HOURLY KILOGRAM",
-            "perInvoices":"DSD HOURLY INVOICES"
+            "perInvoices":"DSD HOURLY INVOICES",
+            "group" : "All"
         },
         "Salesmen_Location":{
             "Title": "Salesmen Location",

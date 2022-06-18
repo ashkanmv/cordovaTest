@@ -362,6 +362,7 @@ export class Language {
     Title: string;
     perKilo: String;
     perInvoices: string;
+    group : string;
   };
   Salesmen_Location: {
     Title: string;
