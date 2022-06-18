@@ -18,7 +18,11 @@
           <h3><b>{{language.Online_Sales_Hourly.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col class="ion-align-self-center reload" size="1">
+      <ion-col
+        class="ion-align-self-center reload"
+        size="1"
+        (click)="refresh()"
+      >
         <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
         </ion-img>
       </ion-col>
@@ -71,17 +75,58 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit primary-bg">
+            <button class="search-submit primary-bg" (click)="SelectedDCN()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
-            <ion-select multiple="true" interface="popover">
+            <!-- <ion-select multiple="true" interface="popover">
               <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
               <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
               <ion-select-option value="rasht">RASHT</ion-select-option>
               <ion-select-option value="tehran">TEHRAN</ion-select-option>
               <ion-select-option value="karaj">KARAJ</ion-select-option>
               <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-            </ion-select>
+            </ion-select> -->
+            <ng-select
+              *ngIf="dropdownListN.length"
+              [items]="dropdownListN"
+              [multiple]="true"
+              bindLabel="itemName"
+              groupBy="group"
+              appendTo="body"
+              [selectableGroup]="true"
+              [selectableGroupAsModel]="false"
+              [closeOnSelect]="false"
+              bindValue="itemName"
+              [(ngModel)]="selectedItemsN"
+            >
+              <ng-template
+                ng-optgroup-tmp
+                let-item="item"
+                let-item$="item$"
+                let-index="index"
+              >
+                <input
+                  id="item-{{index}}"
+                  type="checkbox"
+                  [ngModel]="item$.selected"
+                />
+                {{item.group}}
+              </ng-template>
+
+              <ng-template
+                ng-option-tmp
+                let-item="item"
+                let-item$="item$"
+                let-index="index"
+              >
+                <input
+                  id="item-{{index}}"
+                  type="checkbox"
+                  [ngModel]="item$.selected"
+                />
+                {{item.itemName}}
+              </ng-template>
+            </ng-select>
             <span class="search-icon">
               <ion-icon name="chevron-down-outline"></ion-icon>
             </span>
@@ -146,17 +191,58 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit primary-bg">
+            <button class="search-submit primary-bg" (click)="SelectedDC()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
-            <ion-select multiple="true" interface="popover">
+            <!-- <ion-select multiple="true" interface="popover">
               <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
               <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
               <ion-select-option value="rasht">RASHT</ion-select-option>
               <ion-select-option value="tehran">TEHRAN</ion-select-option>
               <ion-select-option value="karaj">KARAJ</ion-select-option>
               <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-            </ion-select>
+            </ion-select> -->
+            <ng-select
+              *ngIf="dropdownList.length"
+              [items]="dropdownList"
+              [multiple]="true"
+              bindLabel="itemName"
+              groupBy="group"
+              appendTo="body"
+              [selectableGroup]="true"
+              [selectableGroupAsModel]="false"
+              [closeOnSelect]="false"
+              bindValue="itemName"
+              [(ngModel)]="selectedItems"
+            >
+              <ng-template
+                ng-optgroup-tmp
+                let-item="item"
+                let-item$="item$"
+                let-index="index"
+              >
+                <input
+                  id="item-{{index}}"
+                  type="checkbox"
+                  [ngModel]="item$.selected"
+                />
+                {{item.group}}
+              </ng-template>
+
+              <ng-template
+                ng-option-tmp
+                let-item="item"
+                let-item$="item$"
+                let-index="index"
+              >
+                <input
+                  id="item-{{index}}"
+                  type="checkbox"
+                  [ngModel]="item$.selected"
+                />
+                {{item.itemName}}
+              </ng-template>
+            </ng-select>
             <span class="search-icon">
               <ion-icon name="chevron-down-outline"></ion-icon>
             </span>

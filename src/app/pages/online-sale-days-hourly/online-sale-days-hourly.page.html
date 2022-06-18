@@ -18,7 +18,11 @@
           <h3><b>{{language.Online_Sale_Days_Hourly.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col class="ion-align-self-center reload" size="1">
+      <ion-col
+        class="ion-align-self-center reload"
+        size="1"
+        (click)="refresh()"
+      >
         <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
         </ion-img>
       </ion-col>
@@ -75,7 +79,7 @@
             <ion-row id="open-popover" class="date-picker lightBlue-shadow">
               <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
               <ion-col class="ion-justify-content-end">
-                {{dateNow | date:'yyyy/MM/dd'}}
+                {{selected_fromdateN | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </ion-col>
             </ion-row>
@@ -83,12 +87,17 @@
         </ion-row>
         <ion-popover trigger="open-popover" show-backdrop="false">
           <ng-template>
-            <ion-datetime presentation="date">
+            <ion-datetime
+              [value]="selected_fromdateN"
+              presentation="date"
+              #perInvoicesDate
+              (ionChange)="selected_fromdateN = perInvoicesDate.value; dateChanged('per-invoices')"
+            >
               <ion-buttons slot="buttons">
-                <ion-button (click)="reset()"
+                <ion-button (click)="perInvoicesDate.cancel(true)"
                   >{{language.DatePicker.reset}}</ion-button
                 >
-                <ion-button (click)="confirm()"
+                <ion-button (click)="perInvoicesDate.confirm(true)"
                   >{{language.DatePicker.confirm}}</ion-button
                 >
               </ion-buttons>
@@ -105,14 +114,55 @@
             <button class="search-submit primary-bg">
               <ion-icon name="search-outline"></ion-icon>
             </button>
-            <ion-select multiple="true" interface="popover">
+            <!-- <ion-select multiple="true" interface="popover">
               <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
               <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
               <ion-select-option value="rasht">RASHT</ion-select-option>
               <ion-select-option value="tehran">TEHRAN</ion-select-option>
               <ion-select-option value="karaj">KARAJ</ion-select-option>
               <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-            </ion-select>
+            </ion-select> -->
+            <ng-select
+              *ngIf="dropdownListN.length"
+              [items]="dropdownListN"
+              [multiple]="true"
+              bindLabel="itemName"
+              groupBy="group"
+              appendTo="body"
+              [selectableGroup]="true"
+              [selectableGroupAsModel]="false"
+              [closeOnSelect]="false"
+              bindValue="itemName"
+              [(ngModel)]="selected_dc"
+            >
+              <ng-template
+                ng-optgroup-tmp
+                let-item="item"
+                let-item$="item$"
+                let-index="index"
+              >
+                <input
+                  id="item-{{index}}"
+                  type="checkbox"
+                  [ngModel]="item$.selected"
+                />
+                {{item.group | uppercase}}
+              </ng-template>
+
+              <ng-template
+                ng-option-tmp
+                let-item="item"
+                let-item$="item$"
+                let-index="index"
+              >
+                <input
+                  id="item-{{index}}"
+                  type="checkbox"
+                  [ngModel]="item$.selected"
+                />
+                {{item.itemName}}
+              </ng-template>
+            </ng-select>
             <span class="search-icon">
               <ion-icon name="chevron-down-outline"></ion-icon>
             </span>
@@ -174,7 +224,7 @@
             <ion-row id="open-popover" class="date-picker lightBlue-shadow">
               <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
               <ion-col class="ion-justify-content-end">
-                {{dateNow | date:'yyyy/MM/dd'}}
+                {{selected_date | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </ion-col>
             </ion-row>
@@ -182,12 +232,17 @@
         </ion-row>
         <ion-popover trigger="open-popover" show-backdrop="false">
           <ng-template>
-            <ion-datetime presentation="date">
+            <ion-datetime
+              [value]="selected_date"
+              presentation="date"
+              #perKiloDate
+              (ionChange)="selected_date = perKiloDate.value; dateChanged('per-kilo')"
+            >
               <ion-buttons slot="buttons">
-                <ion-button (click)="reset()"
+                <ion-button (click)="perKiloDate.cancel(true)"
                   >{{language.DatePicker.reset}}</ion-button
                 >
-                <ion-button (click)="confirm()"
+                <ion-button (click)="perKiloDate.confirm(true)"
                   >{{language.DatePicker.confirm}}</ion-button
                 >
               </ion-buttons>
@@ -202,17 +257,53 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit primary-bg">
+            <button class="search-submit primary-bg" (click)="onClick()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
-            <ion-select multiple="true" interface="popover">
-              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
-              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-              <ion-select-option value="rasht">RASHT</ion-select-option>
-              <ion-select-option value="tehran">TEHRAN</ion-select-option>
-              <ion-select-option value="karaj">KARAJ</ion-select-option>
-              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-            </ion-select>
+            <!-- <ion-select multiple="true" interface="popover">
+                <ion-select-option *ngFor="let item of dropdownListN" [value]="item.itemName">{{item.itemName}}</ion-select-option>
+            </ion-select> -->
+            <ng-select
+              *ngIf="dropdownListN.length"
+              [items]="dropdownListN"
+              [multiple]="true"
+              bindLabel="itemName"
+              groupBy="group"
+              appendTo="body"
+              [selectableGroup]="true"
+              [selectableGroupAsModel]="false"
+              [closeOnSelect]="false"
+              bindValue="itemName"
+              [(ngModel)]="selected_dc"
+            >
+              <ng-template
+                ng-optgroup-tmp
+                let-item="item"
+                let-item$="item$"
+                let-index="index"
+              >
+                <input
+                  id="item-{{index}}"
+                  type="checkbox"
+                  [ngModel]="item$.selected"
+                />
+                {{item.group | uppercase}}
+              </ng-template>
+
+              <ng-template
+                ng-option-tmp
+                let-item="item"
+                let-item$="item$"
+                let-index="index"
+              >
+                <input
+                  id="item-{{index}}"
+                  type="checkbox"
+                  [ngModel]="item$.selected"
+                />
+                {{item.itemName}}
+              </ng-template>
+            </ng-select>
             <span class="search-icon">
               <ion-icon name="chevron-down-outline"></ion-icon>
             </span>

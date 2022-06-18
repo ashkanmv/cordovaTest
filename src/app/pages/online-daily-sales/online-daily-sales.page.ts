@@ -249,6 +249,20 @@ export class OnlineDailySalesPage implements OnInit {
     }
   }
 
+  refresh() {
+    this.dsdChanged()
+    this.nonDsdChanged()
+  }
+
+  dsdChanged() {
+    console.log(this.selected_dc);
+  }
+
+  nonDsdChanged() {
+    console.log(this.selected_dcN);
+
+  }
+
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }

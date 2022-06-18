@@ -17,7 +17,11 @@
         </ion-title>
       </ion-col>
       <ion-col></ion-col>
-      <ion-col class="ion-align-self-center reload" size="1">
+      <ion-col
+        class="ion-align-self-center reload"
+        size="1"
+        (click)="refresh()"
+      >
         <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
         </ion-img>
       </ion-col>
@@ -28,7 +32,6 @@
         ></ion-img>
       </ion-col>
     </ion-row>
-    <!--  -->
   </ion-toolbar>
   <ion-grid class="secondary-bg white-text">
     <ion-row class="ion-justify-content-between">
@@ -68,20 +71,18 @@
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <!-- <ion-select
+          <ion-select
             [(ngModel)]="selected_dc"
             multiple="true"
             interface="popover"
+            (ionchange)="dsdChanged()"
           >
             <ion-select-option
               *ngFor="let city of dropdownList"
               [value]="city.itemName"
               >{{city.itemName}}</ion-select-option
             >
-          </ion-select> -->
-          <ion-item (click)="showAlert()">
-            <ion-label> {{selected_dc}} </ion-label>
-          </ion-item>
+          </ion-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
           </span>
@@ -195,6 +196,7 @@
             [(ngModel)]="selected_dcN"
             multiple="true"
             interface="popover"
+            (ionchange)="nonDsdChanged()"
           >
             <ion-select-option
               *ngFor="let city of dropdownListN"
