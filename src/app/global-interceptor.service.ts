@@ -32,7 +32,6 @@ export class GlobalInterceptorService implements HttpInterceptor {
   }
 
   private handleError(err: HttpErrorResponse): Observable<any> {
-    debugger
     this.loadingCtrl.dismiss();
     return throwError(err);
   }
