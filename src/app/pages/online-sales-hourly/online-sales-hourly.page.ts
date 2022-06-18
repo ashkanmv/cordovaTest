@@ -422,6 +422,25 @@ export class OnlineSalesHourlyPage implements OnInit {
     console.log(this.selected_dc);
   }
   //
+  row_click1(row, index) {
+    if (row.type == 'a') {
+      if (this.virtual_rows1[row.index + 1].show) {
+        this.virtual_rows1[row.index + 1].show = false;
+      } else {
+        this.virtual_rows1[row.index + 1].show = true;
+      }
+
+      var arr = [
+        {
+          V_Name:
+            this.user_list[row.index - 1][0] +
+            ' => ' +
+            this.srsales1[row.index + 1][0],
+        },
+      ];
+      // this.create_model1(arr, row.index + 1);
+    }
+  }
   row_click2(row) {
     if (row.type == 'a') {
       if (this.virtual_rows2[row.index + 1].show) {

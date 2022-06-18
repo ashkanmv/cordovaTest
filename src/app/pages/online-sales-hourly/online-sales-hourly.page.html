@@ -128,49 +128,51 @@
     </ion-row>
     <!-- -----------------------table -->
     <ion-row>
-      <ion-col class="ion-no-padding">
-        <table>
-          <thead *ngFor="let row of virtual_rows2; let i = index">
-            <th class="route"><span>Route</span></th>
-            <th>0-8</th>
-            <th>9</th>
-            <th>10</th>
-            <th>11</th>
-            <th>12</th>
-            <th>13</th>
-            <th>14</th>
-            <th>15</th>
-            <th>16-24</th>
-            <th>Total</th>
-          </thead>
-          <!-- <tbody
-            *ngFor="let nData of invoicesData; let i = index"
-            [ngClass]="{'oddRows' : 0 === i % 2 }"
+      <ion-col class="ion-no-padding table-container">
+        <ion-grid class="ion-no-padding table">
+          <div
+            *ngFor="let row of virtual_rows1; let i = index"
+            [ngClass]="{'firstrow': i==0}"
           >
-            <tr (click)="toggleNestedTabelRow_1()">
-              <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon>{{nData.route}}
-              </td>
-              <td>{{nData. zeroToEight}}</td>
-              <td>{{nData.nine}}</td>
-              <td>{{nData.ten}}</td>
-              <td>{{nData.eleven}}</td>
-              <td>{{nData.twelve}}</td>
-              <td>{{nData.thirteen}}</td>
-              <td>{{nData.fourteen}}</td>
-              <td>{{nData.fifteen}}</td>
-              <td>{{nData.sixteenToTwentyFour}}</td>
-              <td>{{nData.total}}</td>
-            </tr>
-            <div *ngIf="nestedTableIsShowingRow_1" class="routeDetails">
-              <div
-                class="routeDetail ion-align-items-center ion-justify-content-center"
-              >
-                {{nData.route}} => person
-              </div>
+            <ion-row>
+              <ng-container *ngIf="i==0 && row.show && (row.type=='h')">
+                <ion-col
+                  *ngFor="let item of srsales1[row.index]; let j = index"
+                  [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
+                >
+                  {{ item }}
+                </ion-col>
+              </ng-container>
+            </ion-row>
+          </div>
+
+          <div class="tbody">
+            <div
+              *ngFor="let row of virtual_rows1; let i = index"
+              (click)="row_click1(row , i)"
+              [ngClass]="{ 'oddRows' : 3 === i % 4}"
+            >
+              <ion-row class="rows">
+                <ng-container *ngIf="i!=0 &&row.show && (row.type=='a')">
+                  <ion-col
+                    *ngFor="let item of srsales1[row.index]; let j = index"
+                    [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0, 'oddColumns': 0=== j % 2 }"
+                  >
+                    {{ item }}
+                  </ion-col>
+                </ng-container>
+
+                <ng-container *ngIf="row.show && row.type=='b'">
+                  <ion-grid class="details">
+                    <ion-row wrap *ngFor="let rows of selected_ch1[row.index]">
+                      <ion-col *ngFor="let item of rows"> {{ item }} </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ng-container>
+              </ion-row>
             </div>
-          </tbody> -->
-        </table>
+          </div>
+        </ion-grid>
       </ion-col>
     </ion-row>
   </ion-col>
@@ -186,14 +188,6 @@
             <button class="search-submit primary-bg" (click)="SelectedDC()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
-            <!-- <ion-select multiple="true" interface="popover">
-              <ion-select-option value="esfahan">SELECT ALL</ion-select-option>
-              <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-              <ion-select-option value="rasht">RASHT</ion-select-option>
-              <ion-select-option value="tehran">TEHRAN</ion-select-option>
-              <ion-select-option value="karaj">KARAJ</ion-select-option>
-              <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-            </ion-select> -->
             <ng-select
               *ngIf="dropdownList.length"
               [items]="dropdownList"
@@ -256,7 +250,7 @@
               >
                 <ion-col
                   *ngFor="let item of srsales2[row.index]; let j = index"
-                  [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0,'thirdColumn':j==3 && i!=0 }"
+                  [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
                 >
                   {{ item }}
                 </ion-col>
