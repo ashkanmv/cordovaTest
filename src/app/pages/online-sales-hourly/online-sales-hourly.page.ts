@@ -421,7 +421,8 @@ export class OnlineSalesHourlyPage implements OnInit {
   onClick() {
     console.log(this.selected_dc);
   }
-  //
+  //  // orignal row click
+
   row_click1(row, index) {
     if (row.type == 'a') {
       if (this.virtual_rows1[row.index + 1].show) {
