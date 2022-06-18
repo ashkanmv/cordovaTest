@@ -91,13 +91,13 @@
               <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
               <ion-item>
                 <ion-icon name="chevron-down-outline"></ion-icon>
-                <ion-list>
+                <ion-list class="radio-group-container">
                   <ion-radio-group allow-empty-selection>
                     <ion-item>
                       <ion-radio
                         allow-empty-selection
                         mode="md"
-                        value="farhadIranloo"
+                        value=""
                       ></ion-radio>
                     </ion-item>
                   </ion-radio-group>
@@ -105,7 +105,7 @@
               </ion-item>
             </ion-label>
             <ion-select
-              placeholder="Farhad Iranloo"
+              placeholder="RSM"
               interface="popover"
               multiple="true"
               [(ngModel)]="selectedRsm"
@@ -125,24 +125,20 @@
 
               <ion-item>
                 <ion-icon name="chevron-down-outline"></ion-icon>
-                <ion-list>
+                <ion-list class="radio-group-container">
                   <ion-radio-group allow-empty-selection>
                     <ion-item>
                       <ion-radio
                         allow-empty-selection
                         mode="md"
-                        value="AhmadSafari"
+                        value=""
                       ></ion-radio>
                     </ion-item>
                   </ion-radio-group>
                 </ion-list>
               </ion-item>
             </ion-label>
-            <ion-select
-              placeholder=" Ahmad Safari"
-              interface="popover"
-              multiple="true"
-            >
+            <ion-select placeholder="ASM" interface="popover" multiple="true">
               <ion-select-option slot="end" value="peperoni"
                 >Peperoni</ion-select-option
               >
@@ -158,24 +154,20 @@
 
               <ion-item>
                 <ion-icon name="chevron-down-outline"></ion-icon>
-                <ion-list>
+                <ion-list class="radio-group-container">
                   <ion-radio-group allow-empty-selection>
                     <ion-item>
                       <ion-radio
                         allow-empty-selection
                         mode="md"
-                        value="sinaAhmadi"
+                        value=""
                       ></ion-radio>
                     </ion-item>
                   </ion-radio-group>
                 </ion-list>
               </ion-item>
             </ion-label>
-            <ion-select
-              placeholder="Sina Ahmadi"
-              interface="popover"
-              multiple="true"
-            >
+            <ion-select placeholder="SSV" interface="popover" multiple="true">
               <ion-select-option value="peperoni">Peperoni</ion-select-option>
             </ion-select>
           </ion-item>
@@ -189,28 +181,20 @@
 
               <ion-item>
                 <ion-icon name="chevron-down-outline"></ion-icon>
-                <ion-list>
-                  <ion-radio-group
-                    allow-empty-selection
-                    name="auto"
-                    value="tesla"
-                  >
+                <ion-list class="radio-group-container">
+                  <ion-radio-group allow-empty-selection name="" value="">
                     <ion-item>
                       <ion-radio
                         allow-empty-selection
                         mode="md"
-                        value="kazemDehghan"
+                        value=""
                       ></ion-radio>
                     </ion-item>
                   </ion-radio-group>
                 </ion-list>
               </ion-item>
             </ion-label>
-            <ion-select
-              placeholder="Kazem Dehghan"
-              interface="popover"
-              multiple="true"
-            >
+            <ion-select placeholder="SR" interface="popover" multiple="true">
               <ion-select-option value="peperoni">Peperoni</ion-select-option>
             </ion-select>
           </ion-item>

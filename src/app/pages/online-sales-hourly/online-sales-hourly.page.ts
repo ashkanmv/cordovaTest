@@ -27,14 +27,14 @@ export class OnlineSalesHourlyPage implements OnInit {
   selected_dc: any = [];
   selected_dcN: any = [];
   today;
-  sr1
+  sr1;
   srsales2 = [];
   virtual_rows1 = [];
   virtual_rows2 = [];
   categories1 = [];
   selected_ch1 = [];
   selected_ch2 = [];
-  type1 = "sales";
+  type1 = 'sales';
   hide = true;
   categories = [];
   user_id;
@@ -59,54 +59,12 @@ export class OnlineSalesHourlyPage implements OnInit {
 
   nestedTableIsShowingRow_1: boolean = false;
 
-  constructor(private languageService: LanguageService,
+  constructor(
+    private languageService: LanguageService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
-    private SrSales_HourlyService: OnlineSalesHourlyService) { }
-
-  // mock  invoices data
-  public invoicesData: Array<any> = [
-    {
-      route: 1101,
-      zeroToNine: 34,
-      nineToTwelve: 3,
-      twelveToFifteen: 7.2,
-      fifteenToEighteen: 62,
-      EighteenToTwentyOne: 8.2,
-      TwentyOnToTwentyFour: 85.2,
-      total: 782,
-    },
-    {
-      route: 1102,
-      zeroToNine: 3,
-      nineToTwelve: 5,
-      twelveToFifteen: 27,
-      fifteenToEighteen: 2,
-      EighteenToTwentyOne: 82,
-      TwentyOnToTwentyFour: 92,
-      total: 782,
-    },
-    {
-      route: 1103,
-      zeroToNine: 14,
-      nineToTwelve: 9,
-      twelveToFifteen: 72,
-      fifteenToEighteen: 2,
-      EighteenToTwentyOne: 82,
-      TwentyOnToTwentyFour: 8,
-      total: 782,
-    },
-    {
-      route: 1104,
-      zeroToNine: 24,
-      nineToTwelve: 3,
-      twelveToFifteen: 92,
-      fifteenToEighteen: 2,
-      EighteenToTwentyOne: 52,
-      TwentyOnToTwentyFour: 2,
-      total: 782,
-    },
-  ];
+    private SrSales_HourlyService: OnlineSalesHourlyService
+  ) {}
 
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
@@ -117,11 +75,11 @@ export class OnlineSalesHourlyPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storageService.get('user_id').then(user_id => {
+    this.storageService.get('user_id').then((user_id) => {
       this.user_id = Number(user_id);
       this.get_dc();
       this.get_dcN();
-    })
+    });
   }
 
   distance_select() {
@@ -134,18 +92,20 @@ export class OnlineSalesHourlyPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.SrSales_HourlyService.getUserDc(this.user_id)
-      .subscribe(
-        dcs => {
-          this.dcN = dcs;
-          for (var i = 0; i < this.dcN.length; i++) {
-            this.selected_dcN.push(this.dcN[i].City);
-            this.dropdownListN.push({ "id": i, "itemName": this.dc[i].City, "group": this.language.Online_Sales_Hourly.group });
-          }
-          this.selectedItemsN = this.dropdownListN.map(_=>_.itemName);
-          loading.dismiss()
-          this.after_get_Dcn();
+    this.SrSales_HourlyService.getUserDc(this.user_id).subscribe((dcs) => {
+      this.dcN = dcs;
+      for (var i = 0; i < this.dcN.length; i++) {
+        this.selected_dcN.push(this.dcN[i].City);
+        this.dropdownListN.push({
+          id: i,
+          itemName: this.dc[i].City,
+          group: this.language.Online_Sales_Hourly.group,
         });
+      }
+      this.selectedItemsN = this.dropdownListN.map((_) => _.itemName);
+      loading.dismiss();
+      this.after_get_Dcn();
+    });
   }
 
   async after_get_Dcn() {
@@ -153,16 +113,18 @@ export class OnlineSalesHourlyPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(this.user_id, this.selected_dcN.join(), this.selected_dateN)
-      .subscribe(
-        (SrSales: Data[]) => {
-          if (SrSales.length) {
-            this.create_total_model2(SrSales);
-          } else {
-            this.create_total_model2('Empty');
-          }
-          loading.dismiss()
-        });
+    this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(
+      this.user_id,
+      this.selected_dcN.join(),
+      this.selected_dateN
+    ).subscribe((SrSales: Data[]) => {
+      if (SrSales.length) {
+        this.create_total_model2(SrSales);
+      } else {
+        this.create_total_model2('Empty');
+      }
+      loading.dismiss();
+    });
   }
 
   async dcSelect() {
@@ -170,14 +132,14 @@ export class OnlineSalesHourlyPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.SrSales_HourlyService.getSrSalesUsers(this.user_id, this.selected_dc, this.selected_date)
-      .subscribe(
-        (srsales: Data[]) => {
-          if (srsales.length)
-            this.create_total_model1(srsales);
-          else
-            this.create_total_model1('Empty');
-        });
+    this.SrSales_HourlyService.getSrSalesUsers(
+      this.user_id,
+      this.selected_dc,
+      this.selected_date
+    ).subscribe((srsales: Data[]) => {
+      if (srsales.length) this.create_total_model1(srsales);
+      else this.create_total_model1('Empty');
+    });
   }
 
   async get_dc() {
@@ -186,18 +148,22 @@ export class OnlineSalesHourlyPage implements OnInit {
         message: 'Please wait...',
       });
       await loading.present();
-      this.SrSales_HourlyService.getUserDc(this.user_id)
-        .subscribe(
-          (dcs: Data[]) => {
-            this.dc = dcs;
-            for (var i = 0; i < this.dc.length; i++) {
-              this.selected_dc.push(this.dc[i].City);
-              this.dropdownList.push({ "id": i, "itemName": this.dc[i].City, "group": 'dc' });
-            }
-            this.selectedItems = this.dropdownList.map(_=>_.itemName);
-            loading.dismiss();
-            this.after_get_Dc();
-          });
+      this.SrSales_HourlyService.getUserDc(this.user_id).subscribe(
+        (dcs: Data[]) => {
+          this.dc = dcs;
+          for (var i = 0; i < this.dc.length; i++) {
+            this.selected_dc.push(this.dc[i].City);
+            this.dropdownList.push({
+              id: i,
+              itemName: this.dc[i].City,
+              group: 'dc',
+            });
+          }
+          this.selectedItems = this.dropdownList.map((_) => _.itemName);
+          loading.dismiss();
+          this.after_get_Dc();
+        }
+      );
     } catch (error) {
       alert(error);
     }
@@ -208,16 +174,18 @@ export class OnlineSalesHourlyPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(this.user_id, this.selected_dcN, this.selected_dateN)
-      .subscribe(
-        (srsales: Data[]) => {
-          if (srsales.length != 0) {
-            this.create_total_model2(srsales);
-          } else {
-            this.create_total_model2('Empty');
-          }
-          loading.dismiss();
-        });
+    this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(
+      this.user_id,
+      this.selected_dcN,
+      this.selected_dateN
+    ).subscribe((srsales: Data[]) => {
+      if (srsales.length != 0) {
+        this.create_total_model2(srsales);
+      } else {
+        this.create_total_model2('Empty');
+      }
+      loading.dismiss();
+    });
   }
 
   async SelectedDCN() {
@@ -231,17 +199,18 @@ export class OnlineSalesHourlyPage implements OnInit {
     }
 
     if (this.selectedItemsN.length > 0) {
-      this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(this.user_id, this.selected_dcN, this.selected_dateN)
-        .subscribe(
-          (srsales: Data[]) => {
-            if (srsales.length) {
-              this.create_total_model2(srsales);
-            }
-            loading.dismiss();
-          });
-    }
-    else {
-      this.create_total_model1("Empty");
+      this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(
+        this.user_id,
+        this.selected_dcN,
+        this.selected_dateN
+      ).subscribe((srsales: Data[]) => {
+        if (srsales.length) {
+          this.create_total_model2(srsales);
+        }
+        loading.dismiss();
+      });
+    } else {
+      this.create_total_model1('Empty');
       loading.dismiss();
     }
   }
@@ -252,27 +221,26 @@ export class OnlineSalesHourlyPage implements OnInit {
     });
     await loading.present();
 
-    this.selected_dc = []
+    this.selected_dc = [];
     for (var i = 0; i < this.selectedItems.length; i++) {
       this.selected_dc.push(this.selectedItems[i].itemName);
     }
 
-
     if (this.selectedItems.length > 0) {
-      this.SrSales_HourlyService.getSrSalesUsers(this.user_id, this.selected_dc, this.selected_date)
-        .subscribe(
-          (srsales: Data[]) => {
-            if (srsales.length) {
-              this.create_total_model1(srsales);
-            }
-            loading.dismiss();
-          });
-    }
-    else {
-      this.create_total_model1("Empty");
+      this.SrSales_HourlyService.getSrSalesUsers(
+        this.user_id,
+        this.selected_dc,
+        this.selected_date
+      ).subscribe((srsales: Data[]) => {
+        if (srsales.length) {
+          this.create_total_model1(srsales);
+        }
+        loading.dismiss();
+      });
+    } else {
+      this.create_total_model1('Empty');
       loading.dismiss();
     }
-
   }
 
   create_total_model2(model) {
@@ -282,42 +250,36 @@ export class OnlineSalesHourlyPage implements OnInit {
     let keys = Object.keys(model[0]);
     keys.splice(1, 1);
 
-
-
-
-
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srsales2.push(keys);
     this.virtual_rows2.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      let temp = Object.keys(ch).map(key => ch[key]);
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
-
           temp[j] = temp[j];
         }
-
       }
       this.user_list2.push(temp);
       this.srsales2.push(temp);
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows2.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows2.push(v_row2);
       this.user_list2.push(temp);
@@ -326,15 +288,17 @@ export class OnlineSalesHourlyPage implements OnInit {
   }
 
   after_get_Dc() {
-    this.SrSales_HourlyService.getSrSalesUsers(this.user_id, this.selected_dc.join(), this.selected_date)
-      .subscribe(
-        (SrSales: Data[]) => {
-          if (SrSales.length) {
-            this.create_total_model1(SrSales);
-          } else {
-            this.create_total_model1('Empty');
-          }
-        });
+    this.SrSales_HourlyService.getSrSalesUsers(
+      this.user_id,
+      this.selected_dc.join(),
+      this.selected_date
+    ).subscribe((SrSales: Data[]) => {
+      if (SrSales.length) {
+        this.create_total_model1(SrSales);
+      } else {
+        this.create_total_model1('Empty');
+      }
+    });
   }
 
   create_total_model1(model) {
@@ -346,14 +310,14 @@ export class OnlineSalesHourlyPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srsales1.push(keys);
     this.virtual_rows1.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      let temp = Object.keys(ch).map(key => ch[key]);
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
           temp[j] = temp[j];
@@ -364,36 +328,47 @@ export class OnlineSalesHourlyPage implements OnInit {
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row2);
       this.user_list.push(temp);
       this.srsales1.push(temp.splice(1, 1));
     }
   }
+  create_model1(model, index) {
+    this.selected_ch1[index] = [];
+    if (model[0]) {
+      for (var i = 0; i < model.length; i++) {
+        let ch = model[i];
+        let temp = Object.keys(ch).map((key) => ch[key]);
+        for (var j = 1; j < temp.length; j++) {
+          if (temp[j] != null) {
+            temp[j] = temp[j];
+          }
+        }
+        this.selected_ch1[index].push(temp);
+      }
+    }
+  }
 
   create_model2(model, index) {
     this.selected_ch2[index] = [];
     if (model[0]) {
-
-
       for (var i = 0; i < model.length; i++) {
         let ch = model[i];
-        let temp = Object.keys(ch).map(key => ch[key]);
+        let temp = Object.keys(ch).map((key) => ch[key]);
         for (var j = 1; j < temp.length; j++) {
           if (temp[j] != null) {
-
             temp[j] = temp[j];
           }
-
         }
         this.selected_ch2[index].push(temp);
       }
@@ -401,10 +376,8 @@ export class OnlineSalesHourlyPage implements OnInit {
   }
 
   dateChanged(changed: 'per-kilo' | 'per-invoices') {
-    if (changed == 'per-kilo')
-      this.dcSelect();
-    else
-      this.dcSelectN();
+    if (changed == 'per-kilo') this.dcSelect();
+    else this.dcSelectN();
   }
 
   refresh() {
@@ -418,6 +391,45 @@ export class OnlineSalesHourlyPage implements OnInit {
 
   onClick() {
     console.log(this.selected_dc);
+  }
+  //  // orignal row click
 
+  row_click1(row, index) {
+    if (row.type == 'a') {
+      if (this.virtual_rows1[row.index + 1].show) {
+        this.virtual_rows1[row.index + 1].show = false;
+      } else {
+        this.virtual_rows1[row.index + 1].show = true;
+      }
+
+      var arr = [
+        {
+          V_Name:
+            this.user_list[row.index - 1][0] +
+            ' => ' +
+            this.srsales1[row.index + 1][0],
+        },
+      ];
+      this.create_model1(arr, row.index + 1);
+    }
+  }
+  row_click2(row) {
+    if (row.type == 'a') {
+      if (this.virtual_rows2[row.index + 1].show) {
+        this.virtual_rows2[row.index + 1].show = false;
+      } else {
+        this.virtual_rows2[row.index + 1].show = true;
+      }
+
+      var arr = [
+        {
+          V_Name:
+            this.user_list2[row.index - 1][0] +
+            ' => ' +
+            this.srsales1[row.index + 1][0],
+        },
+      ];
+      this.create_model2(arr, row.index + 1);
+    }
   }
 }

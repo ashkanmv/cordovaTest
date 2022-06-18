@@ -1,5 +1,4 @@
-// to do :
-//  descreption popover itrms
+
 
 
 ion-toolbar ion-row{
@@ -130,7 +129,6 @@ ion-col.select-drop-down-container{
             --border-radius: 50px;
             border-radius: 50px;
             width: 80%;
-            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
             ion-icon{
                 color: #e5e5e5;
                 width: 3rem;
@@ -173,10 +171,9 @@ ion-col.radio-input-container{
     ion-row{ 
         width: 80%;    
         .radio-input{
-            background: #Fff;
+            background: var(--ion-color-light);
             padding:2.2rem ;
             border-radius: 50px;
-            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
             width: 100%;
             display: flex;
             justify-content: space-around;

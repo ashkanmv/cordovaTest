@@ -21,7 +21,7 @@ export class GlobalInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(catchError(x=>this.handleError(x)));
+    return next.handle(req).pipe(catchError((x) => this.handleError(x)));
     // .pipe(
     //   map((event) => {
     //     if (event.type === HttpEventType.Response) {

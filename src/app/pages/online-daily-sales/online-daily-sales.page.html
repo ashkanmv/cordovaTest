@@ -17,7 +17,11 @@
         </ion-title>
       </ion-col>
       <ion-col></ion-col>
-      <ion-col class="ion-align-self-center reload" size="1" (click)="refresh()">
+      <ion-col
+        class="ion-align-self-center reload"
+        size="1"
+        (click)="refresh()"
+      >
         <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
         </ion-img>
       </ion-col>
@@ -67,8 +71,17 @@
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select [(ngModel)]="selected_dc" multiple="true" interface="popover" (ionchange)="dsdChanged()">
-            <ion-select-option *ngFor="let city of dropdownList" [value]="city.itemName">{{city.itemName}}</ion-select-option>
+          <ion-select
+            [(ngModel)]="selected_dc"
+            multiple="true"
+            interface="popover"
+            (ionchange)="dsdChanged()"
+          >
+            <ion-select-option
+              *ngFor="let city of dropdownList"
+              [value]="city.itemName"
+              >{{city.itemName}}</ion-select-option
+            >
           </ion-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -149,7 +162,7 @@
                             >
                               <tr
                                 class="borderSet ion-justify-content-around"
-                                *ngFor="let row of Load_Detail; let j = index"
+                                *ngFor="let row of Load_Detail"
                               >
                                 <td class="visitor primary-bg white-text">
                                   {{row.Id}}
@@ -179,8 +192,17 @@
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select [(ngModel)]="selected_dcN" multiple="true" interface="popover" (ionchange)="nonDsdChanged()">
-            <ion-select-option *ngFor="let city of dropdownListN" [value]="city.itemName">{{city.itemName}}</ion-select-option>
+          <ion-select
+            [(ngModel)]="selected_dcN"
+            multiple="true"
+            interface="popover"
+            (ionchange)="nonDsdChanged()"
+          >
+            <ion-select-option
+              *ngFor="let city of dropdownListN"
+              [value]="city.itemName"
+              >{{city.itemName}}</ion-select-option
+            >
           </ion-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>

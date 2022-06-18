@@ -63,9 +63,41 @@
 <!-- -------------------------------------------------------------------------------------------- -->
 <ion-content class="ion-no-padding ion-no-margin">
   <ion-col class="tablet-page" *ngIf="selectedSegment == 'tablet'">
+    <ion-col>
+      <ion-row class="date-picker-container">
+        <ion-row class="date-picker-box">
+          <label for="Date-picker">{{language.DatePicker.title}}</label>
+          <ion-row class="date-picker lightBlue-shadow">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <ion-col id="open-popover" class="ion-justify-content-end">
+              {{dateNow | date:'yyyy/MM/dd'}}
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-row>
+      <ion-popover trigger="open-popover" show-backdrop="false">
+        <ng-template>
+          <ion-datetime
+            size="cover"
+            showDefaultButtons="true"
+            presentation="date"
+          >
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
+          </ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-col>
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <ion-item>
+        <ion-item class="lightBlue-shadow">
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
@@ -121,7 +153,7 @@
           <div class="table-detail">
             <div class="table-line-ver"></div>
             <div class="table-line-horiz"></div>
-            <table class="">
+            <table class="lightBlue-shadow">
               <thead class="blue-bg">
                 <th>Visitor</th>
                 <th>Driver</th>
@@ -140,10 +172,45 @@
   <!-- ----------------------------------------------------------------------------- -->
   <!-- ----------------------------------------------------------------------------- -->
   <!-- ----------------------------------------------------------------------------- -->
-  <ion-col *ngIf="selectedSegment == 'truck'" class="searchbar">
+  <ion-col *ngIf="selectedSegment == 'truck'">
+    <ion-col>
+      <!--  -->
+      <ion-row class="date-picker-container">
+        <ion-row class="date-picker-box">
+          <label for="Date-picker">{{language.DatePicker.title}}</label>
+          <ion-row class="date-picker lightBlue-shadow">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <ion-col id="open-popover" class="ion-justify-content-end">
+              {{dateNow | date:'yyyy/MM/dd'}}
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-row>
+      <!--  -->
+      <ion-popover trigger="open-popover" show-backdrop="false">
+        <ng-template>
+          <ion-datetime
+            size="cover"
+            showDefaultButtons="true"
+            presentation="date"
+          >
+            <ion-buttons slot="buttons">
+              <ion-button (click)="reset()"
+                >{{language.DatePicker.reset}}</ion-button
+              >
+              <ion-button (click)="confirm()"
+                >{{language.DatePicker.confirm}}</ion-button
+              >
+            </ion-buttons>
+          </ion-datetime>
+        </ng-template>
+      </ion-popover>
+      <!--  -->
+    </ion-col>
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <ion-item>
+        <ion-item class="lightBlue-shadow">
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
@@ -161,87 +228,13 @@
       </ion-row>
     </ion-col>
     <ion-col>
-      <h2 class="table-title">Weight _ T</h2>
       <table class="truck-table">
-        <tbody class="table-body table-body-content">
-          <tr>
-            <td class=""><span></span></td>
-            <td>9.61</td>
-          </tr>
-
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> KA
-            </td>
-            <td class="white-bg"></td>
-          </tr>
-          <div class="truck-table-detail">
-            <div class="border">
-              <table class="">
-                <tbody>
-                  <tr class="light-blue-bg">
-                    <td>Test 0</td>
-                    <td>Number 0</td>
-                  </tr>
-                  <tr class="white-bg">
-                    <td>Test 1</td>
-                    <td>Number 1</td>
-                  </tr>
-                  <tr class="light-blue-bg">
-                    <td>Test 2</td>
-                    <td>Number 2</td>
-                  </tr>
-                </tbody>
-                <hr class="line-1" />
-                <hr class="line-2" />
-                <hr class="line-3" />
-              </table>
-            </div>
-          </div>
-          <tr class="dark-blue-bg">
-            <td>
-              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
-
-              <ion-icon name="chevron-down-outline"></ion-icon>
-
-              Distributor
-            </td>
-            <td>4.59</td>
-          </tr>
-          <div class="truck-table-detail">
-            <div class="border">
-              <table class="">
-                <tbody>
-                  <tr class="light-blue-bg">
-                    <td>Test 0</td>
-                    <td>Number 0</td>
-                  </tr>
-                  <tr class="white-bg">
-                    <td>Test 1</td>
-                    <td>Number 1</td>
-                  </tr>
-                  <tr class="light-blue-bg">
-                    <td>Test 2</td>
-                    <td>Number 2</td>
-                  </tr>
-                </tbody>
-                <hr class="line-1" />
-                <hr class="line-2" />
-                <hr class="line-3" />
-              </table>
-            </div>
-          </div>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon> AFH
-            </td>
-            <td class="white-bg">0.44</td>
-          </tr>
-          <tr class="dark-blue-bg">
-            <td><ion-icon name="chevron-down-outline"></ion-icon> Total</td>
-            <td>0.21</td>
-          </tr>
-        </tbody>
+        <th>0</th>
+        <td>E</td>
+        <td>m</td>
+        <td>p</td>
+        <td>t</td>
+        <td>y</td>
       </table>
     </ion-col>
   </ion-col>

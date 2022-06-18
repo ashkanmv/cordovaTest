@@ -34,6 +34,10 @@ ion-menu {
 
 
 // 
+.icon-activated{
+  color:#0095EB;
+  transform: rotate(180deg);
+}
 // REMOVED THE IMPORTENET MARK
 ion-select::part(icon) {
   display: none ;
@@ -65,20 +69,6 @@ ion-item{
 // header show content 
 .show-content{
   transform: rotate(180deg);
-}
-// table blue rows
-.oddRows{
-  // background: #54b2e963;
-  background: #b4dae7;
-}
-
-.icon-activated{
-  color: var(--ion-color-primary);
-  transform: rotate(180deg);
-}
-
-.lightBlue-shadow{
-  box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
 }
 
 // 
@@ -188,7 +178,7 @@ ion-toggle {
 
 
 .secondary-bg {
-  background-color: var(--ion-color-secondary);
+  background-color: #343795;
 }
 
 .white-text {

@@ -36,11 +36,7 @@ ion-col.segment-change{
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
-            .segment-button-checked{
-                ion-label{
-                    color: red;
-                }
-            }
+           
             ion-label{
                 font-size: 3vw;
                 font-weight: bold;
@@ -82,7 +78,6 @@ ion-col{
             align-items: center;
             padding-right: 2rem;
             margin-bottom: 1rem;
-            box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
             h4{
                 color: #cfcfcf;
                 margin-left: 1rem;
@@ -125,6 +120,7 @@ ion-col{
         margin: 3vh 4vw;
         &>ion-item{
             --background: none;
+            --padding-start:0;
             width: 90%;
             border-radius: 10px;
             --border-width:0;
@@ -252,7 +248,6 @@ table{
             left: 2vw;
             height: 2px;
             width: 3vw;
-            background: red;
         }
       
             

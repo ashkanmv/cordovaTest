@@ -1,10 +1,3 @@
-.table-lightblue-bg{
-    background: #bce2fe;
-}
-
-.box-shadow{
-    box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-}
 
 ion-item{
     --background: var(--ion-color-light);
@@ -33,18 +26,14 @@ ion-toolbar{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid  var(--ion-color-primary) ;
+        border-bottom: 2px solid  #0095eb ;
         ion-segment-button{
-            --background-checked: var(--ion-color-primary);
+            --background-checked: #0095eb;
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
-            .segment-button-checked{
-                ion-label{
-                    color: red;
-                }
-            }
+           
             ion-label{
                 font-size: 3vw;
                 font-weight: bold;
@@ -73,13 +62,16 @@ ion-col.segment-change{
         margin: 3vh 4vw;
         &>ion-item{
             --background: none;
+            --padding-start:0;
             width: 90%;
             border-radius: 10px;
             --border-width:0;
             // --highlight-height:none;
-            ion-select{
+            ng-select{
                 width: 100%;
-                height: 100%;
+                height: 10vh;
+                overflow: hidden;
+               
             }
         }
         .search-submit{
@@ -117,70 +109,41 @@ ion-col.segment-change{
         }
     }
     }
-// -------------table
 
-table{
-    table-layout: fixed;
 
-    width: 100%;
-    td{
-        width: 2rem;
-        height: 2rem;
-    }
-    thead{
-        th{
-            padding: .5rem 0;
-        }
-        >:nth-child(odd){
-            background: #84848439;
-
-        }
-        .route{
-            color:  var(--ion-color-primary);
-        }
-    }
-    tbody{
-        tr{
-            z-index: 2;
-            cursor: pointer;
-        }
-        td{
-            text-align: center;
-            >:first-child{
-                background: none;
-                font-size: 1.1rem;
-            }
-            &:first-child{
-                text-align: left;
-                padding-left: .7rem;
-                ion-icon{
-                    padding-right: .5rem;
-                }
-            }
-            &.table-darker-bg{
-                background: #9393936d;
-            }
+// table!!
+.firstrow{
+    // background: var(--ion-color-light);
+    &>:first-child{
+        &>:first-child{
+            color: #0095eb;
         }
         :nth-child(odd){
-            background: #dfdfdf39;
+            background: var(--ion-color-light);
         }
-        // >:nth-child(odd){
-        //     background: none;
-        // }
     }
+}
 
-    // -------data
-    .routeDetails{
-        background: var(--ion-color-light);
-        height: 7vh;
-        min-width: 100vw;
-        .routeDetail{
-            width: 100%;
-            height: 100%;
+ion-col.table-container{
+    overflow-x: scroll;
+    ion-grid.table{
+        width: 180vw;
+        ion-col{
+            min-width: 8vw;
+            height: 5vh;
+            text-align: center;
             display: flex;
-            font-size: 1.3rem;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .tbody{
+            overflow: scroll;
+            height: 60vh;
+            ion-grid.details{
+                font-size: 1.3rem;
+            }   
+
         }
     }
-
-
 }

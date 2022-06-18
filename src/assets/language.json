@@ -1,7 +1,14 @@
 {
     "EN": {
         "Customer_History": {
-            "TitLe": "Customer History"
+            "Title": "Customer History",
+            "gps": "GPS",
+            "Shop_name": "Shop name",
+            "Shop_code": "Shop code",
+            "Shop_type": "Shop type",
+            "Tell": "Tell",
+            "SR": "SR",
+            "Address": "Address"
         },
         "Questionnaire": {
             "Title": "Questionnaire",
@@ -67,54 +74,53 @@
             "password": "Password",
             "submit": "Sign In",
             "UserPassIncorrect": "Username or password is incorrect",
-            "RememberMe" : "Remember Me",
-            "PoweredBy" :"Powered by:" ,
-            "serial" :"Serial : R52J209" 
+            "RememberMe": "Remember Me",
+            "PoweredBy": "Powered by:",
+            "serial": "Serial : R52J209"
         },
-        "theme":{
-            "title":"Theme",
-            "dark":"Dark",
-            "light":"Light",
-            "select":"Select",
-            "automatic_dark_mode":"Automatic dark mode",
-            "text_size":"Text Size",
-            "bold_text":"Bold Text",
-            "theme_color":"Theme Color"
+        "theme": {
+            "title": "Theme",
+            "dark": "Dark",
+            "light": "Light",
+            "select": "Select",
+            "automatic_dark_mode": "Automatic dark mode",
+            "text_size": "Text Size",
+            "bold_text": "Bold Text",
+            "theme_color": "Theme Color"
         },
-        "DatePicker":{
-            "confirm":"Done",
-            "reset":"cancel",
-            "from":"From Date",
-            "to":"To Date",
-            "title":"Date"
-
+        "DatePicker": {
+            "confirm": "Done",
+            "reset": "cancel",
+            "from": "From Date",
+            "to": "To Date",
+            "title": "Date"
         },
-        "Loading_Truck_Status":{
-            "Title":"Loading Truck Status",
-            "date_title":"Date"
+        "Loading_Truck_Status": {
+            "Title": "Loading Truck Status",
+            "date_title": "Date"
         },
-        "Online_Sales_Hourly":{
+        "Online_Sales_Hourly": {
             "Title": "Online Daily Sales Hourly",
-            "perKilo":"DSD HOURLY KILOGRAM",
-            "perInvoices":"DSD HOURLY INVOICES",
-            "group" : "All"
+            "perKilo": "DSD HOURLY KILOGRAM",
+            "perInvoices": "DSD HOURLY INVOICES",
+            "group": "All"
         },
-        "Online_Sale_Days_Hourly":{
+        "Online_Sale_Days_Hourly": {
             "Title": "Online Sale for Days Hourly",
-            "perKilo":"DSD HOURLY KILOGRAM",
-            "perInvoices":"DSD HOURLY INVOICES",
-            "group" : "All"
+            "perKilo": "DSD HOURLY KILOGRAM",
+            "perInvoices": "DSD HOURLY INVOICES",
+            "group": "All"
         },
-        "Salesmen_Location":{
+        "Salesmen_Location": {
             "Title": "Salesmen Location",
-            "managerRed":"Farhad Iranloo",
-            "managerGreen":"Ahmad Safari",
-            "managerYellow":"Sina Ahmadi",
-            "managerBlue":"Kazem Dehghan"
+            "managerRed": "Farhad Iranloo",
+            "managerGreen": "Ahmad Safari",
+            "managerYellow": "Sina Ahmadi",
+            "managerBlue": "Kazem Dehghan"
         },
-        "Sales_hourly_Day_And_Sales_Office" : {
+        "Sales_hourly_Day_And_Sales_Office": {
             "Title": "Sales hourly_Day & Sales Office",
-            "group" : "All"
+            "group": "All"
         },
         "Sales_Compare_Tracking_Hourly": {
             "Title": "Sales Compare Tracking Hourly",

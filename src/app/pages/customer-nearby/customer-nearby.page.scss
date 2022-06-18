@@ -159,32 +159,6 @@ ion-content.header-input-popover-title{
 }
 
 
-.select-description{
-    background: red;
-    position: relative;
-    .select-dropdown{
-        background: yellow;
-        // position: fixed;
-        height: 10vh;
-        top: 2rem;
-        z-index: 1000000;
-    }
-
-   
-}
-// ion-item.select-description{
-
-//     opacity: 0;
-//     position: absolute;
-//     top:1.8vh ;
-//     left: 1rem;
-//     // max-width: 50px;    
-//     width: 35px;
-//     max-height: 40px;
-//     // border-radius: 50%;
-
-   
-// }
 @media (max-width:700px) {
     ion-item.select-description{
         max-height: 25px;
@@ -194,9 +168,7 @@ ion-content.header-input-popover-title{
 }
 
 @media (max-width:425px) {
-    ion-popover.description-drop-down{
-        // background: red;
+    ion-popover.description-drop-down{     
         --min-width:85vw;
-        // --offset-x:0 ;
     }
 }

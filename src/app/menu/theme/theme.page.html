@@ -51,19 +51,21 @@
   </ion-row>
   <ion-row class="theme-options ion-justify-content-center">
     <ion-col size="12">
-      <ion-item class="ion-align-items-center">
+      <ion-item class="ion-align-items-center setting-box">
         <ion-col class="option-label" size="9"
           >{{language.theme.automatic_dark_mode}}</ion-col
         >
-        <ion-col size="3"><ion-toggle mode="ios"></ion-toggle></ion-col>
+        <ion-col class="option-options ion-justify-content-end" size="3"
+          ><ion-toggle mode="ios"></ion-toggle
+        ></ion-col>
       </ion-item>
     </ion-col>
     <ion-col size="12">
-      <ion-item>
+      <ion-item class="setting-box">
         <ion-col class="option-label" size="9"
           >{{language.theme.text_size}}</ion-col
         >
-        <ion-col size="3">
+        <ion-col class="option-options ion-justify-content-end" size="3">
           <a>
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </a>
@@ -71,12 +73,31 @@
       </ion-item>
     </ion-col>
     <ion-col size="12">
-      <ion-item>
+      <ion-item class="setting-box">
         <ion-col class="option-label" size="9"
           >{{language.theme.bold_text}}</ion-col
         >
-        <ion-col size="3"><ion-toggle mode="ios"></ion-toggle></ion-col>
+        <ion-col class="option-options ion-justify-content-end" size="3"
+          ><ion-toggle mode="ios"></ion-toggle
+        ></ion-col>
       </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="theme-colors">
+    <ion-col
+      class="theme-colors-label ion-justify-content-center ion-align-items-center"
+      size="5"
+      >{{language.theme.theme_color}}</ion-col
+    >
+    <ion-col
+      class="theme-colors-colors ion-justify-content-center ion-align-items-center"
+      size="7"
+    >
+      <a class="green"></a>
+      <a class="yellow"></a>
+      <a class="red"></a>
+      <a class="purple"></a>
+      <a class="blue"></a>
     </ion-col>
   </ion-row>
 </ion-content>

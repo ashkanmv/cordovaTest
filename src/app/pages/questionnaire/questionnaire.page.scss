@@ -48,7 +48,6 @@ ion-row.select-box{
         --border-radius: 50px;
         border-radius: 50px;
         width: 80%;
-        box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
         ion-icon{
             color: #e5e5e5;
             width: 3rem;
@@ -118,30 +117,7 @@ ion-select.select-drop-down{
         
     }
 }
-ion-row{
-    width: 100%;
-    .select-input-container{
-        width:75vw;
-        border-radius: 50px;
-        box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-        .select-input{
-            border-radius: 50px;
-            width: 98%;
-            border: none;
-            height: 5rem;
-            padding-left: .5rem;
-            padding-right: 1rem;
-            .input-select-label{
-                border-bottom: 2px dashed var(--ion-color-dark);
-                padding: 1rem;
-            }
-        }
-        select:focus{
-            border: none;
-            outline: none;
-        }
-    }
-}
+
 
 
 
@@ -153,7 +129,6 @@ ion-label.questions{
     // padding-left: 3.5rem;
     padding-right: 3.5rem;
     text-align: right;
-    // background: red;
     width: 100%;
 }
 
@@ -181,7 +156,7 @@ ion-col.text-input-container{
     }
     
     ion-input{
-        background: #e0e0e06c;
+        // background: #e0e0e06c;
         border-radius: 10px;
         height: 2rem;
         --padding-top:1.5rem;
@@ -193,7 +168,7 @@ ion-col.text-input-container{
 
 // radio-button
 ion-list.radio-input-container{
-    background: #e0e0e06c;
+    background: var(--ion-color-light);
     width: 90%;
     border-radius: 10px;
     display: grid;
@@ -210,7 +185,6 @@ ion-list.radio-input-container{
             font-size: 1.1rem;
         }
         .item-radio-checked ion-label {
-            --color: red;
             color: #0095EB;
           }
     }

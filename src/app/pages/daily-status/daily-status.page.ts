@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonDatetime } from '@ionic/angular';
+import { Language } from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
+
 @Component({
   selector: 'app-daily-status',
   templateUrl: './daily-status.page.html',
   styleUrls: ['./daily-status.page.scss'],
 })
 export class DailyStatusPage implements OnInit {
+  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+
   IsDetailsShowing = true;
   IsDCDDetailsShowing = false;
-  selectedSegment: string = 'tablet';
+  selectedSegment: string = 'truck';
   // mock data
   public dailyStatusData: Array<any> = [
     {
@@ -109,12 +114,26 @@ export class DailyStatusPage implements OnInit {
     },
   ];
   //
+  //delete later
+  dateNow = new Date();
 
-  constructor() {}
+  public get language(): Language {
+    return this.languageService.language;
+  }
+  constructor(private languageService: LanguageService) {}
   segmentChanged(event: any) {
     // console.log(event.target.value);
     this.selectedSegment = event.target.value;
   }
 
+  confirm() {
+    // this.datetime.nativeEl.confirm();
+    this.datetime.confirm();
+  }
+
+  reset() {
+    // this.datetime.nativeEl.reset();
+    this.datetime.reset();
+  }
   ngOnInit() {}
 }

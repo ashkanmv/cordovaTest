@@ -7,7 +7,6 @@ import { SrSalesHourlyCityService } from './sr-sales-hourly-city.service';
 import { Data } from '@angular/router';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 
-
 @Component({
   selector: 'app-online-sale-days-hourly',
   templateUrl: './online-sale-days-hourly.page.html',
@@ -23,14 +22,14 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   dc = [];
   dcN: any = [];
   today;
-  sr1
+  sr1;
   srsales2 = [];
   virtual_rows1 = [];
   virtual_rows2 = [];
   categories1 = [];
   selected_ch1 = [];
   selected_ch2 = [];
-  type1 = "sales";
+  type1 = 'sales';
   hide = true;
   categories = [];
   user_id;
@@ -55,10 +54,12 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
 
   nestedTableIsShowingRow_1: boolean = false;
 
-  constructor(private languageService: LanguageService,
+  constructor(
+    private languageService: LanguageService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
-    private SrSalesHourlyService: SrSalesHourlyCityService) { }
+    private SrSalesHourlyService: SrSalesHourlyCityService
+  ) {}
 
   // mock  invoices data
   public invoicesData: Array<any> = [
@@ -114,11 +115,11 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storageService.get('user_id').then(user_id => {
+    this.storageService.get('user_id').then((user_id) => {
       this.user_id = Number(user_id);
       this.get_dc();
       this.get_dcN();
-    })
+    });
   }
 
   async get_dc() {
@@ -127,17 +128,21 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     });
     await loading.present();
     try {
-      this.SrSalesHourlyService.getUserDc(this.user_id)
-        .subscribe(
-          (dcs: Data[]) => {
-            this.dc = dcs;
-            for (var i = 0; i < this.dc.length; i++)
-              this.dropdownList.push({ "id": i, "itemName": this.dc[i].City, "group": this.language.Online_Sale_Days_Hourly.group  });
-            this.selectedItems = this.dropdownList.map(_ => _.itemName);
-            loading.dismiss();
+      this.SrSalesHourlyService.getUserDc(this.user_id).subscribe(
+        (dcs: Data[]) => {
+          this.dc = dcs;
+          for (var i = 0; i < this.dc.length; i++)
+            this.dropdownList.push({
+              id: i,
+              itemName: this.dc[i].City,
+              group: this.language.Online_Sale_Days_Hourly.group,
+            });
+          this.selectedItems = this.dropdownList.map((_) => _.itemName);
+          loading.dismiss();
 
-            this.dcSelect();
-          });
+          this.dcSelect();
+        }
+      );
     } catch (error) {
       alert(error);
       loading.dismiss();
@@ -149,19 +154,21 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.SrSalesHourlyService.getUserDc(this.user_id)
-      .subscribe(
-        (dcs: Data[]) => {
-          this.dcN = dcs;
-          for (var i = 0; i < this.dcN.length; i++) {
-            this.dropdownListN.push({ "id": i, "itemName": this.dc[i].City, "group": this.language.Online_Sale_Days_Hourly.group  });
-
-          }
-          this.selectedItemsN = this.dropdownListN.map(_ => _.itemName);
-          loading.dismiss()
-          this.dcSelectN()
-        });
-
+    this.SrSalesHourlyService.getUserDc(this.user_id).subscribe(
+      (dcs: Data[]) => {
+        this.dcN = dcs;
+        for (var i = 0; i < this.dcN.length; i++) {
+          this.dropdownListN.push({
+            id: i,
+            itemName: this.dc[i].City,
+            group: this.language.Online_Sale_Days_Hourly.group,
+          });
+        }
+        this.selectedItemsN = this.dropdownListN.map((_) => _.itemName);
+        loading.dismiss();
+        this.dcSelectN();
+      }
+    );
   }
 
   async dcSelect() {
@@ -170,20 +177,20 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     });
     await loading.present();
     if (!this.selectedItems.length) {
-      this.create_total_model1("Empty");
+      this.create_total_model1('Empty');
       loading.dismiss();
-      return
+      return;
     }
 
-    this.SrSalesHourlyService.getSrSalesUsers(this.user_id, this.selectedItems.join(), this.selected_date)
-      .subscribe(
-        (srsales: Data[]) => {
-          if (srsales.length != 0)
-            this.create_total_model1(srsales);
-          else
-            this.create_total_model1("Empty");
-          loading.dismiss();
-        });
+    this.SrSalesHourlyService.getSrSalesUsers(
+      this.user_id,
+      this.selectedItems.join(),
+      this.selected_date
+    ).subscribe((srsales: Data[]) => {
+      if (srsales.length != 0) this.create_total_model1(srsales);
+      else this.create_total_model1('Empty');
+      loading.dismiss();
+    });
   }
 
   async dcSelectN() {
@@ -193,30 +200,27 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     await loading.present();
 
     if (!this.selectedItemsN.length) {
-      this.create_total_model1("Empty");
+      this.create_total_model1('Empty');
       loading.dismiss();
-      return
+      return;
     }
 
-    this.SrSalesHourlyService.getsrsalesuserscityhourlyqty(this.user_id, this.selectedItemsN.join(), this.selected_dateN)
-      .subscribe(
-        (srsales: Data[]) => {
-          if (srsales.length)
-            this.create_total_model2(srsales);
-          else
-            this.create_total_model2('Empty');
+    this.SrSalesHourlyService.getsrsalesuserscityhourlyqty(
+      this.user_id,
+      this.selectedItemsN.join(),
+      this.selected_dateN
+    ).subscribe((srsales: Data[]) => {
+      if (srsales.length) this.create_total_model2(srsales);
+      else this.create_total_model2('Empty');
 
-          loading.dismiss();
-        });
+      loading.dismiss();
+    });
   }
 
   dateChanged(changed: 'per-kilo' | 'per-invoices') {
-    if (changed == 'per-kilo')
-      this.dcSelect();
-    else
-      this.dcSelectN();
+    if (changed == 'per-kilo') this.dcSelect();
+    else this.dcSelectN();
   }
-
 
   refresh() {
     this.dcSelect();
@@ -232,34 +236,33 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srsales1.push(keys);
     this.virtual_rows1.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      let temp = Object.keys(ch).map(key => ch[key]);
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
           temp[j] = temp[j];
         }
-
       }
       this.user_list.push(temp);
       this.srsales1.push(temp);
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row2);
       this.user_list.push(temp);
@@ -276,34 +279,33 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srsales2.push(keys);
     this.virtual_rows2.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      let temp = Object.keys(ch).map(key => ch[key]);
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
           temp[j] = temp[j];
         }
-
       }
       this.user_list2.push(temp);
       this.srsales2.push(temp);
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows2.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows2.push(v_row2);
       this.user_list2.push(temp);
