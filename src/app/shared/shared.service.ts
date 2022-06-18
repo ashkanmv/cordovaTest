@@ -6,7 +6,7 @@ import { PredefinedColors } from '@ionic/core';
   providedIn: 'root'
 })
 export class SharedService {
-
+  online = true;
   constructor(private toastCtrl: ToastController) { }
 
   toast(color: PredefinedColors, message: string) {
