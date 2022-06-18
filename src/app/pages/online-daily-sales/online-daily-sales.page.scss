@@ -100,11 +100,6 @@ ion-col.segment-change{
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
-            .segment-button-checked{
-                ion-label{
-                    color: red;
-                }
-            }
             ion-label{
                 font-size: 3vw;
                 font-weight: bold;
@@ -162,9 +157,6 @@ ion-col.DSD-page{
 
 
 
-.input-shadow{
-    box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-}
 // ----- content------------
 
 // ----searchbar
@@ -208,11 +200,7 @@ ion-col.DSD-page{
         outline: none;
         border: none;
         border-radius: 0 10px 10px 0 ;
-        &:focus{
-            ion-icon{
-                color: red;
-            }
-        }
+       
    
     }
     span{
@@ -323,7 +311,6 @@ ion-grid.maingrid{
         padding: 0;
         margin: 1rem 2rem ;
         &>ion-row{
-            // padding: 1.8rem 0;
             height: 8vh;
             ion-col.detail{
                 display: flex;
@@ -338,190 +325,6 @@ ion-grid.maingrid{
 }
 
 
-
-
-// -----------------
-// // ---table
-// table{
-
-//     table-layout: fixed;
-//     width: 100%;
-//     margin: 0;
-    
-//     tr{
-//         cursor: pointer;
-//         z-index: 3;
-//         :nth-child(1){
-//             max-width: 100px;
-//         }
-//         :last-child{
-//             max-width: 25px;                
-//         }
-//     }
-//     td{
-//         white-space: nowrap;
-//         padding: 2px 0;
-//         max-width: 100px;
-
-//     }
-//     .table-head{
-//         .table-head-content{
-//             font-weight: bold;
-//             color: var(--ion-color-dark);
-//             th{
-//                 font-size: 1.1rem;
-//             }
-//             >:first-child{
-//                 color:#0095EB;
-//                     min-height: 20px;
-//                 }
-        
-//         }
-//     }
-//     .table-body{
-//        >tr{
-//             >td{
-//                 font-size: 1.3rem;
-//                 color: var(--ion-color-dark);
-//                 text-align: center;
-//                 &:first-child{
-//                     text-align: left;
-//                     padding-left: 5px;            
-//                 }
-//             }
-//         }
-        
-//         ion-icon{
-//             font-size: 1.2rem;
-//             padding-right: 4px;
-//         }
-//         &-icon{
-//             background: #dddddd;
-//             align-items: center;
-//             justify-content: center;
-//         }
-//     }
-
-//     // ---------table-detail--------------
-//     .table-detail{
-//         padding: 10px 0;
-        
-//         &>table{
-//             width: 89vw;
-//             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-//             position: relative;
-//             left: 5vw;
-//         }
-//         thead{
-//             :first-child{
-//                 border-right:1px #0095eb4b solid ;
-//             }
-//         }
-//         th{
-//             color: #282828;
-//             min-width: 200px;
-//             font-size: 1.2rem;
-//         }
-//         tbody{
-//             text-align: center;
-//             :first-child{
-//                 color: var(--ion-color-light);
-//             }
-
-//         }
-//         .table-line-ver{
-//             position: absolute;
-//             top:75px;
-//             left: 14px;
-//             width: 2px;
-//             height: 70px;
-//         }
-//         .table-line-horiz{
-//             position: absolute;
-//             top:135px;
-//             left: 16px;
-//             width:60px;
-//             height: 2px;
-//         }
-
-//     }
-
-    
-    
-// }
-
-// // NON_DSD TABLE
-
-// .table-title{
-//     text-align: right;
-//     color: var(--ion-color-dark);
-//     font-size: 2rem;
-//     margin-right: 15vw;
-
-// }
-// table.NON_DSD-table{
-//     width: 100vw;
-//     color:  var(--ion-color-dark);
-
-
-//     td{
-//         height: 2rem;
-//     }
-
-
-
-
-
-//     // -----------details
-//     .NON_DSD-table-detail{
-//         .border{
-//             border-left: 2px #0095EB solid;
-//             margin-left: 1rem;
-//             padding: 1rem 0 0;
-//         &>table{
-
-//             width: 90vw;
-//             margin:0 1rem 1rem;
-//             box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-//             position: relative;
-
-//             .line-1{
-//                 background: #0095EB;
-//                 position: absolute;
-//                 top: 1.2rem;
-//                 left: -1rem;
-//                 height: 1.5px;
-//                 width: 1rem;
-//             }
-//             .line-2{
-//                 background:#0095EB;
-//                 position: absolute;
-//                 top: 4.8rem;
-//                 left: -1rem;
-//                 height: 1.5px;
-//                 width: 1rem;
-//             }
-//             .line-3{
-//                 background: #0095EB;
-//                 position: absolute;
-//                 bottom: 1.1rem;
-//                 left: -1rem;
-//                 height: 1.5px;
-//                 width: 1rem;
-//             }
-
-//         }
-
-//         td{
-//             height: 10vh;
-//         }
-//         tbody{
-//             text-align: center;
-//         }
-//     }
-// }
-
-// }
 
 
 

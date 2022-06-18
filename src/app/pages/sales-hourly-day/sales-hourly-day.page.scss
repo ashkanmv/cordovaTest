@@ -30,9 +30,9 @@ ion-toolbar{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid  var(--ion-color-primary) ;
+        border-bottom: 2px solid #0095eb ;
         ion-segment-button{
-            --background-checked: var(--ion-color-primary);
+            --background-checked:#0095eb;
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;

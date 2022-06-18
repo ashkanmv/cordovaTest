@@ -3,19 +3,32 @@
     <ion-row class="primary-bg">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img class="back-button" src="assets\pages\customer-history\Backward arrow.png"></ion-img>
+          <ion-img
+            class="back-button"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
         </ion-button>
       </ion-col>
       <ion-col sizeLg="7" class="ion-text-start ion-align-self-center">
-        <ion-title class="ion-no-padding white-text ion-align-self-center">Customer nearby
+        <ion-title class="ion-no-padding white-text ion-align-self-center"
+          >Customer nearby
         </ion-title>
       </ion-col>
       <ion-col size="1" class="ion-align-self-center description">
-        <ion-img id="trigger-desc" src="\assets\pages\customer-nearby\Description.png" alt=""></ion-img>
+        <ion-img
+          id="trigger-desc"
+          src="\assets\pages\customer-nearby\Description.png"
+          alt=""
+        ></ion-img>
 
-        <ion-popover class="header-drop-down description-drop-down" trigger="trigger-desc">
+        <ion-popover
+          class="header-drop-down description-drop-down"
+          trigger="trigger-desc"
+        >
           <ng-template>
-            <ion-content disabled class="header-input-popover-title">Description</ion-content>
+            <ion-content disabled class="header-input-popover-title"
+              >Description</ion-content
+            >
             <ion-content>
               <div value="normal-customer" class="">
                 <img src="\assets\pages\customer-nearby\Green.png" alt="" />
@@ -42,33 +55,36 @@
             </ion-content>
             <ion-content>
               <div class="">
-                <img src="\assets\pages\customer-nearby\Group 1424.png" alt="" />
+                <img
+                  src="\assets\pages\customer-nearby\Group 1424.png"
+                  alt=""
+                />
                 <p>Not Buy 2 Weeks & PPED > 5%</p>
               </div>
             </ion-content>
           </ng-template>
         </ion-popover>
       </ion-col>
-      <!--  -->
       <ion-col size="1" class="ion-align-self-center reload">
-        <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" />
+        <!-- <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" /> -->
+        <ion-img src="\assets\pages\customer-nearby\Group 1325.png"></ion-img>
       </ion-col>
-      <!--  -->
-      <ion-col size="1" class="ion-align-self-center" (click)="presentPopover($event)">
-        <img id="trigger-hide" class="hide" src="\assets\pages\customer-nearby\Hide.png" alt="" />
-        <!-- <ion-popover class="header-drop-down hide-drop-down hide" trigger="trigger-hide">
-          <ng-template>
-            <ion-content (click)="distanceChanged(50)">50 M</ion-content>
-            <ion-content (click)="distanceChanged(100)">100 M</ion-content>
-            <ion-content (click)="distanceChanged(500)">500 M</ion-content>
-            <ion-content (click)="distanceChanged(700)">700 M</ion-content>
-            <ion-content (click)="distanceChanged(1000)">1 KM</ion-content>
-          </ng-template>
-        </ion-popover> -->
+      <ion-col
+        size="1"
+        class="ion-align-self-center"
+        (click)="presentPopover($event)"
+      >
+        <ion-img
+          id="trigger-hide"
+          class="hide"
+          src="\assets\pages\customer-nearby\Hide.png"
+        ></ion-img>
       </ion-col>
-      <!--  -->
       <ion-col size="1" class="ion-align-self-center wifi">
-        <ion-img class="wifi-online" src="/assets\mainPage\main\wifi.png"></ion-img>
+        <ion-img
+          class="wifi-online"
+          src="/assets\mainPage\main\wifi.png"
+        ></ion-img>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -88,7 +104,11 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="showMap" style="width: 100vw; height: 100vh;">
-    <app-map [showMap]="showMap" [markers]="markers" [mapView]="mapView"></app-map>
+  <div *ngIf="showMap" style="width: 100vw; height: 100vh">
+    <app-map
+      [showMap]="showMap"
+      [markers]="markers"
+      [mapView]="mapView"
+    ></app-map>
   </div>
 </ion-content>

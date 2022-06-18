@@ -66,50 +66,6 @@ export class OnlineSalesHourlyPage implements OnInit {
     private SrSales_HourlyService: OnlineSalesHourlyService
   ) {}
 
-  // mock  invoices data
-  // public invoicesData: Array<any> = [
-  //   {
-  //     route: 1101,
-  //     zeroToNine: 34,
-  //     nineToTwelve: 3,
-  //     twelveToFifteen: 7.2,
-  //     fifteenToEighteen: 62,
-  //     EighteenToTwentyOne: 8.2,
-  //     TwentyOnToTwentyFour: 85.2,
-  //     total: 782,
-  //   },
-  //   {
-  //     route: 1102,
-  //     zeroToNine: 3,
-  //     nineToTwelve: 5,
-  //     twelveToFifteen: 27,
-  //     fifteenToEighteen: 2,
-  //     EighteenToTwentyOne: 82,
-  //     TwentyOnToTwentyFour: 92,
-  //     total: 782,
-  //   },
-  //   {
-  //     route: 1103,
-  //     zeroToNine: 14,
-  //     nineToTwelve: 9,
-  //     twelveToFifteen: 72,
-  //     fifteenToEighteen: 2,
-  //     EighteenToTwentyOne: 82,
-  //     TwentyOnToTwentyFour: 8,
-  //     total: 782,
-  //   },
-  //   {
-  //     route: 1104,
-  //     zeroToNine: 24,
-  //     nineToTwelve: 3,
-  //     twelveToFifteen: 92,
-  //     fifteenToEighteen: 2,
-  //     EighteenToTwentyOne: 52,
-  //     TwentyOnToTwentyFour: 2,
-  //     total: 782,
-  //   },
-  // ];
-
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }
@@ -387,6 +343,21 @@ export class OnlineSalesHourlyPage implements OnInit {
       this.srsales1.push(temp.splice(1, 1));
     }
   }
+  create_model1(model, index) {
+    this.selected_ch1[index] = [];
+    if (model[0]) {
+      for (var i = 0; i < model.length; i++) {
+        let ch = model[i];
+        let temp = Object.keys(ch).map((key) => ch[key]);
+        for (var j = 1; j < temp.length; j++) {
+          if (temp[j] != null) {
+            temp[j] = temp[j];
+          }
+        }
+        this.selected_ch1[index].push(temp);
+      }
+    }
+  }
 
   create_model2(model, index) {
     this.selected_ch2[index] = [];
@@ -439,7 +410,7 @@ export class OnlineSalesHourlyPage implements OnInit {
             this.srsales1[row.index + 1][0],
         },
       ];
-      // this.create_model1(arr, row.index + 1);
+      this.create_model1(arr, row.index + 1);
     }
   }
   row_click2(row) {
