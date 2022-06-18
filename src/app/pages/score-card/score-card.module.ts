@@ -8,6 +8,7 @@ import { ScoreCardPageRoutingModule } from './score-card-routing.module';
 
 import { ScoreCardPage } from './score-card.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     IonicModule,
     ScoreCardPageRoutingModule,
     SharedModule,
+    NgSelectModule
   ],
   declarations: [ScoreCardPage],
 })

@@ -3,16 +3,13 @@
     <ion-row class="primary-bg">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
+          <ion-img class="back-button" src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col></ion-col>
       <ion-col size="6" class="ion-text-start ion-align-self-center">
-        <ion-title class="ion-no-padding white-text ion-align-self-center"
-          ><h3>Score Cards</h3>
+        <ion-title class="ion-no-padding white-text ion-align-self-center">
+          <h3>Score Cards</h3>
         </ion-title>
       </ion-col>
       <ion-col size="1" class="ion-align-self-center reload">
@@ -20,10 +17,7 @@
       </ion-col>
 
       <ion-col size="1" class="ion-justfy-self-end ion-align-self-center wifi">
-        <ion-img
-          class="wifi-online"
-          src="/assets\mainPage\main\wifi.png"
-        ></ion-img>
+        <ion-img class="wifi-online" src="/assets\mainPage\main\wifi.png"></ion-img>
       </ion-col>
       <!-- <ion-col size="1" class="ion-justfy-self-end">
         <ion-img src="assets/mainPage/wifi.png"></ion-img>
@@ -69,13 +63,26 @@
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select multiple="true" interface="popover">
+          <!-- <ion-select multiple="true" interface="popover">
             <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
             <ion-select-option value="rasht">RASHT</ion-select-option>
             <ion-select-option value="tehran">TEHRAN</ion-select-option>
             <ion-select-option value="karaj">KARAJ</ion-select-option>
             <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-          </ion-select>
+          </ion-select> -->
+          <!-- <ng-select *ngIf="dropdownList.length" [items]="dropdownList" [multiple]="true" bindLabel="itemName"
+            groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+            [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedItems">
+
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
+            </ng-template>
+
+          </ng-select> -->
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
           </span>
@@ -141,10 +148,7 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon
-                class="isNotShowing"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -291,10 +295,7 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon
-                class="isNotShowing"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -439,10 +440,7 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon
-                class="isNotShowing"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -594,10 +592,7 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon
-                class="isNotShowing"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
             </td>
             <td></td>
             <td></td>
