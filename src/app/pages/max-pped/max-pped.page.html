@@ -160,7 +160,7 @@
     <ion-row>
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
-          <ion-item>
+          <ion-item class="lightBlue-shadow">
             <button class="search-submit primary-bg" (click)="selectedDC()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
@@ -214,66 +214,58 @@
       </ion-col>
     </ion-row>
     <!-- -----------------------table -->
-    <ion-grid class="maingrid">
-      <div
-        *ngFor="let row of virtual_rows2; let i = index"
-        [ngClass]="{'firstrow': i==0}"
-      >
-        <ion-row>
-          <ng-container
-            *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')"
-          >
-            <ion-col
-              *ngFor="let item of srpped2[row.index]; let j = index"
-              [ngClass]="{'firstculomn': j==0 && i!=0}"
-            >
-              {{ item }}
-            </ion-col>
-          </ng-container>
-        </ion-row>
-      </div>
-
-      <div style="overflow: scroll; height: 550px">
-        <div
-          *ngFor="let row of virtual_rows2; let i = index"
-          (click)="row_click2(row)"
-        >
+    <ion-col>
+      <ion-grid class="maingrid ion-no-padding">
+        <div *ngFor="let row of virtual_rows2; let i = index">
           <ion-row>
             <ng-container
-              *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')"
+              *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')"
             >
               <ion-col
                 *ngFor="let item of srpped2[row.index]; let j = index"
-                [ngClass]="{'firstculomn': j==0 && i!=0}"
+                [ngClass]="{'firstcolumn': j==0 && i!=0}"
               >
                 {{ item }}
               </ion-col>
             </ng-container>
-
-            <ng-container
-              *ngIf="row.show && row.type=='b'"
-              style="scroll-behavior: auto"
-            >
-              <ion-grid>
-                <ion-row
-                  wrap
-                  *ngFor="let rows of selected_ch2[row.index]; let i = index"
-                  [ngClass]="{'firstrow2': i==0}"
-                  (click)="row_clickCustomer(rows[0])"
-                >
-                  <ion-col
-                    *ngFor="let item of rows"
-                    style="border: 1px solid dodgerblue !important"
-                  >
-                    {{ item }}
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ng-container>
           </ion-row>
         </div>
-      </div>
-    </ion-grid>
+
+        <div>
+          <div
+            *ngFor="let row of virtual_rows2; let i = index"
+            [ngClass]="{'oddRows': 3 === i % 4}"
+            (click)="row_click2(row)"
+          >
+            <ion-row>
+              <ng-container
+                *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')"
+              >
+                <ion-col
+                  *ngFor="let item of srpped2[row.index]; let j = index"
+                  [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0 === j % 2}"
+                >
+                  {{ item }}
+                </ion-col>
+              </ng-container>
+
+              <ng-container *ngIf="row.show && row.type=='b'">
+                <ion-grid>
+                  <ion-row
+                    wrap
+                    *ngFor="let rows of selected_ch2[row.index]; let i = index"
+                    [ngClass]="{'firstrow2': i==0}"
+                    (click)="row_clickCustomer(rows[0])"
+                  >
+                    <ion-col *ngFor="let item of rows"> {{ item }} </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ng-container>
+            </ion-row>
+          </div>
+        </div>
+      </ion-grid>
+    </ion-col>
   </ion-col>
   <!-- -------------------------------per-customer----------------------------------------- -->
   <!-- -------------------------------per-customer----------------------------------------- -->
@@ -361,7 +353,7 @@
     <ion-row>
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
-          <ion-item>
+          <ion-item class="lightBlue-shadow">
             <button class="search-submit primary-bg" (click)="selectedDCN()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
@@ -415,86 +407,89 @@
       </ion-col>
     </ion-row>
     <!-- -----------------------table -->
-    <ion-col class="table-container ion-no-padding ion-no-margin" size="12">
-      <table class="container-table">
+    <ion-col class="ion-no-padding ion-no-margin" size="12">
+      <table class="table-container">
         <tr>
           <td>
-            <table class="borderSet-header">
-              <tr class="Materhead">
-                <th class="borderSet firstcolumn">
-                  <span> Customer Number </span>
-                </th>
-                <th class="borderSet Materhead">Cluster</th>
-                <th class="borderSet Materhead">Store Name</th>
-                <th class="borderSet Materhead">Sale</th>
-                <th class="borderSet Materhead">PPED</th>
-                <th class="borderSet Materhead">%</th>
+            <table class="table-header" cellspacing="0" cellpadding="1">
+              <tr class="header">
+                <th class="firstcolumn">Customer Number</th>
+                <th class="">Cluster</th>
+                <th class="oddColumns">Store Name</th>
+                <th class="">Sale</th>
+                <th class="oddColumns">PPED</th>
+                <th class="">%</th>
               </tr>
             </table>
           </td>
         </tr>
 
-        <tr class="table-content">
-          <td>
+        <tr class="content-body">
+          <td colspan="5">
             <div>
               <table
                 *ngFor="let Master_row of ctrl.data; let i = index"
-                [ngClass]="{'oddRows': 1 === i % 2}"
-                class="borderSet-body"
+                [ngClass]="{'oddRows' : 0 === i % 2}"
+                class="table-body"
+                cellspacing="0"
+                cellpadding="1"
               >
                 <tr
-                  class="borderSet"
+                  class="body-content"
                   (click)="Show_Load_Detail(Master_row , i)"
                 >
-                  <td class="borderSet-detail firstcolumn">
+                  <td class="firstcolumn">
                     <ion-icon name="chevron-down-outline"></ion-icon>
                     {{Master_row.CustomerNumber}}
                   </td>
-                  <td class="borderSet-detail">{{Master_row.Cluster}}</td>
-                  <td class="borderSet-detail oddColumns">
-                    {{Master_row.StoreName}}
-                  </td>
-                  <td class="borderSet-detail">{{Master_row.Sale}}</td>
-                  <td class="borderSet-detail oddColumns">
-                    {{Master_row.PPED}}
-                  </td>
-                  <td class="borderSet-detail">{{Master_row.Percentage}}</td>
+                  <td class="borderSet">{{Master_row.Cluster}}</td>
+                  <td class="oddColumns">{{Master_row.StoreName}}</td>
+                  <td class="borderSet">{{Master_row.Sale}}</td>
+                  <td class="oddColumns">{{Master_row.PPED}}</td>
+                  <td class="borderSet">{{Master_row.Percentage}}</td>
                 </tr>
-                <tr id="{{Master_row.Route}}_Detail" *ngIf="isVisible==i">
-                  <td colspan="9" class="detailsContainer">
-                    <table class="borderSet">
-                      <tr class="skuhead header ion-align-items-center">
+                <tr
+                  id="{{Master_row.Route}}_Detail"
+                  class="hidden-row"
+                  *ngIf="isVisible==i"
+                  (click)="row_clickCustomer(Master_row.CustomerNumber)"
+                >
+                  <td class="details" colspan="9">
+                    <table class="table-header-details">
+                      <tr>
                         <td>
                           <table
-                            class="borderSet"
+                            class="table-details-header"
                             cellspacing="0"
                             cellpadding="1"
                           >
-                            <tr
-                              class="ion-justify-content-around details-header"
-                            >
-                              <th class="borderSet">Visitor</th>
-                              <th class="borderSet skuhead">Driver</th>
+                            <tr class="details-header">
+                              <th class="borderSet">RouteCode</th>
+                              <th class="borderSet">VisitorName</th>
                             </tr>
                           </table>
                         </td>
                       </tr>
-                      <tr class="skuhead body">
+
+                      <tr>
                         <td>
-                          <div>
+                          <div class="body-details">
                             <table
-                              class="borderSet-detailsContainer"
+                              class="table-details-body"
                               cellspacing="0"
                               cellpadding="1"
                             >
+                              <!--  -->
+                              <hr class="hor-line" />
+                              <hr class="ver-line" />
+
+                              <!--  -->
                               <tr
-                                class="details-content ion-justify-content-around"
-                                *ngFor="let row of Load_Detail"
+                                class="details-body"
+                                *ngFor="let row of Load_Detail; let j = index"
                               >
-                                <td class="visitor primary-bg white-text">
-                                  {{row.RouteCode}}
-                                </td>
-                                <td class="driver">{{row.VisitorName}}</td>
+                                <td class="">{{row.RouteCode}}</td>
+                                <td class="">{{row.VisitorName}}</td>
                               </tr>
                             </table>
                           </div>
@@ -509,6 +504,7 @@
         </tr>
       </table>
     </ion-col>
+
     <!-- <ion-row>
       <ion-col class="ion-no-padding">
         <table>
