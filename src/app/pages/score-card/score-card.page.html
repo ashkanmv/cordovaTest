@@ -3,7 +3,10 @@
     <ion-row class="primary-bg">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img class="back-button" src="assets\pages\customer-history\Backward arrow.png"></ion-img>
+          <ion-img
+            class="back-button"
+            src="assets\pages\customer-history\Backward arrow.png"
+          ></ion-img>
         </ion-button>
       </ion-col>
       <ion-col></ion-col>
@@ -17,7 +20,10 @@
       </ion-col>
 
       <ion-col size="1" class="ion-justfy-self-end ion-align-self-center wifi">
-        <ion-img class="wifi-online" src="/assets\mainPage\main\wifi.png"></ion-img>
+        <ion-img
+          class="wifi-online"
+          src="/assets\mainPage\main\wifi.png"
+        ></ion-img>
       </ion-col>
       <!-- <ion-col size="1" class="ion-justfy-self-end">
         <ion-img src="assets/mainPage/wifi.png"></ion-img>
@@ -42,7 +48,11 @@
       <ion-segment-button class="category" value="category">
         <ion-label>Category</ion-label>
       </ion-segment-button>
-      <ion-segment-button class="channel" value="channel" (click)="Show_Channel()">
+      <ion-segment-button
+        class="channel"
+        value="channel"
+        (click)="Show_Channel()"
+      >
         <ion-label>Channel</ion-label>
       </ion-segment-button>
       <ion-segment-button class="category%" value="category%">
@@ -95,11 +105,23 @@
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" id="" />
+              <input
+                type="radio"
+                name="radio-input-cat"
+                value="sales"
+                [(ngModel)]="categoryRadio"
+                id=""
+              />
               <label for="sales">Sales</label>
             </div>
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" id="" />
+              <input
+                type="radio"
+                name="radio-input-cat"
+                value="pped"
+                [(ngModel)]="categoryRadio"
+                id=""
+              />
               <label for="pped">PPED</label>
             </div>
           </div>
@@ -148,7 +170,10 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
+              <ion-icon
+                class="isNotShowing"
+                name="chevron-down-outline"
+              ></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -295,7 +320,10 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
+              <ion-icon
+                class="isNotShowing"
+                name="chevron-down-outline"
+              ></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -440,7 +468,10 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
+              <ion-icon
+                class="isNotShowing"
+                name="chevron-down-outline"
+              ></ion-icon>
             </td>
             <td></td>
             <td></td>
@@ -592,7 +623,10 @@
             <td>
               <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
 
-              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
+              <ion-icon
+                class="isNotShowing"
+                name="chevron-down-outline"
+              ></ion-icon>
             </td>
             <td></td>
             <td></td>
