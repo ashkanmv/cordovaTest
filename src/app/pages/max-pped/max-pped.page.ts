@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Data } from '@angular/router';
+import { Data, Router } from '@angular/router';
 
 import { IonDatetime, LoadingController, NavController } from '@ionic/angular';
 import { Language } from 'src/app/shared/common';
@@ -53,6 +53,7 @@ export class MaxPPEDPage implements OnInit {
   }
 
   constructor(
+    private router: Router,
     private navController: NavController,
     private languageService: LanguageService,
     private storageService: StorageService,
@@ -72,8 +73,8 @@ export class MaxPPEDPage implements OnInit {
   }
 
   dateChanged(segment: 'per-route' | 'per-customer') {
-    if (segment == 'per-customer') this.selectedDCN();
-    else this.selectedDC();
+    if (segment == 'per-customer') this.selectedDC();
+    else this.selectedDCN();
   }
 
   refresh() {
@@ -290,4 +291,59 @@ export class MaxPPEDPage implements OnInit {
   //         this.navController.push(CustomerHistoryPage);
   //       });
   //   }
+
+  row_clickCustomer(customerCode) {
+    this.router.navigate(['/customer-history'], {
+      queryParams: { customerNumber: customerCode },
+    });
+  }
+  async row_click2(row) {
+    if (row.type == 'a') {
+      if (this.virtual_rows2[row.index + 1].show) {
+        this.virtual_rows2[row.index + 1].show = false;
+      } else {
+        this.virtual_rows2[row.index + 1].show = true;
+      }
+      const loading = await this.loadingCtrl.create({
+        message: 'Please wait...',
+      });
+      await loading.present();
+
+      this.srPpedService
+        .getSrPpedPerRouteDetail(
+          this.selectedItemsN.join(),
+          this.selected_fromdateN,
+          this.selected_todateN,
+          this.srpped2[row.index][0]
+        )
+        .subscribe((customer_histories) => {
+          this.create_model2(customer_histories, row.index + 1);
+          loading.dismiss();
+        });
+    }
+  }
+
+  selected_ch2 = [];
+  srpped3 = [];
+  create_model2(model, index) {
+    //this.loading.present();
+    this.selected_ch2[index] = [];
+    if (model[0]) {
+      let keys = Object.keys(model[0]);
+      this.srpped3.push(keys);
+      this.selected_ch2[index].push(keys);
+      for (var i = 0; i < model.length; i++) {
+        let ch = model[i];
+        let temp = Object.keys(ch).map((key) => ch[key]);
+        for (var j = 1; j < temp.length; j++) {
+          if (temp[j] != null) {
+            //temp[j] = parseFloat(temp[j]).toFixed(2);
+            temp[j] = temp[j];
+          }
+        }
+        this.selected_ch2[index].push(temp);
+      }
+    }
+    //this.loading.dismiss();
+  }
 }

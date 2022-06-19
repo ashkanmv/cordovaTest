@@ -90,7 +90,7 @@
             <div>
               <h4>From Date</h4>
               <div>
-                {{selected_fromdate | date:'yyyy/MM/dd'}}
+                {{selected_fromdateN | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </div>
             </div>
@@ -100,7 +100,7 @@
             <div>
               <h4>To Date</h4>
               <div>
-                {{selected_todate | date:'yyyy/MM/dd'}}
+                {{selected_todateN | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </div>
             </div>
@@ -115,10 +115,10 @@
       >
         <ng-template>
           <ion-datetime
-            [value]="selected_fromdate"
+            [value]="selected_fromdateN"
             presentation="date"
             #perRouteFromDate
-            (ionChange)="selected_fromdate = perRouteFromDate.value; dateChanged('per-route')"
+            (ionChange)="selected_fromdateN = perRouteFromDate.value; dateChanged('per-route')"
           >
             <ion-buttons slot="buttons">
               <ion-button (click)="perRouteFromDate.cancel(true)"
@@ -141,7 +141,7 @@
             value="2022-11-29"
             presentation="date"
             #perRouteToDate
-            (ionChange)="selected_todate = perRouteToDate.value; dateChanged('per-route')"
+            (ionChange)="selected_todateN = perRouteToDate.value; dateChanged('per-route')"
           >
             <ion-buttons slot="buttons">
               <ion-button (click)="perRouteToDate.cancel(true)"
@@ -166,8 +166,8 @@
             </button>
 
             <ng-select
-              *ngIf="dropdownList.length"
-              [items]="dropdownList"
+              *ngIf="dropdownListN.length"
+              [items]="dropdownListN"
               [multiple]="true"
               bindLabel="itemName"
               groupBy="group"
@@ -176,7 +176,7 @@
               [selectableGroupAsModel]="false"
               [closeOnSelect]="false"
               bindValue="itemName"
-              [(ngModel)]="selectedItems"
+              [(ngModel)]="selectedItemsN"
             >
               <ng-template
                 ng-optgroup-tmp
@@ -284,7 +284,7 @@
             <div class="">
               <h4>From Date</h4>
               <div class="">
-                {{selected_fromdateN | date:'yyyy/MM/dd'}}
+                {{selected_fromdate | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </div>
             </div>
@@ -294,7 +294,7 @@
             <div class="">
               <h4>To Date</h4>
               <div class="">
-                {{selected_todateN | date:'yyyy/MM/dd'}}
+                {{selected_todate | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </div>
             </div>
@@ -309,10 +309,10 @@
       >
         <ng-template>
           <ion-datetime
-            [value]="selected_fromdateN"
+            [value]="selected_fromdate"
             presentation="date"
             #percustomerFromDate
-            (ionChange)="selected_fromdateN = percustomerFromDate.value; dateChanged('per-customer')"
+            (ionChange)="selected_fromdate = percustomerFromDate.value; dateChanged('per-customer')"
           >
             <ion-buttons slot="buttons">
               <ion-button (click)="percustomerFromDate.cancel(true)"
@@ -332,10 +332,10 @@
       >
         <ng-template>
           <ion-datetime
-            [value]="selected_todateN"
+            [value]="selected_todate"
             presentation="date"
             #percustomerToDate
-            (ionChange)="selected_todateN = percustomerToDate.value;dateChanged('per-customer')"
+            (ionChange)="selected_todate = percustomerToDate.value;dateChanged('per-customer')"
           >
             <ion-buttons slot="buttons">
               <ion-button (click)="percustomerToDate.cancel(true)"
@@ -359,8 +359,8 @@
             </button>
 
             <ng-select
-              *ngIf="dropdownListN.length"
-              [items]="dropdownListN"
+              *ngIf="dropdownList.length"
+              [items]="dropdownList"
               [multiple]="true"
               bindLabel="itemName"
               groupBy="group"
@@ -369,7 +369,7 @@
               [selectableGroupAsModel]="false"
               [closeOnSelect]="false"
               bindValue="itemName"
-              [(ngModel)]="selectedItemsN"
+              [(ngModel)]="selectedItems"
             >
               <ng-template
                 ng-optgroup-tmp
