@@ -15,8 +15,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     IonicModule,
     MaxPPEDPageRoutingModule,
-    NgSelectModule
+    NgSelectModule,
   ],
-  declarations: [MaxPPEDPage]
+  declarations: [MaxPPEDPage],
 })
 export class MaxPPEDPageModule {}
