@@ -2,14 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Data } from '@angular/router';
 
 import { IonDatetime, LoadingController, NavController } from '@ionic/angular';
-import { Storage } from '@ionic/storage-angular';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
-import { CustomerHistoryPage } from '../customer-history/customer-history.page';
 import { MaxPpedService } from './max-pped.service';
-// old rys
 
 @Component({
   selector: 'app-max-pped',
@@ -56,7 +53,6 @@ export class MaxPPEDPage implements OnInit {
   }
 
   constructor(
-    public storage: Storage,
     private navController: NavController,
     private languageService: LanguageService,
     private storageService: StorageService,
@@ -72,18 +68,6 @@ export class MaxPPEDPage implements OnInit {
       this.userId = Number(user_id);
       this.get_dc();
       this.get_dcN();
-    });
-    // old rys
-    // this.utilService.presentToast(this.translateService.instant('gps_error'));
-    this.storage.get('user_id').then((user_id) => {
-      //2AF-960116
-      // console.log(route_name);
-      if (user_id !== undefined && user_id !== null) {
-        this.user_id = Number(user_id);
-        this.get_dc();
-        this.get_dcN();
-        //this.dcSelect();
-      }
     });
   }
 
@@ -299,11 +283,11 @@ export class MaxPPEDPage implements OnInit {
     ];
     this.isVisible = index;
   }
-  // row_clickCustomer(CustomerNumber) {
-  //   this.storage
-  //     .set('Customer_Number', CustomerNumber)
-  //     .then((Customer_Number) => {
-  //       this.navController.push(CustomerHistoryPage);
-  //     });
-  // }
+  //   row_clickCustomer(CustomerNumber) {
+  //     this.storageService
+  //       .set('Customer_Number', CustomerNumber)
+  //       .then((Customer_Number) => {
+  //         this.navController.push(CustomerHistoryPage);
+  //       });
+  //   }
 }
