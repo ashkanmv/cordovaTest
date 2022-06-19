@@ -74,6 +74,14 @@ export interface GetSrRouteResponse {
   routename: string;
 }
 
+export interface getSales1ByChannelResponse {
+  Category: string;
+  Today: number;
+  MTD: number;
+  RunRate: number;
+  "FM Projection": number;
+}
+
 export interface GetVehicleByRouteTimeResponse {
   Latitude: number;
   Longitude: number;

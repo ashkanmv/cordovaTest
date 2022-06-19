@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { getSales1ByChannelResponse } from 'src/app/shared/common';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -37,14 +38,14 @@ export class ScoreCardService {
   }
 
   getCategories() {
-    return this.http.get(this.categoryUrl)
+    return this.http.get<{Cat:string}[]>(this.categoryUrl)
   }
 
   getSkusByCategory(category: any) {
     let params = new HttpParams();
     params = params.append('category', category);
 
-    return this.http.get(this.skuUrl, { params })
+    return this.http.get<{CAT: string,SKU: string}[]>(this.skuUrl, { params })
   }
 
   getPped1ByChannel(channel: any) {
@@ -58,7 +59,7 @@ export class ScoreCardService {
     let params = new HttpParams();
     params = params.append('channel', channel);
 
-    return this.http.get(this.sales1Url, { params })
+    return this.http.get<getSales1ByChannelResponse[]>(this.sales1Url, { params })
   }
 
   //details
