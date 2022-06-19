@@ -276,5 +276,16 @@ ion-grid.maingrid{
     text-align: center;
     ion-col{
         height: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.firstcolumn{
+            color: #0095eb;
+            text-transform: capitalize;
+        }
+    }
+    .r-body-content{
+        height: 60vh;
+        overflow: scroll;
     }
 }
