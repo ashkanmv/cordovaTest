@@ -3,17 +3,19 @@ import { ToastController } from '@ionic/angular';
 import { PredefinedColors } from '@ionic/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
-  online = true;
-  constructor(private toastCtrl: ToastController) { }
+  online = false;
+  constructor(private toastCtrl: ToastController) {}
 
   toast(color: PredefinedColors, message: string) {
-    this.toastCtrl.create({
-      message: message,
-      color: color,
-      duration: 3000
-    }).then(toastEl => toastEl.present());
+    this.toastCtrl
+      .create({
+        message: message,
+        color: color,
+        duration: 3000,
+      })
+      .then((toastEl) => toastEl.present());
   }
 }

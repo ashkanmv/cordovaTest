@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Data } from '@angular/router';
+import { Data, Router } from '@angular/router';
 
-import { IonDatetime, LoadingController } from '@ionic/angular';
+import { IonDatetime, LoadingController, NavController } from '@ionic/angular';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { MaxPpedService } from './max-pped.service';
 
@@ -33,72 +34,52 @@ export class MaxPPEDPage implements OnInit {
   srpped1 = [];
   srpped2 = [];
   user_list = [];
-  nestedTableIsShowingRow_1: boolean = false;
-  nestedTableIsShowingRow_2: boolean = false;
-  nestedTableIsShowingRow_3: boolean = false;
-  nestedTableIsShowingRow_4: boolean = false;
-  public get language(): Language {
-    return this.languageService.language;
-  }
-
-  constructor(private languageService: LanguageService,
-    private storageService: StorageService,
-    private srPpedService: MaxPpedService,
-    private loadingCtrl: LoadingController
-  ) { }
-
-  public routeData: Array<any> = [
+  // old rys
+  user_id;
+  isVisible = undefined;
+  Load_Detail = [
     {
-      route: 1131,
-      city: 'Tehran',
-      visitorName: 'Behnam Ezadi',
-      sale: 3.12,
-      PPED: 19,
-      percentage: 782,
-    },
-    {
-      route: 1132,
-      city: 'Tabriz',
-      visitorName: 'Behnaz Azadi',
-      sale: 4.12,
-      PPED: 9,
-      percentage: 7.82,
-    },
-    {
-      route: 1133,
-      city: 'Esfahan',
-      visitorName: 'Behzad Azari',
-      sale: 3.12,
-      PPED: 19,
-      percentage: 782,
-    },
-    {
-      route: 1134,
-      city: 'Amol',
-      visitorName: 'Behrooz Ezraee',
-      sale: 3.12,
-      PPED: 19,
-      percentage: 782,
+      RouteCode: '',
+      VisitorName: '',
     },
   ];
 
+  public get language(): Language {
+    return this.languageService.language;
+  }
+  // is this ok?
+  public get online() {
+    return this.SharedService.online;
+  }
+
+  constructor(
+    private router: Router,
+    private navController: NavController,
+    private languageService: LanguageService,
+    private storageService: StorageService,
+    private srPpedService: MaxPpedService,
+    private loadingCtrl: LoadingController,
+    private SharedService: SharedService
+  ) {
+    console.log(this.online);
+  }
+
   ngOnInit() {
-    this.storageService.get('user_id').then(user_id => {
+    this.storageService.get('user_id').then((user_id) => {
       this.userId = Number(user_id);
       this.get_dc();
       this.get_dcN();
-    })
+    });
   }
 
   dateChanged(segment: 'per-route' | 'per-customer') {
-    if (segment == 'per-customer')
-      this.selectedDCN();
-    else this.selectedDC()
+    if (segment == 'per-customer') this.selectedDC();
+    else this.selectedDCN();
   }
 
   refresh() {
     this.selectedDCN();
-    this.selectedDC()
+    this.selectedDC();
   }
 
   async get_dc() {
@@ -106,23 +87,25 @@ export class MaxPPEDPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.srPpedService.getUserDc(this.userId)
-      .subscribe(
-        (dcs: Data[]) => {
-          this.dc = dcs;
-          for (var i = 0; i < this.dc.length; i++) {
-            this.dropdownList.push({ "id": i, "itemName": this.dc[i].City, 'group': this.language.Max_PPED.group });
-          }
-          this.selectedItems = this.dropdownList.map(_ => _.itemName);
-
-          loading.dismiss();
-          this.selectedDC()
+    this.srPpedService.getUserDc(this.userId).subscribe((dcs: Data[]) => {
+      this.dc = dcs;
+      for (var i = 0; i < this.dc.length; i++) {
+        this.dropdownList.push({
+          id: i,
+          itemName: this.dc[i].City,
+          group: this.language.Max_PPED.group,
         });
+      }
+      this.selectedItems = this.dropdownList.map((_) => _.itemName);
+
+      loading.dismiss();
+      this.selectedDC();
+    });
   }
 
   create_total_model1(model) {
     var changeObjKey = [];
-    model.forEach(element => {
+    model.forEach((element) => {
       changeObjKey.push({
         RouteCode: element.RouteCode,
         Cluster: element.Cluster,
@@ -131,8 +114,8 @@ export class MaxPPEDPage implements OnInit {
         StoreName: element.StoreName,
         Sale: element.Sale,
         PPED: element.PPED,
-        Percentage: element.Percentage
-      })
+        Percentage: element.Percentage,
+      });
     });
     this.ctrl.data = changeObjKey;
     this.srpped1 = [];
@@ -143,15 +126,15 @@ export class MaxPPEDPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srpped1.push(keys);
     this.virtual_rows1.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      this.user_list.push(Object.keys(ch).map(key => ch[key]));
-      let temp = Object.keys(ch).map(key => ch[key]);
+      this.user_list.push(Object.keys(ch).map((key) => ch[key]));
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
           temp[j] = temp[j];
@@ -160,15 +143,15 @@ export class MaxPPEDPage implements OnInit {
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows1.push(v_row2);
       temp.splice(1, 2);
@@ -181,16 +164,18 @@ export class MaxPPEDPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.srPpedService.getUserDc(this.userId)
-      .subscribe(
-        (dcs: Data[]) => {
-          this.dcN = dcs;
-          for (var i = 0; i < this.dcN.length; i++)
-            this.dropdownListN.push({ "id": i, "itemName": this.dc[i].City, 'group': this.language.Max_PPED.group });
-          this.selectedItemsN = this.dropdownListN.map(_ => _.itemName);
-          loading.dismiss();
-          this.selectedDCN();
+    this.srPpedService.getUserDc(this.userId).subscribe((dcs: Data[]) => {
+      this.dcN = dcs;
+      for (var i = 0; i < this.dcN.length; i++)
+        this.dropdownListN.push({
+          id: i,
+          itemName: this.dc[i].City,
+          group: this.language.Max_PPED.group,
         });
+      this.selectedItemsN = this.dropdownListN.map((_) => _.itemName);
+      loading.dismiss();
+      this.selectedDCN();
+    });
   }
 
   async selectedDCN() {
@@ -200,20 +185,22 @@ export class MaxPPEDPage implements OnInit {
     await loading.present();
 
     if (!this.selectedItemsN.length) {
-      this.create_total_model1("Empty");
+      this.create_total_model1('Empty');
       loading.dismiss();
-      return
+      return;
     }
 
-    this.srPpedService.getSrPpedPerRoute(this.selectedItemsN.join(), this.selected_fromdateN, this.selected_todateN)
-      .subscribe(
-        (srsales: Data[]) => {
-          if (srsales.length)
-            this.create_total_model2(srsales);
-          else
-            this.create_total_model1("Empty");
-          loading.dismiss();
-        });
+    this.srPpedService
+      .getSrPpedPerRoute(
+        this.selectedItemsN.join(),
+        this.selected_fromdateN,
+        this.selected_todateN
+      )
+      .subscribe((srsales: Data[]) => {
+        if (srsales.length) this.create_total_model2(srsales);
+        else this.create_total_model1('Empty');
+        loading.dismiss();
+      });
   }
 
   async selectedDC() {
@@ -223,20 +210,22 @@ export class MaxPPEDPage implements OnInit {
     await loading.present();
 
     if (!this.selectedItems.length) {
-      this.create_total_model1("Empty");
+      this.create_total_model1('Empty');
       loading.dismiss();
-      return
+      return;
     }
 
-    this.srPpedService.getSrPpedPerCustomer(this.selectedItems.join(), this.selected_fromdate, this.selected_todate)
-      .subscribe(
-        (srsales: Data[]) => {
-          if (srsales.length != 0)
-            this.create_total_model1(srsales);
-          else
-            this.create_total_model1("Empty");
-          loading.dismiss();
-        });
+    this.srPpedService
+      .getSrPpedPerCustomer(
+        this.selectedItems.join(),
+        this.selected_fromdate,
+        this.selected_todate
+      )
+      .subscribe((srsales: Data[]) => {
+        if (srsales.length != 0) this.create_total_model1(srsales);
+        else this.create_total_model1('Empty');
+        loading.dismiss();
+      });
   }
 
   create_total_model2(model) {
@@ -246,54 +235,115 @@ export class MaxPPEDPage implements OnInit {
     let v_row = {
       type: 'h',
       show: true,
-      index: 0
-    }
+      index: 0,
+    };
     this.srpped2.push(keys);
     this.virtual_rows2.push(v_row);
     let index = 1;
     for (var i = 0; i < model.length; i++) {
       let ch = model[i];
-      let temp = Object.keys(ch).map(key => ch[key]);
+      let temp = Object.keys(ch).map((key) => ch[key]);
       for (var j = 1; j < temp.length; j++) {
         if (temp[j] != null) {
           temp[j] = temp[j];
         }
-
       }
       this.srpped2.push(temp);
       let v_row1 = {
         type: 'a',
         show: true,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.srpped2.push(temp);
       this.virtual_rows2.push(v_row1);
       let v_row2 = {
         type: 'b',
         show: false,
-        index: index
-      }
+        index: index,
+      };
       index++;
       this.virtual_rows2.push(v_row2);
     }
-
   }
 
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }
+  // old rys
+  Show_Load_Detail(row, index) {
+    if (this.isVisible == index) {
+      this.isVisible = undefined;
+      return;
+    }
+    this.Load_Detail = [
+      {
+        RouteCode: 'RouteCode : ' + row.RouteCode,
+        VisitorName: ' VisitorName : ' + row.VisitorName,
+      },
+    ];
+    this.isVisible = index;
+  }
+  //   row_clickCustomer(CustomerNumber) {
+  //     this.storageService
+  //       .set('Customer_Number', CustomerNumber)
+  //       .then((Customer_Number) => {
+  //         this.navController.push(CustomerHistoryPage);
+  //       });
+  //   }
 
-  toggleNestedTabelRow_1() {
-    this.nestedTableIsShowingRow_1 = !this.nestedTableIsShowingRow_1;
+  row_clickCustomer(customerCode) {
+    this.router.navigate(['/customer-history'], {
+      queryParams: { customerNumber: customerCode },
+    });
   }
-  toggleNestedTabelRow_2() {
-    this.nestedTableIsShowingRow_2 = !this.nestedTableIsShowingRow_2;
+  async row_click2(row) {
+    if (row.type == 'a') {
+      if (this.virtual_rows2[row.index + 1].show) {
+        this.virtual_rows2[row.index + 1].show = false;
+      } else {
+        this.virtual_rows2[row.index + 1].show = true;
+      }
+      const loading = await this.loadingCtrl.create({
+        message: 'Please wait...',
+      });
+      await loading.present();
+
+      this.srPpedService
+        .getSrPpedPerRouteDetail(
+          this.selectedItemsN.join(),
+          this.selected_fromdateN,
+          this.selected_todateN,
+          this.srpped2[row.index][0]
+        )
+        .subscribe((customer_histories) => {
+          this.create_model2(customer_histories, row.index + 1);
+          loading.dismiss();
+        });
+    }
   }
-  toggleNestedTabelRow_3() {
-    this.nestedTableIsShowingRow_3 = !this.nestedTableIsShowingRow_3;
-  }
-  toggleNestedTabelRow_4() {
-    this.nestedTableIsShowingRow_4 = !this.nestedTableIsShowingRow_4;
+
+  selected_ch2 = [];
+  srpped3 = [];
+  create_model2(model, index) {
+    //this.loading.present();
+    this.selected_ch2[index] = [];
+    if (model[0]) {
+      let keys = Object.keys(model[0]);
+      this.srpped3.push(keys);
+      this.selected_ch2[index].push(keys);
+      for (var i = 0; i < model.length; i++) {
+        let ch = model[i];
+        let temp = Object.keys(ch).map((key) => ch[key]);
+        for (var j = 1; j < temp.length; j++) {
+          if (temp[j] != null) {
+            //temp[j] = parseFloat(temp[j]).toFixed(2);
+            temp[j] = temp[j];
+          }
+        }
+        this.selected_ch2[index].push(temp);
+      }
+    }
+    //this.loading.dismiss();
   }
 }

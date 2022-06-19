@@ -17,21 +17,15 @@ ion-toolbar{
     }
 }
 
-.reload{
-    min-width: 40px;
-}
-.wifi{
-    min-width: 30px;
-}
 
 
 // -----segment change---------
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid  var(--ion-color-primary) ;
+        border-bottom: 2px solid  #0095eb ;
         ion-segment-button{
-            --background-checked: var(--ion-color-primary);
+            --background-checked: #0095eb;
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
@@ -124,11 +118,10 @@ ion-col{
             width: 90%;
             border-radius: 10px;
             --border-width:0;
-            // --highlight-height:none;
-            ion-select{
-                width: 100%;
-                height: 100%;
-            }
+           ng-select{
+               height: 10vh;
+               width: 100%;
+           }
         }
         .search-submit{
             z-index: 2;
@@ -167,108 +160,132 @@ ion-col{
     }
 // -------------table
 
-table{
+
+
+
+table.table-container{
+    text-align: center;
+    width: 100vw;
     table-layout: fixed;
-
-    width: 100%;
-    td{
-        width: 2rem;
-        height: 2rem;
-    }
-    thead{
-        th{
-            padding: .5rem 0;
-        }
-        >:nth-child(odd){
-            background: #84848439;
-
-        }
-        .route{
-            color:  var(--ion-color-primary);
-        }
-    }
-    tbody{
-        tr{
-            z-index: 2;
-            cursor: pointer;
-        }
-        td{
-            text-align: center;
-            >:first-child{
-                background: none;
-                font-size: 1.1rem;
-            }
-            &:first-child{
-                text-align: left;
-                padding-left: .7rem;
-                ion-icon{
-                    padding-right: .5rem;
-                }
-            }
-            &.table-darker-bg{
-                background: #9393936d;
-            }
-        }
-        :nth-child(odd){
-            background: #dfdfdf39;
-        }
-        // >:nth-child(odd){
-        //     background: none;
-        // }
-    }
-
-// -------Nested Table
-    .nested-table-container{
+    table.table-header{
+        table-layout: fixed;
         width: 100vw;
-        background: var(--ion-color-light);
-        align-items: center;
-        .border-right{
-            border-left: 2px  var(--ion-color-primary) solid;
-            margin-left:20px ;
+        th{
+            height: 5vh;
         }
-        .nested-table{
-            width: 95vw;
-            height: 40vh;
-            margin-left: 5vw;
-            
-            >thead{
-                font-size: 1.7vw;
-                background: #d1e9fb;
-                th{
-                    padding: 1rem 0;
-                }
-                
+        tr.header{
+            .firstcolumn{
+                width: 25vw;
+                color: #0095eb;
             }
-          
-            
+            &>:nth-child(3){
+                width: 30vw;
+            }
         }
-        hr{
-            position: absolute;
-            top: 10vh;
-            left: 2vw;
-            height: 2px;
-            width: 3vw;
+    }
+    tr.content-body{
+        height: 50vh;
+        overflow: scroll;
+    }
+    table.table-body{
+        table-layout: fixed;
+        width: 100vw;
+        tr.body-content{
+            td{
+                height: 5vh;
+            }
+            .firstcolumn{
+                width: 25vw;
+               ion-icon{
+                position: absolute;
+                right: -3vw;
+            }
+            }
+            &>:nth-child(3){
+                width: 30vw;
+            }
+
         }
-      
-            
-        
+    }
+    tr.hidden-row{
+    height: 15vh;
+    background: var(--ion-color-light);
+    }
+    td.details{
+        height: 15vh;
+        position: absolute;
+        padding-top: 2.5vh;    
+        background: var(--ion-color-light);
+    }
+    table.table-header-details{
+        width: 100vw;
+        table.table-details-header{
+            height: 100%;
+            width: 90%;
+            margin-left: 5vw;
+            .details-header{
+                height: 5vh;
+                background: #45c9fa;
+                th{
+                    width: 50%;
+                }
+            }
+        }
+        .body-details{
+            height:5vh ;
+            width: 100vw;
+            table.table-details-body{
+                height: 100%;
+                width: 90%;
+                margin-left: 5vw;
+                .details-body{
+                    box-shadow: 5px 8px 8px 0 #00000017, 0 6px 20px 0 #00000017 ;
+                    td{
+                        width: 50%;
+                    }
+                    :first-child{
+                        background: #0095eb;
+                        color: var(--ion-color-light);
+                    }
+                }
+            }
+
+        }
     }
     
 }
 
+hr.hor-line{
+    background: #0095eb;
+    position: absolute;
+    left: 2vw;
+    bottom: 3vh;
+    width: 5vw;
+}    
+hr.ver-line{
+    background: #0095eb;
+    position: absolute;
+    left: -5.5vw;
+    top: 5vh;
+    width: 7rem;
+    transform: rotate(90deg);
 
-        @media (min-width:992px) {
-            table{
-                .nested-table-container{
-                    .nested-table{
-                        width:67vw;
-                        >thead{
-                            font-size: 1.3vw;
-                            th{
-                                padding: .5rem;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+}    
+
+ion-grid.maingrid{
+    text-align: center;
+    ion-col{
+        height: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // &.firstcolumn{
+        //     color: #0095eb;
+        //     text-transform: capitalize;
+        // }
+    }
+    .r-body-content{
+        height: 60vh;
+        overflow: scroll;
+    }
+}
