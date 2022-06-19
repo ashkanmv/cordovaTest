@@ -279,10 +279,10 @@ ion-grid.maingrid{
         display: flex;
         justify-content: center;
         align-items: center;
-        &.firstcolumn{
-            color: #0095eb;
-            text-transform: capitalize;
-        }
+        // &.firstcolumn{
+        //     color: #0095eb;
+        //     text-transform: capitalize;
+        // }
     }
     .r-body-content{
         height: 60vh;
