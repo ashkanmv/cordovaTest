@@ -193,17 +193,19 @@ ion-list.radio-input-container{
 
 
 
+.btn-container{
+    display: flex;
+    button.btn-submit{
+        margin: 2rem 0;
+        // width: 60vw;
+        width: 80%;
+        height: 9vh;
+        font-size: 2rem;
+        border-radius: 50px;
+        background: #0095EB;
+        color: var(--ion-color-light);
+    }
 
-
-.btn-submit{
-    margin: 2rem 0;
-    // width: 60vw;
-    width: 80%;
-    height: 9vh;
-    font-size: 2rem;
-    border-radius: 50px;
-    background: #0095EB;
-    color: var(--ion-color-light);
 }
 
 

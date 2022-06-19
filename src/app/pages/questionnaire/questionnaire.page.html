@@ -194,6 +194,28 @@
               </ion-item>
             </ion-list>
           </ion-row>
+          <ion-row>
+            <ion-col>
+              <ng-container *ngIf="question.has_image && active_camera(i)">
+                <button
+                  ion-button
+                  color="{{get_pic_status(i)}}"
+                  (click)="onCamera(i)"
+                >
+                  <ion-icon name="camera"></ion-icon>
+                </button>
+              </ng-container>
+            </ion-col>
+            <ion-col>
+              <ng-container *ngIf="question.has_image">
+                <div text-center *ngIf="question.pic">
+                  <img
+                    src="http://77.104.65.168:8002/answerlog/{{question.pic}}"
+                  />
+                </div>
+              </ng-container>
+            </ion-col>
+          </ion-row>
         </ion-list>
       </ng-container>
 
@@ -223,6 +245,8 @@
         </ion-item>
       </ng-container>
     </ion-row>
-    <!-- <button class="btn-submit">Submit</button> -->
   </ion-col>
+  <div class="ion-justify-content-center ion-align-items-center btn-container">
+    <button class="btn-submit">Submit</button>
+  </div>
 </ion-content>
