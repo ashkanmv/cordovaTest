@@ -172,9 +172,9 @@ ion-col{
             width: 90%;
             border-radius: 10px;
             --border-width:0;
-            ion-select{
+            ng-select{
                 width: 100%;
-                height: 100%;
+                height: 10vh;
             }
         }
         .search-submit{
@@ -213,83 +213,39 @@ ion-col{
     }
     }
 // -------------table
-ion-col.table-container{
-    min-height: 30vh;
-    overflow-x: scroll;
-    table{
-        table-layout: fixed;
-        width: 180vw;
-        td{
-            min-width: 10rem;
-            height: 2rem;
+// table!!
+.firstrow{
+    // background: var(--ion-color-light);
+    &>:first-child{
+        &>:first-child{
+            color: #0095eb;
         }
-        thead{
-            th{
-                padding: .5rem 0;
-            }
-            >:nth-child(odd){
-                background: #84848439;
-    
-            }
-            .city,
-            .days{
-                color: #0095EB;
-            }
+        :nth-child(odd){
+            background: var(--ion-color-light);
         }
-        tbody{
-            tr{
-                z-index: 2;
-                cursor: pointer;
-            }
-            td{
-                text-align: center;
-                max-width: 15vw;
-                >:first-child{
-                    background: none;
-                    font-size: 1.1rem;
-                }
-                &:first-child{
-                    text-align: left;
-    
-                }
-                &.table-darker-bg{
-                    background: #9393936d;
-                }
-            }
-        
-        }
-    
-    // -------Nested Table
-    .routeDetails{
-        background: var(--ion-color-light);
-        height: 7vh;
-        min-width: 100vw;
-        .routeDetail{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            font-size: 1.3rem;
-        }
-    }
-        
     }
 }
 
+ion-col.table-container{
+    overflow-x: scroll;
+    ion-grid.table{
+        width: 278vw;
+        ion-col{
+            min-width: 10vw;
+            height: 5vh;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-
-
-        @media (min-width:992px) {
-            table{
-                .nested-table-container{
-                    .nested-table{
-                        width:67vw;
-                        >thead{
-                            font-size: 1.3vw;
-                            th{
-                                padding: .5rem;
-                            }
-                        }
-                    }
-                }
-            }
         }
+        .tbody{
+            overflow: scroll;
+            height: 60vh;
+            ion-grid.details{
+                font-size: 1.3rem;
+            }   
+
+        }
+    }
+}
