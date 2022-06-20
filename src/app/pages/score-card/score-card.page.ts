@@ -13,10 +13,10 @@ import { ScoreCardService } from './score-card.service';
 export class ScoreCardPage implements OnInit {
   IsDetailsShowing = false;
   IsDCDDetailsShowing = false;
-  categoryRadio: 'sales' | 'pped' = 'sales';
-  channelRadio: 'sales' | 'pped' = 'sales';
-  categoryPRadio: 'sales' | 'pped' = 'sales';
-  channelPRadio: 'sales' | 'pped' = 'sales';
+  categoryRadio: 1 | 2 = 1;
+  channelRadio: 1 | 2 = 1;
+  categoryPRadio: 1 | 2 = 1;
+  channelPRadio: 1 | 2 = 1;
   selectedSegment: string = 'category';
   categories2 = [];
   skus2 = [];
@@ -123,7 +123,11 @@ export class ScoreCardPage implements OnInit {
     });
   }
 
-  getSales1ByChannel() {
+  async getSales1ByChannel() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     this.scoreCardService
       .getSales1ByChannel(this.selected_channel1.join())
       .subscribe((scorecard) => {
@@ -131,7 +135,20 @@ export class ScoreCardPage implements OnInit {
           this.create_total_model1(scorecard);
           this.first_section_data = scorecard;
         }
+        loading.dismiss();
       });
+  }
+
+  async getPped1ByChannel() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    this.scoreCardService.getPped1ByChannel(this.selected_channel1.join()).subscribe(
+      (scorecard) => {
+        this.create_total_model1(scorecard);
+        loading.dismiss();
+      }
+    );
   }
 
   create_total_model1(model) {
@@ -180,57 +197,24 @@ export class ScoreCardPage implements OnInit {
 
   // SEC 2
   IsFilterLoaded = false;
-  second_section_data = [];
+  second_section_data;
   Show_Channel() {
     if (this.IsFilterLoaded != true) {
       this.Fill_Categroy_Sku_Filters().then((data) => {
-        if (!this.second_section_data) this.get_categories2();
+        if (!this.second_section_data) this.get_categories2(); //make it serial
       });
     } else {
-      if (!this.second_section_data) this.get_categories2();
-      //make it serial
+      if (!this.second_section_data) this.get_categories2(); //make it serial
     }
   }
 
-  Fill_Categroy_Sku_Filters(): Promise<any> {
-    return new Promise((resolve) => {
-      {
-        this.scoreCardService.getCategories().subscribe(
-          (categories) => {
-            this.categories2 = categories;
-            this.categories4 = categories;
-            categories.forEach((category, i) => {
-              this.selected_category2.push(category.Cat);
-              this.selected_category4.push(category.Cat);
-              this.sec4CategorySelect.push({
-                id: i,
-                itemName: category.Cat,
-                group: this.language.Score_Card.group,
-              });
-            });
-
-            this.sec2CategorySelect = this.sec4CategorySelect;
-            this.scoreCardService.getSkusByCategory(this.selected_category2.join()).subscribe(
-              (skus) => {
-                this.skus2.push.apply(this.skus2, skus);
-                this.skus4.push.apply(this.skus4, skus);
-                skus.forEach((sku, i) => {
-                  this.selected_sku2.push(sku.SKU);
-                  this.selected_sku4.push(sku.SKU);
-                  this.sec4SkuSelect.push({ id: i, itemName: sku.SKU, group: this.language.Score_Card.group, });
-                });
-
-                this.sec2SkuSelect = this.sec4SkuSelect;
-                this.IsFilterLoaded = true;
-                resolve(true);
-              },
-              (error) => resolve(false)
-            );
-          },
-          (error) => resolve(false)
-        );
+  categorySelect2() {
+    this.skus2 = [];
+    this.scoreCardService.getSkusByCategory(this.selected_category2.join()).subscribe(
+      (skus) => {
+        this.skus2.push.apply(this.skus2, skus)
       }
-    });
+    );
   }
 
   async get_categories2() {
@@ -241,9 +225,7 @@ export class ScoreCardPage implements OnInit {
     this.scoreCardService
       .getSales2ByCatSku(this.selected_category2.join(), this.selected_sku2.join())
       .subscribe(
-        (scorecard2: Data[]) => {
-          console.log(scorecard2);
-
+        scorecard2 => {
           this.create_model2(scorecard2);
           loading.dismiss();
           this.second_section_data = scorecard2;
@@ -375,12 +357,12 @@ export class ScoreCardPage implements OnInit {
     let data2 = []
     for (var i = 0; i < format_model.length; i++) {
       data.push({
-        name : format_model[i][0],
-        data : +format_model[i][1]
+        name: format_model[i][0],
+        data: +format_model[i][1]
       })
       data2.push({
-        name : format_model[i][0],
-        data : +format_model[i][2]
+        name: format_model[i][0],
+        data: +format_model[i][2]
       })
       labels.push(format_model[i][0]);
       valus31.push(format_model[i][1]);
@@ -432,6 +414,158 @@ export class ScoreCardPage implements OnInit {
     //your code to be executed after 1 second
   }
 
+  // SEC 4
+  chart_data2 = [];
+  fourth_section_data;
+  async Show_Channel_Percent() {
+    if (this.fourth_section_data) {
+      this.create_chart4();
+      return;
+    }
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+
+    this.Fill_Categroy_Sku_Filters().then((data) => {
+      this.scoreCardService.getSales4ByCatSku(this.selected_category4.join(), this.selected_sku4.join()).subscribe(
+        (scorecard: any) => {
+          this.create_model4(scorecard);
+          this.chart_data2 = scorecard;
+          loading.dismiss();
+          this.fourth_section_data = scorecard;
+          this.create_chart4();
+        });
+    });
+
+  }
+
+  create_model4(model) {
+    this.scorecards4 = [];
+    if (model[0]) {
+      let keys = Object.keys(model[0]);
+      for (var i = 0; i < keys.length; i++) {
+        if (keys[i] == "Today%") {
+          keys[i] = this.today + "%";
+        }
+      }
+      this.scorecards4.push(keys);
+      for (var i = 0; i < model.length; i++) {
+        let ch = model[i];
+        let temp = Object.keys(ch).map((key) => ch[key]);
+        for (var j = 1; j < temp.length; j++) {
+          if (temp[j] != null) {
+            temp[j] = parseFloat(temp[j]).toFixed(2);
+          }
+        }
+        this.scorecards4.push(temp);
+      }
+    }
+  }
+
+  create_chart4() {
+
+    let model = this.chart_data2;
+    let format_model = [];
+    for (var i = 0; i < model.length; i++) {
+      let ch = model[i];
+      let temp = Object.keys(ch).map((key) => ch[key]);
+      for (var j = 1; j < temp.length; j++) {
+        if (temp[j] != null) {
+          temp[j] = parseFloat(temp[j]).toFixed(2);
+        }
+        if (temp[j] == null) {
+          temp[j] = 0;
+        }
+      }
+      format_model.push(temp);
+    }
+    let labels = [];
+    let colors = [];
+    let valus41 = [];
+    let valus42 = [];
+
+    for (var i = 0; i < format_model.length; i++) {
+      labels.push(format_model[i][0]);
+      valus41.push(format_model[i][1]);
+      valus42.push(format_model[i][2]);
+      colors.push(this.color[i]);
+    }
+
+    var data41 = {
+      labels: labels,
+      datasets: [
+        {
+          data: valus41,
+          backgroundColor: colors,
+        },
+      ],
+    };
+
+    var data42 = {
+      labels: labels,
+      datasets: [
+        {
+          data: valus42,
+          backgroundColor: colors,
+        },
+      ],
+    };
+
+    // new Chart(ctx41, {
+    //   type: "pie",
+    //   data: data41,
+    //   options: {},
+    // });
+    // new Chart(ctx42, {
+    //   type: "pie",
+    //   data: data42,
+    //   options: {},
+    // });
+    // // }, 1000);
+  }
+
+  Fill_Categroy_Sku_Filters(): Promise<any> {
+    return new Promise((resolve) => {
+      {
+        this.scoreCardService.getCategories().subscribe(
+          (categories) => {
+            this.categories2 = categories;
+            this.categories4 = categories;
+            categories.forEach((category, i) => {
+              this.selected_category2.push(category.Cat);
+              this.selected_category4.push(category.Cat);
+              this.sec4CategorySelect.push({
+                id: i,
+                itemName: category.Cat,
+                group: this.language.Score_Card.group,
+              });
+            });
+            this.sec2CategorySelect = this.sec4CategorySelect;
+            this.scoreCardService.getSkusByCategory(this.selected_category2.join()).subscribe(
+              (skus) => {
+                this.skus2.push.apply(this.skus2, skus);
+                this.skus4.push.apply(this.skus4, skus);
+                skus.forEach((sku, i) => {
+                  this.selected_sku2.push(sku.SKU);
+                  this.selected_sku4.push(sku.SKU);
+                  this.sec4SkuSelect.push({ id: i, itemName: sku.SKU, group: this.language.Score_Card.group, });
+                });
+
+                this.sec2SkuSelect = this.sec4SkuSelect;
+                this.IsFilterLoaded = true;
+                resolve(true);
+              },
+              (error) => resolve(false)
+            );
+          },
+          (error) => resolve(false)
+        );
+      }
+    });
+  }
+
   segmentChanged(event: any) {
     // console.log(event.target.value);
     this.selectedSegment = event.target.value;
@@ -446,14 +580,23 @@ export class ScoreCardPage implements OnInit {
         this.show_Category_Percent();
         break;
       case 'channelP':
-        this.Show_Channel();
+        this.Show_Channel_Percent();
         break;
     }
   }
+
   toggleDtails() {
     this.IsDetailsShowing = !this.IsDetailsShowing;
   }
+
   toggleDtailsDCD() {
     this.IsDCDDetailsShowing = !this.IsDCDDetailsShowing;
+  }
+
+  categorySectionChanged() {
+    if (this.categoryRadio == 1)
+      this.getSales1ByChannel();
+    else
+      this.getPped1ByChannel();
   }
 }

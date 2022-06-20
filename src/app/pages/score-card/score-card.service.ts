@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { getSales1ByChannelResponse } from 'src/app/shared/common';
+import { getSales1ByChannelResponse, GetSales2ByCatSkuResponse } from 'src/app/shared/common';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -92,7 +92,7 @@ export class ScoreCardService {
     let params = new HttpParams();
     params = params.append('category', category);
     params = params.append('sku', sku);
-    return this.http.get(this.sales2Url, { params })
+    return this.http.get<GetSales2ByCatSkuResponse[]>(this.sales2Url, { params })
   }
 
   //sc3
