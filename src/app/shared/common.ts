@@ -336,6 +336,7 @@ export class Language {
     'Segment-channel%': string;
     'Radio-input-sales': string;
     'Radio-input-PPED': string;
+    group : string;
   };
   login: {
     title: string;

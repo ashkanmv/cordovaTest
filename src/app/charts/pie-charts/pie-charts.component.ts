@@ -128,7 +128,7 @@ export class VariableRadiusPieChartsComponent implements OnInit {
           
           return {
             name: _.name,
-            y: _.data.reduce((a, b) => a + b, 0)
+            y: _.data
           }
         })
       }],

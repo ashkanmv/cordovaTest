@@ -500,9 +500,12 @@ export class CustomerHistoryPage implements OnInit {
   }
   columns: any[] = [];
   data: any[] = [];
+  pieChartData: any[] = [];
   createChart(model) {
     this.columns = [];
     this.data = [];
+    this.pieChartData = [];
+
     if (!model) return;
     let format_model = [];
     let keys = Object.keys(model[0]);
@@ -518,6 +521,7 @@ export class CustomerHistoryPage implements OnInit {
     row0.shift();
     let labels = row0;
     let dataset = [];
+    let pieChartDataSet = [];
     for (var i = 1; i < format_model.length - 1; i++) {
       let label = format_model[i][0];
       let row = format_model[i];
@@ -531,9 +535,14 @@ export class CustomerHistoryPage implements OnInit {
       let obj = {
         name: label,
         // backgroundColor: this.backgroundColor[i - 1],
-        data: data,
+        data: data
       };
+      let pieChartObj = {
+        name : label,
+        data: data.reduce((a, b) => a + b, 0),
+      }
       dataset.push(obj);
+      pieChartDataSet.push(pieChartObj);
     }
 
     let rowl = format_model[format_model.length - 1];
@@ -547,7 +556,7 @@ export class CustomerHistoryPage implements OnInit {
     }
     this.columns = labels;
     this.data = dataset;
-
+    this.pieChartData = pieChartDataSet;
     // this.chart = new Chart(this.ctx, {
     //   type: 'bar',
     //   data: {
