@@ -312,7 +312,7 @@
           <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
             <ion-col
               *ngFor="let item of customer_histories[row.index]; let j = index"
-              [ngClass]="{'firstculomn': j==0 && i!=0 }"
+              [ngClass]="{'firstcolumn': j==0 && i!=0,'oddColumns' : 0 === j % 2 }"
             >
               {{ item }}
             </ion-col>
@@ -322,7 +322,7 @@
               <ion-row wrap *ngFor="let rows of selected_ch[row.index]">
                 <ion-col
                   *ngFor="let item of rows;let j = index"
-                  [ngClass]="{'first-row-culomn': j==0 && i==0}"
+                  [ngClass]="{'firstcolumn': j==0 && i==0}"
                 >
                   {{ item }}
                 </ion-col>

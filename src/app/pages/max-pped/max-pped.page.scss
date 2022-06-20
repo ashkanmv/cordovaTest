@@ -198,7 +198,7 @@ table.table-container{
                 width: 25vw;
                ion-icon{
                 position: absolute;
-                right: -3vw;
+                left: 0;
             }
             }
             &>:nth-child(3){
@@ -255,22 +255,22 @@ table.table-container{
     
 }
 
+
 hr.hor-line{
     background: #0095eb;
     position: absolute;
-    left: 2vw;
-    bottom: 3vh;
+    left: 0.6rem;
     width: 5vw;
+    margin-top: 1rem;
 }    
 hr.ver-line{
     background: #0095eb;
     position: absolute;
-    left: -5.5vw;
-    top: 5vh;
-    width: 7rem;
+    left: -2.7rem;
+    width: 6.3rem;
     transform: rotate(90deg);
-
-}    
+    margin-top: -1rem;
+}   
 
 ion-grid.maingrid{
     text-align: center;
@@ -287,5 +287,17 @@ ion-grid.maingrid{
     .r-body-content{
         height: 60vh;
         overflow: scroll;
+        ion-grid.nested.table{
+           background: var(--ion-color-light);
+        }
     }
+}
+ion-col.nested-details{
+    border: #0095EB 1px solid;
+}
+.firstrow2{
+    background: #b4dae7;
+   
+        
+    
 }

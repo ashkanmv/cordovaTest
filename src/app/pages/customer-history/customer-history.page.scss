@@ -360,13 +360,13 @@ ion-card{
     
     ion-card-content{
         ion-row.table-container{
-            text-align: center;
-            &>:nth-child(odd){
-                background: #d6d6d648;
+            .firstrow{
+
             }
+            text-align: center;
+
             ng-container{
                 ion-col{
-                    color: #3a3838;
                     height: 1rem;
                     max-width: 13vw;
 
