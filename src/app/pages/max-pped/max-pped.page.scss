@@ -87,7 +87,7 @@ ion-col{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                color:  var(--ion-color-primary);
+                color:  #0095EB;
                 font-size: 1.5rem;
                 font-weight: bold;
                 ion-icon{
@@ -225,7 +225,7 @@ table.table-container{
             margin-left: 5vw;
             .details-header{
                 height: 5vh;
-                background: #45c9fa;
+                background: var(--ion-color-secondary-tint);
                 th{
                     width: 50%;
                 }

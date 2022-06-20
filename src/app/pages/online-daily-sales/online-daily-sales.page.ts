@@ -250,8 +250,8 @@ export class OnlineDailySalesPage implements OnInit {
   }
 
   refresh() {
-    this.dsdChanged()
-    this.nonDsdChanged()
+    this.dsdChanged();
+    this.nonDsdChanged();
   }
 
   dsdChanged() {
@@ -260,7 +260,6 @@ export class OnlineDailySalesPage implements OnInit {
 
   nonDsdChanged() {
     console.log(this.selected_dcN);
-
   }
 
   segmentChanged(event: any) {

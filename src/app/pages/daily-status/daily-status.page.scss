@@ -69,7 +69,7 @@ ion-title{
 
 .table-detail-opaned{
     ion-icon{
-        color: var(--ion-color-primary);
+        color: #0095EB;
     }
 }
 
@@ -84,9 +84,9 @@ ion-title{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid  var(--ion-color-primary) ;
+        border-bottom: 2px solid  #0095EB ;
         ion-segment-button{
-            --background-checked: var(--ion-color-primary);
+            --background-checked: #0095EB;
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
@@ -289,7 +289,7 @@ table{
                 }        
             }
             >:first-child{
-                color: var(--ion-color-primary);
+                color: #0095EB;
                 // min-height: 20px;
             }
         
@@ -343,7 +343,7 @@ table{
         }
         thead{
             :first-child{
-                border-right:1px  var(--ion-color-primary)24 solid ;
+                border-right:1px  #0095EB 24 solid ;
             }
         }
         th{
