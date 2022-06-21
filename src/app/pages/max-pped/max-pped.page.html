@@ -254,7 +254,8 @@
                     [ngClass]="{'firstrow2': i==0 }"
                     (click)="row_clickCustomer(rows[0])"
                   >
-                    <ion-col class="nested-details" *ngFor="let item of rows">
+                    <ion-col class="nested-details" *ngFor="let item of rows; let j = index"
+                    [ngClass]="{'oddColumns' : 0 === j % 2 , 'oddRows': 1 === i % 2}">
                       {{ item }}
                     </ion-col>
                   </ion-row>

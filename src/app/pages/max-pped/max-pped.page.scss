@@ -273,6 +273,9 @@ hr.ver-line{
 }   
 
 ion-grid.maingrid{
+    .firstRow{
+        background: red;
+    }
     text-align: center;
     ion-col{
         height: 5vh;
@@ -293,10 +296,14 @@ ion-grid.maingrid{
     }
 }
 ion-col.nested-details{
-    border: #0095EB 1px solid;
+    border: 1px solid #0095EB;
+    width: 10vw;
 }
 .firstrow2{
-    background: #b4dae7;
+    &>:first-child{
+        color: #0095eb;
+
+    }
    
         
     
