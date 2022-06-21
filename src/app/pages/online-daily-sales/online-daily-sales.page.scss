@@ -93,9 +93,9 @@ ion-title{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid  var(--ion-color-primary) ;
+        border-bottom: 2px solid  #0095EB ;
         ion-segment-button{
-            --background-checked: var(--ion-color-primary);
+            --background-checked: #0095EB;
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
@@ -218,71 +218,95 @@ ion-col.table-container{
     display: inline-block;
     overflow: scroll;
     table.container-table{
-        width: 160vw;
+        width: 200vw;
         table-layout: fixed;
-        table.borderSet-header{
+        table.main-content-header{
             table-layout: fixed;
-            width: 160vw;
+            width: 200vw;
             th{
                 font-size: 1.5rem;
                 width: 9vw;
-                height: 10vh;
+                height: 5vh;
                 span{
-                    color: var(--ion-color-primary);
+                    color:#0095EB;
                 }
             }
         }
-        table.borderSet-body{
+        table.main-content-body{
             table-layout: fixed;
             width: 100%;
             tr{
-                td.borderSet-detail{
+                td.body-content{
                     width: 10vw;   
                     text-align: center;
                     font-size: 1.2rem;
                     height: 6vh;
                 }
+                .firstcolumn{
+                    ion-icon{
+                        position: absolute;
+                        left: 0;                    }
+                }
             }
             td.detailsContainer{
                 height: 20vh;
+                background: var(--ion-color-light);
                 &>table{
-                    height: 10vh;
-                    width: 50%;
+                    height: 13vh;
+                    width: 90vw;
                     margin-left: 5vw;
                     display: grid;
                     box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
 
                     // grid-template-rows: 1fr 1fr;
                     justify-content: space-around;
-                tr.skuhead{
+                tr.detail-box{
                     width: 90vw;
                     &.header{
                         background: var(--ion-color-secondary-tint);
-                        padding: .5rem 0;
-
+                        height: 6vh;
+                        display: flex;
                     }
                     tr{
                         font-size: 1.3rem;
                         width: 90vw;
-                    display: flex;
+                        display: flex;
 
                     }
                 }
                 }
-                table.borderSet-detailsContainer{
+                table.details{
                     text-align: center;
-                    // font-size: 1.4rem;
+                    height: 7vh;
+                    font-size: .9rem;
                     
                     td.visitor{
                         width: 50%;
-                        padding: .5rem 0;
-                        
+                        height:7vh;
+                        display: flex;
                     }
                     td.driver{
+                        display: flex;
                         width: 50%;
+                        height:7vh;
                         background: var(--ion-color-light);
-                        padding: .5rem 0;
                     }
+                    hr.hor-line{
+                        background: #0095eb;
+                        position: absolute;
+                        left: 0.6rem;
+                        width: 5vw;
+                        margin-top: 1rem;
+                    }    
+                    hr.ver-line{
+                        background: #0095eb;
+                        position: absolute;
+                        left: -3.9rem;
+                        width: 9rem;
+                        transform: rotate(90deg);
+                        margin-top: -1rem;
+                    
+                    }   
                 }
             }
         }
@@ -301,9 +325,13 @@ ion-grid.maingrid{
         font-weight: bold;
         padding: .7rem 0;
     }
-    .firstculomn{
+    .firstColumn{
         padding: .7rem 0;
         background: #d7d8da58;
+        ion-icon{
+            position: absolute;
+            left: 0.2rem;
+        }
     }
     ion-grid.details{
         box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
@@ -321,8 +349,24 @@ ion-grid.maingrid{
                 }
             }
         }
+        hr.hor-lineN{
+            background: #0095EB;
+            position: absolute;
+            left: 0.8rem;
+            margin-top: -2.2rem;
+            height: 6rem;
+            width: 1px;
+        }
+        hr.ver-lineN{
+            background: #0095EB;
+            position: absolute;
+            left: 0.9rem;
+            margin-top: 1.8rem;
+            width: 1.1rem;
+        }
     }
 }
+
 
 
 

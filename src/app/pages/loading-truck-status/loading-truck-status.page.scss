@@ -48,7 +48,7 @@ ion-img .back-button.ios{
 }
 .table-detail-opaned{
     ion-icon{
-        color:var(--ion-color-primary);
+        color:#0095EB;
     }
 }
 
@@ -109,7 +109,7 @@ ion-col{
                 max-width: 100%;
             }
             >ion-col{
-                color: var(--ion-color-primary);
+                color: #0095EB;
                 display: flex;
                 font-size: 1.5rem;
                 font-weight: bold;
@@ -208,7 +208,7 @@ table{
             }
             >:first-child{
                 background: #dadada56;
-                color:var(--ion-color-primary);
+                color:#0095EB;
                 min-height: 20px;
             }
         }
@@ -242,7 +242,7 @@ table{
     .table-detail{
         background: var(--ion-color-light);
         .border{
-            border-left: 2px var(--ion-color-primary) solid;
+            border-left: 2px #0095EB solid;
             margin-left: 1rem;
             padding: 1rem 0 0;
         &>table{
@@ -253,7 +253,7 @@ table{
             
             
             .line-1{
-                background: var(--ion-color-primary);
+                background: #0095EB;
                 position: absolute;
                 top: 3rem;
                 left: -1rem;
@@ -261,7 +261,7 @@ table{
                 width: 1rem;
             }
             .line-2{
-                background:var(--ion-color-primary);
+                background:#0095EB;
                 position: absolute;
                 top: 11rem;
                 left: -1rem;
@@ -269,7 +269,7 @@ table{
                 width: 1rem;
             }
             .line-3{
-                background: var(--ion-color-primary);
+                background: #0095EB;
                 position: absolute;
                 bottom: 11.5rem;
                 left: -1rem;
@@ -277,7 +277,7 @@ table{
                 width: 1rem;
             }
             .line-4{
-                background: var(--ion-color-primary);
+                background: #0095EB;
                 position: absolute;
                 bottom: 3.8rem;
                 left: -1rem;

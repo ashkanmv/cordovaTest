@@ -98,9 +98,6 @@
               {{item.itemName}}
             </ng-template>
           </ng-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
         </ion-item>
       </ion-row>
     </ion-col>
@@ -108,51 +105,54 @@
   <!-- -----------------------table -->
   <ion-row>
     <ion-col class="ion-no-padding table-container">
-      <table>
-        <thead>
-          <th class="route"><span>Route</span></th>
-          <th>SSV</th>
-          <th>ASM</th>
-          <th>RR_LY</th>
-          <th>Stat</th>
-          <th>H16_5Diff</th>
-          <th>vs16</th>
-          <th>H16</th>
-          <th>H16Diff</th>
-          <th>vs15_5</th>
-          <th>H15_5</th>
-          <th>H15_5Diff</th>
-          <th>vs15</th>
-        </thead>
-        <tbody
-          *ngFor="let data of compare; let i= index"
-          [ngClass]="{'oddRows' : 0 === i % 2 }"
+      <ion-grid class="ion-no-padding table">
+        <div
+          *ngFor="let row of virtual_rows1; let i = index"
+          [ngClass]="{'firstrow': i==0}"
         >
-          <tr>
-            <td class="table-darker-bg">
-              <ion-icon name="chevron-down-outline"></ion-icon> {{data.route}}
-            </td>
-            <td>{{data.H8}}</td>
-            <td>{{data.H9}}</td>
-            <td>{{data.H10}}</td>
-            <td>{{data.H11}}</td>
-            <td>{{data.H12}}</td>
-            <td>{{data.H13}}</td>
-            <td>{{data.H14}}</td>
-            <td>{{data.H15}}</td>
-            <td>{{data.H16}}</td>
-            <td>{{data.H17}}</td>
-            <td>{{data.total}}</td>
-          </tr>
-          <div *ngIf="nestedTableIsShowingRow" class="routeDetails">
-            <div
-              class="routeDetail ion-align-items-center ion-justify-content-center"
+          <ion-row>
+            <ng-container
+              *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')"
             >
-              {{data.route}} => person
-            </div>
+              <ion-col
+                *ngFor="let item of srsales1[row.index]; let j = index"
+                [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
+              >
+                {{ item }}
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </div>
+
+        <div class="tbody">
+          <div
+            *ngFor="let row of virtual_rows1; let i = index"
+            (click)="row_click1(row, i)"
+            [ngClass]="{ 'oddRows' : 3 === i % 4}"
+          >
+            <ion-row class="rows">
+              <ng-container
+                *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')"
+              >
+                <ion-col
+                  *ngFor="let item of srsales1[row.index]; let j = index"
+                  [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0, 'oddColumns': 0=== j % 2 }"
+                >
+                  {{ item }}
+                </ion-col>
+              </ng-container>
+
+              <ng-container *ngIf="row.show && row.type=='b'">
+                <ion-grid class="details">
+                  <ion-row wrap *ngFor="let rows of selected_ch1[row.index]">
+                    <ion-col *ngFor="let item of rows"> {{ item }} </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ng-container>
+            </ion-row>
           </div>
-        </tbody>
-      </table>
+        </div>
+      </ion-grid>
     </ion-col>
   </ion-row>
 </ion-content>

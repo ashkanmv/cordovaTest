@@ -22,8 +22,7 @@
         size="1"
         (click)="refresh()"
       >
-        <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
-        </ion-img>
+        <ion-img src="\assets\pages\customer-nearby\Group 1325.png"> </ion-img>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
         <ion-img
@@ -67,7 +66,7 @@
   <ion-col class="DSD-page" *ngIf="selectedSegment === 'DSD'">
     <ion-col class="search-bar ion-no-padding ion-no-margin">
       <ion-row class="search-box ion-justify-content-center">
-        <ion-item *ngIf="showSelect">
+        <ion-item class="lightBlue-shadow" *ngIf="showSelect">
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
@@ -94,17 +93,19 @@
       <table class="container-table">
         <tr>
           <td>
-            <table class="borderSet-header">
-              <tr class="Materhead">
-                <th class="borderSet Materhead"><span> Route </span></th>
-                <th class="borderSet Materhead">Pln</th>
-                <th class="borderSet Materhead">Inv</th>
-                <th class="borderSet Materhead">%</th>
-                <th class="borderSet Materhead">OOR</th>
-                <th class="borderSet Materhead">Total</th>
-                <th class="borderSet Materhead">NotINV</th>
-                <th class="borderSet Materhead">Sale</th>
-                <th class="borderSet Materhead">PPED</th>
+            <table class="main-content-header">
+              <tr>
+                <th class="firstcolumn">
+                  <span> Route </span>
+                </th>
+                <th class=" ">Pln</th>
+                <th class="oddColumns">Inv</th>
+                <th class=" ">%</th>
+                <th class="oddColumns">OOR</th>
+                <th class=" ">Total</th>
+                <th class="oddColumns">NotINV</th>
+                <th class=" ">Sale</th>
+                <th class="oddColumns">PPED</th>
               </tr>
             </table>
           </td>
@@ -116,58 +117,64 @@
               <table
                 *ngFor="let Master_row of ctrl.data; let i = index"
                 [ngClass]="{'oddRows': 1 === i % 2}"
-                class="borderSet-body"
+                class="main-content-body"
               >
-                <tr
-                  class="borderSet"
-                  (click)="Show_Load_Detail(Master_row , i)"
-                >
-                  <td class="borderSet-detail">
-                    <ion-icon name="chevron-down-outline"></ion-icon
+                <tr (click)="Show_Load_Detail(Master_row , i)">
+                  <td class="body-content firstcolumn">
+                    <ion-icon
+                      name="chevron-down-outline"
+                      [ngClass]="{ 'icon-activated' : isVisible==i}"
+                    ></ion-icon
                     >{{Master_row.Route}}
                   </td>
-                  <td class="borderSet-detail">{{Master_row.Pln}}</td>
-                  <td class="borderSet-detail">{{Master_row.Inv}}</td>
-                  <td class="borderSet-detail">{{Master_row.Per}}</td>
-                  <td class="borderSet-detail">{{Master_row.OOR}}</td>
-                  <td class="borderSet-detail">{{Master_row.Total}}</td>
-                  <td class="borderSet-detail">{{Master_row.NotINV}}</td>
-                  <td class="borderSet-detail">{{Master_row.Sale}}</td>
-                  <td class="borderSet-detail">{{Master_row.PPED}}</td>
+                  <td class="body-content">{{Master_row.Pln}}</td>
+                  <td class="body-content oddColumns">{{Master_row.Inv}}</td>
+                  <td class="body-content">{{Master_row.Per}}</td>
+                  <td class="body-content oddColumns">{{Master_row.OOR}}</td>
+                  <td class="body-content">{{Master_row.Total}}</td>
+                  <td class="body-content oddColumns">{{Master_row.NotINV}}</td>
+                  <td class="body-content">{{Master_row.Sale}}</td>
+                  <td class="body-content oddColumns">{{Master_row.PPED}}</td>
                 </tr>
                 <tr id="{{Master_row.Route}}_Detail" *ngIf="isVisible==i">
                   <td colspan="9" class="detailsContainer">
-                    <table class="borderSet">
-                      <tr class="skuhead header">
+                    <table>
+                      <tr class="detail-box header ion-align-items-center">
                         <td>
-                          <table
-                            class="borderSet"
-                            cellspacing="0"
-                            cellpadding="1"
-                          >
+                          <table cellspacing="0" cellpadding="1">
                             <tr class="ion-justify-content-around">
-                              <th class="borderSet">Visitor</th>
-                              <th class="borderSet skuhead">Driver</th>
+                              <th>Visitor</th>
+                              <th>Driver</th>
                             </tr>
                           </table>
                         </td>
                       </tr>
-                      <tr class="skuhead body">
+                      <tr class="detail-box body">
                         <td>
                           <div>
                             <table
-                              class="borderSet-detailsContainer"
+                              class="details"
                               cellspacing="0"
                               cellpadding="1"
                             >
+                              <!--  -->
+                              <hr class="hor-line" />
+                              <hr class="ver-line" />
+                              <!--  -->
                               <tr
-                                class="borderSet ion-justify-content-around"
+                                class="ion-justify-content-around"
                                 *ngFor="let row of Load_Detail"
                               >
-                                <td class="visitor primary-bg white-text">
+                                <td
+                                  class="visitor primary-bg white-text ion-align-items-center ion-justify-content-center"
+                                >
                                   {{row.Id}}
                                 </td>
-                                <td class="driver">{{row.Driver}}</td>
+                                <td
+                                  class="driver ion-align-items-center ion-justify-content-center"
+                                >
+                                  {{row.Driver}}
+                                </td>
                               </tr>
                             </table>
                           </div>
@@ -188,7 +195,7 @@
   <ion-col *ngIf="selectedSegment === 'NON_DSD'" class="searchbar">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
-        <ion-item *ngIf="showSelect">
+        <ion-item class="lightBlue-shadow" *ngIf="showSelect">
           <button class="search-submit primary-bg">
             <ion-icon name="search-outline"></ion-icon>
           </button>
@@ -222,7 +229,7 @@
           >
             <ion-col
               *ngFor="let item of srsales2[row.index]; let j = index"
-              [ngClass]="{'firstculomn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
+              [ngClass]="{'firstColumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
             >
               {{ item }}
             </ion-col>
@@ -242,9 +249,20 @@
               <ion-col
                 class="ion-align-self-center"
                 *ngFor="let item of srsales2[row.index]; let j = index"
-                [ngClass]="{'firstculomn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
+                [ngClass]="{'firstColumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
               >
-                {{ item }}
+                <ng-template
+                  *ngIf="j==0 ; then showIcon else dontShowIcon "
+                ></ng-template>
+                <ng-template class="icon-showing" #showIcon>
+                  <ion-icon
+                    [ngClass]="{ 'icon-activated' : tableDetails(item)}"
+                    name="chevron-down-outline"
+                  ></ion-icon>
+                  {{ item }}
+                </ng-template>
+
+                <ng-template #dontShowIcon> {{ item }} </ng-template>
               </ion-col>
             </ng-container>
             <ng-container *ngIf="row.show && row.type=='b'">
@@ -254,6 +272,10 @@
                   *ngFor="let rows of selected_ch2[row.index]; let i =index; "
                   [ngClass]="{'oddRows': 0 === i % 2}"
                 >
+                  <!--  -->
+                  <hr class="hor-lineN" />
+                  <hr class="ver-lineN" />
+                  <!--  -->
                   <ion-col
                     class="detail ion-align-items-center"
                     *ngFor="let item of rows"

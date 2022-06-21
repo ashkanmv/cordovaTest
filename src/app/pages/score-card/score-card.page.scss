@@ -64,13 +64,22 @@ ion-img .back-button.ios{
 // -----segment change---------
 ion-col.segment-change{
     --height: 3rem;
-    ion-segment-button{
-        padding: 1rem 0;
-        border-bottom: 1px solid #0095EB ;
-        width: 100%;
-        ion-label{
-            font-size: 2vw;
-            color: #b9b9b9;
+    ion-segment{
+        border-bottom: 2px solid  #0095EB ;
+        ion-segment-button{
+            --background-checked: #0095EB;
+            --indicator-color:var(--ion-color-dark);
+            --indicator-height:	10px;	
+            padding:.5rem 0;
+            width: 100%;
+            ion-label{
+                font-size: 3vw;
+                font-weight: bold;
+                color: #b9b9b9;
+                &:checked{
+                    color: var(--ion-color-light);
+                }
+            }
         }
     }
 }
@@ -119,13 +128,8 @@ ion-col.DSD-page{
 }
 
 
-
-// .input-shadow{
-//     box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-// }
 // ----- content------------
 
-// ----searchbar
 
 
 // ----searchbar
@@ -142,9 +146,17 @@ ion-col.DSD-page{
             --padding-start:0;
             width: 90%;
             border-radius: 10px;
-            ion-select{
+            ng-select{
                 width: 100%;
-                height: 100%;
+                height: 10vh;
+                overflow-y: scroll;
+                .ng-select-container{ 
+                    background: red;
+                    .ng-value-container{
+                        background: red;
+                    }
+                }
+
             }
         }
         .search-submit{
@@ -235,148 +247,192 @@ ion-col{
 }
 
 // ---table
-table{
-
-    table-layout: fixed;
-    width: 100%;
-    margin: 0;
-    
-    tr{
-        cursor: pointer;
-        z-index: 3;
-        :nth-child(3),
-        :nth-child(5){
-            background: #c9c9c95e;
-
-        }
-        :nth-child(1){
-            max-width: 100px;
-        }
-        
-        &:nth-child(even){
-            background: #b9d7e5;
-        }
-        :last-child{
-            max-width: 25px;                
-        }
-    }
-    td{
-        white-space: nowrap;
-        padding: 2px 0;
-        max-width: 100px;
-
-    }
-    .table-head{
-        .table-head-content{
-            font-weight: bold;
-            color: var(--ion-color-dark);
-            th{
-                font-size: 1.1rem;
-            }
-            >:first-child{
-                color:#0095EB;
-                    min-height: 20px;
-                }
-        
-        }
-    }
-    .table-body{
-       >tr{
-            >td{
-                font-size: 1.3rem;
-                color: var(--ion-color-dark);
-                width: 50px;
-                text-align: center;
-                &:first-child{
-                    text-align: left;
-                    padding-left: 5px;            
-                }
-            }
-        }
-        
-        ion-icon{
-            font-size: 1.2rem;
-            padding-right: 4px;
-            // margin-top: 5px;
-        }
-        &-icon{
-            background: #dddddd;
-            // display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+// cat
+ion-grid.maingrid-cat{
+    .firstRow{
+      &>:first-child{
+          color: #0095EB;
+      }
     }
 
-    // ---------table-detail--------------
-    .table-detail{
-        padding: 10px 0;
-        
-        &>table{
-            // min-width: 90vw;
-            width: 65vw;
-            // box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-            position: relative;
-            left: 5vw;
-        }
-        thead{
-            background: #2cb2ffd8;
-            :first-child{
-                border-right:1px #0095eb4b solid ;
-            }
-        }
-        th{
-            color: #282828;
-            min-width: 200px;
-            font-size: 1.2rem;
-        }
-        tbody{
-            text-align: center;
-            :first-child{
-                background: #0095EB;
-                color: var(--ion-color-light);
-            }
-
-        }
-        .table-line-ver{
-            position: absolute;
-            // top:16vh;
-            top:75px;
-            // left: 2vw;
-            left: 14px;
-            width: 2px;
-            height: 70px;
-            background: #0095EB;
-        }
-        .table-line-horiz{
-            position: absolute;
-            top:135px;
-            left: 16px;
-            width:60px;
-            height: 2px;
-            background: #0095EB;
-        }
-
-    }
-
-    
-    
-}
-
-
-@media (min-width: 991px) {
     ion-col{
-        ion-row.radio-input-container{
-            .radio-input-box{
-               
-                width: 64vw;
-            
-                .radio-input{
-                    width: 60vw;
-                }
-            }
-        }
+        display: flex;
+        height: 5vh;
+        width: 10vw;
+        text-align: center;
     }
 }
+// channel
+ion-grid.maingrid-ch{
+    .firstRow{
+      &>:first-child{
+          color: #0095EB;
+      }
+    }
+    ion-col{
+        display: flex;
+        height: 5vh;
+        width: 10vw;
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// table{
+
+//     table-layout: fixed;
+//     width: 100%;
+//     margin: 0;
+    
+//     tr{
+//         cursor: pointer;
+//         z-index: 3;
+//         :nth-child(3),
+//         :nth-child(5){
+//             background: #c9c9c95e;
+
+//         }
+//         :nth-child(1){
+//             max-width: 100px;
+//         }
+        
+//         &:nth-child(even){
+//             background: #b9d7e5;
+//         }
+//         :last-child{
+//             max-width: 25px;                
+//         }
+//     }
+//     td{
+//         white-space: nowrap;
+//         padding: 2px 0;
+//         max-width: 100px;
+
+//     }
+//     .table-head{
+//         .table-head-content{
+//             font-weight: bold;
+//             color: var(--ion-color-dark);
+//             th{
+//                 font-size: 1.1rem;
+//             }
+//             >:first-child{
+//                 color:#0095EB;
+//                     min-height: 20px;
+//                 }
+        
+//         }
+//     }
+//     .table-body{
+//        >tr{
+//             >td{
+//                 font-size: 1.3rem;
+//                 color: var(--ion-color-dark);
+//                 width: 50px;
+//                 text-align: center;
+//                 &:first-child{
+//                     text-align: left;
+//                     padding-left: 5px;            
+//                 }
+//             }
+//         }
+        
+//         ion-icon{
+//             font-size: 1.2rem;
+//             padding-right: 4px;
+//             // margin-top: 5px;
+//         }
+//         &-icon{
+//             background: #dddddd;
+//             // display: flex;
+//             align-items: center;
+//             justify-content: center;
+//         }
+//     }
+
+//     // ---------table-detail--------------
+//     .table-detail{
+//         padding: 10px 0;
+        
+//         &>table{
+//             // min-width: 90vw;
+//             width: 65vw;
+//             // box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+//             position: relative;
+//             left: 5vw;
+//         }
+//         thead{
+//             background: #2cb2ffd8;
+//             :first-child{
+//                 border-right:1px #0095eb4b solid ;
+//             }
+//         }
+//         th{
+//             color: #282828;
+//             min-width: 200px;
+//             font-size: 1.2rem;
+//         }
+//         tbody{
+//             text-align: center;
+//             :first-child{
+//                 background: #0095EB;
+//                 color: var(--ion-color-light);
+//             }
+
+//         }
+//         .table-line-ver{
+//             position: absolute;
+//             // top:16vh;
+//             top:75px;
+//             // left: 2vw;
+//             left: 14px;
+//             width: 2px;
+//             height: 70px;
+//             background: #0095EB;
+//         }
+//         .table-line-horiz{
+//             position: absolute;
+//             top:135px;
+//             left: 16px;
+//             width:60px;
+//             height: 2px;
+//             background: #0095EB;
+//         }
+
+//     }
+
+    
+    
+// }
+
+
+// @media (min-width: 991px) {
+//     ion-col{
+//         ion-row.radio-input-container{
+//             .radio-input-box{
+               
+//                 width: 64vw;
+            
+//                 .radio-input{
+//                     width: 60vw;
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
 

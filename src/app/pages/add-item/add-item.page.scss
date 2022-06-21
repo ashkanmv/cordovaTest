@@ -48,6 +48,7 @@ ion-col{
 
 // 
 ion-row.item-name-img{
+    background: var(--ion-color-light);
     height: 60vh;
     border-radius: 50px;
     margin: 2rem;
@@ -122,3 +123,12 @@ ion-row.item-submit{
         color: var(--ion-color-light);
     }
 }
+
+.box-shadow{   
+    box-shadow:  10px 21px 48px -1px #e3f6ff, 0 6px 20px 0 #E6F5FC;
+  }
+  @media (prefers-color-scheme: dark) {
+    .box-shadow{   
+        box-shadow:  10px 21px 48px -1px #151718, 0 6px 20px 0 #161718;
+      }
+  }

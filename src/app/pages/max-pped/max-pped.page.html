@@ -206,9 +206,6 @@
                 {{item.itemName}}
               </ng-template>
             </ng-select>
-            <span class="search-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </span>
           </ion-item>
         </ion-row>
       </ion-col>
@@ -250,14 +247,17 @@
               </ng-container>
 
               <ng-container *ngIf="row.show && row.type=='b'">
-                <ion-grid>
+                <ion-grid class="nested-table ion-no-padding">
                   <ion-row
                     wrap
                     *ngFor="let rows of selected_ch2[row.index]; let i = index"
-                    [ngClass]="{'firstrow2': i==0}"
+                    [ngClass]="{'firstrow2': i==0 }"
                     (click)="row_clickCustomer(rows[0])"
                   >
-                    <ion-col *ngFor="let item of rows"> {{ item }} </ion-col>
+                    <ion-col class="nested-details" *ngFor="let item of rows; let j = index"
+                    [ngClass]="{'oddColumns' : 0 === j % 2 , 'oddRows': 1 === i % 2}">
+                      {{ item }}
+                    </ion-col>
                   </ion-row>
                 </ion-grid>
               </ng-container>
@@ -399,9 +399,6 @@
                 {{item.itemName}}
               </ng-template>
             </ng-select>
-            <span class="search-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </span>
           </ion-item>
         </ion-row>
       </ion-col>
@@ -439,7 +436,10 @@
                   (click)="Show_Load_Detail(Master_row , i)"
                 >
                   <td class="firstcolumn">
-                    <ion-icon name="chevron-down-outline"></ion-icon>
+                    <ion-icon
+                      [ngClass]="{'icon-activated' : isVisible==i }"
+                      name="chevron-down-outline"
+                    ></ion-icon>
                     {{Master_row.CustomerNumber}}
                   </td>
                   <td class="borderSet">{{Master_row.Cluster}}</td>

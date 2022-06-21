@@ -99,112 +99,31 @@
         </div>
       </ion-row>
     </ion-col>
-
+    <!-- ---------------table------------------------------- -->
     <ion-col>
-      <table>
-        <thead class="table-head">
-          <tr class="table-head-content">
-            <th><span></span></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody class="table-body table-body-content">
-          <tr (click)="toggleDtailsDCD()">
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <div *ngIf="IsDCDDetailsShowing" class="table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-            <table class="">
-              <thead>
-                <th></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-              </tbody>
-            </table>
-          </div>
-          <tr (click)="toggleDtails()">
-            <td>
-              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
+      <ion-grid class="maingrid-cat ion-no-padding">
+        <ion-row wrap *ngFor="let row of virtual_rows1; let i = index" (click)="row_click1(row)"
+          [ngClass]="{'firstRow': i==0}">
 
-              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <div *ngIf="IsDetailsShowing" class="table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-            <table class="">
-              <thead>
-                <th></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-              </tbody>
-            </table>
-          </div>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+          <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
+            <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of scorecards1[row.index]; let j = index"
+              [ngClass]="{ 'firstColumn': j==0 , 'oddColumns' : 0 === j % 2 , 'oddRows' : 1 === i % 4}">
+              {{ item }}
+            </ion-col>
+
+          </ng-container>
+          <ng-container *ngIf="row.show && row.type=='b'">
+            <ion-grid>
+              <ion-row wrap *ngFor="let rows of selected_channel1[row.index]">
+                <ion-col *ngFor="let item of rows">
+                  {{ item }}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </ng-container>
+        </ion-row>
+      </ion-grid>
     </ion-col>
   </ion-col>
 
@@ -216,13 +135,6 @@
           <button class="search-submit primary-bg" (click)="categorySelect2()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <!-- <ion-select multiple="true" interface="popover">
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-          </ion-select> -->
 
           <ng-select *ngIf="categories2.length" [items]="categories2" [multiple]="true" bindLabel="Cat"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
@@ -252,7 +164,7 @@
 
           <ng-select *ngIf="sec2SkuSelect.length" [items]="sec2SkuSelect" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
-            [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_sku2" style="max-height: 50px;">
+            [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_sku2">
 
             <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
               <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
@@ -286,112 +198,16 @@
         </div>
       </ion-row>
     </ion-col>
-
+    <!-- -----------------------table------------------------------------------------- -->
     <ion-col>
-      <table>
-        <thead class="table-head">
-          <tr class="table-head-content">
-            <th><span></span></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody class="table-body table-body-content">
-          <tr (click)="toggleDtailsDCD()">
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <div *ngIf="IsDCDDetailsShowing" class="table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-            <table class="">
-              <thead>
-                <th></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-              </tbody>
-            </table>
-          </div>
-          <tr (click)="toggleDtails()">
-            <td>
-              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
-
-              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <div *ngIf="IsDetailsShowing" class="table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-            <table class="">
-              <thead>
-                <th></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-              </tbody>
-            </table>
-          </div>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <ion-grid class="maingrid-ch ion-no-padding">
+        <ion-row wrap *ngFor="let rows of scorecards2; let i = index" [ngClass]="{'firstRow': i==0,  'oddRows': 0 === i % 2 }">
+          <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of rows; let j = index"
+            [ngClass]="{'firstcolumn': j==0   , 'first_Channel_row': i==0 && j == 0 , 'oddColumns' : 0 === j % 2}">
+            {{ item }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-col>
   </ion-col>
   <ion-col class="category-page" *ngIf="selectedSegment == 'categoryP'">
@@ -438,112 +254,9 @@
         </div>
       </ion-row>
     </ion-col>
-
+<!-- ----------------------table--------------------- -->
     <ion-col>
-      <table>
-        <thead class="table-head">
-          <tr class="table-head-content">
-            <th><span></span></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody class="table-body table-body-content">
-          <tr (click)="toggleDtailsDCD()">
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <div *ngIf="IsDCDDetailsShowing" class="table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-            <table class="">
-              <thead>
-                <th></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-              </tbody>
-            </table>
-          </div>
-          <tr (click)="toggleDtails()">
-            <td>
-              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
-
-              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <div *ngIf="IsDetailsShowing" class="table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-            <table class="">
-              <thead>
-                <th></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-              </tbody>
-            </table>
-          </div>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      
     </ion-col>
     <ion-col size="12">
       <ion-row class="ion-justify-content-center ion-margin-top">
@@ -633,112 +346,9 @@
         </div>
       </ion-row>
     </ion-col>
-
+<!-- --------------table----------------- -->
     <ion-col>
-      <table>
-        <thead class="table-head">
-          <tr class="table-head-content">
-            <th><span></span></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody class="table-body table-body-content">
-          <tr (click)="toggleDtailsDCD()">
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <div *ngIf="IsDCDDetailsShowing" class="table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-            <table class="">
-              <thead>
-                <th></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-              </tbody>
-            </table>
-          </div>
-          <tr (click)="toggleDtails()">
-            <td>
-              <!-- <ion-icon class="isShowing" name="chevron-up-outline"> </ion-icon> -->
-
-              <ion-icon class="isNotShowing" name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <div *ngIf="IsDetailsShowing" class="table-detail">
-            <!-- <div class="table-line-ver"></div>
-            <div class="table-line-horiz"></div> -->
-            <table class="">
-              <thead>
-                <th></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-              </tbody>
-            </table>
-          </div>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="table-body-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      
     </ion-col>
     <ion-col size="12">
       <ion-row class="ion-justify-content-center ion-margin-top">

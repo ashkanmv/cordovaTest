@@ -1,10 +1,4 @@
-.table-lightblue-bg{
-    background: #bce2fe;
-}
 
-// .box-shadow{
-//     box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
-// }
 
 ion-item{
     --background: var(--ion-color-light);
@@ -33,9 +27,9 @@ ion-toolbar{
 ion-col.segment-change{
     --height: 3rem;
     ion-segment{
-        border-bottom: 2px solid  var(--ion-color-primary) ;
+        border-bottom: 2px solid  #0095EB ;
         ion-segment-button{
-            --background-checked: var(--ion-color-primary);
+            --background-checked: #0095EB;
             --indicator-color:var(--ion-color-dark);
             --indicator-height:	10px;	
             padding:.5rem 0;
@@ -187,7 +181,7 @@ table{
 
         }
         .route{
-            color:  var(--ion-color-primary);
+            color:  #0095EB;
         }
     }
     tbody{
