@@ -8,6 +8,9 @@ import { environment } from 'src/environments/environment';
 export class UtilService {
   userLogUrl: string;
   lang;
+  // old rys for score card
+  server = true;
+
   constructor(private http: HttpClient) {}
 
   post_user_log(user_log: any) {
@@ -22,4 +25,8 @@ export class UtilService {
   get_lang() {
     return this.lang;
   }
+  // old rys for score card
+  set_server(value) {
+    this.server = value;
+}
 }

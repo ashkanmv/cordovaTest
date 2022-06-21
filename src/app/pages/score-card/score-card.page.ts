@@ -3,6 +3,7 @@ import { Data, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
+import { UtilService } from 'src/app/shared/util.service';
 import { ScoreCardService } from './score-card.service';
 
 @Component({
@@ -11,8 +12,6 @@ import { ScoreCardService } from './score-card.service';
   styleUrls: ['./score-card.page.scss'],
 })
 export class ScoreCardPage implements OnInit {
-  IsDetailsShowing = false;
-  IsDCDDetailsShowing = false;
   categoryRadio: 1 | 2 = 1;
   channelRadio: 1 | 2 = 1;
   categoryPRadio: 1 | 2 = 1;
@@ -44,7 +43,9 @@ export class ScoreCardPage implements OnInit {
   sec4CategorySelect = [];
   sec4SkuSelect = [];
   sec2CategorySelect = [];
-
+  // old rys
+  type1 = "sales";
+  server;
 
   color = [
     'rgba(230,25,75,0.2)',
@@ -77,11 +78,16 @@ export class ScoreCardPage implements OnInit {
   }
 
   constructor(
-    private router: Router,
+    private utilService : UtilService,
     private scoreCardService: ScoreCardService,
     private loadingCtrl: LoadingController,
     private languageService: LanguageService
   ) { }
+  // old rys
+  set_server_status(vale) {
+    this.server = vale;
+    this.utilService.set_server(vale);
+  }
 
   ngOnInit() {
     this.getToday();
@@ -585,18 +591,76 @@ export class ScoreCardPage implements OnInit {
     }
   }
 
-  toggleDtails() {
-    this.IsDetailsShowing = !this.IsDetailsShowing;
-  }
-
-  toggleDtailsDCD() {
-    this.IsDCDDetailsShowing = !this.IsDCDDetailsShowing;
-  }
 
   categorySectionChanged() {
     if (this.categoryRadio == 1)
       this.getSales1ByChannel();
     else
       this.getPped1ByChannel();
+  }
+
+  // old rys
+  create_model1(model, index) {
+    this.selected_channel1[index] = [];
+    if (model[0]) {
+      let keys = Object.keys(model[0]);
+      this.scorecards1.push(keys);
+      for (var i = 0; i < model.length; i++) {
+        let ch = model[i];
+        let temp = Object.keys(ch).map((key) => ch[key]);
+        for (var j = 1; j < temp.length; j++) {
+          if (temp[j] != null) {
+            temp[j] = parseFloat(temp[j]).toFixed(2);
+          }
+        }
+        this.selected_channel1[index].push(temp);
+      }
+    }
+  }
+
+
+
+  row_click1(row) {
+    if (row.type == "a") {
+      if (this.virtual_rows1[row.index + 1].show) {
+        this.virtual_rows1[row.index + 1].show = false;
+      } else {
+        this.virtual_rows1[row.index + 1].show = true;
+      }
+
+      if (this.type1 == "pped") {
+        this.scoreCardService
+          .getPped1ByChannelCategory(
+            this.ms_model_channel,
+            this.scorecards1[row.index][0]
+          )
+          .subscribe(
+            (customer_histories) => {
+              this.set_server_status(true);
+              this.create_model1(customer_histories, row.index + 1);
+            },
+            (error) => {
+              this.set_server_status(false);
+              console.log(error);
+            }
+          );
+      } else {
+        this.scoreCardService
+          .getSales1ByChannelCategory(
+            this.ms_model_channel,
+            this.scorecards1[row.index][0]
+          )
+          .subscribe(
+            (customer_histories) => {
+              this.set_server_status(true);
+              this.create_model1(customer_histories, row.index + 1);
+            },
+            (error) => {
+              this.set_server_status(false);
+              console.log(error);
+            }
+          );
+      }
+    }
   }
 }
