@@ -392,29 +392,6 @@ export class ScoreCardPage implements OnInit {
       colors.push(this.color[i]);
     }
 
-    var data31 = {
-      labels: labels,
-      datasets: [{
-        data: valus31,
-        backgroundColor: colors,
-
-      }]
-    };
-
-    var data32 = {
-      labels: labels,
-      datasets: [{
-        data: valus32,
-        backgroundColor: colors,
-
-      }]
-    };
-
-    console.log(data);
-    console.log(data32);
-    console.log(data31);
-
-
     this.columns1 = labels;
     this.columns2 = labels;
     this.data1 = data;
@@ -475,6 +452,10 @@ export class ScoreCardPage implements OnInit {
   // SEC 4
   chart_data2 = [];
   fourth_section_data;
+  columns3 = [];
+  data3 = [];
+  columns4 = [];
+  data4 = [];
   async Show_Channel_Percent() {
     if (this.fourth_section_data) {
       this.create_chart4();
@@ -543,45 +524,67 @@ export class ScoreCardPage implements OnInit {
     let colors = [];
     let valus41 = [];
     let valus42 = [];
-
+    let data = []
+    let data2 = []
     for (var i = 0; i < format_model.length; i++) {
+      data.push({
+        name: format_model[i][0],
+        data: +format_model[i][1]
+      })
+      data2.push({
+        name: format_model[i][0],
+        data: +format_model[i][2]
+      })
       labels.push(format_model[i][0]);
       valus41.push(format_model[i][1]);
       valus42.push(format_model[i][2]);
       colors.push(this.color[i]);
     }
 
-    var data41 = {
-      labels: labels,
-      datasets: [
-        {
-          data: valus41,
-          backgroundColor: colors,
-        },
-      ],
-    };
+    this.columns3 = labels;
+    this.columns4 = labels;
+    this.data3 = data;
+    this.data4 = data2;
+  }
 
-    var data42 = {
-      labels: labels,
-      datasets: [
-        {
-          data: valus42,
-          backgroundColor: colors,
-        },
-      ],
-    };
+  categorySelect4() {
+    this.skus4 = [];
+    this.scoreCardService.getSkusByCategory(this.selected_category4.join())
+      .subscribe(skus => this.skus4.push.apply(this.skus4, skus));
+  }
 
-    // new Chart(ctx41, {
-    //   type: "pie",
-    //   data: data41,
-    //   options: {},
-    // });
-    // new Chart(ctx42, {
-    //   type: "pie",
-    //   data: data42,
-    //   options: {},
-    // });
-    // // }, 1000);
+  channelPSectionSkus() {
+    if (this.channelPRadio == 1)
+      this.getSales4ByCatSku()
+    else this.getPped4ByCatSku()
+  }
+
+  async getSales4ByCatSku() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.scoreCardService.getSales4ByCatSku(this.selected_category4.join(), this.selected_sku4.join())
+      .subscribe((scorecard: any) => {
+        this.create_model4(scorecard);
+        this.chart_data2 = scorecard;
+        this.create_chart4();
+        loading.dismiss();
+      });
+  }
+
+  async getPped4ByCatSku() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.scoreCardService.getPped4ByCatSku(this.selected_category4.join(), this.selected_sku4.join())
+      .subscribe((scorecard: any) => {
+        this.create_model4(scorecard);
+        this.chart_data2 = scorecard;
+        this.create_chart4();
+        loading.dismiss();
+      });
   }
 
   Fill_Categroy_Sku_Filters(): Promise<any> {

@@ -564,16 +564,52 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg">
+          <button class="search-submit primary-bg" (click)="categorySelect4()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select multiple="true" interface="popover">
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-          </ion-select>
+
+          <ng-select *ngIf="sec4CategorySelect.length" [items]="sec4CategorySelect" [multiple]="true" bindLabel="Cat"
+            groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+            [closeOnSelect]="false" bindValue="Cat" [(ngModel)]="selected_category4">
+
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.Cat}}
+            </ng-template>
+
+          </ng-select>
+
+          <span class="search-icon">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </span>
+        </ion-item>
+      </ion-row>
+    </ion-col>
+    
+    <ion-col class="search-bar">
+      <ion-row class="search-box ion-justify-content-center">
+        <ion-item class="lightBlue-shadow">
+          <button class="search-submit primary-bg" (click)="channelPSectionSkus()">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+
+          <ng-select *ngIf="sec4SkuSelect.length" [items]="sec4SkuSelect" [multiple]="true" bindLabel="itemName"
+            groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+            [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_sku4">
+
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
+            </ng-template>
+
+          </ng-select>
+
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
           </span>
@@ -586,11 +622,11 @@
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="channelPRadio" />
+              <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="channelPRadio" (change)="getSales4ByCatSku()" />
               <label for="sales">Sales</label>
             </div>
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="channelPRadio" />
+              <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="channelPRadio" (change)="getPped4ByCatSku()" />
               <label for="pped">PPED</label>
             </div>
           </div>
@@ -706,7 +742,12 @@
     </ion-col>
     <ion-col size="12">
       <ion-row class="ion-justify-content-center ion-margin-top">
-        <app-pie-charts></app-pie-charts>
+        <app-pie-charts [columns]="columns3" [series]="data3" *ngIf="columns3.length && data3.length"></app-pie-charts>
+      </ion-row>
+    </ion-col>
+    <ion-col size="12">
+      <ion-row class="ion-justify-content-center ion-margin-top">
+        <app-pie-charts [columns]="columns4" [series]="data4" *ngIf="columns4.length && data4.length"></app-pie-charts>
       </ion-row>
     </ion-col>
   </ion-col>
