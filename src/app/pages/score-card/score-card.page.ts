@@ -128,15 +128,13 @@ export class ScoreCardPage implements OnInit {
       message: 'Please wait...',
     });
     await loading.present();
-    this.scoreCardService
-      .getSales1ByChannel(this.selected_channel1.join())
-      .subscribe((scorecard) => {
-        if (scorecard.length) {
-          this.create_total_model1(scorecard);
-          this.first_section_data = scorecard;
-        }
-        loading.dismiss();
-      });
+    this.scoreCardService.getSales1ByChannel(this.selected_channel1.join()).subscribe((scorecard) => {
+      if (scorecard.length) {
+        this.create_total_model1(scorecard);
+        this.first_section_data = scorecard;
+      }
+      loading.dismiss();
+    });
   }
 
   async getPped1ByChannel() {
@@ -195,6 +193,13 @@ export class ScoreCardPage implements OnInit {
     }
   }
 
+  categorySection() {
+    if (this.categoryRadio == 1)
+      this.getSales1ByChannel();
+    else
+      this.getPped1ByChannel();
+  }
+
   // SEC 2
   IsFilterLoaded = false;
   second_section_data;
@@ -217,21 +222,32 @@ export class ScoreCardPage implements OnInit {
     );
   }
 
+  async getPped2ByCatSku() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.scoreCardService.getPped2ByCatSku(this.selected_category2.join(), this.selected_sku2.join())
+      .subscribe(
+        scorecard => {
+          this.create_model2(scorecard);
+          loading.dismiss();
+        });
+  }
+
   async get_categories2() {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
     await loading.present();
-    this.scoreCardService
-      .getSales2ByCatSku(this.selected_category2.join(), this.selected_sku2.join())
-      .subscribe(
-        scorecard2 => {
-          this.create_model2(scorecard2);
-          loading.dismiss();
-          this.second_section_data = scorecard2;
-        },
-        (error) => (this.second_section_data = undefined)
-      );
+    this.scoreCardService.getSales2ByCatSku(this.selected_category2.join(), this.selected_sku2.join()).subscribe(
+      scorecard2 => {
+        this.create_model2(scorecard2);
+        loading.dismiss();
+        this.second_section_data = scorecard2;
+      },
+      (error) => (this.second_section_data = undefined)
+    );
   }
 
   create_model2(model) {
@@ -257,6 +273,12 @@ export class ScoreCardPage implements OnInit {
     }
   }
 
+  channelSectionSkus() {
+    if (this.channelRadio == 1)
+      this.get_categories2();
+    else
+      this.getPped2ByCatSku();
+  }
 
   // Sec 3
   chart_data1 = [];
@@ -412,6 +434,42 @@ export class ScoreCardPage implements OnInit {
 
     // });
     //your code to be executed after 1 second
+  }
+
+  categoryPSection() {
+    if (this.categoryRadio == 1)
+      this.getSales3ByChannel();
+    else
+      this.getPped3ByChannel();
+  }
+
+  async getPped3ByChannel() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.scoreCardService.getPped3ByChannel(this.selected_channel3.join()).subscribe(
+      (scorecard: any) => {
+        this.create_total_model3(scorecard);
+        this.chart_data1 = scorecard;
+        this.create_chart3();
+        loading.dismiss();
+      });
+  }
+
+  async getSales3ByChannel() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.scoreCardService.getSales3ByChannel(this.selected_channel3.join())
+      .subscribe(
+        (scorecard: any) => {
+          this.create_total_model3(scorecard);
+          this.chart_data1 = scorecard;
+          this.create_chart3();
+          loading.dismiss();
+        });
   }
 
   // SEC 4
@@ -591,12 +649,5 @@ export class ScoreCardPage implements OnInit {
 
   toggleDtailsDCD() {
     this.IsDCDDetailsShowing = !this.IsDCDDetailsShowing;
-  }
-
-  categorySectionChanged() {
-    if (this.categoryRadio == 1)
-      this.getSales1ByChannel();
-    else
-      this.getPped1ByChannel();
   }
 }

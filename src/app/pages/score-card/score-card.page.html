@@ -60,7 +60,7 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="categorySectionChanged()">
+          <button class="search-submit primary-bg" (click)="categorySection()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="channels1.length" [items]="channels1" [multiple]="true" bindLabel="GPSChannel"
@@ -88,11 +88,11 @@
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" [value]="1" [(ngModel)]="categoryRadio" id="" (change)="categorySectionChanged()" />
+              <input type="radio" name="radio-input-cat" [value]="1" [(ngModel)]="categoryRadio" id="" (change)="categorySection()" />
               <label for="sales">Sales</label>
             </div>
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" [value]="2" [(ngModel)]="categoryRadio" id="" (change)="categorySectionChanged()"/>
+              <input type="radio" name="radio-input-cat" [value]="2" [(ngModel)]="categoryRadio" id="" (change)="categorySection()"/>
               <label for="pped">PPED</label>
             </div>
           </div>
@@ -213,7 +213,7 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg">
+          <button class="search-submit primary-bg" (click)="categorySelect2()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <!-- <ion-select multiple="true" interface="popover">
@@ -246,7 +246,7 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg">
+          <button class="search-submit primary-bg" (click)="channelSectionSkus()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
@@ -275,11 +275,11 @@
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="channelRadio" />
+              <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="channelRadio" (change)="channelSectionSkus()" />
               <label for="sales">Sales</label>
             </div>
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="channelRadio" />
+              <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="channelRadio" (change)="channelSectionSkus()" />
               <label for="pped">PPED</label>
             </div>
           </div>
@@ -398,27 +398,20 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg">
+          <button class="search-submit primary-bg" (click)="categoryPSection()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <!-- <ion-select multiple="true" interface="popover">
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-          </ion-select> -->
 
-          <ng-select *ngIf="channels1.length" [items]="channels1" [multiple]="true" bindLabel="GPSChannel"
+          <ng-select *ngIf="selected_category_data.length" [items]="selected_category_data" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
-            [closeOnSelect]="false" bindValue="GPSChannel" [(ngModel)]="selected_channel1">
+            [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_channel3">
 
             <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
               <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
             </ng-template>
 
             <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.GPSChannel}}
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
             </ng-template>
 
           </ng-select>
@@ -434,11 +427,11 @@
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="categoryPRadio" />
+              <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="categoryPRadio" (change)="getSales3ByChannel()"/>
               <label for="sales">Sales</label>
             </div>
             <div class="ion-align-items-center">
-              <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="categoryPRadio" />
+              <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="categoryPRadio" (change)="getPped3ByChannel()"/>
               <label for="pped">PPED</label>
             </div>
           </div>
