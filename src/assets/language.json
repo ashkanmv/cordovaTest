@@ -66,7 +66,8 @@
             "Segment_category%": "CATEGORY %",
             "Segment_channel%": "CHANNEL %",
             "Radio_input_sales": "sales",
-            "Radio_input_PPED": "PPED"
+            "Radio_input_PPED": "PPED",
+            "group" : "All"
         },
         "login": {
             "title": "Login",

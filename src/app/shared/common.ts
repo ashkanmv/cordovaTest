@@ -69,6 +69,15 @@ export interface Polyline {
   latLng: LatLngTuple[];
   options: PolylineOptions;
 }
+
+export interface GetSales2ByCatSkuResponse {
+  Channels: string;
+  Today: number;
+  MTD: number;
+  RunRate: number;
+  "FM Projection": number;
+}
+
 export interface GetSrRouteResponse {
   routecode: string;
   routename: string;
@@ -336,6 +345,7 @@ export class Language {
     'Segment-channel%': string;
     'Radio-input-sales': string;
     'Radio-input-PPED': string;
+    group: string;
   };
   login: {
     title: string;
@@ -395,10 +405,10 @@ export class Language {
     Title: string;
     group: string;
   };
-  Max_PPED : {
-    Title :string;
-    group :string;
-}
+  Max_PPED: {
+    Title: string;
+    group: string;
+  }
 }
 
 export class CommonUtility {
