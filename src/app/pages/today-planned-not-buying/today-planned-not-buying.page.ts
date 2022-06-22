@@ -104,7 +104,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
       this.dcs = res;
       this.dcs.forEach((dc, i) => {
         this.selectedDc.push(dc.City);
-        this.dcList.push({ "id": i, "itemName": dc.City, group: this.language.Today_Planned_Not_Buying.Title });
+        this.dcList.push({ "id": i, "itemName": dc.City, group: this.language.Today_Planned_Not_Buying.group });
       });
       loading.dismiss();
       this.checkClusterAndDcsHasValue();
@@ -120,7 +120,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
       this.clusters = clusters;
       this.clusters.forEach((cluster, i) => {
         this.selectedCluster.push(cluster.CustomerType);
-        this.clustersList.push({ "id": i, "itemName": cluster.CustomerType, group: this.language.Today_Planned_Not_Buying.Title });
+        this.clustersList.push({ "id": i, "itemName": cluster.CustomerType, group: this.language.Today_Planned_Not_Buying.group });
       });
       loading.dismiss();
       this.checkClusterAndDcsHasValue();
