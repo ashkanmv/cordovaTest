@@ -685,8 +685,6 @@ export class ScoreCardPage implements OnInit {
     }
   }
 
-
-
   row_click1(row) {
     if (row.type == "a") {
       if (this.virtual_rows1[row.index + 1].show) {

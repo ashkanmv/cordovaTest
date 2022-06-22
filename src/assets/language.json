@@ -130,6 +130,10 @@
         "Max_PPED" : {
             "Title" : "Max PPED",
             "group" : "All"
+        },
+        "Today_Planned_Not_Buying" : {
+            "Title" : "Today Planned/Not Buying",
+            "group" : "All"
         }
     },
     "FR": {

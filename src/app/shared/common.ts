@@ -409,6 +409,10 @@ export class Language {
     Title: string;
     group: string;
   }
+  Today_Planned_Not_Buying: {
+    Title: string;
+    group: string;
+  }
 }
 
 export class CommonUtility {

@@ -3,15 +3,12 @@
     <ion-row class="primary-bg ion-justify-content-between">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
+          <ion-img class="back-button" src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col size="8" class="ion-text-start ion-align-self-center">
-        <ion-title class="ion-no-padding white-text ion-align-self-center"
-          ><h3>Today Planned/Not Buying</h3>
+        <ion-title class="ion-no-padding white-text ion-align-self-center">
+          <h3>{{language.Today_Planned_Not_Buying.Title}}</h3>
         </ion-title>
       </ion-col>
       <ion-col size="1" class="ion-align-self-center reload">
@@ -19,10 +16,7 @@
       </ion-col>
 
       <ion-col size="1" class="ion-justfy-self-end ion-align-self-center wifi">
-        <ion-img
-          class="wifi-online"
-          src="/assets\mainPage\main\wifi.png"
-        ></ion-img>
+        <ion-img class="wifi-online" src="/assets\mainPage\main\wifi.png"></ion-img>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -49,7 +43,7 @@
         <ion-row class="date-picker lightBlue-shadow">
           <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
           <ion-col class="ion-justify-content-end">
-            {{dateNow | date:'yyyy/MM/dd'}}
+            {{selectedDate | date:'yyyy/MM/dd'}}
             <ion-icon name="chevron-down-outline"></ion-icon>
           </ion-col>
         </ion-row>
@@ -57,11 +51,8 @@
     </ion-row>
     <ion-popover trigger="open-modal" show-backdrop="false">
       <ng-template>
-        <ion-datetime
-          size="cover"
-          showDefaultButtons="true"
-          presentation="date"
-        ></ion-datetime>
+        <ion-datetime #date [value]="selectedDate" (ionChange)="selectedDate = date.value; getTRoutesCity()"
+          size="cover" showDefaultButtons="true" presentation="date"></ion-datetime>
       </ng-template>
     </ion-popover>
     <!--  -->
@@ -72,16 +63,22 @@
         <ion-row class="search-box ion-justify-content-center">
           <ion-col size="12" class="ion-justify-content-center">
             <ion-item class="search-container lightBlue-shadow">
-              <button class="search-submit primary-bg">
+              <button class="search-submit primary-bg" (click)="getTRoutesCity()">
                 <ion-icon name="search-outline"></ion-icon>
               </button>
-              <ion-select multiple="true" interface="popover">
-                <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-                <ion-select-option value="rasht">RASHT</ion-select-option>
-                <ion-select-option value="tehran">TEHRAN</ion-select-option>
-                <ion-select-option value="karaj">KARAJ</ion-select-option>
-                <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-              </ion-select>
+              <ng-select *ngIf="dcList.length" [items]="dcList" [multiple]="true" bindLabel="itemName"
+                groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+                [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedDc">
+
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+                </ng-template>
+
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
+                </ng-template>
+
+              </ng-select>
               <span class="search-icon">
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </span>
@@ -89,16 +86,22 @@
           </ion-col>
           <ion-col size="12" class="ion-justify-content-center">
             <ion-item class="search-container lightBlue-shadow">
-              <button class="search-submit primary-bg">
+              <button class="search-submit primary-bg" (click)="getTRoutesCity()">
                 <ion-icon name="search-outline"></ion-icon>
               </button>
-              <ion-select multiple="true" interface="popover">
-                <ion-select-option value="rated-a+">A+</ion-select-option>
-                <ion-select-option value="rated-a">A</ion-select-option>
-                <ion-select-option value="rated-b">B</ion-select-option>
-                <ion-select-option value="rated-c">C</ion-select-option>
-                <ion-select-option value="rated-c">C</ion-select-option>
-              </ion-select>
+              <ng-select *ngIf="clustersList.length" [items]="clustersList" [multiple]="true" bindLabel="itemName"
+                groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+                [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedCluster">
+
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+                </ng-template>
+
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
+                </ng-template>
+
+              </ng-select>
               <span class="search-icon">
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </span>
@@ -118,11 +121,8 @@
           <th>Coute</th>
         </tr>
       </thead>
-      <tbody
-        class="table-body table-body-content"
-        *ngFor="let mockData of routeVisitorData; let i = index;"
-        [ngClass]="{'oddRows': 1 === i % 2}"
-      >
+      <tbody class="table-body table-body-content" *ngFor="let mockData of routeVisitorData; let i = index;"
+        [ngClass]="{'oddRows': 1 === i % 2}">
         <tr (click)="toggleDtails1()">
           <td class="table-body-icon">
             <ion-icon name="chevron-down-outline"></ion-icon> {{mockData.Route}}
@@ -133,10 +133,8 @@
         <div *ngIf="Is1DetailsShowing" class="table-detail">
           <div class="border">
             <table class="lightBlue-shadow">
-              <tbody
-                *ngFor="let mockDetailData of routeVisitorDetailData; let i = index;"
-                [ngClass]="{'oddRowsDetails': 0 === i % 2}"
-              >
+              <tbody *ngFor="let mockDetailData of routeVisitorDetailData; let i = index;"
+                [ngClass]="{'oddRowsDetails': 0 === i % 2}">
                 <tr>
                   <td><span>Name:</span> {{mockDetailData.Name}}</td>
                   <td><span>Number:</span> {{mockDetailData.Number}}</td>
