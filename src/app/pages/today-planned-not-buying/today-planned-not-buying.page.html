@@ -113,7 +113,73 @@
   </ion-col>
 
   <ion-col>
-    <table class="table">
+    <!--  -->
+    <table class="main-table">
+      <tr>
+        <td>
+          <table class="header-table" cellspacing="0" cellpadding="1">
+            <tr class="">
+              <th class=" firstcolumn">Route</th>
+              <th class=" ">Visitor</th>
+              <th class=" oddColumns">Count</th>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="5">
+          <div class="body-table-container">
+            <table class="body-table" *ngFor="let Master_row of ctrl.data; let i = index"
+              cellspacing="0" cellpadding="1">
+              <tr  (click)="Show_Load_Detail(Master_row , i)">
+                <td class="firstColumn">{{Master_row.Route}}</td>
+                <td  >{{Master_row.Visitor}}</td>
+                <td class="oddColumns" >{{Master_row.Others.length}}</td>
+              </tr>
+              <tr id="{{Master_row.Route}}_Detail" *ngIf="isVisible==i">
+                <td colspan="8">
+                  <table  class="details-table">
+                    <tr>
+                      <td>
+                        <div class="details-inner-table-container" *ngFor="let row of Master_row.Others; let j = index;let odd = odd">
+                          <table  class="details-inner-table" cellspacing="0" cellpadding="1">
+                              <thead>
+                                  <tr>
+                                      
+                                      <th [class]="odd ? 'detail-header-odd':'detail-header-even'">Name</th>
+                                      <th [class]="odd ? 'detail-header-odd':'detail-header-even'" >Number</th>
+                                  </tr>
+                                  
+                              </thead>
+                            <tr class="detail-rows">
+                                  <td  class="details-body">{{row.CustName}}</td>
+                                  <td  class="details-body">{{row.CustID}}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td  colspan="2" [class]="odd ? 'detail-header-odd':'detail-header-even'" >Address</td>
+                            </tr>
+                            <tr  class="">
+                              <td colspan="2" class="details-body">{{row.Address}}</td>
+                            </tr>
+                            
+                            <!-- <tr (click)="Child_Data(Master_row , j)" class="detail-rows">
+                              <td colspan="2" class="detail-rows">{{row.Address}}</td>
+                            </tr> -->
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <!--  -->
+    <!-- <table class="table">
       <thead class="table-head">
         <tr class="table-head-content">
           <th><span>Route</span></th>
@@ -149,6 +215,6 @@
           </div>
         </div>
       </tbody>
-    </table>
+    </table> -->
   </ion-col>
 </ion-content>

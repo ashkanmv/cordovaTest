@@ -24,6 +24,9 @@ export class TodayPlannedNotBuyingPage implements OnInit {
   groupbyedData = [];
   virtual_rows1 = [];
   troutes1 = [];
+  // old rys
+  isVisible = undefined;
+
 
   public get language(): Language {
     return this.languageService.language;
@@ -232,12 +235,19 @@ export class TodayPlannedNotBuyingPage implements OnInit {
     }
   }
 
-  // delete later
-  toggleDtails() {
-    this.IsDetailsShowing = !this.IsDetailsShowing;
+  // old rys
+  Show_Load_Detail(row , index)
+  {
+    if(this.isVisible == index)
+    {
+      this.isVisible = undefined;
+      return;
+    }
+      this.isVisible=index;
+    
   }
-  toggleDtails1() {
-    this.Is1DetailsShowing = !this.Is1DetailsShowing;
-  }
-  //
+  // Child_Data(row , index){
+  //   this.storageService.set('Customer_Number', row.Others[index].CustID);
+  //   this.open_customer_history();
+  // }
 }

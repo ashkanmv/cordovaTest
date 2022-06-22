@@ -1,15 +1,8 @@
-.oddRowsDetails{
-    background: #b8e2fa;
-}
-// .box-shadow{
-//     box-shadow: 5px 8px 16px 0 #e3f6ff, 0 6px 20px 0 #E6F5FC ;
 
-// }
 
 ion-toolbar ion-row{
     --background: var(--ion-color-light);
     --color: #0095EB;
-    // flex-wrap: nowrap;
 }
 ion-toolbar.ios{
     --ion-padding-bottom:0;
@@ -37,7 +30,6 @@ ion-input{
 }
 
 ion-img{
-    // max-width: 100px;
     max-width: 100%;
     // min-width: 80px;
 }
@@ -155,17 +147,18 @@ ion-col{
         ion-item.search-container{
             --background: none;
             width: 90%;
+            height: 10vh;
             border-radius: 10px;
             --padding-start:0;
-            ion-select{
+            ng-select{
                 width: 100%;
-                height: 100%;
+                height: 10vh;
             }
         }
         .search-submit{
             z-index: 2;
             width: 3rem;
-            height: 5rem;
+            height: 100%;
             border-radius: 10px 0 0 10px;
             ion-icon{
                 color: var(--ion-color-light);
@@ -198,229 +191,246 @@ ion-col{
     }
     }
     // ---table
-    
-    table{
+    table.main-table{
+        
+        width: 100vw;
         table-layout: fixed;
-        width: 100%;
-        margin: 0;
-        
-        tr{
-            cursor: pointer;
-            z-index: 3;
-          
-        }
-        td{
-            padding: 2px 0;
-            max-width: 10vw;
-
-    
-        }
-        .table-head{
-            .table-head-content{
-                font-weight: bold;
-                color: var(--ion-color-dark);
-                th{
-                    // font-size: 1.2rem;
-                    font-size: 3vw;
-                    height: 7vh;
-                    &:nth-child(odd){
-                        background: #f1f1f183;
-                    }        
+        table.header-table{
+            table-layout: fixed;
+            width: 100vw;
+          tr{  
+              th{
+                  background:#205172 ;
+                  height: 5vh;
+                  text-align: center;
+                  color: var(--ion-color-light);
+              }
+              .firstcolumn{
+                  width: 45vw;  
+                //   color: #0095EB;
                 }
-                >:first-child{
-                    color: #0095EB;
-                    // min-height: 20px;
+                &>:nth-child(2){
+                    width: 45vw;
                 }
-            
-            }
+                .oddColumns{
+                    width: 10vw;
+                }      
+          }  
         }
-        .table-body{
-           >tr{
-               >td{
-                //    font-size: 1.3rem;
-                   font-size: 2.7vw;
-                   color: var(--ion-color-dark);
-                   text-align: center;
-                   &:first-child{
-                       background: #e0e0e0b5;
-                       text-align: left;
-                       padding-left: 5px;            
-    
-                    }
-    
-                }
-               &>:first-child{
-                    max-width: 1rem;
-                    font-size: 1.1rem;
-               } 
-            }
-            
-            ion-icon{
-                font-size: 1.2rem;
-                padding:0 4px;
-            }
-            &-icon{
-                background: #dddddd;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-    }
-
-
-// ------------table------------------------
-table{
-
-    table-layout: fixed;
-    width: 100%;
-    margin: 0;
-    
-    tr{
-        cursor: pointer;
-        z-index: 3;
-       
-    }
-    td{
-        // white-space: nowrap;
-        padding: 2px 0;
-        max-width: 100px;
-
-    }
-    .table-head{
-        .table-head-content{
-            font-weight: bold;
-            color: var(--ion-color-dark);
-            th{
-                font-size: 1.1rem;
-            }
-            >:first-child{
-                // background: #dadada56;
-                background: #eeeff1;
-                color:#0095EB;
-                min-height: 20px;
-            }
-            >:nth-child(2){
-                width: 55%;
-
-            }
-            >:last-child{
-                width: 15%;
-                background: #dcdcdc92;
-            }
-        
-        }
-    }
-    .table-body{
-       >tr{
-            >td{
-                font-size: 1.1rem;
-                color: var(--ion-color-dark);
-                text-align: center;
-                &:first-child{
-                    text-align: left;
-                    padding-left: 5px;            
-                }
-            }
-            
-            >:last-child{
-                background: #dcdcdc92;
-            }
-        }
-        
-        ion-icon{
-            font-size: 1.2rem;
-            padding-right: 4px;
-        }
-        &-icon{
-            background: #e0e0e0bf;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-    .table-detail{
-        background: var(--ion-color-light);
-        .border{
-            border-left: 2px #0095EB solid;
-            margin-left: 1rem;
-            padding: 1rem 0 0;
-        &>table{
-            width: 90vw;
-            margin:0 1rem 1rem;
-            // box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-            position: relative;
-            td{
-                white-space: nowrap;
-
-            }
-            
-            
-            .line-1{
-                background: #0095EB;
-                position: absolute;
-                top: 3rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-2{
-                background:#0095EB;
-                position: absolute;
-                top: 11rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-3{
-                background: #0095EB;
-                position: absolute;
-                bottom: 11.5rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-4{
-                background: #0095EB;
-                position: absolute;
-                bottom: 3.8rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-        }
-        tr{
-            display: grid;
-            grid-template-columns: auto auto;
-            padding: 1rem 1rem 0;
-        }
-
-        td{
-            height: 10vh;
-            span{
-                color: #343593;
-                font-weight: bold;
-            }
-        }
-        tbody{
-            text-align: center;
-        }
-    }
-}
-}
-@media (max-width:450px) {
-    table{
-        .table-detail{
-            .border{
+        .body-table-container{
+            height:100vw;
+            overflow:auto;
+            table.body-table{
+                width: 100vw;
+                table-layout: fixed;
                 tr{
-                    grid-template-columns: auto ;
+                    td{
+                        height: 5vh;
+                        text-align: center;
+                    }
+                    .firstColumn{
+                        width: 45vw;  
+                        background: #7dcfff;
+                        color: var(--ion-color-light);
+                      }
+                      &>:nth-child(2){
+                          width: 45vw;
+                      }
+                      .oddColumns{
+                          width: 10vw;
+                      }    
                 }
-
+                table.details-table{
+                    .details-inner-table-container{
+                        table.details-inner-table{
+                            width: 100vw;
+                        }
+                    }
+                    th{
+                        height: 5vh;
+                    }
+                    width: 100vw;
+                    .detail-header-odd{
+                        background: #dde1ef;
+                    }
+                    .detail-header-even{
+                        background: #edeff5;
+                    }
+                    .details-body{
+                        background: #d5f0ff;
+                    }
+                }
             }
         }
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// table{
+
+//     table-layout: fixed;
+//     width: 100%;
+//     margin: 0;
+    
+//     tr{
+//         cursor: pointer;
+//         z-index: 3;
+       
+//     }
+//     td{
+//         // white-space: nowrap;
+//         padding: 2px 0;
+//         max-width: 100px;
+
+//     }
+//     .table-head{
+//         .table-head-content{
+//             font-weight: bold;
+//             color: var(--ion-color-dark);
+//             th{
+//                 font-size: 1.1rem;
+//             }
+//             >:first-child{
+//                 // background: #dadada56;
+//                 background: #eeeff1;
+//                 color:#0095EB;
+//                 min-height: 20px;
+//             }
+//             >:nth-child(2){
+//                 width: 55%;
+
+//             }
+//             >:last-child{
+//                 width: 15%;
+//                 background: #dcdcdc92;
+//             }
+        
+//         }
+//     }
+//     .table-body{
+//        >tr{
+//             >td{
+//                 font-size: 1.1rem;
+//                 color: var(--ion-color-dark);
+//                 text-align: center;
+//                 &:first-child{
+//                     text-align: left;
+//                     padding-left: 5px;            
+//                 }
+//             }
+            
+//             >:last-child{
+//                 background: #dcdcdc92;
+//             }
+//         }
+        
+//         ion-icon{
+//             font-size: 1.2rem;
+//             padding-right: 4px;
+//         }
+//         &-icon{
+//             background: #e0e0e0bf;
+//             align-items: center;
+//             justify-content: center;
+//         }
+//     }
+//     .table-detail{
+//         background: var(--ion-color-light);
+//         .border{
+//             border-left: 2px #0095EB solid;
+//             margin-left: 1rem;
+//             padding: 1rem 0 0;
+//         &>table{
+//             width: 90vw;
+//             margin:0 1rem 1rem;
+//             // box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
+//             position: relative;
+//             td{
+//                 white-space: nowrap;
+
+//             }
+            
+            
+//             .line-1{
+//                 background: #0095EB;
+//                 position: absolute;
+//                 top: 3rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+//             .line-2{
+//                 background:#0095EB;
+//                 position: absolute;
+//                 top: 11rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+//             .line-3{
+//                 background: #0095EB;
+//                 position: absolute;
+//                 bottom: 11.5rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+//             .line-4{
+//                 background: #0095EB;
+//                 position: absolute;
+//                 bottom: 3.8rem;
+//                 left: -1rem;
+//                 height: 1.5px;
+//                 width: 1rem;
+//             }
+//         }
+//         tr{
+//             display: grid;
+//             grid-template-columns: auto auto;
+//             padding: 1rem 1rem 0;
+//         }
+
+//         td{
+//             height: 10vh;
+//             span{
+//                 color: #343593;
+//                 font-weight: bold;
+//             }
+//         }
+//         tbody{
+//             text-align: center;
+//         }
+//     }
+// }
+// }
+// @media (max-width:450px) {
+//     table{
+//         .table-detail{
+//             .border{
+//                 tr{
+//                     grid-template-columns: auto ;
+//                 }
+
+//             }
+//         }
+
+//     }
 
     
 
           
             
-}
+// }
