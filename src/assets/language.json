@@ -135,6 +135,11 @@
             "Title" : "Today Planned/Not Buying",
             "group" : "All"
         }
+        ,
+        "DailyStatus" : {
+            "Title" : "Daily Status",
+            "group" : "All"
+        }
     },
     "FR": {
         "Customer_History": {

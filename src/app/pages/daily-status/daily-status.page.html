@@ -1,20 +1,16 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row
-      class="primary-bg ion-justify-content-between header ion-no-margin"
-    >
+    <ion-row class="primary-bg ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
+          <ion-img class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col size="2"></ion-col>
       <ion-col size="6" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text">
-          <h3><b>Daily Status</b></h3>
+          <h3><b>{{language.DailyStatus.Title}}</b></h3>
         </ion-title>
       </ion-col>
       <ion-col></ion-col>
@@ -23,10 +19,7 @@
         </ion-img>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
-        <ion-img
-          class="wifi-online"
-          src="\assets\mainPage\main\wifi.png"
-        ></ion-img>
+        <ion-img class="wifi-online" src="\assets\mainPage\main\wifi.png"></ion-img>
       </ion-col>
     </ion-row>
     <!--  -->
@@ -45,12 +38,7 @@
     </ion-row>
   </ion-grid>
   <ion-col class="ion-no-padding segment-change">
-    <ion-segment
-      mode="md"
-      class="ion-justify-content-between"
-      (ionChange)="segmentChanged($event)"
-      value="tablet"
-    >
+    <ion-segment mode="md" class="ion-justify-content-between" (ionChange)="segmentChanged($event)" value="tablet">
       <ion-segment-button class="tablet" value="tablet">
         <ion-label>Tablet</ion-label>
       </ion-segment-button>
@@ -70,7 +58,7 @@
           <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <ion-col id="open-popover" class="ion-justify-content-end">
-              {{dateNow | date:'yyyy/MM/dd'}}
+              {{tabletDate | date:'yyyy/MM/dd'}}
               <ion-icon name="chevron-down-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -78,18 +66,11 @@
       </ion-row>
       <ion-popover trigger="open-popover" show-backdrop="false">
         <ng-template>
-          <ion-datetime
-            size="cover"
-            showDefaultButtons="true"
-            presentation="date"
-          >
+          <ion-datetime #tabletDateE [value]="tabletDate" (ionChange)="tabletDate = tabletDateE.value; getCommutecityT()"
+            size="cover" showDefaultButtons="true" presentation="date">
             <ion-buttons slot="buttons">
-              <ion-button (click)="reset()"
-                >{{language.DatePicker.reset}}</ion-button
-              >
-              <ion-button (click)="confirm()"
-                >{{language.DatePicker.confirm}}</ion-button
-              >
+              <ion-button (click)="tabletDateE.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="tabletDateE.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
             </ion-buttons>
           </ion-datetime>
         </ng-template>
@@ -98,16 +79,22 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg">
+          <button class="search-submit primary-bg" (click)="getCommutecityT()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select multiple="true" interface="popover">
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-          </ion-select>
+          <ng-select *ngIf="tabletDropDown.length" [items]="tabletDropDown" [multiple]="true" bindLabel="itemName"
+            groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+            [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedTabletDc">
+
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
+            </ng-template>
+
+          </ng-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
           </span>
@@ -130,11 +117,8 @@
             <th>OOR</th>
           </tr>
         </thead>
-        <tbody
-          *ngFor="let mockData of dailyStatusData;let i = index;"
-          [ngClass]="{'oddRows' : 0 === i % 2}"
-          class="table-body table-body-content"
-        >
+        <tbody *ngFor="let mockData of dailyStatusData;let i = index;" [ngClass]="{'oddRows' : 0 === i % 2}"
+          class="table-body table-body-content">
           <tr>
             <td class="table-body-icon">
               <ion-icon name="chevron-down-outline"></ion-icon>
@@ -181,7 +165,7 @@
           <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <ion-col id="open-popover" class="ion-justify-content-end">
-              {{dateNow | date:'yyyy/MM/dd'}}
+              {{truckDate | date:'yyyy/MM/dd'}}
               <ion-icon name="chevron-down-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -190,18 +174,11 @@
       <!--  -->
       <ion-popover trigger="open-popover" show-backdrop="false">
         <ng-template>
-          <ion-datetime
-            size="cover"
-            showDefaultButtons="true"
-            presentation="date"
-          >
+          <ion-datetime #truckDateE [value]="truckDate" (ionChange)="truckDate = truckDateE.value;getCommutecity()"
+            size="cover" showDefaultButtons="true" presentation="date">
             <ion-buttons slot="buttons">
-              <ion-button (click)="reset()"
-                >{{language.DatePicker.reset}}</ion-button
-              >
-              <ion-button (click)="confirm()"
-                >{{language.DatePicker.confirm}}</ion-button
-              >
+              <ion-button (click)="truckDateE.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="truckDateE.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
             </ion-buttons>
           </ion-datetime>
         </ng-template>
@@ -211,16 +188,22 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg">
+          <button class="search-submit primary-bg" (click)="getCommutecity()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ion-select multiple="true" interface="popover">
-            <ion-select-option value="esfahan">ESFAHAN</ion-select-option>
-            <ion-select-option value="rasht">RASHT</ion-select-option>
-            <ion-select-option value="tehran">TEHRAN</ion-select-option>
-            <ion-select-option value="karaj">KARAJ</ion-select-option>
-            <ion-select-option value="shiraz">SHIRAZ</ion-select-option>
-          </ion-select>
+          <ng-select *ngIf="truckDropDown.length" [items]="truckDropDown" [multiple]="true" bindLabel="itemName"
+            groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+            [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedTruckDc">
+
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
+            </ng-template>
+
+          </ng-select>
           <span class="search-icon">
             <ion-icon name="chevron-down-outline"></ion-icon>
           </span>

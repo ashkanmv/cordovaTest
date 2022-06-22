@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DailyStatusPageRoutingModule } from './daily-status-routing.module';
 
 import { DailyStatusPage } from './daily-status.page';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DailyStatusPageRoutingModule
+    DailyStatusPageRoutingModule,
+    NgSelectModule
   ],
   declarations: [DailyStatusPage]
 })
