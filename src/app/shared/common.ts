@@ -413,6 +413,10 @@ export class Language {
     Title: string;
     group: string;
   }
+  DailyStatus: {
+    Title: string;
+    group: string;
+  }
 }
 
 export class CommonUtility {
