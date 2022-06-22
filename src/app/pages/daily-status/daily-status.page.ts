@@ -22,11 +22,14 @@ export class DailyStatusPage implements OnInit {
   virtual_rows = [];
   commutes_t = [];
   virtual_rows_t = [];
+  // old rys
+  selected_dc_t;
+  selected_ch_t;
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
 
   IsDetailsShowing = true;
   IsDCDDetailsShowing = false;
-  selectedSegment: string = 'truck';
+  selectedSegment: string = 'tablet';
   // mock data
   public dailyStatusData: Array<any> = [
     {
@@ -132,7 +135,8 @@ export class DailyStatusPage implements OnInit {
   constructor(private languageService: LanguageService,
     private storageServiec: StorageService,
     private loadingCtrl: LoadingController,
-    private dailySalesService: DailyStatusService) { }
+    private dailySalesService: DailyStatusService,
+    private dailyStatusService : DailyStatusService) { }
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }
@@ -313,5 +317,28 @@ export class DailyStatusPage implements OnInit {
       this.virtual_rows_t.push(v_row2);
     }
     loading.dismiss();
+  }
+  // old rys
+  row_click_t(row) {
+    if (row.type == 'a') {
+      if (this.virtual_rows_t[row.index + 1].show) {
+        this.virtual_rows_t[row.index + 1].show = false;
+      } else {
+        this.virtual_rows_t[row.index + 1].show = true;
+      }
+        this.dailyStatusService.getCommuteDetail(this.selectedTabletDc, this.commutes_t[row.index][0])
+          // .subscribe(
+          // customer_histories => {
+          //   this.set_server_status(true);
+          //   this.create_model_t(customer_histories, row.index + 1);
+          // },
+          // error => {
+          //   this.set_server_status(false);
+          //   console.log(error);
+          // });
+  
+    }
+
+
   }
 }

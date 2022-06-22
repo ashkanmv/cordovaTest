@@ -256,135 +256,18 @@ ion-col{
     }
 }
 }
-// ---table
 
-table{
-    table-layout: fixed;
-    width: 100%;
-    margin: 0;
-    
-    tr{
-        cursor: pointer;
-        z-index: 3;
-      
-    }
-    td{
-        padding: 2px 0;
-        max-width: 10vw;
-        &:nth-child(odd){
-            background: #f1f1f183;
-        }
-
-    }
-    .table-head{
-        .table-head-content{
-            font-weight: bold;
-            color: var(--ion-color-dark);
-            th{
-                // font-size: 1.2rem;
-                font-size: 3vw;
-                height: 7vh;
-                &:nth-child(odd){
-                    background: #f1f1f183;
-                }        
-            }
-            >:first-child{
-                color: #0095EB;
-                // min-height: 20px;
-            }
-        
-        }
-    }
-    .table-body{
-       >tr{
-           >td{
-            //    font-size: 1.3rem;
-               font-size: 2.7vw;
-               color: var(--ion-color-dark);
-               text-align: center;
-               &:first-child{
-                   background: #e0e0e0b5;
-                   text-align: left;
-                   padding-left: 5px;            
-
-                }
-
-            }
-           &>:first-child{
-                max-width: 1rem;
-                font-size: 1.1rem;
-           } 
-        }
-        
-        ion-icon{
-            font-size: 1.2rem;
-            padding:0 4px;
-        }
-        &-icon{
-            background: #dddddd;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
-    // ---------table-detail--------------
-    .table-detail{
-        padding: 3vh 0;
-        height: 17vw;
-        background: var(--ion-color-medium-contrast);
-        // background: var(--ion-color-light);
-        
-        &>table{
-            width: 89vw;
-            height: 10vh;
-            // box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
-            position: relative;
-            left: 5vw;
-        }
-        thead{
-            :first-child{
-                border-right:1px  #0095EB 24 solid ;
-            }
-        }
-        th{
-            color: #282828;
-            background: #45c9fa;
-            min-width: 200px;
-            // font-size: 1.2rem;
-            height: 5vh;
-        }
-        tbody{
-            text-align: center;
-            height: 5vh;
-            :first-child{
-                color: var(--ion-color-light);
-                background: #0094ea;
-            }
-            td{
-                height: 5vh;
-            }
-
-        }
-        .table-line-ver{
-            position: absolute;
-            top:75px;
-            left: 14px;
-            width: 2px;
-            height: 70px;
-        }
-        .table-line-horiz{
-            position: absolute;
-            top:135px;
-            left: 16px;
-            width:60px;
-            height: 2px;
+    // ---------table---------------
+    ion-grid.maingrid{
+        .firstrow{}
+        ion-col{
+            width: 10vw;
         }
 
     }
 
-    
-    
-}
+
+
 
 // truck table
 
