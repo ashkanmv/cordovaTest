@@ -172,16 +172,15 @@
   <!-- ==============================questions=================================== -->
   <!-- ==============================questions=================================== -->
 
-  <ion-col
+  <ion-grid
     dir="{{get_direction()}}"
-    dir="ltr"
     *ngFor="let question of questions; let i = index"
     class="ion-justify-content-center questions-list"
   >
     <ion-row>
       <ion-label class="questions">{{question.text}}</ion-label>
       <ng-container *ngIf="question.type=='yn' ">
-        <ion-list class="radio-input-container">
+        <ion-list class="radio-input-container ion-align-items-center ion-justify-content-around ">
           <ion-row *ngFor="let answer of question.answers; let j = index">
             <ion-list class="radio-input-box ion-align-items-center">
               <ion-item>
@@ -197,13 +196,12 @@
           <ion-row>
             <ion-col>
               <ng-container *ngIf="question.has_image && active_camera(i)">
-                <button
-                  ion-button
+                <ion-button
                   color="{{get_pic_status(i)}}"
                   (click)="onCamera(i)"
                 >
                   <ion-icon name="camera"></ion-icon>
-                </button>
+                </ion-button>
               </ng-container>
             </ion-col>
             <ion-col>
@@ -223,9 +221,9 @@
         <ion-col
           *ngIf="question.type=='tx' "
           size="12"
-          class="text-input-container"
+          class="text-input-container ion-justify-content-center ion-align-items-center "
         >
-          <ion-row>
+          <ion-row class="ion-justify-content-center">
             <ion-input
               [(ngModel)]="txtanswers[i]"
               type="text"
@@ -245,7 +243,7 @@
         </ion-item>
       </ng-container>
     </ion-row>
-  </ion-col>
+  </ion-grid>
   <div class="ion-justify-content-center ion-align-items-center btn-container">
     <button class="btn-submit">Submit</button>
   </div>

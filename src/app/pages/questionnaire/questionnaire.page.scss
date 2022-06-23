@@ -84,15 +84,12 @@ ion-popover{
 ion-select.select-drop-down{
     --backdrop-opacity:0;
     --width:70vw;
-    // --min-width:200px;
     --offset-x:5vw;
     --offset-y:-2vh;
-    // --width:500px;
-    // --offset-x:16%;
+
 
     ion-content{
         cursor: pointer;
-        // --color:#8f8f8f ;
         --color:#8f8f8f ;
         --padding-top: .9rem ;
         --padding-bottom: .9rem ;
@@ -125,10 +122,7 @@ ion-label.questions{
     color: #0095EB;
     font-size: 1.5rem;
     font-weight: bold;
-    padding-bottom: .7rem;
-    // padding-left: 3.5rem;
-    padding-right: 3.5rem;
-    text-align: right;
+    padding: 1vh 5vh 0;
     width: 100%;
 }
 
@@ -137,26 +131,19 @@ ion-col.text-input-container{
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: right;    
     ion-row{
-        // width: 65vw;
         width: 90%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         ion-label{
             color:#0095EB ;
             font-size: 1.5rem;
             font-weight: bold;
-            padding-bottom: .7rem;
-            padding-left: 1rem;
+            padding: 1vh 5vh 0;
         }
     }
     
     ion-input{
-        // background: #e0e0e06c;
         border-radius: 10px;
         height: 2rem;
         --padding-top:1.5rem;
@@ -173,9 +160,7 @@ ion-list.radio-input-container{
     border-radius: 10px;
     display: grid;
     grid-template-columns: auto auto;
-    justify-content: space-around;
-    align-items: center;
-    margin:0 4.5vw ;
+    margin:3vh 4.5vw 0;
     ion-list.radio-input-box{
         background: none;      
         ion-label{
@@ -197,7 +182,6 @@ ion-list.radio-input-container{
     display: flex;
     button.btn-submit{
         margin: 2rem 0;
-        // width: 60vw;
         width: 80%;
         height: 9vh;
         font-size: 2rem;

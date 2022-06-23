@@ -33,9 +33,7 @@ export class QuestionnairePage implements OnInit {
   txtanswers = [];
   userId: string;
   customerNumber: string;
-  // // ==
-  // answers = [];
-  // // ==
+
   public get language(): Language {
     return this.languageService.language;
   }
@@ -56,7 +54,7 @@ export class QuestionnairePage implements OnInit {
     if (customerNumber) this.open_OtherForm(customerNumber);
     else this.get_cities();
   }
-  // added lang anf get_lang to utili service
+  // added lang and get_lang to utili service
   get_direction() {
     let lang = this.utilService.get_lang();
     if (lang == 'en') {
