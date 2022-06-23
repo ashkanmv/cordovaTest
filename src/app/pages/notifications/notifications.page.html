@@ -11,7 +11,7 @@
       </ion-col>
       <ion-col size="8" class="ion-text-center">
         <ion-title>
-          <h3><b>Notifications</b></h3>
+          <h3><b>{{language.News.Title}}</b></h3>
         </ion-title>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
@@ -38,6 +38,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="100" pullMax="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button routerLink="/add-item">
       <ion-icon name="add"></ion-icon>
@@ -50,10 +53,10 @@
     <ion-slides pager="true" [options]="slideOpts">
       <ion-slide>
         <ion-card class="add">
-          <button class="btn-edit">
+          <button class="btn-edit" *ngIf="hasAccess">
             <img src="\assets\pages\notifications\Group 1298.png" alt="" />
           </button>
-          <button class="btn-delete">
+          <button class="btn-delete" *ngIf="hasAccess">
             <img src="\assets\pages\notifications\Group 1299.png" alt="" />
           </button>
           <ion-card-header>
@@ -67,10 +70,10 @@
       <ion-slide>
         <ion-card class="add">
           <ion-card-header>
-            <button class="btn-edit">
+            <button class="btn-edit" *ngIf="hasAccess">
               <img src="\assets\pages\notifications\Group 1298.png" alt="" />
             </button>
-            <button class="btn-delete">
+            <button class="btn-delete" *ngIf="hasAccess">
               <img src="\assets\pages\notifications\Group 1299.png" alt="" />
             </button>
             <img src="\assets\pages\notifications\Card-img.png" alt="" />
@@ -85,10 +88,10 @@
       <ion-slide>
         <ion-card class="add">
           <ion-card-header>
-            <button class="btn-edit">
+            <button class="btn-edit" *ngIf="hasAccess">
               <img src="\assets\pages\notifications\Group 1298.png" alt="" />
             </button>
-            <button class="btn-delete">
+            <button class="btn-delete" *ngIf="hasAccess">
               <img src="\assets\pages\notifications\Group 1299.png" alt="" />
             </button>
             <img src="\assets\pages\notifications\Card-img.png" alt="" />
@@ -102,10 +105,10 @@
   </ion-col>
   <ion-col class="notifications">
     <ion-card>
-      <button class="btn-edit">
+      <button class="btn-edit" *ngIf="hasAccess">
         <img src="\assets\pages\notifications\Group 1298.png" alt="" />
       </button>
-      <button class="btn-delete">
+      <button class="btn-delete" *ngIf="hasAccess">
         <img src="\assets\pages\notifications\Group 1299.png" alt="" />
       </button>
       <ion-card-content
@@ -120,10 +123,10 @@
       <p class="time-posted">1h ago</p>
     </ion-card>
     <ion-card>
-      <button class="btn-edit">
+      <button class="btn-edit" *ngIf="hasAccess">
         <img src="\assets\pages\notifications\Group 1298.png" alt="" />
       </button>
-      <button class="btn-delete">
+      <button class="btn-delete" *ngIf="hasAccess">
         <img src="\assets\pages\notifications\Group 1299.png" alt="" />
       </button>
       <ion-card-content
@@ -135,4 +138,9 @@
       <p class="time-posted">1h ago</p>
     </ion-card>
   </ion-col>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" [loadingText]="language.News.Loading">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

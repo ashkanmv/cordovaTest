@@ -70,6 +70,18 @@ export interface Polyline {
   options: PolylineOptions;
 }
 
+export interface News {
+  id: string;
+  title: string;
+  pic: string;
+  text: string;
+  type: string;
+  status: string;
+  create_at: Date;
+  Mod_DT: Date;
+  Mod_User: number;
+}
+
 export interface GetSales2ByCatSkuResponse {
   Channels: string;
   Today: number;
@@ -416,6 +428,19 @@ export class Language {
   DailyStatus: {
     Title: string;
     group: string;
+  }
+  News: {
+    Title: string;
+    Loading: string;
+    EndOfNotifications: string;
+    NotificationDeleted: string;
+  }
+  Add_Edit_News: {
+    Camera : string;
+    Gallery : string;
+    Title : string;
+    Description : string;
+    Submit : string;
   }
 }
 

@@ -11,10 +11,11 @@ import { BackgroundGeolocation } from '@awesome-cordova-plugins/background-geolo
 import { HighchartsChartModule } from 'highcharts-angular';
 import { GlobalInterceptorService } from './global-interceptor.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddEditNotificationComponent } from './pages/notifications/add-edit-notification/add-edit-notification.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,AddEditNotificationComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     HighchartsChartModule,
     IonicStorageModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     BackgroundGeolocation,

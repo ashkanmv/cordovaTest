@@ -67,7 +67,7 @@
             "Segment_channel%": "CHANNEL %",
             "Radio_input_sales": "sales",
             "Radio_input_PPED": "PPED",
-            "group" : "All"
+            "group": "All"
         },
         "login": {
             "title": "Login",
@@ -125,20 +125,32 @@
         },
         "Sales_Compare_Tracking_Hourly": {
             "Title": "Sales Compare Tracking Hourly",
-            "group" : "All"
+            "group": "All"
         },
-        "Max_PPED" : {
-            "Title" : "Max PPED",
-            "group" : "All"
+        "Max_PPED": {
+            "Title": "Max PPED",
+            "group": "All"
         },
-        "Today_Planned_Not_Buying" : {
-            "Title" : "Today Planned/Not Buying",
-            "group" : "All"
-        }
-        ,
-        "DailyStatus" : {
-            "Title" : "Daily Status",
-            "group" : "All"
+        "Today_Planned_Not_Buying": {
+            "Title": "Today Planned/Not Buying",
+            "group": "All"
+        },
+        "DailyStatus": {
+            "Title": "Daily Status",
+            "group": "All"
+        },
+        "News": {
+            "Title": "Notifications",
+            "Loading": "Loading ...",
+            "EndOfNotifications": "End of Notifications",
+            "NotificationDeleted": "Notification Deleted."
+        },
+        "Add_Edit_News": {
+            "Camera": "Camera",
+            "Gallery": "Gallery",
+            "Title": "Title",
+            "Description": "Description",
+            "Submit": "Submit"
         }
     },
     "FR": {
