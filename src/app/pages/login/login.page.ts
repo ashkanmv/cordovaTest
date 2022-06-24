@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Data } from '@angular/router';
-import {
-  BackgroundGeolocation,
-  BackgroundGeolocationEvents,
-  BackgroundGeolocationResponse,
-} from '@awesome-cordova-plugins/background-geolocation/ngx';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Language, LoginResponse, UserLog } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
@@ -15,6 +9,7 @@ import { UtilService } from 'src/app/shared/util.service';
 import { environment } from 'src/environments/environment';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { Platform } from '@ionic/angular';
+import { GeoLocationService } from 'src/app/shared/geo-location.service';
 
 @Component({
   selector: 'app-login',
@@ -38,8 +33,8 @@ export class LoginPage implements OnInit {
     private sharedService: SharedService,
     private languageService: LanguageService,
     private utilService: UtilService,
-    private backgroundGeolocation: BackgroundGeolocation,
-    // private device : Device,
+    private geoLocationService: GeoLocationService,
+    private device: Device,
     private plt: Platform
   ) { }
 
@@ -48,18 +43,10 @@ export class LoginPage implements OnInit {
     this.plt
       .ready()
       .then(() => {
-        // if (this.plt.is('android')){
-        //   var d = new Device();
-        //   console.log(d.uuid);
-        //   console.log(d.cordova);
-        //   console.log(d.isVirtual);
-        //   console.log(d.manufacturer);
-        //   console.log(d.model);
-        //   console.log(d.platform);
-        //   console.log(d.serial);
-        //   console.log(d.version);
-        // }
-        // this.UUid = "";
+        if (this.plt.is('cordova')) {
+          this.UUid = this.device.uuid;
+        } else
+          this.UUid = "";
       })
       .catch((error) => {
         console.log(error);
@@ -149,45 +136,12 @@ export class LoginPage implements OnInit {
   }
 
   startTracking(loginRes: LoginResponse) {
-    let url =
-      environment.RepoerURL +
-      '/api/v1/visitorpoints?user_id=' +
-      loginRes.user_id +
-      '&uuid=' +
-      this.UUid +
-      '&route_name=' +
-      loginRes.route_name.replace(' ', '%20') +
-      '&route_code=' +
-      loginRes.route_code;
+    let url = environment.RepoerURL + '/api/v1/visitorpoints?user_id=' + loginRes.user_id + '&uuid=' + this.UUid + '&route_name=' + loginRes.route_name.replace(' ', '%20') + '&route_code=' + loginRes.route_code;
     this.storageService.set('start_tracking_url', url);
-    let config = {
-      desiredAccuracy: 0,
-      stationaryRadius: 50,
-      distanceFilter: 15,
-      stopOnTerminate: false,
-      startOnBoot: true,
-      interval: 10000,
-      locationProvider: 0,
-      url: url,
-    };
-    this.backgroundGeolocation.configure(config).then(() => {
-      this.backgroundGeolocation
-        .on(BackgroundGeolocationEvents.location)
-        .subscribe((location: BackgroundGeolocationResponse) => {
-          console.log(location);
-
-          // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
-          // and the background-task may be completed.  You must do this regardless if your operations are successful or not.
-          // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-          this.backgroundGeolocation.finish(); // FOR IOS ONLY
-        });
-    });
-
-    // start recording location
-    this.backgroundGeolocation.start();
+    this.geoLocationService.startTracking(url);
   }
 
   stopTracking() {
-    this.backgroundGeolocation.stop();
+    this.geoLocationService.stopTracking();
   }
 }

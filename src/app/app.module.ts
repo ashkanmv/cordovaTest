@@ -16,9 +16,10 @@ import { AddEditNotificationComponent } from './pages/notifications/add-edit-not
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
+import { Device } from '@awesome-cordova-plugins/device/ngx';
 
 @NgModule({
-  declarations: [AppComponent,AddEditNotificationComponent],
+  declarations: [AppComponent, AddEditNotificationComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -35,6 +36,7 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
     Camera,
     FileTransfer,
     File,
+    Device,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalInterceptorService,
@@ -44,4 +46,4 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  BackgroundGeolocation,
-  BackgroundGeolocationConfig,
-  BackgroundGeolocationEvents,
-  BackgroundGeolocationResponse,
-} from '@awesome-cordova-plugins/background-geolocation/ngx';
 import { Platform } from '@ionic/angular';
+import { GeoLocationService } from './shared/geo-location.service';
 import { LanguageService } from './shared/language.service';
+import { StorageService } from './shared/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +11,15 @@ import { LanguageService } from './shared/language.service';
 })
 export class AppComponent implements OnInit {
   startApp = false;
-  language : boolean;
+  language: boolean;
   constructor(
     private plt: Platform,
-    private backgroundGeolocation: BackgroundGeolocation,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private storageService: StorageService,
+    private geoLocationService: GeoLocationService
   ) { }
   ngOnInit(): void {
-    this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false ;
+    this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false;
     this.loadLanguage();
   }
 
@@ -32,7 +29,7 @@ export class AppComponent implements OnInit {
       this.plt
         .ready()
         .then(() => {
-          if (this.plt.is('cordova')) this.config();
+          if (this.plt.is('cordova')) this.startTracking();
         })
         .catch((error) => {
           console.log(error);
@@ -47,32 +44,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  config() {
-    this.backgroundGeolocation.configure(config).then(() => {
-      this.backgroundGeolocation
-        .on(BackgroundGeolocationEvents.location)
-        .subscribe((location: BackgroundGeolocationResponse) => {
-          console.log(location);
-
-          // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
-          // and the background-task may be completed.  You must do this regardless if your operations are successful or not.
-          // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-          this.backgroundGeolocation.finish(); // FOR IOS ONLY
-        });
-    });
-
-    // start recording location
-    this.backgroundGeolocation.start();
-
-    // If you wish to turn OFF background-tracking, call the #stop method.
-    // this.backgroundGeolocation.stop();
+  startTracking() {
+    this.storageService.get('start_tracking_url').then(url => this.geoLocationService.startTracking(url))
   }
 }
-
-const config: BackgroundGeolocationConfig = {
-  desiredAccuracy: 10,
-  stationaryRadius: 20,
-  distanceFilter: 30,
-  debug: true, //  enable this hear sounds for background-geolocation life-cycle.
-  stopOnTerminate: false, // enable this to clear background location settings when the app terminates
-};

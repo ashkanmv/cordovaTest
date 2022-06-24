@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import { MapView, Marker, PopoverItem, Shop } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
+import { GeoLocationService } from 'src/app/shared/geo-location.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
@@ -31,12 +32,12 @@ export class CustomerNearbyPage implements OnInit {
     private persianCalendarService: PersianCalendarService,
     private storageService: StorageService,
     private mapService: MapService,
-    private popoverCtrl: PopoverController
+    private popoverCtrl: PopoverController,
+    private geoLocation : GeoLocationService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
       if (initialized) {
-        this.initialSr();
-        this.initialShopPoint();
+        this.getCurrentLocation();
       }
     })
   }
@@ -55,6 +56,17 @@ export class CustomerNearbyPage implements OnInit {
     this.mapInitSubscription.unsubscribe();
   }
 
+  getCurrentLocation(){
+    this.geoLocation.getCurrentLocation().then(location=> {
+      this.patchValue('currentLat',location.latitude);
+      this.patchValue('currentLng',location.longitude);
+
+      this.changeMapView();
+      this.initialSr();
+      this.initialShopPoint();
+    })
+  }
+
   loadForm() {
     this.form = this.formBuilder.group({
       srTime: [this.persianCalendarService.getVPTodayFormat(new Date())],
@@ -62,9 +74,9 @@ export class CustomerNearbyPage implements OnInit {
       selectedDate: [new Date()],
       formDate: [new Date().toISOString()],
       accessSr: [false],
-      selectedDistance: [1000],
-      currentLat: [35.747956],
-      currentLng: [51.441753],
+      selectedDistance: [100],
+      currentLat: [null],
+      currentLng: [null],
     });
   }
 
@@ -177,6 +189,7 @@ export class CustomerNearbyPage implements OnInit {
     value: 1000,
     selected: false
   }]
+
   presentPopover(ev: any) {
     this.popoverCtrl.create({
       component: PopoverComponent,
