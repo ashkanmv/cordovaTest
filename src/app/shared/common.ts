@@ -445,6 +445,10 @@ export class Language {
     NewsCreated : string;
     NewsUpdated : string;
   }
+  Online_Daily_Sales :{
+    Title : string;
+    group : string;
+  }
 }
 
 export class CommonUtility {

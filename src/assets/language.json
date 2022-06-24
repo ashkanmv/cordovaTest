@@ -151,9 +151,13 @@
             "Title": "Title",
             "Description": "Text",
             "Submit": "Submit",
-            "OutOfType" : "Out OF Type!",
-            "NewsCreated" : "News created",
-            "NewsUpdated" : "News updated"
+            "OutOfType": "Out OF Type!",
+            "NewsCreated": "News created",
+            "NewsUpdated": "News updated"
+        },
+        "Online_Daily_Sales": {
+            "Title": "Online_Daily_Sales",
+            "group": "All"
         }
     },
     "FR": {

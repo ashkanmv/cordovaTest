@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { OnlineDailySalesPageRoutingModule } from './online-daily-sales-routing.module';
 
 import { OnlineDailySalesPage } from './online-daily-sales.page';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { OnlineDailySalesPage } from './online-daily-sales.page';
     IonicModule,
     OnlineDailySalesPageRoutingModule,
     SharedModule,
+    NgSelectModule
   ],
   declarations: [OnlineDailySalesPage],
 })

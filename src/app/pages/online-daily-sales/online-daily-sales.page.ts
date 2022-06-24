@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { AlertController, LoadingController, Platform } from '@ionic/angular';
-import { getSrSalesUsersResponse } from 'src/app/shared/common';
+import { getSrSalesUsersResponse, Language } from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSaleService } from './sr-sale.service';
@@ -38,6 +39,12 @@ export class OnlineDailySalesPage implements OnInit {
     },
   ];
 
+  
+  public get language() : Language {
+    return this.languageService.language;
+  }
+  
+
   constructor(
     private router: Router,
     private loadingCtrl: LoadingController,
@@ -45,35 +52,34 @@ export class OnlineDailySalesPage implements OnInit {
     private srSalesService: SrSaleService,
     private SharedService: SharedService,
     private platform: Platform,
-    private alertCtrl: AlertController
-  ) {}
+    private alertCtrl: AlertController,
+    private languageService : LanguageService
+  ) { }
 
   ngOnInit() {
     this.selected_dcN = [];
     this.today = new Date(this.today.setDate(this.today.getDate() - 2));
-    this.loadingCtrl
-      .create({
-        message: 'Please wait...',
-      })
-      .then((loadingEl) => {
-        this.storageSevice.get('user_id').then((userId) => {
-          if (userId) {
-            this.userId = userId;
-            this.srSalesService.getUserDc(userId).subscribe((cities) => {
-              cities.forEach((city, index) => {
-                this.selected_dcN.push(city.City);
-                this.dropdownListN.push({ id: index, itemName: city.City });
-                this.selected_dc.push(city.City);
-                this.dropdownList.push({ id: index, itemName: city.City });
-              });
-              this.showSelect = true;
-              loadingEl.dismiss();
-              this.getSrSalesUsersNDSD();
-              this.getSrSalesUsers();
+    this.loadingCtrl.create({
+      message: 'Please wait...',
+    }).then((loadingEl) => {
+      this.storageSevice.get('user_id').then((userId) => {
+        if (userId) {
+          this.userId = userId;
+          this.srSalesService.getUserDc(userId).subscribe((cities) => {
+            cities.forEach((city, index) => {
+              this.selected_dcN.push(city.City);
+              this.dropdownListN.push({ id: index, itemName: city.City , group : this.language.Online_Daily_Sales.group });
+              this.selected_dc.push(city.City);
+              this.dropdownList.push({ id: index, itemName: city.City , group : this.language.Online_Daily_Sales.group });
             });
-          }
-        });
+            this.showSelect = true;
+            loadingEl.dismiss();
+            this.getSrSalesUsersNDSD();
+            this.getSrSalesUsers();
+          });
+        }
       });
+    });
   }
 
   getSrSalesUsersNDSD() {
@@ -250,16 +256,8 @@ export class OnlineDailySalesPage implements OnInit {
   }
 
   refresh() {
-    this.dsdChanged();
-    this.nonDsdChanged();
-  }
-
-  dsdChanged() {
-    console.log(this.selected_dc);
-  }
-
-  nonDsdChanged() {
-    console.log(this.selected_dcN);
+    this.getSrSalesUsersNDSD();
+    this.getSrSalesUsers();
   }
 
   segmentChanged(event: any) {
@@ -267,7 +265,6 @@ export class OnlineDailySalesPage implements OnInit {
   }
 
   tableDetails(item) {
-    console.log(item);
     return typeof item == 'number' ? true : false;
   }
   //
