@@ -124,8 +124,7 @@ export class VariableRadiusPieChartsComponent implements OnInit {
         colorByPoint: true,
         type: undefined,
         data: <any[]>this._series.map(_ => {
-          console.log(_);
-          
+
           return {
             name: _.name,
             y: _.data
