@@ -31,9 +31,13 @@
       <ng-template *ngIf="online; then wifiOn else wifiOff"></ng-template>
       <ng-template #wifiOn>
         <ion-col class="ion-align-self-center wifi" size="1">
-          <ion-img
+          <ion-img *ngIf="online"
             class="wifiOn"
             src="\assets\mainPage\main\wifi.png"
+          ></ion-img>
+          <ion-img *ngIf="!online"
+            class="wifiOff"
+            src="\assets\pages\customer-history\Internet Off.png"
           ></ion-img>
         </ion-col>
       </ng-template>
