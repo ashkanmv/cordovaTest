@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Data, Router } from '@angular/router';
 import { MapService } from 'src/app/map/map.service';
 import { IonDatetime, PopoverController } from '@ionic/angular';
-import { Language } from 'src/app/shared/common';
+import { Language, Marker } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-salesmen-location',
@@ -22,8 +23,10 @@ export class SalesmenLocationPage implements OnInit {
   form: FormGroup;
   rsms = [];
   selectedRsm;
-  rsmPoints;
+  rsmPoints: Marker[] = [];
   userIds = [];
+  mapInitSubscription: Subscription;
+  showMap = false;
   public get language(): Language {
     return this.languageService.language;
   }
@@ -35,7 +38,18 @@ export class SalesmenLocationPage implements OnInit {
     private storageService: StorageService,
     private mapService: MapService,
     private languageService: LanguageService
-  ) {}
+  ) {
+    this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
+      if (initialized) {
+        // this.getCurrentLocation();
+      }
+    })
+   }
+
+   ionViewDidEnter() {
+    this.showMap = true;
+  }
+
 
   ngOnInit() {
     this.getUserId();
@@ -102,7 +116,7 @@ export class SalesmenLocationPage implements OnInit {
         this.patchValue('accessRsm', true);
         if (flg == false) {
           this.patchValue('myUserType', 'rsm');
-          this.rsmSelect();
+          this.loadRsms();
           flg = true;
         }
       } else if (access.name == 'gps_asm') {
@@ -132,37 +146,52 @@ export class SalesmenLocationPage implements OnInit {
     });
   }
 
-  rsmSelect() {
+  loadRsms() {
     if (this.rsms.length) {
     } else {
-      this.mapService
-        .getallChildrenUser(this.f.myUserID.value, 'rsm', ' ')
-        .subscribe((res: Data[]) => {
-          this.selectedRsm = [];
-          this.rsms = res;
-          let userId = '';
-          this.rsms.forEach((v) => {
-            userId = userId + ',' + v.id;
-            this.selectedRsm.push(v.id);
-          });
-          this.patchValue('userId', userId);
-          this.rsmPoints = [];
-          this.smlRsmPoints();
-
-          this.asmSelect();
+      this.mapService.getallChildrenUser(this.f.myUserID.value, 'rsm', ' ').subscribe((res: Data[]) => {
+        this.selectedRsm = [];
+        this.rsms = res;
+        let userId = '';
+        this.rsms.forEach((v) => {
+          v.group = this.language.Salesmen_Location.Group
+          userId = userId + ',' + v.id;
+          this.selectedRsm.push(v.id);
         });
+        this.patchValue('userId', userId);
+        this.rsmPoints = [];
+        this.smlRsmPoints();
+
+        this.asmSelect();
+      });
+    }
+  }
+
+  rsmRadioChanged(event) {
+    if (event.detail.value) { // true
+
+    } else { // false
+
     }
   }
 
   smlRsmPoints() {
-    this.mapService
-      .getallChildrenUser([], 'rsm', this.selectedRsm)
-      .subscribe((res: Data[]) => {
+    if (!this.f.showPointRsm.value)
+      return
+
+    if (this.rsmPoints.length)
+      this.showRsmPointsOnMap();
+    else
+      this.mapService.getallChildrenUser([], 'rsm', this.selectedRsm).subscribe((res: Data[]) => {
         this.userIds = [];
         if (!res.length) return;
         res.forEach((r) => this.userIds.push(r.id));
         this.getSalesmenLocation();
       });
+  }
+
+  showRsmPointsOnMap(){
+    // this.mapService
   }
 
   getSalesmenLocation() {
@@ -175,9 +204,9 @@ export class SalesmenLocationPage implements OnInit {
       .subscribe((data) => console.log(data));
   }
 
-  asmSelect() {}
-  ssvSelect() {}
-  srSelect() {}
+  asmSelect() { }
+  ssvSelect() { }
+  srSelect() { }
 
   async presentPopover(ev: any) {
     const popover = await this.popoverctrl.create({

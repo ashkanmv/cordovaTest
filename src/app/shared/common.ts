@@ -408,6 +408,7 @@ export class Language {
     managerGreen: string;
     managerYellow: string;
     managerBlue: string;
+    Group: string;
   };
   Sales_hourly_Day_And_Sales_Office: {
     Title: string;

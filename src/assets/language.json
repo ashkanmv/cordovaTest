@@ -117,7 +117,8 @@
             "managerRed": "Farhad Iranloo",
             "managerGreen": "Ahmad Safari",
             "managerYellow": "Sina Ahmadi",
-            "managerBlue": "Kazem Dehghan"
+            "managerBlue": "Kazem Dehghan",
+            "Group": "Select All"
         },
         "Sales_hourly_Day_And_Sales_Office": {
             "Title": "Sales hourly_Day & Sales Office",

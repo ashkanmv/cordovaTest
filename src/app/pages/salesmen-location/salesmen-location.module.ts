@@ -8,6 +8,7 @@ import { SalesmenLocationPageRoutingModule } from './salesmen-location-routing.m
 
 import { SalesmenLocationPage } from './salesmen-location.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SalesmenLocationPageRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    NgSelectModule
   ],
   declarations: [SalesmenLocationPage],
 })
