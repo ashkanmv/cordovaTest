@@ -442,6 +442,8 @@ export class Language {
     Text : string;
     Submit : string;
     OutOfType : string;
+    NewsCreated : string;
+    NewsUpdated : string;
   }
 }
 

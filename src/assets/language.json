@@ -151,7 +151,9 @@
             "Title": "Title",
             "Description": "Text",
             "Submit": "Submit",
-            "OutOfType" : "Out OF Type!"
+            "OutOfType" : "Out OF Type!",
+            "NewsCreated" : "News created",
+            "NewsUpdated" : "News updated"
         }
     },
     "FR": {

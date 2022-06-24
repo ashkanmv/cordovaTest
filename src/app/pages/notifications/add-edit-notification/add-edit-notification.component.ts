@@ -118,11 +118,17 @@ export class AddEditNotificationComponent implements OnInit {
   }
 
   add() {
-    this.notificationService.postNews(this.f)
+    this.notificationService.postNews(this.f).subscribe(()=>{
+      this.sharedService.toast('success',this.language.Add_Edit_News.NewsCreated);
+      this.dismiss(true)
+    })
   }
 
   update() {
-    this.notificationService.patchNews(this.f)
+    this.notificationService.patchNews(this.f).subscribe(()=>{
+      this.sharedService.toast('success',this.language.Add_Edit_News.NewsUpdated);
+      this.dismiss(true)
+    })
   }
 
   dismiss(submitted: boolean) {
