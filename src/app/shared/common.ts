@@ -448,6 +448,7 @@ export class Language {
   Online_Daily_Sales :{
     Title : string;
     group : string;
+    UserIdNotFound : string;
   }
 }
 

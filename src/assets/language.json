@@ -157,7 +157,8 @@
         },
         "Online_Daily_Sales": {
             "Title": "Online_Daily_Sales",
-            "group": "All"
+            "group": "All",
+            "UserIdNotFound": "UserId not found"
         }
     },
     "FR": {

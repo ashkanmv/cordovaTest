@@ -19,7 +19,7 @@ export class OnlineDailySalesPage implements OnInit {
   userId: string;
   today = new Date();
   cities: { City: string }[] = [];
-  selected_dcN;
+  selected_dcN = [];
   dropdownListN: any[] = [];
   selected_dc: any[] = [];
   dropdownList: any[] = [];
@@ -39,11 +39,11 @@ export class OnlineDailySalesPage implements OnInit {
     },
   ];
 
-  
-  public get language() : Language {
+
+  public get language(): Language {
     return this.languageService.language;
   }
-  
+
 
   constructor(
     private router: Router,
@@ -53,31 +53,37 @@ export class OnlineDailySalesPage implements OnInit {
     private SharedService: SharedService,
     private platform: Platform,
     private alertCtrl: AlertController,
-    private languageService : LanguageService
+    private languageService: LanguageService
   ) { }
 
   ngOnInit() {
-    this.selected_dcN = [];
-    this.today = new Date(this.today.setDate(this.today.getDate() - 2));
-    this.loadingCtrl.create({
+    this.getUserDc()
+  }
+
+  async getUserDc() {
+    const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
-    }).then((loadingEl) => {
-      this.storageSevice.get('user_id').then((userId) => {
-        if (userId) {
-          this.userId = userId;
-          this.srSalesService.getUserDc(userId).subscribe((cities) => {
-            cities.forEach((city, index) => {
-              this.selected_dcN.push(city.City);
-              this.dropdownListN.push({ id: index, itemName: city.City , group : this.language.Online_Daily_Sales.group });
-              this.selected_dc.push(city.City);
-              this.dropdownList.push({ id: index, itemName: city.City , group : this.language.Online_Daily_Sales.group });
-            });
-            this.showSelect = true;
-            loadingEl.dismiss();
-            this.getSrSalesUsersNDSD();
-            this.getSrSalesUsers();
-          });
-        }
+    });
+    await loading.present();
+    this.storageSevice.get('user_id').then((userId) => {
+      if (!userId) {
+        this.SharedService.toast('danger', this.language.Online_Daily_Sales.UserIdNotFound)
+        loading.dismiss();
+        return
+      }
+
+      this.userId = userId;
+      this.srSalesService.getUserDc(userId).subscribe((cities) => {
+        cities.forEach((city, index) => {
+          this.selected_dcN.push(city.City);
+          this.dropdownListN.push({ id: index, itemName: city.City, group: this.language.Online_Daily_Sales.group });
+          this.selected_dc.push(city.City);
+          this.dropdownList.push({ id: index, itemName: city.City, group: this.language.Online_Daily_Sales.group });
+        });
+        this.showSelect = true;
+        loading.dismiss();
+        this.getSrSalesUsersNDSD();
+        this.getSrSalesUsers();
       });
     });
   }
@@ -227,7 +233,7 @@ export class OnlineDailySalesPage implements OnInit {
       }
       this.srSalesService
         .getSrSalesNDSDDetail(
-          this.selected_dcN,
+          this.selected_dcN.join(),
           this.today.toISOString(),
           this.srsales2[row.index][0]
         )
