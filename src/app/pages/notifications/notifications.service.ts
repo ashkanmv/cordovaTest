@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class NotificationsService {
 
+  uploadUrl = "http://77.104.65.168:8002/api/v1/news";
+
   private newsUrl = environment.BaseURL + '/api/v1/news';
 
   constructor(private http: HttpClient) { }
@@ -27,11 +29,16 @@ export class NotificationsService {
     return this.http.get<News[]>(this.newsUrl, { params })
   }
 
-  postNews(news: News) {
+  postNews(news: any) {
+    console.log(news);
+    return
+    
     return this.http.post(this.newsUrl, { body: news })
   }
 
-  patchNews(news: News) {
+  patchNews(news: any) {
+    console.log(news);
+    return
     return this.http.patch(this.newsUrl, { body: news })
   }
 

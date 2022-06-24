@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
       this.plt
         .ready()
         .then(() => {
-          console.log('ready');
           if (this.plt.is('cordova')) this.config();
         })
         .catch((error) => {

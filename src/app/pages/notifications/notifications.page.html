@@ -42,7 +42,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button routerLink="/add-item">
+    <ion-fab-button (click)="addNotification()"> <!-- routerLink="/add-item"-->
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

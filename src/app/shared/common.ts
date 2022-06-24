@@ -439,8 +439,9 @@ export class Language {
     Camera : string;
     Gallery : string;
     Title : string;
-    Description : string;
+    Text : string;
     Submit : string;
+    OutOfType : string;
   }
 }
 

@@ -149,8 +149,9 @@
             "Camera": "Camera",
             "Gallery": "Gallery",
             "Title": "Title",
-            "Description": "Description",
-            "Submit": "Submit"
+            "Description": "Text",
+            "Submit": "Submit",
+            "OutOfType" : "Out OF Type!"
         }
     },
     "FR": {

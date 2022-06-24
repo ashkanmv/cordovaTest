@@ -13,6 +13,9 @@ import { GlobalInterceptorService } from './global-interceptor.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddEditNotificationComponent } from './pages/notifications/add-edit-notification/add-edit-notification.component';
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
+import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
+import { File } from '@awesome-cordova-plugins/file/ngx';
 
 @NgModule({
   declarations: [AppComponent,AddEditNotificationComponent],
@@ -29,6 +32,9 @@ import { AddEditNotificationComponent } from './pages/notifications/add-edit-not
   ],
   providers: [
     BackgroundGeolocation,
+    Camera,
+    FileTransfer,
+    File,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalInterceptorService,
