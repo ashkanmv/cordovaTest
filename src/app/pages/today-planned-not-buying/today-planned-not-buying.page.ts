@@ -178,7 +178,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
         var indexRoute = this.groupbyedData.findIndex(x => x.Route == model[h].Route);
         if (indexRoute > -1) {
           this.groupbyedData[indexRoute].Others.push({
-            CustName: model[h].CustName.toString(), CustID: model[h].CustID,
+            CustName: model[h].CustName?.toString(), CustID: model[h].CustID,
             CustomerID: model[h].CustomerID, Address: model[h].Address
           });
         }

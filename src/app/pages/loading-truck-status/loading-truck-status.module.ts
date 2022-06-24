@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LoadingTruckStatusPageRoutingModule } from './loading-truck-status-routing.module';
 
 import { LoadingTruckStatusPage } from './loading-truck-status.page';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoadingTruckStatusPageRoutingModule
+    LoadingTruckStatusPageRoutingModule,
+    NgSelectModule
   ],
   declarations: [LoadingTruckStatusPage]
 })

@@ -25,7 +25,7 @@ export class MaxPpedService {
     let params = new HttpParams();
     params = params.append('userid', userid);
 
-    return this.http.get(this.dcUserUrl, { params });
+    return this.http.get<{City : string}[]>(this.dcUserUrl, { params });
   }
   getSrPpedPerCustomer(city: string, fromdate: string, todate: string) {
     let params = new HttpParams();

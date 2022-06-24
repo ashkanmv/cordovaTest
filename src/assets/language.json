@@ -98,7 +98,8 @@
         },
         "Loading_Truck_Status": {
             "Title": "Loading Truck Status",
-            "date_title": "Date"
+            "date_title": "Date",
+            "Group": "All"
         },
         "Online_Sales_Hourly": {
             "Title": "Online Daily Sales Hourly",

@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonDatetime } from '@ionic/angular';
+import { IonDatetime, LoadingController } from '@ionic/angular';
+import { format, parseISO } from 'date-fns';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
+import { StorageService } from 'src/app/shared/storage.service';
+import { LoadingTruckStatusService } from './loading-truck-status.service';
 
 @Component({
   selector: 'app-loading-truck-status',
@@ -10,7 +13,15 @@ import { LanguageService } from 'src/app/shared/language.service';
 })
 export class LoadingTruckStatusPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+  userId;
+  selected_date = new Date().toISOString();
   IsDetailsShowing = true;
+  selectedItems = [];
+  dropdownList = [];
+  ctrl: any = {};
+  loadtruck1 = [];
+  virtual_rows1 = [];
+  user_list = [];
   // mock data
   public loadingTruckData: Array<any> = [
     {
@@ -67,67 +78,111 @@ export class LoadingTruckStatusPage implements OnInit {
     },
   ];
   //delete later
-  dateNow = new Date();
 
   public get language(): Language {
     return this.languageService.language;
   }
 
-  constructor(private languageService: LanguageService) {}
+  constructor(
+    private languageService: LanguageService,
+    private storageService: StorageService,
+    private loadingTruckService: LoadingTruckStatusService,
+    private loadingCtrl: LoadingController) { }
 
-  confirm() {
-    // this.datetime.nativeEl.confirm();
-    this.datetime.confirm();
+  ngOnInit() {
+    this.storageService.get('user_id').then((user_id) => {
+      if (user_id !== undefined && user_id !== null) {
+        this.userId = Number(user_id);
+        this.get_dc();
+      }
+    });
   }
 
-  reset() {
-    // this.datetime.nativeEl.reset();
-    this.datetime.reset();
+  async get_dc() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
+    this.loadingTruckService.getUserDc(this.userId)
+      .subscribe(
+        dcs => {
+          dcs.forEach((dc, i) => {
+            this.selectedItems.push(dc.City);
+            this.dropdownList.push({ "id": i, "itemName": dc.City, "group": this.language.Loading_Truck_Status.Group });
+          });
+          loading.dismiss();
+          this.getLoadTruckCity()
+        });
   }
-  ngOnInit() {}
-  // ---Select All-----------------------------------------
-  // async showAlert() {
-  //   let buttons = [
-  //     {
-  //       text: 'همه',
-  //       cssClass: 'all-none-button',
-  //       handler: () => {
-  //         alert.inputs = alert.inputs.map((checkbox) => {
-  //           checkbox.checked = true;
-  //           return checkbox;
-  //         });
 
-  //         return false;
-  //       },
-  //     },
-  //     {
-  //       text: 'هیچکدام',
-  //       cssClass: 'all-none-button',
-  //       handler: () => {
-  //         alert.inputs = alert.inputs.map((checkbox) => {
-  //           checkbox.checked = false;
-  //           return checkbox;
-  //         });
-  //         return false;
-  //       },
-  //     },
-  //   ];
+  async getLoadTruckCity() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
 
-  //   // // adjust button order in four button layout for ios
-  //   // if (this.platform.is('ios')) {
-  //   //   const okButton = { ...buttons[2] };
-  //   //   const cancelButton = { ...buttons[3] };
-  //   //   buttons = [buttons[0], buttons[1], cancelButton, okButton];
-  //   // }
+    if (!this.selectedItems.length) {
+      this.create_total_model1("Empty");
+      loading.dismiss();
+      return
+    }
 
-  //   // const alert = await this.alertCtrl.create({
-  //   //   header: 'انتخاب کاربر',
-  //   //   inputs: this.input,
-  //   //   cssClass: 'four-button-alert',
-  //   //   buttons: [...buttons]
-  //   // });
+    this.loadingTruckService.getLoadTruckCity(this.userId, this.selected_date, this.selectedItems.join())
+      .subscribe(
+        (SrSales: any) => {
+          if (SrSales.length != 0)
+            this.create_total_model1(SrSales);
+          else
+            this.create_total_model1('Empty');
 
-  //   // await alert.present();
-  // }
-  // -------------------------------------------------------------------
+          loading.dismiss();
+        });
+  }
+
+  create_total_model1(model) {
+    this.ctrl.data = model;
+    this.loadtruck1 = [];
+    this.virtual_rows1 = [];
+    this.user_list = [];
+    let keys = Object.keys(model[0]);
+    keys.splice(1, 1);
+    let v_row = {
+      type: 'h',
+      show: true,
+      index: 0
+    }
+    this.loadtruck1.push(keys);
+    this.virtual_rows1.push(v_row);
+    let index = 1;
+    for (var i = 0; i < model.length; i++) {
+      let ch = model[i];
+      this.user_list.push(Object.keys(ch).map(key => ch[key]));
+      let temp = Object.keys(ch).map(key => ch[key]);
+      for (var j = 1; j < temp.length; j++) {
+        if (temp[j] != null) {
+          temp[j] = temp[j];
+        }
+      }
+      temp.splice(1, 1);
+      this.loadtruck1.push(temp);
+      let v_row1 = {
+        type: 'a',
+        show: true,
+        index: index
+      }
+      index++;
+      this.virtual_rows1.push(v_row1);
+      let v_row2 = {
+        type: 'b',
+        show: false,
+        index: index
+      }
+      index++;
+      this.virtual_rows1.push(v_row2);
+    }
+  }
+
+  dateChanged(value: string) {
+
+  }
 }

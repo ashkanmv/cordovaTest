@@ -389,6 +389,7 @@ export class Language {
   Loading_Truck_Status: {
     Title: string;
     date_title: string;
+    Group: string;
   };
   Online_Sales_Hourly: {
     Title: string;
