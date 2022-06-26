@@ -278,6 +278,12 @@ export interface PageDetail {
   title: string;
 }
 
+export interface AutoLogin {
+  userName : string;
+  password : string;
+  uuid : string;
+}
+
 export interface PopoverItem {
   title: string;
   value: any;

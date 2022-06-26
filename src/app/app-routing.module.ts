@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/login',
-  //   pathMatch: 'full',
-  // },
   {
     path: '',
-    redirectTo: '/main',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
+  // {
+  //   path: '',
+  //   redirectTo: '/main',
+  //   pathMatch: 'full',
+  // },
   {
     path: 'main',
     loadChildren: () =>
@@ -136,7 +136,8 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./pages/login/login.module').then((m) => m.LoginPageModule),
-  },  {
+  },
+  {
     path: 'sales-hourly-day',
     loadChildren: () => import('./pages/sales-hourly-day/sales-hourly-day.module').then( m => m.SalesHourlyDayPageModule)
   },
