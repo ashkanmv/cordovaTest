@@ -270,6 +270,14 @@ export interface UserLog {
   version: string;
 }
 
+export interface PageDetail {
+  index : number;
+  key : string;
+  routerLink: string;
+  imgSrc : string;
+  title: string;
+}
+
 export interface PopoverItem {
   title: string;
   value: any;
@@ -438,19 +446,19 @@ export class Language {
     NotificationDeleted: string;
   }
   Add_Edit_News: {
-    Camera : string;
-    Gallery : string;
-    Title : string;
-    Text : string;
-    Submit : string;
-    OutOfType : string;
-    NewsCreated : string;
-    NewsUpdated : string;
+    Camera: string;
+    Gallery: string;
+    Title: string;
+    Text: string;
+    Submit: string;
+    OutOfType: string;
+    NewsCreated: string;
+    NewsUpdated: string;
   }
-  Online_Daily_Sales :{
-    Title : string;
-    group : string;
-    UserIdNotFound : string;
+  Online_Daily_Sales: {
+    Title: string;
+    group: string;
+    UserIdNotFound: string;
   }
 }
 

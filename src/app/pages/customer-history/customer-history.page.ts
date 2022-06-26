@@ -126,7 +126,6 @@ export class CustomerHistoryPage implements OnInit {
     return this.form.controls;
   }
 
-  // http Requests
   async Get_CustomerFromMap(Customer_Number: string) {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
@@ -175,7 +174,6 @@ export class CustomerHistoryPage implements OnInit {
       (res: Cities[]) => {
         this.cities = res;
         loading.dismiss();
-        this.patchValue('DC', this.cities[1].City);
       },
       () => {
         this.sharedService.toast('danger', 'Could not fetch cities ...');
@@ -197,7 +195,6 @@ export class CustomerHistoryPage implements OnInit {
     this.customerHistoryService.getRoutesByCity(value.detail.value).subscribe(
       (res: { routename: string }[]) => {
         this.routes = res;
-        this.patchValue('Route', this.routes[0].routename);
         loading.dismiss();
       },
       () => {
@@ -217,7 +214,6 @@ export class CustomerHistoryPage implements OnInit {
       .subscribe(
         (customers: Customer[]) => {
           this.customers = customers;
-          this.patchValue('Cutomer', this.customers[0]);
           this.markers = [];
           var m: any = [];
           if (this.customers.length)

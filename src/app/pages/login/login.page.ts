@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { Platform } from '@ionic/angular';
 import { GeoLocationService } from 'src/app/shared/geo-location.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,8 @@ export class LoginPage implements OnInit {
     private utilService: UtilService,
     private geoLocationService: GeoLocationService,
     private device: Device,
-    private plt: Platform
+    private plt: Platform,
+    private router : Router
   ) { }
 
   ngOnInit() {
@@ -120,6 +122,7 @@ export class LoginPage implements OnInit {
 
       this.stopTracking();
       this.startTracking(loginRes);
+      this.router.navigate(['/main'])
     });
   }
 
