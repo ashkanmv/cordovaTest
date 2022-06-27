@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
-import { Language, LoginResponse, UserLog } from 'src/app/shared/common';
+import { AutoLogin, Language, LoginResponse, UserLog } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { UtilService } from 'src/app/shared/util.service';
 import { environment } from 'src/environments/environment';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
-import { Platform } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
 import { GeoLocationService } from 'src/app/shared/geo-location.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,9 @@ export class LoginPage implements OnInit {
     private utilService: UtilService,
     private geoLocationService: GeoLocationService,
     private device: Device,
-    private plt: Platform
+    private plt: Platform,
+    private router: Router,
+    private loadingCtrl : LoadingController
   ) { }
 
   ngOnInit() {
@@ -46,11 +49,35 @@ export class LoginPage implements OnInit {
         if (this.plt.is('cordova')) {
           this.UUid = this.device.uuid;
         } else
-          this.UUid = "";
+          this.UUid = undefined;
+
+        this.storageService.get('RememberUser').then(remember => {
+          if (remember)
+            this.autoLogin()
+        })
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  async autoLogin() {
+    const loading = await this.loadingCtrl.create({
+      message : 'Please wait...'
+    });
+    loading.present();
+    this.storageService.get('autoLogin').then(data =>{
+      loading.dismiss();
+      let autoLoginData : AutoLogin = JSON.parse(data);
+      
+      if(autoLoginData){
+        this.patchValue('Username',autoLoginData.userName)
+        this.patchValue('Password',autoLoginData.password)
+        // if(this.UUid ) this.UUid = autoLoginData.uuid;
+
+        this.login()
+      }
+    })
   }
 
   show = false;
@@ -73,6 +100,8 @@ export class LoginPage implements OnInit {
   }
 
   login() {
+    console.log(this.form.value);
+    
     this.isLoading = true;
     this.authService
       .getAccess(this.form.value.Username, this.form.value.Password, this.UUid)
@@ -120,6 +149,7 @@ export class LoginPage implements OnInit {
 
       this.stopTracking();
       this.startTracking(loginRes);
+      this.router.navigate(['/main'])
     });
   }
 
@@ -131,8 +161,15 @@ export class LoginPage implements OnInit {
     this.storageService.set('route_code', loginRes.route_code);
     this.storageService.set('FullName', loginRes.FullName);
     this.storageService.set('UserName', this.form.value.Username);
-    if (this.form.value.RememberMe)
-      this.storageService.set('passwordSave', this.form.value.Password);
+    if (this.form.value.RememberMe){
+      let autoLogin : AutoLogin = {
+        password : this.form.value.Password,
+        userName : this.form.value.Username,
+        uuid : this.UUid
+      }
+      // this.storageService.set('passwordSave', this.form.value.Password);
+      this.storageService.set('autoLogin', JSON.stringify(autoLogin));
+    }
   }
 
   startTracking(loginRes: LoginResponse) {
@@ -143,5 +180,9 @@ export class LoginPage implements OnInit {
 
   stopTracking() {
     this.geoLocationService.stopTracking();
+  }
+
+  patchValue(controller: string, value: any) {
+    this.form.patchValue({ [controller]: value });
   }
 }
