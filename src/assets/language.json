@@ -8,7 +8,8 @@
             "Shop_type": "Shop type",
             "Tell": "Tell",
             "SR": "SR",
-            "Address": "Address"
+            "Address": "Address",
+            "msg_no_customer": "There is no customer near you!"
         },
         "Questionnaire": {
             "Title": "Questionnaire",

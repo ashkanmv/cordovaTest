@@ -31,7 +31,7 @@
           <ion-toggle
             class="ion-no-padding"
             color="primary"
-            checked="true"
+            [(ngModel)]="gps" (ionChange)="gpsChanged()"
           ></ion-toggle>
         </span>
       </ion-col>
@@ -152,7 +152,6 @@
               interface="popover"
               formControlName="Route"
               (ionChange)="routeSelect($event)"
-              [disabled]="!f.DC.value"
             >
               <ion-select-option disabled value="">Route</ion-select-option>
               <ion-select-option
@@ -176,7 +175,6 @@
               placeholder="Customer"
               interface="popover"
               formControlName="Customer"
-              [disabled]="!f.Route.value"
               (ionChange)="customerSelect($event)"
             >
               <ion-select-option disabled value="">Customer</ion-select-option>
@@ -248,7 +246,7 @@
         </ion-row>
       </ion-grid>
     </form>
-    <ion-card class="ion-no-margin">
+    <ion-card class="ion-no-margin" *ngIf="customerInfo">
       <ion-card-header>
         <ion-row class="customerInfo">
           <ion-row>

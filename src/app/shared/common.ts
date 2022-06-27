@@ -65,6 +65,7 @@ export interface Marker {
   customerCode?: number;
 }
 
+
 export interface Polyline {
   latLng: LatLngTuple[];
   options: PolylineOptions;
@@ -313,6 +314,7 @@ export class Language {
     Tell: number;
     SR: string;
     Address: string;
+    msg_no_customer : string;
   };
   Questionnaire: {
     Title: string;

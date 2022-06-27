@@ -1,16 +1,18 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Shop } from 'src/app/shared/common';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerHistoryService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private cityUrl = environment.BaseURL + '/api/v1/cities';
   private routeUrl = environment.BaseURL + '/api/v1/routes'; // URL to web api
   private customerUrl = environment.BaseURL + '/api/v1/customers';
+  private findShopUrl =   environment.BaseURL+'/api/v1/questions/findshop';
   private customerbynum = environment.BaseURL + '/api/v1/customers/bynumber'; //2AF-960127
   private ppedUrl = environment.BaseURL + '/api/v1/customerhistories/pped';
   private salesUrl = environment.BaseURL + '/api/v1/customerhistories/sales';
@@ -23,8 +25,8 @@ export class CustomerHistoryService {
     environment.BaseURL + '/api/v1/customerhistories/kgsamples';
   private avgUrl = environment.BaseURL + '/api/v1/avgs';
   private todayUrl = environment.BaseURL + '/api/v1/today';
-  private customersearch = environment.BaseURL+'/api/v1/customers/search';
-  
+  private customersearch = environment.BaseURL + '/api/v1/customers/search';
+
   getToday() {
     return this.http.get(this.todayUrl);
   }
@@ -133,11 +135,19 @@ export class CustomerHistoryService {
   }
 
 
-  getCustomerSearch(searchtext: string) { 
+  getCustomerSearch(searchtext: string) {
     let params = new HttpParams();
     params = params.append('searchtext', searchtext);
-    return this.http.get<any[]>(this.customersearch, {params});
-} 
+    return this.http.get<any[]>(this.customersearch, { params });
+  }
+
+  findShop(lat: any, lng: any) {
+    let params = new HttpParams();
+    params = params.append('lat', lat);
+    params = params.append('lng', lng);
+
+    return this.http.get<Shop[]>(this.findShopUrl, { params });
+  }
 
   // private handleError(error: any) {
   //   // In a real world app, we might use a remote logging infrastructure

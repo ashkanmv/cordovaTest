@@ -16,7 +16,7 @@ export class GeoLocationService {
     desiredAccuracy: 0,
     stationaryRadius: 50,
     distanceFilter: 15,
-    // debug: true,
+    debug: true,
     stopOnTerminate: false,
     startOnBoot: true,
     interval: 10000,

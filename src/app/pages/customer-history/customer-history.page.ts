@@ -5,6 +5,7 @@ import { LoadingController, Platform } from '@ionic/angular';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Cities, Customer, Language, Marker } from 'src/app/shared/common';
+import { GeoLocationService } from 'src/app/shared/geo-location.service';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { CustomerHistoryService } from './customer-history.service';
@@ -26,6 +27,7 @@ export class CustomerHistoryPage implements OnInit {
   typeSubscription: Subscription;
   kgqtySubscription: Subscription;
   selected_ch = [];
+  gps = false;
   // show content
   show = true;
 
@@ -43,7 +45,7 @@ export class CustomerHistoryPage implements OnInit {
   public get Customer_Number(): string {
     return;
   }
-  // mock data
+
   customerInfo: {
     shopName: string;
     shopCode: number;
@@ -61,7 +63,8 @@ export class CustomerHistoryPage implements OnInit {
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
     private sharedService: SharedService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private geoLocationService: GeoLocationService
   ) {
     this.input.subscribe((term) => {
       if (!term) return;
@@ -71,23 +74,12 @@ export class CustomerHistoryPage implements OnInit {
         tap(() => (this.searching = false))
       );
     });
-    // mock data
-    this.customerInfo = {
-      shopName: 'Jahan Akbary',
-      shopCode: 21632297,
-      shopType: 'A',
-      tell: 98912388,
-      sr: 'Saeed Rostamy',
-      address: 'Tehran_Zafar',
-    };
   }
 
   ngOnInit() {
-    // this.getToday();
     if (this.Customer_Number) this.Get_CustomerFromMap(this.Customer_Number);
     else this.getCities();
     this.loadForm();
-    // this.getAvgs();
   }
 
   ionViewDidEnter() {
@@ -534,7 +526,7 @@ export class CustomerHistoryPage implements OnInit {
         data: data
       };
       let pieChartObj = {
-        name : label,
+        name: label,
         data: data.reduce((a, b) => a + b, 0),
       }
       dataset.push(obj);
@@ -574,6 +566,42 @@ export class CustomerHistoryPage implements OnInit {
     //     }
     //   }
     // });`
+  }
+
+  gpsChanged() {
+    console.log(this.gps);
+    
+    if (this.gps)
+      this.findShop(35.747956, 51.441753);
+      // this.geoLocationService.getCurrentLocation().then(location => {
+      //   this.findShop(location.latitude,location.longitude);
+      // })
+  }
+
+  async findShop(lat : number,lng : number){
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    loading.present();
+    this.customerHistoryService.findShop(lat,lng).subscribe((res : any[])=>{
+      if(!res.length){
+        this.sharedService.toast('danger', this.language.Customer_History.msg_no_customer)
+        return
+      }
+
+      this.patchValue('Customer',res[0])
+      this.customers = res
+      this.customerInfo = {
+        address: res[0].ADDRESS,
+        shopCode: +res[0].CustCode,
+        shopName: res[0].custName,
+        shopType: res[0].CustTYPE,
+        sr: res[0].Visitor,
+        tell: +res[0].Tel,
+      }; 
+      loading.dismiss()
+      this.getAvgs();
+    })
   }
 
   patchValue(controller: string, value: any) {
