@@ -51,7 +51,7 @@ export class MainPage implements OnInit {
     key: 'qn_page',
     title: 'Questionnaire',
     imgSrc: 'assets/mainPage/main/Questionnaire.png',
-    routerLink: '/questionna'
+    routerLink: '/questionnaire'
   },
   {
     index: 2,
