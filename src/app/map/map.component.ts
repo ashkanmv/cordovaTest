@@ -38,6 +38,7 @@ export class MapComponent implements OnInit {
   public get layerControl(): L.Control.Layers { return this._layerControl; }
   @Input() set layerControl(v: L.Control.Layers) {  } //if (v) this.addLayerControl(v)
 
+  @ViewChild('map')
   private mapContainer: ElementRef<HTMLElement>;
   clearMapSubscription: Subscription;
   constructor(private plt: Platform, private mapService: MapService, private router: Router) {
