@@ -13,14 +13,14 @@
 <ion-content>
   <form [formGroup]="form" (ngSubmit)="login()">
     <ion-img class="danone-logo" src="\assets\pages\login\Danone.png"></ion-img>
-    <ion-item class="username box-shadow">
+    <ion-item class="username lightBlue-shadow">
       <ion-label position="floating"
         >{{language.login.username}}
         <ion-text color="danger">*</ion-text></ion-label
       >
       <ion-input formControlName="Username" type="text"></ion-input>
     </ion-item>
-    <ion-item class="password box-shadow">
+    <ion-item class="password lightBlue-shadow">
       <ion-label position="floating">
         {{language.login.password}}
         <ion-text color="danger">*</ion-text></ion-label
@@ -42,7 +42,7 @@
     </ion-row>
     <ion-button
       block
-      class="box-shadow"
+      class="lightBlue-shadow"
       color="primary"
       type="submit"
       [disabled]="form.invalid"
