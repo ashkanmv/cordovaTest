@@ -1,7 +1,7 @@
 ion-toolbar {
-    --background: var(--ion-color-light);
     --color: #0095EB;
     --border: none;
+    --background:none;
 }
 
 
@@ -81,6 +81,7 @@ ion-item.password{
 }
 
 ion-button{
+    border-radius: 50px;
     width: 80%;
     height: 10vh;
     --border-radius: 50px;
