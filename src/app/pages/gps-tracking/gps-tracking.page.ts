@@ -150,6 +150,7 @@ export class GpsTrackingPage implements OnInit {
       accessRoute: [true],
       routeCode: [null],
       userRouteName: [null],
+      showTruckOrSr: [2],
     });
     // this.routeSelectSub = this.f.selectedRoute.valueChanges.subscribe(() => this.routeSelect());
   }

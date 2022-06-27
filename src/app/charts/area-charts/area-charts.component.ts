@@ -26,7 +26,7 @@ export class AreaChartsComponent implements OnInit {
     chart: {
       type: 'area'
     },
-    title: {
+    title: {  
       text: ''
     },
     xAxis: {
