@@ -16,7 +16,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./customer-nearby.page.scss'],
 })
 export class CustomerNearbyPage implements OnInit {
-  showMap = false;
+  showMap = false;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
   accessSr = false;
   form: FormGroup;
   mapInitSubscription: Subscription;
