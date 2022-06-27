@@ -44,9 +44,9 @@ export class SalesmenLocationPage implements OnInit {
         // this.getCurrentLocation();
       }
     })
-   }
+  }
 
-   ionViewDidEnter() {
+  ionViewDidEnter() {
     this.showMap = true;
   }
 
@@ -147,24 +147,21 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   loadRsms() {
-    if (this.rsms.length) {
-    } else {
-      this.mapService.getallChildrenUser(this.f.myUserID.value, 'rsm', ' ').subscribe((res: Data[]) => {
-        this.selectedRsm = [];
-        this.rsms = res;
-        let userId = '';
-        this.rsms.forEach((v) => {
-          v.group = this.language.Salesmen_Location.Group
-          userId = userId + ',' + v.id;
-          this.selectedRsm.push(v.id);
-        });
-        this.patchValue('userId', userId);
-        this.rsmPoints = [];
-        this.smlRsmPoints();
-
-        this.asmSelect();
+    this.mapService.getallChildrenUser(this.f.myUserID.value, 'rsm', ' ').subscribe((res: Data[]) => {
+      this.selectedRsm = [];
+      this.rsms = res;
+      let userId = '';
+      this.rsms.forEach((v) => {
+        v.group = this.language.Salesmen_Location.Group
+        userId = userId + ',' + v.id;
+        this.selectedRsm.push(v.id);
       });
-    }
+      this.patchValue('userId', userId);
+      this.rsmPoints = [];
+      this.smlRsmPoints();
+
+      this.asmSelect();
+    });
   }
 
   rsmRadioChanged(event) {
@@ -190,7 +187,7 @@ export class SalesmenLocationPage implements OnInit {
       });
   }
 
-  showRsmPointsOnMap(){
+  showRsmPointsOnMap() {
     // this.mapService
   }
 

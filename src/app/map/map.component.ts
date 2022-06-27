@@ -14,12 +14,11 @@ import { MapService } from './map.service';
 })
 export class MapComponent implements OnInit {
   private map: L.Map;
-  private _showMap: boolean;
+  @ViewChild('map')
   layerGroup: L.LayerGroup;
-  public get showMap(): boolean {
-    return this._showMap;
-  }
 
+  private _showMap: boolean;
+  public get showMap(): boolean { return this._showMap; }
   @Input() set showMap(v: boolean) {
     this._showMap = v;
     if (v == true) this.init();
@@ -28,18 +27,17 @@ export class MapComponent implements OnInit {
   private _markers: Marker[] = [];
   public get markers(): Marker[] { return this._markers; }
   @Input() set markers(v: Marker[]) { if (v?.length) this.setMarkers(v); }
+
   private _polylines: Polyline[];
   public get polylines(): Polyline[] { return this._polylines; }
-  @Input() set polylines(v: Polyline[]) {    
-    if (v.length) this.setPolyline(v);
-  }
+  @Input() set polylines(v: Polyline[]) { if (v.length) this.setPolyline(v) }
 
-  @Input() set mapView(v: MapView) {
-    if (v)
-      this.flyTo(v)
-  }
+  @Input() set mapView(v: MapView) { if (v) this.flyTo(v) }
 
-  @ViewChild('map')
+  private _layerControl: L.Control.Layers;
+  public get layerControl(): L.Control.Layers { return this._layerControl; }
+  @Input() set layerControl(v: L.Control.Layers) {  } //if (v) this.addLayerControl(v)
+
   private mapContainer: ElementRef<HTMLElement>;
   clearMapSubscription: Subscription;
   constructor(private plt: Platform, private mapService: MapService, private router: Router) {
@@ -91,10 +89,7 @@ export class MapComponent implements OnInit {
     this.plt.ready().then(() => {
       const geoapifyAPIKey = this.mapService.geoapifyAPIKey;
 
-      this.map = new L.Map(this.mapContainer.nativeElement).setView(
-        [33.786271, 51.7933669],
-        6
-      );
+      this.map = new L.Map(this.mapContainer.nativeElement).setView([33.786271, 51.7933669], 6);
 
       L.tileLayer(
         `https://maps.geoapify.com/v1/tile/osm-carto/{z}/{x}/{y}.png?apiKey=${geoapifyAPIKey}`,
@@ -111,7 +106,7 @@ export class MapComponent implements OnInit {
 
   setPolyline(polylines: Polyline[]) {
     polylines.forEach(polyline => {
-      let p = L.polyline(polyline.latLng,polyline.options)
+      let p = L.polyline(polyline.latLng, polyline.options)
         .addTo(this.layerGroup);
     });
   }
@@ -149,5 +144,21 @@ export class MapComponent implements OnInit {
 
   flyTo(mapView: MapView) {
     this.map.flyTo([mapView.lat, mapView.lng], mapView.zoom);
+  }
+
+  addLayerControl(value : L.Control.Layers) {
+    this.layerControl = L.control.layers().addTo(this.map);
+    var crownHill = L.marker([35.747843, 51.437985]).bindPopup('This is Crown Hill Park.'),
+      rubyHill = L.marker([35.74672, 51.436743]).bindPopup('This is Ruby Hill Park.');
+
+    var RSM = L.layerGroup([crownHill, rubyHill]);
+    var ASM = L.layerGroup([crownHill, rubyHill]);
+    var SSV = L.layerGroup([crownHill, rubyHill]);
+    var SR = L.layerGroup([crownHill, rubyHill]);
+
+    this.layerControl.addOverlay(RSM, "RSM");
+    this.layerControl.addOverlay(ASM, "ASM");
+    this.layerControl.addOverlay(SSV, "SSV");
+    this.layerControl.addOverlay(SR, "SR");
   }
 }
