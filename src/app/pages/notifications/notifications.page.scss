@@ -8,11 +8,7 @@ ion-img.back-button{
     z-index: 2;
 }
 ion-img.wifi-online{
-    // width: 7vw;
     min-width: 30px;
-
-    // width: 100px;
-    // width: 20%;
 }
 ion-col.wifi{
     margin-right: 4vw;
@@ -118,8 +114,14 @@ ion-col.notifications{
     align-items: center;
     margin-top: 3rem;
     ion-card{
-        max-height: 12rem;
+        max-height: 20rem;
         width: 90vw;
+        h2{
+            text-align: center;
+            ion-label{
+                color: #0095EB;
+            }
+        }
         .btn-delete{
             position: absolute;
             right: 1px;
@@ -147,7 +149,7 @@ ion-col.notifications{
             left: 2vw;
         }
         ion-card-content{
-            width: 80%;
+            width: 83%;
             display: flex;
             margin-left: 10vw;
             h4{

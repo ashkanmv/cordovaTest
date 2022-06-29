@@ -104,8 +104,11 @@
     </ion-slides>
   </ion-col>
   <ion-col class="notifications">
-    <ion-card>
-      <button class="btn-edit" *ngIf="hasAccess">
+    <ion-card *ngFor="let news of all_news">
+      <h2>
+        <ion-label>{{news.title}}</ion-label>
+      </h2>
+      <button id="open-modal" class="btn-edit" *ngIf="hasAccess">
         <img src="\assets\pages\notifications\Group 1298.png" alt="" />
       </button>
       <button class="btn-delete" *ngIf="hasAccess">
@@ -115,28 +118,43 @@
         class="ion-align-items-center ion-justify-content-between"
       >
         <h4>
-          Lorem ipsum consectetur adipisicing elit. Accusamus, doloribus?Lorem
-          ipsum consectetur adipisicing elit. Accusamus, doloribus?
+         {{news.text}}
         </h4>
         <img src="\assets\pages\notifications\notification-img.png" alt="" />
       </ion-card-content>
       <p class="time-posted">1h ago</p>
-    </ion-card>
-    <ion-card>
-      <button class="btn-edit" *ngIf="hasAccess">
-        <img src="\assets\pages\notifications\Group 1298.png" alt="" />
-      </button>
-      <button class="btn-delete" *ngIf="hasAccess">
-        <img src="\assets\pages\notifications\Group 1299.png" alt="" />
-      </button>
-      <ion-card-content
-        class="ion-align-items-center ion-justify-content-between"
-      >
-        <h4>Lorem ipsum consectetur adipisicing elit. Accusamus, doloribus?</h4>
-        <img src="\assets\pages\notifications\notification-img.png" alt="" />
-      </ion-card-content>
-      <p class="time-posted">1h ago</p>
-    </ion-card>
+    <ion-modal #modal trigger="open-modal">
+      <ng-template>
+        <ion-content>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title class="ion-text-center" >Edit</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="confirm()">Confirm</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+          <ion-list>
+            <ion-item>
+            <ion-grid >
+              <ion-row>
+                <ion-col size="12">
+                  <ion-label>Edit Text</ion-label>
+                  </ion-col>
+                <ion-col size="12">
+                  <ion-input placeholder="Enter Text..."></ion-input>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-card>
+
   </ion-col>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

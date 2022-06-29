@@ -5,8 +5,10 @@ import { Language, News } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
+import { UtilService } from 'src/app/shared/util.service';
 import { AddEditNotificationComponent } from './add-edit-notification/add-edit-notification.component';
 import { NotificationsService } from './notifications.service';
+
 
 @Component({
   selector: 'app-notifications',
@@ -31,7 +33,8 @@ export class NotificationsPage implements OnInit {
     private languageService: LanguageService,
     private sharedSerice: SharedService,
     private loadingCtrl: LoadingController,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private utilService : UtilService
   ) { }
 
   slideOpts = {
@@ -150,5 +153,20 @@ export class NotificationsPage implements OnInit {
       return
     }
     this.getNews(event);
+  }
+  get_direction() {
+    let lang = this.utilService.get_lang();
+    if (lang == 'en') {
+      return 'ltr';
+    } else {
+      return 'rtl';
+    }
+  }
+  cancel() {
+    return this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    return this.modalCtrl.dismiss(null, 'confirm');
   }
 }
