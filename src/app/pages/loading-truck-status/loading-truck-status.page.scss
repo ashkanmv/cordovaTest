@@ -76,8 +76,9 @@ ion-popover.search-popover{
 
 // date picker
 
-ion-col{
+ion-row{
     .date-picker-container{
+        width: 100%;
         height: 15rem;
         display: flex;
         justify-content: center;
@@ -134,19 +135,19 @@ ion-col{
         padding: 2rem 0;
         margin: 3vh 4vw;
         &>ion-item{
-            --background: none;
-            --padding-start:0;
+            margin-left: 3vw;
             width: 90%;
             border-radius: 10px;
-            ion-select{
+            ng-select{
                 width: 100%;
-                height: 100%;
+                height: 10vh;
+                overflow-y: scroll;
             }
         }
         .search-submit{
             z-index: 2;
             width: 3rem;
-            height: 5rem;
+            height: 100%;
             border-radius: 10px 0 0 10px;
             ion-icon{
                 color: var(--ion-color-light);
@@ -182,125 +183,79 @@ ion-col{
 
 
 // ------------table------------------------
-table{
-
+table.main-table{
     table-layout: fixed;
     width: 100%;
     margin: 0;
-    
-    tr{
-        cursor: pointer;
-        z-index: 3;
-       
-    }
-    td{
-        white-space: nowrap;
-        padding: 2px 0;
-        max-width: 100px;
 
-    }
-    .table-head{
-        .table-head-content{
-            font-weight: bold;
-            color:var(--ion-color-dark);
+    .header-table{
+        width: 100vw;
+        .header{
             th{
-                font-size: 1.1rem;
-            }
-            >:first-child{
-                background: #dadada56;
-                color:#0095EB;
-                min-height: 20px;
+                width: 20%;
+                height: 5vh;
+                text-align: center;
             }
         }
+
     }
-    .table-body{
-       >tr{
-            >td{
-                font-size: 1.3rem;
-                color: var(--ion-color-dark);
-                text-align: center;
-                &:first-child{
-                    text-align: left;
-                    padding-left: 5px;            
+    .body-table-container{
+        width: 100vw;
+        overflow: scroll;
+        height: 80vh;        
+        table.body-table{
+            width: 100%;
+            .header{
+                td{
+                    width: 20%;
+                    height: 5vh;
+                    text-align: center;
                 }
             }
-            >:last-child{
-                background: #dcdcdc92;
-            }
-        }
-        
-        ion-icon{
-            font-size: 1.2rem;
-            padding-right: 4px;
-        }
-        &-icon{
-            background: #dddddd;
-            align-items: center;
-            justify-content: center;
         }
     }
-    .table-detail{
-        background: var(--ion-color-light);
-        .border{
-            border-left: 2px #0095EB solid;
-            margin-left: 1rem;
-            padding: 1rem 0 0;
-        &>table{
-
-            width: 90vw;
-            margin:0 1rem 1rem;
-            position: relative;
-            
-            
-            .line-1{
-                background: #0095EB;
-                position: absolute;
-                top: 3rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-2{
-                background:#0095EB;
-                position: absolute;
-                top: 11rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-3{
-                background: #0095EB;
-                position: absolute;
-                bottom: 11.5rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
-            }
-            .line-4{
-                background: #0095EB;
-                position: absolute;
-                bottom: 3.8rem;
-                left: -1rem;
-                height: 1.5px;
-                width: 1rem;
+    .details-table-container{
+        width: 100vw;
+        table.details-driver{
+            width: 100%;
+            height: 5vh;
+            tr.details-driver{
+                background: #205172;
+                th{
+                    color: #f4f4f4;
+                }
             }
         }
-        tr{
-            display: grid;
-            grid-template-columns: auto auto;
-            padding: 1rem 1rem 0;
-        }
-
-        td{
-            height: 10vh;
-            span{
-                color: #343593;
-                font-weight: bold;
+        table.details-table{
+            width: 100%;
+            tr.header{
+                background: #0095EB;
+                th{
+                    width: 20%;
+                    height: 5vh;
+                    text-align: center;
+                }
             }
         }
-        tbody{
-            text-align: center;
+        .details-body-table-container{
+            width: 100vw;
+            overflow: scroll;
+            height: 50vh;        
+            table.details-body-table{
+                background: var(--ion-color-light);
+                width: 100%;
+                tr{
+                    td{
+                        width: 20%;
+                        height: 5vh;
+                        text-align: center;
+                    }
+                    .firstcolumn{
+                        background: #0095EB;
+                    }
+                }
+            }
         }
     }
-}
+    
 }

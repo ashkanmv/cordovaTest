@@ -4,6 +4,7 @@ import { format, parseISO } from 'date-fns';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { StorageService } from 'src/app/shared/storage.service';
+import { UtilService } from 'src/app/shared/util.service';
 import { LoadingTruckStatusService } from './loading-truck-status.service';
 
 @Component({
@@ -22,62 +23,9 @@ export class LoadingTruckStatusPage implements OnInit {
   loadtruck1 = [];
   virtual_rows1 = [];
   user_list = [];
-  // mock data
-  public loadingTruckData: Array<any> = [
-    {
-      route: 1100,
-      load: 4,
-      sale: 6,
-      PPED: 43,
-      remain: 0,
-    },
-    {
-      route: 1103,
-      load: 7,
-      sale: 0,
-      PPED: 3,
-      remain: 3,
-    },
-    {
-      route: 1104,
-      load: 3,
-      sale: 2,
-      PPED: 4,
-      remain: 2,
-    },
-    {
-      route: 1105,
-      load: 1,
-      sale: 8,
-      PPED: 35,
-      remain: 31,
-    },
-  ];
-  //
-  // --detail
-  public routeVisitorDetailData: Array<any> = [
-    {
-      Name: ' Lola Jahan',
-      Number: 205645654,
-      Address: 'Tehran_Zafar ',
-    },
-    {
-      Name: 'Jahan Zafaru',
-      Number: 657546456,
-      Address: 'Tehran_Zafar',
-    },
-    {
-      Name: 'Jahanan Esfahani',
-      Number: 46784784,
-      Address: 'Tehran_Zafar',
-    },
-    {
-      Name: 'Hanie Jahanian',
-      Number: 85674867845,
-      Address: 'Tehran_Zafar',
-    },
-  ];
-  //delete later
+  isVisible=undefined;
+  DriverName;
+  server;
 
   public get language(): Language {
     return this.languageService.language;
@@ -87,7 +35,11 @@ export class LoadingTruckStatusPage implements OnInit {
     private languageService: LanguageService,
     private storageService: StorageService,
     private loadingTruckService: LoadingTruckStatusService,
-    private loadingCtrl: LoadingController) { }
+    private loadingCtrl: LoadingController,
+    private UtilService: UtilService
+  ) { }
+
+  
 
   ngOnInit() {
     this.storageService.get('user_id').then((user_id) => {
@@ -184,5 +136,43 @@ export class LoadingTruckStatusPage implements OnInit {
 
   dateChanged(value: string) {
 
+  }
+
+  Load_Detail: any =[{
+    Cat:'',
+    SKU:'',
+    Load:0,
+    Sale:0,
+    PPED:0,
+    Remain:0,
+
+  }];
+
+  set_server_status(vale) {
+    this.server = vale;
+    this.UtilService.set_server(vale);
+  }
+
+  Show_Load_Detail(row , index)
+  {
+    if(this.isVisible==index)
+    {
+      this.isVisible=undefined;
+      return;
+    }
+    this.loadingTruckService.getLoadTruckDetail(this.selected_date, row.Route)
+    .subscribe(
+    customer_histories => {
+      this.set_server_status(true);
+      this.Load_Detail=customer_histories;
+      this.DriverName = this.user_list[index][0] + ' => ' + this.user_list[index][1];
+      this.isVisible=index;
+      this.set_server_status(true);
+    },
+    error => {
+      this.set_server_status(false);
+      console.log(error);
+    });
+    
   }
 }
