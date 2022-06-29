@@ -210,6 +210,7 @@
       </ion-grid>
     </ion-col>
   </ion-col>
+  <!-- ----------------------------------------- -->
   <ion-col class="category-page" *ngIf="selectedSegment == 'categoryP'">
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
@@ -256,7 +257,29 @@
     </ion-col>
 <!-- ----------------------table--------------------- -->
     <ion-col>
-      
+      <ion-grid class="maingrid">
+        <ion-row wrap *ngFor="let row of virtual_rows3; let i = index" (click)="row_click3(row)"
+          [ngClass]="{'firstrow': i==0}">
+
+          <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
+            <ion-col *ngFor="let item of scorecards3[row.index]; let j = index"
+              [ngClass]="{'firstculomn': j==0 && i!=0}">
+              {{ item }}
+            </ion-col>
+
+          </ng-container>
+          <ng-container *ngIf="row.show && row.type=='b'">
+            <ion-grid>
+              <ion-row wrap *ngFor="let rows of selected_ch3[row.index]">
+                <ion-col *ngFor="let item of rows" style="border: 1px solid dodgerblue!important">
+                  {{ item }}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </ng-container>
+        </ion-row>
+      </ion-grid>
     </ion-col>
     <ion-col size="12">
       <ion-row class="ion-justify-content-center ion-margin-top">

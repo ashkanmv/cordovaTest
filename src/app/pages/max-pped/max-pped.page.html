@@ -222,7 +222,8 @@
             <ng-container
               *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')"
             >
-              <ion-col
+              <ion-col 
+                class="col-route"
                 *ngFor="let item of srpped2[row.index]; let j = index"
                 [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2}"
               >
@@ -243,6 +244,7 @@
                 *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')"
               >
                 <ion-col
+                  class="col-route"
                   *ngFor="let item of srpped2[row.index]; let j = index"
                   [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0 === j % 2}"
                 >
@@ -258,8 +260,9 @@
                     [ngClass]="{'firstrow2': i==0 }"
                     (click)="row_clickCustomer(rows[0])"
                   >
-                    <ion-col class="nested-details" *ngFor="let item of rows; let j = index"
-                    [ngClass]="{'oddColumns' : 0 === j % 2 , 'oddRows': 1 === i % 2}">
+                    <ion-col class="nested-details col-route" *ngFor="let item of rows; let j = index"
+                    >
+                    <!-- [ngClass]="{'oddColumns' : 0 === j % 2 , 'oddRows': 1 === i % 2}" -->
                       {{ item }}
                     </ion-col>
                   </ion-row>
@@ -509,58 +512,7 @@
       </table>
     </ion-col>
 
-    <!-- <ion-row>
-      <ion-col class="ion-no-padding">
-        <table>
-          <thead>
-            <th class="route"><span>Customer Number</span></th>
-            <th>Cluster</th>
-            <th>Store Name</th>
-            <th>Sale</th>
-            <th>PPED</th>
-            <th>%</th>
-          </thead>
-          <tbody *ngFor="let data of routeData; let i = index" [ngClass]="{'oddRows' : 0 === i % 2 }">
-            <tr (click)="toggleNestedTabelRow_1()">
-              <td class="table-darker-bg">
-                <ion-icon name="chevron-down-outline"></ion-icon>{{data.route}}
-              </td>
-              <td>{{data.city}}</td>
-              <td>{{data.visitorName}}</td>
-              <td>{{data.sale}}</td>
-              <td>{{data.PPED}}</td>
-              <td>{{data.percentage}}</td>
-            </tr>
-            <div *ngIf="nestedTableIsShowingRow_1" class="nested-table-container">
-              <div class="border-right">
-                <table class="nested-table">
-                  <thead>
-                    <th>Customer Number</th>
-                    <th>Customer Name</th>
-                    <th>Cluster</th>
-                    <th>Sale</th>
-                    <th>PPED</th>
-                    <th>%</th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                  <hr />
-                </table>
-              </div>
-            </div>
-          </tbody>
-        </table>
-      </ion-col>
-    </ion-row> -->
+    
   </ion-col>
 </ion-content>
 
-<!-- ----------------------- -->

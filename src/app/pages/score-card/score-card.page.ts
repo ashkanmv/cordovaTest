@@ -46,6 +46,9 @@ export class ScoreCardPage implements OnInit {
   // old rys
   type1 = "sales";
   server;
+  selected_ch3=[];
+  type3 = "sales";
+
 
   color = [
     'rgba(230,25,75,0.2)',
@@ -728,4 +731,56 @@ export class ScoreCardPage implements OnInit {
       }
     }
   }
+  // row_click3(row) {
+    // if (row.type == "a") {
+    //   if (this.virtual_rows3[row.index + 1].show) {
+    //     this.virtual_rows3[row.index + 1].show = false;
+    //   } else {
+    //     this.virtual_rows3[row.index + 1].show = true;
+    //   }
+
+    //   if (this.type3 == "pped") {
+    //     this.scoreCardService
+    //       .getPped3ByChannelCategory(
+    //         this.selected_channel3,
+    //         this.scorecards3[row.index][0]
+    //       )
+    //       .subscribe(
+    //         (customer_histories) => {
+    //           this.set_server_status(true);
+            
+    //           this.create_model3(customer_histories, row.index + 1);
+    //         },
+    //         (error) => {
+    //           this.utilService.presentToast(
+    //             this.translateService.instant("server_no_value")
+    //           );
+    //           this.set_server_status(false);
+    //           console.log(error);
+    //         }
+    //       );
+    //   } else {
+    //     //sales
+    //     this.scoreCardService
+    //       .getSales3ByChannelCategory(
+    //         this.selected_channel3,
+    //         this.scorecards3[row.index][0]
+    //       )
+    //       .subscribe(
+    //         (customer_histories) => {
+    //           this.set_server_status(true);
+
+    //           this.create_model3(customer_histories, row.index + 1);
+    //         },
+    //         (error) => {
+    //           this.utilService.presentToast(
+    //             this.translateService.instant("server_no_value")
+    //           );
+    //           this.set_server_status(false);
+    //           console.log(error);
+    //         }
+    //       );
+    //   }
+    // }
+  // }
 }

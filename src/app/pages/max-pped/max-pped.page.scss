@@ -173,6 +173,7 @@ table.table-container{
         width: 100vw;
         th{
             height: 5vh;
+            font-size: .8rem;
         }
         tr.header{
             .firstcolumn{
@@ -272,21 +273,32 @@ hr.ver-line{
     transform: rotate(90deg);
     margin-top: -1rem;
 }   
-
+// ------------------------------
 ion-grid.maingrid{
-    .firstRow{
-        background: red;
-    }
     text-align: center;
-    ion-col{
-        height: 5vh;
+    ion-col.col-route{
+        overflow-wrap: anywhere;
+        height: 8vh;
+        font-size: 3vw;
         display: flex;
         justify-content: center;
         align-items: center;
-        // &.firstcolumn{
-        //     color: #0095eb;
-        //     text-transform: capitalize;
-        // }
+        
+        &:first-child{
+            max-width: 21%;
+        }
+        &:nth-child(3){
+            max-width: 18%;
+        }
+        &:nth-child(4){
+            max-width: 18%;
+        }
+        &:nth-child(5){
+            max-width: 13%;
+        }
+        &:last-child{
+            max-width: 10%;
+        }
     }
     .r-body-content{
         height: 60vh;
@@ -301,11 +313,5 @@ ion-col.nested-details{
     width: 10vw;
 }
 .firstrow2{
-    &>:first-child{
-        color: #0095eb;
-
-    }
-   
-        
-    
+    background: #0095eb;
 }
