@@ -3,12 +3,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Data, Router } from '@angular/router';
 import { MapService } from 'src/app/map/map.service';
 import { IonDatetime, PopoverController } from '@ionic/angular';
-import { Language, Marker } from 'src/app/shared/common';
+import { GetAllChildrenUserResponse, GetSalesmenLocationResponse, Language, Marker } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { Subscription } from 'rxjs';
+import { SalesmenLocationService } from './salesmen-location.service';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-salesmen-location',
@@ -17,16 +19,27 @@ import { Subscription } from 'rxjs';
 })
 export class SalesmenLocationPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
-
+  markers: Marker[] = [];
   dateNow = new Date();
   show = false;
   form: FormGroup;
-  rsms = [];
-  selectedRsm;
-  rsmPoints: Marker[] = [];
+  rsms: GetAllChildrenUserResponse[] = [];
+  asms: GetAllChildrenUserResponse[] = [];
+  ssvs: GetAllChildrenUserResponse[] = [];
+  srs: GetAllChildrenUserResponse[] = [];
+  selectedRsm: number[] = [];
+  selectedAsm: number[] = [];
+  selectedSsv: number[] = [];
+  selectedSr: number[] = [];
+  rsmMarkers: Marker[] = [];
+  asmMarkers: Marker[] = [];
+  ssvMarkers: Marker[] = [];
+  srMarkers: Marker[] = [];
+  adminMarkers: Marker[] = [];
   userIds = [];
   mapInitSubscription: Subscription;
   showMap = false;
+  selectedDate = new Date().toISOString();
   public get language(): Language {
     return this.languageService.language;
   }
@@ -37,12 +50,13 @@ export class SalesmenLocationPage implements OnInit {
     private formBuilder: FormBuilder,
     private storageService: StorageService,
     private mapService: MapService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private salesmenService: SalesmenLocationService,
+    private sharedService: SharedService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
-      if (initialized) {
-        // this.getCurrentLocation();
-      }
+      if (initialized && (this.rsmMarkers.length || this.asmMarkers.length || this.ssvMarkers.length || this.srMarkers.length || this.adminMarkers.length))
+        this.markers = [...this.rsmMarkers, ...this.asmMarkers, ...this.ssvMarkers, ...this.srMarkers, ...this.adminMarkers];
     })
   }
 
@@ -88,7 +102,6 @@ export class SalesmenLocationPage implements OnInit {
       myUserType: [null],
       userId: [null],
       myUserID: [null],
-      selectedDate: [new Date()],
       formDate: [new Date().toISOString()],
       srTime: [this.persianCalendarService.getVPTodayFormat(new Date())],
       truckTime: [this.persianCalendarService.getTodayFormat(new Date())],
@@ -116,51 +129,31 @@ export class SalesmenLocationPage implements OnInit {
         this.patchValue('accessRsm', true);
         if (flg == false) {
           this.patchValue('myUserType', 'rsm');
-          this.loadRsms();
+          this.loadRsms(true, [this.f.myUserID.value]);
           flg = true;
         }
       } else if (access.name == 'gps_asm') {
         this.patchValue('accessAsm', true);
         if (flg == false) {
           this.patchValue('myUserType', 'asm');
-
-          this.asmSelect();
-
+          this.loadAsms(true, [this.f.myUserID.value]);
           flg = true;
         }
       } else if (access.name == 'gps_ssv') {
         this.patchValue('accessSsv', true);
         if (flg == false) {
           this.patchValue('myUserType', 'ssv');
-          this.ssvSelect();
+          this.loadSsvs(true, [this.f.myUserID.value]);
           flg = true;
         }
       } else if (access.name == 'gps_sr') {
         this.patchValue('accessSr', true);
         if (flg == false) {
           this.patchValue('myUserType', 'sr');
-          this.srSelect();
+          this.loadSrs(true, [this.f.myUserID.value]);
           flg = true;
         }
       }
-    });
-  }
-
-  loadRsms() {
-    this.mapService.getallChildrenUser(this.f.myUserID.value, 'rsm', ' ').subscribe((res: Data[]) => {
-      this.selectedRsm = [];
-      this.rsms = res;
-      let userId = '';
-      this.rsms.forEach((v) => {
-        v.group = this.language.Salesmen_Location.Group
-        userId = userId + ',' + v.id;
-        this.selectedRsm.push(v.id);
-      });
-      this.patchValue('userId', userId);
-      this.rsmPoints = [];
-      this.smlRsmPoints();
-
-      this.asmSelect();
     });
   }
 
@@ -172,38 +165,84 @@ export class SalesmenLocationPage implements OnInit {
     }
   }
 
-  smlRsmPoints() {
-    if (!this.f.showPointRsm.value)
+  loadRsms(byParentUserId: boolean, ids: number[]) {
+    if (!ids.length) {
+      this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
       return
-
-    if (this.rsmPoints.length)
-      this.showRsmPointsOnMap();
-    else
-      this.mapService.getallChildrenUser([], 'rsm', this.selectedRsm).subscribe((res: Data[]) => {
-        this.userIds = [];
-        if (!res.length) return;
-        res.forEach((r) => this.userIds.push(r.id));
-        this.getSalesmenLocation();
+    }
+    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'rsm', byParentUserId ? ' ' : ids.join()).subscribe(res => {
+      this.selectedRsm = [];
+      this.rsms = res;
+      this.rsms.forEach((v) => {
+        v.group = this.language.Salesmen_Location.Group
+        this.selectedRsm.push(v.id);
       });
+      this.rsmMarkers = [];
+      this.getSalesmenLocation(this.selectedRsm.join(), 'rsm')
+      this.loadAsms(true, this.selectedRsm);
+    });
   }
 
-  showRsmPointsOnMap() {
-    // this.mapService
+  loadAsms(byParentUserId: boolean, ids: number[]) {
+    if (!ids.length) {
+      this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
+      return
+    }
+    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'asm', byParentUserId ? ' ' : ids.join())
+      .subscribe(res => {
+        this.selectedAsm = [];
+        if (byParentUserId)
+          this.asms = res;
+        if (this.asms.length)
+          this.asms.forEach((v) => {
+            v.group = this.language.Salesmen_Location.Group;
+            this.selectedAsm.push(v.id);
+          });
+        this.getSalesmenLocation(this.selectedAsm.join(), 'asm')
+        this.loadSsvs(true, this.selectedAsm)
+      })
   }
 
-  getSalesmenLocation() {
-    this.mapService
-      .getSalesmenLocation(
-        this.userIds,
-        this.persianCalendarService.getVPTodayFormat(this.f.selectedDate.value),
-        1
-      )
-      .subscribe((data) => console.log(data));
+  loadSsvs(byParentUserId: boolean, ids: number[]) {
+    if (!ids.length) {
+      this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
+      return
+    }
+    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'ssv', byParentUserId ? ' ' : ids.join())
+      .subscribe(res => {
+        this.selectedSsv = [];
+        if (byParentUserId)
+          this.ssvs = res;
+        if (this.ssvs.length)
+          this.ssvs.forEach((v) => {
+            v.group = this.language.Salesmen_Location.Group;
+            this.selectedSsv.push(v.id);
+          });
+        // this.showSsv = true;
+        this.getSalesmenLocation(this.selectedSsv.join(), 'ssv')
+        this.loadSrs(true, this.selectedSsv);
+      })
   }
 
-  asmSelect() { }
-  ssvSelect() { }
-  srSelect() { }
+  loadSrs(byParentUserId: boolean, ids: number[]) {
+    debugger
+    if (!ids.length) {
+      this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
+      return
+    }
+    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'sr', byParentUserId ? ' ' : ids.join())
+      .subscribe(res => {
+        this.selectedSr = [];
+        if (byParentUserId)
+          this.srs = res;
+        if (res.length)
+          res.forEach((v) => {
+            v.group = this.language.Salesmen_Location.Group;
+            this.selectedSr.push(v.id);
+          });
+        this.getSalesmenLocation(this.selectedSr.join(), 'sr')
+      })
+  }
 
   async presentPopover(ev: any) {
     const popover = await this.popoverctrl.create({
@@ -218,17 +257,85 @@ export class SalesmenLocationPage implements OnInit {
     console.log('onDidDismiss resolved with role', role);
   }
 
+  dateChanged() {
+    // this.patchValue('selectedDate', date.slice(0, date.length - 6));
+    if (this.selectedSr.length)
+      this.loadSrs(false, this.selectedSr)
+  }
+
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
   }
-  // fix this later
-  confirm() {
-    // this.datetime.nativeEl.confirm();
-    this.datetime.confirm();
+
+  getSalesmenLocation(userIds: string, userType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
+    if (!userIds.length)
+      return
+    this.salesmenService
+      .getSalesmenLocation(
+        userIds,
+        this.persianCalendarService.getVPTodayFormat(new Date(this.selectedDate)),
+        1
+      )
+      .subscribe(res => this.setMarkersOnMap(res, userType));
   }
 
-  reset() {
-    // this.datetime.nativeEl.reset();
-    this.datetime.reset();
+  setMarkersOnMap(users: GetSalesmenLocationResponse[], userType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
+    if (!users.length)
+      return
+
+    let markers: Marker[] = [];
+    users.forEach(user => {
+      markers.push({
+        latitude: user.lat,
+        longitude: user.lng,
+        icon: this.selectIcon(userType),
+        description: `<div> <h1> ${user.Name} </h1> </div>`
+      });
+    })
+
+    switch (userType) {
+      case 'rsm':
+        this.rsmMarkers = markers;
+        break;
+      case 'asm':
+        this.asmMarkers = markers;
+        break;
+      case 'ssv':
+        this.ssvMarkers = markers;
+        break;
+      case 'sr':
+        this.srMarkers = markers;
+        break;
+      case 'admin':
+        this.adminMarkers = markers;
+        break;
+    }
+    this.mapService.clearMarkers.next(true);
+    // this.setMarkers();
+  }
+
+  setMarkers() {
+    if (this.markers.length)
+      this.mapService.clearMarkers.next(true);
+    // this.markers = [...this.rsmMarkers, ...this.asmMarkers, ...this.ssvMarkers, ...this.srMarkers, ...this.adminMarkers];
+  }
+
+  selectIcon(key: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
+    switch (key) {
+      case 'rsm':
+        return this.mapService.SalesMenRsmIcon;
+
+      case 'asm':
+        return this.mapService.SalesMenAsmIcon;
+
+      case 'ssv':
+        return this.mapService.SalesMenSsvIcon;
+
+      case 'sr':
+        return this.mapService.SalesMenSrIcon;
+
+      case 'admin':
+        return this.mapService.SalesManSdIcon;
+    }
   }
 }

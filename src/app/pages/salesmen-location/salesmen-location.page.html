@@ -48,7 +48,7 @@
             <ion-row class="date-picker lightBlue-shadow">
               <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
               <ion-col id="open-popover" class="ion-justify-content-end">
-                {{dateNow | date:'yyyy/MM/dd'}}
+                {{selectedDate | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </ion-col>
             </ion-row>
@@ -56,10 +56,10 @@
         </ion-row>
         <ion-popover trigger="open-popover" show-backdrop="false">
           <ng-template>
-            <ion-datetime presentation="date">
+            <ion-datetime #date [value]="selectedDate" (ionChange)="selectedDate = date.value; dateChanged()" presentation="date">
               <ion-buttons slot="buttons">
-                <ion-button (click)="reset()">{{language.DatePicker.reset}}</ion-button>
-                <ion-button (click)="confirm()">{{language.DatePicker.confirm}}</ion-button>
+                <ion-button (click)="date.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+                <ion-button (click)="date.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
               </ion-buttons>
             </ion-datetime>
           </ng-template>
@@ -83,7 +83,7 @@
             </ion-label>
             <ng-select *ngIf="rsms.length" [items]="rsms" [multiple]="true" bindLabel="FullName" groupBy="group"
               appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
-              bindValue="id" [(ngModel)]="selectedRsm">
+              bindValue="id" [(ngModel)]="selectedRsm" (change)="loadAsms(true,selectedRsm)">
 
               <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
                 <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
@@ -100,7 +100,6 @@
           <ion-item class="salesmen-location lightBlue-shadow">
             <ion-label>
               <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
-
               <ion-item>
                 <ion-icon name="chevron-down-outline"></ion-icon>
                 <ion-list class="radio-group-container">
@@ -112,9 +111,19 @@
                 </ion-list>
               </ion-item>
             </ion-label>
-            <ion-select placeholder="ASM" interface="popover" multiple="true">
-              <ion-select-option slot="end" value="peperoni">Peperoni</ion-select-option>
-            </ion-select>
+            <ng-select *ngIf="asms.length" [items]="asms" [multiple]="true" bindLabel="FullName" groupBy="group"
+            appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+            bindValue="id" [(ngModel)]="selectedAsm" (change)="loadSsvs(true,selectedAsm)">
+
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+            </ng-template>
+
+          </ng-select>
           </ion-item>
         </div>
         <div class="salesmen-location-box">
@@ -133,9 +142,19 @@
                 </ion-list>
               </ion-item>
             </ion-label>
-            <ion-select placeholder="SSV" interface="popover" multiple="true">
-              <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            </ion-select>
+            <ng-select *ngIf="ssvs.length" [items]="ssvs" [multiple]="true" bindLabel="FullName" groupBy="group"
+            appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+            bindValue="id" [(ngModel)]="selectedSsv" (change)="loadSrs(true,selectedSsv)">
+
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+            </ng-template>
+
+          </ng-select>
           </ion-item>
         </div>
         <div class="salesmen-location-box">
@@ -154,17 +173,29 @@
                 </ion-list>
               </ion-item>
             </ion-label>
-            <ion-select placeholder="SR" interface="popover" multiple="true">
-              <ion-select-option value="peperoni">Peperoni</ion-select-option>
-            </ion-select>
+            <ng-select *ngIf="srs.length" [items]="srs" [multiple]="true" bindLabel="FullName" groupBy="group"
+            appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+            bindValue="id" [(ngModel)]="selectedSr" (change)="loadSrs(false,selectedSr)">
+
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+            </ng-template>
+
+          </ng-select>
           </ion-item>
         </div>
       </ion-col>
     <!-- </form> -->
   </div>
-  <div *ngIf="showMap" style="width: 100vw; height: 100vh">
-    <app-map
-      [showMap]="showMap"
-    ></app-map>
+  <div [ngStyle]="{display: !show ? 'block' : 'none'}">
+    <div *ngIf="showMap" style="width: 100vw; height: 100vh">
+      <app-map
+        [showMap]="showMap" [markers]="markers"
+      ></app-map>
+    </div>
   </div>
 </ion-content>

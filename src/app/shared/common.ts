@@ -83,6 +83,12 @@ export interface News {
   Mod_User: number;
 }
 
+export interface GetAllChildrenUserResponse {
+  id: number;
+  FullName: string;
+  group : string;
+}
+
 export interface GetSales2ByCatSkuResponse {
   Channels: string;
   Today: number;
@@ -174,6 +180,46 @@ export interface getVPByRouteResponse {
   UserID: string;
   RouteCode: string;
   BrokerID: string;
+}
+
+export interface GetSalesmenLocationResponse{
+  id: string;
+  lat: number;
+  lng: number;
+  user_id: string;
+  route_name: string;
+  visitor_code: string;
+  provider: string;
+  time: string;
+  accuracy: number;
+  speed?: any;
+  altitude?: any;
+  bearing?: any;
+  location_provider: number;
+  uuid: string;
+  status: string;
+  create_at: Date;
+  Name: string;
+}
+
+export interface TraceSalesman {
+  id: number;
+  lat: number;
+  lng: number;
+  user_id: number;
+  route_name: string;
+  visitor_code: string;
+  provider: string;
+  time: number;
+  accuracy: number;
+  speed: number;
+  altitude: number;
+  bearing: any;
+  location_provider: any;
+  uuid: string;
+  status: string;
+  create_at: Date;
+  Name: string;
 }
 export interface LoginResponse {
   route_name: string;
@@ -434,6 +480,7 @@ export class Language {
     managerYellow: string;
     managerBlue: string;
     Group: string;
+    NoValueSelected : string;
   };
   Sales_hourly_Day_And_Sales_Office: {
     Title: string;

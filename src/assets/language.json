@@ -128,7 +128,8 @@
             "managerGreen": "Ahmad Safari",
             "managerYellow": "Sina Ahmadi",
             "managerBlue": "Kazem Dehghan",
-            "Group": "Select All"
+            "Group": "Select All",
+            "NoValueSelected": "No value selected!"
         },
         "Sales_hourly_Day_And_Sales_Office": {
             "Title": "Sales hourly_Day & Sales Office",
