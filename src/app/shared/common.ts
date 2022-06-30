@@ -272,17 +272,17 @@ export interface UserLog {
 }
 
 export interface PageDetail {
-  index : number;
-  key : string;
+  index: number;
+  key: string;
   routerLink: string;
-  imgSrc : string;
+  imgSrc: string;
   title: string;
 }
 
 export interface AutoLogin {
-  userName : string;
-  password : string;
-  uuid : string;
+  userName: string;
+  password: string;
+  uuid: string;
 }
 
 export interface PopoverItem {
@@ -305,6 +305,10 @@ export enum Languages {
 
 // Language
 export class Language {
+  Connection_error: string;
+  Gps_error: string;
+  Loading: string;
+  Server_no_value: string;
   Customer_History: {
     Title: string;
     gps: string;
@@ -314,7 +318,7 @@ export class Language {
     Tell: number;
     SR: string;
     Address: string;
-    msg_no_customer : string;
+    msg_no_customer: string;
   };
   Questionnaire: {
     Title: string;
@@ -330,6 +334,10 @@ export class Language {
     Radio_input_breakfast_yes: string;
     Radio_input_breakfast_no: string;
     Submit_button: string;
+    Msg_answer_neccesary: string;
+    Msg_image_neccesary: string;
+    Msg_submit: string;
+    Msg_update: string;
   };
   Gps_Tracking: {
     Title: string;
