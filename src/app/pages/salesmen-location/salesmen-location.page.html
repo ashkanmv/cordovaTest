@@ -41,7 +41,7 @@
 <ion-content>
   <div *ngIf="show">
     <!-- <form [formGroup]="form"> -->
-      <ion-col>
+      <ion-col *ngIf="f.accessTime.value">
         <ion-row class="date-picker-container">
           <ion-row class="date-picker-box">
             <label for="Date-picker">{{language.DatePicker.title}}</label>
@@ -66,7 +66,7 @@
         </ion-popover>
       </ion-col>
       <ion-col class="salesmen-location-container">
-        <div class="salesmen-location-box">
+        <div class="salesmen-location-box" *ngIf="f.accessRsm.value">
           <ion-item class="salesmen-location lightBlue-shadow">
             <ion-label>
               <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
@@ -96,7 +96,7 @@
             </ng-select>
           </ion-item>
         </div>
-        <div class="salesmen-location-box">
+        <div class="salesmen-location-box" *ngIf="f.accessAsm.value">
           <ion-item class="salesmen-location lightBlue-shadow">
             <ion-label>
               <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
@@ -126,7 +126,7 @@
           </ng-select>
           </ion-item>
         </div>
-        <div class="salesmen-location-box">
+        <div class="salesmen-location-box" *ngIf="f.accessSsv.value">
           <ion-item class="salesmen-location lightBlue-shadow">
             <ion-label>
               <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
@@ -157,7 +157,7 @@
           </ng-select>
           </ion-item>
         </div>
-        <div class="salesmen-location-box">
+        <div class="salesmen-location-box" *ngIf="f.accessSr.value">
           <ion-item class="salesmen-location lightBlue-shadow">
             <ion-label>
               <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
