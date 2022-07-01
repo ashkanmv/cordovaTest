@@ -225,7 +225,6 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   loadSrs(byParentUserId: boolean, ids: number[]) {
-    debugger
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
       return
