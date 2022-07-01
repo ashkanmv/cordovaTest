@@ -71,6 +71,11 @@ export class SalesmenLocationPage implements OnInit {
     this.checkAccess();
   }
 
+  ionViewWillLeave() {
+    this.showMap = false;
+    if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
+  }
+
   getUserId() {
     this.storageService.get('user_id').then((user_id) => {
       if (user_id) {

@@ -57,7 +57,7 @@
           <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <ion-col id="open-modal" class="ion-justify-content-end">
-              {{dateNow | date:'yyyy/MM/dd'}}
+              {{selectedDate | date:'yyyy/MM/dd'}}
               <ion-icon name="chevron-down-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -65,10 +65,12 @@
       </ion-row>
       <ion-popover trigger="open-modal" show-backdrop="false">
         <ng-template>
-          <ion-datetime
-            showDefaultButtons="true"
-            presentation="date"
-          ></ion-datetime>
+          <ion-datetime #date [value]="selectedDate" (ionChange)="selectedDate = date.value; dateChanged()" presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="date.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="date.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
+            </ion-buttons>
+          </ion-datetime>
         </ng-template>
       </ion-popover>
     </ion-col>
@@ -77,14 +79,19 @@
       <div class="salesmen-location-box">
         <ion-item lines="none" class="salesmen-location lightBlue-shadow">
           <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="RSM"
-            interface="popover"
-          >
-            <ion-select-option>1</ion-select-option>
-            <ion-select-option>2</ion-select-option>
-          </ion-select>
+          <!-- <ng-select *ngIf="rsms.length" [items]="rsms" [multiple]="true" bindLabel="FullName" groupBy="group"
+              appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+              bindValue="id" [(ngModel)]="selectedRsm" (change)="loadAsms(true,selectedRsm)">
+
+              <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+              </ng-template>
+
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+              </ng-template>
+
+            </ng-select> -->
           <ion-icon name="chevron-down-outline"></ion-icon>
           <ion-list class="radio-group-container">
             <ion-radio-group allow-empty-selection name="" value="">
@@ -178,4 +185,12 @@
       </div>
     </ion-col>
   </ng-container>
+  <div [ngStyle]="{display: !show ? 'block' : 'none'}">
+    <div *ngIf="showMap" style="width: 100vw; height: 100vh">
+      <!-- [markers]="markers" -->
+      <app-map
+        [showMap]="showMap" 
+      ></app-map>
+    </div>
+  </div>
 </ion-content>

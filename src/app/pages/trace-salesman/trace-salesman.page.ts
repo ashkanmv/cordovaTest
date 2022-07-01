@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonDatetime } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { MapService } from 'src/app/map/map.service';
+import { Language } from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
 
 @Component({
   selector: 'app-trace-salesman',
@@ -7,16 +10,39 @@ import { IonDatetime } from '@ionic/angular';
   styleUrls: ['./trace-salesman.page.scss'],
 })
 export class TraceSalesmanPage implements OnInit {
-  show = true;
-  dateNow = new Date();
-  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
-  constructor() {}
-  confirm() {
-    this.datetime.confirm();
+  show = false;
+  showMap = false;
+  selectedDate = new Date().toISOString();
+  mapInitSubscription: Subscription;
+  public get language(): Language {
+    return this.languageService.language;
   }
 
-  reset() {
-    this.datetime.reset();
+  constructor(
+    private languageService: LanguageService,
+    private mapService : MapService
+  ) { 
+    this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
+      (initialized: boolean) => {
+        if (initialized ) {
+          
+        }
+      }
+    );
   }
-  ngOnInit() {}
+
+  ionViewDidEnter() {
+    this.showMap = true;
+  }
+
+  ngOnInit() { }
+
+  ionViewWillLeave() {
+    this.showMap = false;
+    if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
+  }
+
+  dateChanged() {
+
+  }
 }
