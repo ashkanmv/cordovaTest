@@ -141,7 +141,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
       message: 'Please wait...'
     });
     loading.present();
-    this.todayPlannedService.getTRoutesCity(this.userId, this.selectedDate, this.selectedDc.join(), this.selectedCluster.join())
+    this.todayPlannedService.getTRoutesCity(this.userId, this.selectedDate.slice(0, this.selectedDate.length - 6), this.selectedDc.join(), this.selectedCluster.join())
       .subscribe(
         (SrSales: any) => {
           if (SrSales.length)
