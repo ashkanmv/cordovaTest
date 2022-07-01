@@ -287,9 +287,10 @@ export class GpsTrackingPage implements OnInit {
   }
 
   visitNotBuy() {
+    let selectedRoute = typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
     this.mapService
       .getVisit_NotBuy(
-        this.f.selectedRoute.value.routecode,
+        selectedRoute,
         this.CommonUtility.getInvoicedDate(new Date(this.f.selectedDate.value))
       )
       .subscribe((res) => {
@@ -299,25 +300,15 @@ export class GpsTrackingPage implements OnInit {
       });
   }
   notPlanF() {
+    let selectedRoute = typeof this.f.selectedRoute.value == 'object' ? this.f.selectedRoute.value.routecode : this.f.selectedRoute.value;
     this.mapService
       .getOutOfPlan(
-        this.f.selectedRoute.value.routecode,
+        selectedRoute,
         this.CommonUtility.getInvoicedDate(new Date(this.f.selectedDate.value))
       )
       .subscribe((res) => {
         this.notPlanFShopPoints = res;
         this.notPlanFLoaded = true;
-        // let markers: Marker[] = [];
-        // res.forEach(point => {
-        //   markers.push({
-        //     latitude: +point.PointLatitude,
-        //     longitude: +point.PointLongitude,
-        //     customerCode: point.CustCode,
-        //     icon: this.selectIcon('orange'),
-        //     description: this.markerDescription('notPlanF', point)
-        //   })
-        // });
-        // this.markers = [...this.markers, ...markers]
         this.handleDifferentShopPoints();
       });
   }
