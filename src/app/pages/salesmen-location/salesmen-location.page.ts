@@ -330,19 +330,19 @@ export class SalesmenLocationPage implements OnInit {
   selectIcon(key: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
     switch (key) {
       case 'rsm':
-        return this.mapService.SalesMenRsmIcon;
+        return this.mapService.salesMenRsmIcon;
 
       case 'asm':
-        return this.mapService.SalesMenAsmIcon;
+        return this.mapService.salesMenAsmIcon;
 
       case 'ssv':
-        return this.mapService.SalesMenSsvIcon;
+        return this.mapService.salesMenSsvIcon;
 
       case 'sr':
-        return this.mapService.SalesMenSrIcon;
+        return this.mapService.salesMenSrIcon;
 
       case 'admin':
-        return this.mapService.SalesManSdIcon;
+        return this.mapService.salesManSdIcon;
     }
   }
 }

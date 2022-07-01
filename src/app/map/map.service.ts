@@ -52,27 +52,27 @@ export class MapService {
     iconUrl: 'assets/icon/shop_blue_circle_x.png',
     iconSize: [30, 30],
   };
-  SalesManIcon: IconOptions = {
+  salesManIcon: IconOptions = {
     iconUrl: 'assets/icon/salesman.png',
     iconSize: [30, 30],
   };
-  SalesMenRsmIcon: IconOptions = {
+  salesMenRsmIcon: IconOptions = {
     iconUrl: 'assets/icon/salesmen_rsm.png',
     iconSize: [30, 30],
   };
-  SalesMenAsmIcon: IconOptions = {
+  salesMenAsmIcon: IconOptions = {
     iconUrl: 'assets/icon/salesmen_asm.png',
     iconSize: [30, 30],
   };
-  SalesMenSsvIcon: IconOptions = {
+  salesMenSsvIcon: IconOptions = {
     iconUrl: 'assets/icon/salesmen_ssv.png',
     iconSize: [30, 30],
   };
-  SalesMenSrIcon: IconOptions = {
+  salesMenSrIcon: IconOptions = {
     iconUrl: 'assets/icon/salesmen_sr.png',
     iconSize: [30, 30],
   };
-  SalesManSdIcon: IconOptions = {
+  salesManSdIcon: IconOptions = {
     iconUrl: 'assets/icon/salesman_sd.png',
     iconSize: [30, 30],
   };
@@ -107,8 +107,30 @@ export class MapService {
     iconSize: [30, 30],
   };
 
+  rsmPolylineOption: PolylineOptions = {
+    color: '#d50e35',
+    opacity: 1,
+    weight: 2,
+  }
+  asmPolylineOption: PolylineOptions = {
+    color: '#22b910',
+    opacity: 1,
+    weight: 2,
+  }
+  ssvPolylineOption: PolylineOptions = {
+    color: '#c46e00',
+    opacity: 1,
+    weight: 2,
+  }
+  srPolylineOption: PolylineOptions = {
+    color: '#003aa6',
+    opacity: 1,
+    weight: 2,
+  }
+
   mapInitialized = new Subject();
   clearMarkers = new Subject();
+  clearPolylines = new Subject();
   flyTo = new Subject();
   private vehicleUrl = environment.BaseURL + '/api/v1/vehicles';
   private shopPointUrl = environment.BaseURL + '/api/v1/shoppoints';

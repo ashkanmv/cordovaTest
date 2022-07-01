@@ -15,7 +15,8 @@ import { MapService } from './map.service';
 export class MapComponent implements OnInit {
   private map: L.Map;
   @ViewChild('map')
-  layerGroup: L.LayerGroup;
+  polylinesLayerGroup: L.LayerGroup;
+  markersLayerGroup: L.LayerGroup;
 
   private _showMap: boolean;
   public get showMap(): boolean { return this._showMap; }
@@ -36,13 +37,15 @@ export class MapComponent implements OnInit {
 
   private _layerControl: L.Control.Layers;
   public get layerControl(): L.Control.Layers { return this._layerControl; }
-  @Input() set layerControl(v: L.Control.Layers) {  } //if (v) this.addLayerControl(v)
+  @Input() set layerControl(v: L.Control.Layers) { } //if (v) this.addLayerControl(v)
 
   @ViewChild('map')
   private mapContainer: ElementRef<HTMLElement>;
-  clearMapSubscription: Subscription;
+  clearMarkersSubscription: Subscription;
+  clearPolylinesSubscription: Subscription;
   constructor(private plt: Platform, private mapService: MapService, private router: Router) {
-    this.clearMapSubscription = this.mapService.clearMarkers.subscribe(() => this.clearMarkers());
+    this.clearMarkersSubscription = this.mapService.clearMarkers.subscribe(() => this.clearMarkers());
+    this.clearPolylinesSubscription = this.mapService.clearPolylines.subscribe(() => this.clearPolylines());
   }
 
   ngOnInit() { }
@@ -50,41 +53,51 @@ export class MapComponent implements OnInit {
   ionViewDidEnter() { }
 
   clearMarkers() {
+    console.log('markers cleared');
+    
     this.mapService.mapInitialized.next(false);
-    this.layerGroup.clearLayers();
+    this.markersLayerGroup.clearLayers();
     this.mapService.mapInitialized.next(true);
   }
 
-  loadMap() {
-    const geoapifyAPIKey = this.mapService.geoapifyAPIKey;
-
-    this.map = new L.Map(this.mapContainer.nativeElement).setView(
-      [33.786271, 51.7933669],
-      6
-    );
-
-    L.tileLayer(
-      `https://maps.geoapify.com/v1/tile/osm-carto/{z}/{x}/{y}.png?apiKey=${geoapifyAPIKey}`,
-      {
-        maxZoom: 20,
-        id: 'osm-bright',
-      }
-    ).addTo(this.map);
-
-    // var circle = L.circle([35.745853, 51.441404], {
-    //   color: 'red',
-    //   fillColor: '#f03',
-    //   fillOpacity: 0.5,
-    //   radius: 500,
-    // }).addTo(this.map);
-
-    // var polyline = L.polyline([
-    //   [35.747956, 51.441753],
-    //   [35.747843, 51.438985],
-    //   [35.74672, 51.439843],
-    // ]).addTo(this.map);
+  clearPolylines() {
+    console.log('poly cleared');
+    
+    this.mapService.mapInitialized.next(false);
+    this.polylinesLayerGroup.clearLayers();
     this.mapService.mapInitialized.next(true);
   }
+
+  // loadMap() {
+  //   const geoapifyAPIKey = this.mapService.geoapifyAPIKey;
+
+  //   this.map = new L.Map(this.mapContainer.nativeElement).setView(
+  //     [33.786271, 51.7933669],
+  //     6
+  //   );
+
+  //   L.tileLayer(
+  //     `https://maps.geoapify.com/v1/tile/osm-carto/{z}/{x}/{y}.png?apiKey=${geoapifyAPIKey}`,
+  //     {
+  //       maxZoom: 20,
+  //       id: 'osm-bright',
+  //     }
+  //   ).addTo(this.map);
+
+  //   // var circle = L.circle([35.745853, 51.441404], {
+  //   //   color: 'red',
+  //   //   fillColor: '#f03',
+  //   //   fillOpacity: 0.5,
+  //   //   radius: 500,
+  //   // }).addTo(this.map);
+
+  //   // var polyline = L.polyline([
+  //   //   [35.747956, 51.441753],
+  //   //   [35.747843, 51.438985],
+  //   //   [35.74672, 51.439843],
+  //   // ]).addTo(this.map);
+  //   this.mapService.mapInitialized.next(true);
+  // }
 
   init() {
     this.plt.ready().then(() => {
@@ -99,7 +112,8 @@ export class MapComponent implements OnInit {
           id: 'osm-bright',
         }
       ).addTo(this.map);
-      this.layerGroup = L.layerGroup().addTo(this.map);
+      this.markersLayerGroup = L.layerGroup().addTo(this.map);
+      this.polylinesLayerGroup = L.layerGroup().addTo(this.map);
 
       this.mapService.mapInitialized.next(true);
     });
@@ -108,16 +122,18 @@ export class MapComponent implements OnInit {
   setPolyline(polylines: Polyline[]) {
     polylines.forEach(polyline => {
       let p = L.polyline(polyline.latLng, polyline.options)
-        .addTo(this.layerGroup);
+        .addTo(this.polylinesLayerGroup);
     });
   }
 
   setMarkers(markers: Marker[]) {
+    console.log(markers);
+    
     markers.forEach((m: Marker) => {
       let marker = L.marker([m.latitude, m.longitude], {
         icon: L.icon(m.icon),
       }).bindPopup(m.description ?? null, { closeButton: false })
-        .addTo(this.layerGroup);
+        .addTo(this.markersLayerGroup);
       if (m.customerCode)
         marker.on("popupopen", (a) => {
           var popUp = a.target.getPopup()
@@ -147,7 +163,7 @@ export class MapComponent implements OnInit {
     this.map.flyTo([mapView.lat, mapView.lng], mapView.zoom);
   }
 
-  addLayerControl(value : L.Control.Layers) {
+  addLayerControl(value: L.Control.Layers) {
     this.layerControl = L.control.layers().addTo(this.map);
     var crownHill = L.marker([35.747843, 51.437985]).bindPopup('This is Crown Hill Park.'),
       rubyHill = L.marker([35.74672, 51.436743]).bindPopup('This is Ruby Hill Park.');

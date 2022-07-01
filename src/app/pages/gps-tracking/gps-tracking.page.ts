@@ -543,7 +543,7 @@ export class GpsTrackingPage implements OnInit {
           {
             latitude: sr_points[sr_points.length - 1][0],
             longitude: sr_points[sr_points.length - 1][1],
-            icon: this.mapService.SalesManIcon,
+            icon: this.mapService.salesManIcon,
             description: this.markerDescription('salesman', srInfo),
           },
         ];

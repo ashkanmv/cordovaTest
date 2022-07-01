@@ -2,7 +2,7 @@
     "EN": {
         "connection_error": "Can't connect to server!",
         "gps_error": "Please turn on the GPS!",
-        "loading": "Please wait...",
+        "Loading": "Please wait...",
         "server_no_value": "The server returns no value",
         "Customer_History": {
             "Title": "Customer History",
@@ -171,6 +171,9 @@
             "Title": "Online_Daily_Sales",
             "group": "All",
             "UserIdNotFound": "UserId not found"
+        },
+        "Trace_Salesman" : {
+            "NoLocationFound" : "No location found !"
         }
     },
     "FR": {

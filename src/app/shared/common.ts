@@ -83,10 +83,33 @@ export interface News {
   Mod_User: number;
 }
 
+export interface GetUserChildrenResponse {
+  Uid: number;
+  Fromdate: Date;
+  Todate: Date;
+  id: string;
+  PartyID: string;
+  ParentID: string;
+  userType: number;
+  FirstName: string;
+  LastName: string;
+  LandLine: string;
+  CellNumber: string;
+  username: string;
+  password: string;
+  status: string;
+  create_at: Date;
+  Mod_DT: Date;
+  Mod_User: number;
+  isSystemUser?: any;
+  Equivalent_User_ID: string;
+  name: string;
+  FullName: string;
+}
 export interface GetAllChildrenUserResponse {
   id: number;
   FullName: string;
-  group : string;
+  group: string;
 }
 
 export interface GetSales2ByCatSkuResponse {
@@ -182,7 +205,7 @@ export interface getVPByRouteResponse {
   BrokerID: string;
 }
 
-export interface GetSalesmenLocationResponse{
+export interface GetSalesmenLocationResponse {
   id: string;
   lat: number;
   lng: number;
@@ -202,25 +225,6 @@ export interface GetSalesmenLocationResponse{
   Name: string;
 }
 
-export interface TraceSalesman {
-  id: number;
-  lat: number;
-  lng: number;
-  user_id: number;
-  route_name: string;
-  visitor_code: string;
-  provider: string;
-  time: number;
-  accuracy: number;
-  speed: number;
-  altitude: number;
-  bearing: any;
-  location_provider: any;
-  uuid: string;
-  status: string;
-  create_at: Date;
-  Name: string;
-}
 export interface LoginResponse {
   route_name: string;
   route_code: string;
@@ -480,7 +484,7 @@ export class Language {
     managerYellow: string;
     managerBlue: string;
     Group: string;
-    NoValueSelected : string;
+    NoValueSelected: string;
   };
   Sales_hourly_Day_And_Sales_Office: {
     Title: string;
@@ -522,6 +526,9 @@ export class Language {
     Title: string;
     group: string;
     UserIdNotFound: string;
+  }
+  Trace_Salesman :{
+    NoLocationFound : string;
   }
 }
 

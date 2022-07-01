@@ -100,7 +100,7 @@ export class CustomerNearbyPage implements OnInit {
     this.addMarker([{
       latitude: this.f.currentLat.value,
       longitude: this.f.currentLng.value,
-      icon: this.mapService.SalesManIcon
+      icon: this.mapService.salesManIcon
     }]);
   }
 
