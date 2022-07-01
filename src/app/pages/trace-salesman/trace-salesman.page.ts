@@ -396,8 +396,6 @@ export class TraceSalesmanPage implements OnInit {
   }
 
   showDataChanged(key: 'rsm' | 'asm' | 'ssv' | 'sr', value: boolean) {
-    console.log(key, value);
-
     if (!value) {
       this.markers = this.checkMarkers()
       this.polylines = this.checkPolylines()

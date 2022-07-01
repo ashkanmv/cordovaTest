@@ -634,7 +634,6 @@ export class ScoreCardPage implements OnInit {
   }
 
   segmentChanged(event: any) {
-    // console.log(event.target.value);
     this.selectedSegment = event.target.value;
     switch (this.selectedSegment) {
       case 'category':

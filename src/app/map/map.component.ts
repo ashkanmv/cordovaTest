@@ -53,16 +53,12 @@ export class MapComponent implements OnInit {
   ionViewDidEnter() { }
 
   clearMarkers() {
-    console.log('markers cleared');
-    
     this.mapService.mapInitialized.next(false);
     this.markersLayerGroup.clearLayers();
     this.mapService.mapInitialized.next(true);
   }
 
   clearPolylines() {
-    console.log('poly cleared');
-    
     this.mapService.mapInitialized.next(false);
     this.polylinesLayerGroup.clearLayers();
     this.mapService.mapInitialized.next(true);
@@ -127,8 +123,6 @@ export class MapComponent implements OnInit {
   }
 
   setMarkers(markers: Marker[]) {
-    console.log(markers);
-    
     markers.forEach((m: Marker) => {
       let marker = L.marker([m.latitude, m.longitude], {
         icon: L.icon(m.icon),

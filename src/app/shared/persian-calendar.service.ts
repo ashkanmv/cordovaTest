@@ -39,7 +39,6 @@ export class PersianCalendarService {
   constructor() {
   }
   PersianCalendar(gregorianDate): string {
-      // console.log(this.weekDayNames[7]);
 
 
       this.today = gregorianDate;
@@ -219,7 +218,6 @@ export class PersianCalendarService {
 
 
   func2(): string {
-      //console.log("entered func2");
       this.day = this.buf2[this.gregorianMonth - 1] + this.gregorianDate;
       this.ld = this.gregorianYear >= 1996 ? 79 : 80;
       if (this.day > this.ld) {

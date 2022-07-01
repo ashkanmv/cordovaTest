@@ -87,9 +87,7 @@ export class AddEditNotificationComponent implements OnInit {
         default:
           this.patchValue('fileType', 'other');
           break;
-      }
-      console.log(uploadType);
-      
+      }      
 
       if (this.f.fileType.value != 'video' || this.f.fileType.value != 'image') {
         this.sharedService.toast('danger', this.language.Add_Edit_News.OutOfType);

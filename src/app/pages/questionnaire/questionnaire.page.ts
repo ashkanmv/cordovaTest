@@ -76,7 +76,6 @@ export class QuestionnairePage implements OnInit {
 
   ngOnInit() {
     this.storageService.get('user_id').then((userId) => {
-      console.log(userId);
       this.userId = userId;
       // this.get_cities();
     });
@@ -217,7 +216,6 @@ export class QuestionnairePage implements OnInit {
       .subscribe(
         (questions: Question[]) => {
           this.questions = questions;
-          console.log(this.questions);
           this.getAnswers();
           loading.dismiss();
           this.getAnswers();
@@ -229,7 +227,6 @@ export class QuestionnairePage implements OnInit {
   answers = [];
   getAnswers() {
     this.questionnaireService.getAnswers().subscribe((response: Data[]) => {
-      console.log(response);
       this.answers = response;
       this.getAnswerLogs();
     });
@@ -246,7 +243,6 @@ export class QuestionnairePage implements OnInit {
         this.persianCalendarService.getVPTodayFormat(new Date())
       )
       .subscribe((response: Data[]) => {
-        console.log(response);
         this.answerLogs = response;
         if (this.answerLogs.length)
           this.answerLogs.forEach((r) => this.ids.push(r.id));
@@ -319,8 +315,6 @@ export class QuestionnairePage implements OnInit {
         }
       });
     });
-    console.log(this.answerLogs);
-    console.log(this.questions);
   }
 
   searchQuestionAnswerId(question_id, answer_id, myArray) {
@@ -411,7 +405,6 @@ export class QuestionnairePage implements OnInit {
   }
 
   check_value(i, j) {
-    // console.log(this.answerLogs[i].answer_id);
 
     if (this.answerLogs[i].answer_id == this.questions[i].answers[j].id) {
       return true;
@@ -444,7 +437,6 @@ export class QuestionnairePage implements OnInit {
   }
 
   // checkValue(i, j) {
-  //   // console.log(this.answerLogs[i].answer_id);
 
   //   if (this.answerLogs[i].answer_id == this.questions[i].answers[j].id) {
   //     return true;

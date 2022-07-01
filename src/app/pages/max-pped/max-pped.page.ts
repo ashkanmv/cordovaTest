@@ -61,7 +61,6 @@ export class MaxPPEDPage implements OnInit {
     private loadingCtrl: LoadingController,
     private SharedService: SharedService
   ) {
-    console.log(this.online);
   }
 
   ngOnInit() {

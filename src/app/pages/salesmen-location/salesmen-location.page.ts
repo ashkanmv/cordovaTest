@@ -251,19 +251,6 @@ export class SalesmenLocationPage implements OnInit {
       })
   }
 
-  async presentPopover(ev: any) {
-    const popover = await this.popoverctrl.create({
-      component: PopoverComponent,
-      cssClass: 'custom-class',
-      event: ev,
-      translucent: true,
-    });
-    await popover.present();
-
-    const { role } = await popover.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
   dateChanged() {
     // this.patchValue('selectedDate', date.slice(0, date.length - 6));
     if (this.selectedSr.length)
