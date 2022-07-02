@@ -30,7 +30,7 @@ import { StorageService } from 'src/app/shared/storage.service';
 })
 export class GpsTrackingPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
-
+  firstLoad = false;
   CommonUtility = CommonUtility;
   notPlanFLoaded = false;
   initialShopPointLoaded = false;
@@ -77,7 +77,8 @@ export class GpsTrackingPage implements OnInit {
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
       (initialized: boolean) => {
-        if (initialized && this.f.selectedRoute.value) {
+        if (initialized && this.f.selectedRoute.value && !this.firstLoad) {
+          this.firstLoad = true;
           this.initialSr();
           this.initialShopPoint();
         }
@@ -100,6 +101,7 @@ export class GpsTrackingPage implements OnInit {
   }
 
   ionViewWillLeave() {
+    this.firstLoad = false;
     this.showMap = false;
     // this.routeSelectSub.unsubscribe();
     if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
@@ -204,7 +206,7 @@ export class GpsTrackingPage implements OnInit {
   rsmSelect() {
     if (!this.f.selectedRsm.value) return;
     let selected_rsm = this.f.selectedRsm.value;
-    if (selected_rsm.id) {
+    if (selected_rsm?.id) {
       this.patchValue('selectedAsm', selected_rsm.id);
       // this.asmSelect();
       // this.patchValue('selectedSsv', null)
@@ -222,7 +224,7 @@ export class GpsTrackingPage implements OnInit {
   asmSelect() {
     if (!this.f.selectedAsm.value) return;
     let selected_asm = this.f.selectedAsm.value;
-    if (selected_asm.id) {
+    if (selected_asm?.id) {
       this.patchValue('selectedSsv', selected_asm.id);
       // this.ssvSelect();
       this.patchValue('selectedSr', null);
@@ -237,7 +239,7 @@ export class GpsTrackingPage implements OnInit {
   ssvSelect() {
     if (!this.f.selectedSsv.value) return;
     let selected_ssv = this.f.selectedSsv.value;
-    if (selected_ssv.id) {
+    if (selected_ssv?.id) {
       this.patchValue('selectedSr', selected_ssv.id);
       // this.srSelect();
     } else {
@@ -249,7 +251,7 @@ export class GpsTrackingPage implements OnInit {
 
   srSelect() {
     let selected_sr = this.f.selectedSr.value;
-    if (selected_sr.id) {
+    if (selected_sr?.id) {
       this.patchValue('selectedRoute', selected_sr.id);
       this.routeSelect();
     } else {
@@ -260,6 +262,10 @@ export class GpsTrackingPage implements OnInit {
   }
 
   routeSelect() {
+    this.markers = [];
+    this.polylines = [];
+    this.mapService.clearMarkers.next(true);
+    this.mapService.clearPolylines.next(true);
     this.notPlanFLoaded = false;
     this.initialShopPointLoaded = false;
     this.invoicedFLoaded = false;
@@ -414,7 +420,7 @@ export class GpsTrackingPage implements OnInit {
         (x) => x.CustCode == point.CustCode
       );
       if (index != -1) this.allShopPoints.splice(index, 1);
-
+        debugger
       markers.push({
         latitude: +point.PointLatitude,
         longitude: +point.PointLongitude,
