@@ -545,27 +545,6 @@ export class CustomerHistoryPage implements OnInit {
     this.columns = labels;
     this.data = dataset;
     this.pieChartData = pieChartDataSet;
-    // this.chart = new Chart(this.ctx, {
-    //   type: 'bar',
-    //   data: {
-    //     labels: labels,
-    //     datasets: dataset
-    //   },
-    //   options: {
-    //     scales: {
-    //       yAxes: [{
-    //         stacked: true,
-    //         scaleLabel: {
-    //           display: true,
-    //           labelString: 'Kilogram'
-    //         }
-    //       }],
-    //       xAxes: [{
-    //         stacked: true
-    //       }],
-    //     }
-    //   }
-    // });`
   }
 
   gpsChanged() {
