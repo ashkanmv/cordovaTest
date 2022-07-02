@@ -64,8 +64,12 @@ export class CustomerHistoryPage implements OnInit {
     private loadingCtrl: LoadingController,
     private sharedService: SharedService,
     private languageService: LanguageService,
-    private geoLocationService: GeoLocationService
+    private geoLocationService: GeoLocationService,
   ) {
+    this.paramSubscription = this.activatedRoute.queryParams.subscribe(
+      (params: Params) =>
+        this.form.patchValue({ Customer: params['Customer'] })
+    );
     this.input.subscribe((term) => {
       if (!term) return;
       this.searching = true;
@@ -83,12 +87,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.plt.ready().then(() => {
-      this.paramSubscription = this.activatedRoute.queryParams.subscribe(
-        (params: Params) =>
-          this.form.patchValue({ Customer: params['Customer'] })
-      );
-    });
+
   }
 
   ionViewDidLeave() {
