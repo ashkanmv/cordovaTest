@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Data, Router } from '@angular/router';
+import { BackgroundGeolocationResponse } from '@awesome-cordova-plugins/background-geolocation/ngx';
+import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
+import { FileTransfer, FileTransferObject, FileUploadOptions } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { LoadingController } from '@ionic/angular';
 import {
   Cities,
@@ -10,8 +13,10 @@ import {
   Question,
   Questioncat,
 } from 'src/app/shared/common';
+import { GeoLocationService } from 'src/app/shared/geo-location.service';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { UtilService } from 'src/app/shared/util.service';
 import { AnswerLogService } from './answer-log.service';
@@ -48,7 +53,11 @@ export class QuestionnairePage implements OnInit {
     private languageService: LanguageService,
     private answerLogService: AnswerLogService,
     private persianCalendarService: PersianCalendarService,
-    private utilService: UtilService
+    private utilService: UtilService,
+    private cam: Camera,
+    private fileTransfer: FileTransfer,
+    private sharedService: SharedService,
+    private geoLocationService: GeoLocationService
   ) {
     let customerNumber = this.route.snapshot.queryParams['customerNumber'];
     if (customerNumber) this.open_OtherForm(customerNumber);
@@ -67,7 +76,6 @@ export class QuestionnairePage implements OnInit {
 
   ngOnInit() {
     this.storageService.get('user_id').then((userId) => {
-      console.log(userId);
       this.userId = userId;
       // this.get_cities();
     });
@@ -208,7 +216,6 @@ export class QuestionnairePage implements OnInit {
       .subscribe(
         (questions: Question[]) => {
           this.questions = questions;
-          console.log(this.questions);
           this.getAnswers();
           loading.dismiss();
           this.getAnswers();
@@ -220,7 +227,6 @@ export class QuestionnairePage implements OnInit {
   answers = [];
   getAnswers() {
     this.questionnaireService.getAnswers().subscribe((response: Data[]) => {
-      console.log(response);
       this.answers = response;
       this.getAnswerLogs();
     });
@@ -237,7 +243,6 @@ export class QuestionnairePage implements OnInit {
         this.persianCalendarService.getVPTodayFormat(new Date())
       )
       .subscribe((response: Data[]) => {
-        console.log(response);
         this.answerLogs = response;
         if (this.answerLogs.length)
           this.answerLogs.forEach((r) => this.ids.push(r.id));
@@ -310,8 +315,6 @@ export class QuestionnairePage implements OnInit {
         }
       });
     });
-    console.log(this.answerLogs);
-    console.log(this.questions);
   }
 
   searchQuestionAnswerId(question_id, answer_id, myArray) {
@@ -369,50 +372,39 @@ export class QuestionnairePage implements OnInit {
   }
 
   getPicture(type: number, i) {
-    // var options = {
-    //   sourceType: type,
-    //   cameraDirection: 0,//back
-    //   quality: 75,
-    //   destinationType: Camera.DestinationType.DATA_URL,
-    //   //sourceType: Camera.PictureSourceType.CAMERA,
-    //   allowEdit: true,
-    //   encodingType: Camera.EncodingType.JPEG,
-    //   targetWidth: 500,
-    //   targetHeight: 500,
-    //   saveToPhotoAlbum: false,
-    //   correctOrientation: true
-    // };
-    // Camera.getPicture(options).then((imageData) => {
-    //   // imageData is either a base64 encoded string or a file URI
-    //   // If it's base64:
-    //   let base64Image = "data:image/jpeg;base64," + imageData;
-    //   const fileTransfer = new Transfer();
-    //   let uploadOptions = {
-    //     fileKey: 'file',
-    //     mimeType: 'image/jpeg',
-    //     httpMethod: "PUT",
-    //   };
-    //   fileTransfer.upload(base64Image, "http://77.104.65.168:8002/api/v1/answerlogs", uploadOptions)
-    //     .then((result: any) => {
-    //       this.server = true;
-    //       this.utilService.set_server(true);
-    //       var content = JSON.parse(result.response);
-    //       this.questions[i].pic = content.destination_name;
-    //       this.answerLogs[i].img = content.destination_name;
-    //       this.answerLogs[i].wrong_pic = false;
-    //     }).catch((error: any) => {
-    //       this.server = false;
-    //       this.utilService.set_server(false);
-    //       this.utilService.presentToast(this.translateService.instant('connection_error'));
-    //       console.log(error);
-    //     });
-    // }, (err) => {
-    //   console.log(JSON.stringify(err));
-    // });
+    var options: CameraOptions = {
+      sourceType: type,
+      cameraDirection: 0,//back
+      quality: 75,
+      destinationType: this.cam.DestinationType.DATA_URL,
+      allowEdit: true,
+      encodingType: this.cam.EncodingType.JPEG,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false,
+      correctOrientation: true
+    };
+    this.cam.getPicture(options).then((imageData) => {
+      let transfer: FileTransferObject = this.fileTransfer.create();
+      let base64Image = "data:image/jpeg;base64," + imageData;
+
+      let uploadOptions: FileUploadOptions = {
+        fileKey: 'file',
+        mimeType: 'image/jpeg',
+        httpMethod: "PUT",
+      };
+      transfer.upload(base64Image, "http://77.104.65.168:8002/api/v1/answerlogs", uploadOptions)
+        .then((result: any) => {
+          this.utilService.set_server(true);
+          var content = JSON.parse(result.response);
+          this.questions[i].pic = content.destination_name;
+          this.answerLogs[i].img = content.destination_name;
+          this.answerLogs[i].wrong_pic = false;
+        });
+    });
   }
 
   check_value(i, j) {
-    // console.log(this.answerLogs[i].answer_id);
 
     if (this.answerLogs[i].answer_id == this.questions[i].answers[j].id) {
       return true;
@@ -425,7 +417,6 @@ export class QuestionnairePage implements OnInit {
   }
 
   checkboxSelect(i, j) {
-    // console.log(i + '/' + j);
     if (this.answerLogs[i].answer_id[j] == 0) {
       this.answerLogs[i].answer_id[j] = this.questions[i].answers[j].id;
       this.answerLogs[i].wrong_answer = false;
@@ -446,7 +437,6 @@ export class QuestionnairePage implements OnInit {
   }
 
   // checkValue(i, j) {
-  //   // console.log(this.answerLogs[i].answer_id);
 
   //   if (this.answerLogs[i].answer_id == this.questions[i].answers[j].id) {
   //     return true;
@@ -458,7 +448,150 @@ export class QuestionnairePage implements OnInit {
   //   }
   // }
 
-  onSubmit() {}
+  async onSubmit() {
+    this.userId = await this.storageService.get('user_id');
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    loading.present();
+    let validationError = this.checkAnswers()
+
+    if (validationError) {
+      this.sharedService.toast('danger', validationError.message);
+      loading.dismiss();
+      return
+    }
+
+    this.geoLocationService.getCurrentLocation().then(location => {
+      let temp = this.handleRows(location);
+
+      if (this.ids.length)
+        this.patchAnswerlog(temp);
+      else
+        this.postAnswerlog(temp);
+    }).catch(() => {
+      this.sharedService.toast('danger', this.language.Gps_error);
+      loading.dismiss()
+    })
+  }
+
+  patchAnswerlog(createdRows) {
+    this.answerLogService.patchAnswerlog(
+      createdRows, this.ids.join(','), this.f.DC.value,
+      this.f.Route.value, this.f.RouteDaily.value, this.f.QuestionCategory.value).subscribe(() => {
+        this.loadingCtrl.dismiss();
+        this.sharedService.toast('success', this.language.Questionnaire.Msg_update);
+      })
+  }
+
+  postAnswerlog(createdRows) {
+    this.answerLogService.postAnswerlog(createdRows, this.f.DC.value,
+      this.f.Route.value, this.f.RouteDaily.value, this.f.QuestionCategory.value).subscribe(() => {
+        this.loadingCtrl.dismiss();
+        this.sharedService.toast('success', this.language.Questionnaire.Msg_submit);
+        this.router.navigate(['/'])
+      })
+  }
+
+  handleRows(location: BackgroundGeolocationResponse) {
+    let temp = {
+      rows: []
+    }
+    for (var i = 0; i < this.answerLogs.length; i++) {
+      //yn
+      if ((typeof this.answerLogs[i].answer_id) == "number" && this.answerLogs[i].answer_id != -1) {
+        if (this.answerLogs[i].answer_id != 0) {
+          let row = {
+            img: this.answerLogs[i].img,
+            user_id: this.userId,
+            customer_code: this.f.Customer.value.CustCode,
+            user_lat: location.latitude,
+            user_lng: location.longitude,
+            question_id: this.answerLogs[i].question_id,
+            answer_id: this.answerLogs[i].answer_id,
+            answer_text: ""
+          }
+          temp.rows.push(row);
+        }
+      } else if (this.answerLogs[i].answer_id == -1) {
+        if (this.answerLogs[i].answer_id != 0) {
+          let row = {
+            img: this.answerLogs[i].img,
+            user_id: this.userId,
+            customer_code: this.f.Customer.value.CustCode,
+            user_lat: location.latitude,
+            user_lng: location.longitude,
+            question_id: this.answerLogs[i].question_id,
+            answer_id: this.answerLogs[i].answer_id,
+            answer_text: this.answerLogs[i].answer_text
+          }
+          temp.rows.push(row);
+        }
+      } else {//ml
+        for (var j = 0; j < this.answerLogs[i].answer_id.length; j++) {
+          if (this.answerLogs[i].answer_id[j] != 0) {
+            let row = {
+              img: this.answerLogs[i].img,
+              user_id: this.userId,
+              customer_code: this.f.Customer.value.CustCode,
+              user_lat: location.latitude,
+              user_lng: location.longitude,
+              question_id: this.answerLogs[i].question_id,
+              answer_id: this.answerLogs[i].answer_id[j],
+              answer_text: ""
+
+            }
+            temp.rows.push(row);
+          }
+        }
+      }
+    }
+    return temp;
+  }
+
+  checkAnswers() {
+    let pass = true;
+    let message = '';
+    for (var i = 0; i < this.answerLogs.length; i++) {
+      if ((typeof this.answerLogs[i].answer_id) == "number" && this.answerLogs[i].answer_id != -1) {
+        if (this.answerLogs[i].need_answer && this.answerLogs[i].answer_id == 0) {
+          pass = false;
+          message = this.language.Questionnaire.Msg_answer_neccesary;
+          this.answerLogs[i].wrong_answer = true;
+          // break;
+        } else if (this.answerLogs[i].need_pic && this.answerLogs[i].img == '') {
+          pass = false;
+          message = this.language.Questionnaire.Msg_image_neccesary;
+          this.answerLogs[i].wrong_pic = true;
+          // break;
+        }
+      } else if (this.answerLogs[i].answer_id == -1) {
+        if (this.answerLogs[i].need_answer && (this.answerLogs[i].answer_text == undefined || this.answerLogs[i].answer_text == '')) {
+          pass = false;
+          message = this.language.Questionnaire.Msg_answer_neccesary;
+          this.answerLogs[i].wrong_answer = true;
+          // break;
+        } else if (this.answerLogs[i].need_pic && this.answerLogs[i].img == '') {
+          pass = false;
+          message = this.language.Questionnaire.Msg_image_neccesary;
+          this.answerLogs[i].wrong_pic = true;
+          // break;
+        }
+      } else {
+        if (this.answerLogs[i].need_answer && this.answerLogs[i].answer_id.length == 0) {
+          pass = false;
+          message = this.language.Questionnaire.Msg_answer_neccesary;
+          this.answerLogs[i].wrong_answer = true;
+        } else if (this.answerLogs[i].need_pic && this.answerLogs[i].img == '') {
+          pass = false;
+          message = this.language.Questionnaire.Msg_image_neccesary;
+          this.answerLogs[i].wrong_pic = true;
+        }
+      }
+    }
+
+    return pass == true ? null : { pass, message };
+  }
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });

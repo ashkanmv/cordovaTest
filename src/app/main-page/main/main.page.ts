@@ -25,11 +25,14 @@ export class MainPage implements OnInit {
     await loading.present();
     this.storageService.get('access').then(acc => {
       let pages: Access[] = JSON.parse(acc);
-      pages.forEach(page => {
-        let p = this._pages.find(p => page.name == p.key);
-        if (p)
-          this.pages.push(p)
+      this._pages.forEach(page => {
+        this.pages.push(page)
       });
+      // pages.forEach(page => {
+      //   let p = this._pages.find(p => page.name == p.key);
+      //   if (p)
+      //     this.pages.push(p)
+      // });
       this.pages.sort((a,b)=> a.index - b.index)
       loading.dismiss();
     })

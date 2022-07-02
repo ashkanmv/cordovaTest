@@ -1,35 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row
-      class="primary-bg ion-justify-content-between header ion-no-margin"
-    >
+    <ion-row class="primary-bg ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
+          <ion-img class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col size="7" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text">
-          <h3><b>Trace Salesmen </b></h3>
+          <h3><b>Trace Salesmen</b></h3>
         </ion-title>
       </ion-col>
       <ion-col></ion-col>
       <ion-col class="ion-align-self-center hide" (click)="show=!show" size="1">
-        <ion-img
-          class="hide"
-          [ngClass]="{'show-content' : show}"
-          src="\assets\pages\customer-nearby\Hide.png"
-        >
+        <ion-img class="hide" [ngClass]="{'show-content' : show}" src="\assets\pages\customer-nearby\Hide.png">
         </ion-img>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
-        <ion-img
-          class="wifi-online"
-          src="\assets\mainPage\main\wifi.png"
-        ></ion-img>
+        <ion-img class="wifi-online" src="\assets\mainPage\main\wifi.png"></ion-img>
       </ion-col>
     </ion-row>
     <ion-grid class="secondary-bg white-text">
@@ -57,7 +46,7 @@
           <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <ion-col id="open-modal" class="ion-justify-content-end">
-              {{dateNow | date:'yyyy/MM/dd'}}
+              {{selectedDate | date:'yyyy/MM/dd'}}
               <ion-icon name="chevron-down-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -65,117 +54,101 @@
       </ion-row>
       <ion-popover trigger="open-modal" show-backdrop="false">
         <ng-template>
-          <ion-datetime
-            showDefaultButtons="true"
-            presentation="date"
-          ></ion-datetime>
+          <ion-datetime #date [value]="selectedDate" (ionChange)="selectedDate = date.value; dateChanged()"
+            presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="date.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="date.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
+            </ion-buttons>
+          </ion-datetime>
         </ng-template>
       </ion-popover>
     </ion-col>
-    <!-- =========================================== -->
-    <ion-col class="salesmen-location-container">
-      <div class="salesmen-location-box">
-        <ion-item lines="none" class="salesmen-location lightBlue-shadow">
-          <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="RSM"
-            interface="popover"
-          >
-            <ion-select-option>1</ion-select-option>
-            <ion-select-option>2</ion-select-option>
-          </ion-select>
-          <ion-icon name="chevron-down-outline"></ion-icon>
-          <ion-list class="radio-group-container">
-            <ion-radio-group allow-empty-selection name="" value="">
-              <ion-item>
-                <ion-radio
-                  allow-empty-selection
-                  mode="md"
-                  value="RSM"
-                ></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-item>
 
-        <!--  -->
-      </div>
-      <div class="salesmen-location-box">
-        <ion-item lines="none" class="salesmen-location lightBlue-shadow">
-          <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="ASM"
-            interface="popover"
-          >
-            <ion-select-option>1</ion-select-option>
-            <ion-select-option>2</ion-select-option>
-          </ion-select>
-          <ion-icon name="chevron-down-outline"></ion-icon>
-          <ion-list class="radio-group-container">
-            <ion-radio-group allow-empty-selection name="" value="">
-              <ion-item>
-                <ion-radio
-                  allow-empty-selection
-                  mode="md"
-                  value="ASM"
-                ></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-item>
-      </div>
-      <div class="salesmen-location-box">
-        <ion-item lines="none" class="salesmen-location lightBlue-shadow">
-          <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="SSV"
-            interface="popover"
-          >
-            <ion-select-option>1</ion-select-option>
-            <ion-select-option>2</ion-select-option>
-          </ion-select>
-          <ion-icon name="chevron-down-outline"></ion-icon>
-          <ion-list class="radio-group-container">
-            <ion-radio-group allow-empty-selection name="" value="">
-              <ion-item>
-                <ion-radio
-                  allow-empty-selection
-                  mode="md"
-                  value="SSV"
-                ></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-item>
-      </div>
-      <div class="salesmen-location-box">
-        <ion-item lines="none" class="salesmen-location lightBlue-shadow">
-          <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="SR"
-            interface="popover"
-          >
-            <ion-select-option>1</ion-select-option>
-            <ion-select-option>2</ion-select-option>
-          </ion-select>
-          <ion-icon name="chevron-down-outline"></ion-icon>
-          <ion-list class="radio-group-container">
-            <ion-radio-group allow-empty-selection name="" value="">
-              <ion-item>
-                <ion-radio
-                  allow-empty-selection
-                  mode="md"
-                  value="SR"
-                ></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-item>
-      </div>
-    </ion-col>
+    <form [formGroup]="form">
+      <ion-col class="salesmen-location-container">
+        <div class="salesmen-location-box">
+          <ion-item lines="none" class="salesmen-location lightBlue-shadow">
+            <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
+            <ion-select class="drop-down select-drop-down" placeholder="RSM" interface="popover"
+              formControlName="selectedRsm" (ionChange)="rsmSelect()">
+              <ion-select-option *ngFor="let rsm of rsms" [value]="rsm">{{rsm.FullName}}</ion-select-option>
+            </ion-select>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+            <ion-list class="radio-group-container">
+              <!-- <ion-radio-group allow-empty-selection name="" value="">
+                <ion-item>
+                  <ion-radio allow-empty-selection mode="md" value="RSM"></ion-radio>
+                </ion-item>
+              </ion-radio-group> -->
+              <ion-checkbox formControlName="showRsm" (ionChange)="showDataChanged('rsm',f.showRsm.value)"></ion-checkbox>
+            </ion-list>
+          </ion-item>
+
+          <!--  -->
+        </div>
+        <div class="salesmen-location-box">
+          <ion-item lines="none" class="salesmen-location lightBlue-shadow">
+            <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
+            <ion-select class="drop-down select-drop-down" placeholder="ASM" interface="popover"
+              formControlName="selectedAsm" (ionChange)="asmSelect()">
+              <ion-select-option *ngFor="let asm of asms" [value]="asm">{{asm.FullName}}</ion-select-option>
+            </ion-select>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+            <ion-list class="radio-group-container">
+              <!-- <ion-radio-group allow-empty-selection formControlName="showAsm">
+                <ion-item>
+                  <ion-radio allow-empty-selection mode="md" value="true"></ion-radio>
+                </ion-item>
+              </ion-radio-group> -->
+              <ion-checkbox formControlName="showAsm" (ionChange)="showDataChanged('asm',f.showAsm.value)"></ion-checkbox>
+            </ion-list>
+          </ion-item>
+        </div>
+        <div class="salesmen-location-box">
+          <ion-item lines="none" class="salesmen-location lightBlue-shadow">
+            <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
+            <ion-select class="drop-down select-drop-down" placeholder="SSV" interface="popover"
+              formControlName="selectedSsv" (ionChange)="ssvSelect()">
+              <ion-select-option *ngFor="let ssv of ssvs" [value]="ssv">{{ssv.FullName}}</ion-select-option>
+            </ion-select>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+            <ion-list class="radio-group-container">
+              <!-- <ion-radio-group allow-empty-selection>
+                <ion-item>
+                  <ion-radio allow-empty-selection mode="md" formControlName="showSsv"></ion-radio>
+                </ion-item>
+              </ion-radio-group> -->
+              <ion-checkbox formControlName="showSsv" (ionChange)="showDataChanged('ssv',f.showSsv.value)"></ion-checkbox>
+            </ion-list>
+          </ion-item>
+        </div>
+        <div class="salesmen-location-box">
+          <ion-item lines="none" class="salesmen-location lightBlue-shadow">
+            <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
+            <ion-select class="drop-down select-drop-down" placeholder="SR" interface="popover"
+              formControlName="selectedSr" (ionChange)="srSelect()">
+              <ion-select-option *ngFor="let sr of srs" [value]="sr">{{sr.FullName}}</ion-select-option>
+            </ion-select>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+            <ion-list class="radio-group-container">
+              <!-- <ion-radio-group allow-empty-selection name="" value="">
+                <ion-item>
+                  <ion-radio allow-empty-selection mode="md" value="SR"></ion-radio>
+                </ion-item>
+              </ion-radio-group> -->
+              <ion-checkbox formControlName="showSr" (ionChange)="showDataChanged('sr',f.showSr.value)"></ion-checkbox>
+            </ion-list>
+          </ion-item>
+        </div>
+      </ion-col>
+    </form>
   </ng-container>
+  <div [ngStyle]="{display: !show ? 'block' : 'none'}">
+    <div *ngIf="showMap" style="width: 100vw; height: 100vh">
+      <!-- [markers]="markers" -->
+      <app-map [showMap]="showMap" [markers]="markers" [polylines]="polylines" [mapView]="mapView">
+      </app-map>
+    </div>
+  </div>
 </ion-content>

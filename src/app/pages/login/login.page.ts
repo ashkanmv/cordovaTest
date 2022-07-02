@@ -99,9 +99,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  login() {
-    console.log(this.form.value);
-    
+  login() {    
     this.isLoading = true;
     this.authService
       .getAccess(this.form.value.Username, this.form.value.Password, this.UUid)

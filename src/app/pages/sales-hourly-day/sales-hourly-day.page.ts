@@ -177,7 +177,6 @@ export class SalesHourlyDayPage implements OnInit {
   ];
 
   segmentChanged(event: any) {
-    // console.log(event.target.value);
     this.selectedSegment = event.target.value;
   }
 
