@@ -185,7 +185,7 @@ ion-col.DSD-page{
 
 // radio-input
 
-ion-col{
+ion-grid{
     ion-row.radio-input-container{
         margin-bottom: 3rem;
         .radio-input-box{
@@ -197,7 +197,6 @@ ion-col{
             border: 1px solid var(--ion-color-dark);
             border-radius: 10px;
             .radio-input{
-                // box-shadow: 2px 2px 6px 0 #cdcdcdd6, 0 6px 20px 0 #E6F5FC ;
                 width: 80vw;
                 height: 12vh;
                 display: flex;
@@ -233,15 +232,8 @@ ion-col{
     }
 }
 
-// ---table
-// cat
-ion-grid.maingrid-cat{
-    .firstRow{
-      &>:first-child{
-          color: #0095EB;
-      }
-    }
 
+ion-grid{
     ion-col{
         display: flex;
         height: 5vh;
@@ -249,34 +241,13 @@ ion-grid.maingrid-cat{
         text-align: center;
     }
 }
-// channel
-ion-grid.maingrid-ch{
-    .firstRow{
-      &>:first-child{
-          color: #0095EB;
-      }
-    }
-    ion-col{
-        display: flex;
-        height: 5vh;
-        width: 10vw;
-        text-align: center;
-    }
+.firstRow{
+    background: #205172;
+    color: #f4f4f4;
 }
-
-// CatP
-ion-grid.maingrid-catP{
-    .firstRow{
-      &>:first-child{
-          color: #0095EB;
-      }
-    }
-    ion-col{
-        display: flex;
-        height: 5vh;
-        width: 10vw;
-        text-align: center;
-    }
+.firstColumn{
+    background: #0095EB;
+    color: #f4f4f4;
 }
 
 

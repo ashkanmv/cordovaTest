@@ -61,9 +61,7 @@ ion-content{
     --color:#8f8f8f ;
     --padding-top: .9rem ;
     --padding-bottom: .9rem ;
-    // --padding-start: 1.7rem ;
     &:hover{
-        // --background:#0095EB;
         --color:var(--ion-color-dark) ;
     }
     
@@ -83,9 +81,7 @@ ion-content.select-input-popover-title{
 
 ion-popover.search-popover{
     --backdrop-opacity:0;
-    // --width:450px;
     --width:60vw;
-    // height: 300px;
     --offset-x:-5vw;
     --offset-y:-1rem;
     label{
@@ -124,7 +120,7 @@ ion-col.DSD-page{
     .search-submit{
         z-index: 2;
         width: 3rem;
-        height: 5rem;
+        height: 10vh;
         border-radius: 10px 0 0 10px;
         ion-icon{
             color: var(--ion-color-light);

@@ -56,8 +56,8 @@
 </ion-header>
 <!-- -------------------------------------------------------------------------------------------- -->
 <ion-content class="ion-no-padding">
-  <ion-col class="category-page" *ngIf="selectedSegment == 'category'">
-    <ion-col class="search-bar">
+  <ion-grid class="category-page ion-no-padding" *ngIf="selectedSegment == 'category'">
+    <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
           <button class="search-submit primary-bg" (click)="categorySection()">
@@ -76,14 +76,11 @@
             </ng-template>
 
           </ng-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
         </ion-item>
       </ion-row>
-    </ion-col>
+    </ion-row>
 
-    <ion-col>
+    <ion-grid>
       <ion-row class="radio-input-container ion-justify-content-center">
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
@@ -98,38 +95,27 @@
           </div>
         </div>
       </ion-row>
-    </ion-col>
+    </ion-grid>
     <!-- ---------------table------------------------------- -->
-    <ion-col>
-      <ion-grid class="maingrid-cat ion-no-padding">
-        <ion-row wrap *ngFor="let row of virtual_rows1; let i = index" (click)="row_click1(row)"
+    <ion-row>
+      <ion-grid class=" ion-no-padding maingrid-cat ion-no-padding">
+        <ion-row wrap *ngFor="let row of virtual_rows1; let i = index"
           [ngClass]="{'firstRow': i==0}">
 
           <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
             <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of scorecards1[row.index]; let j = index"
-              [ngClass]="{ 'firstColumn': j==0 , 'oddColumns' : 0 === j % 2 , 'oddRows' : 1 === i % 4}">
+              [ngClass]="{ 'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 , 'oddRows' : 3 === i % 4}">
               {{ item }}
             </ion-col>
-
-          </ng-container>
-          <ng-container *ngIf="row.show && row.type=='b'">
-            <ion-grid>
-              <ion-row wrap *ngFor="let rows of selected_channel1[row.index]">
-                <ion-col *ngFor="let item of rows">
-                  {{ item }}
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-
           </ng-container>
         </ion-row>
       </ion-grid>
-    </ion-col>
-  </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- ----------------------------------------------------------------------------- -->
-  <ion-col class="searchbar" *ngIf="selectedSegment == 'channel'">
-    <ion-col class="search-bar">
+  <ion-grid class=" ion-no-padding  " *ngIf="selectedSegment == 'channel'">
+    <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
           <button class="search-submit primary-bg" (click)="categorySelect2()">
@@ -149,13 +135,11 @@
             </ng-template>
 
           </ng-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
+         
         </ion-item>
       </ion-row>
-    </ion-col>
-    <ion-col class="search-bar">
+    </ion-row>
+    <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
           <button class="search-submit primary-bg" (click)="channelSectionSkus()">
@@ -175,14 +159,12 @@
             </ng-template>
 
           </ng-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
+         
         </ion-item>
       </ion-row>
-    </ion-col>
+    </ion-row>
 
-    <ion-col>
+    <ion-grid>
       <ion-row class="radio-input-container ion-justify-content-center">
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
@@ -197,22 +179,22 @@
           </div>
         </div>
       </ion-row>
-    </ion-col>
+    </ion-grid>
     <!-- -----------------------table------------------------------------------------- -->
-    <ion-col>
-      <ion-grid class="maingrid-ch ion-no-padding">
+    <ion-row>
+      <ion-grid class=" ion-no-padding maingrid-ch ">
         <ion-row wrap *ngFor="let rows of scorecards2; let i = index" [ngClass]="{'firstRow': i==0,  'oddRows': 0 === i % 2 }">
           <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of rows; let j = index"
-            [ngClass]="{'firstcolumn': j==0   , 'first_Channel_row': i==0 && j == 0 , 'oddColumns' : 0 === j % 2}">
-            {{ item }}
+          [ngClass]="{ 'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 }">
+          {{ item }}
           </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-col>
-  </ion-col>
+    </ion-row>
+  </ion-grid>
   <!-- ----------------------------------------- -->
-  <ion-col class="category-page" *ngIf="selectedSegment == 'categoryP'">
-    <ion-col class="search-bar">
+  <ion-grid class=" ion-no-padding" *ngIf="selectedSegment == 'categoryP'">
+    <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
           <button class="search-submit primary-bg" (click)="categoryPSection()">
@@ -232,14 +214,12 @@
             </ng-template>
 
           </ng-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
+         
         </ion-item>
       </ion-row>
-    </ion-col>
+    </ion-row>
 
-    <ion-col>
+    <ion-grid>
       <ion-row class="radio-input-container ion-justify-content-center">
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
@@ -254,55 +234,42 @@
           </div>
         </div>
       </ion-row>
-    </ion-col>
+    </ion-grid>
 <!-- ----------------------table--------------------- -->
-    <ion-col>
-      <ion-grid class="maingrid-catP ion-no-padding  ">
-        <ion-row wrap *ngFor="let row of virtual_rows3; let i = index" (click)="row_click3(row)"
-          [ngClass]="{'firstrow': i==0, 'oddRows':3 === i % 4}">
+    <ion-row>
+      <ion-grid class=" ion-no-padding maingrid-catP ion-no-padding  ">
+        <ion-row wrap *ngFor="let row of virtual_rows3; let i = index"
+          [ngClass]="{'firstRow': i==0, 'oddRows':3 === i % 4}">
 
           <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
             <ion-col *ngFor="let item of scorecards3[row.index]; let j = index"
-              [ngClass]="{'firstcolumn': j==0 , 'oddColumns' : 0 === j % 2}"
+              [ngClass]="{'firstColumn': j==0  && i!=0 , 'oddColumns' : 0 === j % 2  && i!=0}"
               class=" ion-align-items-center  ion-justify-content-center  "
               >
               {{ item }}
             </ion-col>
-
           </ng-container>
-          <ng-container *ngIf="row.show && row.type=='b'">
-            <ion-grid>
-              <ion-row wrap *ngFor="let rows of selected_ch3[row.index] ; let i = index "
-              [ngClass]="{'oddRows':0 === i % 0}">
-                <ion-col *ngFor="let item of rows "
-                
-                >
-                  {{ item }}
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-
-          </ng-container>
+          
         </ion-row>
       </ion-grid>
-    </ion-col>
-    <ion-col size="12">
+    </ion-row>
+    <ion-row size="12">
       <ion-row class="ion-justify-content-center ion-margin-top">
         <app-pie-charts [columns]="columns1" [series]="data1" *ngIf="columns1.length && data1.length"
           style="max-width: 90vw"></app-pie-charts>
       </ion-row>
-    </ion-col>
-    <ion-col size="12">
+    </ion-row>
+    <ion-row size="12">
       <ion-row class="ion-justify-content-center ion-margin-top">
         <app-pie-charts [columns]="columns2" [series]="data2" *ngIf="columns2.length && data2.length"
           style="max-width: 90vw"></app-pie-charts>
       </ion-row>
-    </ion-col>
-  </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- ----------------------------------------------------------------------------- -->
-  <ion-col *ngIf="selectedSegment == 'channelP'">
-    <ion-col class="search-bar">
+  <ion-grid *ngIf="selectedSegment == 'channelP'">
+    <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
           <button class="search-submit primary-bg" (click)="categorySelect4()">
@@ -323,20 +290,17 @@
 
           </ng-select>
 
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
+         
         </ion-item>
       </ion-row>
-    </ion-col>
+    </ion-row>
     
-    <ion-col class="search-bar">
+    <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
           <button class="search-submit primary-bg" (click)="channelPSectionSkus()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-
           <ng-select *ngIf="sec4SkuSelect.length" [items]="sec4SkuSelect" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
             [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_sku4">
@@ -348,17 +312,12 @@
             <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
               <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
             </ng-template>
-
           </ng-select>
-
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
         </ion-item>
       </ion-row>
-    </ion-col>
+    </ion-row>
 
-    <ion-col>
+    <ion-grid>
       <ion-row class="radio-input-container ion-justify-content-center">
         <div class="radio-input-box">
           <div class="radio-input lightBlue-shadow">
@@ -373,11 +332,18 @@
           </div>
         </div>
       </ion-row>
-    </ion-col>
+    </ion-grid>
 <!-- --------------table----------------- -->
-    <ion-col>
-      
-    </ion-col>
+    <ion-row>
+      <ion-grid class=" ion-no-padding maingrid-chaP">
+        <ion-row wrap *ngFor="let rows of scorecards4; let i = index" [ngClass]="{'firstRow': i==0}">
+          <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of rows; let j = index" 
+          [ngClass]="{'firstColumn': j==0  && i!=0 , 'oddRows':1 === i % 2  }">
+            {{ item }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
     <ion-col size="12">
       <ion-row class="ion-justify-content-center ion-margin-top">
         <app-pie-charts [columns]="columns3" [series]="data3" *ngIf="columns3.length && data3.length"></app-pie-charts>
@@ -388,5 +354,5 @@
         <app-pie-charts [columns]="columns4" [series]="data4" *ngIf="columns4.length && data4.length"></app-pie-charts>
       </ion-row>
     </ion-col>
-  </ion-col>
+  </ion-grid>
 </ion-content>

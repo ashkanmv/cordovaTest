@@ -63,119 +63,8 @@
     </ion-segment>
   </ion-col>
 </ion-header>
-<!-- -------------------------------per-invoices----------------------------------------- -->
-<!-- -------------------------------per-invoices----------------------------------------- -->
-<!-- -------------------------------per-invoices----------------------------------------- -->
 <ion-content>
-  <ion-col
-    class="per-invoices-segment"
-    *ngIf="selectedSegment == 'per-invoices'"
-  >
-    <ion-row>
-      <ion-col class="search-bar">
-        <ion-row class="search-box ion-justify-content-center">
-          <ion-item class="lightBlue-shadow">
-            <button class="search-submit primary-bg" (click)="SelectedDCN()">
-              <ion-icon name="search-outline"></ion-icon>
-            </button>
-            <ng-select
-              *ngIf="dropdownListN.length"
-              [items]="dropdownListN"
-              [multiple]="true"
-              bindLabel="itemName"
-              groupBy="group"
-              appendTo="body"
-              [selectableGroup]="true"
-              [selectableGroupAsModel]="false"
-              [closeOnSelect]="false"
-              bindValue="itemName"
-              [(ngModel)]="selectedItemsN"
-            >
-              <ng-template
-                ng-optgroup-tmp
-                let-item="item"
-                let-item$="item$"
-                let-index="index"
-              >
-                <input
-                  id="item-{{index}}"
-                  type="checkbox"
-                  [ngModel]="item$.selected"
-                />
-                {{item.group}}
-              </ng-template>
 
-              <ng-template
-                ng-option-tmp
-                let-item="item"
-                let-item$="item$"
-                let-index="index"
-              >
-                <input
-                  id="item-{{index}}"
-                  type="checkbox"
-                  [ngModel]="item$.selected"
-                />
-                {{item.itemName}}
-              </ng-template>
-            </ng-select>
-            <span class="search-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </span>
-          </ion-item>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <!-- -----------------------table -->
-    <ion-row>
-      <ion-col class="ion-no-padding table-container">
-        <ion-grid class="ion-no-padding table">
-          <div
-            *ngFor="let row of virtual_rows1; let i = index"
-            [ngClass]="{'firstrow': i==0}"
-          >
-            <ion-row>
-              <ng-container *ngIf="i==0 && row.show && (row.type=='h')">
-                <ion-col
-                  *ngFor="let item of srsales1[row.index]; let j = index"
-                  [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
-                >
-                  {{ item }}
-                </ion-col>
-              </ng-container>
-            </ion-row>
-          </div>
-
-          <div class="tbody">
-            <div
-              *ngFor="let row of virtual_rows1; let i = index"
-              (click)="row_click1(row , i)"
-              [ngClass]="{ 'oddRows' : 3 === i % 4}"
-            >
-              <ion-row class="rows">
-                <ng-container *ngIf="i!=0 &&row.show && (row.type=='a')">
-                  <ion-col
-                    *ngFor="let item of srsales1[row.index]; let j = index"
-                    [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0, 'oddColumns': 0=== j % 2 }"
-                  >
-                    {{ item }}
-                  </ion-col>
-                </ng-container>
-
-                <ng-container *ngIf="row.show && row.type=='b'">
-                  <ion-grid class="details">
-                    <ion-row wrap *ngFor="let rows of selected_ch1[row.index]">
-                      <ion-col *ngFor="let item of rows"> {{ item }} </ion-col>
-                    </ion-row>
-                  </ion-grid>
-                </ng-container>
-              </ion-row>
-            </div>
-          </div>
-        </ion-grid>
-      </ion-col>
-    </ion-row>
-  </ion-col>
   <!-- -------------------------------per-kilo----------------------------------------- -->
   <!-- -------------------------------per-kilo----------------------------------------- -->
   <!-- -------------------------------per-kilo----------------------------------------- -->
@@ -229,9 +118,6 @@
                 {{item.itemName}}
               </ng-template>
             </ng-select>
-            <span class="search-icon">
-              <ion-icon name="chevron-down-outline"></ion-icon>
-            </span>
           </ion-item>
         </ion-row>
       </ion-col>
@@ -250,8 +136,8 @@
               >
                 <ion-col
                   *ngFor="let item of srsales2[row.index]; let j = index"
-                  [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
-                >
+                  [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0=== j % 2 }"
+                  >
                   {{ item }}
                 </ion-col>
               </ng-container>
@@ -270,7 +156,7 @@
                 >
                   <ion-col
                     *ngFor="let item of srsales2[row.index]; let j = index"
-                    [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0, 'oddColumns': 0=== j % 2 }"
+                    [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0=== j % 2 }"
                   >
                     {{ item }}
                   </ion-col>
@@ -290,6 +176,117 @@
       </ion-col>
     </ion-row>
   </ion-col>
+  <!-- -------------------------------per-invoices----------------------------------------- -->
+<!-- -------------------------------per-invoices----------------------------------------- -->
+<!-- -------------------------------per-invoices----------------------------------------- -->
+
+<ion-col
+class="per-invoices-segment"
+*ngIf="selectedSegment == 'per-invoices'"
+>
+<ion-row>
+  <ion-col class="search-bar">
+    <ion-row class="search-box ion-justify-content-center">
+      <ion-item class="lightBlue-shadow">
+        <button class="search-submit primary-bg" (click)="SelectedDCN()">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+        <ng-select
+          *ngIf="dropdownListN.length"
+          [items]="dropdownListN"
+          [multiple]="true"
+          bindLabel="itemName"
+          groupBy="group"
+          appendTo="body"
+          [selectableGroup]="true"
+          [selectableGroupAsModel]="false"
+          [closeOnSelect]="false"
+          bindValue="itemName"
+          [(ngModel)]="selectedItemsN"
+        >
+          <ng-template
+            ng-optgroup-tmp
+            let-item="item"
+            let-item$="item$"
+            let-index="index"
+          >
+            <input
+              id="item-{{index}}"
+              type="checkbox"
+              [ngModel]="item$.selected"
+            />
+            {{item.group}}
+          </ng-template>
+
+          <ng-template
+            ng-option-tmp
+            let-item="item"
+            let-item$="item$"
+            let-index="index"
+          >
+            <input
+              id="item-{{index}}"
+              type="checkbox"
+              [ngModel]="item$.selected"
+            />
+            {{item.itemName}}
+          </ng-template>
+        </ng-select>
+       
+      </ion-item>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<!-- -----------------------table -->
+<ion-row>
+  <ion-col class="ion-no-padding table-container">
+    <ion-grid class="ion-no-padding table">
+      <div
+        *ngFor="let row of virtual_rows1; let i = index"
+        [ngClass]="{'firstrow': i==0}"
+      >
+        <ion-row>
+          <ng-container *ngIf="i==0 && row.show && (row.type=='h')">
+            <ion-col
+              *ngFor="let item of srsales1[row.index]; let j = index"
+              [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0=== j % 2 }"
+              >
+              {{ item }}
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </div>
+
+      <div class="tbody">
+        <div
+          *ngFor="let row of virtual_rows1; let i = index"
+          (click)="row_click1(row , i)"
+          [ngClass]="{ 'oddRows' : 3 === i % 4}"
+        >
+          <ion-row class="rows">
+            <ng-container *ngIf="i!=0 &&row.show && (row.type=='a')">
+              <ion-col
+                *ngFor="let item of srsales1[row.index]; let j = index"
+                [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0=== j % 2 }"
+                >
+                {{ item }}
+              </ion-col>
+            </ng-container>
+
+            <ng-container *ngIf="row.show && row.type=='b'">
+              <ion-grid class="details">
+                <ion-row wrap *ngFor="let rows of selected_ch1[row.index]">
+                  <ion-col *ngFor="let item of rows"> {{ item }} </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ng-container>
+          </ion-row>
+        </div>
+      </div>
+    </ion-grid>
+  </ion-col>
+</ion-row>
+</ion-col>
 </ion-content>
 
 <!-- ----------------------- -->

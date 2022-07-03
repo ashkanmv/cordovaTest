@@ -77,7 +77,7 @@ ion-col.segment-change{
         .search-submit{
             z-index: 2;
             width: 3rem;
-            height: 5rem;
+            height: 10vh;
             border-radius: 10px 0 0 10px;
             ion-icon{
                 color: var(--ion-color-light);
@@ -113,13 +113,9 @@ ion-col.segment-change{
 
 // table!!
 .firstrow{
-    // background: var(--ion-color-light);
     &>:first-child{
         &>:first-child{
             color: #0095eb;
-        }
-        :nth-child(odd){
-            background: var(--ion-color-light);
         }
     }
 }

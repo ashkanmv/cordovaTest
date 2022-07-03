@@ -27,7 +27,7 @@ export class ScoreCardPage implements OnInit {
   channels3 = [];
   scorecards3 = [];
   selected_channel1 = [];
-  selected_channel3 = [];
+  selected_channel3: any = [];
   ms_data_channel = [];
   categories4 = [];
   skus4 = [];
@@ -48,7 +48,6 @@ export class ScoreCardPage implements OnInit {
   server;
   selected_ch3=[];
   type3 = "sales";
-
 
   color = [
     'rgba(230,25,75,0.2)',
@@ -668,118 +667,5 @@ export class ScoreCardPage implements OnInit {
       this.getPped1ByChannel();
   }
 
-  // old rys
-  create_model1(model, index) {
-    this.selected_channel1[index] = [];
-    if (model[0]) {
-      let keys = Object.keys(model[0]);
-      this.scorecards1.push(keys);
-      for (var i = 0; i < model.length; i++) {
-        let ch = model[i];
-        let temp = Object.keys(ch).map((key) => ch[key]);
-        for (var j = 1; j < temp.length; j++) {
-          if (temp[j] != null) {
-            temp[j] = parseFloat(temp[j]).toFixed(2);
-          }
-        }
-        this.selected_channel1[index].push(temp);
-      }
-    }
-  }
-
-  row_click1(row) {
-    if (row.type == "a") {
-      if (this.virtual_rows1[row.index + 1].show) {
-        this.virtual_rows1[row.index + 1].show = false;
-      } else {
-        this.virtual_rows1[row.index + 1].show = true;
-      }
-
-      if (this.type1 == "pped") {
-        this.scoreCardService
-          .getPped1ByChannelCategory(
-            this.ms_model_channel,
-            this.scorecards1[row.index][0]
-          )
-          .subscribe(
-            (customer_histories) => {
-              this.set_server_status(true);
-              this.create_model1(customer_histories, row.index + 1);
-            },
-            (error) => {
-              this.set_server_status(false);
-              console.log(error);
-            }
-          );
-      } else {
-        this.scoreCardService
-          .getSales1ByChannelCategory(
-            this.ms_model_channel,
-            this.scorecards1[row.index][0]
-          )
-          .subscribe(
-            (customer_histories) => {
-              this.set_server_status(true);
-              this.create_model1(customer_histories, row.index + 1);
-            },
-            (error) => {
-              this.set_server_status(false);
-              console.log(error);
-            }
-          );
-      }
-    }
-  }
-  // row_click3(row) {
-    // if (row.type == "a") {
-    //   if (this.virtual_rows3[row.index + 1].show) {
-    //     this.virtual_rows3[row.index + 1].show = false;
-    //   } else {
-    //     this.virtual_rows3[row.index + 1].show = true;
-    //   }
-
-    //   if (this.type3 == "pped") {
-    //     this.scoreCardService
-    //       .getPped3ByChannelCategory(
-    //         this.selected_channel3,
-    //         this.scorecards3[row.index][0]
-    //       )
-    //       .subscribe(
-    //         (customer_histories) => {
-    //           this.set_server_status(true);
-            
-    //           this.create_model3(customer_histories, row.index + 1);
-    //         },
-    //         (error) => {
-    //           this.utilService.presentToast(
-    //             this.translateService.instant("server_no_value")
-    //           );
-    //           this.set_server_status(false);
-    //           console.log(error);
-    //         }
-    //       );
-    //   } else {
-    //     //sales
-    //     this.scoreCardService
-    //       .getSales3ByChannelCategory(
-    //         this.selected_channel3,
-    //         this.scorecards3[row.index][0]
-    //       )
-    //       .subscribe(
-    //         (customer_histories) => {
-    //           this.set_server_status(true);
-
-    //           this.create_model3(customer_histories, row.index + 1);
-    //         },
-    //         (error) => {
-    //           this.utilService.presentToast(
-    //             this.translateService.instant("server_no_value")
-    //           );
-    //           this.set_server_status(false);
-    //           console.log(error);
-    //         }
-    //       );
-    //   }
-    // }
-  // }
+  
 }

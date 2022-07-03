@@ -69,18 +69,6 @@
           <button class="search-submit primary-bg" (click)="getSrSalesUsers()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <!-- <ion-select
-            [(ngModel)]="selected_dc"
-            multiple="true"
-            interface="popover"
-            (ionchange)="dsdChanged()"
-          >
-            <ion-select-option
-              *ngFor="let city of dropdownList"
-              [value]="city.itemName"
-              >{{city.itemName}}</ion-select-option
-            >
-          </ion-select> -->
           <ng-select *ngIf="dropdownList.length" [items]="dropdownList" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
             [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_dc">
@@ -94,9 +82,6 @@
             </ng-template>
 
           </ng-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
         </ion-item>
       </ion-row>
     </ion-col>
@@ -211,18 +196,6 @@
           <button class="search-submit primary-bg" (click)="getSrSalesUsersNDSD()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <!-- <ion-select
-            [(ngModel)]="selected_dcN"
-            multiple="true"
-            interface="popover"
-            (ionchange)="nonDsdChanged()"
-          >
-            <ion-select-option
-              *ngFor="let city of dropdownListN"
-              [value]="city.itemName"
-              >{{city.itemName}}</ion-select-option
-            >
-          </ion-select> -->
           <ng-select *ngIf="dropdownListN.length" [items]="dropdownListN" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
             [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_dcN">
@@ -236,9 +209,6 @@
             </ng-template>
 
           </ng-select>
-          <span class="search-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-          </span>
         </ion-item>
       </ion-row>
     </ion-col>
