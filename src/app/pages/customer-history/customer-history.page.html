@@ -17,7 +17,7 @@
           <h3>{{language.Customer_History.Title}}</h3>
         </ion-title>
       </ion-col>
-      <ion-col
+      <!-- <ion-col
         size="1"
         class="ion-no-padding ion-align-self-center ion-text-end gps-text"
       >
@@ -25,8 +25,18 @@
       </ion-col>
       <ion-col
         size="2"
-        class="ion-align-self-center ion-justify-content-center toggle ion-justify-self-end ion-float-right"
+        class="ion-align-self-center toggle ion-justify-content-end "
       >
+        <span class="toggle-background">
+          <ion-toggle
+            class="ion-no-padding"
+            color="primary"
+            [(ngModel)]="gps" (ionChange)="gpsChanged()"
+          ></ion-toggle>
+        </span>
+      </ion-col> -->
+      <ion-col class="gps ion-no-padding ion-align-self-center ion-align-items-center ion-justify-content-end margin-end " size="2">
+        {{language.Customer_History.gps}}
         <span class="toggle-background">
           <ion-toggle
             class="ion-no-padding"
@@ -38,7 +48,7 @@
       <ion-col
         (click)="show=!show"
         size="1"
-        class="ion-align-self-center hide ion-no-padding"
+        class="ion-align-self-center hide ion-no-padding margin-end"
       >
         <ion-img
           src="\assets\pages\customer-nearby\Hide.png"
@@ -47,7 +57,7 @@
       </ion-col>
       <ion-col
         size="1"
-        class="ion-float-left ion-align-self-center wifi ion-no-padding"
+        class="ion-float-left ion-align-self-center wifi ion-no-padding margin-end"
       >
         <ion-img
           class="wifi-offline"
