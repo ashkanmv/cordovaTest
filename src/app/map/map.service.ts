@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import {
+  GetAllChildrenUserResponse,
   GetInvoicedResponse,
   GetSrInfoResponse,
   GetSrRouteResponse,
@@ -51,8 +52,28 @@ export class MapService {
     iconUrl: 'assets/icon/shop_blue_circle_x.png',
     iconSize: [30, 30],
   };
-  SalesManIcon: IconOptions = {
+  salesManIcon: IconOptions = {
     iconUrl: 'assets/icon/salesman.png',
+    iconSize: [30, 30],
+  };
+  salesMenRsmIcon: IconOptions = {
+    iconUrl: 'assets/icon/salesmen_rsm.png',
+    iconSize: [30, 30],
+  };
+  salesMenAsmIcon: IconOptions = {
+    iconUrl: 'assets/icon/salesmen_asm.png',
+    iconSize: [30, 30],
+  };
+  salesMenSsvIcon: IconOptions = {
+    iconUrl: 'assets/icon/salesmen_ssv.png',
+    iconSize: [30, 30],
+  };
+  salesMenSrIcon: IconOptions = {
+    iconUrl: 'assets/icon/salesmen_sr.png',
+    iconSize: [30, 30],
+  };
+  salesManSdIcon: IconOptions = {
+    iconUrl: 'assets/icon/salesman_sd.png',
     iconSize: [30, 30],
   };
   SalesManPolylineOption: PolylineOptions = {
@@ -86,8 +107,30 @@ export class MapService {
     iconSize: [30, 30],
   };
 
+  rsmPolylineOption: PolylineOptions = {
+    color: '#d50e35',
+    opacity: 1,
+    weight: 2,
+  }
+  asmPolylineOption: PolylineOptions = {
+    color: '#22b910',
+    opacity: 1,
+    weight: 2,
+  }
+  ssvPolylineOption: PolylineOptions = {
+    color: '#c46e00',
+    opacity: 1,
+    weight: 2,
+  }
+  srPolylineOption: PolylineOptions = {
+    color: '#003aa6',
+    opacity: 1,
+    weight: 2,
+  }
+
   mapInitialized = new Subject();
   clearMarkers = new Subject();
+  clearPolylines = new Subject();
   flyTo = new Subject();
   private vehicleUrl = environment.BaseURL + '/api/v1/vehicles';
   private shopPointUrl = environment.BaseURL + '/api/v1/shoppoints';
@@ -105,10 +148,6 @@ export class MapService {
   private srNearPoints = environment.BaseURL + '/api/v1/gps/srNearPoints';
   private srNearPointsLatlng =
     environment.BaseURL + '/api/v1/gps/srNearPointsLatlng';
-  private allChildrenUser =
-    environment.BaseURL + '/api/v1/users/getallchildren';
-  private salesmenlocation =
-    environment.BaseURL + '/api/v1/visitorpoints/salesmenlocation';
 
   constructor(private http: HttpClient) {}
 
@@ -181,33 +220,7 @@ export class MapService {
     return this.http.get<GetSrInfoResponse[]>(this.srinfoUrl, { params });
   }
 
-  getSalesmenLocation(user_ids: any, date: string, IsLastLocation: number) {
-    let params = new HttpParams();
-    params = params.append('user_id', user_ids);
-    params = params.append('datetime', date);
-    params = params.append('IsLastLocation', IsLastLocation);
 
-    return this.http.get(this.salesmenlocation, { params });
-  }
-  getallChildrenUser(
-    ParentUserID: any,
-    UserType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin',
-    UserIDs: string
-  ) {
-    if (UserIDs == undefined) {
-      UserIDs = ' ';
-    }
-    if (ParentUserID.length == 0) {
-      ParentUserID = ' ';
-    }
-
-    let params = new HttpParams();
-    params = params.append('ParentUserID', ParentUserID);
-    params = params.append('UserType', UserType);
-    params = params.append('UserIDs', UserIDs);
-
-    return this.http.get(this.allChildrenUser, { params });
-  }
 
   getDc() {
     return this.http.get(this.dcUrl);

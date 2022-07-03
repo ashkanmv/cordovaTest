@@ -64,8 +64,12 @@ export class CustomerHistoryPage implements OnInit {
     private loadingCtrl: LoadingController,
     private sharedService: SharedService,
     private languageService: LanguageService,
-    private geoLocationService: GeoLocationService
+    private geoLocationService: GeoLocationService,
   ) {
+    this.paramSubscription = this.activatedRoute.queryParams.subscribe(
+      (params: Params) =>
+        this.form.patchValue({ Customer: params['Customer'] })
+    );
     this.input.subscribe((term) => {
       if (!term) return;
       this.searching = true;
@@ -83,12 +87,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.plt.ready().then(() => {
-      this.paramSubscription = this.activatedRoute.queryParams.subscribe(
-        (params: Params) =>
-          this.form.patchValue({ Customer: params['Customer'] })
-      );
-    });
+
   }
 
   ionViewDidLeave() {
@@ -437,14 +436,12 @@ export class CustomerHistoryPage implements OnInit {
       this.customerHistoryService
         .getSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
-          console.log(data);
           this.createModel(data, index + 1);
         });
     else
       this.customerHistoryService
         .getkgSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
-          console.log(data);
           this.createModel(data, index + 1);
         });
   }
@@ -454,7 +451,6 @@ export class CustomerHistoryPage implements OnInit {
       this.customerHistoryService
         .getSamplesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
-          console.log(data);
           this.createModel(data, index + 1);
         });
     else
@@ -464,7 +460,6 @@ export class CustomerHistoryPage implements OnInit {
           category
         )
         .subscribe((data) => {
-          console.log(data);
           this.createModel(data, index + 1);
         });
   }
@@ -545,51 +540,27 @@ export class CustomerHistoryPage implements OnInit {
     this.columns = labels;
     this.data = dataset;
     this.pieChartData = pieChartDataSet;
-    // this.chart = new Chart(this.ctx, {
-    //   type: 'bar',
-    //   data: {
-    //     labels: labels,
-    //     datasets: dataset
-    //   },
-    //   options: {
-    //     scales: {
-    //       yAxes: [{
-    //         stacked: true,
-    //         scaleLabel: {
-    //           display: true,
-    //           labelString: 'Kilogram'
-    //         }
-    //       }],
-    //       xAxes: [{
-    //         stacked: true
-    //       }],
-    //     }
-    //   }
-    // });`
   }
 
   gpsChanged() {
-    console.log(this.gps);
-    
     if (this.gps)
-      this.findShop(35.747956, 51.441753);
-      // this.geoLocationService.getCurrentLocation().then(location => {
-      //   this.findShop(location.latitude,location.longitude);
-      // })
+      this.geoLocationService.getCurrentLocation().then(location => {
+        this.findShop(location.latitude, location.longitude);
+      })
   }
 
-  async findShop(lat : number,lng : number){
+  async findShop(lat: number, lng: number) {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
     loading.present();
-    this.customerHistoryService.findShop(lat,lng).subscribe((res : any[])=>{
-      if(!res.length){
+    this.customerHistoryService.findShop(lat, lng).subscribe((res: any[]) => {
+      if (!res.length) {
         this.sharedService.toast('danger', this.language.Customer_History.msg_no_customer)
         return
       }
 
-      this.patchValue('Customer',res[0])
+      this.patchValue('Customer', res[0])
       this.customers = res
       this.customerInfo = {
         address: res[0].ADDRESS,
@@ -598,7 +569,7 @@ export class CustomerHistoryPage implements OnInit {
         shopType: res[0].CustTYPE,
         sr: res[0].Visitor,
         tell: +res[0].Tel,
-      }; 
+      };
       loading.dismiss()
       this.getAvgs();
     })

@@ -1,5 +1,9 @@
 {
     "EN": {
+        "connection_error": "Can't connect to server!",
+        "gps_error": "Please turn on the GPS!",
+        "Loading": "Please wait...",
+        "server_no_value": "The server returns no value",
         "Customer_History": {
             "Title": "Customer History",
             "gps": "GPS",
@@ -24,7 +28,11 @@
             "Radio_input_breakfast": "Breakfast",
             "Radio_input_breakfast_yes": "Yes",
             "Radio_input_breakfast_no": "No",
-            "Submit_button": "Submit"
+            "Submit_button": "Submit",
+            "Msg_answer_neccesary": "Answer is necesary!",
+            "Msg_image_neccesary": "Image is neccesary!",
+            "Msg_submit": "Information successfully has been sent.",
+            "Msg_update": "Information successfully has been updated."
         },
         "Gps_Tracking": {
             "Title": "Gps Tracking",
@@ -120,7 +128,8 @@
             "managerGreen": "Ahmad Safari",
             "managerYellow": "Sina Ahmadi",
             "managerBlue": "Kazem Dehghan",
-            "Group": "Select All"
+            "Group": "Select All",
+            "NoValueSelected": "No value selected!"
         },
         "Sales_hourly_Day_And_Sales_Office": {
             "Title": "Sales hourly_Day & Sales Office",
@@ -162,6 +171,9 @@
             "Title": "Online_Daily_Sales",
             "group": "All",
             "UserIdNotFound": "UserId not found"
+        },
+        "Trace_Salesman" : {
+            "NoLocationFound" : "No location found !"
         }
     },
     "FR": {

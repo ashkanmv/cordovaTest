@@ -83,6 +83,35 @@ export interface News {
   Mod_User: number;
 }
 
+export interface GetUserChildrenResponse {
+  Uid: number;
+  Fromdate: Date;
+  Todate: Date;
+  id: string;
+  PartyID: string;
+  ParentID: string;
+  userType: number;
+  FirstName: string;
+  LastName: string;
+  LandLine: string;
+  CellNumber: string;
+  username: string;
+  password: string;
+  status: string;
+  create_at: Date;
+  Mod_DT: Date;
+  Mod_User: number;
+  isSystemUser?: any;
+  Equivalent_User_ID: string;
+  name: string;
+  FullName: string;
+}
+export interface GetAllChildrenUserResponse {
+  id: number;
+  FullName: string;
+  group: string;
+}
+
 export interface GetSales2ByCatSkuResponse {
   Channels: string;
   Today: number;
@@ -175,6 +204,27 @@ export interface getVPByRouteResponse {
   RouteCode: string;
   BrokerID: string;
 }
+
+export interface GetSalesmenLocationResponse {
+  id: string;
+  lat: number;
+  lng: number;
+  user_id: string;
+  route_name: string;
+  visitor_code: string;
+  provider: string;
+  time: string;
+  accuracy: number;
+  speed?: any;
+  altitude?: any;
+  bearing?: any;
+  location_provider: number;
+  uuid: string;
+  status: string;
+  create_at: Date;
+  Name: string;
+}
+
 export interface LoginResponse {
   route_name: string;
   route_code: string;
@@ -272,17 +322,17 @@ export interface UserLog {
 }
 
 export interface PageDetail {
-  index : number;
-  key : string;
+  index: number;
+  key: string;
   routerLink: string;
-  imgSrc : string;
+  imgSrc: string;
   title: string;
 }
 
 export interface AutoLogin {
-  userName : string;
-  password : string;
-  uuid : string;
+  userName: string;
+  password: string;
+  uuid: string;
 }
 
 export interface PopoverItem {
@@ -305,6 +355,10 @@ export enum Languages {
 
 // Language
 export class Language {
+  Connection_error: string;
+  Gps_error: string;
+  Loading: string;
+  Server_no_value: string;
   Customer_History: {
     Title: string;
     gps: string;
@@ -314,7 +368,7 @@ export class Language {
     Tell: number;
     SR: string;
     Address: string;
-    msg_no_customer : string;
+    msg_no_customer: string;
   };
   Questionnaire: {
     Title: string;
@@ -330,6 +384,10 @@ export class Language {
     Radio_input_breakfast_yes: string;
     Radio_input_breakfast_no: string;
     Submit_button: string;
+    Msg_answer_neccesary: string;
+    Msg_image_neccesary: string;
+    Msg_submit: string;
+    Msg_update: string;
   };
   Gps_Tracking: {
     Title: string;
@@ -426,6 +484,7 @@ export class Language {
     managerYellow: string;
     managerBlue: string;
     Group: string;
+    NoValueSelected: string;
   };
   Sales_hourly_Day_And_Sales_Office: {
     Title: string;
@@ -467,6 +526,9 @@ export class Language {
     Title: string;
     group: string;
     UserIdNotFound: string;
+  }
+  Trace_Salesman :{
+    NoLocationFound : string;
   }
 }
 

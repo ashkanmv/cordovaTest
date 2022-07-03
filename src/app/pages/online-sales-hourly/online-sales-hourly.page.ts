@@ -388,10 +388,6 @@ export class OnlineSalesHourlyPage implements OnInit {
   formatDate(value: string) {
     return format(parseISO(value), 'MMM dd yyyy');
   }
-
-  onClick() {
-    console.log(this.selected_dc);
-  }
   //  // orignal row click
 
   row_click1(row, index) {

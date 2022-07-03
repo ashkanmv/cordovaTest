@@ -18,7 +18,6 @@ export class ColumnChartsComponent implements OnInit {
   @Input() set columns(v: string[]) {
     if (!v.length)
       return
-    console.log(v);
     this._columns = v;
     this.init();
   }

@@ -71,8 +71,8 @@
   </ion-grid>
 </ion-header>
 <ion-content>
-  <ion-row *ngIf="show" class="content-container">
-    <ion-row class="search-container">
+  <ion-row class="content-container">
+    <ion-row class="search-container" *ngIf="show">
       <ion-col
         class="ion-justify-content-center search-box lightBlue-shadow"
         size="12"
@@ -121,7 +121,7 @@
       </ion-col>
     </ion-row>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" *ngIf="show">
       <ion-grid class="customer-history-select">
         <ion-row class="ion-justify-content-center">
           <ion-item lines="none" class="lightBlue-shadow select-box">
@@ -289,7 +289,8 @@
               </h4>
             </ion-col>
             <ion-col size="4" class="questionnaire">
-              <a routerLink="/questionnaire">
+              <a  [routerLink]="['/questionnaire']"
+              [queryParams]="{ customerNumber : customerInfo.shopCode}">
                 <img
                   src="assets\pages\customer-history\Group 1309.png"
                   alt=""

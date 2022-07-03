@@ -14,7 +14,6 @@ export class AuthService {
   getAccess(username: string, password: string, uuid: string) {
     if (uuid == undefined) {
       uuid = 'Non'
-      console.log('Non_UUid')
     }
 
     let params = new HttpParams();

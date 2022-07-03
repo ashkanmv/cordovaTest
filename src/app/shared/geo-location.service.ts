@@ -26,27 +26,6 @@ export class GeoLocationService {
 
   constructor(private geolocation: BackgroundGeolocation) { }
 
-  // configuration() {
-  //   this.geolocation.configure(this.config).then(() => {
-  //     this.geolocation
-  //       .on(BackgroundGeolocationEvents.location)
-  //       .subscribe((location: BackgroundGeolocationResponse) => {
-  //         console.log(location);
-
-  //         // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
-  //         // and the background-task may be completed.  You must do this regardless if your operations are successful or not.
-  //         // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-  //         this.geolocation.finish(); // FOR IOS ONLY
-  //       });
-  //   });
-
-  //   // start recording location
-  //   this.geolocation.start();
-
-  //   // If you wish to turn OFF background-tracking, call the #stop method.
-  //   // this.geolocation.stop();
-  // }
-
   startTracking(url: string) {
     this.config.url = url;
     this.geolocation.configure(this.config).then(() => {
