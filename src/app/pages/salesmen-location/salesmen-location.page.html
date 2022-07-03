@@ -7,13 +7,11 @@
             src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="1"> </ion-col>
-      <ion-col size="6" class="ion-text-center ion-align-self-center">
+      <ion-col size="9" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text">
           <h3><b>{{language.Salesmen_Location.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col size="1"></ion-col>
       <ion-col class="ion-align-self-center hide" size="1" (click)="show = !show" [ngClass]="{'show-content': show}">
         <ion-img id="trigger-hide" class="hide" src="\assets\pages\customer-nearby\Hide.png">
         </ion-img>
@@ -39,9 +37,9 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="show">
+  <ion-grid *ngIf="show">
     <!-- <form [formGroup]="form"> -->
-      <ion-col *ngIf="f.accessTime.value">
+      <ion-row *ngIf="f.accessTime.value">
         <ion-row class="date-picker-container">
           <ion-row class="date-picker-box">
             <label for="Date-picker">{{language.DatePicker.title}}</label>
@@ -64,24 +62,17 @@
             </ion-datetime>
           </ng-template>
         </ion-popover>
-      </ion-col>
-      <ion-col class="salesmen-location-container">
+      </ion-row>
+      <ion-row class="salesmen-location-container">
         <div class="salesmen-location-box" *ngIf="f.accessRsm.value">
-          <ion-item class="salesmen-location lightBlue-shadow">
-            <ion-label>
+          <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
+            <ion-item>
+              <ion-button class="btn-search primary-bg">
+                <ion-icon name="search-outline"></ion-icon>
+              </ion-button>  
               <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
               <ion-item>
-                <ion-icon name="chevron-down-outline"></ion-icon>
-                <ion-list class="radio-group-container">
-                  <ion-radio-group allow-empty-selection  (ionChange)="rsmRadioChanged($event)">
-                    <ion-item>
-                      <ion-radio allow-empty-selection mode="md"></ion-radio>
-                    </ion-item>
-                  </ion-radio-group>
-                </ion-list>
-              </ion-item>
-            </ion-label>
-            <ng-select *ngIf="rsms.length" [items]="rsms" [multiple]="true" bindLabel="FullName" groupBy="group"
+                <ng-select *ngIf="rsms.length" [items]="rsms" [multiple]="true" bindLabel="FullName" groupBy="group"
               appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
               bindValue="id" [(ngModel)]="selectedRsm" (change)="loadAsms(true,selectedRsm)">
 
@@ -95,85 +86,74 @@
 
             </ng-select>
           </ion-item>
+          <ion-checkbox mode="ios"  ></ion-checkbox>
+            </ion-item>
+            
+          </ion-item>
         </div>
         <div class="salesmen-location-box" *ngIf="f.accessAsm.value">
-          <ion-item class="salesmen-location lightBlue-shadow">
-            <ion-label>
+          <ion-item class="salesmen-location ion-no-padding  lightBlue-shadow">
+            <ion-item class=" ion-justify-content-between ion-align-items-center ">
+              <ion-button class="btn-search primary-bg">
+                <ion-icon name="search-outline"></ion-icon>
+              </ion-button>
               <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
               <ion-item>
-                <ion-icon name="chevron-down-outline"></ion-icon>
-                <ion-list class="radio-group-container">
-                  <ion-radio-group allow-empty-selection>
-                    <ion-item>
-                      <ion-radio allow-empty-selection mode="md" value=""></ion-radio>
-                    </ion-item>
-                  </ion-radio-group>
-                </ion-list>
-              </ion-item>
-            </ion-label>
-            <ng-select *ngIf="asms.length" [items]="asms" [multiple]="true" bindLabel="FullName" groupBy="group"
-            appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
-            bindValue="id" [(ngModel)]="selectedAsm" (change)="loadSsvs(true,selectedAsm)">
-
-            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
-            </ng-template>
-
-            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
-            </ng-template>
-
-          </ng-select>
+                <ng-select *ngIf="asms.length" [items]="asms" [multiple]="true" bindLabel="FullName" groupBy="group"
+                appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+                bindValue="id" [(ngModel)]="selectedAsm" (change)="loadSsvs(true,selectedAsm)">
+    
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+                </ng-template>
+    
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+                </ng-template>
+    
+              </ng-select>               
+            </ion-item>
+            <ion-checkbox mode="ios"  ></ion-checkbox>
+            </ion-item>
+           
           </ion-item>
         </div>
         <div class="salesmen-location-box" *ngIf="f.accessSsv.value">
-          <ion-item class="salesmen-location lightBlue-shadow">
-            <ion-label>
+          <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
+            <ion-item>
+              <ion-button class="btn-search primary-bg">
+                <ion-icon name="search-outline"></ion-icon>
+              </ion-button>
               <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
-
               <ion-item>
-                <ion-icon name="chevron-down-outline"></ion-icon>
-                <ion-list class="radio-group-container">
-                  <ion-radio-group allow-empty-selection>
-                    <ion-item>
-                      <ion-radio allow-empty-selection mode="md" value=""></ion-radio>
-                    </ion-item>
-                  </ion-radio-group>
-                </ion-list>
-              </ion-item>
-            </ion-label>
-            <ng-select *ngIf="ssvs.length" [items]="ssvs" [multiple]="true" bindLabel="FullName" groupBy="group"
-            appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
-            bindValue="id" [(ngModel)]="selectedSsv" (change)="loadSrs(true,selectedSsv)">
-
-            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
-            </ng-template>
-
-            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
-            </ng-template>
-
-          </ng-select>
+                <ng-select *ngIf="ssvs.length" [items]="ssvs" [multiple]="true" bindLabel="FullName" groupBy="group"
+                appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+                bindValue="id" [(ngModel)]="selectedSsv" (change)="loadSrs(true,selectedSsv)">
+    
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+                </ng-template>
+    
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+                </ng-template>
+    
+              </ng-select>               
+            </ion-item>
+            <ion-checkbox mode="ios"  ></ion-checkbox>
+            </ion-item>
+           
           </ion-item>
         </div>
         <div class="salesmen-location-box" *ngIf="f.accessSr.value">
-          <ion-item class="salesmen-location lightBlue-shadow">
-            <ion-label>
+          <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
+            <ion-item>
+              <ion-button class="btn-search primary-bg">
+                <ion-icon name="search-outline"></ion-icon>
+              </ion-button>
               <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
-
               <ion-item>
-                <ion-icon name="chevron-down-outline"></ion-icon>
-                <ion-list class="radio-group-container">
-                  <ion-radio-group allow-empty-selection name="" value="">
-                    <ion-item>
-                      <ion-radio allow-empty-selection mode="md" value=""></ion-radio>
-                    </ion-item>
-                  </ion-radio-group>
-                </ion-list>
-              </ion-item>
-            </ion-label>
-            <ng-select *ngIf="srs.length" [items]="srs" [multiple]="true" bindLabel="FullName" groupBy="group"
+                <ng-select *ngIf="srs.length" [items]="srs" [multiple]="true" bindLabel="FullName" groupBy="group"
             appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
             bindValue="id" [(ngModel)]="selectedSr" (change)="loadSrs(false,selectedSr)">
 
@@ -186,11 +166,15 @@
             </ng-template>
 
           </ng-select>
+        </ion-item>
+        <ion-checkbox mode="ios"  ></ion-checkbox>
+            </ion-item>
+            
           </ion-item>
         </div>
-      </ion-col>
+      </ion-row>
     <!-- </form> -->
-  </div>
+  </ion-grid>
   <div [ngStyle]="{display: !show ? 'block' : 'none'}">
     <div *ngIf="showMap" style="width: 100vw; height: 100vh">
       <app-map
