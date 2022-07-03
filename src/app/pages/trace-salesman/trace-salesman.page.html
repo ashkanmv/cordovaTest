@@ -75,12 +75,7 @@
               <ion-select-option *ngFor="let rsm of rsms" [value]="rsm">{{rsm.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
-            <ion-list class="radio-group-container">
-              <!-- <ion-radio-group allow-empty-selection name="" value="">
-                <ion-item>
-                  <ion-radio allow-empty-selection mode="md" value="RSM"></ion-radio>
-                </ion-item>
-              </ion-radio-group> -->
+            <ion-list class="checkbox-group-container">
               <ion-checkbox formControlName="showRsm" (ionChange)="showDataChanged('rsm',f.showRsm.value)"></ion-checkbox>
             </ion-list>
           </ion-item>
@@ -95,12 +90,7 @@
               <ion-select-option *ngFor="let asm of asms" [value]="asm">{{asm.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
-            <ion-list class="radio-group-container">
-              <!-- <ion-radio-group allow-empty-selection formControlName="showAsm">
-                <ion-item>
-                  <ion-radio allow-empty-selection mode="md" value="true"></ion-radio>
-                </ion-item>
-              </ion-radio-group> -->
+            <ion-list class="checkbox-group-container">
               <ion-checkbox formControlName="showAsm" (ionChange)="showDataChanged('asm',f.showAsm.value)"></ion-checkbox>
             </ion-list>
           </ion-item>
@@ -113,12 +103,7 @@
               <ion-select-option *ngFor="let ssv of ssvs" [value]="ssv">{{ssv.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
-            <ion-list class="radio-group-container">
-              <!-- <ion-radio-group allow-empty-selection>
-                <ion-item>
-                  <ion-radio allow-empty-selection mode="md" formControlName="showSsv"></ion-radio>
-                </ion-item>
-              </ion-radio-group> -->
+            <ion-list class="checkbox-group-container">
               <ion-checkbox formControlName="showSsv" (ionChange)="showDataChanged('ssv',f.showSsv.value)"></ion-checkbox>
             </ion-list>
           </ion-item>
@@ -131,12 +116,7 @@
               <ion-select-option *ngFor="let sr of srs" [value]="sr">{{sr.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
-            <ion-list class="radio-group-container">
-              <!-- <ion-radio-group allow-empty-selection name="" value="">
-                <ion-item>
-                  <ion-radio allow-empty-selection mode="md" value="SR"></ion-radio>
-                </ion-item>
-              </ion-radio-group> -->
+            <ion-list class="checkbox-group-container">
               <ion-checkbox formControlName="showSr" (ionChange)="showDataChanged('sr',f.showSr.value)"></ion-checkbox>
             </ion-list>
           </ion-item>
