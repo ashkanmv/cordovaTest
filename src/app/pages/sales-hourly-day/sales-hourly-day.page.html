@@ -62,12 +62,12 @@
 <!-- -----------------------------------------dsd-hourly-city--------------------------------------------------- -->
 <!-- -----------------------------------------dsd-hourly-city--------------------------------------------------- -->
 <ion-content>
-  <ion-col
-    class="dsd-hourly-days-segment"
+  <ion-grid
+    class="dsd-hourly-days-segment ion-no-padding   "
     *ngIf="selectedSegment == 'dsd-hourly-city'"
   >
     <!-- --------------date_ picker ------------->
-    <ion-col>
+    <ion-grid class="ion-no-padding" >
       <ion-row class="date-picker-container">
         <ion-row class="date-picker-box">
           <label for="Date-picker">{{language.DatePicker.title}}</label>
@@ -101,7 +101,7 @@
           </ion-datetime>
         </ng-template>
       </ion-popover>
-    </ion-col>
+    </ion-grid>
     <!-- ------------------search_bar -->
     <ion-row>
       <ion-col class="search-bar">
@@ -162,7 +162,7 @@
     <!-- -----------------------table -->
     <ion-row>
       <ion-col class="ion-no-padding table-container">
-        <ion-grid class="ion-no-padding table">
+        <ion-grid class="ion-no-padding  ion-no-padding table">
           <div
             *ngFor="let row of virtual_rows1; let i = index"
             [ngClass]="{'firstrow': i==0}"
@@ -171,7 +171,7 @@
               <ng-container *ngIf="i==0 && row.show && (row.type=='h')">
                 <ion-col
                   *ngFor="let item of srsales1[row.index]; let j = index"
-                  [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
+                  [ngClass]="{'firstcolumn': j==0 , 'oddColumns': 0=== j % 2 }"
                 >
                   {{ item }}
                 </ion-col>
@@ -208,17 +208,17 @@
         </ion-grid>
       </ion-col>
     </ion-row>
-  </ion-col>
+  </ion-grid>
   <!-- -----------------------------------------dsd-hourly-days--------------------------------------------------- -->
   <!-- -----------------------------------------dsd-hourly-days--------------------------------------------------- -->
   <!-- -----------------------------------------dsd-hourly-days--------------------------------------------------- -->
 
-  <ion-col
-    class="dsd-hourly-city-segment"
+  <ion-grid
+    class="dsd-hourly-city-segment  ion-no-padding"
     *ngIf="selectedSegment == 'dsd-hourly-days'"
   >
     <!-- --------------date_ picker -->
-    <ion-col>
+    <ion-row>
       <div class="date-picker-double-container">
         <div class="date-picker-box">
           <div id="open-popover-from" class="date-picker lightBlue-shadow">
@@ -291,7 +291,7 @@
         </ng-template>
       </ion-popover>
       <!--  -->
-    </ion-col>
+    </ion-row>
     <!-- ------------------search_bar -->
     <ion-row>
       <ion-col class="search-bar">
@@ -352,10 +352,10 @@
     <!-- -----------------------table -->
     <ion-row>
       <ion-col class="ion-no-padding table-container">
-        <ion-grid class="ion-no-padding table">
+        <ion-grid class="ion-no-padding  ion-no-padding table">
           <div
             *ngFor="let row of virtual_rows2; let i = index"
-            [ngClass]="{'firstrow': i==0}"
+            [ngClass]="{'firstrow-2': i==0}"
           >
             <ion-row>
               <ng-container
@@ -363,7 +363,7 @@
               >
                 <ion-col
                   *ngFor="let item of srsales2[row.index]; let j = index"
-                  [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0}"
+                  [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0=== j % 2}"
                 >
                   {{ item }}
                 </ion-col>
@@ -383,7 +383,7 @@
                 >
                   <ion-col
                     *ngFor="let item of srsales2[row.index]; let j = index"
-                    [ngClass]="{'firstcolumn': j==0 && i!=0,'visitor': j==1 && i!=0,'driver': j==2 && i!=0, 'oddColumns': 0=== j % 2 }"
+                    [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0=== j % 2 }"
                   >
                     {{ item }}
                   </ion-col>
@@ -402,7 +402,7 @@
         </ion-grid>
       </ion-col>
     </ion-row>
-  </ion-col>
+  </ion-grid>
 </ion-content>
 
 <!-- ----------------------- -->

@@ -1,6 +1,4 @@
-.table-lightblue-bg{
-    background: #bce2fe;
-}
+
 
 ion-item{
     --background: var(--ion-color-light);
@@ -50,114 +48,7 @@ ion-col.segment-change{
 }
 
 
-
-
-// -------date picker
-ion-col{
-    .date-picker-double-container{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .date-picker-box{
-        width: 95%;
-        height: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid #a9a9a9;
-        border-radius: 10px;
-        padding-top: 1rem;
-        .date-picker{
-            height: 6rem;
-            width: 90%;
-            display: flex;
-            justify-content: space-between;
-            border-radius: 20px;
-            align-items: center;
-            padding-right: 2rem;
-            margin-bottom: 1rem;
-            h4{
-                color: #cfcfcf;
-                margin-left: 1rem;
-          
-            }
-            img{
-                max-height: 100%;
-                max-width: 100%;
-            }
-            >div{
-                overflow: hidden;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                color:  #0095EB;
-                font-size: 1.5rem;
-                font-weight: bold;
-                ion-icon{
-                    color: #a9a9a9;
-                    padding-left: 1rem;
-
-                }
-            }
-        }
-        }
-    }
-}
-
-ion-col{
-    .date-picker-container{
-        // width: 100vw;
-        height: 15rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .date-picker-box{
-        width: 90%;
-        height: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid #6b6b6b;
-        border-radius: 10px;
-        padding-top: 1rem;
-        label{
-            font-size: 1.5rem;
-            color: #cfcfcf;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        .date-picker{
-            height: 6rem;
-            width: 80%;
-            display: flex;
-            justify-content: space-between;
-            border-radius: 20px;
-            align-items: center;
-            img{
-                max-height: 100%;
-                max-width: 100%;
-            }
-            >ion-col{
-                color: #0095EB;
-                display: flex;
-                font-size: 1.5rem;
-                font-weight: bold;
-                ion-icon{
-                    color: #a9a9a9;
-                    padding: 0 1rem;
-
-                }
-            }
-        }
-        }
-    }
-}
-
-
 // ----searchbar
-
 
 .search-bar{
     .search-box{
@@ -180,7 +71,7 @@ ion-col{
         .search-submit{
             z-index: 2;
             width: 3rem;
-            height: 5rem;
+            height: 10vh;
             border-radius: 10px 0 0 10px;
             ion-icon{
                 color: var(--ion-color-light);
