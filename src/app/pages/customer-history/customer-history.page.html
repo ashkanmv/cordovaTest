@@ -48,20 +48,22 @@
       <ion-col
         (click)="show=!show"
         size="1"
-        class="ion-align-self-center hide ion-no-padding margin-end"
+        class="ion-align-self-center hide ion-no-padding  ion-justify-content-center  margin-end"
       >
         <ion-img
-          src="\assets\pages\customer-nearby\Hide.png"
+          src="\assets\pages\Hide.png"
           [ngClass]="{'show-content' : show}"
         ></ion-img>
       </ion-col>
-      <ion-col
-        size="1"
-        class="ion-float-left ion-align-self-center wifi ion-no-padding margin-end"
-      >
-        <ion-img
-          class="wifi-offline"
-          src="assets\pages\customer-history\Internet Off.png"
+
+      <ion-col class="ion-align-self-center wifi ion-no-padding  margin-end " size="1"> 
+        <ion-img *ngIf="isOnline"
+          class="wifiOn"
+          src="\assets\pages\Wifi\Internet On.png"
+        ></ion-img>
+        <ion-img *ngIf="!isOnline"
+          class="wifiOff"
+          src="\assets\pages\Wifi\Internet Off.png"
         ></ion-img>
       </ion-col>
     </ion-row>

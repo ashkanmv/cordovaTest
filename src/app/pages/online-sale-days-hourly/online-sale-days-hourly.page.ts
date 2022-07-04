@@ -6,6 +6,7 @@ import { StorageService } from 'src/app/shared/storage.service';
 import { SrSalesHourlyCityService } from './sr-sales-hourly-city.service';
 import { Data } from '@angular/router';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-online-sale-days-hourly',
@@ -54,11 +55,15 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
 
   nestedTableIsShowingRow_1: boolean = false;
 
+  public get isOnline(){
+    return this.sharedService.isOnline;
+  }
   constructor(
     private languageService: LanguageService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
-    private SrSalesHourlyService: SrSalesHourlyCityService
+    private SrSalesHourlyService: SrSalesHourlyCityService,
+    private sharedService: SharedService
   ) {}
 
   

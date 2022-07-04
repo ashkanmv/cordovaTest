@@ -45,6 +45,9 @@ export class OnlineDailySalesPage implements OnInit {
   }
 
 
+  public get isOnline(){
+    return this.SharedService.isOnline
+  }
   constructor(
     private router: Router,
     private loadingCtrl: LoadingController,

@@ -46,6 +46,9 @@ export class TraceSalesmanPage implements OnInit {
   public get language(): Language {
     return this.languageService.language;
   }
+  public get isOnline(){
+    return this.sharedService.isOnline;
+  }
 
   constructor(
     private languageService: LanguageService,

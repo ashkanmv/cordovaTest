@@ -31,15 +31,16 @@ ion-input{
 }
 
 ion-img{
-    max-width: 100%;
+    max-width: 60px;
+    min-width: 40px;
 }
 
-.wifi{
-    min-width: 40px;
-}
-.reload{
-    min-width: 40px;
-}
+// .wifi{
+//     min-width: 40px;
+// }
+// .reload{
+//     min-width: 40px;
+// }
 
 ion-img .back-button.ios{
     min-width: 40px;

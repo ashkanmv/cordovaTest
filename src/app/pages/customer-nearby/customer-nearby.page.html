@@ -66,7 +66,6 @@
         </ion-popover>
       </ion-col>
       <ion-col size="1" class="ion-align-self-center reload">
-        <!-- <img src="\assets\pages\customer-nearby\Group 1325.png" alt="" /> -->
         <ion-img src="\assets\pages\customer-nearby\Group 1325.png"></ion-img>
       </ion-col>
       <ion-col
@@ -80,10 +79,14 @@
           src="\assets\pages\customer-nearby\Hide.png"
         ></ion-img>
       </ion-col>
-      <ion-col size="1" class="ion-align-self-center wifi">
-        <ion-img
-          class="wifi-online"
-          src="/assets\mainPage\main\wifi.png"
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img *ngIf="isOnline"
+          class="wifiOn"
+          src="\assets\pages\Wifi\Internet On.png"
+        ></ion-img>
+        <ion-img *ngIf="!isOnline"
+          class="wifiOn"
+          src="\assets\pages\Wifi\Internet Off.png"
         ></ion-img>
       </ion-col>
     </ion-row>

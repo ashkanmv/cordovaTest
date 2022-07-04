@@ -4,6 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSalesHourlyCityService } from '../online-sale-days-hourly/sr-sales-hourly-city.service';
 import { OnlineSalesHourlyService } from './online-sales-hourly.service';
@@ -59,11 +60,15 @@ export class OnlineSalesHourlyPage implements OnInit {
 
   nestedTableIsShowingRow_1: boolean = false;
 
+  public get isOnline(){
+    return this.sharedService.isOnline;
+  }
   constructor(
     private languageService: LanguageService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
-    private SrSales_HourlyService: OnlineSalesHourlyService
+    private SrSales_HourlyService: OnlineSalesHourlyService,
+    private sharedService : SharedService
   ) {}
 
   segmentChanged(event: any) {

@@ -55,6 +55,10 @@ export class CustomerHistoryPage implements OnInit {
     address: string;
   };
 
+  public get isOnline(){
+    return this.sharedService.isOnline
+  }
+
   constructor(
     private router: Router,
     private customerHistoryService: CustomerHistoryService,

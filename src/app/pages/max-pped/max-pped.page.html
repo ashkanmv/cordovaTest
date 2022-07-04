@@ -28,27 +28,16 @@
         <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
         </ion-img>
       </ion-col>
-      <ng-template *ngIf="online; then wifiOn else wifiOff"></ng-template>
-      <ng-template #wifiOn>
-        <ion-col class="ion-align-self-center wifi" size="1">
-          <ion-img *ngIf="online"
-            class="wifiOn"
-            src="\assets\mainPage\main\wifi.png"
-          ></ion-img>
-          <ion-img *ngIf="!online"
-            class="wifiOff"
-            src="\assets\pages\customer-history\Internet Off.png"
-          ></ion-img>
-        </ion-col>
-      </ng-template>
-      <ng-template #wifiOff>
-        <ion-col class="ion-align-self-center wifi" size="1">
-          <ion-img
-            class="wifiOff"
-            src="\assets\pages\customer-history\Internet Off.png"
-          ></ion-img>
-        </ion-col>
-      </ng-template>
+      <ion-col class="ion-align-self-center wifi" size="1">
+        <ion-img *ngIf="isOnline"
+          class="wifiOn"
+          src="\assets\pages\Wifi\Internet On.png"
+        ></ion-img>
+        <ion-img *ngIf="!isOnline"
+          class="wifiOff"
+          src="\assets\pages\Wifi\Internet Off.png"
+        ></ion-img>
+      </ion-col>
     </ion-row>
   </ion-toolbar>
   <ion-grid class="secondary-bg white-text">
@@ -217,7 +206,9 @@
     <!-- -----------------------table -->
     <ion-col>
       <ion-grid class="maingrid ion-no-padding">
-        <div *ngFor="let row of virtual_rows2; let i = index">
+        <div *ngFor="let row of virtual_rows2; let i = index"
+        [ngClass]="{'firstRow' : i === 0}" >
+
           <ion-row>
             <ng-container
               *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')"

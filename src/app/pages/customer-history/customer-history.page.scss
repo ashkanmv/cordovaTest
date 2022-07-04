@@ -17,14 +17,12 @@ ion-toolbar.ios{
 
 ion-content {
     --background: var(--ion-color-light);
-    // --color: #0095EB;
 }
 
 ion-title {
     height: 100%;
     h3{
         font-size: 3.5vw;
-        // font-size: 20px;
         width: 100%;
     }
 }
@@ -46,18 +44,11 @@ ion-toggle{
 }
 
 ion-img{
-    // width: 100%;
     max-width: 60px;
-    min-width: 30px;
+    min-width: 40px;
 
 }
 
-
-.wifi{
-    ion-img{
-        max-width: 66px;
-    }
-}
 
 
 ion-toggle.ios{
@@ -85,6 +76,9 @@ ion-img .back-button.ios{
 
 
 // -------------Header------------------
+.hide{
+    display: flex;
+}
 .gps{
     display: flex;
     justify-content: end;

@@ -25,6 +25,9 @@ export class NotificationsPage implements OnInit {
   public get language(): Language {
     return this.languageService.language;
   }
+  public get isOnline(){
+    return this.sharedSerice.isOnline
+  }
 
   constructor(
     private router: Router,

@@ -7,11 +7,12 @@ ion-img.back-button{
     width: 20px;
     z-index: 2;
 }
-ion-img.wifi-online{
-    min-width: 30px;
-}
+
 ion-col.wifi{
     margin-right: 4vw;
+    ion-img{
+        min-width: 40px;
+    }
 }
 
 

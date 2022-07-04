@@ -45,15 +45,16 @@ ion-input{
     max-width: 20px;
     min-width: 20px;
 }
+ion-img{
+    max-width: 60px;
+    min-width: 40px;
+}
 .reload{
     // max-width: 30px;
-    min-width: 40px;
     margin-right: .1rem;
 }
 .wifi{
-    min-width: 40px;
     margin-left: .1rem;
-
 }
 title{
     width: 100%;

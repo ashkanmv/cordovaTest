@@ -47,9 +47,8 @@ export class MaxPPEDPage implements OnInit {
   public get language(): Language {
     return this.languageService.language;
   }
-  // is this ok?
-  public get online() {
-    return this.SharedService.online;
+  public get isOnline() {
+    return this.sharedService.isOnline;
   }
 
   constructor(
@@ -59,7 +58,7 @@ export class MaxPPEDPage implements OnInit {
     private storageService: StorageService,
     private srPpedService: MaxPpedService,
     private loadingCtrl: LoadingController,
-    private SharedService: SharedService
+    private sharedService: SharedService
   ) {
   }
 

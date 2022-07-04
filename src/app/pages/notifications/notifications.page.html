@@ -15,9 +15,13 @@
         </ion-title>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
-        <ion-img
-          class="wifi-online"
-          src="assets/mainPage/main/wifi.png"
+        <ion-img *ngIf="isOnline"
+          class="wifiOn"
+          src="\assets\pages\Wifi\Internet On.png"
+        ></ion-img>
+        <ion-img *ngIf="!isOnline"
+          class="wifiOff"
+          src="\assets\pages\Wifi\Internet Off.png"
         ></ion-img>
       </ion-col>
     </ion-row>

@@ -21,6 +21,7 @@ import {
 } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
 @Component({
@@ -66,6 +67,9 @@ export class GpsTrackingPage implements OnInit {
     return this.languageService.language;
   }
 
+  public get isOnline(){
+    return this.sharedService.isOnline;
+  }
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -73,7 +77,8 @@ export class GpsTrackingPage implements OnInit {
     private storageService: StorageService,
     private mapService: MapService,
     private loadingCtrl: LoadingController,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private sharedService : SharedService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
       (initialized: boolean) => {

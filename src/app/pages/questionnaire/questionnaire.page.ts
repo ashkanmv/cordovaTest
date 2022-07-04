@@ -43,6 +43,9 @@ export class QuestionnairePage implements OnInit {
     return this.languageService.language;
   }
 
+  public get isOnline() {
+    return this.sharedService.isOnline;
+  }
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,

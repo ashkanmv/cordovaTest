@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonDatetime, LoadingController } from '@ionic/angular';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { DailyStatusService } from './daily-status.service';
 
@@ -32,12 +33,16 @@ export class DailyStatusPage implements OnInit {
   
 
   public get language(): Language { return this.languageService.language; }
+  public get isOnline(){
+    return this.sharedService.isOnline;
+  }
 
   constructor(private languageService: LanguageService,
     private storageServiec: StorageService,
     private loadingCtrl: LoadingController,
     private dailySalesService: DailyStatusService,
-    private dailyStatusService : DailyStatusService) { }
+    private dailyStatusService : DailyStatusService,
+    private sharedService : SharedService) { }
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }

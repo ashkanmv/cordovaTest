@@ -6,6 +6,7 @@ import { LanguageService } from 'src/app/shared/language.service';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSalesHourlyCityService } from '../online-sale-days-hourly/sr-sales-hourly-city.service';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-sales-hourly-day',
@@ -17,67 +18,7 @@ export class SalesHourlyDayPage implements OnInit {
 
   selectedSegment: string = 'dsd-hourly-city';
 
-  //delete later
-  dateNow = new Date();
-
-  public salesHourlyCity: Array<any> = [
-    {
-      city: 'Esfahan',
-      H8: 29.4,
-      H9: 284,
-      H10: 4747,
-      H11: 4564,
-      H12: 435345,
-      H13: 57558,
-      H14: 55453,
-      H15: 76544,
-      H16: 456,
-      H17: 665,
-      total: 44459,
-    },
-    {
-      city: 'Amol',
-      H8: 26.4,
-      H9: 284,
-      H10: 4747,
-      H11: 4564,
-      H12: 435345,
-      H13: 57558,
-      H14: 55453,
-      H15: 76544,
-      H16: 456,
-      H17: 665,
-      total: 45649,
-    },
-    {
-      city: 'karaj',
-      H8: 27.4,
-      H9: 284,
-      H10: 4747,
-      H11: 4564,
-      H12: 435345,
-      H13: 57558,
-      H14: 55453,
-      H15: 76544,
-      H16: 456,
-      H17: 665,
-      total: 456459,
-    },
-    {
-      city: 'Tehran',
-      H8: 249.4,
-      H9: 284,
-      H10: 4747,
-      H11: 4564,
-      H12: 435345,
-      H13: 57558,
-      H14: 55453,
-      H15: 76544,
-      H16: 456,
-      H17: 665,
-      total: 45459,
-    },
-  ];
+  
 
   confirm() {
     // this.datetime.nativeEl.confirm();
@@ -125,11 +66,15 @@ export class SalesHourlyDayPage implements OnInit {
 
   nestedTableIsShowingRow_1: boolean = false;
 
+  public get isOnline(){
+    return this.sharedService.isOnline;
+  }
   constructor(
     private languageService: LanguageService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
-    private SrSalesHourlyService: SrSalesHourlyCityService
+    private SrSalesHourlyService: SrSalesHourlyCityService,
+    private sharedService : SharedService
   ) {}
 
   // mock  invoices data

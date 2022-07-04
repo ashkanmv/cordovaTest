@@ -3,6 +3,7 @@ import { Data } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSalesHourlyCityService } from '../online-sale-days-hourly/sr-sales-hourly-city.service';
 
@@ -30,12 +31,16 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
   public get selectedLanguage(): Language {
     return this.languageService.language;
   }
+  public get isOnline() {
+    return this.sharedService.isOnline;
+  }
 
   constructor(
     private languageService: LanguageService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
-    private SrSalesHourlyService: SrSalesHourlyCityService
+    private SrSalesHourlyService: SrSalesHourlyCityService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {

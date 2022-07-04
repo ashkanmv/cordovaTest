@@ -8,6 +8,7 @@ import { MapView, Marker, PopoverItem, Shop } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { GeoLocationService } from 'src/app/shared/geo-location.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
 @Component({
@@ -26,6 +27,9 @@ export class CustomerNearbyPage implements OnInit {
   public get markers(): Marker[] { return this._markers }
   set markers(v: Marker[]) { this._markers = v }
 
+  public get isOnline(){
+    return this.sharedService.isOnline;
+  }
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -33,7 +37,8 @@ export class CustomerNearbyPage implements OnInit {
     private storageService: StorageService,
     private mapService: MapService,
     private popoverCtrl: PopoverController,
-    private geoLocation : GeoLocationService
+    private geoLocation : GeoLocationService,
+    private sharedService :SharedService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
       if (initialized) {
