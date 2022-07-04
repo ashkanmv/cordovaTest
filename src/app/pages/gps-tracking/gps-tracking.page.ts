@@ -44,7 +44,7 @@ export class GpsTrackingPage implements OnInit {
   showMap = false;
   show = false;
   form: FormGroup;
-  now_date = new Date().toISOString();
+  selectedDate = new Date().toISOString();
   rsms: getUserCildrenResponse[] = [];
   asms: getUserCildrenResponse[] = [];
   ssvs: getUserCildrenResponse[] = [];

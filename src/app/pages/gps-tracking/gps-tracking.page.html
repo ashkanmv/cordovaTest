@@ -87,15 +87,15 @@
       <ion-col class="select-drop-down-container">
         <ion-row class="ion-justify-content-center">
           <ion-item id="open-modal" lines="none" class="lightBlue-shadow">
-            <ion-label>{{f.selectedDate.value | date:'yyyy/MM/dd'}}</ion-label>
+            <ion-label>{{selectedDate | date:'yyyy/MM/dd'}}</ion-label>
             <ion-popover trigger="open-modal" show-backdrop="false">
               <ng-template>
-                <ion-datetime #selectedDate [value]="f.selectedDate.value"
-                  (ionChange)="now_date = selectedDate.value;dateChanged(selectedDate.value)" size="cover"
-                  showDefaultButtons="true" presentation="date">
+                <ion-datetime #date [value]="selectedDate"
+                  (ionChange)="selectedDate = date.value;dateChanged(date.value)" size="cover" showDefaultButtons="true"
+                  presentation="date">
                   <ion-buttons slot="buttons">
-                    <ion-button (click)="selectedDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
-                    <ion-button (click)="selectedDate.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
+                    <ion-button (click)="date.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+                    <ion-button (click)="date.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
                   </ion-buttons>
                 </ion-datetime>
               </ng-template>
