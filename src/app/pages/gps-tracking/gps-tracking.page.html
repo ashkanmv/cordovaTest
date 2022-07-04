@@ -62,14 +62,8 @@
           src="\assets\pages\customer-nearby\Hide.png"></ion-img>
       </ion-col>
       <ion-col class="ion-align-self-center wifi ion-no-padding" size="1">
-        <ion-img *ngIf="isOnline"
-          class="wifiOn"
-          src="\assets\pages\Wifi\Internet On.png"
-        ></ion-img>
-        <ion-img *ngIf="!isOnline"
-          class="wifiOff"
-          src="\assets\pages\Wifi\Internet Off.png"
-        ></ion-img>
+        <ion-img *ngIf="isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet On.png"></ion-img>
+        <ion-img *ngIf="!isOnline" class="wifiOff" src="\assets\pages\Wifi\Internet Off.png"></ion-img>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -93,11 +87,11 @@
       <ion-col class="select-drop-down-container">
         <ion-row class="ion-justify-content-center">
           <ion-item id="open-modal" lines="none" class="lightBlue-shadow">
-            <ion-label>{{parirooz | date:'yyyy/MM/dd'}}</ion-label>
+            <ion-label>{{f.selectedDate.value | date:'yyyy/MM/dd'}}</ion-label>
             <ion-popover trigger="open-modal" show-backdrop="false">
               <ng-template>
-                <ion-datetime #selectedDate [value]="parirooz"
-                  (ionChange)="parirooz = selectedDate.value;dateChanged(selectedDate.value)" size="cover"
+                <ion-datetime #selectedDate [value]="f.selectedDate.value"
+                  (ionChange)="now_date = selectedDate.value;dateChanged(selectedDate.value)" size="cover"
                   showDefaultButtons="true" presentation="date">
                   <ion-buttons slot="buttons">
                     <ion-button (click)="selectedDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
@@ -160,7 +154,7 @@
               <label for="showTruck">Show truck</label>
             </div>
             <div class="">
-              <input type="checkbox" formControlName="showSr" />
+              <input type="checkbox" formControlName="showSr" (change)="showSrChanged($event)" />
               <label for="showSR">Show SR</label>
             </div>
           </div>
@@ -169,7 +163,7 @@
     </form>
   </div>
 
-  <div  [ngStyle]="{display: !show ? 'block' : 'none'}">
+  <div [ngStyle]="{display: !show ? 'block' : 'none'}">
     <div *ngIf="showMap" style="width: 100vw; height: 100vh">
       <app-map [showMap]="showMap" [markers]="markers" [mapView]="mapView" [polylines]="polylines"></app-map>
     </div>
