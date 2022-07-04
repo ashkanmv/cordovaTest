@@ -24,16 +24,16 @@ export class DailyStatusPage implements OnInit {
   commutes_t = [];
   virtual_rows_t = [];
   // old rys
-  selected_dc_t ;
+  selected_dc_t;
   selected_ch_t = [];
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
 
-  
+
   selectedSegment: string = 'tablet';
-  
+
 
   public get language(): Language { return this.languageService.language; }
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline;
   }
 
@@ -41,8 +41,8 @@ export class DailyStatusPage implements OnInit {
     private storageServiec: StorageService,
     private loadingCtrl: LoadingController,
     private dailySalesService: DailyStatusService,
-    private dailyStatusService : DailyStatusService,
-    private sharedService : SharedService) { }
+    private dailyStatusService: DailyStatusService,
+    private sharedService: SharedService) { }
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }
@@ -60,13 +60,13 @@ export class DailyStatusPage implements OnInit {
       this.get_dc();
       this.get_dc_t();
     })
-    this.tabletDate = new Date()
-    this.tabletDate.setDate(this.tabletDate.getDate() - 1);
-    this.tabletDate = this.tabletDate.toISOString()
+    this.tabletDate = new Date().toISOString();
+    // this.tabletDate.setDate(this.tabletDate.getDate() - 1);
+    // this.tabletDate = this.tabletDate.toISOString()
 
-    this.truckDate = new Date()
-    this.truckDate.setDate(this.truckDate.getDate() - 1);
-    this.truckDate = this.truckDate.toISOString();
+    this.truckDate = new Date().toISOString();
+    // this.truckDate.setDate(this.truckDate.getDate() - 1);
+    // this.truckDate = this.truckDate.toISOString();
   }
 
   async get_dc() {
@@ -84,16 +84,16 @@ export class DailyStatusPage implements OnInit {
         this.selectedTruckDc.push(dc.City);
       });
       loading.dismiss();
-      this.getCommutecity();
+      this.getCommutecity(this.truckDate);
     });
   }
 
-  async getCommutecity() {
+  async getCommutecity(truckDate : string) {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
     await loading.present();
-    this.dailySalesService.getCommutecity(this.userId, this.truckDate, this.selectedTruckDc.join())
+    this.dailySalesService.getCommutecity(this.userId, truckDate, this.selectedTruckDc.join())
       .subscribe(
         (SrSales: any) => {
           if (SrSales.length)
@@ -101,7 +101,7 @@ export class DailyStatusPage implements OnInit {
           else
             this.create_total_model1('Empty');
 
-            loading.dismiss()
+          loading.dismiss()
         });
   }
 
@@ -160,23 +160,23 @@ export class DailyStatusPage implements OnInit {
         this.selectedTabletDc.push(dc.City);
       });
       loading.dismiss();
-      this.getCommutecityT();
+      this.getCommutecityT(this.tabletDate);
     });
   }
 
-  async getCommutecityT() {
+  async getCommutecityT(tabletDate : string) {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
     await loading.present();
-    this.dailySalesService.getCommutecity_T(this.userId, this.tabletDate, this.selectedTabletDc.join())
+    this.dailySalesService.getCommutecity_T(this.userId, tabletDate, this.selectedTabletDc.join())
       .subscribe((SrSales: any) => {
         if (SrSales.length)
           this.create_total_model_t(SrSales);
         else
           this.create_total_model_t('Empty');
 
-          loading.dismiss()
+        loading.dismiss()
       });
   }
 
@@ -232,8 +232,8 @@ export class DailyStatusPage implements OnInit {
       } else {
         this.virtual_rows_t[row.index + 1].show = true;
       }
-        this.dailyStatusService.getCommuteDetail(this.selectedTabletDc, this.commutes_t[row.index][0])
-          .subscribe(
+      this.dailyStatusService.getCommuteDetail(this.selectedTabletDc, this.commutes_t[row.index][0])
+        .subscribe(
           customer_histories => {
             this.create_model_t(customer_histories, row.index + 1);
           });
@@ -256,5 +256,13 @@ export class DailyStatusPage implements OnInit {
         this.selected_ch_t[index].push(temp);
       }
     }
+  }
+
+  tabletDateChanged(selectedDate: string) {
+    this.getCommutecityT(selectedDate.slice(0, selectedDate.length - 6));
+  }
+
+  truckDateChanged(selectedDate: string) {
+    this.getCommutecity(selectedDate.slice(0, selectedDate.length - 6));
   }
 }

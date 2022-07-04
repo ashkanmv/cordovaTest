@@ -46,7 +46,7 @@ export class TraceSalesmanPage implements OnInit {
   public get language(): Language {
     return this.languageService.language;
   }
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline;
   }
 
@@ -400,8 +400,8 @@ export class TraceSalesmanPage implements OnInit {
 
   showDataChanged(key: 'rsm' | 'asm' | 'ssv' | 'sr', value: boolean) {
     if (!value) {
-      this.markers = this.checkMarkers()
-      this.polylines = this.checkPolylines()
+      this.markers = this.checkMarkers();
+      this.polylines = this.checkPolylines();
       return
     }
 
@@ -422,22 +422,22 @@ export class TraceSalesmanPage implements OnInit {
   }
 
   checkPolylines() {
+    this.mapService.clearPolylines.next(true);
     let polylines: Polyline[] = [];
     if (this.rsmPolylines && this.f.showRsm.value) polylines.push(this.rsmPolylines)
     if (this.asmPolylines && this.f.showAsm.value) polylines.push(this.asmPolylines)
     if (this.ssvPolylines && this.f.showSsv.value) polylines.push(this.ssvPolylines)
     if (this.srPolylines && this.f.showSr.value) polylines.push(this.srPolylines)
-    if (!polylines.length) this.mapService.clearPolylines.next(true);
     return polylines;
   }
 
   checkMarkers() {
+    this.mapService.clearMarkers.next(true);
     let markers: Marker[] = [];
     if (this.rsmMarker && this.f.showRsm.value) markers.push(this.rsmMarker)
     if (this.asmMarker && this.f.showAsm.value) markers.push(this.asmMarker)
     if (this.ssvMarker && this.f.showSsv.value) markers.push(this.ssvMarker)
     if (this.srMarker && this.f.showSr.value) markers.push(this.srMarker)
-    if (!markers.length) this.mapService.clearMarkers.next(true);
     return markers;
   }
 

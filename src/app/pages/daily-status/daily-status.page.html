@@ -73,7 +73,7 @@
       </ion-row>
       <ion-popover trigger="open-popover" show-backdrop="false">
         <ng-template>
-          <ion-datetime #tabletDateE [value]="tabletDate" (ionChange)="tabletDate = tabletDateE.value; getCommutecityT()"
+          <ion-datetime #tabletDateE [value]="tabletDate" (ionChange)="tabletDate = tabletDateE.value; tabletDateChanged(tabletDateE.value)"
             size="cover" showDefaultButtons="true" presentation="date">
             <ion-buttons slot="buttons">
               <ion-button (click)="tabletDateE.cancel(true)">{{language.DatePicker.reset}}</ion-button>
@@ -86,7 +86,7 @@
     <ion-grid class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="getCommutecityT()">
+          <button class="search-submit primary-bg" (click)="getCommutecityT(tabletDate)">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="tabletDropDown.length" [items]="tabletDropDown" [multiple]="true" bindLabel="itemName"
@@ -168,7 +168,7 @@
       <!--  -->
       <ion-popover trigger="open-popover" show-backdrop="false">
         <ng-template>
-          <ion-datetime #truckDateE [value]="truckDate" (ionChange)="truckDate = truckDateE.value;getCommutecity()"
+          <ion-datetime #truckDateE [value]="truckDate" (ionChange)="truckDate = truckDateE.value;truckDateChanged(truckDateE.value)"
             size="cover" showDefaultButtons="true" presentation="date">
             <ion-buttons slot="buttons">
               <ion-button (click)="truckDateE.cancel(true)">{{language.DatePicker.reset}}</ion-button>
@@ -182,7 +182,7 @@
     <ion-grid class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="getCommutecity()">
+          <button class="search-submit primary-bg" (click)="getCommutecity(truckDate)">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="truckDropDown.length" [items]="truckDropDown" [multiple]="true" bindLabel="itemName"

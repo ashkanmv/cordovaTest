@@ -308,13 +308,6 @@ export class SalesmenLocationPage implements OnInit {
         break;
     }
     this.mapService.clearMarkers.next(true);
-    // this.setMarkers();
-  }
-
-  setMarkers() {
-    if (this.markers.length)
-      this.mapService.clearMarkers.next(true);
-    // this.markers = [...this.rsmMarkers, ...this.asmMarkers, ...this.ssvMarkers, ...this.srMarkers, ...this.adminMarkers];
   }
 
   selectIcon(key: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
