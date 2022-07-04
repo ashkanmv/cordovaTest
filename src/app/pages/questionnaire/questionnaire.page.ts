@@ -64,7 +64,7 @@ export class QuestionnairePage implements OnInit {
   ) {
     let customerNumber = this.route.snapshot.queryParams['customerNumber'];
     if (customerNumber) this.open_OtherForm(customerNumber);
-    else this.get_cities();
+    this.get_cities();
   }
   // added lang and get_lang to utili service
   get_direction() {

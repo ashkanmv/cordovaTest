@@ -55,7 +55,7 @@ export class CustomerHistoryPage implements OnInit {
     address: string;
   };
 
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline
   }
 
@@ -71,8 +71,11 @@ export class CustomerHistoryPage implements OnInit {
     private geoLocationService: GeoLocationService,
   ) {
     this.paramSubscription = this.activatedRoute.queryParams.subscribe(
-      (params: Params) =>
-        this.form.patchValue({ Customer: params['Customer'] })
+      (params: Params) => {
+        if (params['customerNumber'])
+          this.Get_CustomerFromMap(params.customerNumber)
+      }
+      // this.form.patchValue({ Customer: params['Customer'] })
     );
     this.input.subscribe((term) => {
       if (!term) return;
@@ -85,8 +88,8 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   ngOnInit() {
-    if (this.Customer_Number) this.Get_CustomerFromMap(this.Customer_Number);
-    else this.getCities();
+    // if (this.Customer_Number) this.Get_CustomerFromMap(this.Customer_Number);
+    this.getCities();
     this.loadForm();
   }
 
@@ -130,10 +133,10 @@ export class CustomerHistoryPage implements OnInit {
       (customers: Customer[]) => {
         this.customers = customers;
         if (!customers.length) return;
-        this.patchValue('Customer', customers[0].CustCode);
+        this.patchValue('Customer', customers[0]);
         this.patchValue('Route', customers[0].routename);
         loading.dismiss();
-        this.getAvgs();
+        // this.getAvgs();
       },
       () => {
         this.sharedService.toast('danger', 'Could not fetch cities ...');
@@ -236,7 +239,7 @@ export class CustomerHistoryPage implements OnInit {
       sr: customer.Visitor,
       tell: +customer.Tel,
     };
-    this.getAvgs();
+    // this.getAvgs();
   }
 
   initialShopPoint(customers: Customer[]) {
@@ -259,12 +262,7 @@ export class CustomerHistoryPage implements OnInit {
       let marker = {
         position: latLng,
         icon: 'assets/icon/shop1.png',
-        // map: this.map,
       };
-      // marker.addListener("click", function () {
-      //   iw.ShowWindowInfo(marker, contentString);
-      // });
-      // this.shop_markers.push(marker);
     });
   }
 
@@ -284,7 +282,11 @@ export class CustomerHistoryPage implements OnInit {
     }
   }
 
-  handlePped() {
+  async handlePped() {
+        const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getPpedByCustomer(this.f.Customer.value.CustCode)
@@ -301,7 +303,11 @@ export class CustomerHistoryPage implements OnInit {
         });
   }
 
-  handleSales() {
+  async handleSales() {
+        const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSalesByCustomer(this.f.Customer.value.CustCode)
@@ -318,7 +324,11 @@ export class CustomerHistoryPage implements OnInit {
         });
   }
 
-  handleSamples() {
+  async handleSamples() {
+        const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSamplesByCustomer(this.f.Customer.value.CustCode)
@@ -340,7 +350,7 @@ export class CustomerHistoryPage implements OnInit {
   createTotalModel(customerHistory: any[]) {
     this.customer_histories = [];
     this.virtual_rows = [];
-    if (!customerHistory.length) {
+    if (!customerHistory?.length) {
       this.sharedService.toast('warning', 'NO Value'); // JSON
       return;
     }
@@ -383,6 +393,7 @@ export class CustomerHistoryPage implements OnInit {
       index++;
       this.virtual_rows.push(v_row2);
     }
+    this.loadingCtrl.dismiss();
   }
 
   async rowClick(row: any) {
@@ -420,7 +431,11 @@ export class CustomerHistoryPage implements OnInit {
     }
   }
 
-  handlePpedCategory(category: string, index: number) {
+  async handlePpedCategory(category: string, index: number) {
+        const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
@@ -435,7 +450,11 @@ export class CustomerHistoryPage implements OnInit {
         });
   }
 
-  handleSalesCategory(category: string, index: number) {
+  async handleSalesCategory(category: string, index: number) {
+        const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
@@ -450,7 +469,11 @@ export class CustomerHistoryPage implements OnInit {
         });
   }
 
-  handleSamplesCategory(category: string, index: number) {
+  async handleSamplesCategory(category: string, index: number) {
+        const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSamplesByCustomerCategory(this.f.Customer.value.CustCode, category)
@@ -482,8 +505,8 @@ export class CustomerHistoryPage implements OnInit {
         }
       }
       this.selected_ch[index].push(temp);
-      this.loadingCtrl.dismiss();
     }
+    this.loadingCtrl.dismiss();
   }
   columns: any[] = [];
   data: any[] = [];
@@ -575,7 +598,7 @@ export class CustomerHistoryPage implements OnInit {
         tell: +res[0].Tel,
       };
       loading.dismiss()
-      this.getAvgs();
+      // this.getAvgs();
     })
   }
 
