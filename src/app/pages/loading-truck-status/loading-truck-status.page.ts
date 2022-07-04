@@ -79,7 +79,7 @@ export class LoadingTruckStatusPage implements OnInit {
       return
     }
 
-    this.loadingTruckService.getLoadTruckCity(this.userId, this.selected_date, this.selectedItems.join())
+    this.loadingTruckService.getLoadTruckCity(this.userId, this.selected_date.slice(0, this.selected_date.length - 6), this.selectedItems.join())
       .subscribe(
         (SrSales: any) => {
           if (SrSales.length != 0)
@@ -160,7 +160,7 @@ export class LoadingTruckStatusPage implements OnInit {
       this.isVisible=undefined;
       return;
     }
-    this.loadingTruckService.getLoadTruckDetail(this.selected_date, row.Route)
+    this.loadingTruckService.getLoadTruckDetail(this.selected_date.slice(0, this.selected_date.length - 6), row.Route)
     .subscribe(
     customer_histories => {
       this.set_server_status(true);

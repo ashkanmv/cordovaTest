@@ -118,7 +118,13 @@ export class ScoreCardPage implements OnInit {
     });
     await loading.present();
     this.scoreCardService.getChannels().subscribe((channels) => {
-      this.channels1 = channels;
+      this.channels1 = channels.map(c=>{
+        return {
+          GPSChannel : c.GPSChannel,
+          order : c.order,
+          group: this.language.Score_Card.group
+        }
+      });
       this.channels3 = channels;
       channels.forEach((channel, i) => {
         this.selected_channel1.push(channel.GPSChannel);
@@ -154,6 +160,7 @@ export class ScoreCardPage implements OnInit {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
+    loading.present();
     this.scoreCardService.getPped1ByChannel(this.selected_channel1.join()).subscribe(
       (scorecard) => {
         this.create_total_model1(scorecard);
@@ -226,11 +233,16 @@ export class ScoreCardPage implements OnInit {
     }
   }
 
-  categorySelect2() {
+  async categorySelect2() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     this.skus2 = [];
     this.scoreCardService.getSkusByCategory(this.selected_category2.join()).subscribe(
       (skus) => {
-        this.skus2.push.apply(this.skus2, skus)
+        this.skus2.push.apply(this.skus2, skus);
+        loading.dismiss();
       }
     );
   }
@@ -560,10 +572,17 @@ export class ScoreCardPage implements OnInit {
     this.data4 = data2;
   }
 
-  categorySelect4() {
+  async categorySelect4() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     this.skus4 = [];
     this.scoreCardService.getSkusByCategory(this.selected_category4.join())
-      .subscribe(skus => this.skus4.push.apply(this.skus4, skus));
+      .subscribe(skus => {
+        this.skus4.push.apply(this.skus4, skus);
+        loading.dismiss();
+      });
   }
 
   channelPSectionSkus() {
@@ -605,7 +624,13 @@ export class ScoreCardPage implements OnInit {
       {
         this.scoreCardService.getCategories().subscribe(
           (categories) => {
-            this.categories2 = categories;
+            this.categories2 = categories.map(c=>{
+              return {
+                Cat: c.Cat,
+                group: this.language.Score_Card.group
+              }
+            });
+            
             this.categories4 = categories;
             categories.forEach((category, i) => {
               this.selected_category2.push(category.Cat);

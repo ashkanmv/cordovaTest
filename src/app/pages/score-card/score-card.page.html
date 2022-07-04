@@ -280,16 +280,16 @@
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
-          <ng-select *ngIf="sec4CategorySelect.length" [items]="sec4CategorySelect" [multiple]="true" bindLabel="Cat"
+          <ng-select *ngIf="sec4CategorySelect.length" [items]="sec4CategorySelect" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
-            [closeOnSelect]="false" bindValue="Cat" [(ngModel)]="selected_category4">
+            [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_category4">
 
             <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
               <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
             </ng-template>
 
             <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.Cat}}
+              <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.itemName}}
             </ng-template>
 
           </ng-select>
