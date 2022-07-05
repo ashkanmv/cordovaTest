@@ -497,6 +497,16 @@ export class Language {
   Max_PPED: {
     Title: string;
     group: string;
+    perRoute: string;
+    perCustomer: string;
+    custmerNumber: string;
+    cluster: string;
+    storeName: string;
+    sale: string;
+    pped:string;
+    per: string;
+    routeCode: string;
+    visitorName: string;
   }
   Today_Planned_Not_Buying: {
     Title: string;

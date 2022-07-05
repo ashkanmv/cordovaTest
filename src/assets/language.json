@@ -141,7 +141,17 @@
         },
         "Max_PPED": {
             "Title": "Max PPED",
-            "group": "All"
+            "group": "All",
+            "perCustomer":"PER CUSTOMER",
+            "perRoute":"PER ROUTE",
+            "custmerNumber":"Customer Number",
+            "cluster":"Cluster",
+            "storeName":"Store Name",
+            "sale":"Sale",
+            "pped":"PPED",
+            "per":"%",
+            "routeCode":"RouteCode",
+            "visitorName":"VisitorName"
         },
         "Today_Planned_Not_Buying": {
             "Title": "Today Planned/Not Buying",

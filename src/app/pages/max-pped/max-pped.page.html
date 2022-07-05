@@ -18,8 +18,6 @@
           <h3><b>{{language.Max_PPED.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <!-- <ion-col size="1"></ion-col> -->
-
       <ion-col
         class="ion-align-self-center reload"
         size="1"
@@ -61,27 +59,24 @@
       value="per-customer"
     >
       <ion-segment-button class="per-customer" value="per-customer">
-        <ion-label>PER CUSTOMER</ion-label>
+        <ion-label>{{language.Max_PPED.perCustomer}}</ion-label>
       </ion-segment-button>
       <ion-segment-button class="per-route" value="per-route">
-        <ion-label>PER ROUTE</ion-label>
+        <ion-label>{{language.Max_PPED.perRoute}}</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-col>
 </ion-header>
 <!-- -------------------------------per-route----------------------------------------- -->
-<!-- -------------------------------per-route----------------------------------------- -->
-<!-- -------------------------------per-route----------------------------------------- -->
 <ion-content>
   <ion-col class="per-route-segment" *ngIf="selectedSegment == 'per-route'">
-    <!-- --------------date_ picker -->
     <ion-col>
       <div class="date-picker-container">
         <div class="date-picker-box">
           <div id="open-popover-from" class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div>
-              <h4>From Date</h4>
+              <h4>{{language.DatePicker.from}}</h4>
               <div>
                 {{selected_fromdateN | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
@@ -91,7 +86,7 @@
           <div id="open-popover-to" class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div>
-              <h4>To Date</h4>
+              <h4>{{language.DatePicker.to}}</h4>
               <div>
                 {{selected_todateN | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
@@ -147,9 +142,7 @@
           </ion-datetime>
         </ng-template>
       </ion-popover>
-      <!--  -->
     </ion-col>
-    <!-- ------------------search_bar -->
     <ion-row>
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
@@ -203,7 +196,6 @@
         </ion-row>
       </ion-col>
     </ion-row>
-    <!-- -----------------------table -->
     <ion-col>
       <ion-grid class="maingrid ion-no-padding">
         <div *ngFor="let row of virtual_rows2; let i = index"
@@ -253,7 +245,6 @@
                   >
                     <ion-col class="nested-details col-route" *ngFor="let item of rows; let j = index"
                     >
-                    <!-- [ngClass]="{'oddColumns' : 0 === j % 2 , 'oddRows': 1 === i % 2}" -->
                       {{ item }}
                     </ion-col>
                   </ion-row>
@@ -266,13 +257,10 @@
     </ion-col>
   </ion-col>
   <!-- -------------------------------per-customer----------------------------------------- -->
-  <!-- -------------------------------per-customer----------------------------------------- -->
-  <!-- -------------------------------per-customer----------------------------------------- -->
   <ion-col
     class="per-customer-segment"
     *ngIf="selectedSegment == 'per-customer'"
   >
-    <!-- --------------date_ picker -->
     <ion-col>
       <!--  -->
       <div class="date-picker-container">
@@ -280,7 +268,7 @@
           <div id="open-popover-from" class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div class="">
-              <h4>From Date</h4>
+              <h4>{{language.DatePicker.from}}</h4>
               <div class="">
                 {{selected_fromdate | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
@@ -290,7 +278,7 @@
           <div id="open-popover-to" class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <div class="">
-              <h4>To Date</h4>
+              <h4>{{language.DatePicker.to}}</h4>
               <div class="">
                 {{selected_todate | date:'yyyy/MM/dd'}}
                 <ion-icon name="chevron-down-outline"></ion-icon>
@@ -299,7 +287,6 @@
           </div>
         </div>
       </div>
-      <!--  -->
       <ion-popover
         showBackdrop="false"
         trigger="open-popover-from"
@@ -401,19 +388,18 @@
         </ion-row>
       </ion-col>
     </ion-row>
-    <!-- -----------------------table -->
     <ion-col class="ion-no-padding ion-no-margin" size="12">
       <table class="table-container">
         <tr>
           <td>
             <table class="table-header" cellspacing="0" cellpadding="1">
               <tr class="header">
-                <th class="firstColumn oddColumns">Customer Number</th>
-                <th class="">Cluster</th>
-                <th class="oddColumns">Store Name</th>
-                <th class="">Sale</th>
-                <th class="oddColumns">PPED</th>
-                <th class="">%</th>
+                <th class="firstColumn oddColumns">{{language.Max_PPED.custmerNumber}}</th>
+                <th class="">{{language.Max_PPED.cluster}}</th>
+                <th class="oddColumns">{{language.Max_PPED.storeName}}</th>
+                <th class="">{{language.Max_PPED.sale}}</th>
+                <th class="oddColumns">{{language.Max_PPED.pped}}</th>
+                <th class="">{{language.Max_PPED.per}}</th>
               </tr>
             </table>
           </td>
@@ -462,13 +448,12 @@
                             cellpadding="1"
                           >
                             <tr class="details-header">
-                              <th class="borderSet">RouteCode</th>
-                              <th class="borderSet">VisitorName</th>
+                              <th class="borderSet">{{language.Max_PPED.routeCode}}</th>
+                              <th class="borderSet">{{language.Max_PPED.visitorName}}</th>
                             </tr>
                           </table>
                         </td>
                       </tr>
-
                       <tr>
                         <td>
                           <div class="body-details">
@@ -477,11 +462,8 @@
                               cellspacing="0"
                               cellpadding="1"
                             >
-                              <!--  -->
                               <hr class="hor-line" />
                               <hr class="ver-line" />
-
-                              <!--  -->
                               <tr
                                 class="details-body"
                                 *ngFor="let row of Load_Detail; let j = index"
@@ -502,8 +484,6 @@
         </tr>
       </table>
     </ion-col>
-
-    
   </ion-col>
 </ion-content>
 
