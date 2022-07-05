@@ -76,51 +76,6 @@ export class SalesHourlyDayPage implements OnInit {
     private SrSalesHourlyService: SrSalesHourlyCityService,
     private sharedService : SharedService
   ) {}
-
-  // mock  invoices data
-  public invoicesData: Array<any> = [
-    {
-      route: 1101,
-      zeroToNine: 34,
-      nineToTwelve: 3,
-      twelveToFifteen: 7.2,
-      fifteenToEighteen: 62,
-      EighteenToTwentyOne: 8.2,
-      TwentyOnToTwentyFour: 85.2,
-      total: 782,
-    },
-    {
-      route: 1102,
-      zeroToNine: 3,
-      nineToTwelve: 5,
-      twelveToFifteen: 27,
-      fifteenToEighteen: 2,
-      EighteenToTwentyOne: 82,
-      TwentyOnToTwentyFour: 92,
-      total: 782,
-    },
-    {
-      route: 1103,
-      zeroToNine: 14,
-      nineToTwelve: 9,
-      twelveToFifteen: 72,
-      fifteenToEighteen: 2,
-      EighteenToTwentyOne: 82,
-      TwentyOnToTwentyFour: 8,
-      total: 782,
-    },
-    {
-      route: 1104,
-      zeroToNine: 24,
-      nineToTwelve: 3,
-      twelveToFifteen: 92,
-      fifteenToEighteen: 2,
-      EighteenToTwentyOne: 52,
-      TwentyOnToTwentyFour: 2,
-      total: 782,
-    },
-  ];
-
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }
@@ -170,7 +125,7 @@ export class SalesHourlyDayPage implements OnInit {
     this.SrSalesHourlyService.getsrsalesuserscityhourlycity(
       this.user_id,
       this.selectedItems.join(),
-      this.selected_date
+      this.selected_date.slice(0, this.selected_date.length - 6)
     ).subscribe((srsales: Data[]) => {
       if (srsales.length) {
         this.create_total_model1(srsales);
@@ -221,8 +176,8 @@ export class SalesHourlyDayPage implements OnInit {
     this.SrSalesHourlyService.getsrsalesuserscityhourlydate(
       this.user_id,
       this.selectedItemsN.join(),
-      this.selected_fromdateN,
-      this.selected_todateN
+      this.selected_fromdateN.slice(0, this.selected_fromdateN.length - 6),
+      this.selected_todateN.slice(0, this.selected_todateN.length - 6)
     ).subscribe((srsales: Data[]) => {
       if (srsales.length) {
         this.create_total_model2(srsales);
