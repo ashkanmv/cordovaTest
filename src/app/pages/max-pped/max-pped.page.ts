@@ -183,7 +183,7 @@ export class MaxPPEDPage implements OnInit {
     await loading.present();
 
     if (!this.selectedItemsN.length) {
-      this.create_total_model1('Empty');
+      this.create_total_model2('Empty');
       loading.dismiss();
       return;
     }
@@ -191,12 +191,12 @@ export class MaxPPEDPage implements OnInit {
     this.srPpedService
       .getSrPpedPerRoute(
         this.selectedItemsN.join(),
-        this.selected_fromdateN,
-        this.selected_todateN
+        this.selected_fromdateN.slice(0, this.selected_fromdateN.length - 6),
+        this.selected_todateN.slice(0, this.selected_todateN.length - 6)
       )
       .subscribe((srsales: Data[]) => {
         if (srsales.length) this.create_total_model2(srsales);
-        else this.create_total_model1('Empty');
+        else this.create_total_model2('Empty');
         loading.dismiss();
       });
   }
@@ -216,8 +216,8 @@ export class MaxPPEDPage implements OnInit {
     this.srPpedService
       .getSrPpedPerCustomer(
         this.selectedItems.join(),
-        this.selected_fromdate,
-        this.selected_todate
+        this.selected_fromdate.slice(0, this.selected_fromdate.length - 6),
+        this.selected_todate.slice(0, this.selected_todate.length - 6)
       )
       .subscribe((srsales: Data[]) => {
         if (srsales.length != 0) this.create_total_model1(srsales);

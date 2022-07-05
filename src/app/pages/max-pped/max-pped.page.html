@@ -1,14 +1,10 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row
-      class="primary-bg ion-justify-content-between header ion-no-margin"
-    >
+    <ion-row class="primary-bg ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
+          <ion-img class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col size="2"></ion-col>
@@ -18,23 +14,13 @@
           <h3><b>{{language.Max_PPED.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col
-        class="ion-align-self-center reload"
-        size="1"
-        (click)="refresh()"
-      >
+      <ion-col class="ion-align-self-center reload" size="1" (click)="refresh()">
         <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
         </ion-img>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
-        <ion-img *ngIf="isOnline"
-          class="wifiOn"
-          src="\assets\pages\Wifi\Internet On.png"
-        ></ion-img>
-        <ion-img *ngIf="!isOnline"
-          class="wifiOff"
-          src="\assets\pages\Wifi\Internet Off.png"
-        ></ion-img>
+        <ion-img *ngIf="isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet On.png"></ion-img>
+        <ion-img *ngIf="!isOnline" class="wifiOff" src="\assets\pages\Wifi\Internet Off.png"></ion-img>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -52,12 +38,8 @@
     </ion-row>
   </ion-grid>
   <ion-col class="ion-no-padding segment-change">
-    <ion-segment
-      mode="md"
-      class="ion-justify-content-between"
-      (ionChange)="segmentChanged($event)"
-      value="per-customer"
-    >
+    <ion-segment mode="md" class="ion-justify-content-between" (ionChange)="segmentChanged($event)"
+      value="per-customer">
       <ion-segment-button class="per-customer" value="per-customer">
         <ion-label>{{language.Max_PPED.perCustomer}}</ion-label>
       </ion-segment-button>
@@ -67,200 +49,11 @@
     </ion-segment>
   </ion-col>
 </ion-header>
-<!-- -------------------------------per-route----------------------------------------- -->
+
 <ion-content>
-  <ion-col class="per-route-segment" *ngIf="selectedSegment == 'per-route'">
-    <ion-col>
-      <div class="date-picker-container">
-        <div class="date-picker-box">
-          <div id="open-popover-from" class="date-picker lightBlue-shadow">
-            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
-            <div>
-              <h4>{{language.DatePicker.from}}</h4>
-              <div>
-                {{selected_fromdateN | date:'yyyy/MM/dd'}}
-                <ion-icon name="chevron-down-outline"></ion-icon>
-              </div>
-            </div>
-          </div>
-          <div id="open-popover-to" class="date-picker lightBlue-shadow">
-            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
-            <div>
-              <h4>{{language.DatePicker.to}}</h4>
-              <div>
-                {{selected_todateN | date:'yyyy/MM/dd'}}
-                <ion-icon name="chevron-down-outline"></ion-icon>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <ion-popover
-        showBackdrop="false"
-        trigger="open-popover-from"
-        class="ion-no-margin"
-      >
-        <ng-template>
-          <ion-datetime
-            [value]="selected_fromdateN"
-            presentation="date"
-            #perRouteFromDate
-            (ionChange)="selected_fromdateN = perRouteFromDate.value; dateChanged('per-route')"
-          >
-            <ion-buttons slot="buttons">
-              <ion-button (click)="perRouteFromDate.cancel(true)"
-                >{{language.DatePicker.reset}}</ion-button
-              >
-              <ion-button (click)="perRouteFromDate.confirm(true)"
-                >{{language.DatePicker.confirm}}</ion-button
-              >
-            </ion-buttons>
-          </ion-datetime>
-        </ng-template>
-      </ion-popover>
-      <ion-popover
-        showBackdrop="false"
-        trigger="open-popover-to"
-        class="ion-no-margin"
-      >
-        <ng-template>
-          <ion-datetime
-            value="2022-11-29"
-            presentation="date"
-            #perRouteToDate
-            (ionChange)="selected_todateN = perRouteToDate.value; dateChanged('per-route')"
-          >
-            <ion-buttons slot="buttons">
-              <ion-button (click)="perRouteToDate.cancel(true)"
-                >{{language.DatePicker.reset}}</ion-button
-              >
-              <ion-button (click)="perRouteToDate.confirm(true)"
-                >{{language.DatePicker.confirm}}</ion-button
-              >
-            </ion-buttons>
-          </ion-datetime>
-        </ng-template>
-      </ion-popover>
-    </ion-col>
-    <ion-row>
-      <ion-col class="search-bar">
-        <ion-row class="search-box ion-justify-content-center">
-          <ion-item class="lightBlue-shadow">
-            <button class="search-submit primary-bg" (click)="selectedDC()">
-              <ion-icon name="search-outline"></ion-icon>
-            </button>
-
-            <ng-select
-              *ngIf="dropdownListN.length"
-              [items]="dropdownListN"
-              [multiple]="true"
-              bindLabel="itemName"
-              groupBy="group"
-              appendTo="body"
-              [selectableGroup]="true"
-              [selectableGroupAsModel]="false"
-              [closeOnSelect]="false"
-              bindValue="itemName"
-              [(ngModel)]="selectedItemsN"
-            >
-              <ng-template
-                ng-optgroup-tmp
-                let-item="item"
-                let-item$="item$"
-                let-index="index"
-              >
-                <input
-                  id="item-{{index}}"
-                  type="checkbox"
-                  [ngModel]="item$.selected"
-                />
-                {{item.group | uppercase}}
-              </ng-template>
-
-              <ng-template
-                ng-option-tmp
-                let-item="item"
-                let-item$="item$"
-                let-index="index"
-              >
-                <input
-                  id="item-{{index}}"
-                  type="checkbox"
-                  [ngModel]="item$.selected"
-                />
-                {{item.itemName}}
-              </ng-template>
-            </ng-select>
-          </ion-item>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-col>
-      <ion-grid class="maingrid ion-no-padding">
-        <div *ngFor="let row of virtual_rows2; let i = index"
-        [ngClass]="{'firstRow' : i === 0}" >
-
-          <ion-row>
-            <ng-container
-              *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')"
-            >
-              <ion-col 
-                class="col-route"
-                *ngFor="let item of srpped2[row.index]; let j = index"
-                [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2, 'firstColumn2' : j==0 && i==0}"
-              >
-                {{ item }}
-              </ion-col>
-            </ng-container>
-          </ion-row>
-        </div>
-
-        <div class="r-body-content">
-          <div
-            *ngFor="let row of virtual_rows2; let i = index"
-            [ngClass]="{'oddRows': 3 === i % 4}"
-            (click)="row_click2(row)"
-          >
-            <ion-row>
-              <ng-container
-                *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')"
-              >
-                <ion-col
-                  class="col-route"
-                  *ngFor="let item of srpped2[row.index]; let j = index"
-                  [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0 === j % 2}"
-                >
-                  {{ item }}
-                </ion-col>
-              </ng-container>
-
-              <ng-container *ngIf="row.show && row.type=='b'">
-                <ion-grid class="nested-table ion-no-padding">
-                  <ion-row
-                    wrap
-                    *ngFor="let rows of selected_ch2[row.index]; let i = index"
-                    [ngClass]="{'firstrow2': i==0 }"
-                    (click)="row_clickCustomer(rows[0])"
-                  >
-                    <ion-col class="nested-details col-route" *ngFor="let item of rows; let j = index"
-                    >
-                      {{ item }}
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-              </ng-container>
-            </ion-row>
-          </div>
-        </div>
-      </ion-grid>
-    </ion-col>
-  </ion-col>
   <!-- -------------------------------per-customer----------------------------------------- -->
-  <ion-col
-    class="per-customer-segment"
-    *ngIf="selectedSegment == 'per-customer'"
-  >
+  <ion-col class="per-customer-segment" *ngIf="selectedSegment == 'per-customer'">
     <ion-col>
       <!--  -->
       <div class="date-picker-container">
@@ -287,48 +80,24 @@
           </div>
         </div>
       </div>
-      <ion-popover
-        showBackdrop="false"
-        trigger="open-popover-from"
-        class="ion-no-margin"
-      >
+      <ion-popover showBackdrop="false" trigger="open-popover-from" class="ion-no-margin">
         <ng-template>
-          <ion-datetime
-            [value]="selected_fromdate"
-            presentation="date"
-            #percustomerFromDate
-            (ionChange)="selected_fromdate = percustomerFromDate.value; dateChanged('per-customer')"
-          >
+          <ion-datetime [value]="selected_fromdate" presentation="date" #percustomerFromDate
+            (ionChange)="selected_fromdate = percustomerFromDate.value; dateChanged('per-customer')">
             <ion-buttons slot="buttons">
-              <ion-button (click)="percustomerFromDate.cancel(true)"
-                >{{language.DatePicker.reset}}</ion-button
-              >
-              <ion-button (click)="percustomerFromDate.confirm(true)"
-                >{{language.DatePicker.confirm}}</ion-button
-              >
+              <ion-button (click)="percustomerFromDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="percustomerFromDate.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
             </ion-buttons>
           </ion-datetime>
         </ng-template>
       </ion-popover>
-      <ion-popover
-        showBackdrop="false"
-        trigger="open-popover-to"
-        class="ion-no-margin"
-      >
+      <ion-popover showBackdrop="false" trigger="open-popover-to" class="ion-no-margin">
         <ng-template>
-          <ion-datetime
-            [value]="selected_todate"
-            presentation="date"
-            #percustomerToDate
-            (ionChange)="selected_todate = percustomerToDate.value;dateChanged('per-customer')"
-          >
+          <ion-datetime [value]="selected_todate" presentation="date" #percustomerToDate
+            (ionChange)="selected_todate = percustomerToDate.value;dateChanged('per-customer')">
             <ion-buttons slot="buttons">
-              <ion-button (click)="percustomerToDate.cancel(true)"
-                >{{language.DatePicker.reset}}</ion-button
-              >
-              <ion-button (click)="percustomerToDate.confirm(true)"
-                >{{language.DatePicker.confirm}}</ion-button
-              >
+              <ion-button (click)="percustomerToDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="percustomerToDate.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
             </ion-buttons>
           </ion-datetime>
         </ng-template>
@@ -339,48 +108,20 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit primary-bg" (click)="selectedDCN()">
+            <button class="search-submit primary-bg" (click)="selectedDC()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
 
-            <ng-select
-              *ngIf="dropdownList.length"
-              [items]="dropdownList"
-              [multiple]="true"
-              bindLabel="itemName"
-              groupBy="group"
-              appendTo="body"
-              [selectableGroup]="true"
-              [selectableGroupAsModel]="false"
-              [closeOnSelect]="false"
-              bindValue="itemName"
-              [(ngModel)]="selectedItems"
-            >
-              <ng-template
-                ng-optgroup-tmp
-                let-item="item"
-                let-item$="item$"
-                let-index="index"
-              >
-                <input
-                  id="item-{{index}}"
-                  type="checkbox"
-                  [ngModel]="item$.selected"
-                />
+            <ng-select *ngIf="dropdownList.length" [items]="dropdownList" [multiple]="true" bindLabel="itemName"
+              groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+              [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedItems">
+              <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
                 {{item.group | uppercase}}
               </ng-template>
 
-              <ng-template
-                ng-option-tmp
-                let-item="item"
-                let-item$="item$"
-                let-index="index"
-              >
-                <input
-                  id="item-{{index}}"
-                  type="checkbox"
-                  [ngModel]="item$.selected"
-                />
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
                 {{item.itemName}}
               </ng-template>
             </ng-select>
@@ -408,22 +149,11 @@
         <tr class="content-body">
           <td colspan="5">
             <div>
-              <table
-                *ngFor="let Master_row of ctrl.data; let i = index"
-                [ngClass]="{'oddRows' : 0 === i % 2}"
-                class="table-body"
-                cellspacing="0"
-                cellpadding="1"
-              >
-                <tr
-                  class="body-content"
-                  (click)="Show_Load_Detail(Master_row , i)"
-                >
+              <table *ngFor="let Master_row of ctrl.data; let i = index" [ngClass]="{'oddRows' : 0 === i % 2}"
+                class="table-body" cellspacing="0" cellpadding="1">
+                <tr class="body-content" (click)="Show_Load_Detail(Master_row , i)">
                   <td class="firstcolumn">
-                    <ion-icon
-                      [ngClass]="{'icon-activated' : isVisible==i }"
-                      name="chevron-down-outline"
-                    ></ion-icon>
+                    <ion-icon [ngClass]="{'icon-activated' : isVisible==i }" name="chevron-down-outline"></ion-icon>
                     {{Master_row.CustomerNumber}}
                   </td>
                   <td class="borderSet">{{Master_row.Cluster}}</td>
@@ -432,21 +162,13 @@
                   <td class="oddColumns">{{Master_row.PPED}}</td>
                   <td class="borderSet">{{Master_row.Percentage}}</td>
                 </tr>
-                <tr
-                  id="{{Master_row.Route}}_Detail"
-                  class="hidden-row"
-                  *ngIf="isVisible==i"
-                  (click)="row_clickCustomer(Master_row.CustomerNumber)"
-                >
+                <tr id="{{Master_row.Route}}_Detail" class="hidden-row" *ngIf="isVisible==i"
+                  (click)="row_clickCustomer(Master_row.CustomerNumber)">
                   <td class="details" colspan="9">
                     <table class="table-header-details">
                       <tr>
                         <td>
-                          <table
-                            class="table-details-header"
-                            cellspacing="0"
-                            cellpadding="1"
-                          >
+                          <table class="table-details-header" cellspacing="0" cellpadding="1">
                             <tr class="details-header">
                               <th class="borderSet">{{language.Max_PPED.routeCode}}</th>
                               <th class="borderSet">{{language.Max_PPED.visitorName}}</th>
@@ -457,17 +179,10 @@
                       <tr>
                         <td>
                           <div class="body-details">
-                            <table
-                              class="table-details-body"
-                              cellspacing="0"
-                              cellpadding="1"
-                            >
+                            <table class="table-details-body" cellspacing="0" cellpadding="1">
                               <hr class="hor-line" />
                               <hr class="ver-line" />
-                              <tr
-                                class="details-body"
-                                *ngFor="let row of Load_Detail; let j = index"
-                              >
+                              <tr class="details-body" *ngFor="let row of Load_Detail; let j = index">
                                 <td class="">{{row.RouteCode}}</td>
                                 <td class="">{{row.VisitorName}}</td>
                               </tr>
@@ -485,5 +200,122 @@
       </table>
     </ion-col>
   </ion-col>
-</ion-content>
 
+  <!-- -------------------------------per-route----------------------------------------- -->
+  <ion-col class="per-route-segment" *ngIf="selectedSegment == 'per-route'">
+    <ion-col>
+      <div class="date-picker-container">
+        <div class="date-picker-box">
+          <div id="open-popover-from" class="date-picker lightBlue-shadow">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div>
+              <h4>{{language.DatePicker.from}}</h4>
+              <div>
+                {{selected_fromdateN | date:'yyyy/MM/dd'}}
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div id="open-popover-to" class="date-picker lightBlue-shadow">
+            <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
+            <div>
+              <h4>{{language.DatePicker.to}}</h4>
+              <div>
+                {{selected_todateN | date:'yyyy/MM/dd'}}
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-popover showBackdrop="false" trigger="open-popover-from" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime [value]="selected_fromdateN" presentation="date" #perRouteFromDate
+            (ionChange)="selected_fromdateN = perRouteFromDate.value; dateChanged('per-route')">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="perRouteFromDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="perRouteFromDate.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
+            </ion-buttons>
+          </ion-datetime>
+        </ng-template>
+      </ion-popover>
+      <ion-popover showBackdrop="false" trigger="open-popover-to" class="ion-no-margin">
+        <ng-template>
+          <ion-datetime [value]="selected_todateN" presentation="date" #perRouteToDate
+            (ionChange)="selected_todateN = perRouteToDate.value; dateChanged('per-route')">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="perRouteToDate.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="perRouteToDate.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
+            </ion-buttons>
+          </ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-col>
+    <ion-row>
+      <ion-col class="search-bar">
+        <ion-row class="search-box ion-justify-content-center">
+          <ion-item class="lightBlue-shadow">
+            <button class="search-submit primary-bg" (click)="selectedDCN()">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+
+            <ng-select *ngIf="dropdownListN.length" [items]="dropdownListN" [multiple]="true" bindLabel="itemName"
+              groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
+              [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedItemsN">
+              <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                {{item.group | uppercase}}
+              </ng-template>
+
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
+                {{item.itemName}}
+              </ng-template>
+            </ng-select>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-col>
+      <ion-grid class="maingrid ion-no-padding">
+        <div *ngFor="let row of virtual_rows2; let i = index" [ngClass]="{'firstRow' : i === 0}">
+
+          <ion-row>
+            <ng-container *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')">
+              <ion-col class="col-route" *ngFor="let item of srpped2[row.index]; let j = index"
+                [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2, 'firstColumn2' : j==0 && i==0}">
+                {{ item }}
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </div>
+
+        <div class="r-body-content">
+          <div *ngFor="let row of virtual_rows2; let i = index" [ngClass]="{'oddRows': 3 === i % 4}"
+            (click)="row_click2(row)">
+            <ion-row>
+              <ng-container *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')">
+                <ion-col class="col-route" *ngFor="let item of srpped2[row.index]; let j = index"
+                  [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns': 0 === j % 2}">
+                  {{ item }}
+                </ion-col>
+              </ng-container>
+
+              <ng-container *ngIf="row.show && row.type=='b'">
+                <ion-grid class="nested-table ion-no-padding">
+                  <ion-row wrap *ngFor="let rows of selected_ch2[row.index]; let i = index"
+                    [ngClass]="{'firstrow2': i==0 }" (click)="row_clickCustomer(rows[0])">
+                    <ion-col class="nested-details col-route" *ngFor="let item of rows; let j = index">
+                      {{ item }}
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ng-container>
+            </ion-row>
+          </div>
+        </div>
+      </ion-grid>
+    </ion-col>
+  </ion-col>
+</ion-content>
