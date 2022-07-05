@@ -55,7 +55,7 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
 
   nestedTableIsShowingRow_1: boolean = false;
 
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline;
   }
   constructor(
@@ -64,9 +64,9 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     private loadingCtrl: LoadingController,
     private SrSalesHourlyService: SrSalesHourlyCityService,
     private sharedService: SharedService
-  ) {}
+  ) { }
 
-  
+
 
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
@@ -144,7 +144,7 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     this.SrSalesHourlyService.getSrSalesUsers(
       this.user_id,
       this.selectedItems.join(),
-      this.selected_date
+      this.selected_date.slice(0, this.selected_date.length - 6)
     ).subscribe((srsales: Data[]) => {
       if (srsales.length != 0) this.create_total_model1(srsales);
       else this.create_total_model1('Empty');
@@ -167,7 +167,7 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     this.SrSalesHourlyService.getsrsalesuserscityhourlyqty(
       this.user_id,
       this.selectedItemsN.join(),
-      this.selected_dateN
+      this.selected_dateN.slice(0, this.selected_dateN.length - 6)
     ).subscribe((srsales: Data[]) => {
       if (srsales.length) this.create_total_model2(srsales);
       else this.create_total_model2('Empty');
@@ -271,7 +271,7 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
       this.srsales2.push(temp.splice(1, 1));
     }
   }
-  row_click1(row , index) {
+  row_click1(row, index) {
     if (row.type == 'a') {
       if (this.virtual_rows1[row.index + 1].show) {
         this.virtual_rows1[row.index + 1].show = false;
@@ -280,12 +280,9 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
       }
       var arr = [{ V_Name: this.user_list[row.index - 1][0] + ' => ' + this.srsales1[(row.index + 1)][0] }];
       this.create_model1(arr, row.index + 1);
-
-
     }
-
-
   }
+
   create_model1(model, index) {
     this.selected_ch1[index] = [];
     if (model[0]) {
@@ -312,20 +309,17 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
       var arr = [{ V_Name: this.user_list2[row.index - 1][0] + " => " + this.srsales1[row.index + 1][0] }];
       this.create_model2(arr, row.index + 1);
     }
-
-
   }
+
   create_model2(model, index) {
     this.selected_ch2[index] = [];
     if (model[0]) {
       for (var i = 0; i < model.length; i++) {
         let ch = model[i];
         let temp = Object.keys(ch).map(key => ch[key]);
-        for (var j = 1; j < temp.length; j++) {
-          if (temp[j] != null) {
-            temp[j] = temp[j];
-          }
-        }
+        for (var j = 1; j < temp.length; j++)
+          if (temp[j] != null) temp[j] = temp[j];
+
         this.selected_ch2[index].push(temp);
       }
     }
