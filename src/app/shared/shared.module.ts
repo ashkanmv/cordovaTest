@@ -9,6 +9,7 @@ import { VariableRadiusPieChartsComponent } from '../charts/pie-charts/pie-chart
 import { MapComponent } from '../map/map.component';
 import { PopoverComponent } from './components/popover/popover.component';
 import { SearchSelectComponent } from './components/search-select/search-select.component';
+import { LogOutComponent } from './components/logOout/logOut.component';
 
 @NgModule({
   imports: [HighchartsChartModule, CommonModule, FormsModule, IonicModule],
@@ -19,6 +20,7 @@ import { SearchSelectComponent } from './components/search-select/search-select.
     MapComponent,
     PopoverComponent,
     SearchSelectComponent,
+    LogOutComponent
   ],
   declarations: [
     VariableRadiusPieChartsComponent,
@@ -27,6 +29,7 @@ import { SearchSelectComponent } from './components/search-select/search-select.
     MapComponent,
     PopoverComponent,
     SearchSelectComponent,
+    LogOutComponent
   ],
   providers: [],
 })

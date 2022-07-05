@@ -540,6 +540,12 @@ export class Language {
   Trace_Salesman :{
     NoLocationFound : string;
   }
+  logOut : {
+    areYouSure:string;
+    message:string;
+    logOut:string;
+    cancel:string;
+  }
 }
 
 export class CommonUtility {

@@ -1,0 +1,22 @@
+<ion-modal #modal trigger="open-logout">
+  <ng-template>
+    <ion-content>
+      <ion-item class="title ion-text-center ion-justify-content-center ion-align-items-end">
+        <ion-title>{{language.logOut.areYouSure}}</ion-title>
+      </ion-item>
+      <ion-item class="label ion-text-center ion-justify-content-center  ion-align-items-center  ">
+        <ion-label>{{language.logOut.message}}</ion-label>
+      </ion-item>
+      <ion-item class="buttons ion-text-center ion-justify-content-center  ion-align-items-center ">
+        <ion-item>
+          <ion-button class="logOut-btn" (click)="modal.dismiss()">
+            {{language.logOut.logOut}} 
+          </ion-button>
+          <ion-button (click)="modal.dismiss()">
+            {{language.logOut.cancel}}
+          </ion-button>
+        </ion-item>
+      </ion-item>
+    </ion-content>
+  </ng-template>
+</ion-modal>

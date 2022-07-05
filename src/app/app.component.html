@@ -54,10 +54,11 @@
           <ion-col size="12" class="text-align-center">
             <ion-menu-toggle>
               <button class="btn footer-btn-color flex-row">
-                <p routerLink="/settings">Setting</p>
-                <p>Log Out</p>
+                <p routerLink="/settings"><ion-icon name="settings-sharp"></ion-icon> Setting</p>
+                <p id="open-logout">Log Out</p>
               </button>
             </ion-menu-toggle>
+            <app-logOut trigger="open-logout"></app-logOut>
           </ion-col>
         </ion-row>
       </ion-content>

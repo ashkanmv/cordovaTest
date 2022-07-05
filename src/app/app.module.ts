@@ -17,6 +17,7 @@ import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, AddEditNotificationComponent],
@@ -29,7 +30,8 @@ import { Device } from '@awesome-cordova-plugins/device/ngx';
     HighchartsChartModule,
     IonicStorageModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [
     BackgroundGeolocation,

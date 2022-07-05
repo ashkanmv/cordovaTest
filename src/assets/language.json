@@ -184,6 +184,12 @@
         },
         "Trace_Salesman" : {
             "NoLocationFound" : "No location found !"
+        },
+        "logOut" : {
+            "areYouSure":"ARE YOU SURE?",
+            "message":"Message",
+            "logOut":"LOG OUT",
+            "cancel":"CANCEL"
         }
     },
     "FR": {
