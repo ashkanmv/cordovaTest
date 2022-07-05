@@ -521,6 +521,11 @@ export class Language {
     Loading: string;
     EndOfNotifications: string;
     NotificationDeleted: string;
+    cancel:string;
+    edit:string;
+    confirm:string;
+    editText:string;
+    enterText:string;
   }
   Add_Edit_News: {
     Camera: string;

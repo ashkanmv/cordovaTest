@@ -165,7 +165,12 @@
             "Title": "Notifications",
             "Loading": "Loading ...",
             "EndOfNotifications": "End of Notifications",
-            "NotificationDeleted": "Notification Deleted."
+            "NotificationDeleted": "Notification Deleted.",
+            "cancel":"Cancel",
+            "edit":"Edit",
+            "confirm":"Confirm",
+            "editText":"Edit Text",
+            "enterText":"Enter Text..."
         },
         "Add_Edit_News": {
             "Camera": "Camera",
