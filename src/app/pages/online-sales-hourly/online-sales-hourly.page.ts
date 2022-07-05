@@ -25,8 +25,8 @@ export class OnlineSalesHourlyPage implements OnInit {
   user_list2 = [];
   dc = [];
   dcN: any = [];
-  selected_dc: any = [];
-  selected_dcN: any = [];
+  // selected_dc: any = [];
+  // selected_dcN: any = [];
   today;
   sr1;
   srsales2 = [];
@@ -88,8 +88,8 @@ export class OnlineSalesHourlyPage implements OnInit {
   }
 
   distance_select() {
-    this.dcSelect();
-    this.dcSelectN();
+    this.SelectedDC();
+    this.SelectedDCN();
   }
 
   async get_dcN() {
@@ -100,7 +100,7 @@ export class OnlineSalesHourlyPage implements OnInit {
     this.SrSales_HourlyService.getUserDc(this.user_id).subscribe((dcs) => {
       this.dcN = dcs;
       for (var i = 0; i < this.dcN.length; i++) {
-        this.selected_dcN.push(this.dcN[i].City);
+        // this.selected_dcN.push(this.dcN[i].City);
         this.dropdownListN.push({
           id: i,
           itemName: this.dc[i].City,
@@ -109,41 +109,7 @@ export class OnlineSalesHourlyPage implements OnInit {
       }
       this.selectedItemsN = this.dropdownListN.map((_) => _.itemName);
       loading.dismiss();
-      this.after_get_Dcn();
-    });
-  }
-
-  async after_get_Dcn() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
-    });
-    await loading.present();
-    this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(
-      this.user_id,
-      this.selected_dcN.join(),
-      this.selected_dateN
-    ).subscribe((SrSales: Data[]) => {
-      if (SrSales.length) {
-        this.create_total_model2(SrSales);
-      } else {
-        this.create_total_model2('Empty');
-      }
-      loading.dismiss();
-    });
-  }
-
-  async dcSelect() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
-    });
-    await loading.present();
-    this.SrSales_HourlyService.getSrSalesUsers(
-      this.user_id,
-      this.selected_dc,
-      this.selected_date
-    ).subscribe((srsales: Data[]) => {
-      if (srsales.length) this.create_total_model1(srsales);
-      else this.create_total_model1('Empty');
+      this.SelectedDCN();
     });
   }
 
@@ -157,7 +123,7 @@ export class OnlineSalesHourlyPage implements OnInit {
         (dcs: Data[]) => {
           this.dc = dcs;
           for (var i = 0; i < this.dc.length; i++) {
-            this.selected_dc.push(this.dc[i].City);
+            // this.selected_dc.push(this.dc[i].City);
             this.dropdownList.push({
               id: i,
               itemName: this.dc[i].City,
@@ -166,7 +132,7 @@ export class OnlineSalesHourlyPage implements OnInit {
           }
           this.selectedItems = this.dropdownList.map((_) => _.itemName);
           loading.dismiss();
-          this.after_get_Dc();
+          this.SelectedDC();
         }
       );
     } catch (error) {
@@ -174,50 +140,23 @@ export class OnlineSalesHourlyPage implements OnInit {
     }
   }
 
-  async dcSelectN() {
+  async SelectedDCN() {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
     await loading.present();
     this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(
       this.user_id,
-      this.selected_dcN,
+      this.selectedItemsN.join(),
       this.selected_dateN
     ).subscribe((srsales: Data[]) => {
       if (srsales.length != 0) {
-        this.create_total_model2(srsales);
+        this.create_total_model1(srsales);
       } else {
-        this.create_total_model2('Empty');
+        this.create_total_model1('Empty');
       }
       loading.dismiss();
     });
-  }
-
-  async SelectedDCN() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
-    });
-    await loading.present();
-    this.selected_dcN = [];
-    for (var i = 0; i < this.selectedItemsN.length; i++) {
-      this.selected_dcN.push(this.selectedItemsN[i].itemName);
-    }
-
-    if (this.selectedItemsN.length > 0) {
-      this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(
-        this.user_id,
-        this.selected_dcN,
-        this.selected_dateN
-      ).subscribe((srsales: Data[]) => {
-        if (srsales.length) {
-          this.create_total_model2(srsales);
-        }
-        loading.dismiss();
-      });
-    } else {
-      this.create_total_model1('Empty');
-      loading.dismiss();
-    }
   }
 
   async SelectedDC() {
@@ -226,24 +165,19 @@ export class OnlineSalesHourlyPage implements OnInit {
     });
     await loading.present();
 
-    this.selected_dc = [];
-    for (var i = 0; i < this.selectedItems.length; i++) {
-      this.selected_dc.push(this.selectedItems[i].itemName);
-    }
-
     if (this.selectedItems.length > 0) {
       this.SrSales_HourlyService.getSrSalesUsers(
         this.user_id,
-        this.selected_dc,
+        this.selectedItems.join(),
         this.selected_date
       ).subscribe((srsales: Data[]) => {
         if (srsales.length) {
-          this.create_total_model1(srsales);
+          this.create_total_model2(srsales);
         }
         loading.dismiss();
       });
     } else {
-      this.create_total_model1('Empty');
+      this.create_total_model2('Empty');
       loading.dismiss();
     }
   }
@@ -290,20 +224,6 @@ export class OnlineSalesHourlyPage implements OnInit {
       this.user_list2.push(temp);
       this.srsales2.push(temp.splice(1, 1));
     }
-  }
-
-  after_get_Dc() {
-    this.SrSales_HourlyService.getSrSalesUsers(
-      this.user_id,
-      this.selected_dc.join(),
-      this.selected_date
-    ).subscribe((SrSales: Data[]) => {
-      if (SrSales.length) {
-        this.create_total_model1(SrSales);
-      } else {
-        this.create_total_model1('Empty');
-      }
-    });
   }
 
   create_total_model1(model) {
@@ -381,18 +301,15 @@ export class OnlineSalesHourlyPage implements OnInit {
   }
 
   dateChanged(changed: 'per-kilo' | 'per-invoices') {
-    if (changed == 'per-kilo') this.dcSelect();
-    else this.dcSelectN();
+    if (changed == 'per-kilo') this.SelectedDC();
+    else this.SelectedDCN();
   }
 
   refresh() {
-    this.dcSelect();
-    this.dcSelectN();
+    this.SelectedDC();
+    this.SelectedDCN();
   }
-
-  formatDate(value: string) {
-    return format(parseISO(value), 'MMM dd yyyy');
-  }
+  
   //  // orignal row click
 
   row_click1(row, index) {
