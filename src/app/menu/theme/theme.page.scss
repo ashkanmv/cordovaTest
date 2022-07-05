@@ -27,7 +27,8 @@ ion-row.select-theme{
             display: flex;
             align-items: center;
             flex-direction: column;
-            &.light-theme{
+            &.light-theme,
+            &.dark-theme{
                 h3{
                     color: #205172;
                 }
@@ -41,7 +42,6 @@ ion-row.select-theme{
         --color:var(--color-checked);
         --color-checked:#205172;
         background: var(--ion-color-light);
-        // background: #004f7d;
         width: 3rem;
         height: 3rem;
         border-radius: 50%;
