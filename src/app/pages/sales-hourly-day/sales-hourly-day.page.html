@@ -175,7 +175,7 @@
               <ng-container *ngIf="i==0 && row.show && (row.type=='h')">
                 <ion-col
                   *ngFor="let item of srsales1[row.index]; let j = index"
-                  [ngClass]="{'firstcolumn': j==0 , 'oddColumns': 0=== j % 2 }"
+                  [ngClass]="{'firstcolumn': j==0 && i!=0 , 'oddColumns': 0=== j % 2 }"
                 >
                   {{ item }}
                 </ion-col>
