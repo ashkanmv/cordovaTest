@@ -113,7 +113,7 @@
       <h2>
         <ion-label>{{news.title}}</ion-label>
       </h2>
-      <button id="open-edit-mode" class="btn-edit" *ngIf="hasAccess">
+      <button class="btn-edit" *ngIf="hasAccess" (click)="editNews(news)">
         <img src="\assets\pages\notifications\Group 1298.png" alt="" />
       </button>
       <button class="btn-delete" *ngIf="hasAccess">
@@ -125,32 +125,10 @@
         <h4 dir="{{get_direction()}}">
          {{news.text}}
         </h4>
-        <img src="\assets\pages\notifications\notification-img.png" alt="" />
+        <img src="{{news.pic}}" alt="" />
       </ion-card-content>
-      <p class="time-posted">1h ago</p>
-    <ion-modal #modal trigger="open-edit-mode">
-      <ng-template>
-        <ion-content class="edit-content">
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button  (click)="cancel()">{{language.News.cancel}}</ion-button>
-            </ion-buttons>
-            <ion-title class="ion-text-center" >{{language.News.edit}}</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="confirm()">{{language.News.confirm}}</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-          <ion-list class="ion-align-items-center ion-justify-content-start   ">
-            <ion-item class="edit-label">
-              <ion-label>{{language.News.editText}}</ion-label>
-            </ion-item>
-            <ion-item class="edit-input">
-              <ion-input  dir="{{get_direction()}}" placeholder="   {{language.News.enterText}}"></ion-input>
-            </ion-item>
-          </ion-list>
-        </ion-content>
-      </ng-template>
-    </ion-modal> 
+      <p class="time-posted"></p>
+
     
   </ion-card>
 
