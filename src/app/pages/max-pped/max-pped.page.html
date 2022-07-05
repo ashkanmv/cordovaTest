@@ -18,7 +18,7 @@
           <h3><b>{{language.Max_PPED.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col size="1"></ion-col>
+      <!-- <ion-col size="1"></ion-col> -->
 
       <ion-col
         class="ion-align-self-center reload"
@@ -216,7 +216,7 @@
               <ion-col 
                 class="col-route"
                 *ngFor="let item of srpped2[row.index]; let j = index"
-                [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2}"
+                [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2, 'firstColumn2' : j==0 && i==0}"
               >
                 {{ item }}
               </ion-col>
@@ -408,7 +408,7 @@
           <td>
             <table class="table-header" cellspacing="0" cellpadding="1">
               <tr class="header">
-                <th class="firstcolumn">Customer Number</th>
+                <th class="firstColumn oddColumns">Customer Number</th>
                 <th class="">Cluster</th>
                 <th class="oddColumns">Store Name</th>
                 <th class="">Sale</th>

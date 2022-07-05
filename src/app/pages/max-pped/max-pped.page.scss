@@ -7,12 +7,16 @@ ion-item{
 ion-toolbar{
     ion-img{
         max-width: 80px;
-        min-width: 30px; 
+        min-width: 40px; 
     }
 
     .back-button{
         min-width:15px;
     }
+}
+
+ion-title{
+    margin-right: 8vw;
 }
 
 
@@ -28,7 +32,6 @@ ion-col.segment-change{
             --indicator-height:	10px;	
             padding:.5rem 0;
             width: 100%;
-           
             ion-label{
                 font-size: 3vw;
                 font-weight: bold;
@@ -132,29 +135,7 @@ ion-col{
                 font-size: 1.5rem; 
             }
         }
-        input::-webkit-input-placeholder{
-            justify-self: center;
-            align-self: center;
-            color: #e5e5e5df;
-        }
-      
-        .search{
-            text-align: center;
-            height: 5rem;
-            width:75%;
-            outline: none;
-            border: none;
-            border-radius: 0 10px 10px 0 ;
-        }
-        span{
-            position: absolute;
-            bottom: 5vh;
-            right: 2vw;
-        }
-        ion-icon{
-            color:#e5e5e5;
         
-        }
     }
     }
 // -------------table
@@ -174,7 +155,7 @@ table.table-container{
             font-size: .8rem;
         }
         tr.header{
-            .firstcolumn{
+            .firstColumn{
                 width: 25vw;
                 color: #0095eb;
             }
@@ -274,7 +255,9 @@ hr.ver-line{
 // ------------------------------
 ion-grid.maingrid{
     text-align: center;
-
+    .firstColumn2{
+        color: #0095eb;
+    }
     ion-col.col-route{
         overflow-wrap: anywhere;
         height: 8vh;
@@ -282,6 +265,7 @@ ion-grid.maingrid{
         display: flex;
         justify-content: center;
         align-items: center;
+       
         
         &:first-child{
             max-width: 21%;
