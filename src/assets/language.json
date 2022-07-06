@@ -121,7 +121,7 @@
             "reset": "cancel",
             "from": "From Date",
             "to": "To Date",
-            "title": "Date"
+            "Title": "Date"
         },
         "Loading_Truck_Status": {
             "Title": "Loading Truck Status",
@@ -219,7 +219,12 @@
             "PPED":"PPED"
         },
         "Trace_Salesman" : {
-            "NoLocationFound" : "No location found !"
+            "NoLocationFound" : "No location found !",
+            "Title":"Trace Salesmen",
+            "rsm":"RSM",
+            "asm":"ASM",
+            "ssv":"SSV",
+            "sr":"SR"
         },
         "logOut" : {
             "areYouSure":"ARE YOU SURE?",

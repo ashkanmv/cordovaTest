@@ -476,7 +476,7 @@ export class Language {
     reset: string;
     from: string;
     to: string;
-    title: string;
+    Title: string;
   };
   Loading_Truck_Status: {
     Title: string;
@@ -574,7 +574,12 @@ export class Language {
     PPED:string;
   }
   Trace_Salesman :{
-    NoLocationFound : string;
+    NoLocationFound : string;       
+    Title:string;
+    rsm:string;
+    asm:string;
+    ssv:string;
+    sr:string;
   }
   logOut : {
     areYouSure:string;

@@ -4,14 +4,13 @@
     max-width: 20px;
     min-width: 20px;
 }
-.hide{
-    min-width: 40px;
-    margin-right: .1rem;
-}
-.wifi{
-    min-width: 50px;
-    margin-left: .1rem;
 
+.wifi{
+    margin-right: 3vw;
+}
+ion-img{
+ max-width: 60px;       
+ min-width: 40px;
 }
 title{
     width: 100%;
@@ -20,7 +19,7 @@ title{
 ion-title{
     width: 100%;
     h3{
-        font-size: 3vw;
+        font-size: 4.5vw;
         width: 100%;
 
     }
