@@ -559,6 +559,16 @@ export class Language {
     logOut:string;
     cancel:string;
   }
+  Menu:{
+    en:string;
+    fa:string;
+    MainPage:string;
+    Profile:string;
+    ContactUs:string;
+    AboutUs:string;
+    Setting:string;
+    LogOut:string;
+  }
 }
 
 export class CommonUtility {

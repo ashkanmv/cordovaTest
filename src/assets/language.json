@@ -207,7 +207,18 @@
             "message":"Message",
             "logOut":"LOG OUT",
             "cancel":"CANCEL"
+        },
+        "Menu" : {
+            "en":"EN",
+            "fa":"Fa",
+            "MainPage":"MainPage",
+            "Profile":"Profile",
+            "ContactUs":"Contact Us",
+            "AboutUs":"About Us",
+            "Setting":"Setting",
+            "LogOut":"LogOut"
         }
+
     },
     "FR": {
         "Customer_History": {

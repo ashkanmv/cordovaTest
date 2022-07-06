@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import { Language } from './shared/common';
 import { GeoLocationService } from './shared/geo-location.service';
 import { LanguageService } from './shared/language.service';
 import { StorageService } from './shared/storage.service';
@@ -12,6 +13,11 @@ import { StorageService } from './shared/storage.service';
 export class AppComponent implements OnInit {
   startApp = false;
   language: boolean;
+
+  public get languageChosen(): Language{
+    return this.languageService.language;
+
+  }
   constructor(
     private plt: Platform,
     private languageService: LanguageService,
