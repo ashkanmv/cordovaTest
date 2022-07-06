@@ -32,7 +32,7 @@
           src="\assets\pages\Wifi\Internet On.png"
         ></ion-img>
         <ion-img *ngIf="!isOnline"
-          class="wifiOn"
+          class="wifiOff"
           src="\assets\pages\Wifi\Internet Off.png"
         ></ion-img>
       </ion-col>
@@ -72,12 +72,12 @@
   <!-- -------------------------------per-kilo----------------------------------------- -->
   <!-- -------------------------------per-kilo----------------------------------------- -->
   <!-- -------------------------------per-kilo----------------------------------------- -->
-  <ion-grid class="per-kilo-segment" *ngIf="selectedSegment == 'per-kilo'">
+  <ion-grid class="per-kilo-segment ion-no-padding " *ngIf="selectedSegment == 'per-kilo'">
     <ion-row>
       <ion-col>
         <ion-row class="date-picker-container">
           <ion-row class="date-picker-box">
-            <label for="Date-picker"> Date</label>
+            <label for="Date-picker"> {{language.DatePicker.Title}} </label>
             <ion-row id="open-popover" class="date-picker lightBlue-shadow">
               <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
               <ion-col class="ion-justify-content-end">
@@ -204,15 +204,15 @@
 <!-- -------------------------------per-invoices----------------------------------------- -->
 <!-- -------------------------------per-invoices----------------------------------------- -->
 
-<ion-col
-class="per-invoices-segment"
+<ion-grid
+class="per-invoices-segment   ion-no-padding "
 *ngIf="selectedSegment == 'per-invoices'"
 >
 <ion-row>
   <ion-col>
     <ion-row class="date-picker-container">
       <ion-row class="date-picker-box">
-        <label for="Date-picker"> Date</label>
+        <label for="Date-picker"> {{language.DatePicker.Title}}</label>
         <ion-row id="open-popover" class="date-picker lightBlue-shadow">
           <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
           <ion-col class="ion-justify-content-end">
@@ -336,7 +336,6 @@ class="per-invoices-segment"
     </div>
   </div>
 </ion-grid>
-</ion-col>
+</ion-grid>
 </ion-content>
 
-<!-- ----------------------- -->

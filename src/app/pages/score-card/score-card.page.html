@@ -9,14 +9,14 @@
       <ion-col></ion-col>
       <ion-col size="6" class="ion-text-start ion-align-self-center">
         <ion-title class="ion-no-padding white-text ion-align-self-center">
-          <h3>Score Cards</h3>
+          <h3> {{language.Score_Card.Title}} </h3>
         </ion-title>
       </ion-col>
-      <ion-col size="1" class="ion-align-self-center reload ion-no-padding ">
+      <ion-col size="1" class="ion-align-self-center reload ">
         <ion-img src="\assets\pages\customer-nearby\Group 1325.png"></ion-img>
       </ion-col>
 
-      <ion-col class="ion-align-self-center wifi ion-no-padding " size="1">
+      <ion-col class="ion-align-self-center wifi  " size="1">
         <ion-img *ngIf="isOnline"
           class="wifiOn"
           src="\assets\pages\Wifi\Internet On.png"
@@ -44,16 +44,16 @@
   <ion-col class="ion-no-padding segment-change">
     <ion-segment class="" (ionChange)="segmentChanged($event)" value="category">
       <ion-segment-button class="category" value="category">
-        <ion-label>Category</ion-label>
+        <ion-label>{{language.Score_Card.Segment_category}}</ion-label>
       </ion-segment-button>
       <ion-segment-button class="channel" value="channel">
-        <ion-label>Channel</ion-label>
+        <ion-label>{{language.Score_Card.Segment_channel}}</ion-label>
       </ion-segment-button>
       <ion-segment-button class="category%" value="categoryP">
-        <ion-label>Category%</ion-label>
+        <ion-label>{{language.Score_Card.Segment_categoryPer}}</ion-label>
       </ion-segment-button>
       <ion-segment-button class="channel%" value="channelP">
-        <ion-label>Channel%</ion-label>
+        <ion-label>{{language.Score_Card.Segment_channelPer}}</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-col>
@@ -90,11 +90,11 @@
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
               <input type="radio" name="radio-input-cat" [value]="1" [(ngModel)]="categoryRadio" id="" (change)="categorySection()" />
-              <label for="sales">Sales</label>
+              <label for="sales">{{language.Score_Card.Radio_input_sales}}</label>
             </div>
             <div class="ion-align-items-center">
               <input type="radio" name="radio-input-cat" [value]="2" [(ngModel)]="categoryRadio" id="" (change)="categorySection()"/>
-              <label for="pped">PPED</label>
+              <label for="pped">{{language.Score_Card.Radio_input_PPED}}</label>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
     </ion-grid>
     <!-- ---------------table------------------------------- -->
     <ion-row>
-      <ion-grid class=" ion-no-padding maingrid-cat ion-no-padding">
+      <ion-grid class=" ion-no-padding table maingrid-cat ion-no-padding">
         <ion-row wrap *ngFor="let row of virtual_rows1; let i = index"
           [ngClass]="{'firstRow': i==0}">
 
@@ -174,11 +174,11 @@
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
               <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="channelRadio" (change)="channelSectionSkus()" />
-              <label for="sales">Sales</label>
+              <label for="sales">{{language.Score_Card.Radio_input_sales}}</label>
             </div>
             <div class="ion-align-items-center">
               <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="channelRadio" (change)="channelSectionSkus()" />
-              <label for="pped">PPED</label>
+              <label for="pped">{{language.Score_Card.Radio_input_PPED}}</label>
             </div>
           </div>
         </div>
@@ -186,7 +186,7 @@
     </ion-grid>
     <!-- -----------------------table------------------------------------------------- -->
     <ion-row>
-      <ion-grid class=" ion-no-padding maingrid-ch ">
+      <ion-grid class=" ion-no-padding table maingrid-ch ">
         <ion-row wrap *ngFor="let rows of scorecards2; let i = index" [ngClass]="{'firstRow': i==0,  'oddRows': 0 === i % 2 }">
           <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of rows; let j = index"
           [ngClass]="{ 'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 }">
@@ -229,11 +229,11 @@
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
               <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="categoryPRadio" (change)="getSales3ByChannel()"/>
-              <label for="sales">Sales</label>
+              <label for="sales">{{language.Score_Card.Radio_input_sales}}</label>
             </div>
             <div class="ion-align-items-center">
               <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="categoryPRadio" (change)="getPped3ByChannel()"/>
-              <label for="pped">PPED</label>
+              <label for="pped">{{language.Score_Card.Radio_input_PPED}}</label>
             </div>
           </div>
         </div>
@@ -241,7 +241,7 @@
     </ion-grid>
 <!-- ----------------------table--------------------- -->
     <ion-row>
-      <ion-grid class=" ion-no-padding maingrid-catP ion-no-padding  ">
+      <ion-grid class=" ion-no-padding table maingrid-catP ion-no-padding  ">
         <ion-row wrap *ngFor="let row of virtual_rows3; let i = index"
           [ngClass]="{'firstRow': i==0, 'oddRows':3 === i % 4}">
 
@@ -327,11 +327,11 @@
           <div class="radio-input lightBlue-shadow">
             <div class="ion-align-items-center">
               <input type="radio" name="radio-input-cat" [value]="1" id="" [(ngModel)]="channelPRadio" (change)="getSales4ByCatSku()" />
-              <label for="sales">Sales</label>
+              <label for="sales">{{language.Score_Card.Radio_input_sales}}</label>
             </div>
             <div class="ion-align-items-center">
               <input type="radio" name="radio-input-cat" [value]="2" id="" [(ngModel)]="channelPRadio" (change)="getPped4ByCatSku()" />
-              <label for="pped">PPED</label>
+              <label for="pped">{{language.Score_Card.Radio_input_PPED}}</label>
             </div>
           </div>
         </div>
@@ -339,7 +339,7 @@
     </ion-grid>
 <!-- --------------table----------------- -->
     <ion-row>
-      <ion-grid class=" ion-no-padding maingrid-chaP">
+      <ion-grid class=" ion-no-padding table maingrid-chaP">
         <ion-row wrap *ngFor="let rows of scorecards4; let i = index" [ngClass]="{'firstRow': i==0}">
           <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of rows; let j = index" 
           [ngClass]="{'firstColumn': j==0  && i!=0 , 'oddRows':1 === i % 2  }">

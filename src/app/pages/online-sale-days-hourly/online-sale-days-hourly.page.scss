@@ -134,11 +134,12 @@ ion-col{
     ion-grid.mainTable{
         .firstrow{
             .firstcolumn{
-                color: #0095EB;
+                color: #5ebff8;
             }
         }
         ion-col{
             height: 5vh;
+            width: 10vw;
             display: flex;
             text-align: center;
         }
@@ -148,3 +149,9 @@ ion-col{
         }
     }
 
+
+    @media (max-width:519px) {
+        .wifi{
+          margin: 0 2.3vw 0 .6rem ;
+        }
+    }

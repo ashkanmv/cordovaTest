@@ -122,7 +122,6 @@ ion-col{
            ng-select{
                height: 10vh;
                width: 100%;
-               overflow-y: auto;
            }
         }
         .search-submit{
@@ -157,7 +156,7 @@ table.table-container{
         tr.header{
             .firstColumn{
                 width: 25vw;
-                color: #0095eb;
+                color: #5ebff8;
             }
             &>:nth-child(3){
                 width: 30vw;
@@ -256,7 +255,7 @@ hr.ver-line{
 ion-grid.maingrid{
     text-align: center;
     .firstColumn2{
-        color: #0095eb;
+        color: #5ebff8;
     }
     ion-col.col-route{
         overflow-wrap: anywhere;
