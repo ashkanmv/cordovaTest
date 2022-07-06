@@ -173,7 +173,13 @@
         },
         "Today_Planned_Not_Buying": {
             "Title": "Today Planned/Not Buying",
-            "group": "All"
+            "group": "All",
+            "Route":"Route",
+            "Visitor":"Visitor",
+            "Count":"Count",
+            "Name":"Name",
+            "Number":"Number",
+            "Address":"Address"
         },
         "DailyStatus": {
             "Title": "Daily Status",

@@ -529,6 +529,12 @@ export class Language {
   Today_Planned_Not_Buying: {
     Title: string;
     group: string;
+    Route:string;
+    Visitor:string;
+    Count:string;
+    Name:string;
+    Number:string;
+    Address:string;
   }
   DailyStatus: {
     Title: string;

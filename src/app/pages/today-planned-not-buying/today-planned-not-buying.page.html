@@ -125,9 +125,9 @@
         <td>
           <table class="header-table" cellspacing="0" cellpadding="1">
             <tr class="">
-              <th class=" firstcolumn">Route</th>
-              <th class=" ">Visitor</th>
-              <th class=" oddColumns">Count</th>
+              <th class=" firstcolumn">{{language.Today_Planned_Not_Buying.Route}}</th>
+              <th class=" ">{{language.Today_Planned_Not_Buying.Visitor}}</th>
+              <th class=" oddColumns">{{language.Today_Planned_Not_Buying.Count}}</th>
           </table>
         </td>
       </tr>
@@ -152,8 +152,8 @@
                               <thead>
                                   <tr>
                                       
-                                      <th [class]="odd ? 'detail-header-odd':'detail-header-even'">Name</th>
-                                      <th [class]="odd ? 'detail-header-odd':'detail-header-even'" >Number</th>
+                                      <th [class]="odd ? 'detail-header-odd':'detail-header-even'">{{language.Today_Planned_Not_Buying.Name}}</th>
+                                      <th [class]="odd ? 'detail-header-odd':'detail-header-even'" >{{language.Today_Planned_Not_Buying.Number}}</th>
                                   </tr>
                                   
                               </thead>
@@ -163,7 +163,7 @@
                             </tr>
                             
                             <tr>
-                                <td  colspan="2" [class]="odd ? 'detail-header-odd':'detail-header-even'" >Address</td>
+                                <td  colspan="2" [class]="odd ? 'detail-header-odd':'detail-header-even'" >{{language.Today_Planned_Not_Buying.Address}}</td>
                             </tr>
                             <tr  class="">
                               <td colspan="2" class="details-body">{{row.Address}}</td>
