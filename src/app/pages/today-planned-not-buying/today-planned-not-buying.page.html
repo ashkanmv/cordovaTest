@@ -46,7 +46,7 @@
   <ion-col>
     <ion-row class="date-picker-container">
       <ion-row id="open-modal" class="date-picker-box">
-        <label for="Date-picker"> Date</label>
+        <label for="Date-picker"> {{language.DatePicker.Title}} </label>
         <ion-row class="date-picker lightBlue-shadow">
           <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
           <ion-col class="ion-justify-content-end">
@@ -120,7 +120,6 @@
   </ion-col>
 
   <ion-col>
-    <!--  -->
     <table class="main-table">
       <tr>
         <td>
@@ -170,9 +169,6 @@
                               <td colspan="2" class="details-body">{{row.Address}}</td>
                             </tr>
                             
-                            <!-- <tr (click)="Child_Data(Master_row , j)" class="detail-rows">
-                              <td colspan="2" class="detail-rows">{{row.Address}}</td>
-                            </tr> -->
                           </table>
                         </div>
                       </td>
@@ -185,43 +181,6 @@
         </td>
       </tr>
     </table>
-    <!--  -->
-    <!-- <table class="table">
-      <thead class="table-head">
-        <tr class="table-head-content">
-          <th><span>Route</span></th>
-          <th>Visitor</th>
-          <th>Coute</th>
-        </tr>
-      </thead>
-      <tbody class="table-body table-body-content" *ngFor="let mockData of routeVisitorData; let i = index;"
-        [ngClass]="{'oddRows': 1 === i % 2}">
-        <tr (click)="toggleDtails1()">
-          <td class="table-body-icon">
-            <ion-icon name="chevron-down-outline"></ion-icon> {{mockData.Route}}
-          </td>
-          <td>{{mockData.Visitor}}</td>
-          <td>{{mockData.count}}</td>
-        </tr>
-        <div *ngIf="Is1DetailsShowing" class="table-detail">
-          <div class="border">
-            <table class="lightBlue-shadow">
-              <tbody *ngFor="let mockDetailData of routeVisitorDetailData; let i = index;"
-                [ngClass]="{'oddRowsDetails': 0 === i % 2}">
-                <tr>
-                  <td><span>Name:</span> {{mockDetailData.Name}}</td>
-                  <td><span>Number:</span> {{mockDetailData.Number}}</td>
-                  <td><span>Address:</span> {{mockDetailData.Address}}</td>
-                </tr>
-              </tbody>
-              <hr class="line-1" />
-              <hr class="line-2" />
-              <hr class="line-3" />
-              <hr class="line-4" />
-            </table>
-          </div>
-        </div>
-      </tbody>
-    </table> -->
+  
   </ion-col>
 </ion-content>
