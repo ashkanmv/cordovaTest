@@ -94,7 +94,7 @@ export class OnlineSalesHourlyPage implements OnInit {
 
   async get_dcN() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.SrSales_HourlyService.getUserDc(this.user_id).subscribe((dcs) => {
@@ -116,7 +116,7 @@ export class OnlineSalesHourlyPage implements OnInit {
   async get_dc() {
     try {
       const loading = await this.loadingCtrl.create({
-        message: 'Please wait...',
+        message: this.language.Loading,
       });
       await loading.present();
       this.SrSales_HourlyService.getUserDc(this.user_id).subscribe(
@@ -142,7 +142,7 @@ export class OnlineSalesHourlyPage implements OnInit {
 
   async SelectedDCN() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(
@@ -161,7 +161,7 @@ export class OnlineSalesHourlyPage implements OnInit {
 
   async SelectedDC() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
 

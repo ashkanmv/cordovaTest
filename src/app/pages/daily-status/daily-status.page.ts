@@ -71,7 +71,7 @@ export class DailyStatusPage implements OnInit {
 
   async get_dc() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.dailySalesService.getUserDc(this.userId).subscribe(dcs => {
@@ -90,7 +90,7 @@ export class DailyStatusPage implements OnInit {
 
   async getCommutecity(truckDate : string) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.dailySalesService.getCommutecity(this.userId, truckDate, this.selectedTruckDc.join())
@@ -147,7 +147,7 @@ export class DailyStatusPage implements OnInit {
 
   async get_dc_t() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.dailySalesService.getUserDc(this.userId).subscribe(dcs => {
@@ -166,7 +166,7 @@ export class DailyStatusPage implements OnInit {
 
   async getCommutecityT(tabletDate : string) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.dailySalesService.getCommutecity_T(this.userId, tabletDate, this.selectedTabletDc.join())
@@ -182,7 +182,7 @@ export class DailyStatusPage implements OnInit {
 
   async create_total_model_t(model) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.commutes_t = [];

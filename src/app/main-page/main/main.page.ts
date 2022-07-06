@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, MenuController } from '@ionic/angular';
-import { Access, PageDetail } from 'src/app/shared/common';
+import { Access, Language, PageDetail } from 'src/app/shared/common';
+import { LanguageService } from 'src/app/shared/language.service';
 import { StorageService } from 'src/app/shared/storage.service';
 
 @Component({
@@ -10,9 +11,13 @@ import { StorageService } from 'src/app/shared/storage.service';
 })
 export class MainPage implements OnInit {
   pages: PageDetail[] = [];
+  public get language() : Language{
+    return this.languageService.language;
+  }
   constructor(private menuCtrl: MenuController,
     private storageService: StorageService,
-    private loadingCtrl: LoadingController) { }
+    private loadingCtrl: LoadingController,
+    private languageService: LanguageService) { }
 
   ngOnInit() {
     this.checkAccess();
@@ -20,7 +25,7 @@ export class MainPage implements OnInit {
 
   async checkAccess() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: this.language.Loading
     });
     await loading.present();
     this.storageService.get('access').then(acc => {

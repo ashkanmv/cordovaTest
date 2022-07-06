@@ -94,7 +94,7 @@ export class SalesHourlyDayPage implements OnInit {
 
   async get_dcN() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.SrSalesHourlyService.getUserDc(this.user_id).subscribe((dcs) => {
@@ -114,7 +114,7 @@ export class SalesHourlyDayPage implements OnInit {
 
   async dcSelect() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     if (!this.selectedItems.length) {
@@ -139,7 +139,7 @@ export class SalesHourlyDayPage implements OnInit {
   async get_dc() {
     try {
       const loading = await this.loadingCtrl.create({
-        message: 'Please wait...',
+        message: this.language.Loading,
       });
       await loading.present();
       this.SrSalesHourlyService.getUserDc(this.user_id).subscribe(
@@ -164,7 +164,7 @@ export class SalesHourlyDayPage implements OnInit {
 
   async dcSelectN() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     if (!this.selectedItemsN.length) {

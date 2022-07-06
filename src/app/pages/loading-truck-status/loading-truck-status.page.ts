@@ -52,7 +52,7 @@ export class LoadingTruckStatusPage implements OnInit {
 
   async get_dc() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.loadingTruckService.getUserDc(this.userId)
@@ -69,7 +69,7 @@ export class LoadingTruckStatusPage implements OnInit {
 
   async getLoadTruckCity() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
 

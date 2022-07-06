@@ -52,7 +52,7 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
 
   async get_dc() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     try {
@@ -79,7 +79,7 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
 
   async dcSelect() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.SrSalesHourlyService.getSupervisorCompareTrackingYearHourly(

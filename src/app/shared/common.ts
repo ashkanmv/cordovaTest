@@ -414,8 +414,8 @@ export class Language {
     Planned_and_Invoiced: string;
     OOP_invoiced: string;
     Visited_Not_Buy: string;
-    SR: string;
-    TRUCK: string;
+    sr: string;
+    Truck: string;
     Input_select_date: string;
     Input_select_RSM: string;
     Input_select_ASM: string;

@@ -63,7 +63,7 @@ export class LoginPage implements OnInit {
 
   async autoLogin() {
     const loading = await this.loadingCtrl.create({
-      message : 'Please wait...'
+      message : this.language.Loading
     });
     loading.present();
     this.storageService.get('autoLogin').then(data =>{
