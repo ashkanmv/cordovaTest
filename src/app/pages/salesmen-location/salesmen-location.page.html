@@ -7,16 +7,16 @@
             src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="9" class="ion-text-center ion-align-self-center">
+      <ion-col size="8" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text">
           <h3><b>{{language.Salesmen_Location.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col class="ion-align-self-center hide" size="1" (click)="show = !show" [ngClass]="{'show-content': show}">
+      <ion-col class="ion-align-self-center hide  ion-no-padding " size="1" (click)="show = !show" [ngClass]="{'show-content': show}">
         <ion-img id="trigger-hide" class="hide" src="\assets\pages\customer-nearby\Hide.png">
         </ion-img>
       </ion-col>
-      <ion-col class="ion-align-self-center wifi" size="1">
+      <ion-col class="ion-align-self-center wifi ion-no-padding margin-right" size="1">
         <ion-img *ngIf="isOnline"
           class="wifiOn"
           src="\assets\pages\Wifi\Internet On.png"
@@ -74,7 +74,7 @@
         <div class="salesmen-location-box" *ngIf="f.accessRsm.value">
           <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
             <ion-item>
-              <ion-button class="btn-search primary-bg">
+              <ion-button class="btn-search primary-bg ion-no-margin ">
                 <ion-icon name="search-outline"></ion-icon>
               </ion-button>  
               <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
@@ -93,7 +93,7 @@
 
             </ng-select>
           </ion-item>
-          <ion-checkbox mode="ios"  ></ion-checkbox>
+          <ion-checkbox></ion-checkbox>
             </ion-item>
             
           </ion-item>
@@ -101,7 +101,7 @@
         <div class="salesmen-location-box" *ngIf="f.accessAsm.value">
           <ion-item class="salesmen-location ion-no-padding  lightBlue-shadow">
             <ion-item class=" ion-justify-content-between ion-align-items-center ">
-              <ion-button class="btn-search primary-bg">
+              <ion-button class="btn-search primary-bg ion-no-margin ">
                 <ion-icon name="search-outline"></ion-icon>
               </ion-button>
               <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
@@ -120,7 +120,7 @@
     
               </ng-select>               
             </ion-item>
-            <ion-checkbox mode="ios"  ></ion-checkbox>
+            <ion-checkbox></ion-checkbox>
             </ion-item>
            
           </ion-item>
@@ -128,7 +128,7 @@
         <div class="salesmen-location-box" *ngIf="f.accessSsv.value">
           <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
             <ion-item>
-              <ion-button class="btn-search primary-bg">
+              <ion-button class="btn-search primary-bg ion-no-margin ">
                 <ion-icon name="search-outline"></ion-icon>
               </ion-button>
               <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
@@ -147,7 +147,7 @@
     
               </ng-select>               
             </ion-item>
-            <ion-checkbox mode="ios"  ></ion-checkbox>
+            <ion-checkbox></ion-checkbox>
             </ion-item>
            
           </ion-item>
@@ -155,7 +155,7 @@
         <div class="salesmen-location-box" *ngIf="f.accessSr.value">
           <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
             <ion-item>
-              <ion-button class="btn-search primary-bg">
+              <ion-button class="btn-search primary-bg ion-no-margin ">
                 <ion-icon name="search-outline"></ion-icon>
               </ion-button>
               <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
@@ -174,7 +174,7 @@
 
           </ng-select>
         </ion-item>
-        <ion-checkbox mode="ios"  ></ion-checkbox>
+        <ion-checkbox></ion-checkbox>
             </ion-item>
             
           </ion-item>
