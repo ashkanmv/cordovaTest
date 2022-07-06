@@ -28,7 +28,6 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-        <!-- </ion-list> -->
 
         <ion-list id="labels-list" class="primary-bg menu-content">
           <ion-menu-toggle auto-hide="false">
@@ -55,7 +54,7 @@
             <ion-menu-toggle>
               <button class="btn footer-btn-color flex-row">
                 <p routerLink="/settings"><ion-icon name="settings-sharp"></ion-icon> {{languageChosen.Menu.Setting}}</p>
-                <p id="open-logOut">{{languageChosen.Menu.LogOut}}</p>
+                <p id="open-logOut" >{{languageChosen.Menu.LogOut}}</p>
               </button>
               <ion-modal #modal trigger="open-logOut">
                 <ng-template>
@@ -80,7 +79,6 @@
                 </ng-template>
               </ion-modal>
             </ion-menu-toggle>
-            <app-logOut trigger="open-logout"></app-logOut>
           </ion-col>
         </ion-row>
       </ion-content>

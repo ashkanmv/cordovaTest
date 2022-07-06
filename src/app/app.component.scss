@@ -153,6 +153,9 @@ ion-item ion-label {
   background: #41B1F0;
   border: 3px solid #77CDFE;
   color: var(--ion-color-light);
+  p{
+    display: flex;
+  }
 }
 
 // LogOut Modal

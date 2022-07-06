@@ -355,11 +355,11 @@ export enum Languages {
 
 // Language
 export class Language {
-  Connection_error: string;
-  Gps_error: string;
-  Loading: string;
-  Server_no_value: string;
-  Submit :string;
+    Connection_error: string;
+    Gps_error: string;
+    Loading: string;
+    Server_no_value: string;
+    Submit :string;
   Customer_History: {
     Title: string;
     gps: string;
@@ -369,7 +369,19 @@ export class Language {
     Tell: number;
     SR: string;
     Address: string;
-    msg_no_customer: string;
+    DC:string;
+    Route:string;
+    Customer:string;
+    sales:string;
+    PPED:string;
+    Samples:string;
+    Qty:string;
+    Kg:string;
+    msg_no_customer:string;
+    searching:string; 
+    notFound:string; 
+    typeToSearchText:string; 
+    searchPlaceholder:string;
   };
   Questionnaire: {
     Title: string;
