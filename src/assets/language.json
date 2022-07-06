@@ -126,7 +126,13 @@
         "Loading_Truck_Status": {
             "Title": "Loading Truck Status",
             "dateTitle": "Date",
-            "Group": "All"
+            "Group": "All",
+            "Route":"Route",
+            "Load":"Load",
+            "Sale":"Sale",
+            "PPED":"PPED",
+            "Remain":"Remain",
+            "SKU":"SKU"
         },
         "Online_Sales_Hourly": {
             "Title": "Online Daily Sales Hourly",

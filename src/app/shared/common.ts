@@ -482,6 +482,12 @@ export class Language {
     Title: string;
     date_title: string;
     Group: string;
+    Route:string;
+    Load:string;
+    Sale:string;
+    PPED:string;
+    Remain:string;
+    SKU:string;
   };
   Online_Sales_Hourly: {
     Title: string;
