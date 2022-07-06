@@ -1,4 +1,4 @@
-<ion-button (click)="dismiss(false)" expand="block" fill="clear" shape="round">
+<!-- <ion-button (click)="dismiss(false)" expand="block" fill="clear" shape="round">
   close
 </ion-button>
 <ion-buttons>
@@ -24,4 +24,93 @@
   <ion-button block color="primary" type="submit" [disabled]="form.invalid">
     {{language.Add_Edit_News.Submit}}
   </ion-button>
-</form>
+</form> -->
+<!-- ------------------- -->
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-between header ion-no-margin">
+      <ion-col size="1" class="ion-align-self-center">
+        <ion-button fill="clear" (click)="dismiss(false)" >
+          <ion-img  
+            class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="\assets\menu\about-app\back-button.png"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-title>
+          <h3><b>
+            {{language.Add_Edit_News.Title}}          
+          </b></h3>
+        </ion-title>
+      </ion-col>
+      <ion-col *ngIf="isOnline" class="ion-align-self-center wifi" size="1">
+        <ion-img
+          class="wifi-online"
+          src="\assets\pages\Wifi\Internet On.png"
+        ></ion-img>
+        <ion-img *ngIf="!isOnline"
+          class="wifi-online"
+          src="\assets\pages\Wifi\Internet Off.png"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-grid class="secondary-bg white-text">
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="3" class="ion-no-padding ion-text-start">
+          2022.04.02
+        </ion-col>
+        <ion-col size="3" class="ion-no-padding ion-text-center">
+          Saturday
+        </ion-col>
+        <ion-col size="3" class="ion-no-padding ion-text-end">
+          13 فروردین
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-grid dir="{{get_direction()}}">
+      <ion-row class="item-name-img box-shadow">
+        <ion-row class="item-img">
+          <!-- <a  > -->
+            <ion-img src="\assets\pages\add-item\Add-Photo.png"></ion-img>
+          <!-- </a> -->
+          <h3>{{language.Add_Edit_News.AddPhoto}}</h3>
+          <ion-buttons>
+            <ion-button (click)="camera()">
+              <ion-icon slot="start" name="add"></ion-icon>
+              {{language.Add_Edit_News.Camera}}
+            </ion-button>
+            <ion-button (click)="gallery()">
+              <ion-icon slot="start" name="add"></ion-icon>
+              {{language.Add_Edit_News.Gallery}}
+            </ion-button>
+          </ion-buttons>
+        </ion-row>
+        <ion-row class="item-name">
+          <ion-input type="text" placeholder="{{language.Add_Edit_News.ItemName}}"></ion-input>
+        </ion-row>
+      </ion-row>
+      <ion-row class="item-title box-shadow">
+        <ion-col class="ion-no-padding">
+          <ion-input formControlName="title" type="text" placeholder="  {{language.Add_Edit_News.Title}}"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row class="item-text box-shadow">
+        <ion-col  class="ion-no-padding">
+          <ion-textarea type="text" rows="6" formControlName="text" placeholder="  {{language.Add_Edit_News.Description}}"></ion-textarea>
+        </ion-col>
+      </ion-row>
+      <ion-row class="item-submit">
+        <ion-button class="btn-submit "[disabled]="form.invalid">
+          {{language.Add_Edit_News.Submit}}
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+

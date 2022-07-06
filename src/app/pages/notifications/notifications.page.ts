@@ -124,7 +124,8 @@ export class NotificationsPage implements OnInit {
   editNews(news : News){
     this.modalCtrl.create({
       component: AddEditNotificationComponent,
-      componentProps : { news }
+      componentProps : { news },
+      cssClass:"modal-fullscreen"
     }).then(modalEl => {
       modalEl.present();
       return modalEl.onDidDismiss();

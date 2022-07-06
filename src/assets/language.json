@@ -183,9 +183,11 @@
             "enterText":"Enter Text..."
         },
         "Add_Edit_News": {
+            "AddPhoto":"Please Add your photo",
             "Camera": "Camera",
             "Gallery": "Gallery",
-            "Title": "Title",
+            "ItemName":"Item Name",
+            "Title": "Add/Edit News",
             "Description": "Text",
             "Submit": "Submit",
             "OutOfType": "Out OF Type!",

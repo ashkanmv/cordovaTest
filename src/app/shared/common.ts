@@ -534,10 +534,12 @@ export class Language {
     enterText:string;
   }
   Add_Edit_News: {
+    AddPhoto:string;
     Camera: string;
     Gallery: string;
+    ItemName:string;
     Title: string;
-    Text: string;
+    Description: string;
     Submit: string;
     OutOfType: string;
     NewsCreated: string;
