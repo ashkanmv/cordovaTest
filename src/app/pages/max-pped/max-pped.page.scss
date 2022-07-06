@@ -297,3 +297,10 @@ ion-col.nested-details{
 .firstrow2{
     background: #0095eb;
 }
+
+@media (max-width:519px) {
+    .wifi{
+      margin-right:  2.3vw  ;
+      margin-left: 2vw;
+    }
+}

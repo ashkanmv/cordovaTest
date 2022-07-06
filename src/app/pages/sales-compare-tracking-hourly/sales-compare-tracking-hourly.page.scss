@@ -15,11 +15,20 @@ ion-toolbar{
     }
 }
 
+ion-title{
+    h3{
+        font-size: 3.5vw;
+        margin-left: 9vw;
+    }
+}
+
 .reload{
     min-width: 40px;
+    max-width: 60px;
 }
 .wifi{
-    min-width: 30px;
+    min-width: 40px;
+    max-width: 60px;
 }
 
 
@@ -106,7 +115,6 @@ ion-col.segment-change{
 // -------------table
 // table!!
 .firstrow{
-    // background: var(--ion-color-light);
     &>:first-child{
         &>:first-child{
             color: #0095eb;
@@ -138,5 +146,12 @@ ion-col.table-container{
             }   
 
         }
+    }
+}
+
+
+@media (max-width:519px) {
+    .wifi{
+      margin-right:  2.3vw  ;
     }
 }

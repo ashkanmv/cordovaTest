@@ -157,7 +157,9 @@
         },
         "Sales_hourly_Day_And_Sales_Office": {
             "Title": "Sales hourly_Day & Sales Office",
-            "group": "All"
+            "group": "All",
+            "DSD_Hourly_City":"DSD HOURLY CITY",
+            "DSD_Hourly_Days":"DSD HOURLY DAYS"
         },
         "Sales_Compare_Tracking_Hourly": {
             "Title": "Sales Compare Tracking Hourly",

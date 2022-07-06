@@ -513,6 +513,8 @@ export class Language {
   Sales_hourly_Day_And_Sales_Office: {
     Title: string;
     group: string;
+    DSD_Hourly_City:string;
+    DSD_Hourly_Days:string;
   };
   Sales_Compare_Tracking_Hourly: {
     Title: string;
