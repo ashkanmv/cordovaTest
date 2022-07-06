@@ -561,6 +561,17 @@ export class Language {
     Title: string;
     group: string;
     UserIdNotFound: string;
+    dsd:string;
+    NON_DSD:string;
+    Route:string;
+    Pln:string;
+    Inv:string;
+    per:string;
+    oor:string;
+    Total:string;
+    NotINV:string;
+    Sale:string;
+    PPED:string;
   }
   Trace_Salesman :{
     NoLocationFound : string;

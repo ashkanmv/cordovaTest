@@ -205,7 +205,18 @@
         "Online_Daily_Sales": {
             "Title": "Online_Daily_Sales",
             "group": "All",
-            "UserIdNotFound": "UserId not found"
+            "UserIdNotFound": "UserId not found",
+            "dsd":"DSD",
+            "NON_DSD":"NON_DSD",
+            "Route":"Route",
+            "Pln":"Pln",
+            "Inv":"INV",
+            "per":"%",
+            "oor":"OOR",
+            "Total":"Total",
+            "NotINV":"NotINV",
+            "Sale":"Sale",
+            "PPED":"PPED"
         },
         "Trace_Salesman" : {
             "NoLocationFound" : "No location found !"
