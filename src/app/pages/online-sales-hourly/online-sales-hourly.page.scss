@@ -13,6 +13,9 @@ ion-toolbar{
         min-width:15px;
     }
 }
+.wifi{
+    margin-right: 2.5vw;
+}
 
 
 
@@ -61,11 +64,9 @@ ion-col.segment-change{
             width: 90%;
             border-radius: 10px;
             --border-width:0;
-            // --highlight-height:none;
             ng-select{
                 width: 100%;
                 height: 10vh;
-                overflow: hidden;
                
             }
         }
@@ -136,5 +137,11 @@ ion-col.table-container{
             }   
 
         }
+    }
+}
+
+@media (max-width:519px) {
+    .wifi{
+      margin-left: .6rem ;
     }
 }
