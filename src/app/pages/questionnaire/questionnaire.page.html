@@ -51,13 +51,13 @@
         >
           <ion-select
             class="drop-down select-drop-down"
-            placeholder="DC"
+            placeholder="{{language.Questionnaire.DC}}"
             interface="popover"
             formControlName="DC"
             (ionChange)="selectCity($event)"
           >
             <ion-select-option class="select-label" disabled value="">
-              DC
+              {{language.Questionnaire.DC}}
             </ion-select-option>
             <ion-select-option *ngFor="let item of cities" [value]="item.City">
               {{item.City}}
@@ -74,13 +74,13 @@
         >
           <ion-select
             class="drop-down select-drop-down"
-            placeholder="Route"
+            placeholder="{{language.Questionnaire.Route}}"
             interface="popover"
             formControlName="Route"
             (ionChange)="selectRoute($event)"
           >
             <ion-select-option class="select-label" disabled value=""
-              >Route</ion-select-option
+              >{{language.Questionnaire.Route}}</ion-select-option
             >
             <ion-select-option
               *ngFor="let item of routes"
@@ -99,13 +99,13 @@
         >
           <ion-select
             class="drop-down select-drop-down"
-            placeholder="Route Daily"
+            placeholder="{{language.Questionnaire.RouteDaily}}"
             interface="popover"
             formControlName="RouteDaily"
             (ionChange)="selectRouteDaily($event)"
           >
             <ion-select-option class="select-label" disabled value=""
-              >RouteDaily</ion-select-option
+              >{{language.Questionnaire.RouteDaily}}</ion-select-option
             >
             <ion-select-option
               *ngFor="let item of routedailys"
@@ -124,13 +124,13 @@
         >
           <ion-select
             class="drop-down select-drop-down"
-            placeholder="customer"
+            placeholder="{{language.Questionnaire.Customer}}"
             interface="popover"
             formControlName="Customer"
             (ionChange)="selectCustomer($event)"
           >
             <ion-select-option class="select-label" disabled value=""
-              >Customer</ion-select-option
+              >{{language.Questionnaire.Customer}}</ion-select-option
             >
             <ion-select-option *ngFor="let item of customers" [value]="item"
               >{{item.custName}}-{{item.CustCode}}</ion-select-option
@@ -148,7 +148,7 @@
         >
           <ion-select
             class="drop-down select-drop-down"
-            placeholder="Customer Category"
+            placeholder="{{language.Questionnaire.CustomerCategory}}"
             interface="popover"
             formControlName="QuestionCategory"
             (ionChange)="selectQuestion($event)"
@@ -158,7 +158,7 @@
               class="select-label"
               disabled
               value=""
-              >Customer Category</ion-select-option
+              >{{language.Questionnaire.CustomerCategory}}</ion-select-option
             >
             <ion-select-option
               *ngFor="let item of questioncats"
@@ -181,8 +181,8 @@
     *ngFor="let question of questions; let i = index"
     class="ion-justify-content-center questions-list"
   >
-    <ion-row>
-      <ion-label class="questions">{{question.text}}</ion-label>
+    <ion-row dir="{{get_direction()}}" >
+      <ion-label   class="questions">{{question.text}}</ion-label>
       <ng-container *ngIf="question.type=='yn' ">
         <ion-list class="radio-input-container ion-align-items-center ion-justify-content-around ">
           <ion-row *ngFor="let answer of question.answers; let j = index">
@@ -250,6 +250,6 @@
     </ion-row>
   </ion-grid>
   <div class="ion-justify-content-center ion-align-items-center btn-container">
-    <button class="btn-submit">Submit</button>
+    <button class="btn-submit">{{language.Submit}}</button>
   </div>
 </ion-content>

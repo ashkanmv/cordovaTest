@@ -10,8 +10,8 @@
         </ion-button>
       </ion-col>
       <ion-col sizeLg="7" class="ion-text-start ion-align-self-center">
-        <ion-title class="ion-no-padding white-text ion-align-self-center"
-          >Customer nearby
+        <ion-title class="ion-no-padding white-text ion-align-self-center "
+          >{{language.Customer_nearby.Title}}
         </ion-title>
       </ion-col>
       <ion-col size="1" class="ion-align-self-center description">
@@ -27,30 +27,30 @@
         >
           <ng-template>
             <ion-content disabled class="header-input-popover-title"
-              >Description</ion-content
+              >{{language.Customer_nearby.Description}}</ion-content
             >
             <ion-content>
               <div value="normal-customer" class="">
                 <img src="\assets\pages\customer-nearby\Green.png" alt="" />
-                <p value="normal-customer">Normal Customer</p>
+                <p value="normal-customer">{{language.Customer_nearby.Normal_Customer}}</p>
               </div>
             </ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\customer-nearby\Green-1.png" alt="" />
-                <p>Promotion Customer</p>
+                <p>{{language.Customer_nearby.Promotion_Customer}}</p>
               </div>
             </ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\customer-nearby\Path.png" alt="" />
-                <p>PPED > 5%</p>
+                <p>{{language.Customer_nearby.PPED_MoreThan_5Per}}</p>
               </div>
             </ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\customer-nearby\Path 8119.png" alt="" />
-                <p>NOT Buy 2 Weeks</p>
+                <p>{{language.Customer_nearby.NOT_Buy_2_Weeks}}</p>
               </div>
             </ion-content>
             <ion-content>
@@ -59,7 +59,7 @@
                   src="\assets\pages\customer-nearby\Group 1424.png"
                   alt=""
                 />
-                <p>Not Buy 2 Weeks & PPED > 5%</p>
+                <p>{{language.Customer_nearby.NOT_Buy_2_Weeks_PPED}}</p>
               </div>
             </ion-content>
           </ng-template>
