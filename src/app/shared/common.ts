@@ -533,6 +533,8 @@ export class Language {
   DailyStatus: {
     Title: string;
     group: string;
+    Tablet:string;
+    Truck:string;
   }
   News: {
     Title: string;

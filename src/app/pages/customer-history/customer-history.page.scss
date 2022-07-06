@@ -81,7 +81,7 @@ ion-img .back-button.ios{
 }
 .gps{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 span.toggle-background{
     background: var(--ion-color-light);

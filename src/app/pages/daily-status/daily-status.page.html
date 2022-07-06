@@ -47,10 +47,10 @@
   <ion-col class="ion-no-padding segment-change">
     <ion-segment mode="md" class="ion-justify-content-between" (ionChange)="segmentChanged($event)" value="tablet">
       <ion-segment-button class="tablet" value="tablet">
-        <ion-label>Tablet</ion-label>
+        <ion-label>{{language.DailyStatus.Tablet}}</ion-label>
       </ion-segment-button>
       <ion-segment-button class="truck" value="truck">
-        <ion-label>Truck</ion-label>
+        <ion-label>{{language.DailyStatus.Truck}}</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-col>
@@ -61,7 +61,7 @@
     <ion-grid>
       <ion-row class="date-picker-container">
         <ion-row class="date-picker-box">
-          <label for="Date-picker">{{language.DatePicker.title}}</label>
+          <label for="Date-picker">{{language.DatePicker.Title}}</label>
           <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <ion-col id="open-popover" class="ion-justify-content-end">
@@ -110,11 +110,11 @@
     </ion-grid>
     <ion-grid>
       <ion-grid class="maingrid-tablet ion-no-padding ">
-        <div *ngFor="let row of virtual_rows_t; let i = index" [ngClass]="{'firstrow': i==0}">
+        <div *ngFor="let row of virtual_rows_t; let i = index" [ngClass]="{'firstRow': i==0}">
           <ion-row>
             <ng-container *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')">
               <ion-col class="ion-justify-content-center ion-align-items-center" *ngFor="let item of commutes_t[row.index]; let j = index"
-                [ngClass]="{'firstcolumn': j==0 ,'oddColumns' : 0 === j % 2 }">
+                [ngClass]="{'firstColumn': j==0 && i!=0 ,'oddColumns' : 0 === j % 2 && i!=0 }">
                 {{ item }}
               </ion-col>
             </ng-container>
@@ -122,23 +122,13 @@
         </div>
 
         <div class="tablet-table-body-container" >
-          <div *ngFor="let row of virtual_rows_t; let i = index" (click)="row_click_t(row)"  [ngClass]="{'oddRows' : 3 === i % 4}" >
+          <div *ngFor="let row of virtual_rows_t; let i = index" [ngClass]="{'oddRows' : 3 === i % 4}" >
             <ion-row>
               <ng-container *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')">
                 <ion-col class="ion-justify-content-center ion-align-items-center" *ngFor="let item of commutes_t[row.index]; let j = index"
-                  [ngClass]="{'firstcolumn': j==0 , 'oddColumns' : 0 === j % 2 }">
+                  [ngClass]="{'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 }">
                   {{ item }}
                 </ion-col>
-              </ng-container>
-
-              <ng-container *ngIf="row.show && row.type=='b'">
-                <ion-grid class="tablet-details-container">
-                  <ion-row wrap *ngFor="let rows of selected_ch_t[row.index]">
-                    <ion-col class="ion-justify-content-center ion-align-items-center" *ngFor="let item of rows" style="border: 1px solid dodgerblue!important">
-                      {{ item }}
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
               </ng-container>
             </ion-row>
           </div>
@@ -155,7 +145,7 @@
       <!--  -->
       <ion-row class="date-picker-container">
         <ion-row class="date-picker-box">
-          <label for="Date-picker">{{language.DatePicker.title}}</label>
+          <label for="Date-picker">{{language.DatePicker.Title}}</label>
           <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <ion-col id="open-popover" class="ion-justify-content-end">
@@ -204,15 +194,35 @@
         </ion-item>
       </ion-row>
     </ion-grid>
-    <ion-grid>
-      <table class="truck-table">
-        <th>0</th>
-        <th>E</th>
-        <th>m</th>
-        <th>p</th>
-        <th>t</th>
-        <th>y</th>
-      </table>
-    </ion-grid>
+    <ion-grid class="truck-table">
+        <div *ngFor="let row of virtual_rows; let i = index" 
+        [ngClass]="{'firstRow': i==0 , 'oddRows': 0 === i % 2}">
+          <ion-row>
+            <ng-container *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')">
+              <ion-col class="ion-justify-content-center ion-align-items-center" *ngFor="let item of commutes[row.index]; let j = index"
+              [ngClass]="{'firstColumn': j==0 && i!=0 ,'oddColumns' : 0 === j % 2 && i!=0 }">
+              {{ item }}
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </div>
+        <div class="tablet-table-body-container">
+          <div *ngFor="let row of virtual_rows; let i = index" >
+            <ion-row>
+              <ng-container *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')">
+
+                <ion-col class="ion-justify-content-center ion-align-items-center"
+                 *ngFor="let item of commutes[row.index]; let j = index"
+                 [ngClass]="{'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 }">
+                 {{ item }}
+                </ion-col>
+
+              </ng-container>
+
+            </ion-row>
+          </div>
+        </div>
+      </ion-grid>
+    
   </ion-grid>
 </ion-content>

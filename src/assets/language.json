@@ -177,7 +177,9 @@
         },
         "DailyStatus": {
             "Title": "Daily Status",
-            "group": "All"
+            "group": "All",
+            "Tablet":"Tablet",
+            "Truck":"Truck"
         },
         "News": {
             "Title": "Notifications",

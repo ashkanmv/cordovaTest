@@ -25,6 +25,8 @@ export class DailyStatusPage implements OnInit {
   virtual_rows_t = [];
   // old rys
   selected_dc_t;
+  selected_dc;
+  selected_ch1 = [];
   selected_ch_t = [];
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
 
@@ -224,39 +226,6 @@ export class DailyStatusPage implements OnInit {
     }
     loading.dismiss();
   }
-  // old rys
-  row_click_t(row) {
-    if (row.type == 'a') {
-      if (this.virtual_rows_t[row.index + 1].show) {
-        this.virtual_rows_t[row.index + 1].show = false;
-      } else {
-        this.virtual_rows_t[row.index + 1].show = true;
-      }
-      this.dailyStatusService.getCommuteDetail(this.selectedTabletDc, this.commutes_t[row.index][0])
-        .subscribe(
-          customer_histories => {
-            this.create_model_t(customer_histories, row.index + 1);
-          });
-    }
-  }
-
-  create_model_t(model, index) {
-    this.selected_ch_t[index] = [];
-    if (model[0]) {
-      let keys = Object.keys(model[0]);
-      this.commutes_t.push(keys)
-      for (var i = 0; i < model.length; i++) {
-        let ch = model[i];
-        let temp = Object.keys(ch).map(key => ch[key]);
-        for (var j = 1; j < temp.length; j++) {
-          if (temp[j] != null) {
-            temp[j] = temp[j];
-          }
-        }
-        this.selected_ch_t[index].push(temp);
-      }
-    }
-  }
 
   tabletDateChanged(selectedDate: string) {
     this.getCommutecityT(selectedDate.slice(0, selectedDate.length - 6));
@@ -265,4 +234,5 @@ export class DailyStatusPage implements OnInit {
   truckDateChanged(selectedDate: string) {
     this.getCommutecity(selectedDate.slice(0, selectedDate.length - 6));
   }
+
 }
