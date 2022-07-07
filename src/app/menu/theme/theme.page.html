@@ -1,12 +1,9 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar [style.--background]="sharedService.handleBackgroundColor()" [style.--color]="sharedService.handleColor()">
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/settings">
-          <ion-img
-            class="back-button"
-            src="\assets\menu\theme\Path 10.png"
-          ></ion-img>
+          <ion-img class="back-button" src="\assets\menu\theme\Path 10.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col size="6" class="ion-text-center">
@@ -18,32 +15,22 @@
     </ion-row>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content [style.--background]="sharedService.handleBackgroundColor()" [style.--color]="sharedService.handleColor()">
   <ion-row class="ion-justify-content-center" class="select-theme">
     <ion-radio-group>
-      <ion-col class="dark-theme ion-align-items-center" size="6"
-        ><ion-img
-          src="\assets\menu\theme\Icon awesome-mobile-alt.png"
-        ></ion-img>
+      <ion-col class="dark-theme ion-align-items-center" size="6">
+        <ion-img src="\assets\menu\theme\Icon awesome-mobile-alt.png"></ion-img>
         <h3>{{language.theme.dark}}</h3>
         <ion-item>
-          <ion-radio
-            name="theme-color"
-            value="{{language.theme.dark}}"
-          ></ion-radio>
+          <ion-radio name="theme-color" value="{{language.theme.dark}}"></ion-radio>
           <h3>{{language.theme.select}}</h3>
         </ion-item>
       </ion-col>
-      <ion-col class="light-theme" i size="6"
-        ><ion-img
-          src="\assets\menu\theme\Icon awesome-mobile-alt-1.png"
-        ></ion-img>
+      <ion-col class="light-theme" i size="6">
+        <ion-img src="\assets\menu\theme\Icon awesome-mobile-alt-1.png"></ion-img>
         <h3>{{language.theme.light}}</h3>
         <ion-item>
-          <ion-radio
-            name="theme-color"
-            value="{{language.theme.light}}"
-          ></ion-radio>
+          <ion-radio name="theme-color" value="{{language.theme.light}}"></ion-radio>
           <h3>{{language.theme.select}}</h3>
         </ion-item>
       </ion-col>
@@ -52,52 +39,55 @@
   <ion-row class="theme-options ion-justify-content-center">
     <ion-col size="12">
       <ion-item class="ion-align-items-center setting-box">
-        <ion-col class="option-label" size="9"
-          >{{language.theme.automatic_dark_mode}}</ion-col
-        >
-        <ion-col class="option-options ion-justify-content-end" size="3"
-          ><ion-toggle mode="ios"></ion-toggle
-        ></ion-col>
-      </ion-item>
-    </ion-col>
-    <ion-col size="12">
-      <ion-item class="setting-box">
-        <ion-col class="option-label" size="9"
-          >{{language.theme.text_size}}</ion-col
-        >
+        <ion-col class="option-label" size="9">{{language.theme.automatic_dark_mode}}</ion-col>
         <ion-col class="option-options ion-justify-content-end" size="3">
-          <a>
-            <ion-icon name="chevron-forward-outline"></ion-icon>
-          </a>
+          <ion-toggle mode="ios"></ion-toggle>
         </ion-col>
       </ion-item>
     </ion-col>
     <ion-col size="12">
       <ion-item class="setting-box">
+        <ion-label class="option-label">{{language.theme.text_size}}</ion-label>
+        <ion-select interface="popover" [(ngModel)]="fontSize">
+          <ion-select-option [value]="14">14</ion-select-option>
+          <ion-select-option [value]="16">16</ion-select-option>
+          <ion-select-option [value]="18">18</ion-select-option>
+          <ion-select-option [value]="20">20</ion-select-option>
+          <ion-select-option [value]="22">22</ion-select-option>
+          <ion-select-option [value]="24">24</ion-select-option>
+          <ion-select-option [value]="26">26</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!-- <ion-item class="setting-box">
         <ion-col class="option-label" size="9"
-          >{{language.theme.bold_text}}</ion-col
+          >{{language.theme.text_size}}</ion-col
         >
-        <ion-col class="option-options ion-justify-content-end" size="3"
-          ><ion-toggle mode="ios"></ion-toggle
-        ></ion-col>
+        <ion-col class="option-options ion-justify-content-end" size="3">
+           <a>
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </a> 
+          
+        </ion-col>
+      </ion-item> -->
+    </ion-col>
+    <ion-col size="12">
+      <ion-item class="setting-box">
+        <ion-col class="option-label" size="9">{{language.theme.bold_text}}</ion-col>
+        <ion-col class="option-options ion-justify-content-end" size="3">
+          <ion-toggle mode="ios" [(ngModel)]="boldFontWeight"></ion-toggle>
+        </ion-col>
       </ion-item>
     </ion-col>
   </ion-row>
   <ion-row class="theme-colors">
-    <ion-col
-      class="theme-colors-label ion-justify-content-center ion-align-items-center"
-      size="5"
-      >{{language.theme.theme_color}}</ion-col
-    >
-    <ion-col
-      class="theme-colors-colors ion-justify-content-center ion-align-items-center"
-      size="7"
-    >
-      <a class="green"></a>
-      <a class="yellow"></a>
-      <a class="red"></a>
-      <a class="purple"></a>
-      <a class="blue"></a>
+    <ion-col class="theme-colors-label ion-justify-content-center ion-align-items-center" size="5">
+      {{language.theme.theme_color}}</ion-col>
+    <ion-col class="theme-colors-colors ion-justify-content-center ion-align-items-center" size="7">
+      <a class="green" (click)="changeBackgroundColor(1)"></a>
+      <a class="yellow" (click)="changeBackgroundColor(2)"></a>
+      <a class="red" (click)="changeBackgroundColor(3)"></a>
+      <a class="purple" (click)="changeBackgroundColor(4)"></a>
+      <a class="blue" (click)="changeBackgroundColor(5)"></a>
     </ion-col>
   </ion-row>
 </ion-content>

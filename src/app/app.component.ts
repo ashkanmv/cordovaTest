@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Language } from './shared/common';
+import { BackgroundColors, Language } from './shared/common';
 import { GeoLocationService } from './shared/geo-location.service';
 import { LanguageService } from './shared/language.service';
+import { SharedService } from './shared/shared.service';
 import { StorageService } from './shared/storage.service';
 
 @Component({
@@ -13,16 +14,18 @@ import { StorageService } from './shared/storage.service';
 export class AppComponent implements OnInit {
   startApp = false;
   language: boolean;
-
-  public get languageChosen(): Language{
+  public get selectedLanguage(): Language{
     return this.languageService.language;
 
   }
+
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
   constructor(
     private plt: Platform,
     private languageService: LanguageService,
     private storageService: StorageService,
-    private geoLocationService: GeoLocationService
+    private geoLocationService: GeoLocationService,
+    public sharedService : SharedService,
   ) { }
   ngOnInit(): void {
     this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false;
@@ -52,5 +55,13 @@ export class AppComponent implements OnInit {
 
   startTracking() {
     this.storageService.get('start_tracking_url').then(url => this.geoLocationService.startTracking(url))
+  }
+
+  fontSize(){
+    return this.sharedService.fontSize.toString() + 'px';
+  }
+
+  isBold(){
+    return this.sharedService.boldFontWeight == false ? 'normal' : 'bold' 
   }
 }
