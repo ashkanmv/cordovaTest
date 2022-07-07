@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-theme',
@@ -15,7 +16,14 @@ export class ThemePage implements OnInit {
   public get selectedLanguage(): Language {
     return this.languageService.language;
   }
-  constructor(private languageService: LanguageService) {}
+
+  public get fontSize(): number { return this.shareService.fontSize ; }
+  set fontSize(v: number) {
+    this.shareService.fontSize = v
+  }
+
+  constructor(private languageService: LanguageService,
+    private shareService : SharedService) {}
 
   ngOnInit() {}
 }

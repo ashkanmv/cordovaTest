@@ -7,7 +7,14 @@ import { PredefinedColors } from '@ionic/core';
 })
 export class SharedService {
   isOnline = true;
-  constructor(private toastCtrl: ToastController) {}
+  private _fontSize: number = 16;
+  public get fontSize(): number { return this._fontSize; }
+  set fontSize(v: number) {
+    if (v)
+      this._fontSize = v;
+  }
+
+  constructor(private toastCtrl: ToastController) { }
 
   toast(color: PredefinedColors, message: string) {
     this.toastCtrl
