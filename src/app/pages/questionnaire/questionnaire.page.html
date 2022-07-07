@@ -3,10 +3,8 @@
     <ion-row class="header ion-justify-content-center ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
+          <ion-img class="back-button ion-justfy-self-start ion-align-self-cente"
+            src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
       <ion-col size="9" class="ion-text-center">
@@ -15,47 +13,20 @@
         </ion-title>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
-        <ion-img *ngIf="isOnline"
-          class="wifiOn"
-          src="\assets\pages\Wifi\Internet On.png"
-        ></ion-img>
-        <ion-img *ngIf="!isOnline"
-          class="wifiOff"
-          src="\assets\pages\Wifi\Internet Off.png"
-        ></ion-img>
+        <ion-img *ngIf="isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet On.png"></ion-img>
+        <ion-img *ngIf="!isOnline" class="wifiOff" src="\assets\pages\Wifi\Internet Off.png"></ion-img>
       </ion-col>
     </ion-row>
-    <ion-grid class="secondary-bg white-text">
-      <ion-row class="ion-justify-content-between">
-        <ion-col size="3" class="ion-no-padding ion-text-start">
-          2022.04.02
-        </ion-col>
-        <ion-col size="3" class="ion-no-padding ion-text-center">
-          Saturday
-        </ion-col>
-        <ion-col size="3" class="ion-no-padding ion-text-end">
-          13 فروردین
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <app-date></app-date>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <ion-col class="">
       <ion-row class="ion-justify-content-center select-box">
-        <ion-item
-          id="trigger-input-date"
-          lines="none"
-          class="lightBlue-shadow select-input"
-        >
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="{{language.Questionnaire.DC}}"
-            interface="popover"
-            formControlName="DC"
-            (ionChange)="selectCity($event)"
-          >
+        <ion-item id="trigger-input-date" lines="none" class="lightBlue-shadow select-input">
+          <ion-select class="drop-down select-drop-down" placeholder="{{language.Questionnaire.DC}}" interface="popover"
+            formControlName="DC" (ionChange)="selectCity($event)">
             <ion-select-option class="select-label" disabled value="">
               {{language.Questionnaire.DC}}
             </ion-select-option>
@@ -67,104 +38,50 @@
         </ion-item>
       </ion-row>
       <ion-row class="ion-justify-content-center select-box">
-        <ion-item
-          id="trigger-input-route"
-          lines="none"
-          class="lightBlue-shadow"
-        >
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="{{language.Questionnaire.Route}}"
-            interface="popover"
-            formControlName="Route"
-            (ionChange)="selectRoute($event)"
-          >
-            <ion-select-option class="select-label" disabled value=""
-              >{{language.Questionnaire.Route}}</ion-select-option
-            >
-            <ion-select-option
-              *ngFor="let item of routes"
-              [value]="item.routename"
-              >{{item.routename}}</ion-select-option
-            >
+        <ion-item id="trigger-input-route" lines="none" class="lightBlue-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="{{language.Questionnaire.Route}}"
+            interface="popover" formControlName="Route" (ionChange)="selectRoute($event)">
+            <ion-select-option class="select-label" disabled value="">{{language.Questionnaire.Route}}
+            </ion-select-option>
+            <ion-select-option *ngFor="let item of routes" [value]="item.routename">{{item.routename}}
+            </ion-select-option>
           </ion-select>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-item>
       </ion-row>
       <ion-row class="ion-justify-content-center select-box">
-        <ion-item
-          id="trigger-input-route-daily"
-          lines="none"
-          class="lightBlue-shadow"
-        >
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="{{language.Questionnaire.RouteDaily}}"
-            interface="popover"
-            formControlName="RouteDaily"
-            (ionChange)="selectRouteDaily($event)"
-          >
-            <ion-select-option class="select-label" disabled value=""
-              >{{language.Questionnaire.RouteDaily}}</ion-select-option
-            >
-            <ion-select-option
-              *ngFor="let item of routedailys"
-              [value]="item.RouteID"
-              >{{item.Title}}</ion-select-option
-            >
+        <ion-item id="trigger-input-route-daily" lines="none" class="lightBlue-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="{{language.Questionnaire.RouteDaily}}"
+            interface="popover" formControlName="RouteDaily" (ionChange)="selectRouteDaily($event)">
+            <ion-select-option class="select-label" disabled value="">{{language.Questionnaire.RouteDaily}}
+            </ion-select-option>
+            <ion-select-option *ngFor="let item of routedailys" [value]="item.RouteID">{{item.Title}}
+            </ion-select-option>
           </ion-select>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-item>
       </ion-row>
       <ion-row class="ion-justify-content-center select-box">
-        <ion-item
-          id="trigger-input-customer"
-          lines="none"
-          class="lightBlue-shadow"
-        >
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="{{language.Questionnaire.Customer}}"
-            interface="popover"
-            formControlName="Customer"
-            (ionChange)="selectCustomer($event)"
-          >
-            <ion-select-option class="select-label" disabled value=""
-              >{{language.Questionnaire.Customer}}</ion-select-option
-            >
-            <ion-select-option *ngFor="let item of customers" [value]="item"
-              >{{item.custName}}-{{item.CustCode}}</ion-select-option
-            >
+        <ion-item id="trigger-input-customer" lines="none" class="lightBlue-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="{{language.Questionnaire.Customer}}"
+            interface="popover" formControlName="Customer" (ionChange)="selectCustomer($event)">
+            <ion-select-option class="select-label" disabled value="">{{language.Questionnaire.Customer}}
+            </ion-select-option>
+            <ion-select-option *ngFor="let item of customers" [value]="item">{{item.custName}}-{{item.CustCode}}
+            </ion-select-option>
           </ion-select>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-item>
       </ion-row>
 
       <ion-row class="ion-justify-content-center select-box">
-        <ion-item
-          id="trigger-input-customer-category"
-          lines="none"
-          class="lightBlue-shadow"
-        >
-          <ion-select
-            class="drop-down select-drop-down"
-            placeholder="{{language.Questionnaire.CustomerCategory}}"
-            interface="popover"
-            formControlName="QuestionCategory"
-            (ionChange)="selectQuestion($event)"
-          >
-            <ion-select-option
-              size="cover"
-              class="select-label"
-              disabled
-              value=""
-              >{{language.Questionnaire.CustomerCategory}}</ion-select-option
-            >
-            <ion-select-option
-              *ngFor="let item of questioncats"
-              [value]="item.QusCatID"
-              >{{item.CatName}}</ion-select-option
-            >
+        <ion-item id="trigger-input-customer-category" lines="none" class="lightBlue-shadow">
+          <ion-select class="drop-down select-drop-down" placeholder="{{language.Questionnaire.CustomerCategory}}"
+            interface="popover" formControlName="QuestionCategory" (ionChange)="selectQuestion($event)">
+            <ion-select-option size="cover" class="select-label" disabled value="">
+              {{language.Questionnaire.CustomerCategory}}</ion-select-option>
+            <ion-select-option *ngFor="let item of questioncats" [value]="item.QusCatID">{{item.CatName}}
+            </ion-select-option>
           </ion-select>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-item>
@@ -176,24 +93,17 @@
   <!-- ==============================questions=================================== -->
   <!-- ==============================questions=================================== -->
 
-  <ion-grid
-    dir="{{get_direction()}}"
-    *ngFor="let question of questions; let i = index"
-    class="ion-justify-content-center questions-list"
-  >
-    <ion-row dir="{{get_direction()}}" >
-      <ion-label   class="questions">{{question.text}}</ion-label>
+  <ion-grid dir="{{get_direction()}}" *ngFor="let question of questions; let i = index"
+    class="ion-justify-content-center questions-list">
+    <ion-row dir="{{get_direction()}}">
+      <ion-label class="questions">{{question.text}}</ion-label>
       <ng-container *ngIf="question.type=='yn' ">
         <ion-list class="radio-input-container ion-align-items-center ion-justify-content-around ">
           <ion-row *ngFor="let answer of question.answers; let j = index">
             <ion-list class="radio-input-box ion-align-items-center">
               <ion-item>
-                <ion-radio
-                  mode="md"
-                  value="{{answer.text}}"
-                  (ionSelect)="radioSelect(i,j)"
-                  (click)="radioSelect(i,j)"
-                ></ion-radio>
+                <ion-radio mode="md" value="{{answer.text}}" (ionSelect)="radioSelect(i,j)" (click)="radioSelect(i,j)">
+                </ion-radio>
                 <ion-label>{{answer.text}}</ion-label>
               </ion-item>
             </ion-list>
@@ -201,10 +111,7 @@
           <ion-row>
             <ion-col>
               <ng-container *ngIf="question.has_image && active_camera(i)">
-                <ion-button
-                  color="{{get_pic_status(i)}}"
-                  (click)="onCamera(i)"
-                >
+                <ion-button color="{{get_pic_status(i)}}" (click)="onCamera(i)">
                   <ion-icon name="camera"></ion-icon>
                 </ion-button>
               </ng-container>
@@ -212,9 +119,7 @@
             <ion-col>
               <ng-container *ngIf="question.has_image">
                 <div text-center *ngIf="question.pic">
-                  <img
-                    src="http://77.104.65.168:8002/answerlog/{{question.pic}}"
-                  />
+                  <img src="http://77.104.65.168:8002/answerlog/{{question.pic}}" />
                 </div>
               </ng-container>
             </ion-col>
@@ -223,28 +128,20 @@
       </ng-container>
 
       <ng-container>
-        <ion-col
-          *ngIf="question.type=='tx' "
-          size="12"
-          class="text-input-container ion-justify-content-center ion-align-items-center "
-        >
+        <ion-col *ngIf="question.type=='tx' " size="12"
+          class="text-input-container ion-justify-content-center ion-align-items-center ">
           <ion-row class="ion-justify-content-center">
-            <ion-input
-              [(ngModel)]="txtanswers[i]"
-              type="text"
-              placeholder="....................................................................................................................................................."
-            ></ion-input>
+            <ion-input [(ngModel)]="txtanswers[i]" type="text"
+              placeholder=".....................................................................................................................................................">
+            </ion-input>
           </ion-row>
         </ion-col>
       </ng-container>
       <ng-container *ngIf="question.type=='ml' ">
         <ion-item *ngFor="let answer of question.answers; let j = index">
           <ion-label>{{answer.text}}</ion-label>
-          <ion-checkbox
-            checked="{{checkbox_value(i,j)}}"
-            color="primary"
-            (ionChange)="checkboxSelect(i,j)"
-          ></ion-checkbox>
+          <ion-checkbox checked="{{checkbox_value(i,j)}}" color="primary" (ionChange)="checkboxSelect(i,j)">
+          </ion-checkbox>
         </ion-item>
       </ng-container>
     </ion-row>

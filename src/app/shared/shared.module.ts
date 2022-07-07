@@ -7,6 +7,7 @@ import { AreaChartsComponent } from '../charts/area-charts/area-charts.component
 import { ColumnChartsComponent } from '../charts/column-charts/column-charts.component';
 import { VariableRadiusPieChartsComponent } from '../charts/pie-charts/pie-charts.component';
 import { MapComponent } from '../map/map.component';
+import { DateComponent } from './components/date/date.component';
 import { PopoverComponent } from './components/popover/popover.component';
 import { SearchSelectComponent } from './components/search-select/search-select.component';
 
@@ -19,6 +20,7 @@ import { SearchSelectComponent } from './components/search-select/search-select.
     MapComponent,
     PopoverComponent,
     SearchSelectComponent,
+    DateComponent
   ],
   declarations: [
     VariableRadiusPieChartsComponent,
@@ -27,6 +29,7 @@ import { SearchSelectComponent } from './components/search-select/search-select.
     MapComponent,
     PopoverComponent,
     SearchSelectComponent,
+    DateComponent
   ],
   providers: [],
 })

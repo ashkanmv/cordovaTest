@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { QuestionnairePageRoutingModule } from './questionnaire-routing.module';
 
 import { QuestionnairePage } from './questionnaire.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +15,7 @@ import { QuestionnairePage } from './questionnaire.page';
     IonicModule,
     QuestionnairePageRoutingModule,
     ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [QuestionnairePage],
 })

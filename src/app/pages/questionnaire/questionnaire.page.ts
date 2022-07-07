@@ -55,7 +55,7 @@ export class QuestionnairePage implements OnInit {
     private loadingCtrl: LoadingController,
     private languageService: LanguageService,
     private answerLogService: AnswerLogService,
-    private persianCalendarService: PersianCalendarService,
+    public persianCalendarService: PersianCalendarService,
     private utilService: UtilService,
     private cam: Camera,
     private fileTransfer: FileTransfer,
