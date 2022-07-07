@@ -252,7 +252,7 @@
         },
         "Menu" : {
             "en":"EN",
-            "fa":"Fa",
+            "fa":"FR",
             "MainPage":"MainPage",
             "Profile":"Profile",
             "ContactUs":"Contact Us",
@@ -333,6 +333,16 @@
             "RememberMe": "تستتتت",
             "PoweredBy": "تستتتت",
             "serial": "تست"
+        },
+        "Menu" : {
+            "en":"EN",
+            "fa":"FR",
+            "MainPage":"MainPage",
+            "Profile":"Profile",
+            "ContactUs":"Contact Us",
+            "AboutUs":"About Us",
+            "Setting":"Setting",
+            "LogOut":"LogOut"
         }
     }
 }

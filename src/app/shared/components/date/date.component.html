@@ -1,0 +1,13 @@
+<ion-grid class="secondary-bg white-text">
+  <ion-row class="ion-justify-content-between">
+    <ion-col size="3" class="ion-no-padding ion-text-start">
+      {{persianCalendarService.getGregoryFormat2(today)}}
+    </ion-col>
+    <ion-col size="3" class="ion-no-padding ion-text-center">
+      {{weekDay()}}
+    </ion-col>
+    <ion-col size="3" class="ion-no-padding ion-text-end">
+      {{dayAndMonth()}}
+    </ion-col>
+  </ion-row>
+</ion-grid>
