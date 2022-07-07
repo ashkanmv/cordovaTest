@@ -3,7 +3,6 @@
 ion-toolbar ion-row{
     --background: var(--ion-color-light);
     --color: #0095EB;
-    // flex-wrap: nowrap;
 }
 ion-toolbar.ios{
     --ion-padding-bottom:0;
@@ -16,8 +15,9 @@ ion-content {
 ion-title {
     height: 100%;
     padding-left: 5px;
+    text-align: center;
     h3{
-        font-size: 3vw;
+        font-size: 1.5rem;
     }
 }
 ion-item{
@@ -35,10 +35,12 @@ ion-img{
 }
 
 .wifi{
-    min-width: 50px;
+    min-width: 40px;
+    max-width: 60px;
 }
 .reload{
-    min-width: 50px;
+    min-width: 40px;
+    max-width: 60px;
 }
 
 ion-img .back-button.ios{
@@ -95,7 +97,7 @@ ion-row{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-            font-weight: bold;
+             // font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -113,7 +115,7 @@ ion-row{
                 color: #0095EB;
                 display: flex;
                 font-size: 1.5rem;
-                font-weight: bold;
+                 // font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1rem;
@@ -141,7 +143,6 @@ ion-row{
             ng-select{
                 width: 100%;
                 height: 10vh;
-                overflow-y: scroll;
             }
         }
         .search-submit{
@@ -251,7 +252,7 @@ table.main-table{
                         text-align: center;
                     }
                     .firstcolumn{
-                        background: #0095EB;
+                        background: #5ebff8;
                     }
                 }
             }

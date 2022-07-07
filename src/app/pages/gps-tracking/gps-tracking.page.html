@@ -8,7 +8,7 @@
       </ion-col>
       <ion-col size="8" class="ion-text-center ion-align-self-center">
         <ion-title class="ion-no-padding white-text">
-          <h3>Gps Tracking</h3>
+          <h3>{{language.Gps_Tracking.Title}}</h3>
         </ion-title>
       </ion-col>
       <ion-col size="1" class="ion-align-self-center description ion-no-padding">
@@ -16,41 +16,41 @@
 
         <ion-popover class="header-drop-down description-drop-down" trigger="trigger-desc" showBackdrop="false">
           <ng-template>
-            <ion-content disabled class="header-input-popover-title">Description</ion-content>
+            <ion-content disabled class="header-input-popover-title">{{language.Gps_Tracking.Description}}</ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\GPS-tracking\Green.png" alt="" />
-                <p>Planned (Not Invoiced Yet)</p>
+                <p>{{language.Gps_Tracking.Planned_Not_Invoiced_Yet}}</p>
               </div>
             </ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\GPS-tracking\Green-1.png" alt="" />
-                <p>Planned & Invoiced</p>
+                <p>{{language.Gps_Tracking.Planned_and_Invoiced}}</p>
               </div>
             </ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\GPS-tracking\Green-2.png" alt="" />
-                <p>OOP invoiced</p>
+                <p>{{language.Gps_Tracking.OOP_invoiced}}</p>
               </div>
             </ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\GPS-tracking\Green-3.png" alt="" />
-                <p>Visited Not Buy</p>
+                <p>{{language.Gps_Tracking.Visited_Not_Buy}}</p>
               </div>
             </ion-content>
             <ion-content>
               <div>
                 <img src="\assets\pages\GPS-tracking\Green-4.png" alt="" />
-                <p>SR</p>
+                <p>{{language.Gps_Tracking.sr}}</p>
               </div>
             </ion-content>
             <ion-content>
               <div>
                 <img src="\assets\pages\GPS-tracking\Green-5.png" alt="" />
-                <p>Truck</p>
+                <p>{{language.Gps_Tracking.Truck}}</p>
               </div>
             </ion-content>
           </ng-template>
@@ -108,7 +108,7 @@
           <ion-item id="trigger-input-RSM" lines="none" class="lightBlue-shadow">
             <ion-select class="drop-down select-drop-down" placeholder="RSM" interface="popover"
               formControlName="selectedRsm" (ionChange)="rsmSelect()">
-              <ion-select-option class="select-label" disabled value="">RSM</ion-select-option>
+              <ion-select-option class="select-label" disabled value="">{{language.Gps_Tracking.Input_select_RSM}}</ion-select-option>
               <ion-select-option *ngFor="let item of rsms" [value]="item">{{item.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -118,7 +118,7 @@
           <ion-item id="trigger-input-ASM" lines="none" class="lightBlue-shadow">
             <ion-select class="drop-down select-drop-down" placeholder="ASM" interface="popover"
               formControlName="selectedAsm" (ionChange)="asmSelect()">
-              <ion-select-option class="select-label" disabled value="">ASM</ion-select-option>
+              <ion-select-option class="select-label" disabled value="">{{language.Gps_Tracking.Input_select_ASM}}</ion-select-option>
               <ion-select-option *ngFor="let item of asms" [value]="item">{{item.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -128,7 +128,7 @@
           <ion-item id="trigger-input-SSV" lines="none" class="lightBlue-shadow">
             <ion-select class="drop-down select-drop-down" placeholder="SSV" interface="popover"
               formControlName="selectedSsv" (ionChange)="ssvSelect()">
-              <ion-select-option class="select-label" disabled value="">SSV</ion-select-option>
+              <ion-select-option class="select-label" disabled value="">{{language.Gps_Tracking.Input_select_SSV}}</ion-select-option>
               <ion-select-option *ngFor="let item of ssvs" [value]="item">{{item.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -138,7 +138,7 @@
           <ion-item id="trigger-input-SR" lines="none" class="lightBlue-shadow">
             <ion-select class="drop-down select-drop-down" placeholder="SR" interface="popover"
               formControlName="selectedSr" (ionChange)="srSelect()">
-              <ion-select-option class="select-label" disabled value="">SR</ion-select-option>
+              <ion-select-option class="select-label" disabled value="">{{language.Gps_Tracking.Input_select_SR}}</ion-select-option>
               <ion-select-option *ngFor="let item of srs" [value]="item">{{item.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -151,11 +151,11 @@
           <div class="radio-input lightBlue-shadow">
             <div class="">
               <input type="checkbox" formControlName="showTruck" />
-              <label for="showTruck">Show truck</label>
+              <label for="showTruck">{{language.Gps_Tracking.Radio_input_show_truck}}</label>
             </div>
             <div class="">
               <input type="checkbox" formControlName="showSr" (change)="showSrChanged($event)" />
-              <label for="showSR">Show SR</label>
+              <label for="showSR">{{language.Gps_Tracking.Radio_input_show_SR}}</label>
             </div>
           </div>
         </ion-row>

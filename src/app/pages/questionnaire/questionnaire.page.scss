@@ -24,7 +24,7 @@ title{
 ion-title{
     width: 100%;
     h3{
-        font-size: 4.5vw;
+        font-size: 2rem;
         width: 100%;
 
     }
@@ -88,31 +88,31 @@ ion-select.select-drop-down{
     --offset-y:-2vh;
 
 
-    ion-content{
-        cursor: pointer;
-        --color:#8f8f8f ;
-        --padding-top: .9rem ;
-        --padding-bottom: .9rem ;
-        --padding-start: 1.7rem ;
-        &:hover{
-            --background:#0095EB;
-            --color:var(--ion-color-dark) ;
-        }
+    // ion-content{
+    //     cursor: pointer;
+    //     --color:#8f8f8f ;
+    //     --padding-top: .9rem ;
+    //     --padding-bottom: .9rem ;
+    //     --padding-start: 1.7rem ;
+    //     &:hover{
+    //         --background:#0095EB;
+    //         --color:var(--ion-color-dark) ;
+    //     }
       
         
-    }
-    ion-content.select-input-popover-title{
-        cursor:auto;
-        --color:var(--ion-color-dark) ;
-        text-align: center;
-        border-bottom: 2px dashed #8f8f8f;
-        font-weight: bold;
-        --padding-start: 0 ;
-        &:hover{
-            --background:none;
-        }
+    // }
+    // ion-content.select-input-popover-title{
+    //     cursor:auto;
+    //     --color:var(--ion-color-dark) ;
+    //     text-align: center;
+    //     border-bottom: 2px dashed #8f8f8f;
+    //      // font-weight: bold;
+    //     --padding-start: 0 ;
+    //     &:hover{
+    //         --background:none;
+    //     }
         
-    }
+    // }
 }
 
 
@@ -121,7 +121,7 @@ ion-select.select-drop-down{
 ion-label.questions{
     color: #0095EB;
     font-size: 1.5rem;
-    font-weight: bold;
+     // font-weight: bold;
     padding: 1vh 5vh 0;
     width: 100%;
 }
@@ -138,7 +138,7 @@ ion-col.text-input-container{
         ion-label{
             color:#0095EB ;
             font-size: 1.5rem;
-            font-weight: bold;
+             // font-weight: bold;
             padding: 1vh 5vh 0;
         }
     }
@@ -166,7 +166,7 @@ ion-list.radio-input-container{
         ion-label{
             padding:0 1rem;     
             color: #b9b9b9;
-            font-weight: bold;
+             // font-weight: bold;
             font-size: 1.1rem;
         }
         .item-radio-checked ion-label {

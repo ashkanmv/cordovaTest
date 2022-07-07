@@ -30,8 +30,8 @@ ion-col.segment-change{
             padding:.5rem 0;
             width: 100%;
             ion-label{
-                font-size: 3vw;
-                font-weight: bold;
+                font-size: 1rem;
+                 // font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
                     color: var(--ion-color-light);
@@ -62,7 +62,7 @@ ion-col{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-            font-weight: bold;
+             // font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -80,8 +80,8 @@ ion-col{
                 color: #0095EB;
                 display: flex;
                 flex-wrap: wrap;
-                font-size: 4.5VW;
-                font-weight: bold;
+                font-size: 1.5rem;
+                 // font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1rem;
@@ -134,11 +134,12 @@ ion-col{
     ion-grid.mainTable{
         .firstrow{
             .firstcolumn{
-                color: #0095EB;
+                color: #5ebff8;
             }
         }
         ion-col{
             height: 5vh;
+            width: 10vw;
             display: flex;
             text-align: center;
         }
@@ -148,3 +149,9 @@ ion-col{
         }
     }
 
+
+    @media (max-width:519px) {
+        .wifi{
+          margin: 0 2.3vw 0 .6rem ;
+        }
+    }

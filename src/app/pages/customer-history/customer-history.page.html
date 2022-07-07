@@ -11,30 +11,12 @@
       </ion-col>
       <ion-col
         size="6"
-        class="ion-text-center ion-align-self-center ion-text-right"
+        class="ion-align-self-center ion-text-right"
       >
         <ion-title class="ion-no-padding white-text">
           <h3>{{language.Customer_History.Title}}</h3>
         </ion-title>
       </ion-col>
-      <!-- <ion-col
-        size="1"
-        class="ion-no-padding ion-align-self-center ion-text-end gps-text"
-      >
-        {{language.Customer_History.gps}}
-      </ion-col>
-      <ion-col
-        size="2"
-        class="ion-align-self-center toggle ion-justify-content-end "
-      >
-        <span class="toggle-background">
-          <ion-toggle
-            class="ion-no-padding"
-            color="primary"
-            [(ngModel)]="gps" (ionChange)="gpsChanged()"
-          ></ion-toggle>
-        </span>
-      </ion-col> -->
       <ion-col class="gps ion-no-padding ion-align-self-center ion-align-items-center ion-justify-content-end margin-end " size="2">
         {{language.Customer_History.gps}}
         <span class="toggle-background">
@@ -123,7 +105,6 @@
         </ng-select>
         <span class="search-icon">
           <ion-icon
-            [ngClass]="'icon-activated'"
             name="chevron-down-outline"
           ></ion-icon>
         </span>
@@ -144,7 +125,7 @@
               formControlName="DC"
               (ionChange)="selectCity($event)"
             >
-              <ion-select-option disabled value="">DC</ion-select-option>
+              <ion-select-option disabled value="">{{language.Customer_History.DC}}</ion-select-option>
               <ion-select-option *ngFor="let city of cities" [value]="city.City"
                 >{{city.City}}
               </ion-select-option>
@@ -165,7 +146,7 @@
               formControlName="Route"
               (ionChange)="routeSelect($event)"
             >
-              <ion-select-option disabled value="">Route</ion-select-option>
+              <ion-select-option disabled value="">{{language.Customer_History.Route}}</ion-select-option>
               <ion-select-option
                 *ngFor="let route of routes"
                 [value]="route.routename"
@@ -189,7 +170,7 @@
               formControlName="Customer"
               (ionChange)="customerSelect($event)"
             >
-              <ion-select-option disabled value="">Customer</ion-select-option>
+              <ion-select-option disabled value="">{{language.Customer_History.Customer}}</ion-select-option>
               <ion-select-option
                 *ngFor="let customer of customers"
                 [value]="customer"
@@ -210,7 +191,7 @@
                 formControlName="type"
                 (ionChange)="typeAndQtyKgSelect()"
               />
-              <label for="sales">Sales</label>
+              <label for="sales">{{language.Customer_History.sales}}</label>
             </div>
             <div>
               <input
@@ -220,7 +201,7 @@
                 formControlName="type"
                 (ionChange)="typeAndQtyKgSelect()"
               />
-              <label for="pped">PPED</label>
+              <label for="pped">{{language.Customer_History.PPED}}</label>
             </div>
             <div>
               <input
@@ -230,7 +211,7 @@
                 formControlName="type"
                 (ionChange)="typeAndQtyKgSelect()"
               />
-              <label for="samples">Samples</label>
+              <label for="samples">{{language.Customer_History.Samples}}</label>
             </div>
           </div>
         </ion-row>
@@ -243,7 +224,7 @@
                 formControlName="kgqty"
                 (ionChange)="typeAndQtyKgSelect()"
               />
-              <label for="qty">Qty</label>
+              <label for="qty">{{language.Customer_History.Qty}}</label>
             </div>
             <div>
               <input
@@ -252,7 +233,7 @@
                 formControlName="kgqty"
                 (ionChange)="typeAndQtyKgSelect()"
               />
-              <label for="kg">Kg</label>
+              <label for="kg">{{language.Customer_History.Kg}}</label>
             </div>
           </div>
         </ion-row>

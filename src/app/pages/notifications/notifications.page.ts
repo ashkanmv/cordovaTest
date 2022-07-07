@@ -62,7 +62,7 @@ export class NotificationsPage implements OnInit {
   async getNews(event?: any) {
     if (!event) {
       const loading = await this.loadingCtrl.create({
-        message: 'Please wait...'
+        message: this.language.Loading
       });
       await loading.present();
     }
@@ -90,7 +90,7 @@ export class NotificationsPage implements OnInit {
 
   async deleteNotification(id: number) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: this.language.Loading
     });
     await loading.present();
 
@@ -106,7 +106,8 @@ export class NotificationsPage implements OnInit {
 
   addNotification() {
     this.modalCtrl.create({
-      component: AddEditNotificationComponent
+      component: AddEditNotificationComponent,
+      cssClass:"modal-fullscreen"
     }).then(modalEl => {
       modalEl.present();
       return modalEl.onDidDismiss();
@@ -124,7 +125,8 @@ export class NotificationsPage implements OnInit {
   editNews(news : News){
     this.modalCtrl.create({
       component: AddEditNotificationComponent,
-      componentProps : { news }
+      componentProps : { news },
+      cssClass:"modal-fullscreen"
     }).then(modalEl => {
       modalEl.present();
       return modalEl.onDidDismiss();

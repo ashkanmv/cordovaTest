@@ -7,6 +7,7 @@ import { NotificationsService } from '../notifications.service';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { SharedService } from 'src/app/shared/shared.service';
+import { UtilService } from 'src/app/shared/util.service';
 
 
 @Component({
@@ -21,7 +22,9 @@ export class AddEditNotificationComponent implements OnInit {
     return this.languageService.language
   }
 
-
+  public get isOnline(){
+    return this.sharedService.isOnline;
+  }
   constructor(
     private modalCtrl: ModalController,
     private formBuilder: FormBuilder,
@@ -29,7 +32,8 @@ export class AddEditNotificationComponent implements OnInit {
     private notificationService: NotificationsService,
     private cam: Camera,
     private fileTransfer: FileTransfer,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private utilService : UtilService
   ) { }
 
   ngOnInit() {
@@ -135,5 +139,14 @@ export class AddEditNotificationComponent implements OnInit {
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
+  }
+
+  get_direction() {
+    let lang = this.utilService.get_lang();
+    if (lang == 'en') {
+      return 'ltr';
+    } else {
+      return 'rtl';
+    }
   }
 }

@@ -114,7 +114,7 @@ export class ScoreCardPage implements OnInit {
 
   async getChannels1() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.scoreCardService.getChannels().subscribe((channels) => {
@@ -144,7 +144,7 @@ export class ScoreCardPage implements OnInit {
 
   async getSales1ByChannel() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.scoreCardService.getSales1ByChannel(this.selected_channel1.join()).subscribe((scorecard) => {
@@ -158,7 +158,7 @@ export class ScoreCardPage implements OnInit {
 
   async getPped1ByChannel() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     loading.present();
     this.scoreCardService.getPped1ByChannel(this.selected_channel1.join()).subscribe(
@@ -235,7 +235,7 @@ export class ScoreCardPage implements OnInit {
 
   async categorySelect2() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.skus2 = [];
@@ -249,7 +249,7 @@ export class ScoreCardPage implements OnInit {
 
   async getPped2ByCatSku() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.scoreCardService.getPped2ByCatSku(this.selected_category2.join(), this.selected_sku2.join())
@@ -262,7 +262,7 @@ export class ScoreCardPage implements OnInit {
 
   async get_categories2() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.scoreCardService.getSales2ByCatSku(this.selected_category2.join(), this.selected_sku2.join()).subscribe(
@@ -320,7 +320,7 @@ export class ScoreCardPage implements OnInit {
     }
 
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
 
@@ -447,7 +447,7 @@ export class ScoreCardPage implements OnInit {
 
   async getPped3ByChannel() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.scoreCardService.getPped3ByChannel(this.selected_channel3.join()).subscribe(
@@ -461,7 +461,7 @@ export class ScoreCardPage implements OnInit {
 
   async getSales3ByChannel() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.scoreCardService.getSales3ByChannel(this.selected_channel3.join())
@@ -488,7 +488,7 @@ export class ScoreCardPage implements OnInit {
     }
 
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
 
@@ -574,7 +574,7 @@ export class ScoreCardPage implements OnInit {
 
   async categorySelect4() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.skus4 = [];
@@ -593,7 +593,7 @@ export class ScoreCardPage implements OnInit {
 
   async getSales4ByCatSku() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.scoreCardService.getSales4ByCatSku(this.selected_category4.join(), this.selected_sku4.join())
@@ -607,7 +607,7 @@ export class ScoreCardPage implements OnInit {
 
   async getPped4ByCatSku() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.scoreCardService.getPped4ByCatSku(this.selected_category4.join(), this.selected_sku4.join())

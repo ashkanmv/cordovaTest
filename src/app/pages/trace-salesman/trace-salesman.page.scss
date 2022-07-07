@@ -4,14 +4,13 @@
     max-width: 20px;
     min-width: 20px;
 }
-.hide{
-    min-width: 40px;
-    margin-right: .1rem;
-}
-.wifi{
-    min-width: 50px;
-    margin-left: .1rem;
 
+.wifi{
+    margin-right: 3vw;
+}
+ion-img{
+ max-width: 60px;       
+ min-width: 40px;
 }
 title{
     width: 100%;
@@ -20,9 +19,9 @@ title{
 ion-title{
     width: 100%;
     h3{
-        font-size: 3vw;
+        font-size: 1.5rem;
         width: 100%;
-
+        margin-left: 7vw;
     }
 }
 
@@ -37,7 +36,7 @@ ion-popover.hide-drop-down{
     }
     ion-content{
         --color:#005b90;
-        font-weight: bold;
+         // font-weight: bold;
         --padding-top: .9rem ;
         --padding-bottom: .3rem ;
         --padding-start: 1.7rem ;
@@ -71,7 +70,7 @@ ion-col{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-            font-weight: bold;
+             // font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -92,7 +91,7 @@ ion-col{
                 color: #0095EB;
                 display: flex;
                 font-size: 1.5rem;
-                font-weight: bold;
+                 // font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding-left: .5rem;

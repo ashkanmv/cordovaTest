@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
-import { MapView, Marker, PopoverItem, Shop } from 'src/app/shared/common';
+import { Language, MapView, Marker, PopoverItem, Shop } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { GeoLocationService } from 'src/app/shared/geo-location.service';
+import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -30,6 +31,9 @@ export class CustomerNearbyPage implements OnInit {
   public get isOnline(){
     return this.sharedService.isOnline;
   }
+  public get language() : Language{
+    return this.languageService.language;
+  }
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -38,7 +42,8 @@ export class CustomerNearbyPage implements OnInit {
     private mapService: MapService,
     private popoverCtrl: PopoverController,
     private geoLocation : GeoLocationService,
-    private sharedService :SharedService
+    private sharedService :SharedService,
+    private languageService :LanguageService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
       if (initialized) {

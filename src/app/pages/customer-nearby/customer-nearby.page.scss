@@ -19,7 +19,8 @@ ion-content {
 
 ion-title{
     width: 100%;
-    font-size: 3vw;
+    font-size: 1.2rem;
+    margin-left: 9vw;
 }
 ion-item{
     --background: var(--ion-color-light);
@@ -52,8 +53,7 @@ ion-popover.header-drop-down{
     --backdrop-opacity:0;
     ion-content{
         cursor: pointer;
-        font-size: 1.2rem;
-        
+        font-size: 1.2rem;  
         &:hover{
             --background:#0095EB;
         }
@@ -81,18 +81,11 @@ ion-popover.description-drop-down{
                 left: 1rem;             
             }
         }
- 
-        
-
-
         img{
-            // justify-self: flex-start;
             max-width:3.5vw;
-            // margin-right: 6vw;
         }
         &:hover{
-            // --background:none;
-            --background:#119ff23f;
+            --background:var(--ion-color-light);
         }
     }
     ion-content.header-input-popover-title{
@@ -103,7 +96,7 @@ ion-popover.description-drop-down{
         --background:#119ff2;
         text-align: center;
         border-bottom: none;
-        font-weight: bold;
+         // font-weight: bold;
         --padding-start: 0 ;
         --padding-top: 1rem ;
         --padding-bottom: 1rem ;
@@ -124,7 +117,7 @@ ion-popover.hide-drop-down{
     }
     ion-content{
         --color:#005b90;
-        font-weight: bold;
+         // font-weight: bold;
         --padding-top: .9rem ;
         --padding-bottom: .3rem ;
         --padding-start: 1.7rem ;
@@ -150,7 +143,7 @@ ion-content.header-input-popover-title{
     --color:var(--ion-color-dark) ;
     text-align: center;
     border-bottom: 2px dashed #8f8f8f;
-    font-weight: bold;
+     // font-weight: bold;
     --padding-start: 0 ;
     &:hover{
         --background:none;

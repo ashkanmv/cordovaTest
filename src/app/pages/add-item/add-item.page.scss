@@ -9,9 +9,6 @@ ion-img.back-button{
 }
 ion-img.wifi-online{
     width: 7vw;
-
-    // width: 100px;
-    // width: 20%;
 }
 ion-col.wifi{
     margin-right: 4vw;
@@ -21,7 +18,7 @@ ion-col.wifi{
 ion-title {
     height: 100%;
     h3{
-        font-size: 3vw;
+        font-size: 1rem;
     }
 }
 
@@ -64,7 +61,7 @@ ion-row.item-name-img{
         align-items: center;
         h3{
             color: #0095EB;
-            font-weight: bold;
+             // font-weight: bold;
             font-size: 1.5rem;
         }
         img{
@@ -126,9 +123,9 @@ ion-row.item-submit{
 
 .box-shadow{   
     box-shadow:  10px 21px 48px -1px #e3f6ff, 0 6px 20px 0 #E6F5FC;
-  }
+    }
   @media (prefers-color-scheme: dark) {
     .box-shadow{   
         box-shadow:  10px 21px 48px -1px #151718, 0 6px 20px 0 #161718;
-      }
-  }
+    }
+}

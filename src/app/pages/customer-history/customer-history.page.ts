@@ -126,7 +126,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async Get_CustomerFromMap(Customer_Number: string) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.customerHistoryService.getCustomersByNumber(Customer_Number).subscribe(
@@ -147,7 +147,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async getAvgs() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.customerHistoryService.getAvgs().subscribe(
@@ -165,7 +165,7 @@ export class CustomerHistoryPage implements OnInit {
   async getCities() {
     this.cities = [];
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.customerHistoryService.getCities().subscribe(
@@ -187,7 +187,7 @@ export class CustomerHistoryPage implements OnInit {
   async selectCity(value: any) {
     this.routes = [];
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.customerHistoryService.getRoutesByCity(value.detail.value).subscribe(
@@ -204,7 +204,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async routeSelect(value: any) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.customerHistoryService
@@ -284,7 +284,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async handlePped() {
         const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     if (this.f.kgqty.value == 'qty')
@@ -305,7 +305,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async handleSales() {
         const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     if (this.f.kgqty.value == 'qty')
@@ -326,7 +326,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async handleSamples() {
         const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     if (this.f.kgqty.value == 'qty')
@@ -433,7 +433,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async handlePpedCategory(category: string, index: number) {
         const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     if (this.f.kgqty.value == 'qty')
@@ -452,7 +452,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async handleSalesCategory(category: string, index: number) {
         const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     if (this.f.kgqty.value == 'qty')
@@ -471,7 +471,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async handleSamplesCategory(category: string, index: number) {
         const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     if (this.f.kgqty.value == 'qty')
@@ -578,7 +578,7 @@ export class CustomerHistoryPage implements OnInit {
 
   async findShop(lat: number, lng: number) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     loading.present();
     this.customerHistoryService.findShop(lat, lng).subscribe((res: any[]) => {

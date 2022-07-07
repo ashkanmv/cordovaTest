@@ -22,14 +22,6 @@ title{
     width: 100%;
 }
 
-ion-title{
-    width: 100%;
-    h3{
-        font-size: 5vw;
-        width: 100%;
-
-    }
-}
 
 ion-grid{
     padding: 0;
@@ -49,28 +41,23 @@ ion-img{
     max-width: 60px;
     min-width: 40px;
 }
-.reload{
-    // max-width: 30px;
-    margin-right: .1rem;
-}
+
 .wifi{
-    margin-left: .1rem;
-}
+    margin-right: 1.1rem;
+    margin-left: 0.5rem;}
 title{
     width: 100%;
 }
 
 ion-title{
     width: 100%;
+    padding-right: 8vw;
     h3{
-        font-size: 3vw;
+        font-size: 2rem;
         width: 100%;
 
     }
 }
-
-
-
 
 
 .table-detail-opaned{
@@ -98,25 +85,14 @@ ion-col.segment-change{
             padding:.5rem 0;
             width: 100%;
             ion-label{
-                font-size: 3vw;
-                font-weight: bold;
+                font-size: 1rem;
+                 // font-weight: bold;
                 color: #b9b9b9;
             }
         }
     }
 }
 
-
-ion-content{
-    cursor: pointer;
-    --color:#8f8f8f ;
-    --padding-top: .9rem ;
-    --padding-bottom: .9rem ;
-    &:hover{
-        --color:var(--ion-color-dark) ;
-    }
-    
-}
 
 
 
@@ -139,14 +115,13 @@ ion-grid{
         display: flex;
         flex-direction: column;
         align-items: center;
-        // border: 1px solid #6b6b6b;
         border: 1px solid var(--ion-color-medium-shade);
         border-radius: 10px;
         padding-top: 1rem;
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-            font-weight: bold;
+             // font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -165,8 +140,8 @@ ion-grid{
             >ion-col{
                 color: #0095EB;
                 display: flex;
-                font-size: 4.5vw;
-                font-weight: bold;
+                font-size: 1.5rem;
+                 // font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1rem;
@@ -195,7 +170,6 @@ ion-grid{
         ng-select{
             width: 100%;
             height: 10vh;
-            overflow-y: scroll;
         }
     }
     .search-submit{
@@ -239,25 +213,20 @@ ion-grid{
 
         .firstrow{
             ion-col{
-                height: 5vh;
+                height: 6vh;
             }
         }
         ion-col{
             width: 10vw;
             height: 12vh;
-            font-size: 2.5vw;
+            font-size: 1rem;
             text-align: center;
             display: flex;
-            // height: 8vh;
-            // font-size: 2vw;
-            // font-size: 11px;
+            color: var(--ion-color-dark);
         }
         .tablet-table-body-container{
             height: 70vh;
             overflow-y: scroll;
-            // .tablet-details-container{
-
-            // }
         }
 
     }
@@ -267,9 +236,27 @@ ion-grid{
 
 // truck table
 
-table.truck-table{
-    display: flex;
-    flex-direction: column;
+ion-grid.truck-table{
+
+    ion-col{
+        height: 5vh;
+        text-align: center;
+        color: var(--ion-color-dark);
+
+    }
+
+    ion-col{
+        width: 10vw;
+        font-size: 1rem;
+        text-align: center;
+        display: flex;
+        height: 7vh;            
+    }
+    .tablet-table-body-container{
+        height: 70vh;
+        overflow-y: scroll;
+    }
+
 }
 
 
@@ -280,4 +267,3 @@ table.truck-table{
 
 
 
-   

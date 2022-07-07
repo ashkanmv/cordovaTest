@@ -1,9 +1,10 @@
 {
     "EN": {
-        "connection_error": "Can't connect to server!",
-        "gps_error": "Please turn on the GPS!",
-        "Loading": "Please wait...",
-        "server_no_value": "The server returns no value",
+            "connection_error": "Can't connect to server!",
+            "gps_error": "Please turn on the GPS!",
+            "Loading": "Please wait...",
+            "server_no_value": "The server returns no value",
+            "Submit":"Submit",
         "Customer_History": {
             "Title": "Customer History",
             "gps": "GPS",
@@ -13,7 +14,19 @@
             "Tell": "Tell",
             "SR": "SR",
             "Address": "Address",
-            "msg_no_customer": "There is no customer near you!"
+            "DC":"DC",
+            "Route":"Route",
+            "Customer":"Customer",
+            "sales":"Sales",
+            "PPED":"PPED",
+            "Samples":"Samples",
+            "Qty":"Qty",
+            "Kg":"Kg",
+            "msg_no_customer": "There is no customer near you!",
+            "searching":"searching", 
+            "notFound":"Your search returned no results", 
+            "typeToSearchText":"Search", 
+            "searchPlaceholder":"Search"
         },
         "Questionnaire": {
             "Title": "Questionnaire",
@@ -32,17 +45,22 @@
             "Msg_answer_neccesary": "Answer is necesary!",
             "Msg_image_neccesary": "Image is neccesary!",
             "Msg_submit": "Information successfully has been sent.",
-            "Msg_update": "Information successfully has been updated."
+            "Msg_update": "Information successfully has been updated.",
+            "DC":"DC",
+            "Route":"Route",
+            "RouteDaily":"RouteDaily",
+            "Customer":"Customer",
+            "CustomerCategory":"Customer Category"
         },
         "Gps_Tracking": {
             "Title": "Gps Tracking",
             "Description": "Description",
-            "Planned(Not_Invoiced_Yet)": "Planned (Not Invoiced Yet)",
-            "Planned&Invoiced": "Planned & Invoiced",
+            "Planned_Not_Invoiced_Yet": "Planned (Not Invoiced Yet)",
+            "Planned_and_Invoiced": "Planned & Invoiced",
             "OOP_invoiced": "OOP invoiced",
             "Visited_Not_Buy": "Visited Not Buy",
-            "SR": "SR",
-            "TRUCK": "TRUCK",
+            "sr": "SR",
+            "Truck": "TRUCK",
             "Input_select_date": "Date",
             "Input_select_RSM": "RSM",
             "Input_select_ASM": "ASM",
@@ -56,9 +74,9 @@
             "Description": "Description",
             "Normal_Customer": "Normal Customer",
             "Promotion_Customer": "Promotion Customer",
-            "PPED_>_5%": "PPED > 5%",
+            "PPED_MoreThan_5Per": "PPED > 5%",
             "NOT_Buy_2_Weeks": "NOT Buy 2 Weeks",
-            "Not_Buy_2_Weeks_&_PPED_>_5%": "Not Buy 2 Weeks & PPED > 5%",
+            "NOT_Buy_2_Weeks_PPED": "Not Buy 2 Weeks & PPED > 5%",
             "TRUCK": "TRUCK",
             "Input_select_date": "Date",
             "Input_select_RSM": "RSM",
@@ -72,8 +90,8 @@
             "Title": "Score Cards",
             "Segment_category": "CATEGORY",
             "Segment_channel": "CHANNEL",
-            "Segment_category%": "CATEGORY %",
-            "Segment_channel%": "CHANNEL %",
+            "Segment_categoryPer": "CATEGORY %",
+            "Segment_channelPer": "CHANNEL %",
             "Radio_input_sales": "sales",
             "Radio_input_PPED": "PPED",
             "group": "All"
@@ -103,12 +121,18 @@
             "reset": "cancel",
             "from": "From Date",
             "to": "To Date",
-            "title": "Date"
+            "Title": "Date"
         },
         "Loading_Truck_Status": {
             "Title": "Loading Truck Status",
-            "date_title": "Date",
-            "Group": "All"
+            "dateTitle": "Date",
+            "Group": "All",
+            "Route":"Route",
+            "Load":"Load",
+            "Sale":"Sale",
+            "PPED":"PPED",
+            "Remain":"Remain",
+            "SKU":"SKU"
         },
         "Online_Sales_Hourly": {
             "Title": "Online Daily Sales Hourly",
@@ -135,7 +159,9 @@
         },
         "Sales_hourly_Day_And_Sales_Office": {
             "Title": "Sales hourly_Day & Sales Office",
-            "group": "All"
+            "group": "All",
+            "DSD_Hourly_City":"DSD HOURLY CITY",
+            "DSD_Hourly_Days":"DSD HOURLY DAYS"
         },
         "Sales_Compare_Tracking_Hourly": {
             "Title": "Sales Compare Tracking Hourly",
@@ -157,11 +183,19 @@
         },
         "Today_Planned_Not_Buying": {
             "Title": "Today Planned/Not Buying",
-            "group": "All"
+            "group": "All",
+            "Route":"Route",
+            "Visitor":"Visitor",
+            "Count":"Count",
+            "Name":"Name",
+            "Number":"Number",
+            "Address":"Address"
         },
         "DailyStatus": {
             "Title": "Daily Status",
-            "group": "All"
+            "group": "All",
+            "Tablet":"Tablet",
+            "Truck":"Truck"
         },
         "News": {
             "Title": "Notifications",
@@ -175,9 +209,11 @@
             "enterText":"Enter Text..."
         },
         "Add_Edit_News": {
+            "AddPhoto":"Please Add your photo",
             "Camera": "Camera",
             "Gallery": "Gallery",
-            "Title": "Title",
+            "ItemName":"Item Name",
+            "Title": "Add/Edit News",
             "Description": "Text",
             "Submit": "Submit",
             "OutOfType": "Out OF Type!",
@@ -187,17 +223,44 @@
         "Online_Daily_Sales": {
             "Title": "Online_Daily_Sales",
             "group": "All",
-            "UserIdNotFound": "UserId not found"
+            "UserIdNotFound": "UserId not found",
+            "dsd":"DSD",
+            "NON_DSD":"NON_DSD",
+            "Route":"Route",
+            "Pln":"Pln",
+            "Inv":"INV",
+            "per":"%",
+            "oor":"OOR",
+            "Total":"Total",
+            "NotINV":"NotINV",
+            "Sale":"Sale",
+            "PPED":"PPED"
         },
         "Trace_Salesman" : {
-            "NoLocationFound" : "No location found !"
+            "NoLocationFound" : "No location found !",
+            "Title":"Trace Salesmen",
+            "rsm":"RSM",
+            "asm":"ASM",
+            "ssv":"SSV",
+            "sr":"SR"
         },
         "logOut" : {
             "areYouSure":"ARE YOU SURE?",
             "message":"Message",
             "logOut":"LOG OUT",
             "cancel":"CANCEL"
+        },
+        "Menu" : {
+            "en":"EN",
+            "fa":"Fa",
+            "MainPage":"MainPage",
+            "Profile":"Profile",
+            "ContactUs":"Contact Us",
+            "AboutUs":"About Us",
+            "Setting":"Setting",
+            "LogOut":"LogOut"
         }
+
     },
     "FR": {
         "Customer_History": {

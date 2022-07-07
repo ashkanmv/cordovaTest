@@ -7,12 +7,12 @@
             src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="7" class="ion-text-center ion-align-self-center">
+      <ion-col size="8" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text">
-          <h3><b>Trace Salesmen</b></h3>
+          <h3><b>{{language.Trace_Salesman.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col></ion-col>
+
       <ion-col class="ion-align-self-center hide" (click)="show=!show" size="1">
         <ion-img class="hide" [ngClass]="{'show-content' : show}" src="\assets\pages\customer-nearby\Hide.png">
         </ion-img>
@@ -49,7 +49,7 @@
     <ion-col>
       <ion-row class="date-picker-container">
         <ion-row class="date-picker-box">
-          <label for="Date-picker"> Date</label>
+          <label for="Date-picker"> {{language.DatePicker.Title}}</label>
           <ion-row class="date-picker lightBlue-shadow">
             <img src="\assets\pages\Max PPED\Group 1438.png" alt="" />
             <ion-col id="open-modal" class="ion-justify-content-end">
@@ -77,7 +77,7 @@
         <div class="salesmen-location-box">
           <ion-item lines="none" class="salesmen-location lightBlue-shadow">
             <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
-            <ion-select class="drop-down select-drop-down" placeholder="RSM" interface="popover"
+            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.rsm}}" interface="popover"
               formControlName="selectedRsm" (ionChange)="rsmSelect()">
               <ion-select-option *ngFor="let rsm of rsms" [value]="rsm">{{rsm.FullName}}</ion-select-option>
             </ion-select>
@@ -92,7 +92,7 @@
         <div class="salesmen-location-box">
           <ion-item lines="none" class="salesmen-location lightBlue-shadow">
             <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
-            <ion-select class="drop-down select-drop-down" placeholder="ASM" interface="popover"
+            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.asm}}" interface="popover"
               formControlName="selectedAsm" (ionChange)="asmSelect()">
               <ion-select-option *ngFor="let asm of asms" [value]="asm">{{asm.FullName}}</ion-select-option>
             </ion-select>
@@ -105,7 +105,7 @@
         <div class="salesmen-location-box">
           <ion-item lines="none" class="salesmen-location lightBlue-shadow">
             <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
-            <ion-select class="drop-down select-drop-down" placeholder="SSV" interface="popover"
+            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.ssv}}" interface="popover"
               formControlName="selectedSsv" (ionChange)="ssvSelect()">
               <ion-select-option *ngFor="let ssv of ssvs" [value]="ssv">{{ssv.FullName}}</ion-select-option>
             </ion-select>
@@ -118,7 +118,7 @@
         <div class="salesmen-location-box">
           <ion-item lines="none" class="salesmen-location lightBlue-shadow">
             <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
-            <ion-select class="drop-down select-drop-down" placeholder="SR" interface="popover"
+            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.sr}}" interface="popover"
               formControlName="selectedSr" (ionChange)="srSelect()">
               <ion-select-option *ngFor="let sr of srs" [value]="sr">{{sr.FullName}}</ion-select-option>
             </ion-select>

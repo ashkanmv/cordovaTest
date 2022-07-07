@@ -65,7 +65,7 @@ export class OnlineDailySalesPage implements OnInit {
 
   async getUserDc() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.storageSevice.get('user_id').then((userId) => {
@@ -101,7 +101,7 @@ export class OnlineDailySalesPage implements OnInit {
 
   async getSrSalesUsers() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.srSalesService

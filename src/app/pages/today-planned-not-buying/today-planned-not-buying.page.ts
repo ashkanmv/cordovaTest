@@ -54,7 +54,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
 
   async getDc() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: this.language.Loading
     });
     loading.present();
     this.todayPlannedService.getUserDc(this.userId).subscribe(res => {
@@ -70,7 +70,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
 
   async getCluster() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: this.language.Loading
     });
     loading.present();
     this.todayPlannedService.getCluster().subscribe((clusters: any) => {
@@ -92,7 +92,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
 
   async getTRoutesCity() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: this.language.Loading
     });
     loading.present();
     this.todayPlannedService.getTRoutesCity(this.userId, this.selectedDate.slice(0, this.selectedDate.length - 6), this.selectedDc.join(), this.selectedCluster.join())

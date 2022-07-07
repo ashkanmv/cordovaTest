@@ -17,11 +17,10 @@ ion-col.wifi{
 
 
 
-
 ion-title {
     height: 100%;
     h3{
-        font-size: 4.5vw;
+        font-size: 2rem;
     }
 }
 
@@ -99,7 +98,7 @@ ion-col.card{
                 width: 100%;
                 height: 25vh;
                 font-size: 1.2rem;
-                font-weight: bold;
+                 // font-weight: bold;
                 color: #083068;
                
             }
@@ -155,7 +154,7 @@ ion-col.notifications{
             h4{
                 color: #07073f;
                 font-size: 1rem;
-                font-weight: bold;
+                 // font-weight: bold;
                 margin-right: 3vw;
             }
             img{
@@ -165,10 +164,3 @@ ion-col.notifications{
         }
     }
 }
-ion-modal{
-    --height: 100%;
-    --width:100%;
-   
-    
-}
-

@@ -113,7 +113,7 @@ export class QuestionnairePage implements OnInit {
   async get_cities() {
     this.userId = await this.storageService.get('user_id');
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.questionnaireService.getCityByUserId(this.userId).subscribe(
@@ -130,7 +130,7 @@ export class QuestionnairePage implements OnInit {
   async selectCity(value: string | any) {
     this.routes = [];
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     let cityName = typeof value == 'string' ? value : value.detail.value;
@@ -145,7 +145,7 @@ export class QuestionnairePage implements OnInit {
 
   async selectRoute(value: any) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.questionnaireService
@@ -161,7 +161,7 @@ export class QuestionnairePage implements OnInit {
 
   async open_OtherForm(customerNumber: string) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.questionnaireService.getCustomersByNumber(customerNumber).subscribe(
@@ -179,7 +179,7 @@ export class QuestionnairePage implements OnInit {
 
   async selectRouteDaily(value: any) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.questionnaireService
@@ -195,7 +195,7 @@ export class QuestionnairePage implements OnInit {
 
   async selectCustomer(customer: any) {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.questioncats = [];
@@ -211,7 +211,7 @@ export class QuestionnairePage implements OnInit {
   async selectQuestion(value: any) {
     this.answerLogs = [];
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.questionnaireService
@@ -454,7 +454,7 @@ export class QuestionnairePage implements OnInit {
   async onSubmit() {
     this.userId = await this.storageService.get('user_id');
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     loading.present();
     let validationError = this.checkAnswers()

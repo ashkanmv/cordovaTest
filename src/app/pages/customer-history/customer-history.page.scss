@@ -1,6 +1,4 @@
-// to do : 1 header button size needs to get fixed.
-// 3 table cat column overflows and table details
- // change the down icons
+
 
 
 
@@ -22,7 +20,7 @@ ion-content {
 ion-title {
     height: 100%;
     h3{
-        font-size: 3.5vw;
+        font-size: 1.1rem;
         width: 100%;
     }
 }
@@ -81,30 +79,14 @@ ion-img .back-button.ios{
 }
 .gps{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 span.toggle-background{
-    background: var(--ion-color-light);
     border-radius: 100%;
-    // padding: 20px 9px 10px;
+    background: #f4f4f4;
     padding: 14% 7% 10%;
 }
 
-.dropDown-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
-    border: none;
-    background-color: var(--ion-color-light);
-    margin-top: 3px;
-    padding:1.1vw ;
-    // margin-right: 1rem;
-        ion-icon{
-        color:#0095EB;
-        font-size: 2rem;
-    }
-}
 
 .toggle{
     display: flex;
@@ -157,7 +139,7 @@ ion-row.search-container{
             right: 2rem;
             ion-icon{
                 font-size: 1.5rem;
-                // color: #e5e5e5;
+                color: #808080;
 
             }
         }
@@ -184,7 +166,6 @@ form{
             border-radius: 50px;
             width: 80%;
             ion-icon{
-                // color: #e5e5e5;
                 width: 3rem;
                 position: absolute;
                 right:3vw;
@@ -209,7 +190,6 @@ form{
     }
    
     ion-icon{
-        // color: #e5e5e5;
         width: 1rem;
     }
 
@@ -255,10 +235,8 @@ form{
             display: flex;
             flex-direction: row-reverse;
             justify-content: space-between;
-            // align-items: center;
           
             input[type=radio] {
-                // border: 10px;
                 min-width: 15px;
                 height: 15px;
                 accent-color: #0095EB;
@@ -267,7 +245,6 @@ form{
                 }
             }
             label{
-                // padding-right: 3rem;
                 color:#e5e5e5df
             }
         }
@@ -276,16 +253,11 @@ form{
         &>.radio-input{
             justify-content: space-between;
             padding:1.2rem 1.5rem;
-            label{
-                padding-right: .5rem;
-            }
-
             >div{
                 flex-direction: row-reverse;
                 max-width: 100%;
                 align-items: center;
                 input[type=radio] {
-                    // border: 10px;
                     min-width: 15px;
                     padding-right: 1rem;
                     height: 15px;
@@ -300,7 +272,7 @@ form{
             }
             &>:nth-child(3){
                 label{
-                    padding-right: .8rem;
+                    padding-right: 1.8vw;
 
                 }
             }
@@ -320,7 +292,6 @@ form{
 
 
 ion-card{
-    // height: 100vh;
     width: 100%;
     border-radius: 40px 40px 0 0;
     h4{
@@ -331,10 +302,6 @@ ion-card{
     }
     ion-card-header{
         --background: #0095EB;
-        // min-height: 60vh;
-        // display: grid;
-        // grid-template-columns: repeat(2,1fr);
-        // column-gap: .6rem;
         ion-row.customerInfo{
             ion-row{
                 width:-webkit-fill-available;
@@ -359,22 +326,11 @@ ion-card{
     
     ion-card-content{
         ion-row.table-container{
-            .firstrow{
-
-            }
             text-align: center;
-
-            ng-container{
                 ion-col{
-                    height: 1rem;
-                    max-width: 13vw;
-
+                    width: 10vw;
                 }
-            }
             .table-detail{
-                // height: 15vh;
-                // display: flex;
-                // flex-direction: row;
                 width: 100%;
                 ion-row{
                     hr{
@@ -386,13 +342,11 @@ ion-card{
                     width: 100%;
                     :first-child{
                         background: #5cc3ff63;
-                        // color: #3a3838;
                         font-size:.9rem ;
-                        font-weight: bold;
+                         // font-weight: bold;
                     }
                     &>ion-col{
                         font-size: 1rem;
-                        // display: flex;
                         border: #5cc3ff63 .5px solid;
                     }
                 }
@@ -405,8 +359,7 @@ ion-card{
 
 .firstrow{
     font-size: 1.1rem;
-    font-weight: bold;
-    // background: green;
+     // font-weight: bold;
     flex-wrap: wrap;
     &>:first-child{
         color: #0095EB;
@@ -439,6 +392,7 @@ ion-card{
         }
         }
     }
+
    
 
 

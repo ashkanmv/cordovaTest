@@ -15,11 +15,20 @@ ion-toolbar{
     }
 }
 
+ion-title{
+    h3{
+        font-size:1.5rem;
+        margin-left: 9vw;
+    }
+}
+
 .reload{
     min-width: 40px;
+    max-width: 60px;
 }
 .wifi{
-    min-width: 30px;
+    min-width: 40px;
+    max-width: 60px;
 }
 
 
@@ -36,8 +45,8 @@ ion-col.segment-change{
             padding:.5rem 0;
             width: 100%;
             ion-label{
-                font-size: 3vw;
-                font-weight: bold;
+                font-size: 1rem;
+                 // font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
                     color: var(--ion-color-light);
@@ -106,7 +115,6 @@ ion-col.segment-change{
 // -------------table
 // table!!
 .firstrow{
-    // background: var(--ion-color-light);
     &>:first-child{
         &>:first-child{
             color: #0095eb;
@@ -138,5 +146,12 @@ ion-col.table-container{
             }   
 
         }
+    }
+}
+
+
+@media (max-width:519px) {
+    .wifi{
+      margin-right:  2.3vw  ;
     }
 }

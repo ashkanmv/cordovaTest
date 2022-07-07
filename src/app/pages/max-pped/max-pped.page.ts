@@ -82,7 +82,7 @@ export class MaxPPEDPage implements OnInit {
 
   async get_dc() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.srPpedService.getUserDc(this.userId).subscribe((dcs: Data[]) => {
@@ -159,7 +159,7 @@ export class MaxPPEDPage implements OnInit {
 
   async get_dcN() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
     this.srPpedService.getUserDc(this.userId).subscribe((dcs: Data[]) => {
@@ -178,7 +178,7 @@ export class MaxPPEDPage implements OnInit {
 
   async selectedDCN() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
 
@@ -203,7 +203,7 @@ export class MaxPPEDPage implements OnInit {
 
   async selectedDC() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: this.language.Loading,
     });
     await loading.present();
 
@@ -303,7 +303,7 @@ export class MaxPPEDPage implements OnInit {
         this.virtual_rows2[row.index + 1].show = true;
       }
       const loading = await this.loadingCtrl.create({
-        message: 'Please wait...',
+        message: this.language.Loading,
       });
       await loading.present();
 
