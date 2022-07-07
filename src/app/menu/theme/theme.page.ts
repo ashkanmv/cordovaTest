@@ -33,29 +33,11 @@ export class ThemePage implements OnInit {
   }
 
   constructor(private languageService: LanguageService,
-    private sharedService: SharedService) { }
+    public sharedService: SharedService) { }
 
   ngOnInit() { }
 
   changeBackgroundColor(color: BackgroundColors) {
     this.sharedService.backgroundColor = color;
-  }
-
-  handleBackgroundColor() {
-    switch (this.backgroundColor) {
-      case BackgroundColors.blue:
-        return "#0095EB"
-      case BackgroundColors.green:
-        return "#55c595"
-      case BackgroundColors.purple:
-        return "#7495fe"
-      case BackgroundColors.red:
-        return "#fe7376"
-      case BackgroundColors.yellow:
-        return "#facb01"
-    }
-  }
-  handleColor() {
-    return 'var(--ion-color-light)';
   }
 }

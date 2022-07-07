@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar [style.--background]="handleBackgroundColor()" [style.--color]="handleColor()">
+  <ion-toolbar [style.--background]="sharedService.handleBackgroundColor()" [style.--color]="sharedService.handleColor()">
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
         <ion-button fill="clear" routerLink="/settings">
@@ -15,7 +15,7 @@
     </ion-row>
   </ion-toolbar>
 </ion-header>
-<ion-content [style.--background]="handleBackgroundColor()" [style.--color]="handleColor()">
+<ion-content [style.--background]="sharedService.handleBackgroundColor()" [style.--color]="sharedService.handleColor()">
   <ion-row class="ion-justify-content-center" class="select-theme">
     <ion-radio-group>
       <ion-col class="dark-theme ion-align-items-center" size="6">
