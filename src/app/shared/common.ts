@@ -353,6 +353,14 @@ export enum Languages {
   FR,
 }
 
+export enum BackgroundColors {
+  green = 1,
+  yellow,
+  red,
+  purple,
+  blue
+}
+
 // Language
 export class Language {
   Connection_error: string;
@@ -503,7 +511,7 @@ export class Language {
     cluster: string;
     storeName: string;
     sale: string;
-    pped:string;
+    pped: string;
     per: string;
     routeCode: string;
     visitorName: string;
@@ -521,11 +529,11 @@ export class Language {
     Loading: string;
     EndOfNotifications: string;
     NotificationDeleted: string;
-    cancel:string;
-    edit:string;
-    confirm:string;
-    editText:string;
-    enterText:string;
+    cancel: string;
+    edit: string;
+    confirm: string;
+    editText: string;
+    enterText: string;
   }
   Add_Edit_News: {
     Camera: string;
@@ -542,14 +550,14 @@ export class Language {
     group: string;
     UserIdNotFound: string;
   }
-  Trace_Salesman :{
-    NoLocationFound : string;
+  Trace_Salesman: {
+    NoLocationFound: string;
   }
-  logOut : {
-    areYouSure:string;
-    message:string;
-    logOut:string;
-    cancel:string;
+  logOut: {
+    areYouSure: string;
+    message: string;
+    logOut: string;
+    cancel: string;
   }
 }
 

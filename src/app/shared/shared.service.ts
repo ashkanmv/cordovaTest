@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { PredefinedColors } from '@ionic/core';
+import { BackgroundColors } from './common';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,10 @@ export class SharedService {
   private _boldFontWeight: boolean = false;
   public get boldFontWeight(): boolean { return this._boldFontWeight; }
   set boldFontWeight(v: boolean) { this._boldFontWeight = v; }
+
+  private _backgroundColor: BackgroundColors = BackgroundColors.blue;
+  public get backgroundColor(): BackgroundColors { return this._backgroundColor; }
+  set backgroundColor(v: BackgroundColors) { this._backgroundColor = v; }
 
   constructor(private toastCtrl: ToastController) { }
 

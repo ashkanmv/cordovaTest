@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Language } from 'src/app/shared/common';
+import { BackgroundColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 
@@ -17,18 +17,45 @@ export class ThemePage implements OnInit {
     return this.languageService.language;
   }
 
-  public get fontSize(): number { return this.shareService.fontSize ; }
+  public get fontSize(): number { return this.sharedService.fontSize; }
   set fontSize(v: number) {
-    this.shareService.fontSize = v
+    this.sharedService.fontSize = v
   }
 
-  public get boldFontWeight(): boolean { return this.shareService.boldFontWeight ; }
+  public get boldFontWeight(): boolean { return this.sharedService.boldFontWeight; }
   set boldFontWeight(v: boolean) {
-    this.shareService.boldFontWeight = v
+    this.sharedService.boldFontWeight = v
+  }
+
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  set backgroundColor(v: BackgroundColors) {
+    this.sharedService.backgroundColor = v
   }
 
   constructor(private languageService: LanguageService,
-    private shareService : SharedService) {}
+    private sharedService: SharedService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  changeBackgroundColor(color: BackgroundColors) {
+    this.sharedService.backgroundColor = color;
+  }
+
+  handleBackgroundColor() {
+    switch (this.backgroundColor) {
+      case BackgroundColors.blue:
+        return "#0095EB"
+      case BackgroundColors.green:
+        return "#55c595"
+      case BackgroundColors.purple:
+        return "#7495fe"
+      case BackgroundColors.red:
+        return "#fe7376"
+      case BackgroundColors.yellow:
+        return "#facb01"
+    }
+  }
+  handleColor() {
+    return 'var(--ion-color-light)';
+  }
 }

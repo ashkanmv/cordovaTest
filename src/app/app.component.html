@@ -30,7 +30,7 @@
         </ion-grid>
         <!-- </ion-list> -->
 
-        <ion-list id="labels-list" class="primary-bg menu-content">
+        <ion-list id="labels-list" class="menu-content" [ngStyle]="{'background-color': handleBackgroundColor()}" >
           <ion-menu-toggle auto-hide="false">
             <ion-item lines="none" routerLink="/">
               <ion-img src="assets/menu/main-page.png"></ion-img>

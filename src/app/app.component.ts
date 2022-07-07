@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import { BackgroundColors } from './shared/common';
 import { GeoLocationService } from './shared/geo-location.service';
 import { LanguageService } from './shared/language.service';
 import { SharedService } from './shared/shared.service';
@@ -13,12 +14,14 @@ import { StorageService } from './shared/storage.service';
 export class AppComponent implements OnInit {
   startApp = false;
   language: boolean;
+
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
   constructor(
     private plt: Platform,
     private languageService: LanguageService,
     private storageService: StorageService,
     private geoLocationService: GeoLocationService,
-    private sharedService : SharedService
+    public sharedService : SharedService,
   ) { }
   ngOnInit(): void {
     this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false;
@@ -56,5 +59,23 @@ export class AppComponent implements OnInit {
 
   isBold(){
     return this.sharedService.boldFontWeight == false ? 'normal' : 'bold' 
+  }
+
+  handleBackgroundColor() {
+    switch (this.backgroundColor) {
+      case BackgroundColors.blue:
+        return "#0095EB"
+      case BackgroundColors.green:
+        return "#55c595"
+      case BackgroundColors.purple:
+        return "#7495fe"
+      case BackgroundColors.red:
+        return "#fe7376"
+      case BackgroundColors.yellow:
+        return "#facb01"
+    }
+  }
+  handleColor() {
+    return 'var(--ion-color-light)';
   }
 }
