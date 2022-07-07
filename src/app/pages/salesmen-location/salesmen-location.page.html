@@ -40,7 +40,7 @@
 <ion-content>
   <ion-grid *ngIf="show">
     <!-- <form [formGroup]="form"> -->
-    <ion-row *ngIf="f.accessTime.value">
+    <ion-row *ngIf="accessTime">
       <ion-row class="date-picker-container">
         <ion-row class="date-picker-box">
           <label for="Date-picker">{{language.DatePicker.title}}</label>
@@ -66,7 +66,7 @@
       </ion-popover>
     </ion-row>
     <ion-row class="salesmen-location-container">
-      <div class="salesmen-location-box" *ngIf="f.accessRsm.value">
+      <div class="salesmen-location-box" *ngIf="accessRsm">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
           <ion-item>
             <ion-button class="btn-search primary-bg">
@@ -88,12 +88,12 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox mode="ios"></ion-checkbox>
+            <ion-checkbox mode="ios" [(ngModel)]="showRsm" (ionChange)="showDataChanged('rsm',showRsm)"></ion-checkbox>
           </ion-item>
 
         </ion-item>
       </div>
-      <div class="salesmen-location-box" *ngIf="f.accessAsm.value">
+      <div class="salesmen-location-box" *ngIf="accessAsm">
         <ion-item class="salesmen-location ion-no-padding  lightBlue-shadow">
           <ion-item class=" ion-justify-content-between ion-align-items-center ">
             <ion-button class="btn-search primary-bg">
@@ -115,12 +115,12 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox mode="ios"></ion-checkbox>
+            <ion-checkbox [(ngModel)]="showAsm" (ionChange)="showDataChanged('asm',showAsm)"></ion-checkbox>
           </ion-item>
 
         </ion-item>
       </div>
-      <div class="salesmen-location-box" *ngIf="f.accessSsv.value">
+      <div class="salesmen-location-box" *ngIf="accessSsv">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
           <ion-item>
             <ion-button class="btn-search primary-bg">
@@ -142,12 +142,12 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox mode="ios"></ion-checkbox>
+            <ion-checkbox mode="ios" [(ngModel)]="showSsv" (ionChange)="showDataChanged('ssv',showSsv)"></ion-checkbox>
           </ion-item>
 
         </ion-item>
       </div>
-      <div class="salesmen-location-box" *ngIf="f.accessSr.value">
+      <div class="salesmen-location-box" *ngIf="accessSr">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
           <ion-item>
             <ion-button class="btn-search primary-bg">
@@ -169,7 +169,7 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox mode="ios"></ion-checkbox>
+            <ion-checkbox mode="ios" [(ngModel)]="showSr" (ionChange)="showDataChanged('sr',showSr)"></ion-checkbox>
           </ion-item>
 
         </ion-item>

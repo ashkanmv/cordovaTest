@@ -129,7 +129,9 @@
             "managerYellow": "Sina Ahmadi",
             "managerBlue": "Kazem Dehghan",
             "Group": "Select All",
-            "NoValueSelected": "No value selected!"
+            "NoValueSelected": "No value selected!",
+            "NoUserAvailable":"No value from server!",
+            "RequestError" : "Error"
         },
         "Sales_hourly_Day_And_Sales_Office": {
             "Title": "Sales hourly_Day & Sales Office",

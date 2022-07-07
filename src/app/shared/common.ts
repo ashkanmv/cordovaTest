@@ -493,6 +493,8 @@ export class Language {
     managerBlue: string;
     Group: string;
     NoValueSelected: string;
+    NoUserAvailable: string;
+    RequestError: string;
   };
   Sales_hourly_Day_And_Sales_Office: {
     Title: string;
