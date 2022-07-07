@@ -2,16 +2,13 @@
   <ion-toolbar>
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button"
-            src="assets/menu/about-app/back-button.png"
-          ></ion-img>
-        </ion-button>
+        <ion-buttons>
+          <ion-back-button color="primary" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col size="6" class="ion-text-center">
         <ion-title>
-          <h3><b>Settings</b></h3>
+          <h3><b>{{language.Setting.Title}}</b></h3>
         </ion-title>
       </ion-col>
       <ion-col size="3"> </ion-col>
@@ -29,32 +26,33 @@
     </ion-row>
     <ion-row class="ion-justify-content-center h-15vh">
       <ion-col
+      [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
         size="6"
-        class="ion-text-center primary-bg h-100 white-text"
+        class="ion-text-center  h-100 white-text"
         routerLink="/language"
       >
-        <b class="center-texts"> Language </b>
+        <b class="center-texts"> {{language.Setting.Language}} </b>
       </ion-col>
       <ion-col
         routerLink="/theme"
         size="6"
         class="ion-text-center secondary-bg h-100 white-text"
       >
-        <b class="center-texts">Theme</b>
+        <b class="center-texts">{{language.Setting.Theme}}</b>
       </ion-col>
     </ion-row>
 
     <ion-row class="ion-justify-content-center w-100 mt-8vh">
-      <h4 class="secondary-color">Help</h4>
+      <h4 class="secondary-color">{{language.Setting.help}}</h4>
       <span class="relative">
         <ion-img class="help" src="assets/menu/settings/help.png"></ion-img>
       </span>
     </ion-row>
     <ion-row class="ion-justify-content-center mt-4vh">
-      <p class="secondary-color">Frequently Asked Questions</p>
+      <p class="secondary-color">{{language.Setting.frequently_asked_questions}}</p>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <p class="secondary-color">Description Video</p>
+      <p class="secondary-color">{{language.Setting.description_video}}</p>
     </ion-row>
   </ion-grid>
 </ion-content>

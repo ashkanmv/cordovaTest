@@ -1,15 +1,12 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row
-      class="primary-bg ion-justify-content-between header ion-no-margin"
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+      class=" ion-justify-content-between header ion-no-margin"
     >
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
-        </ion-button>
+        <ion-buttons>
+          <ion-back-button color="light" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col> </ion-col>
       <ion-col size="8" class="ion-text-center ion-align-self-center">
@@ -33,19 +30,7 @@
       </ion-col>
     </ion-row>
   </ion-toolbar>
-  <ion-grid class="secondary-bg white-text">
-    <ion-row class="ion-justify-content-between">
-      <ion-col size="3" class="ion-no-padding ion-text-start">
-        2022.04.02
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-center">
-        Saturday
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-end">
-        13 فروردین
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+   <app-date></app-date>
   <ion-col class="ion-no-padding segment-change">
     <ion-segment
       mode="md"
@@ -53,10 +38,10 @@
       (ionChange)="segmentChanged($event)"
       value="dsd-hourly-city"
     >
-      <ion-segment-button class="dsd-hourly-city" value="dsd-hourly-city">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="dsd-hourly-city" value="dsd-hourly-city">
         <ion-label>{{language.Sales_hourly_Day_And_Sales_Office.DSD_Hourly_City}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button class="dsd-hourly-days" value="dsd-hourly-days">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="dsd-hourly-days" value="dsd-hourly-days">
         <ion-label>{{language.Sales_hourly_Day_And_Sales_Office.DSD_Hourly_Days}}</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -111,7 +96,7 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit primary-bg" (click)="dcSelect()">
+            <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="dcSelect()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
 
@@ -301,7 +286,7 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit primary-bg" (click)="dcSelectN()">
+            <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="dcSelectN()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
 

@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row class="primary-bg">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}">
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img class="back-button" src="assets\pages\customer-history\Backward arrow.png"></ion-img>
-        </ion-button>
+        <ion-buttons>
+          <ion-back-button color="light" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col size="8" class="ion-text-center ion-align-self-center">
         <ion-title class="ion-no-padding white-text">
@@ -14,9 +14,9 @@
       <ion-col size="1" class="ion-align-self-center description ion-no-padding">
         <ion-img id="trigger-desc" src="\assets\pages\customer-nearby\Description.png"></ion-img>
 
-        <ion-popover class="header-drop-down description-drop-down" trigger="trigger-desc" showBackdrop="false">
+        <ion-popover  class="header-drop-down description-drop-down" trigger="trigger-desc" showBackdrop="false">
           <ng-template>
-            <ion-content disabled class="header-input-popover-title">{{language.Gps_Tracking.Description}}</ion-content>
+            <ion-content  [style.--background]="sharedService.handleBackgroundColor()" disabled class="header-input-popover-title">{{language.Gps_Tracking.Description}}</ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\GPS-tracking\Green.png" alt="" />
@@ -67,19 +67,7 @@
       </ion-col>
     </ion-row>
   </ion-toolbar>
-  <ion-grid class="secondary-bg white-text">
-    <ion-row class="ion-justify-content-between">
-      <ion-col size="3" class="ion-no-padding ion-text-start">
-        2022.04.02
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-center">
-        Saturday
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-end">
-        13 فروردین
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+   <app-date></app-date>
 </ion-header>
 <ion-content>
   <div *ngIf="show">

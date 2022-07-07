@@ -2,16 +2,13 @@
   <ion-toolbar>
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button"
-            src="assets/menu/about-app/back-button.png"
-          ></ion-img>
-        </ion-button>
+        <ion-buttons >
+          <ion-back-button color="primary" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col size="6" class="ion-text-center">
         <ion-title
-          ><h2><b>About app</b></h2></ion-title
+          ><h2><b> {{language.About_Us.Title}} </b></h2></ion-title
         >
       </ion-col>
       <ion-col size="3"> </ion-col>
@@ -25,7 +22,7 @@
       <ion-col size="6">
         <ion-row class="ion-text-center">
           <ion-col class="ion-text-center"
-            ><b class="blue-color"> POWERED BY</b></ion-col
+            ><b class="blue-color"> {{language.About_Us.Powered_by}} </b></ion-col
           >
         </ion-row>
         <ion-row class="ion-justify-content-center">
@@ -40,7 +37,7 @@
       <ion-col size="6">
         <ion-row>
           <ion-col size="12" class="ion-text-center">
-            <b class="blue-color">FOR</b>
+            <b class="blue-color">{{language.About_Us.for}} </b>
           </ion-col>
         </ion-row>
         <ion-row class="ion-justify-content-center">
@@ -54,26 +51,26 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="primary-bg white-text h-100">
+    <ion-row  [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"class=" white-text h-100">
       <ion-col class="ion-text-center ion-align-self-center" size="6">
-        <b>Your version:</b>
+        <b>{{language.About_Us. Your_version}}:</b>
       </ion-col>
       <ion-col class="ion-text-center ion-align-self-center" size="6">
-        <b>copyright :</b>
+        <b>{{language.About_Us.copyright}}:</b>
       </ion-col>
     </ion-row>
 
     <ion-row class="h-100">
       <ion-col class="ion-text-center ion-align-self-center" size="6">
-        <b class="blue-color">Terms of Use</b>
+        <b class="blue-color">{{language.About_Us.Terms_of_Use}} </b>
       </ion-col>
       <ion-col class="ion-text-center ion-align-self-center" size="6">
-        <b class="blue-color">Privacy Policy</b>
+        <b class="blue-color">{{language.About_Us.Privacy_Policy}} </b>
       </ion-col>
     </ion-row>
 
     <div class="update">
-      <b class="update-text">Update New Version</b>
+      <b class="update-text">{{language.About_Us.Update_New_Version}} </b>
     </div>
   </ion-grid>
 </ion-content>

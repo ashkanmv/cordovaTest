@@ -2,16 +2,13 @@
   <ion-toolbar>
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button"
-            src="assets/menu/about-app/back-button.png"
-          ></ion-img>
-        </ion-button>
+        <ion-buttons >
+          <ion-back-button color="primary" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col size="6" class="ion-text-center">
         <ion-title>
-          <h3><b>Profile</b></h3>
+          <h3><b>{{language.Profile.Title}}</b></h3>
         </ion-title>
       </ion-col>
       <ion-col size="3"> </ion-col>
@@ -38,21 +35,21 @@
     <ion-input
       class="ion-margin-top textbox lightBlue-shadow"
       type="password"
-      placeholder="Current password"
+      placeholder="{{language.Profile.Current_password}}"
     ></ion-input>
   </ion-row>
   <ion-row class="ion-justify-content-center">
     <ion-input
       class="ion-margin-top textbox lightBlue-shadow"
       type="password"
-      placeholder="New password"
+      placeholder="{{language.Profile.New_password}}"
     ></ion-input>
   </ion-row>
   <ion-row class="ion-justify-content-center container">
     <ion-input
       class="ion-margin-top textbox lightBlue-shadow"
       type="password"
-      placeholder="Re-enter new password"
+      placeholder="{{language.Profile.Re_enter_new_password}}"
       #input
     >
     </ion-input>
@@ -65,7 +62,7 @@
   </ion-row>
   <ion-row class="ion-justify-content-center">
     <button class="btn submit-btn">
-      <p>Send Message</p>
+      <p>{{language.Profile.Send_Message}}</p>
     </button>
   </ion-row>
 </ion-content>

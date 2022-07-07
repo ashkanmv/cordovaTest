@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Data } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
-import { Language } from 'src/app/shared/common';
+import { BackgroundColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -55,6 +55,8 @@ export class OnlineSalesHourlyPage implements OnInit {
     return this.languageService.language;
   }
 
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+
   dateNow = new Date();
   selectedSegment: string = 'per-kilo';
 
@@ -68,7 +70,7 @@ export class OnlineSalesHourlyPage implements OnInit {
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
     private SrSales_HourlyService: OnlineSalesHourlyService,
-    private sharedService : SharedService
+    public sharedService : SharedService
   ) {}
 
   segmentChanged(event: any) {

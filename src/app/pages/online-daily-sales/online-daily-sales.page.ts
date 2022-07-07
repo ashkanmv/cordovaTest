@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { AlertController, LoadingController, Platform } from '@ionic/angular';
-import { getSrSalesUsersResponse, Language } from 'src/app/shared/common';
+import { BackgroundColors, getSrSalesUsersResponse, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -45,15 +45,14 @@ export class OnlineDailySalesPage implements OnInit {
   }
 
 
-  public get isOnline(){
-    return this.SharedService.isOnline
-  }
+  public get isOnline(){return this.sharedService.isOnline}
+  public get backgroundColor() : BackgroundColors{return this.sharedService.backgroundColor}
   constructor(
     private router: Router,
     private loadingCtrl: LoadingController,
     private storageSevice: StorageService,
     private srSalesService: SrSaleService,
-    private SharedService: SharedService,
+    public sharedService: SharedService,
     private platform: Platform,
     private alertCtrl: AlertController,
     private languageService: LanguageService
@@ -70,7 +69,7 @@ export class OnlineDailySalesPage implements OnInit {
     await loading.present();
     this.storageSevice.get('user_id').then((userId) => {
       if (!userId) {
-        this.SharedService.toast('danger', this.language.Online_Daily_Sales.UserIdNotFound)
+        this.sharedService.toast('danger', this.language.Online_Daily_Sales.UserIdNotFound)
         loading.dismiss();
         return
       }

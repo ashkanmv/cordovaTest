@@ -8,6 +8,7 @@ import { OnlineSaleDaysHourlyPageRoutingModule } from './online-sale-days-hourly
 
 import { OnlineSaleDaysHourlyPage } from './online-sale-days-hourly.page';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     IonicModule,
     OnlineSaleDaysHourlyPageRoutingModule,
-    NgSelectModule
+    NgSelectModule,
+    SharedModule
   ],
   declarations: [OnlineSaleDaysHourlyPage]
 })

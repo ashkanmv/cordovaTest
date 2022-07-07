@@ -8,6 +8,7 @@ import { LoadingTruckStatusPageRoutingModule } from './loading-truck-status-rout
 
 import { LoadingTruckStatusPage } from './loading-truck-status.page';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     IonicModule,
     LoadingTruckStatusPageRoutingModule,
-    NgSelectModule
+    NgSelectModule,
+    SharedModule
   ],
   declarations: [LoadingTruckStatusPage]
 })

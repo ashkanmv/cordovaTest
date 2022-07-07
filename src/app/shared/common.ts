@@ -368,6 +368,7 @@ export class Language {
     Loading: string;
     Server_no_value: string;
     Submit :string;
+    Main_Page:string;
   Customer_History: {
     Title: string;
     gps: string;
@@ -398,12 +399,6 @@ export class Language {
     Input_select_routeDaily: string;
     Input_select_customer: string;
     Input_select_customer_Category: string;
-    Input_text_store: string;
-    Input_text_customer_name: string;
-    Input_text_address: string;
-    Radio_input_breakfast: string;
-    Radio_input_breakfast_yes: string;
-    Radio_input_breakfast_no: string;
     Submit_button: string;
     Msg_answer_neccesary: string;
     Msg_image_neccesary: string;
@@ -440,14 +435,6 @@ export class Language {
     PPED_MoreThan_5Per: string;
     NOT_Buy_2_Weeks: string;
     NOT_Buy_2_Weeks_PPED: string;
-    TRUCK: string;
-    Input_select_date: string;
-    Input_select_RSM: string;
-    Input_select_ASM: string;
-    Input_select_SSV: string;
-    Input_select_SR: string;
-    Radio_input_show_truck: string;
-    Radio_input_show_SR: string;
   };
   Score_Card: {
     Title: string;
@@ -623,6 +610,48 @@ export class Language {
     Setting:string;
     LogOut:string;
   }
+  Setting : {
+    Title:string;
+    Language:string;
+    Theme:string;
+    help:string;
+    frequently_asked_questions:string;
+    description_video:string;
+}
+Contact_Us:{
+  Title:string;
+  Support:string;
+  Send_Message:string;
+  tell:string;
+  sell:string;
+  Name:string;
+  Your_Message:''
+
+}
+Profile:{
+  Title:string;
+  Send_Message:string;
+  Current_password:string;
+  New_password:string;
+  Re_enter_new_password:string;
+}
+About_Us:{
+  Title:string;
+  Powered_by:string;
+  for:string;
+  Your_version:string;
+  copyright:string;
+  Terms_of_Use:string;
+  Privacy_Policy:string;
+  Update_New_Version:string;
+}
+Language:{
+  Title:string;
+  Select:string;
+  en:string;
+  fa:string;
+}
+
 }
 
 export class CommonUtility {

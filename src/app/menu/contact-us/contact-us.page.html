@@ -2,16 +2,13 @@
   <ion-toolbar>
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button"
-            src="assets/menu/about-app/back-button.png"
-          ></ion-img>
-        </ion-button>
+        <ion-buttons >
+          <ion-back-button color="primary" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col size="6" class="ion-text-center">
         <ion-title>
-          <h3><b>Contact Us</b></h3>
+          <h3><b> {{language.Contact_Us.Title}}</b></h3>
         </ion-title>
       </ion-col>
       <ion-col size="3"> </ion-col>
@@ -26,24 +23,24 @@
         src="assets/menu/contact-us/Contact-us.png"
       ></ion-img>
     </ion-row>
-    <ion-row class="primary-bg ion-justify-content-center">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-center">
       <ion-input
         class="ion-margin-top textbox"
         type="text"
-        placeholder="Name"
+        placeholder="{{language.Contact_Us.Name}}"
       ></ion-input>
     </ion-row>
-    <ion-row class="primary-bg ion-justify-content-center">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-center">
       <ion-textarea
         class="ion-margin-vertical textarea"
         rows="6"
         cols="20"
-        placeholder="Your Message"
+        placeholder="{{language.Contact_Us.Your_Message}}"
       ></ion-textarea>
     </ion-row>
-    <ion-row class="primary-bg ion-justify-content-center">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-center">
       <button class="btn submit-btn">
-        <p>Send Message</p>
+        <p>{{language.Contact_Us.Send_Message}}</p>
       </button>
     </ion-row>
     <ion-row style="height: 20vh">
@@ -54,9 +51,9 @@
         ></ion-img>
       </ion-col>
       <ion-col size="4" class="support">
-        <h3 class="ion-no-margin"><b>Support:</b></h3>
-        <p class="ion-no-margin">Tell:021</p>
-        <p class="ion-no-margin">Sell:0912</p>
+        <h3 class="ion-no-margin"><b>{{language.Contact_Us.Support}}:</b></h3>
+        <p class="ion-no-margin">{{language.Contact_Us.tell}}:021</p>
+        <p class="ion-no-margin">{{language.Contact_Us.sell}}:0912</p>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -8,6 +8,7 @@ import { SalesCompareTrackingHourlyPageRoutingModule } from './sales-compare-tra
 
 import { SalesCompareTrackingHourlyPage } from './sales-compare-tracking-hourly.page';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     IonicModule,
     SalesCompareTrackingHourlyPageRoutingModule,
-    NgSelectModule
+    NgSelectModule,
+    SharedModule
   ],
   declarations: [SalesCompareTrackingHourlyPage]
 })

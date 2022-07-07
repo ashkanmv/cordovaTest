@@ -1,11 +1,10 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row class="primary-bg ion-justify-content-between header ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"></ion-img>
-        </ion-button>
+       <ion-buttons>
+         <ion-back-button color="light" defaultHref="main"></ion-back-button>
+       </ion-buttons>
       </ion-col>
       <ion-col size="2"></ion-col>
       <ion-col size="6" class="ion-text-center ion-align-self-center">
@@ -30,25 +29,13 @@
     </ion-row>
     <!--  -->
   </ion-toolbar>
-  <ion-grid class="secondary-bg white-text">
-    <ion-row class="ion-justify-content-between">
-      <ion-col size="3" class="ion-no-padding ion-text-start">
-        2022.04.02
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-center">
-        Saturday
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-end">
-        13 فروردین
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+   <app-date></app-date>
   <ion-col class="ion-no-padding segment-change">
     <ion-segment mode="md" class="ion-justify-content-between" (ionChange)="segmentChanged($event)" value="tablet">
-      <ion-segment-button class="tablet" value="tablet">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="tablet" value="tablet">
         <ion-label>{{language.DailyStatus.Tablet}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button class="truck" value="truck">
+      <ion-segment-button [style.--background-checked]="sharedService.handleBackgroundColor()"  class="truck" value="truck">
         <ion-label>{{language.DailyStatus.Truck}}</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -85,7 +72,7 @@
     <ion-grid class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="getCommutecityT(tabletDate)">
+          <button class="search-submit"  [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="getCommutecityT(tabletDate)">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="tabletDropDown.length" [items]="tabletDropDown" [multiple]="true" bindLabel="itemName"
@@ -171,7 +158,7 @@
     <ion-grid class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="getCommutecity(truckDate)">
+          <button class="search-submit"  [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="getCommutecity(truckDate)">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="truckDropDown.length" [items]="truckDropDown" [multiple]="true" bindLabel="itemName"
