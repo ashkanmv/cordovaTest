@@ -7,17 +7,16 @@
             src="assets\pages\customer-history\Backward arrow.png"></ion-img>
         </ion-button>
       </ion-col>
-      <ion-col size="8" class="ion-text-center ion-align-self-center">
+      <ion-col size="9" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text">
           <h3><b>{{language.Salesmen_Location.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col class="ion-align-self-center hide  ion-no-padding " size="1" (click)="show = !show"
-        [ngClass]="{'show-content': show}">
+      <ion-col class="ion-align-self-center hide" size="1" (click)="show = !show" [ngClass]="{'show-content': show}">
         <ion-img id="trigger-hide" class="hide" src="\assets\pages\customer-nearby\Hide.png">
         </ion-img>
       </ion-col>
-      <ion-col class="ion-align-self-center wifi ion-no-padding margin-right" size="1">
+      <ion-col class="ion-align-self-center wifi" size="1">
         <ion-img *ngIf="isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet On.png"></ion-img>
         <ion-img *ngIf="!isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet Off.png"></ion-img>
       </ion-col>
@@ -54,18 +53,18 @@
           </ion-row>
         </ion-row>
       </ion-row>
+      <ion-popover trigger="open-popover" show-backdrop="false">
+        <ng-template>
+          <ion-datetime #date [value]="selectedDate" (ionChange)="selectedDate = date.value; dateChanged()"
+            presentation="date">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="date.cancel(true)">{{language.DatePicker.reset}}</ion-button>
+              <ion-button (click)="date.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
+            </ion-buttons>
+          </ion-datetime>
+        </ng-template>
+      </ion-popover>
     </ion-row>
-    <ion-popover trigger="open-popover" show-backdrop="false">
-      <ng-template>
-        <ion-datetime #date [value]="selectedDate" (ionChange)="selectedDate = date.value; dateChanged()"
-          presentation="date">
-          <ion-buttons slot="buttons">
-            <ion-button (click)="date.cancel(true)">{{language.DatePicker.reset}}</ion-button>
-            <ion-button (click)="date.confirm(true)">{{language.DatePicker.confirm}}</ion-button>
-          </ion-buttons>
-        </ion-datetime>
-      </ng-template>
-    </ion-popover>
     <ion-row class="salesmen-location-container">
       <div class="salesmen-location-box" *ngIf="accessRsm">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
@@ -75,127 +74,108 @@
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
             <ion-item>
-              <ion-button class="btn-search primary-bg ion-no-margin ">
-                <ion-icon name="search-outline"></ion-icon>
-              </ion-button>
-              <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
-              <ion-item>
-                <ng-select *ngIf="rsms.length" [items]="rsms" [multiple]="true" bindLabel="FullName" groupBy="group"
-                  appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
-                  bindValue="id" [(ngModel)]="selectedRsm" (change)="loadAsms(true,selectedRsm)">
+              <ng-select *ngIf="rsms.length" [items]="rsms" [multiple]="true" bindLabel="FullName" groupBy="group"
+                appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+                bindValue="id" [(ngModel)]="selectedRsm" (change)="loadAsms(true,selectedRsm)">
 
-                  <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-                    <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
-                  </ng-template>
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+                </ng-template>
 
-                  <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                    <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
-                  </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+                </ng-template>
 
-                </ng-select>
-              </ion-item>
-              <ion-checkbox></ion-checkbox>
+              </ng-select>
             </ion-item>
             <ion-checkbox mode="ios" [(ngModel)]="showRsm" (ionChange)="showDataChanged('rsm',showRsm)"></ion-checkbox>
           </ion-item>
 
-          <div class="salesmen-location-box" *ngIf="accessAsm">
-            <ion-item class="salesmen-location ion-no-padding  lightBlue-shadow">
-              <ion-item class=" ion-justify-content-between ion-align-items-center ">
-                <ion-button class="btn-search primary-bg ion-no-margin ">
-                  <ion-icon name="search-outline"></ion-icon>
-                </ion-button>
-                <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
-                <ion-item>
-                  <ng-select *ngIf="asms.length" [items]="asms" [multiple]="true" bindLabel="FullName" groupBy="group"
-                    appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
-                    bindValue="id" [(ngModel)]="selectedAsm" (change)="loadSsvs(true,selectedAsm)">
+        </ion-item>
+      </div>
+      <div class="salesmen-location-box" *ngIf="accessAsm">
+        <ion-item class="salesmen-location ion-no-padding  lightBlue-shadow">
+          <ion-item class=" ion-justify-content-between ion-align-items-center ">
+            <ion-button class="btn-search primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </ion-button>
+            <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
+            <ion-item>
+              <ng-select *ngIf="asms.length" [items]="asms" [multiple]="true" bindLabel="FullName" groupBy="group"
+                appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+                bindValue="id" [(ngModel)]="selectedAsm" (change)="loadSsvs(true,selectedAsm)">
 
-                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-                      <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group |
-                      uppercase}}
-                    </ng-template>
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+                </ng-template>
 
-                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                      <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
-                    </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+                </ng-template>
 
-                  </ng-select>
-                </ion-item>
-                <ion-checkbox></ion-checkbox>
-              </ion-item>
-              <ion-checkbox [(ngModel)]="showAsm" (ionChange)="showDataChanged('asm',showAsm)"></ion-checkbox>
+              </ng-select>
             </ion-item>
-          </div>
-          <div class="salesmen-location-box" *ngIf="accessSsv">
-            <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
-              <ion-item>
-                <ion-button class="btn-search primary-bg">
-                  <ion-icon name="search-outline"></ion-icon>
-                </ion-button>
-                <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
-                <ion-item>
-                  <ion-button class="btn-search primary-bg ion-no-margin ">
-                    <ion-icon name="search-outline"></ion-icon>
-                  </ion-button>
-                  <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
-                  <ion-item>
-                    <ng-select *ngIf="ssvs.length" [items]="ssvs" [multiple]="true" bindLabel="FullName" groupBy="group"
-                      appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
-                      bindValue="id" [(ngModel)]="selectedSsv" (change)="loadSrs(true,selectedSsv)">
+            <ion-checkbox [(ngModel)]="showAsm" (ionChange)="showDataChanged('asm',showAsm)"></ion-checkbox>
+          </ion-item>
 
-                      <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group |
-                        uppercase}}
-                      </ng-template>
+        </ion-item>
+      </div>
+      <div class="salesmen-location-box" *ngIf="accessSsv">
+        <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
+          <ion-item>
+            <ion-button class="btn-search primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </ion-button>
+            <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
+            <ion-item>
+              <ng-select *ngIf="ssvs.length" [items]="ssvs" [multiple]="true" bindLabel="FullName" groupBy="group"
+                appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+                bindValue="id" [(ngModel)]="selectedSsv" (change)="loadSrs(true,selectedSsv)">
 
-                      <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
-                      </ng-template>
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+                </ng-template>
 
-                    </ng-select>
-                  </ion-item>
-                  <ion-checkbox></ion-checkbox>
-                </ion-item>
-                <ion-checkbox mode="ios" [(ngModel)]="showSsv" (ionChange)="showDataChanged('ssv',showSsv)">
-                </ion-checkbox>
-              </ion-item>
-              <div class="salesmen-location-box" *ngIf="accessSr">
-                <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
-                  <ion-item>
-                    <ion-button class="btn-search primary-bg ion-no-margin ">
-                      <ion-icon name="search-outline"></ion-icon>
-                    </ion-button>
-                    <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
-                    <ion-item>
-                      <ng-select *ngIf="srs.length" [items]="srs" [multiple]="true" bindLabel="FullName" groupBy="group"
-                        appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
-                        [closeOnSelect]="false" bindValue="id" [(ngModel)]="selectedSr"
-                        (change)="loadSrs(false,selectedSr)">
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+                </ng-template>
 
-                        <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-                          <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group |
-                          uppercase}}
-                        </ng-template>
-
-                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                          <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
-                        </ng-template>
-
-                      </ng-select>
-                    </ion-item>
-                    <ion-checkbox></ion-checkbox>
-                  </ion-item>
-                  <ion-checkbox mode="ios" [(ngModel)]="showSr" (ionChange)="showDataChanged('sr',showSr)">
-                  </ion-checkbox>
-                </ion-item>
-              </div>
+              </ng-select>
             </ion-item>
-          </div>
-          <!-- </form> -->
+            <ion-checkbox mode="ios" [(ngModel)]="showSsv" (ionChange)="showDataChanged('ssv',showSsv)"></ion-checkbox>
+          </ion-item>
+
+        </ion-item>
+      </div>
+      <div class="salesmen-location-box" *ngIf="accessSr">
+        <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
+          <ion-item>
+            <ion-button class="btn-search primary-bg">
+              <ion-icon name="search-outline"></ion-icon>
+            </ion-button>
+            <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
+            <ion-item>
+              <ng-select *ngIf="srs.length" [items]="srs" [multiple]="true" bindLabel="FullName" groupBy="group"
+                appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
+                bindValue="id" [(ngModel)]="selectedSr" (change)="loadSrs(false,selectedSr)">
+
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.group | uppercase}}
+                </ng-template>
+
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                  <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.FullName}}
+                </ng-template>
+
+              </ng-select>
+            </ion-item>
+            <ion-checkbox mode="ios" [(ngModel)]="showSr" (ionChange)="showDataChanged('sr',showSr)"></ion-checkbox>
+          </ion-item>
+
         </ion-item>
       </div>
     </ion-row>
+    <!-- </form> -->
   </ion-grid>
   <div [ngStyle]="{display: !show ? 'block' : 'none'}">
     <div *ngIf="showMap" style="width: 100vw; height: 100vh">
