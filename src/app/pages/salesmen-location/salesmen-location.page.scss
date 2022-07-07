@@ -53,6 +53,10 @@ ion-popover.hide-drop-down{
     }
 }
 
+ion-grid.body-content{
+    height: 150vh;
+}
+
 
 ion-row{
     .date-picker-container{
@@ -149,14 +153,14 @@ ion-row{
         }
         ion-item{
             --inner-border-width: 0;
-           ion-checkbox{
-               --size: 1.5rem;
-               --border-color: #0095EB;
-               --border-width: 1px;
-               --border-radius:50px;
-               margin-right: 3vw;
-            }
         }
+        ion-checkbox{
+            --size: 1.5rem;
+            --border-color: #0095EB;
+            --border-width: 1px;
+            --border-radius:50px;
+            margin-right: 3vw;
+         }
     }
    
 }
