@@ -53,7 +53,7 @@ ion-title{
     width: 100%;
     padding-right: 8vw;
     h3{
-        font-size: 4.5vw;
+        font-size: 2rem;
         width: 100%;
 
     }
@@ -85,25 +85,14 @@ ion-col.segment-change{
             padding:.5rem 0;
             width: 100%;
             ion-label{
-                font-size: 3vw;
-                font-weight: bold;
+                font-size: 1rem;
+                 // font-weight: bold;
                 color: #b9b9b9;
             }
         }
     }
 }
 
-
-ion-content{
-    cursor: pointer;
-    --color:#8f8f8f ;
-    --padding-top: .9rem ;
-    --padding-bottom: .9rem ;
-    &:hover{
-        --color:var(--ion-color-dark) ;
-    }
-    
-}
 
 
 
@@ -132,7 +121,7 @@ ion-grid{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-            font-weight: bold;
+             // font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -151,8 +140,8 @@ ion-grid{
             >ion-col{
                 color: #0095EB;
                 display: flex;
-                font-size: 4.5vw;
-                font-weight: bold;
+                font-size: 1.5rem;
+                 // font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1rem;
@@ -222,8 +211,7 @@ ion-grid{
     // ---------table---------------
     ion-grid.maingrid-tablet{
 
-        .firstRow{
-            background: #205172;
+        .firstrow{
             ion-col{
                 height: 6vh;
             }
@@ -231,9 +219,10 @@ ion-grid{
         ion-col{
             width: 10vw;
             height: 12vh;
-            font-size: 2vw;
+            font-size: 1rem;
             text-align: center;
             display: flex;
+            color: var(--ion-color-dark);
         }
         .tablet-table-body-container{
             height: 70vh;
@@ -248,24 +237,17 @@ ion-grid{
 // truck table
 
 ion-grid.truck-table{
-    .firstRow{
-        background: #205172;
-        color: var(--ion-color-light);
 
-    }
-    .firstColumn{
-        background: #5ebff8;
-        color: var(--ion-color-light);
-
-    }
     ion-col{
         height: 5vh;
         text-align: center;
+        color: var(--ion-color-dark);
+
     }
 
     ion-col{
         width: 10vw;
-        font-size: 2vw;
+        font-size: 1rem;
         text-align: center;
         display: flex;
         height: 7vh;            
@@ -285,9 +267,3 @@ ion-grid.truck-table{
 
 
 
-   @media (max-width:425px) {
-        ion-col{
-            font-size: .7rem;
-            overflow-wrap: anywhere;
-        }
-   }

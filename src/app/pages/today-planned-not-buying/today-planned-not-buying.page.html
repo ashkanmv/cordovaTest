@@ -138,7 +138,7 @@
             <table class="body-table" *ngFor="let Master_row of ctrl.data; let i = index"
               cellspacing="0" cellpadding="1">
               <tr  (click)="Show_Load_Detail(Master_row , i)">
-                <td class="firstColumn">{{Master_row.Route}}</td>
+                <td class="firstcolumn">{{Master_row.Route}}</td>
                 <td  >{{Master_row.Visitor}}</td>
                 <td class="oddColumns" >{{Master_row.Others.length}}</td>
               </tr>

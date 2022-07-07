@@ -33,8 +33,8 @@ ion-col.segment-change{
             width: 100%;
            
             ion-label{
-                font-size: 3vw;
-                font-weight: bold;
+                font-size: 1rem;
+                 // font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
                     color: var(--ion-color-light);

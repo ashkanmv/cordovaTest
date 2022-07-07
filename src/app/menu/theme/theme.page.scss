@@ -63,11 +63,11 @@ ion-row.theme-options{
         ion-item{
             background: var(--ion-color-light);
             border-radius: 10px;
-            font-weight: bold;
+             // font-weight: bold;
             ion-col.option-label{
                 padding: 2rem 0;
                 font-size: 1.3rem;
-                font-weight: bold;
+                 // font-weight: bold;
                 color:#205172 ;
             }
         }
@@ -94,7 +94,7 @@ ion-row.theme-colors{
     ion-col.theme-colors-label{
         display: flex;
         font-size: 1.6rem;
-        font-weight: 600;
+      //  font-weight: 600;
         color: #205172;
     }
     ion-col.theme-colors-colors{

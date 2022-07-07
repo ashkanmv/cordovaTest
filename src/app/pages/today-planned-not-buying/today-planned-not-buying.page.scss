@@ -17,7 +17,7 @@ ion-title {
     text-align: center;
     margin-left: 9vw;
     h3{
-        font-size: 3vw;
+        font-size: 1.3rem;
     }
 }
 ion-item{
@@ -36,7 +36,7 @@ ion-img{
 
 .wifi,
 .reload{
-    min-width: 50px;
+    min-width: 40px;
     max-width: 60px;
 }
 
@@ -93,7 +93,7 @@ ion-col{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-            font-weight: bold;
+             // font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -112,8 +112,8 @@ ion-col{
             >ion-col{
                 color: #0095EB;
                 display: flex;
-                font-size: 1.5rem;
-                font-weight: bold;
+                font-size: 1.3rem;
+                 // font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1rem;
@@ -196,10 +196,9 @@ ion-col{
             width: 100vw;
           tr{  
               th{
-                  background:#205172 ;
                   height: 5vh;
                   text-align: center;
-                  color: var(--ion-color-light);
+                  color: var(--ion-color-dark);
               }
               .firstcolumn{
                   width: 45vw;  
@@ -222,11 +221,11 @@ ion-col{
                     td{
                         height: 5vh;
                         text-align: center;
+                        width: 50%;
                     }
-                    .firstColumn{
+                    .firstcolumn{
                         width: 45vw;  
-                        background: #5ebff8;
-                        color: var(--ion-color-light);
+                        color: var(--ion-color-dark);
                       }
                       &>:nth-child(2){
                           width: 45vw;
@@ -236,6 +235,7 @@ ion-col{
                       }    
                 }
                 table.details-table{
+                    color: var(--ion-color-light);
                     .details-inner-table-container{
                         table.details-inner-table{
                             width: 100vw;

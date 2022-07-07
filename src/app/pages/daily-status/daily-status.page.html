@@ -13,7 +13,6 @@
           <h3><b>{{language.DailyStatus.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <!-- <ion-col></ion-col> -->
       <ion-col class="ion-align-self-center reload" size="1">
         <ion-img class="" src="\assets\pages\customer-nearby\Group 1325.png">
         </ion-img>
@@ -110,11 +109,11 @@
     </ion-grid>
     <ion-grid>
       <ion-grid class="maingrid-tablet ion-no-padding ">
-        <div *ngFor="let row of virtual_rows_t; let i = index" [ngClass]="{'firstRow': i==0}">
+        <div *ngFor="let row of virtual_rows_t; let i = index" [ngClass]="{'firstrow': i==0}">
           <ion-row>
             <ng-container *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')">
               <ion-col class="ion-justify-content-center ion-align-items-center" *ngFor="let item of commutes_t[row.index]; let j = index"
-                [ngClass]="{'firstColumn': j==0 && i!=0 ,'oddColumns' : 0 === j % 2 && i!=0 }">
+                [ngClass]="{'firstcolumn': j==0 && i!=0 ,'oddColumns' : 0 === j % 2 }">
                 {{ item }}
               </ion-col>
             </ng-container>
@@ -126,7 +125,7 @@
             <ion-row>
               <ng-container *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')">
                 <ion-col class="ion-justify-content-center ion-align-items-center" *ngFor="let item of commutes_t[row.index]; let j = index"
-                  [ngClass]="{'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 }">
+                  [ngClass]="{'firstcolumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 }">
                   {{ item }}
                 </ion-col>
               </ng-container>
@@ -196,11 +195,11 @@
     </ion-grid>
     <ion-grid class="truck-table">
         <div *ngFor="let row of virtual_rows; let i = index" 
-        [ngClass]="{'firstRow': i==0 , 'oddRows': 0 === i % 2}">
+        [ngClass]="{'firstrow': i==0 , 'oddRows': 0 === i % 2}">
           <ion-row>
             <ng-container *ngIf="i==0 && row.show && (row.type=='a' || row.type=='h')">
               <ion-col class="ion-justify-content-center ion-align-items-center" *ngFor="let item of commutes[row.index]; let j = index"
-              [ngClass]="{'firstColumn': j==0 && i!=0 ,'oddColumns' : 0 === j % 2 && i!=0 }">
+              [ngClass]="{'firstcolumn': j==0 && i!=0 ,'oddColumns' : 0 === j % 2 }">
               {{ item }}
               </ion-col>
             </ng-container>
@@ -213,7 +212,7 @@
 
                 <ion-col class="ion-justify-content-center ion-align-items-center"
                  *ngFor="let item of commutes[row.index]; let j = index"
-                 [ngClass]="{'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 }">
+                 [ngClass]="{'firstcolumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 }">
                  {{ item }}
                 </ion-col>
 

@@ -104,11 +104,11 @@
     <ion-row>
       <ion-grid class=" ion-no-padding table maingrid-cat ion-no-padding">
         <ion-row wrap *ngFor="let row of virtual_rows1; let i = index"
-          [ngClass]="{'firstRow': i==0}">
+          [ngClass]="{'firstRow': i==0 , 'oddRows' : 3 === i % 4}">
 
           <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
             <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of scorecards1[row.index]; let j = index"
-              [ngClass]="{ 'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 , 'oddRows' : 3 === i % 4}">
+              [ngClass]="{ 'firstcolumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 }">
               {{ item }}
             </ion-col>
           </ng-container>
@@ -187,9 +187,9 @@
     <!-- -----------------------table------------------------------------------------- -->
     <ion-row>
       <ion-grid class=" ion-no-padding table maingrid-ch ">
-        <ion-row wrap *ngFor="let rows of scorecards2; let i = index" [ngClass]="{'firstRow': i==0,  'oddRows': 0 === i % 2 }">
+        <ion-row wrap *ngFor="let rows of scorecards2; let i = index" [ngClass]="{'firstRow': i==0,  'oddRows': 1 === i % 2 }">
           <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of rows; let j = index"
-          [ngClass]="{ 'firstColumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 && i!=0 }">
+          [ngClass]="{ 'firstcolumn': j==0 && i!=0 , 'oddColumns' : 0 === j % 2 }">
           {{ item }}
           </ion-col>
         </ion-row>
@@ -247,7 +247,7 @@
 
           <ng-container *ngIf="row.show && (row.type=='a' || row.type=='h')">
             <ion-col *ngFor="let item of scorecards3[row.index]; let j = index"
-              [ngClass]="{'firstColumn': j==0  && i!=0 , 'oddColumns' : 0 === j % 2  && i!=0}"
+              [ngClass]="{'firstcolumn': j==0  && i!=0 , 'oddColumns' : 0 === j % 2 }"
               class=" ion-align-items-center  ion-justify-content-center  "
               >
               {{ item }}
@@ -272,7 +272,7 @@
   </ion-grid>
 
   <!-- ----------------------------------------------------------------------------- -->
-  <ion-grid *ngIf="selectedSegment == 'channelP'">
+  <ion-grid class="ion-no-padding " *ngIf="selectedSegment == 'channelP'">
     <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
@@ -340,9 +340,9 @@
 <!-- --------------table----------------- -->
     <ion-row>
       <ion-grid class=" ion-no-padding table maingrid-chaP">
-        <ion-row wrap *ngFor="let rows of scorecards4; let i = index" [ngClass]="{'firstRow': i==0}">
+        <ion-row wrap *ngFor="let rows of scorecards4; let i = index" [ngClass]="{'firstRow': i==0 , 'oddRows':1 === i % 2}">
           <ion-col class="ion-justify-content-center ion-align-items-center " *ngFor="let item of rows; let j = index" 
-          [ngClass]="{'firstColumn': j==0  && i!=0 , 'oddRows':1 === i % 2  }">
+          [ngClass]="{'firstcolumn': j==0  && i!=0  ,'oddColumns' : 0 === j % 2  }">
             {{ item }}
           </ion-col>
         </ion-row>

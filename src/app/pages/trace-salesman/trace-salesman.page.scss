@@ -19,9 +19,9 @@ title{
 ion-title{
     width: 100%;
     h3{
-        font-size: 4.5vw;
+        font-size: 1.5rem;
         width: 100%;
-
+        margin-left: 7vw;
     }
 }
 
@@ -36,7 +36,7 @@ ion-popover.hide-drop-down{
     }
     ion-content{
         --color:#005b90;
-        font-weight: bold;
+         // font-weight: bold;
         --padding-top: .9rem ;
         --padding-bottom: .3rem ;
         --padding-start: 1.7rem ;
@@ -70,7 +70,7 @@ ion-col{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-            font-weight: bold;
+             // font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -91,7 +91,7 @@ ion-col{
                 color: #0095EB;
                 display: flex;
                 font-size: 1.5rem;
-                font-weight: bold;
+                 // font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding-left: .5rem;
