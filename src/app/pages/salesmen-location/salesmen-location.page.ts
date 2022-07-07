@@ -43,7 +43,7 @@ export class SalesmenLocationPage implements OnInit {
   public get language(): Language {
     return this.languageService.language;
   }
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline;
   }
   constructor(
