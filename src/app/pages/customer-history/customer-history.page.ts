@@ -137,6 +137,7 @@ export class CustomerHistoryPage implements OnInit {
         this.patchValue('Route', customers[0].routename);
         loading.dismiss();
         // this.getAvgs();
+        this.typeAndQtyKgSelect();
       },
       () => {
         this.sharedService.toast('danger', 'Could not fetch cities ...');
@@ -240,6 +241,7 @@ export class CustomerHistoryPage implements OnInit {
       tell: +customer.Tel,
     };
     // this.getAvgs();
+    this.typeAndQtyKgSelect();
   }
 
   initialShopPoint(customers: Customer[]) {
@@ -283,7 +285,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async handlePped() {
-        const loading = await this.loadingCtrl.create({
+    const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });
     await loading.present();
@@ -304,7 +306,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async handleSales() {
-        const loading = await this.loadingCtrl.create({
+    const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });
     await loading.present();
@@ -325,7 +327,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async handleSamples() {
-        const loading = await this.loadingCtrl.create({
+    const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });
     await loading.present();
@@ -396,7 +398,7 @@ export class CustomerHistoryPage implements OnInit {
     this.loadingCtrl.dismiss();
   }
 
-  async rowClick(row: any) {
+  rowClick(row: any) {
     if (row.type == 'a') {
       if (this.virtual_rows[row.index + 1].show) {
         this.virtual_rows[row.index + 1].show = false;
@@ -404,10 +406,6 @@ export class CustomerHistoryPage implements OnInit {
       } else {
         this.virtual_rows[row.index + 1].show = true;
       }
-      const loading = await this.loadingCtrl.create({
-        message: 'loading Details ...', // JSON
-      });
-      loading.present();
       this.handleCustomerCategory(
         this.customer_histories[row.index][0],
         row.index
@@ -432,7 +430,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async handlePpedCategory(category: string, index: number) {
-        const loading = await this.loadingCtrl.create({
+    const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });
     await loading.present();
@@ -451,7 +449,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async handleSalesCategory(category: string, index: number) {
-        const loading = await this.loadingCtrl.create({
+    const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });
     await loading.present();
@@ -470,7 +468,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async handleSamplesCategory(category: string, index: number) {
-        const loading = await this.loadingCtrl.create({
+    const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });
     await loading.present();
