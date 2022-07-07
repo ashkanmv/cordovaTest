@@ -22,6 +22,11 @@ export class ThemePage implements OnInit {
     this.shareService.fontSize = v
   }
 
+  public get boldFontWeight(): boolean { return this.shareService.boldFontWeight ; }
+  set boldFontWeight(v: boolean) {
+    this.shareService.boldFontWeight = v
+  }
+
   constructor(private languageService: LanguageService,
     private shareService : SharedService) {}
 

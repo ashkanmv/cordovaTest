@@ -53,4 +53,8 @@ export class AppComponent implements OnInit {
   fontSize(){
     return this.sharedService.fontSize.toString() + 'px';
   }
+
+  isBold(){
+    return this.sharedService.boldFontWeight == false ? 'normal' : 'bold' 
+  }
 }

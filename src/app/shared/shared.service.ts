@@ -14,6 +14,10 @@ export class SharedService {
       this._fontSize = v;
   }
 
+  private _boldFontWeight: boolean = false;
+  public get boldFontWeight(): boolean { return this._boldFontWeight; }
+  set boldFontWeight(v: boolean) { this._boldFontWeight = v; }
+
   constructor(private toastCtrl: ToastController) { }
 
   toast(color: PredefinedColors, message: string) {
