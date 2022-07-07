@@ -19,6 +19,18 @@ import { SharedService } from 'src/app/shared/shared.service';
 })
 export class SalesmenLocationPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+  showSr = true;
+  showRsm = true;
+  showAsm = true;
+  showSsv = true;
+  accessTime = false;
+  accessRsm = false;
+  accessAsm = false;
+  accessSsv = false;
+  accessSr = false;
+  myUserType;
+  userId;
+  myUserID;
   markers: Marker[] = [];
   dateNow = new Date();
   show = false;
@@ -58,8 +70,8 @@ export class SalesmenLocationPage implements OnInit {
     private sharedService: SharedService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
-      if (initialized && (this.rsmMarkers.length || this.asmMarkers.length || this.ssvMarkers.length || this.srMarkers.length || this.adminMarkers.length))
-        this.markers = [...this.rsmMarkers, ...this.asmMarkers, ...this.ssvMarkers, ...this.srMarkers, ...this.adminMarkers];
+      // if (initialized && (this.rsmMarkers.length || this.asmMarkers.length || this.ssvMarkers.length || this.srMarkers.length || this.adminMarkers.length))
+      //   this.markers = this.checkMarkers()
     })
   }
 
@@ -70,7 +82,6 @@ export class SalesmenLocationPage implements OnInit {
 
   ngOnInit() {
     this.getUserId();
-    this.loadForm();
     this.checkAccess();
   }
 
@@ -82,45 +93,10 @@ export class SalesmenLocationPage implements OnInit {
   getUserId() {
     this.storageService.get('user_id').then((user_id) => {
       if (user_id) {
-        this.patchValue('userId', user_id);
-        this.patchValue('myUserID', user_id);
+        this.userId = user_id;
+        this.myUserID = user_id;
       }
     });
-  }
-
-  loadForm() {
-    this.form = this.formBuilder.group({
-      DC: [null],
-      Route: [null],
-      Customer: [null],
-      type: ['sales'],
-      kgqty: ['qty'],
-      showPointSd: [true],
-      showPointRsm: [true],
-      showPointAsm: [true],
-      showPointSsv: [true],
-      showPointSr: [true],
-      showTruck: [true],
-      showSr: [true],
-      showRsm: [true],
-      showAsm: [true],
-      showSsv: [true],
-      accessTime: [false],
-      accessRsm: [false],
-      accessAsm: [false],
-      accessSsv: [false],
-      accessSr: [false],
-      myUserType: [null],
-      userId: [null],
-      myUserID: [null],
-      formDate: [new Date().toISOString()],
-      srTime: [this.persianCalendarService.getVPTodayFormat(new Date())],
-      truckTime: [this.persianCalendarService.getTodayFormat(new Date())],
-    });
-  }
-
-  get f() {
-    return this.form.controls;
   }
 
   checkAccess() {
@@ -135,45 +111,37 @@ export class SalesmenLocationPage implements OnInit {
       if (access.name == 'gps_dc') {
         // this.access_dc = true;
       } else if (access.name == 'gps_time') {
-        this.patchValue('accessTime', true);
+        this.accessTime = true;
       } else if (access.name == 'gps_rsm') {
-        this.patchValue('accessRsm', true);
+        this.accessRsm = true;
         if (flg == false) {
-          this.patchValue('myUserType', 'rsm');
-          this.loadRsms(true, [this.f.myUserID.value]);
+          this.myUserType = 'rsm';
+          this.loadRsms(true, [this.myUserID]);
           flg = true;
         }
       } else if (access.name == 'gps_asm') {
-        this.patchValue('accessAsm', true);
+        this.accessAsm = true;
         if (flg == false) {
-          this.patchValue('myUserType', 'asm');
-          this.loadAsms(true, [this.f.myUserID.value]);
+          this.myUserType = 'asm';
+          this.loadAsms(true, [this.myUserID]);
           flg = true;
         }
       } else if (access.name == 'gps_ssv') {
-        this.patchValue('accessSsv', true);
+        this.accessSsv = true;
         if (flg == false) {
-          this.patchValue('myUserType', 'ssv');
-          this.loadSsvs(true, [this.f.myUserID.value]);
+          this.myUserType = 'ssv';
+          this.loadSsvs(true, [this.myUserID]);
           flg = true;
         }
       } else if (access.name == 'gps_sr') {
-        this.patchValue('accessSr', true);
+        this.accessSr = true;
         if (flg == false) {
-          this.patchValue('myUserType', 'sr');
-          this.loadSrs(true, [this.f.myUserID.value]);
+          this.myUserType = 'sr';
+          this.loadSrs(true, [this.myUserID]);
           flg = true;
         }
       }
     });
-  }
-
-  rsmRadioChanged(event) {
-    if (event.detail.value) { // true
-
-    } else { // false
-
-    }
   }
 
   loadRsms(byParentUserId: boolean, ids: number[]) {
@@ -229,7 +197,6 @@ export class SalesmenLocationPage implements OnInit {
             v.group = this.language.Salesmen_Location.Group;
             this.selectedSsv.push(v.id);
           });
-        // this.showSsv = true;
         this.getSalesmenLocation(this.selectedSsv.join(), 'ssv')
         this.loadSrs(true, this.selectedSsv);
       })
@@ -255,13 +222,12 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   dateChanged() {
-    // this.patchValue('selectedDate', date.slice(0, date.length - 6));
     if (this.selectedSr.length)
       this.loadSrs(false, this.selectedSr)
   }
 
-  patchValue(controller: string, value: any) {
-    this.form.patchValue({ [controller]: value });
+  showDataChanged(key: 'rsm' | 'asm' | 'ssv' | 'sr', value: boolean) {
+    this.markers = this.checkMarkers();
   }
 
   getSalesmenLocation(userIds: string, userType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
@@ -307,7 +273,18 @@ export class SalesmenLocationPage implements OnInit {
         this.adminMarkers = markers;
         break;
     }
+    this.markers = this.checkMarkers();
+  }
+
+  checkMarkers(){
     this.mapService.clearMarkers.next(true);
+    let markers: Marker[] = [];
+    if (this.rsmMarkers && this.showRsm) markers.push(...this.rsmMarkers)
+    if (this.asmMarkers && this.showAsm) markers.push(...this.asmMarkers)
+    if (this.ssvMarkers && this.showSsv) markers.push(...this.ssvMarkers)
+    if (this.srMarkers && this.showSr) markers.push(...this.srMarkers)
+    return markers;
+    // this.markers = [...this.rsmMarkers, ...this.asmMarkers, ...this.ssvMarkers, ...this.srMarkers, ...this.adminMarkers];
   }
 
   selectIcon(key: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
