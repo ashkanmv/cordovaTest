@@ -498,10 +498,6 @@ export class Language {
   };
   Salesmen_Location: {
     Title: string;
-    managerRed: string;
-    managerGreen: string;
-    managerYellow: string;
-    managerBlue: string;
     Group: string;
     NoValueSelected: string;
     NoUserAvailable: string;
