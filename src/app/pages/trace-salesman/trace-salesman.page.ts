@@ -22,7 +22,7 @@ export class TraceSalesmanPage implements OnInit {
   show = false;
   showMap = false;
   selectedDate = new Date().toISOString();
-  mapInitSubscription: Subscription;
+  // mapInitSubscription: Subscription;
   dcs: GetUserChildrenResponse[] = [];
   rsms: GetUserChildrenResponse[] = [];
   asms: GetUserChildrenResponse[] = [];
@@ -43,15 +43,9 @@ export class TraceSalesmanPage implements OnInit {
   routeMarker: Marker;
   srMarker: Marker;
   markers: Marker[] = [];
-  public get language(): Language {
-    return this.languageService.language;
-  }
-  public get isOnline() {
-    return this.sharedService.isOnline;
-  }
-  public get backgroundColor() : BackgroundColors{
-    return this.sharedService.backgroundColor;
-  }
+  public get language(): Language { return this.languageService.language; }
+  public get isOnline() { return this.sharedService.isOnline; }
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
 
   constructor(
     private languageService: LanguageService,
@@ -63,11 +57,11 @@ export class TraceSalesmanPage implements OnInit {
     private loadingCtrl: LoadingController,
     private persianCalendarService: PersianCalendarService
   ) {
-    this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
-      (initialized: boolean) => {
-        if (initialized) { }
-      }
-    );
+    // this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
+    //   (initialized: boolean) => {
+    //     if (initialized) { }
+    //   }
+    // );
   }
 
   ionViewDidEnter() {
@@ -156,13 +150,11 @@ export class TraceSalesmanPage implements OnInit {
     });
   }
 
-  get f() {
-    return this.form.controls;
-  }
+  get f() {return this.form.controls;}
 
   ionViewWillLeave() {
     this.showMap = false;
-    if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
+    // if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
   }
 
   async loadRsms() {
@@ -177,6 +169,7 @@ export class TraceSalesmanPage implements OnInit {
   }
 
   async loadAsms(id: string) {
+    if (!id) return
     const loading = await this.loadingCtrl.create({
       message: this.language.Loading
     });
@@ -188,6 +181,7 @@ export class TraceSalesmanPage implements OnInit {
   }
 
   async loadSsvs(id: string) {
+    if (!id) return
     const loading = await this.loadingCtrl.create({
       message: this.language.Loading
     });
@@ -199,6 +193,7 @@ export class TraceSalesmanPage implements OnInit {
   }
 
   async loadSrs(id: string) {
+    if (!id) return
     const loading = await this.loadingCtrl.create({
       message: this.language.Loading
     });
@@ -222,8 +217,8 @@ export class TraceSalesmanPage implements OnInit {
     this.patchValue('selectedAsm', null);
     this.patchValue('selectedSsv', null);
     this.patchValue('selectedSr', null);
-    this.loadAsms(this.f.selectedRsm.value.id);
-    this.getLocation(this.f.selectedRsm.value.id).then(locations => {
+    this.loadAsms(this.f.selectedRsm.value?.id);
+    this.getLocation(this.f.selectedRsm.value?.id).then(locations => {
       if (!locations.length) {
         this.sharedService.toast('warning', this.language.Trace_Salesman.NoLocationFound)
         loading.dismiss();
@@ -248,8 +243,8 @@ export class TraceSalesmanPage implements OnInit {
     this.mapService.clearMarkers.next(true);
     this.patchValue('selectedSsv', null);
     this.patchValue('selectedSr', null);
-    this.loadSsvs(this.f.selectedAsm.value.id);
-    this.getLocation(this.f.selectedAsm.value.id).then(locations => {
+    this.loadSsvs(this.f.selectedAsm.value?.id);
+    this.getLocation(this.f.selectedAsm.value?.id).then(locations => {
       if (!locations.length) {
         this.sharedService.toast('warning', this.language.Trace_Salesman.NoLocationFound)
         loading.dismiss();
@@ -273,8 +268,8 @@ export class TraceSalesmanPage implements OnInit {
     this.mapService.clearPolylines.next(true);
     this.mapService.clearMarkers.next(true);
     this.patchValue('selectedSr', null);
-    this.loadSrs(this.f.selectedSsv.value.id);
-    this.getLocation(this.f.selectedSsv.value.id).then(locations => {
+    this.loadSrs(this.f.selectedSsv.value?.id);
+    this.getLocation(this.f.selectedSsv.value?.id).then(locations => {
       if (!locations.length) {
         this.sharedService.toast('warning', this.language.Trace_Salesman.NoLocationFound)
         loading.dismiss();
@@ -297,7 +292,7 @@ export class TraceSalesmanPage implements OnInit {
     this.srPolylines = null;
     this.mapService.clearPolylines.next(true);
     this.mapService.clearMarkers.next(true);
-    this.getLocation(this.f.selectedSr.value.id).then(locations => {
+    this.getLocation(this.f.selectedSr.value?.id).then(locations => {
       if (!locations.length) {
         this.sharedService.toast('warning', this.language.Trace_Salesman.NoLocationFound)
         loading.dismiss();
@@ -311,10 +306,10 @@ export class TraceSalesmanPage implements OnInit {
   }
 
   dateChanged() {
-    if (this.f.selectedRsm.value && this.f.showRsm.value) this.rsmSelect();
-    if (this.f.selectedAsm.value && this.f.showAsm.value) this.asmSelect();
-    if (this.f.selectedSsv.value && this.f.showSsr.value) this.ssvSelect();
-    if (this.f.selectedSr.value && this.f.showSr.value) this.srSelect();
+    if (this.f.selectedRsm?.value && this.f.showRsm?.value) this.rsmSelect();
+    if (this.f.selectedAsm?.value && this.f.showAsm?.value) this.asmSelect();
+    if (this.f.selectedSsv?.value && this.f.showSsr?.value) this.ssvSelect();
+    if (this.f.selectedSr?.value && this.f.showSr?.value) this.srSelect();
   }
 
   getLocation(id: string): Promise<GetSalesmenLocationResponse[]> {
