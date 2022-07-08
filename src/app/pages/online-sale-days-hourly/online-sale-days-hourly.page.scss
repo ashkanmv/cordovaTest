@@ -30,7 +30,7 @@ ion-col.segment-change{
             width: 100%;
             ion-label{
                 font-size: 1rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
                     color: var(--ion-color-light);
@@ -61,7 +61,7 @@ ion-col{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-             // font-weight: bold;
+             font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -80,7 +80,7 @@ ion-col{
                 display: flex;
                 flex-wrap: wrap;
                 font-size: 1.5rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1rem;

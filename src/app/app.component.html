@@ -1,4 +1,4 @@
-<ion-app *ngIf="startApp" [ngStyle]="{'font-size': fontSize(),'font-weight': isBold()}">
+<ion-app *ngIf="startApp" [ngStyle]="{'font-size': fontSize(),'font-weight': isBold() }">
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
@@ -53,8 +53,8 @@
           <ion-col size="12" class="text-align-center">
             <ion-menu-toggle>
               <button class="btn lighter footer-btn-color flex-row">
-                <p routerLink="/settings"><ion-icon name="settings-sharp"></ion-icon> {{selectedLanguage.Menu.Setting}}</p>
-                <p id="open-logOut" >{{selectedLanguage.Menu.LogOut}}</p>
+                <p class="settings" routerLink="/settings"><ion-icon name="settings-sharp"></ion-icon> {{selectedLanguage.Menu.Setting}}</p>
+                <p class="logOut" id="open-logOut" >{{selectedLanguage.Menu.LogOut}}</p>
               </button>
               <ion-modal #modal trigger="open-logOut">
                 <ng-template>

@@ -149,11 +149,11 @@
     </ion-row>
     <!-- -----------------------table -->
     <ion-grid class="mainTable  ion-no-padding">
-      <div *ngFor="let row of virtual_rows1; let i = index" [ngClass]="{'firstrow': i==0}">
+      <div *ngFor="let row of virtual_rows1; let i = index" [ngClass]="{'firstrow': i==0 ,'oddRows': 3 === i % 4 }">
         <ion-row>
           <ng-container *ngIf="i==0 && row.show && (row.type=='h')">
             <ion-col *ngFor="let item of srsales1[row.index]; let j = index" 
-              [ngClass]="{'firstcolumn': j==0 && i!=0,'oddRows': 3 === i % 4 , 'oddColumns' : 0 === j % 2 } "
+              [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2 } "
               class=" ion-align-items-center ion-justify-content-center ">
               
               {{ item }}
@@ -162,11 +162,11 @@
         </ion-row>
       </div>
       <div class="main-body" >
-        <div *ngFor="let row of virtual_rows1; let i = index" (click)="row_click1(row , i)">
+        <div *ngFor="let row of virtual_rows1; let i = index" (click)="row_click1(row , i)" [ngClass]="{'oddRows': 3 === i % 4 }">
         <ion-row>
           <ng-container *ngIf="i!=0 &&row.show && (row.type=='a')">
             <ion-col *ngFor="let item of srsales1[row.index]; let j = index" 
-            [ngClass]="{'firstculomn': j==0 && i!=0,'oddRows': 3 === i % 4 , 'oddColumns' : 0 === j % 2 } "
+            [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2 } "
             class=" ion-align-items-center ion-justify-content-center ">
             {{ item }}
             </ion-col>
@@ -286,11 +286,11 @@ class="per-invoices-segment   ion-no-padding "
 </ion-row>
 <!-- -----------------------table -->
 <ion-grid class="mainTable  ion-no-padding">
-  <div *ngFor="let row of virtual_rows2; let i = index" [ngClass]="{'firstrow': i==0}">
+  <div *ngFor="let row of virtual_rows2; let i = index" [ngClass]="{'firstrow': i==0 ,'oddRows': 3 === i % 4 }">
     <ion-row>
       <ng-container *ngIf="i==0 && row.show && (row.type=='h')">
         <ion-col *ngFor="let item of srsales2[row.index]; let j = index" 
-          [ngClass]="{'firstcolumn': j==0 && i!=0,'oddRows': 3 === i % 4 , 'oddColumns' : 0 === j % 2 } "
+          [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2 } "
           class=" ion-align-items-center ion-justify-content-center ">
           
           {{ item }}
@@ -299,11 +299,11 @@ class="per-invoices-segment   ion-no-padding "
     </ion-row>
   </div>
   <div class="main-body" >
-    <div *ngFor="let row of virtual_rows2; let i = index" (click)="row_click2(row )">
+    <div *ngFor="let row of virtual_rows2; let i = index" (click)="row_click2(row )" [ngClass]="{'oddRows': 3 === i % 4 }">
     <ion-row>
       <ng-container *ngIf="i!=0 &&row.show && (row.type=='a')">
         <ion-col *ngFor="let item of srsales2[row.index]; let j = index" 
-        [ngClass]="{'firstculomn': j==0 && i!=0,'oddRows': 3 === i % 4 , 'oddColumns' : 0 === j % 2 } "
+        [ngClass]="{'firstcolumn': j==0 && i!=0, 'oddColumns' : 0 === j % 2 } "
         class=" ion-align-items-center ion-justify-content-center ">
         {{ item }}
         </ion-col>

@@ -53,7 +53,7 @@ export class QuestionnairePage implements OnInit {
     private questionnaireService: QuestionnaireService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
-    private languageService: LanguageService,
+    public languageService: LanguageService,
     private answerLogService: AnswerLogService,
     public persianCalendarService: PersianCalendarService,
     private utilService: UtilService,

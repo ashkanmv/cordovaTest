@@ -6,6 +6,7 @@ import { GeoLocationService } from './shared/geo-location.service';
 import { LanguageService } from './shared/language.service';
 import { SharedService } from './shared/shared.service';
 import { StorageService } from './shared/storage.service';
+import { UtilService } from './shared/util.service';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
     private storageService: StorageService,
     private geoLocationService: GeoLocationService,
     public sharedService: SharedService,
+    private utilService : UtilService
   ) { }
   ngOnInit(): void {
     this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false;
@@ -62,4 +64,12 @@ export class AppComponent implements OnInit {
   isBold() {
     return this.sharedService.boldFontWeight == false ? 'normal' : 'bold'
   }
-}
+
+  get_direction() {
+    let lang = this.utilService.get_lang();
+    if (lang == 'en') {
+      return 'ltr';
+    } else {
+      return 'rtl';
+    }
+  }}

@@ -205,7 +205,7 @@
             "NewsUpdated": "News updated"
         },
         "Online_Daily_Sales": {
-            "Title": "Online_Daily_Sales",
+            "Title": "Online Daily Sales",
             "group": "All",
             "UserIdNotFound": "UserId not found",
             "dsd":"DSD",
@@ -338,12 +338,12 @@
         "Gps_Tracking": {
             "Title": "نقشه",
             "Description": "توصیف",
-            "Planned(Not_Invoiced_Yet)":  "مطابق برنامه و فاکتور نشده",
-            "Planned&Invoiced":  "مطابق برنامه و فاکتور شده",
+            "Planned_Not_Invoiced_Yet":  "مطابق برنامه و فاکتور نشده",
+            "Planned_and_Invoiced":  "مطابق برنامه و فاکتور شده",
             "OOP_invoiced": "خارج از برنامه و فاکتور شده",
             "Visited_Not_Buy":"بازدید شده و فاکتور نشده ",
-            "SR": "نام فروشنده",
-            "TRUCK": "ماشین پخش",
+            "sr": "نام فروشنده",
+            "Truck": "ماشین پخش",
             "Input_select_date": "نمایش تاریخ",
             "Input_select_RSM": "نمایش RSM",
             "Input_select_ASM": "نمایش ASM",

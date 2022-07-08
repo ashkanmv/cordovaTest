@@ -14,6 +14,7 @@ ion-title {
 
 ion-input{
     --padding-start : 5vw;
+    --padding-end:2vw;
     --placeholder-color : #b9b9b9;
     --background : var(--ion-color-light)
 }
@@ -53,6 +54,7 @@ ion-input{
     height: 60px;
     margin-bottom: 4vh;
     margin-top: 6vh;
+    font-size: 1rem;
  }
 
  .eye{
@@ -71,6 +73,13 @@ ion-input{
     position: absolute;
     z-index: 50;
     right: 18vw;
+    width: 35px;
+    top: 28px;
+ }
+ .eye-rtl{
+    right: 75vw;
+    position: absolute;
+    z-index: 50;
     width: 35px;
     top: 28px;
  }

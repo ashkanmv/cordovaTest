@@ -74,14 +74,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content  [ngStyle]="{'direction' : sharedService.get_direction()}">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <ion-grid dir="{{get_direction()}}">
+    <ion-grid >
       <ion-row class="item-name-img box-shadow">
         <ion-row class="item-img">
-          <!-- <a  > -->
             <ion-img src="\assets\pages\add-item\Add-Photo.png"></ion-img>
-          <!-- </a> -->
           <h3>{{language.Add_Edit_News.AddPhoto}}</h3>
           <ion-buttons>
             <ion-button   (click)="camera()">
@@ -100,12 +98,12 @@
       </ion-row>
       <ion-row class="item-title box-shadow">
         <ion-col class="ion-no-padding">
-          <ion-input dir="{{get_direction()}}" formControlName="title" type="text" placeholder="  {{language.Add_Edit_News.Title}}"></ion-input>
+          <ion-input  formControlName="title" type="text" placeholder="  {{language.Add_Edit_News.Title}}"></ion-input>
         </ion-col>
       </ion-row>
       <ion-row class="item-text box-shadow">
         <ion-col  class="ion-no-padding">
-          <ion-textarea dir="{{get_direction()}}" type="text" rows="6" formControlName="text" placeholder="  {{language.Add_Edit_News.Description}}"></ion-textarea>
+          <ion-textarea  type="text" rows="6" formControlName="text" placeholder="  {{language.Add_Edit_News.Description}}"></ion-textarea>
         </ion-col>
       </ion-row>
       <ion-row class="item-submit">

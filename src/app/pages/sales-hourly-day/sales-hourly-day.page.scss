@@ -37,7 +37,7 @@ ion-col.segment-change{
            
             ion-label{
                 font-size: 1rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
                     color: var(--ion-color-light);
@@ -69,7 +69,7 @@ ion-grid{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-             // font-weight: bold;
+             font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -87,7 +87,7 @@ ion-grid{
                 color: #0095EB;
                 display: flex;
                 font-size: 1.5rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1vw;
@@ -140,7 +140,7 @@ ion-grid{
                 justify-content: space-between;
                 color:  #0095EB;
                 font-size: 1.5rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding-left: 1vw;

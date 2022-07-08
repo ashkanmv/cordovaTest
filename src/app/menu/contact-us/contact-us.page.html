@@ -15,7 +15,7 @@
     </ion-row>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content [ngStyle]="{'direction' : sharedService.get_direction()}">
   <ion-grid class="ion-margin-top ion-no-padding">
     <ion-row class="ion-justify-content-center ion-margin-vertical">
       <ion-img

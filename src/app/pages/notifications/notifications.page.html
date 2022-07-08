@@ -38,7 +38,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [style.--background]="sharedService.handleBackgroundColor()" [style.--color]="sharedService.handleColor()">
+<ion-content  [ngStyle]="{'direction' : sharedService.get_direction()}" [style.--background]="sharedService.handleBackgroundColor()" [style.--color]="sharedService.handleColor()">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="100" pullMax="200">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -119,7 +119,7 @@
       <ion-card-content
         class="ion-align-items-center ion-justify-content-end"
       >
-        <h4 dir="{{get_direction()}}">
+        <h4>
          {{news.text}}
         </h4>
         <img src="" alt="" />

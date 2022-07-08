@@ -13,6 +13,7 @@ import { StorageService } from 'src/app/shared/storage.service';
 export class MainPage implements OnInit {
   pages: PageDetail[] = [];
   public get language() : Language{return this.languageService.language;}
+  public get isOnline() {return this.sharedService.isOnline;}
 
   public get backgroundColor() :BackgroundColors {return this.sharedService.backgroundColor;}
   constructor(private menuCtrl: MenuController,

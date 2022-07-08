@@ -69,11 +69,11 @@ ion-row.theme-options {
         ion-item {
             background: var(--ion-color-light);
             border-radius: 10px;
-             // font-weight: bold;
-            ion-col.option-label{
+             font-weight: bold;
+            .option-label{
                 padding: 2rem 0;
                 font-size: 1.3rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 color:#205172 ;
             }
         }

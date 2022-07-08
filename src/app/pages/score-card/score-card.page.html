@@ -138,7 +138,7 @@
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
-          <ng-select *ngIf="sec2SkuSelect.length" [items]="sec2SkuSelect" [multiple]="true" bindLabel="itemName"
+          <ng-select class="overflow-auto" *ngIf="sec2SkuSelect.length" [items]="sec2SkuSelect" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
             [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_sku2">
 
@@ -293,7 +293,7 @@
           <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="channelPSectionSkus()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ng-select *ngIf="sec4SkuSelect.length" [items]="sec4SkuSelect" [multiple]="true" bindLabel="itemName"
+          <ng-select class="overflow-auto" *ngIf="sec4SkuSelect.length" [items]="sec4SkuSelect" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
             [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selected_sku4">
 

@@ -11,7 +11,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 export class ProfilePage implements OnInit {
   public get language() : Language { return this.languageService.language}
   public get backgroundColor() : BackgroundColors{ return this.sharedService.backgroundColor}
-  constructor( public sharedService : SharedService, private languageService : LanguageService) {}
+  constructor( public sharedService : SharedService, public languageService : LanguageService) {}
   ngOnInit() {}
   show = false;
   showPassword(input) {

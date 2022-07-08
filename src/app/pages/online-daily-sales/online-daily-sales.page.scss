@@ -44,7 +44,7 @@ ion-col.segment-change{
             width: 100%;
             ion-label{
                 font-size:1rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 color: #b9b9b9;
                 &:checked{
                     color: var(--ion-color-light);
@@ -54,18 +54,6 @@ ion-col.segment-change{
     }
 }
 
-
-
-// ion-popover.search-popover{
-//     --backdrop-opacity:0;
-//     --width:60vw;
-//     --offset-x:-5vw;
-//     --offset-y:-1rem;
-//     label{
-//         color:#b9b9b9;
-//     }
-
-// }
 
 ion-col.DSD-page{
     height: 150vh;
@@ -86,6 +74,7 @@ ion-col.DSD-page{
     margin: 3vh 4vw;
     &>ion-item{
         --background: none;
+        --padding-start:0;
         width: 90%;
         border-radius: 10px;
         ng-select{
@@ -96,7 +85,7 @@ ion-col.DSD-page{
     .search-submit{
         z-index: 2;
         width: 3rem;
-        height: 10vh;
+        height: 100%;;
         border-radius: 10px 0 0 10px;
         ion-icon{
             color: var(--ion-color-light);
@@ -271,7 +260,7 @@ ion-grid.maingrid{
         hr.hor-lineN{
             background: #0095EB;
             position: absolute;
-            left: 0.8rem;
+            left: 1.8rem;
             margin-top: -2.2rem;
             height: 6rem;
             width: 1px;

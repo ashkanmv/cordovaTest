@@ -44,7 +44,7 @@
         <ion-label>{{language.Online_Daily_Sales.dsd}}</ion-label>
       </ion-segment-button>
       <ion-segment-button [style.--background-checked]="sharedService.handleBackgroundColor()"  class="NON_DSD" value="NON_DSD">
-        <ion-label>{{language.Online_Daily_Sales.Title}}</ion-label>
+        <ion-label>{{language.Online_Daily_Sales.NON_DSD}}</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-col>
@@ -82,9 +82,8 @@
             <table class="main-content-header">
               <tr>
                 <th class="firstcolumn">
-                  <span> Route </span>
+                  <span> {{language.Online_Daily_Sales.Route}} </span>
                 </th>
-                <th class=" ">{{language.Online_Daily_Sales.Route}}</th>
                 <th class="oddColumns">{{language.Online_Daily_Sales.Pln}}</th>
                 <th class=" ">{{language.Online_Daily_Sales.Inv}}</th>
                 <th class="oddColumns">{{language.Online_Daily_Sales.per}}</th>
