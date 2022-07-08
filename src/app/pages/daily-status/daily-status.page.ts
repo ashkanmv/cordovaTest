@@ -35,8 +35,8 @@ export class DailyStatusPage implements OnInit {
 
 
   public get language(): Language { return this.languageService.language; }
-  public get isOnline() {return this.sharedService.isOnline;}
-  public get backgroundColor() : BackgroundColors {return this.sharedService.backgroundColor;}
+  public get isOnline() { return this.sharedService.isOnline; }
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
 
   constructor(private languageService: LanguageService,
     private storageServiec: StorageService,
@@ -89,7 +89,7 @@ export class DailyStatusPage implements OnInit {
     });
   }
 
-  async getCommutecity(truckDate : string) {
+  async getCommutecity(truckDate: string) {
     const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });
@@ -165,7 +165,7 @@ export class DailyStatusPage implements OnInit {
     });
   }
 
-  async getCommutecityT(tabletDate : string) {
+  async getCommutecityT(tabletDate: string) {
     const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });
@@ -232,6 +232,11 @@ export class DailyStatusPage implements OnInit {
 
   truckDateChanged(selectedDate: string) {
     this.getCommutecity(selectedDate.slice(0, selectedDate.length - 6));
+  }
+
+  refresh() {
+    this.tabletDateChanged(this.tabletDate);
+    this.truckDateChanged(this.truckDate);
   }
 
 }
