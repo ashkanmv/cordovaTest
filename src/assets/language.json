@@ -1,11 +1,11 @@
 {
     "EN": {
-            "connection_error": "Can't connect to server!",
-            "gps_error": "Please turn on the GPS!",
-            "Loading": "Please wait...",
-            "server_no_value": "The server returns no value",
-            "Submit":"Submit",
-            "Main_Page":"Main Page",
+        "connection_error": "Can't connect to server!",
+        "gps_error": "Please turn on the GPS!",
+        "Loading": "Please wait...",
+        "server_no_value": "The server returns no value",
+        "Submit": "Submit",
+        "Main_Page": "Main Page",
         "Customer_History": {
             "Title": "Customer History",
             "gps": "GPS",
@@ -15,19 +15,19 @@
             "Tell": "Tell",
             "SR": "SR",
             "Address": "Address",
-            "DC":"DC",
-            "Route":"Route",
-            "Customer":"Customer",
-            "sales":"Sales",
-            "PPED":"PPED",
-            "Samples":"Samples",
-            "Qty":"Qty",
-            "Kg":"Kg",
+            "DC": "DC",
+            "Route": "Route",
+            "Customer": "Customer",
+            "sales": "Sales",
+            "PPED": "PPED",
+            "Samples": "Samples",
+            "Qty": "Qty",
+            "Kg": "Kg",
             "msg_no_customer": "There is no customer near you!",
-            "searching":"searching", 
-            "notFound":"Your search returned no results", 
-            "typeToSearchText":"Search", 
-            "searchPlaceholder":"Search"
+            "searching": "searching",
+            "notFound": "Your search returned no results",
+            "typeToSearchText": "Search",
+            "searchPlaceholder": "Search"
         },
         "Questionnaire": {
             "Title": "Questionnaire",
@@ -41,11 +41,11 @@
             "Msg_image_neccesary": "Image is neccesary!",
             "Msg_submit": "Information successfully has been sent.",
             "Msg_update": "Information successfully has been updated.",
-            "DC":"DC",
-            "Route":"Route",
-            "RouteDaily":"RouteDaily",
-            "Customer":"Customer",
-            "CustomerCategory":"Customer Category"
+            "DC": "DC",
+            "Route": "Route",
+            "RouteDaily": "RouteDaily",
+            "Customer": "Customer",
+            "CustomerCategory": "Customer Category"
         },
         "Gps_Tracking": {
             "Title": "Gps Tracking",
@@ -63,7 +63,7 @@
             "Input_select_SR": "SR",
             "Radio_input_show_truck": "Show truck",
             "Radio_input_show_SR": "Show SR",
-            "No_Value" : "No points available !"
+            "No_Value": "No points available !"
         },
         "Customer_nearby": {
             "Title": "Customer nearby",
@@ -115,12 +115,12 @@
             "Title": "Loading Truck Status",
             "dateTitle": "Date",
             "Group": "All",
-            "Route":"Route",
-            "Load":"Load",
-            "Sale":"Sale",
-            "PPED":"PPED",
-            "Remain":"Remain",
-            "SKU":"SKU"
+            "Route": "Route",
+            "Load": "Load",
+            "Sale": "Sale",
+            "PPED": "PPED",
+            "Remain": "Remain",
+            "SKU": "SKU"
         },
         "Online_Sales_Hourly": {
             "Title": "Online Daily Sales Hourly",
@@ -138,14 +138,14 @@
             "Title": "Salesmen Location",
             "Group": "Select All",
             "NoValueSelected": "No value selected!",
-            "NoUserAvailable":"No value from server!",
-            "RequestError" : "Error"
+            "NoUserAvailable": "No value from server!",
+            "RequestError": "Error"
         },
         "Sales_hourly_Day_And_Sales_Office": {
             "Title": "Sales hourly_Day & Sales Office",
             "group": "All",
-            "DSD_Hourly_City":"DSD HOURLY CITY",
-            "DSD_Hourly_Days":"DSD HOURLY DAYS"
+            "DSD_Hourly_City": "DSD HOURLY CITY",
+            "DSD_Hourly_Days": "DSD HOURLY DAYS"
         },
         "Sales_Compare_Tracking_Hourly": {
             "Title": "Sales Compare Tracking Hourly",
@@ -154,49 +154,49 @@
         "Max_PPED": {
             "Title": "Max PPED",
             "group": "All",
-            "perCustomer":"PER CUSTOMER",
-            "perRoute":"PER ROUTE",
-            "custmerNumber":"Customer Number",
-            "cluster":"Cluster",
-            "storeName":"Store Name",
-            "sale":"Sale",
-            "pped":"PPED",
-            "per":"%",
-            "routeCode":"RouteCode",
-            "visitorName":"VisitorName"
+            "perCustomer": "PER CUSTOMER",
+            "perRoute": "PER ROUTE",
+            "custmerNumber": "Customer Number",
+            "cluster": "Cluster",
+            "storeName": "Store Name",
+            "sale": "Sale",
+            "pped": "PPED",
+            "per": "%",
+            "routeCode": "RouteCode",
+            "visitorName": "VisitorName"
         },
         "Today_Planned_Not_Buying": {
             "Title": "Today Planned/Not Buying",
             "group": "All",
-            "Route":"Route",
-            "Visitor":"Visitor",
-            "Count":"Count",
-            "Name":"Name",
-            "Number":"Number",
-            "Address":"Address"
+            "Route": "Route",
+            "Visitor": "Visitor",
+            "Count": "Count",
+            "Name": "Name",
+            "Number": "Number",
+            "Address": "Address"
         },
         "DailyStatus": {
             "Title": "Daily Status",
             "group": "All",
-            "Tablet":"Tablet",
-            "Truck":"Truck"
+            "Tablet": "Tablet",
+            "Truck": "Truck"
         },
         "News": {
             "Title": "Notifications",
             "Loading": "Loading ...",
             "EndOfNotifications": "End of Notifications",
             "NotificationDeleted": "Notification Deleted.",
-            "cancel":"Cancel",
-            "edit":"Edit",
-            "confirm":"Confirm",
-            "editText":"Edit Text",
-            "enterText":"Enter Text..."
+            "cancel": "Cancel",
+            "edit": "Edit",
+            "confirm": "Confirm",
+            "editText": "Edit Text",
+            "enterText": "Enter Text..."
         },
         "Add_Edit_News": {
-            "AddPhoto":"Please Add your photo",
+            "AddPhoto": "Please Add your photo",
             "Camera": "Camera",
             "Gallery": "Gallery",
-            "ItemName":"Item Name",
+            "ItemName": "Item Name",
             "Title": "Add/Edit News",
             "Description": "Text",
             "Submit": "Submit",
@@ -208,92 +208,95 @@
             "Title": "Online Daily Sales",
             "group": "All",
             "UserIdNotFound": "UserId not found",
-            "dsd":"DSD",
-            "NON_DSD":"NON_DSD",
-            "Route":"Route",
-            "Pln":"Pln",
-            "Inv":"INV",
-            "per":"%",
-            "oor":"OOR",
-            "Total":"Total",
-            "NotINV":"NotINV",
-            "Sale":"Sale",
-            "PPED":"PPED"
+            "dsd": "DSD",
+            "NON_DSD": "NON_DSD",
+            "Route": "Route",
+            "Pln": "Pln",
+            "Inv": "INV",
+            "per": "%",
+            "oor": "OOR",
+            "Total": "Total",
+            "NotINV": "NotINV",
+            "Sale": "Sale",
+            "PPED": "PPED"
         },
-        "Trace_Salesman" : {
-            "NoLocationFound" : "No location found !",
-            "Title":"Trace Salesmen",
-            "rsm":"RSM",
-            "asm":"ASM",
-            "ssv":"SSV",
-            "sr":"SR"
+        "Trace_Salesman": {
+            "NoLocationFound": "No location found !",
+            "Title": "Trace Salesmen",
+            "rsm": "RSM",
+            "asm": "ASM",
+            "ssv": "SSV",
+            "sr": "SR"
         },
-        "logOut" : {
-            "areYouSure":"ARE YOU SURE?",
-            "message":"Message",
-            "logOut":"LOG OUT",
-            "cancel":"CANCEL"
+        "logOut": {
+            "areYouSure": "ARE YOU SURE?",
+            "message": "Message",
+            "logOut": "LOG OUT",
+            "cancel": "CANCEL"
         },
-        "Menu" : {
-            "en":"EN",
-            "fa":"FR",
-            "MainPage":"MainPage",
-            "Profile":"Profile",
-            "ContactUs":"Contact Us",
-            "AboutUs":"About Us",
-            "Setting":"Setting",
-            "LogOut":"LogOut"
+        "Menu": {
+            "en": "EN",
+            "fa": "FR",
+            "MainPage": "MainPage",
+            "Profile": "Profile",
+            "ContactUs": "Contact Us",
+            "AboutUs": "About Us",
+            "Setting": "Setting",
+            "LogOut": "LogOut"
         },
-        "Setting" : {
-            "Title":"Settings",
-            "Language":"Language",
-            "Theme":"Theme",
-            "help":"Help",
-            "frequently_asked_questions":"Frequently Asked Questions",
-            "description_video":"Description Video"
+        "Setting": {
+            "Title": "Settings",
+            "Language": "Language",
+            "Theme": "Theme",
+            "help": "Help",
+            "frequently_asked_questions": "Frequently Asked Questions",
+            "description_video": "Description Video"
         },
-        "Contact_Us":{
-            "Title":"Contact Us",
-            "Support":"Support",
-            "Send_Message":"Send Message",
-            "tell":"Tell",
-            "sell":"Sell",
-            "Name":"Name",
-            "Your_Message":"Your Message"
-
+        "Contact_Us": {
+            "Title": "Contact Us",
+            "Support": "Support",
+            "Send_Message": "Send Message",
+            "tell": "Tell",
+            "sell": "Sell",
+            "Name": "Name",
+            "Your_Message": "Your Message",
+            "msg_empty": "Message can't be empty!",
+            "msg_sent": "Your message has been sent."
         },
-        "Profile":{
-            "Title":"Profile",
-            "Send_Message":"confirm",
-            "Current_password":"Current password",
-            "New_password":"New password",
-            "Re_enter_new_password":"Re-enter new password"
+        "Profile": {
+            "Title": "Profile",
+            "Send_Message": "confirm",
+            "Current_password": "Current password",
+            "New_password": "New password",
+            "Re_enter_new_password": "Re-enter new password",
+            "Password_Miss_Match": "Password miss match!",
+            "FillAllFields": "All fields are required",
+            "PasswordChanged": "Password changed"
         },
-        "About_Us":{
-            "Title":"About app",
-            "Powered_by":"POWERED BY",
-            "for":"For",
-            "Your_version":"Your version :",
-            "copyright":"copyright :",
-            "Terms_of_Use":"Terms of Use",
-            "Privacy_Policy":"Privacy Policy",
-            "Update_New_Version":"Update New Version"
+        "About_Us": {
+            "Title": "About app",
+            "Powered_by": "POWERED BY",
+            "for": "For",
+            "Your_version": "Your version :",
+            "copyright": "copyright :",
+            "Terms_of_Use": "Terms of Use",
+            "Privacy_Policy": "Privacy Policy",
+            "Update_New_Version": "Update New Version"
         },
-        "Language":{
-            "Title":"Language",
-            "Select":"Select your language",
-            "en":"English",
-            "fa":"Persian"
+        "Language": {
+            "Title": "Language",
+            "Select": "Select your language",
+            "en": "English",
+            "fa": "Persian"
         }
-
     },
     "FR": {
-            "connection_error": "!نمی توان به سرور متصل شد",
-            "gps_error": "!لطفا موقعیت مکانی را روشن کنید",
-            "Loading": "لطفا صبر کنید...",
-            "server_no_value": "سرور هیچ مقداری را برمی گرداند",
-            "Submit":"ثبت",
-            "Main_Page":"صفحه اصلی",
+        "connection_error": "!نمی توان به سرور متصل شد",
+        "gps_error": "!لطفا موقعیت مکانی را روشن کنید",
+        "Loading": "لطفا صبر کنید...",
+        "server_no_value": "سرور هیچ مقداری را برمی گرداند",
+        "Submit": "ثبت",
+        "Main_Page": "صفحه اصلی",
         "Customer_History": {
             "Title": "اطلاعات پیشین مشتری",
             "gps": "موقعیت یابی",
@@ -303,19 +306,19 @@
             "Tell": "شماره تماس",
             "SR": "نام فروشنده",
             "Address": "نشانی",
-            "DC":"DC",
-            "Route":"مسیر",
-            "Customer":"نام مشتری",
-            "sales":"فروش ",
-            "PPED":"PPED",
-            "Samples":"نمونه ها",
-            "Qty":"کمیت",
-            "Kg":"کیلوگرم",
+            "DC": "DC",
+            "Route": "مسیر",
+            "Customer": "نام مشتری",
+            "sales": "فروش ",
+            "PPED": "PPED",
+            "Samples": "نمونه ها",
+            "Qty": "کمیت",
+            "Kg": "کیلوگرم",
             "msg_no_customer": "!مشتری در محدوده شما یافت نشد",
-            "searching":" در حال جستجو", 
-            "notFound":"جستجوی شما نتیجه ای نداشت", 
-            "typeToSearchText":"جستجو", 
-            "searchPlaceholder":"جستجو"
+            "searching": " در حال جستجو",
+            "notFound": "جستجوی شما نتیجه ای نداشت",
+            "typeToSearchText": "جستجو",
+            "searchPlaceholder": "جستجو"
         },
         "Questionnaire": {
             "Title": "پرسشنامه",
@@ -325,23 +328,23 @@
             "Input_select_customer": "نام مشتری",
             "Input_select_customer_Category": "دسته بندی مشتری",
             "Submit_button": "ثبت",
-            "Msg_answer_neccesary":  "!ثبت پاسخ ضروری است",
+            "Msg_answer_neccesary": "!ثبت پاسخ ضروری است",
             "Msg_image_neccesary": "!ثبت تصویر ضروری است",
             "Msg_submit": ".اطلاعات با موفقیت ارسال شد",
-            "Msg_update":".اطلاعات با موفقیت بروزرسانی شد",
-            "DC":"DC",
-            "Route":"مسیر",
-            "RouteDaily":"مسیر روزانه",
-            "Customer":"نام مشنری",
+            "Msg_update": ".اطلاعات با موفقیت بروزرسانی شد",
+            "DC": "DC",
+            "Route": "مسیر",
+            "RouteDaily": "مسیر روزانه",
+            "Customer": "نام مشنری",
             "CustomerCategory": "دسته بندی مشتری"
         },
         "Gps_Tracking": {
             "Title": "نقشه",
             "Description": "توصیف",
-            "Planned_Not_Invoiced_Yet":  "مطابق برنامه و فاکتور نشده",
-            "Planned_and_Invoiced":  "مطابق برنامه و فاکتور شده",
+            "Planned_Not_Invoiced_Yet": "مطابق برنامه و فاکتور نشده",
+            "Planned_and_Invoiced": "مطابق برنامه و فاکتور شده",
             "OOP_invoiced": "خارج از برنامه و فاکتور شده",
-            "Visited_Not_Buy":"بازدید شده و فاکتور نشده ",
+            "Visited_Not_Buy": "بازدید شده و فاکتور نشده ",
             "sr": "نام فروشنده",
             "Truck": "ماشین پخش",
             "Input_select_date": "نمایش تاریخ",
@@ -351,16 +354,16 @@
             "Input_select_SR": "نمایش SR",
             "Radio_input_show_truck": "نمایش ماشین",
             "Radio_input_show_SR": "نمایش SR",
-            "No_Value" : "هیچ نقطه ای پیدا نشد !"
+            "No_Value": "هیچ نقطه ای پیدا نشد !"
         },
         "Customer_nearby": {
             "Title": "سوپرمارکتهای مجاور",
             "Description": "توصیف",
-            "Normal_Customer":  "فروشگاه های عادی",
-            "Promotion_Customer":  "از تخفیف استفاده کرده",
+            "Normal_Customer": "فروشگاه های عادی",
+            "Promotion_Customer": "از تخفیف استفاده کرده",
             "PPED_MoreThan_5Per": "مرجوعی بیش از 5% در 6 هفته اخیر",
-            "NOT_Buy_2_Weeks":"بیشتر از 2 هفته خرید نکرده",
-            "NOT_Buy_2_Weeks_PPED":  "مرجوعی بیش از 5% در 6 هفته اخیر و از تخفیف استفاده کرده"
+            "NOT_Buy_2_Weeks": "بیشتر از 2 هفته خرید نکرده",
+            "NOT_Buy_2_Weeks_PPED": "مرجوعی بیش از 5% در 6 هفته اخیر و از تخفیف استفاده کرده"
         },
         "Score_Card": {
             "Title": "گزارش روزانه فروش",
@@ -377,22 +380,21 @@
             "username": "نام کاربر",
             "password": "کلیدواژه",
             "submit": "ورود",
-            "UserPassIncorrect":  "نام کاربری یا رمز عبور اشتباه است",
+            "UserPassIncorrect": "نام کاربری یا رمز عبور اشتباه است",
             "RememberMe": "مرا بخاطر بسپار",
             "PoweredBy": "پشتیبانی شده توسط",
             "serial": "سریال"
         },
-        "Menu" : {
-            "en":"EN",
-            "fa":"FR",
-            "MainPage":"صفحه اصلی",
-            "Profile":"پروفایل",
-            "ContactUs":"تماس با ما",
-            "AboutUs":"درباره نرم افزار",
-            "Setting":"تنظیمات",
-            "LogOut":"خروج"
-        }
-        ,
+        "Menu": {
+            "en": "EN",
+            "fa": "FR",
+            "MainPage": "صفحه اصلی",
+            "Profile": "پروفایل",
+            "ContactUs": "تماس با ما",
+            "AboutUs": "درباره نرم افزار",
+            "Setting": "تنظیمات",
+            "LogOut": "خروج"
+        },
         "theme": {
             "title": "تم",
             "dark": " تیره",
@@ -414,15 +416,15 @@
             "Title": "وضعیت بارگیری و فروش",
             "dateTitle": "تاریخ",
             "Group": "همه",
-            "Route":"میبر",
-            "Load":"بار",
-            "Sale":"فروش",
-            "PPED":"PPED",
-            "Remain":"باقی مانده",
-            "SKU":"SKU"
+            "Route": "میبر",
+            "Load": "بار",
+            "Sale": "فروش",
+            "PPED": "PPED",
+            "Remain": "باقی مانده",
+            "SKU": "SKU"
         },
         "Online_Sales_Hourly": {
-            "Title":  "فروش ساعتی فروشندگان",
+            "Title": "فروش ساعتی فروشندگان",
             "perKilo": "برحسب کیلوگرم",
             "perInvoices": "برحسب تعداد فاکتور",
             "group": "همه"
@@ -437,65 +439,65 @@
             "Title": "موقعیت فروشنده ها",
             "Group": "انتخاب همه",
             "NoValueSelected": "!هیچ مقداری انتخاب نشده است",
-            "NoUserAvailable":"هیچ مقداری از طرف سرور باز نمیگردد",
-            "RequestError" : "خطا"
+            "NoUserAvailable": "هیچ مقداری از طرف سرور باز نمیگردد",
+            "RequestError": "خطا"
         },
         "Sales_hourly_Day_And_Sales_Office": {
             "Title": "نمایش فروش ساعتی زماندار شهرها",
             "group": "همه",
-            "DSD_Hourly_City":"برحسب شهر",
-            "DSD_Hourly_Days":"برحسب روز"
+            "DSD_Hourly_City": "برحسب شهر",
+            "DSD_Hourly_Days": "برحسب روز"
         },
         "Sales_Compare_Tracking_Hourly": {
             "Title": "مقایسه فروش ساعتی با میانگین سال قبل",
             "group": "همه"
         },
         "Max_PPED": {
-            "Title":  "بیشترین مرجوعی",
+            "Title": "بیشترین مرجوعی",
             "group": "همه",
-            "perCustomer":"برحسب مشتری",
-            "perRoute":"برحسب مسیر",
-            "custmerNumber":"شماره مشتری",
-            "cluster":"Cluster",
-            "storeName":"نام فروشگاه",
-            "sale":"فروش",
-            "pped":"PPED",
-            "per":"%",
-            "routeCode":"کد مسیر",
-            "visitorName":"نام بازدید کننده"
+            "perCustomer": "برحسب مشتری",
+            "perRoute": "برحسب مسیر",
+            "custmerNumber": "شماره مشتری",
+            "cluster": "Cluster",
+            "storeName": "نام فروشگاه",
+            "sale": "فروش",
+            "pped": "PPED",
+            "per": "%",
+            "routeCode": "کد مسیر",
+            "visitorName": "نام بازدید کننده"
         },
         "Today_Planned_Not_Buying": {
             "Title": "برنامه ریزی فروش امروز",
             "group": "همه",
-            "Route":"مسیر",
-            "Visitor":"بازدید کننده",
-            "Count":"Count",
-            "Name":"نام",
+            "Route": "مسیر",
+            "Visitor": "بازدید کننده",
+            "Count": "Count",
+            "Name": "نام",
             "Number": "تماس",
-            "Address":"نشانی"
+            "Address": "نشانی"
         },
         "DailyStatus": {
             "Title": "وضعیت روزانه",
             "group": "همه",
-            "Tablet":"تبلت",
-            "Truck":"ماشین"
+            "Tablet": "تبلت",
+            "Truck": "ماشین"
         },
         "News": {
             "Title": "اطلاعیه",
             "Loading": "...لطفا صبر کنید",
             "EndOfNotifications": "پایان اعلان ها",
             "NotificationDeleted": ".اعلان حذف شد",
-            "cancel":"انصراف",
-            "edit":"ویرایش",
-            "confirm":"تایید",
-            "editText":"متن را ویرایش کنید",
-            "enterText":"...متن را وارد کنید"
+            "cancel": "انصراف",
+            "edit": "ویرایش",
+            "confirm": "تایید",
+            "editText": "متن را ویرایش کنید",
+            "enterText": "...متن را وارد کنید"
         },
         "Add_Edit_News": {
-            "AddPhoto":".لطفا عکس خود را اضافه کنید",
+            "AddPhoto": ".لطفا عکس خود را اضافه کنید",
             "Camera": "دوربین",
             "Gallery": "گالری",
-            "ItemName":"Item Name",
+            "ItemName": "Item Name",
             "Title": "افزودن/ویرایش اخبار",
             "Description": "توضیحات",
             "Submit": "ثبت",
@@ -504,76 +506,79 @@
             "NewsUpdated": ".اخبار به روز شد"
         },
         "Online_Daily_Sales": {
-            "Title":"فروش روزانه فروشنده ها",
+            "Title": "فروش روزانه فروشنده ها",
             "group": "همه",
             "UserIdNotFound": ".شناسه کاربری پیدا نشد",
-            "dsd":"DSD",
-            "NON_DSD":"NON_DSD",
-            "Route":"مسیر",
-            "Pln":"Pln",
-            "Inv":"INV",
-            "per":"%",
-            "oor":"OOR",
-            "Total":"Total",
-            "NotINV":"NotINV",
-            "Sale":"فروش",
-            "PPED":"PPED"
+            "dsd": "DSD",
+            "NON_DSD": "NON_DSD",
+            "Route": "مسیر",
+            "Pln": "Pln",
+            "Inv": "INV",
+            "per": "%",
+            "oor": "OOR",
+            "Total": "Total",
+            "NotINV": "NotINV",
+            "Sale": "فروش",
+            "PPED": "PPED"
         },
-        "Trace_Salesman" : {
-            "NoLocationFound" : "!مکانی پیدا نشد",
+        "Trace_Salesman": {
+            "NoLocationFound": "!مکانی پیدا نشد",
             "Title": "مسیر حرکت فروشنده ها",
-            "rsm":"RSM",
-            "asm":"ASM",
-            "ssv":"SSV",
-            "sr":"SR"
+            "rsm": "RSM",
+            "asm": "ASM",
+            "ssv": "SSV",
+            "sr": "SR"
         },
-        "logOut" : {
-            "areYouSure":"آیا مطمئن هستید؟",
-            "message":"پیام",
-            "logOut":"خروج",
-            "cancel":"لغو"
+        "logOut": {
+            "areYouSure": "آیا مطمئن هستید؟",
+            "message": "پیام",
+            "logOut": "خروج",
+            "cancel": "لغو"
         },
-        "Setting" : {
-            "Title":"تنظیمات",
-            "Language":"زبان ها",
-            "Theme":"تم",
-            "help":"کمک",
-            "frequently_asked_questions":"سوالات متداول",
-            "description_video":"ویدیو توضیحات"
+        "Setting": {
+            "Title": "تنظیمات",
+            "Language": "زبان ها",
+            "Theme": "تم",
+            "help": "کمک",
+            "frequently_asked_questions": "سوالات متداول",
+            "description_video": "ویدیو توضیحات"
         },
-        "Contact_Us":{
-            "Title":"تماس با ما",
-            "Support":"پشتیبانی",
-            "Send_Message":".پیام خود را بفرستید",
-            "tell":"شماره تلفن ثابت",
-            "sell":"شماره تلفن همراه",
-            "Name":"نام",
-            "Your_Message":"پیام شما"
-
+        "Contact_Us": {
+            "Title": "تماس با ما",
+            "Support": "پشتیبانی",
+            "Send_Message": ".پیام خود را بفرستید",
+            "tell": "شماره تلفن ثابت",
+            "sell": "شماره تلفن همراه",
+            "Name": "نام",
+            "Your_Message": "پیام شما",
+            "msg_empty": "!متن خالی است",
+            "msg_sent": ".پیام شما ارسال شد"
         },
-        "Profile":{
-            "Title":"پروفایل",
-            "Send_Message":"تایید",
-            "Current_password":"رمز جاری",
+        "Profile": {
+            "Title": "پروفایل",
+            "Send_Message": "تایید",
+            "Current_password": "رمز جاری",
             "New_password": "رمز جدید",
-            "Re_enter_new_password":"تکرار رمز جدید"
+            "Re_enter_new_password": "تکرار رمز جدید",
+            "Password_Miss_Match": "رمز عبور جدید شما تطابق ندارد!",
+            "FillAllFields": "تمامی فیلد ها باید مقدار داشته باشد",
+            "PasswordChanged": "رمز عبور شما تغیر کرد"
         },
-        "About_Us":{
-            "Title":"درباره نرم افزار",
-            "Powered_by":"پشتیبانی شده توسط",
-            "for":"برای",
-            "Your_version":": نسخه شما",
-            "copyright":": کپی رایت",
-            "Terms_of_Use":"شرایط استفاده",
-            "Privacy_Policy":"سیاست حفظ حریم خصوصی",
-            "Update_New_Version":"به روز رسانی نسخه جدید"
+        "About_Us": {
+            "Title": "درباره نرم افزار",
+            "Powered_by": "پشتیبانی شده توسط",
+            "for": "برای",
+            "Your_version": ": نسخه شما",
+            "copyright": ": کپی رایت",
+            "Terms_of_Use": "شرایط استفاده",
+            "Privacy_Policy": "سیاست حفظ حریم خصوصی",
+            "Update_New_Version": "به روز رسانی نسخه جدید"
         },
-        "Language":{
-            "Title":"زبان",
-            "Select":"زبان خود را انتخاب کنید",
-            "en":"English",
-            "fa":"Persian"
+        "Language": {
+            "Title": "زبان",
+            "Select": "زبان خود را انتخاب کنید",
+            "en": "English",
+            "fa": "Persian"
         }
-
     }
 }
