@@ -162,14 +162,6 @@ export class NotificationsPage implements OnInit {
     }
     this.getNews(event);
   }
-  get_direction() {
-    let lang = this.utilService.get_lang();
-    if (lang == 'en') {
-      return 'ltr';
-    } else {
-      return 'rtl';
-    }
-  }
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }

@@ -93,7 +93,7 @@ ion-col{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-             // font-weight: bold;
+             font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -113,7 +113,7 @@ ion-col{
                 color: #0095EB;
                 display: flex;
                 font-size: 1.3rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1rem;
@@ -235,7 +235,7 @@ ion-col{
                       }    
                 }
                 table.details-table{
-                    color: var(--ion-color-dark);
+                    color: #222428;
                     .details-inner-table-container{
                         table.details-inner-table{
                             width: 100vw;

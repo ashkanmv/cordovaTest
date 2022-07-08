@@ -342,7 +342,7 @@ ion-card{
                     :first-child{
                         background: #5cc3ff63;
                         font-size:.9rem ;
-                         // font-weight: bold;
+                         font-weight: bold;
                     }
                     &>ion-col{
                         font-size: 1rem;
@@ -358,7 +358,7 @@ ion-card{
 
 .firstrow{
     font-size: 1.1rem;
-     // font-weight: bold;
+     font-weight: bold;
     flex-wrap: wrap;
     &>:first-child{
         color: #0095EB;

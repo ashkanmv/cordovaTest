@@ -84,20 +84,6 @@ ion-col.segment-change{
 }
 
 
-ion-content.select-input-popover-title{
-    cursor:auto;
-    --color:var(--ion-color-dark) ;
-    text-align: center;
-    border-bottom: 2px dashed #8f8f8f;
-     // font-weight: bold;
-    --padding-start: 0 ;
-    &:hover{
-        --background:none;
-    }
-    
-}
-
-
 ion-col.DSD-page{
     height: 150vh;
 }
@@ -125,6 +111,10 @@ ion-col.DSD-page{
                 width: 100%;
                 height: 10vh;
             }
+            .overflow-auto{
+                overflow: auto;
+            }
+
         }
         .search-submit{
             z-index: 2;

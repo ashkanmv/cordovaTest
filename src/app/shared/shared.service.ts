@@ -8,7 +8,7 @@ import { LanguageService } from './language.service';
   providedIn: 'root',
 })
 export class SharedService {
-  isOnline = true;
+  isOnline = false;
   private _fontSize: number = 16;
   public get fontSize(): number { return this._fontSize; }
   set fontSize(v: number) {

@@ -66,9 +66,7 @@ ion-popover.description-drop-down{
         img{
             max-width:3.5vw;
         }
-        &:hover{
-            --background:#119ff23f;
-        }
+
     }
     ion-content.header-input-popover-title{
         display: flex;
@@ -77,7 +75,7 @@ ion-popover.description-drop-down{
         --color:var(--ion-color-light) ;
         text-align: center;
         border-bottom: none;
-         // font-weight: bold;
+         font-weight: bold;
         --padding-start: 0 ;
         --padding-top: 1rem ;
         --padding-bottom: 1rem ;
@@ -96,18 +94,6 @@ ion-popover.description-drop-down{
 
 }
 
-ion-content.header-input-popover-title{
-    cursor:auto;
-    --color:var(--ion-color-dark) ;
-    text-align: center;
-    border-bottom: 2px dashed #8f8f8f;
-     // font-weight: bold;
-    --padding-start: 0 ;
-    &:hover{
-        --background:none;
-    }
-    
-}
 
 
 

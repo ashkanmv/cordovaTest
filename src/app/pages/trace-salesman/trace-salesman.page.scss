@@ -25,30 +25,6 @@ ion-title{
     }
 }
 
-ion-popover.hide-drop-down{
-    --max-width:10rem;
-    --offset-x:-10vw;
-    --offset-y:1vh;
-
-    .first{
-        --padding-top: 1rem ;
-
-    }
-    ion-content{
-        --color:#005b90;
-         // font-weight: bold;
-        --padding-top: .9rem ;
-        --padding-bottom: .3rem ;
-        --padding-start: 1.7rem ;
-        &:hover{
-            --background:#0095EB;
-        }
-        &:focus{
-            background: none;
-        }
-
-    }
-}
 
 
 ion-col{
@@ -70,7 +46,7 @@ ion-col{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-             // font-weight: bold;
+             font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -91,7 +67,7 @@ ion-col{
                 color: #0095EB;
                 display: flex;
                 font-size: 1.5rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding-left: .5rem;

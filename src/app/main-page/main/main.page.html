@@ -14,8 +14,14 @@
         <ion-img class="search" src="assets/mainPage/main/search-circle.png"></ion-img>
       </ion-col>
       <ion-col size="1">
-        <ion-img src="assets/mainPage/main/wifi.png"></ion-img>
-      </ion-col>
+        <ion-img *ngIf="isOnline"
+        class="wifiOn"
+        src="\assets\pages\Wifi\Internet On.png"
+      ></ion-img>
+      <ion-img *ngIf="!isOnline"
+        class="wifiOn"
+        src="\assets\pages\Wifi\Internet Off.png"
+      ></ion-img>      </ion-col>
     </ion-row>
   </ion-grid>
   <app-date></app-date>

@@ -80,7 +80,7 @@ ion-col.segment-change{
             width: 100%;
             ion-label{
                 font-size: 1rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 color: #b9b9b9;
             }
         }
@@ -115,7 +115,7 @@ ion-grid{
         label{
             font-size: 1.5rem;
             color: #cfcfcf;
-             // font-weight: bold;
+             font-weight: bold;
             margin-bottom: 1rem;
         }
         .date-picker{
@@ -135,7 +135,7 @@ ion-grid{
                 color: #0095EB;
                 display: flex;
                 font-size: 1.5rem;
-                 // font-weight: bold;
+                 font-weight: bold;
                 ion-icon{
                     color: #a9a9a9;
                     padding: 0 1rem;
@@ -217,6 +217,7 @@ ion-grid{
             text-align: center;
             display: flex;
             color: var(--ion-color-dark);
+            overflow: hidden;
         }
         .tablet-table-body-container{
             height: 70vh;
