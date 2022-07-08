@@ -1,8 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-between header ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+      class=" ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
-        <ion-buttons >
+        <ion-buttons>
           <ion-back-button color="light" defaultHref="main"></ion-back-button>
         </ion-buttons>
       </ion-col>
@@ -17,14 +18,8 @@
         </ion-img>
       </ion-col>
       <ion-col class="ion-align-self-center wifi" size="1">
-        <ion-img *ngIf="isOnline"
-          class="wifiOn"
-          src="\assets\pages\Wifi\Internet On.png"
-        ></ion-img>
-        <ion-img *ngIf="!isOnline"
-          class="wifiOn"
-          src="\assets\pages\Wifi\Internet Off.png"
-        ></ion-img>
+        <ion-img *ngIf="isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet On.png"></ion-img>
+        <ion-img *ngIf="!isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet Off.png"></ion-img>
       </ion-col>
     </ion-row>
     <ion-grid class="secondary-bg white-text">
@@ -76,13 +71,14 @@
         <div class="salesmen-location-box">
           <ion-item lines="none" class="salesmen-location lightBlue-shadow">
             <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
-            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.rsm}}" interface="popover"
-              formControlName="selectedRsm" (ionChange)="rsmSelect()">
+            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.rsm}}"
+              interface="popover" formControlName="selectedRsm" (ionChange)="rsmSelect()">
               <ion-select-option *ngFor="let rsm of rsms" [value]="rsm">{{rsm.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
             <ion-list class="checkbox-group-container">
-              <ion-checkbox formControlName="showRsm" (ionChange)="showDataChanged('rsm',f.showRsm.value)"></ion-checkbox>
+              <ion-checkbox formControlName="showRsm" (ionChange)="showDataChanged('rsm',f.showRsm.value)">
+              </ion-checkbox>
             </ion-list>
           </ion-item>
 
@@ -91,34 +87,36 @@
         <div class="salesmen-location-box">
           <ion-item lines="none" class="salesmen-location lightBlue-shadow">
             <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
-            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.asm}}" interface="popover"
-              formControlName="selectedAsm" (ionChange)="asmSelect()">
+            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.asm}}"
+              interface="popover" formControlName="selectedAsm" (ionChange)="asmSelect()">
               <ion-select-option *ngFor="let asm of asms" [value]="asm">{{asm.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
             <ion-list class="checkbox-group-container">
-              <ion-checkbox formControlName="showAsm" (ionChange)="showDataChanged('asm',f.showAsm.value)"></ion-checkbox>
+              <ion-checkbox formControlName="showAsm" (ionChange)="showDataChanged('asm',f.showAsm.value)">
+              </ion-checkbox>
             </ion-list>
           </ion-item>
         </div>
         <div class="salesmen-location-box">
           <ion-item lines="none" class="salesmen-location lightBlue-shadow">
             <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
-            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.ssv}}" interface="popover"
-              formControlName="selectedSsv" (ionChange)="ssvSelect()">
+            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.ssv}}"
+              interface="popover" formControlName="selectedSsv" (ionChange)="ssvSelect()">
               <ion-select-option *ngFor="let ssv of ssvs" [value]="ssv">{{ssv.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
             <ion-list class="checkbox-group-container">
-              <ion-checkbox formControlName="showSsv" (ionChange)="showDataChanged('ssv',f.showSsv.value)"></ion-checkbox>
+              <ion-checkbox formControlName="showSsv" (ionChange)="showDataChanged('ssv',f.showSsv.value)">
+              </ion-checkbox>
             </ion-list>
           </ion-item>
         </div>
         <div class="salesmen-location-box">
           <ion-item lines="none" class="salesmen-location lightBlue-shadow">
             <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
-            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.sr}}" interface="popover"
-              formControlName="selectedSr" (ionChange)="srSelect()">
+            <ion-select class="drop-down select-drop-down" placeholder="{{language.Trace_Salesman.sr}}"
+              interface="popover" formControlName="selectedSr" (ionChange)="srSelect()">
               <ion-select-option *ngFor="let sr of srs" [value]="sr">{{sr.FullName}}</ion-select-option>
             </ion-select>
             <ion-icon name="chevron-down-outline"></ion-icon>
