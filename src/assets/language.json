@@ -62,7 +62,8 @@
             "Input_select_SSV": "SSV",
             "Input_select_SR": "SR",
             "Radio_input_show_truck": "Show truck",
-            "Radio_input_show_SR": "Show SR"
+            "Radio_input_show_SR": "Show SR",
+            "No_Value" : "No points available !"
         },
         "Customer_nearby": {
             "Title": "Customer nearby",
@@ -349,7 +350,8 @@
             "Input_select_SSV": "نمایش SSV",
             "Input_select_SR": "نمایش SR",
             "Radio_input_show_truck": "نمایش ماشین",
-            "Radio_input_show_SR": "نمایش SR"
+            "Radio_input_show_SR": "نمایش SR",
+            "No_Value" : "هیچ نقطه ای پیدا نشد !"
         },
         "Customer_nearby": {
             "Title": "سوپرمارکتهای مجاور",

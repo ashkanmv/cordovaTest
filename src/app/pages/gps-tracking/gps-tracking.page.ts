@@ -6,19 +6,7 @@ import { LatLngLiteral, LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import {
-  BackgroundColors,
-  CommonUtility,
-  GetInvoicedResponse,
-  GetSrInfoResponse,
-  GetSrRouteResponse,
-  getUserCildrenResponse,
-  GetVehicleByRouteTimeResponse,
-  Language,
-  MapView,
-  Marker,
-  Polyline,
-  Shop,
-  VisitedNotBuyResponse,
+  BackgroundColors, CommonUtility, GetInvoicedResponse, GetSrInfoResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, Language, MapView, Marker, Polyline, Shop, VisitedNotBuyResponse,
 } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
@@ -71,7 +59,7 @@ export class GpsTrackingPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
-  public get backgroundColor() : BackgroundColors {
+  public get backgroundColor(): BackgroundColors {
     return this.sharedService.backgroundColor;
   }
   constructor(
@@ -160,9 +148,7 @@ export class GpsTrackingPage implements OnInit {
     });
   }
 
-  get f() {
-    return this.form.controls;
-  }
+  get f() { return this.form.controls; }
 
   accessHandler(accessJson: { name: string }[]) {
     var flg = false;
@@ -256,7 +242,11 @@ export class GpsTrackingPage implements OnInit {
     }
   }
 
-  routeSelect() {
+  async routeSelect() {
+    const loading = await this.loadingCtrl.create({
+      message: this.language.Loading
+    });
+    await loading.present()
     this.markers = [];
     this.polylines = [];
     this.mapService.clearMarkers.next(true);
@@ -352,11 +342,7 @@ export class GpsTrackingPage implements OnInit {
       return;
     }
 
-    this.mapService
-      .getInvoiced(
-        this.custCodes.join(','),
-        this.CommonUtility.getInvoicedDate(new Date(this.f.selectedDate.value))
-      )
+    this.mapService.getInvoiced(this.custCodes.join(','), this.CommonUtility.getInvoicedDate(new Date(this.f.selectedDate.value)))
       .subscribe((invoicedRes) => {
         this.invoicedShopPoints = invoicedRes;
         this.invoicedFLoaded = true;
@@ -441,6 +427,9 @@ export class GpsTrackingPage implements OnInit {
     });
     this.markers = [...this.markers, ...markers];
     if (flyTo) this.mapView = flyTo;
+    if (!this.markers.length) this.sharedService.toast('warning', this.language.Gps_Tracking.No_Value)
+    else this.show = false;
+    this.loadingCtrl.dismiss();
   }
 
   selectIcon(key: 'orange' | 'red' | 'blue' | 'red_black_circle') {
