@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Data, Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 import { MapService } from 'src/app/map/map.service';
-import { IonDatetime, PopoverController } from '@ionic/angular';
+import { IonDatetime, LoadingController, PopoverController } from '@ionic/angular';
 import { BackgroundColors, GetAllChildrenUserResponse, GetSalesmenLocationResponse, Language, Marker } from 'src/app/shared/common';
-import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -52,30 +50,24 @@ export class SalesmenLocationPage implements OnInit {
   mapInitSubscription: Subscription;
   showMap = false;
   selectedDate = new Date().toISOString();
-  public get language(): Language {
-    return this.languageService.language;
-  }
-  public get isOnline() {
-    return this.sharedService.isOnline;
-  }
-  public get backgroundColor() : BackgroundColors {
-    return this.sharedService.backgroundColor;
-  }
+  public get language(): Language { return this.languageService.language; }
+  public get isOnline() { return this.sharedService.isOnline; }
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+
   constructor(
-    private router: Router,
     public popoverctrl: PopoverController,
     private persianCalendarService: PersianCalendarService,
-    private formBuilder: FormBuilder,
     private storageService: StorageService,
     private mapService: MapService,
     private languageService: LanguageService,
     private salesmenService: SalesmenLocationService,
-    public sharedService: SharedService
+    public sharedService: SharedService,
+    private loadingCtrl: LoadingController
   ) {
-    this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
-      // if (initialized && (this.rsmMarkers.length || this.asmMarkers.length || this.ssvMarkers.length || this.srMarkers.length || this.adminMarkers.length))
-      //   this.markers = this.checkMarkers()
-    })
+    // this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
+    //   if (initialized && (this.rsmMarkers.length || this.asmMarkers.length || this.ssvMarkers.length || this.srMarkers.length || this.adminMarkers.length))
+    //     this.markers = this.checkMarkers()
+    // })
   }
 
   ionViewDidEnter() {
@@ -147,11 +139,17 @@ export class SalesmenLocationPage implements OnInit {
     });
   }
 
-  loadRsms(byParentUserId: boolean, ids: number[]) {
+  async loadRsms(byParentUserId: boolean, ids: number[]) {
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
       return
     }
+    const loading = await this.loadingCtrl.create({
+      message: this.language.Loading,
+      id: 'rsm'
+    })
+    await loading.present();
+
     this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'rsm', byParentUserId ? ' ' : ids.join()).subscribe(res => {
       this.selectedRsm = [];
       this.rsms = res;
@@ -165,11 +163,17 @@ export class SalesmenLocationPage implements OnInit {
     });
   }
 
-  loadAsms(byParentUserId: boolean, ids: number[]) {
+  async loadAsms(byParentUserId: boolean, ids: number[]) {
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
       return
     }
+    const loading = await this.loadingCtrl.create({
+      message: this.language.Loading,
+      id: 'asm'
+    })
+    await loading.present();
+
     this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'asm', byParentUserId ? ' ' : ids.join())
       .subscribe(res => {
         this.selectedAsm = [];
@@ -185,11 +189,17 @@ export class SalesmenLocationPage implements OnInit {
       })
   }
 
-  loadSsvs(byParentUserId: boolean, ids: number[]) {
+  async loadSsvs(byParentUserId: boolean, ids: number[]) {
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
       return
     }
+    const loading = await this.loadingCtrl.create({
+      message: this.language.Loading,
+      id: 'ssv'
+    })
+    await loading.present();
+
     this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'ssv', byParentUserId ? ' ' : ids.join())
       .subscribe(res => {
         this.selectedSsv = [];
@@ -205,11 +215,17 @@ export class SalesmenLocationPage implements OnInit {
       })
   }
 
-  loadSrs(byParentUserId: boolean, ids: number[]) {
+  async loadSrs(byParentUserId: boolean, ids: number[]) {
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
       return
     }
+    const loading = await this.loadingCtrl.create({
+      message: this.language.Loading,
+      id: 'sr'
+    })
+    await loading.present();
+
     this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'sr', byParentUserId ? ' ' : ids.join())
       .subscribe(res => {
         this.selectedSr = [];
@@ -229,7 +245,7 @@ export class SalesmenLocationPage implements OnInit {
       this.loadSrs(false, this.selectedSr)
   }
 
-  showDataChanged(key: 'rsm' | 'asm' | 'ssv' | 'sr', value: boolean) {
+  showDataChanged() {
     this.markers = this.checkMarkers();
   }
 
@@ -246,8 +262,10 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   setMarkersOnMap(users: GetSalesmenLocationResponse[], userType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
-    if (!users.length)
+    if (!users.length){
+      this.loadingCtrl.dismiss(null, null, userType);
       return
+    }
 
     let markers: Marker[] = [];
     users.forEach(user => {
@@ -262,24 +280,30 @@ export class SalesmenLocationPage implements OnInit {
     switch (userType) {
       case 'rsm':
         this.rsmMarkers = markers;
+        this.loadingCtrl.dismiss(null, null, 'rsm')
         break;
       case 'asm':
         this.asmMarkers = markers;
+        this.loadingCtrl.dismiss(null, null, 'asm')
         break;
       case 'ssv':
         this.ssvMarkers = markers;
+        this.loadingCtrl.dismiss(null, null, 'ssv')
         break;
       case 'sr':
         this.srMarkers = markers;
+        this.loadingCtrl.dismiss(null, null, 'sr')
         break;
       case 'admin':
         this.adminMarkers = markers;
+        this.loadingCtrl.dismiss(null, null, 'admin')
         break;
     }
     this.markers = this.checkMarkers();
+
   }
 
-  checkMarkers(){
+  checkMarkers() {
     this.mapService.clearMarkers.next(true);
     let markers: Marker[] = [];
     if (this.rsmMarkers && this.showRsm) markers.push(...this.rsmMarkers)
@@ -287,7 +311,6 @@ export class SalesmenLocationPage implements OnInit {
     if (this.ssvMarkers && this.showSsv) markers.push(...this.ssvMarkers)
     if (this.srMarkers && this.showSr) markers.push(...this.srMarkers)
     return markers;
-    // this.markers = [...this.rsmMarkers, ...this.asmMarkers, ...this.ssvMarkers, ...this.srMarkers, ...this.adminMarkers];
   }
 
   selectIcon(key: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {

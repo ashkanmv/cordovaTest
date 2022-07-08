@@ -426,6 +426,7 @@ export class Language {
     Input_select_SR: string;
     Radio_input_show_truck: string;
     Radio_input_show_SR: string;
+    No_Value : string;
   };
   Customer_nearby: {
     Title: string;
