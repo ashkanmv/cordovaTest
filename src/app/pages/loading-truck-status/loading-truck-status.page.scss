@@ -31,17 +31,9 @@ ion-input{
 }
 
 ion-img{
-    max-width: 100%;
-}
+    min-width: 40px;
+    max-width: 60px;}
 
-.wifi{
-    min-width: 40px;
-    max-width: 60px;
-}
-.reload{
-    min-width: 40px;
-    max-width: 60px;
-}
 
 ion-img .back-button.ios{
     min-width: 40px;
@@ -260,4 +252,11 @@ table.main-table{
         }
     }
     
+}
+
+
+@media (max-width:551px) {
+    .wifi{
+        margin-right: 3vw;
+    }
 }

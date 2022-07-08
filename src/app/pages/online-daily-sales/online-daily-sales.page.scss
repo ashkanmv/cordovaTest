@@ -32,6 +32,7 @@ ion-img{
     min-width: 20px;
 }
 
+
 // -----segment change---------
 ion-col.segment-change{
     --height: 3rem;
@@ -261,7 +262,7 @@ ion-grid.maingrid{
         hr.hor-lineN{
             background: #0095EB;
             position: absolute;
-            left: 1.8rem;
+            left: 0.8rem;
             margin-top: -2.2rem;
             height: 6rem;
             width: 1px;
@@ -270,14 +271,18 @@ ion-grid.maingrid{
             background: #0095EB;
             position: absolute;
             left: 0.9rem;
-            margin-top: 2.8rem;
+            margin-top: 1.8rem;
             width: 1.1rem;
         }
     }
 }
 
 
-
+@media (max-width:551px) {
+    .wifi{
+        margin-right: 3vw;
+    }
+}
 
 
 
