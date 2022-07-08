@@ -209,7 +209,7 @@ export class MaxPPEDPage implements OnInit {
     await loading.present();
 
     if (!this.selectedItems.length) {
-      this.create_total_model1('Empty');
+      // this.create_total_model1('Empty');
       loading.dismiss();
       return;
     }
@@ -222,7 +222,7 @@ export class MaxPPEDPage implements OnInit {
       )
       .subscribe((srsales: Data[]) => {
         if (srsales.length != 0) this.create_total_model1(srsales);
-        else this.create_total_model1('Empty');
+        // else this.create_total_model1('Empty');
         loading.dismiss();
       });
   }
