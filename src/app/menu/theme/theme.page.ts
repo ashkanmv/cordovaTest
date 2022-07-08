@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
+import { StorageService } from 'src/app/shared/storage.service';
 
 @Component({
   selector: 'app-theme',
@@ -38,6 +39,6 @@ export class ThemePage implements OnInit {
   ngOnInit() { }
 
   changeThemeColor(color: ThemeColors) {
-    this.sharedService.themeColor = color;
+    this.themeColor = color;
   }
 }

@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false;
     this.loadLanguage();
-    this.setUiCustomization();
   }
 
   loadLanguage() {
@@ -39,7 +38,10 @@ export class AppComponent implements OnInit {
       this.plt
         .ready()
         .then(() => {
-          if (this.plt.is('cordova')) this.startTracking();
+          if (this.plt.is('cordova')){
+            this.startTracking();
+            this.setUiCustomization();
+          }
         })
         .catch((error) => {
           console.log(error);
