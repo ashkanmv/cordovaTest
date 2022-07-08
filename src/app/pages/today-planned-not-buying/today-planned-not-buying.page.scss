@@ -31,14 +31,8 @@ ion-input{
 }
 
 ion-img{
-    max-width: 100%;
-}
-
-.wifi,
-.reload{
     min-width: 40px;
-    max-width: 60px;
-}
+    max-width: 60px;}
 
 ion-img .back-button.ios{
     min-width: 40px;
@@ -262,3 +256,8 @@ ion-col{
 
 
 
+@media (max-width:551px) {
+    .wifi{
+        margin-right: 3vw;
+    }
+}
