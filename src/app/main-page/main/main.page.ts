@@ -53,119 +53,119 @@ export class MainPage implements OnInit {
   private _pages: PageDetail[] = [{
     index: 0,
     key: 'ch_page',
-    title: 'Customer History',
+    title: this.language.MainPage.Customer_History,
     imgSrc: 'assets/mainPage/main/Customer-History.png',
     routerLink: '/customer-history'
   },
   {
     index: 1,
     key: 'qn_page',
-    title: 'Questionnaire',
+    title: this.language.MainPage.questionnaire,
     imgSrc: 'assets/mainPage/main/Questionnaire.png',
     routerLink: '/questionnaire'
   },
   {
     index: 2,
     key: 'ns_page',
-    title: 'Notification',
+    title: this.language.MainPage.Notification,
     imgSrc: 'assets/mainPage/main/Notification.png',
     routerLink: '/notifications'
   },
   {
     index: 3,
     key: 'gps_page',
-    title: 'GPS Tracking',
+    title: this.language.MainPage.gpsTracking,
     imgSrc: 'assets/mainPage/main/GPS-Tracking.png',
     routerLink: '/gps-tracking'
   },
   {
     index: 4,
     key: 'srsales_page',
-    title: 'Online Daily Sales',
+    title:this.language.MainPage.Online_Daily_Sale,
     imgSrc: 'assets/mainPage/main/Online-Daily-Sale.png',
     routerLink: '/online-daily-sales'
   },
   {
     index: 5,
     key: 'gps-np_page',
-    title: 'Customer Nearby',
+    title:this.language.MainPage.Customer_Nearby,
     imgSrc: 'assets/mainPage/main/Customer-nearby.png',
     routerLink: '/customer-nearby'
   },
   {
     index: 6,
     key: 'gps-sml_page',
-    title: 'Salesmen Location',
+    title: this.language.MainPage.Salesmen_Location,
     imgSrc: 'assets/mainPage/main/Salesmen Location.png',
     routerLink: '/salesmen-location'
   },
   {
     index: 7,
     key: 'gps-sml-pl_page',
-    title: 'Trace Salesman',
+    title: this.language.MainPage.Trace_Salesman,
     imgSrc: 'assets/mainPage/main/Trace-Salesman.png',
     routerLink: '/trace-salesman'
   },
   {
     index: 8,
     key: 'commute_pag',
-    title: 'Daily Status',
+    title: this.language.MainPage.Daily_Status,
     imgSrc: 'assets/mainPage/main/Daily-Status.png',
     routerLink: '/daily-status'
   },
   {
     index: 9,
     key: 'troutes_page',
-    title: 'Today-Planned/ Not buying',
+    title: this.language.MainPage.Today_Planned_Not_Buying,
     imgSrc: 'assets/mainPage/main/Today-Planned-Not-buying.png',
     routerLink: '/today-planned-not-buying'
   },
   {
     index: 10,
     key: 'lt_page',
-    title: 'Loading Truck Status',
+    title: this.language.MainPage.Loading_Truck_Status,
     imgSrc: 'assets/mainPage/main/Loading-Truck-Stauts.png',
     routerLink: '/loading-truck-status'
   },
   {
     index: 11,
     key: 'sc_page',
-    title: 'ScoreCard',
+    title: this.language.MainPage.Score_Cards,
     imgSrc: 'assets/mainPage/main/ScoreCard.png',
     routerLink: '/score-card'
   },
   {
     index: 12,
     key: 'srsales_Hourly_page',
-    title: 'Online Sales Hourly',
+    title: this.language.MainPage.Online_Sales_Hourly,
     imgSrc: 'assets/mainPage/main/Online-Sales-Hourly.png',
     routerLink: '/online-sales-hourly'
   },
   {
     index: 13,
     key: 'srsales_Hourly_sd_page',
-    title: 'Online Sale for days hourly',
+    title: this.language.MainPage.Online_Sales_for_days_Hourly,
     imgSrc: 'assets/mainPage/main/Online-Sale-for-days-hourly.png',
     routerLink: '/online-sale-days-hourly'
   },
   {
     index: 14,
     key: 'srsales_Hourly_Compare_LY_page',
-    title: 'Sales Campare Traking Hourly',
+    title: this.language.MainPage.Sales_Campare_Tracking_Hourly,
     imgSrc: 'assets/mainPage/main/Sales-Campare-Traking-Hourly.png',
     routerLink: '/sales-compare-tracking-hourly'
   },
   {
     index: 15,
     key: 'srsales_Hourly_City_page',
-    title: 'Sales hourly_Day & Sales Office',
+    title: this.language.MainPage.Sales_Hourly_Day_and_Sales_Office,
     imgSrc: 'assets/mainPage/main/Sales-hourly_Day-and-Sales-Office.png',
     routerLink: '/sales-hourly-day'
   },
   {
     index: 16,
     key: 'srpped_page',
-    title: 'Max PPED',
+    title: this.language.MainPage.Max_PPED,
     imgSrc: 'assets/mainPage/main/Max-PPED.png',
     routerLink: '/max-pped'
   }

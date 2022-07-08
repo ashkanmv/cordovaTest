@@ -284,6 +284,25 @@
             "Select":"Select your language",
             "en":"English",
             "fa":"Persian"
+        },
+        "MainPage" :{
+            "Customer_History":"Customer History",
+            "questionnaire":"Questionnaire",
+            "Notification":"Notification",
+            "gpsTracking":"GPS Tracking",
+            "Online_Daily_Sale":"Online Daily Sale",
+            "Customer_Nearby":"Customer Nearby",
+            "Salesmen_Location":"Salesmen Location",
+            "Trace_Salesman":"Trace Salesman",
+            "Daily_Status":"Daily Status",
+            "Today_Planned _Not_Buying":"Today-Planned/ Not Buying",
+            "Loading_Truck_Status":"Loading Truck Status",
+            "Score_Cards":"Score Cards",
+            "Online_Sales_Hourly":"Online Sales Hourly",
+            "Online_Sales_for_days_Hourly":"Online Sales for Days Hourly",
+            "Sales_Campare_Tracking_Hourly":"Sales Campare Tracking Hourly",
+            "Sales_Hourly_Day_and_Sales_Office":"Sales Hourly Day and Sales Office",
+            "Max_PPED":"Max PPED"
         }
 
     },
@@ -573,6 +592,25 @@
             "Select":"زبان خود را انتخاب کنید",
             "en":"English",
             "fa":"Persian"
+        },
+        "MainPage" :{
+            "Customer_History":"اطلاعات پیشین مشتری",
+            "questionnaire":"پرسشنامه",
+            "Notification":"اطلاعیه",
+            "gpsTracking": "موقعیت یابی",
+            "Online_Daily_Sale":"فروش روزانه فروشنده ها",
+            "Customer_Nearby": "سوپرمارکتهای مجاور",
+            "Salesmen_Location":"موقعیت فروشنده ها",
+            "Trace_Salesman": "مسیر حرکت فروشنده ها",
+            "Daily_Status": "وضعیت روزانه",
+            "Today_Planned_Not_Buying":"برنامه ریزی فروش امروز",
+            "Loading_Truck_Status": "وضعیت بارگیری و فروش ",
+            "Score_Cards":"گزارش روزانه فروش",
+            "Online_Sales_Hourly": "نمایش فروش ساعتی",
+            "Online_Sales_for_days_Hourly":"نمایش فروش ساعتی زماندار",
+            "Sales_Campare_Tracking_Hourly": "مقایسه فروش ساعتی با میانگین سال قبل",
+            "Sales_Hourly_Day_and_Sales_Office": "نمایش فروش ساعتی زماندار شهرها",    
+            "Max_PPED": "بیشترین مرجوعی"
         }
 
     }

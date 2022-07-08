@@ -22,19 +22,8 @@
         ></ion-img>
       </ion-col>
     </ion-row>
-    <ion-grid class="secondary-bg white-text">
-      <ion-row class="ion-justify-content-between">
-        <ion-col size="3" class="ion-no-padding ion-text-start">
-          2022.04.02
-        </ion-col>
-        <ion-col size="3" class="ion-no-padding ion-text-center">
-          Saturday
-        </ion-col>
-        <ion-col size="3" class="ion-no-padding ion-text-end">
-          13 فروردین
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+        <app-date></app-date>
+
   </ion-toolbar>
 </ion-header>
 
@@ -43,7 +32,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button (click)="addNotification()"> <!-- routerLink="/add-item"-->
+    <ion-fab-button (click)="addNotification()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
