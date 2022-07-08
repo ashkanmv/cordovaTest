@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row  [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+    <ion-row  [ngStyle]="{'background-color': sharedService.handleThemeColor()}"
       class=" ion-justify-content-between header ion-no-margin"
     >
       <ion-col size="1" class="ion-align-self-center">
@@ -43,10 +43,10 @@
       (ionChange)="segmentChanged($event)"
       value="per-kilo"
     >
-      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="per-kilo" value="per-kilo">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleThemeColor()" class="per-kilo" value="per-kilo">
         <ion-label>{{language.Online_Sale_Days_Hourly.perKilo}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="per-invoices" value="per-invoices">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleThemeColor()" class="per-invoices" value="per-invoices">
         <ion-label>{{language.Online_Sale_Days_Hourly.perInvoices}}</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -99,7 +99,7 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="dcSelect()">
+            <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleThemeColor()}" (click)="dcSelect()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
             <ng-select
@@ -233,7 +233,7 @@ class="per-invoices-segment   ion-no-padding "
   <ion-col class="search-bar">
     <ion-row class="search-box ion-justify-content-center">
       <ion-item class="lightBlue-shadow">
-        <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="dcSelectN()">
+        <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleThemeColor()}" (click)="dcSelectN()">
           <ion-icon name="search-outline"></ion-icon>
         </button>
         <ng-select

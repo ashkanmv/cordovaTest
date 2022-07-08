@@ -6,7 +6,7 @@ import { LatLngLiteral, LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import {
-  BackgroundColors, CommonUtility, GetInvoicedResponse, GetSrInfoResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, Language, MapView, Marker, Polyline, Shop, VisitedNotBuyResponse,
+  ThemeColors, CommonUtility, GetInvoicedResponse, GetSrInfoResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, Language, MapView, Marker, Polyline, Shop, VisitedNotBuyResponse,
 } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
@@ -59,8 +59,8 @@ export class GpsTrackingPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
-  public get backgroundColor(): BackgroundColors {
-    return this.sharedService.backgroundColor;
+  public get backgroundColor(): ThemeColors {
+    return this.sharedService.themeColor;
   }
   constructor(
     private router: Router,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { PredefinedColors } from '@ionic/core';
-import { BackgroundColors } from './common';
+import { ThemeColors } from './common';
 import { LanguageService } from './language.service';
 
 @Injectable({
@@ -20,9 +20,9 @@ export class SharedService {
   public get boldFontWeight(): boolean { return this._boldFontWeight; }
   set boldFontWeight(v: boolean) { this._boldFontWeight = v; }
 
-  private _backgroundColor: BackgroundColors = BackgroundColors.blue;
-  public get backgroundColor(): BackgroundColors { return this._backgroundColor; }
-  set backgroundColor(v: BackgroundColors) { this._backgroundColor = v; }
+  private _themeColor: ThemeColors = ThemeColors.blue;
+  public get themeColor(): ThemeColors { return this._themeColor; }
+  set themeColor(v: ThemeColors) { this._themeColor = v; }
 
   constructor(private toastCtrl: ToastController, private languageService : LanguageService) { }
 
@@ -36,17 +36,17 @@ export class SharedService {
       .then((toastEl) => toastEl.present());
   }
 
-  handleBackgroundColor() {
-    switch (this.backgroundColor) {
-      case BackgroundColors.blue:
+  handleThemeColor() {
+    switch (this.themeColor) {
+      case ThemeColors.blue:
         return "#0095EB"
-      case BackgroundColors.green:
+      case ThemeColors.green:
         return "#55c595"
-      case BackgroundColors.purple:
+      case ThemeColors.purple:
         return "#7495fe"
-      case BackgroundColors.red:
+      case ThemeColors.red:
         return "#fe7376"
-      case BackgroundColors.yellow:
+      case ThemeColors.yellow:
         return "#facb01"
     }
   }

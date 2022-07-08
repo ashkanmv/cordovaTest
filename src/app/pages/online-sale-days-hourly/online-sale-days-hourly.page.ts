@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BackgroundColors, Language } from 'src/app/shared/common';
+import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { IonDatetime, LoadingController } from '@ionic/angular';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -58,7 +58,7 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
   constructor(
     private languageService: LanguageService,

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="header ion-justify-content-center ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="header ion-justify-content-center ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
           <ion-buttons>
             <ion-back-button  color="light" defaultHref="main"></ion-back-button>
@@ -146,6 +146,6 @@
     </ion-row>
   </ion-grid>
   <div class="ion-justify-content-center ion-align-items-center btn-container">
-    <button [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="btn-submit">{{language.Submit}}</button>
+    <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="btn-submit">{{language.Submit}}</button>
   </div>
 </ion-content>

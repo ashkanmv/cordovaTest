@@ -1,5 +1,5 @@
 <ion-content>
-  <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="ion-justify-content-center">
+  <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="ion-justify-content-center">
     <ion-col size="3" class="ion-align-self-center white-text">
       <ion-buttons >
         <ion-back-button color="light" defaultHref="settings"></ion-back-button>
@@ -12,7 +12,7 @@
     </ion-col>
     <ion-col size="3"> </ion-col>
   </ion-row>
-  <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="h-50vh  ion-justify-content-center">
+  <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="h-50vh  ion-justify-content-center">
     <ion-img class="img" src="assets/menu/language/Group 1166.png"></ion-img>
   </ion-row>
   <ion-row class="ion-justify-content-center primary-color h-20vh">

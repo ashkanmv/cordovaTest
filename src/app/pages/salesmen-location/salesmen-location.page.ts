@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MapService } from 'src/app/map/map.service';
 import { IonDatetime, LoadingController, PopoverController } from '@ionic/angular';
-import { BackgroundColors, GetAllChildrenUserResponse, GetSalesmenLocationResponse, Language, Marker } from 'src/app/shared/common';
+import { ThemeColors, GetAllChildrenUserResponse, GetSalesmenLocationResponse, Language, Marker } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -52,7 +52,7 @@ export class SalesmenLocationPage implements OnInit {
   selectedDate = new Date().toISOString();
   public get language(): Language { return this.languageService.language; }
   public get isOnline() { return this.sharedService.isOnline; }
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
   constructor(
     public popoverctrl: PopoverController,

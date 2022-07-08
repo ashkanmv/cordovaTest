@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackgroundColors, Language } from 'src/app/shared/common';
+import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 
@@ -10,7 +10,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 })
 export class AboutAppPage implements OnInit {
   public get language() : Language { return this.languageService.language}
-  public get backgroundColor() : BackgroundColors{ return this.sharedService.backgroundColor}
+  public get backgroundColor() : ThemeColors{ return this.sharedService.themeColor}
   constructor( public sharedService : SharedService, private languageService : LanguageService) {}
 
   ngOnInit() {}

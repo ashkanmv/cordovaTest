@@ -4,7 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
-import { BackgroundColors, GetSalesmenLocationResponse, GetUserChildrenResponse, Language, MapView, Marker, Polyline } from 'src/app/shared/common';
+import { ThemeColors, GetSalesmenLocationResponse, GetUserChildrenResponse, Language, MapView, Marker, Polyline } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -45,7 +45,7 @@ export class TraceSalesmanPage implements OnInit {
   markers: Marker[] = [];
   public get language(): Language { return this.languageService.language; }
   public get isOnline() { return this.sharedService.isOnline; }
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
   constructor(
     private languageService: LanguageService,

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-between header ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class=" ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
        <ion-buttons>
          <ion-back-button color="light" defaultHref="main"></ion-back-button>
@@ -27,10 +27,10 @@
   <ion-col class="ion-no-padding segment-change">
     <ion-segment mode="md" class="ion-justify-content-between" (ionChange)="segmentChanged($event)"
       value="per-customer">
-      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="per-customer" value="per-customer">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleThemeColor()" class="per-customer" value="per-customer">
         <ion-label>{{language.Max_PPED.perCustomer}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="per-route" value="per-route">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleThemeColor()" class="per-route" value="per-route">
         <ion-label>{{language.Max_PPED.perRoute}}</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -95,7 +95,7 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit" [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="selectedDC()">
+            <button class="search-submit" [ngStyle]="{'background-color': sharedService.handleThemeColor()}" (click)="selectedDC()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
 
@@ -243,7 +243,7 @@
       <ion-col class="search-bar">
         <ion-row class="search-box ion-justify-content-center">
           <ion-item class="lightBlue-shadow">
-            <button class="search-submit" [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="selectedDCN()">
+            <button class="search-submit" [ngStyle]="{'background-color': sharedService.handleThemeColor()}" (click)="selectedDCN()">
               <ion-icon name="search-outline"></ion-icon>
             </button>
 

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}"
       class=" ion-justify-content-between header ion-no-margin"
     >
       <ion-col size="1" class="ion-align-self-center">
@@ -40,7 +40,7 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="search-submit" (click)="dcSelect()">
+          <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="search-submit" (click)="dcSelect()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 

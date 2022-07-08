@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}">
       <ion-col size="1" class="ion-align-self-center">
         <ion-buttons>
           <ion-back-button color="light" defaultHref="main"></ion-back-button>
@@ -16,7 +16,7 @@
 
         <ion-popover  class="header-drop-down description-drop-down" trigger="trigger-desc" showBackdrop="false">
           <ng-template>
-            <ion-content  [style.--background]="sharedService.handleBackgroundColor()" disabled class="header-input-popover-title">{{language.Gps_Tracking.Description}}</ion-content>
+            <ion-content  [style.--background]="sharedService.handleThemeColor()" disabled class="header-input-popover-title">{{language.Gps_Tracking.Description}}</ion-content>
             <ion-content>
               <div class="">
                 <img src="\assets\pages\GPS-tracking\Green.png" alt="" />

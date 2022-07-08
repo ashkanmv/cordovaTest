@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="ion-justify-content-between header ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
         <ion-buttons routerLink="/main">
             <ion-img class="back-button" src="\assets\pages\Backward arrow.png"></ion-img>
@@ -38,7 +38,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  [ngStyle]="{'direction' : sharedService.get_direction()}" [style.--background]="sharedService.handleBackgroundColor()" [style.--color]="sharedService.handleColor()">
+<ion-content  [ngStyle]="{'direction' : sharedService.get_direction()}" [style.--background]="sharedService.handleThemeColor()" [style.--color]="sharedService.handleColor()">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="100" pullMax="200">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>

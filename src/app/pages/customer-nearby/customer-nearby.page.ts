@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
-import { BackgroundColors, Language, MapView, Marker, PopoverItem, Shop } from 'src/app/shared/common';
+import { ThemeColors, Language, MapView, Marker, PopoverItem, Shop } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { GeoLocationService } from 'src/app/shared/geo-location.service';
 import { LanguageService } from 'src/app/shared/language.service';
@@ -31,8 +31,8 @@ export class CustomerNearbyPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
-  public get backgroundColor(): BackgroundColors {
-    return this.sharedService.backgroundColor;
+  public get backgroundColor(): ThemeColors {
+    return this.sharedService.themeColor;
   }
   public get language(): Language {
     return this.languageService.language;

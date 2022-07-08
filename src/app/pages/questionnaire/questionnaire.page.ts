@@ -6,7 +6,7 @@ import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { FileTransfer, FileTransferObject, FileUploadOptions } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { LoadingController } from '@ionic/angular';
 import {
-  BackgroundColors,
+  ThemeColors,
   Cities,
   Customer,
   Language,
@@ -44,7 +44,7 @@ export class QuestionnairePage implements OnInit {
 
   public get isOnline() {return this.sharedService.isOnline;}
 
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
   constructor(
     private formBuilder: FormBuilder,

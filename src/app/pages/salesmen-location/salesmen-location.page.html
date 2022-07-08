@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="ion-justify-content-between header ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
        <ion-buttons>
          <ion-back-button color="light" defaultHref="main"></ion-back-button>
@@ -67,7 +67,7 @@
     <ion-row class="salesmen-location-container">
       <div class="salesmen-location-box" *ngIf="accessRsm">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
-            <ion-button [style.--background]="sharedService.handleBackgroundColor()"  class="btn-search ion-no-margin">
+            <ion-button [style.--background]="sharedService.handleThemeColor()"  class="btn-search ion-no-margin">
               <ion-icon name="search-outline"></ion-icon>
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
@@ -92,7 +92,7 @@
       <div class="salesmen-location-box" *ngIf="accessAsm">
         <ion-item class="salesmen-location ion-no-padding  lightBlue-shadow">
           <ion-item class=" ion-justify-content-between ion-align-items-center ">
-            <ion-button [style.--background]="sharedService.handleBackgroundColor()"  class="btn-search ion-no-margin">
+            <ion-button [style.--background]="sharedService.handleThemeColor()"  class="btn-search ion-no-margin">
               <ion-icon name="search-outline"></ion-icon>
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
@@ -117,7 +117,7 @@
       </div>
       <div class="salesmen-location-box" *ngIf="accessSsv">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
-            <ion-button [style.--background]="sharedService.handleBackgroundColor()"  class="btn-search ion-no-margin">
+            <ion-button [style.--background]="sharedService.handleThemeColor()"  class="btn-search ion-no-margin">
               <ion-icon name="search-outline"></ion-icon>
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
@@ -142,7 +142,7 @@
       </div>
       <div class="salesmen-location-box" *ngIf="accessSr">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
-            <ion-button [style.--background]="sharedService.handleBackgroundColor()"  class="btn-search primary-bg">
+            <ion-button [style.--background]="sharedService.handleThemeColor()"  class="btn-search primary-bg">
               <ion-icon name="search-outline"></ion-icon>
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>

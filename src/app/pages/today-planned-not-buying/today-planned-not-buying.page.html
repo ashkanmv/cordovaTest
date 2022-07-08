@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="ion-justify-content-between">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="ion-justify-content-between">
       <ion-col size="1" class="ion-align-self-center">
         <ion-buttons>
           <ion-back-button color="light" defaultHref="main"></ion-back-button>
@@ -58,7 +58,7 @@
         <ion-row class="search-box ion-justify-content-center">
           <ion-col size="12" class="ion-justify-content-center">
             <ion-item class="search-container lightBlue-shadow">
-              <button [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="search-submit " (click)="getTRoutesCity()">
+              <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="search-submit " (click)="getTRoutesCity()">
                 <ion-icon name="search-outline"></ion-icon>
               </button>
               <ng-select *ngIf="dcList.length" [items]="dcList" [multiple]="true" bindLabel="itemName"
@@ -81,7 +81,7 @@
           </ion-col>
           <ion-col size="12" class="ion-justify-content-center">
             <ion-item class="search-container lightBlue-shadow">
-              <button [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="search-submit" (click)="getTRoutesCity()">
+              <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="search-submit" (click)="getTRoutesCity()">
                 <ion-icon name="search-outline"></ion-icon>
               </button>
               <ng-select *ngIf="clustersList.length" [items]="clustersList" [multiple]="true" bindLabel="itemName"

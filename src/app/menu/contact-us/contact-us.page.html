@@ -20,16 +20,16 @@
     <ion-row class="ion-justify-content-center ion-margin-vertical">
       <ion-img class="contact-us" src="assets/menu/contact-us/Contact-us.png"></ion-img>
     </ion-row>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}"
       class=" ion-justify-content-center">
       <ion-input class="ion-margin-top textbox" type="text" placeholder="{{language.Contact_Us.Name}}"></ion-input>
     </ion-row>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}"
       class=" ion-justify-content-center">
       <ion-textarea class="ion-margin-vertical textarea" rows="6" cols="20"
         placeholder="{{language.Contact_Us.Your_Message}}"></ion-textarea>
     </ion-row>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-center"
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class=" ion-justify-content-center"
       *ngIf="!loading">
       <button class="btn submit-btn" (click)="submit()">
         <p>{{language.Contact_Us.Send_Message}}</p>

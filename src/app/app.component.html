@@ -29,7 +29,7 @@
           </ion-row>
         </ion-grid>
 
-        <ion-list id="labels-list" class="menu-content" [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}">
+        <ion-list id="labels-list" class="menu-content" [ngStyle]="{'background-color': sharedService.handleThemeColor()}">
           <ion-menu-toggle auto-hide="false">
             <ion-item lines="none" routerLink="/main">
               <ion-img src="assets/menu/main-page.png"></ion-img>
@@ -49,7 +49,7 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" >
+        <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" >
           <ion-col size="12" class="text-align-center">
             <ion-menu-toggle>
               <button class="btn lighter footer-btn-color flex-row">

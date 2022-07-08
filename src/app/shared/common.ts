@@ -353,7 +353,7 @@ export enum Languages {
   FR,
 }
 
-export enum BackgroundColors {
+export enum ThemeColors {
   green = 1,
   yellow,
   red,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackgroundColors, Language } from 'src/app/shared/common';
+import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 
@@ -27,9 +27,9 @@ export class ThemePage implements OnInit {
     this.sharedService.boldFontWeight = v
   }
 
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
-  set backgroundColor(v: BackgroundColors) {
-    this.sharedService.backgroundColor = v
+  public get themeColor(): ThemeColors { return this.sharedService.themeColor; }
+  set themeColor(v: ThemeColors) {
+    this.sharedService.themeColor = v
   }
 
   constructor(private languageService: LanguageService,
@@ -37,7 +37,7 @@ export class ThemePage implements OnInit {
 
   ngOnInit() { }
 
-  changeBackgroundColor(color: BackgroundColors) {
-    this.sharedService.backgroundColor = color;
+  changeThemeColor(color: ThemeColors) {
+    this.sharedService.themeColor = color;
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Data, Router } from '@angular/router';
 
 import { IonDatetime, LoadingController, NavController } from '@ionic/angular';
-import { BackgroundColors, Language } from 'src/app/shared/common';
+import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -50,7 +50,7 @@ export class MaxPPEDPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
   constructor(
     private router: Router,

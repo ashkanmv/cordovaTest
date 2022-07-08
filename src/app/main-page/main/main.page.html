@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-grid [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" main-page-header">
+  <ion-grid [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class=" main-page-header">
     <ion-row>
       <ion-col size="1">
         <ion-img (click)="openMenu()" class="notification" src="assets\mainPage\Menu.png"></ion-img>
@@ -28,7 +28,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="main-page-content  ion-padding-top">
+  <ion-grid [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="main-page-content  ion-padding-top">
     <ion-row class="ion-margin-top">
       <ion-col size="4" class="cols" *ngFor="let page of pages">
         <div [routerLink]="page.routerLink">

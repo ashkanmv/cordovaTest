@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import { BackgroundColors, Language } from 'src/app/shared/common';
+import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -34,7 +34,7 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
 
   constructor(

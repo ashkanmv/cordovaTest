@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, MenuController } from '@ionic/angular';
-import { Access, BackgroundColors, Language, PageDetail } from 'src/app/shared/common';
+import { Access, ThemeColors, Language, PageDetail } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -15,7 +15,7 @@ export class MainPage implements OnInit {
   public get language() : Language{return this.languageService.language;}
   public get isOnline() {return this.sharedService.isOnline;}
 
-  public get backgroundColor() :BackgroundColors {return this.sharedService.backgroundColor;}
+  public get backgroundColor() :ThemeColors {return this.sharedService.themeColor;}
   constructor(private menuCtrl: MenuController,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,

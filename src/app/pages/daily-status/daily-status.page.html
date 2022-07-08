@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-between header ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class=" ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
        <ion-buttons>
          <ion-back-button color="light" defaultHref="main"></ion-back-button>
@@ -32,10 +32,10 @@
    <app-date></app-date>
   <ion-col class="ion-no-padding segment-change">
     <ion-segment mode="md" class="ion-justify-content-between" (ionChange)="segmentChanged($event)" value="tablet">
-      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="tablet" value="tablet">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleThemeColor()" class="tablet" value="tablet">
         <ion-label>{{language.DailyStatus.Tablet}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button [style.--background-checked]="sharedService.handleBackgroundColor()"  class="truck" value="truck">
+      <ion-segment-button [style.--background-checked]="sharedService.handleThemeColor()"  class="truck" value="truck">
         <ion-label>{{language.DailyStatus.Truck}}</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -72,7 +72,7 @@
     <ion-grid class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit"  [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="getCommutecityT(tabletDate)">
+          <button class="search-submit"  [ngStyle]="{'background-color': sharedService.handleThemeColor()}" (click)="getCommutecityT(tabletDate)">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="tabletDropDown.length" [items]="tabletDropDown" [multiple]="true" bindLabel="itemName"
@@ -158,7 +158,7 @@
     <ion-grid class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit"  [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="getCommutecity(truckDate)">
+          <button class="search-submit"  [ngStyle]="{'background-color': sharedService.handleThemeColor()}" (click)="getCommutecity(truckDate)">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="truckDropDown.length" [items]="truckDropDown" [multiple]="true" bindLabel="itemName"

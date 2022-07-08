@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController } from '@ionic/angular';
-import { BackgroundColors, Language, News } from 'src/app/shared/common';
+import { ThemeColors, Language, News } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -28,8 +28,8 @@ export class NotificationsPage implements OnInit {
   public get isOnline(){
     return this.sharedService.isOnline
   }
-  public get backgroundColor() :BackgroundColors{
-    return this.sharedService.backgroundColor;
+  public get backgroundColor() :ThemeColors{
+    return this.sharedService.themeColor;
   }
 
   constructor(

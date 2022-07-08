@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { BackgroundColors } from './shared/common';
+import { ThemeColors } from './shared/common';
 import { Language } from './shared/common';
 import { GeoLocationService } from './shared/geo-location.service';
 import { LanguageService } from './shared/language.service';
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   startApp = false;
   language: boolean;
 
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
   public get selectedLanguage(): Language { return this.languageService.language; }
   constructor(
     private plt: Platform,
@@ -25,11 +25,12 @@ export class AppComponent implements OnInit {
     private storageService: StorageService,
     private geoLocationService: GeoLocationService,
     public sharedService: SharedService,
-    private utilService : UtilService
+    private utilService: UtilService
   ) { }
   ngOnInit(): void {
     this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false;
     this.loadLanguage();
+    this.setUiCustomization();
   }
 
   loadLanguage() {
@@ -65,6 +66,30 @@ export class AppComponent implements OnInit {
     return this.sharedService.boldFontWeight == false ? 'normal' : 'bold'
   }
 
+  setUiCustomization() {
+    this.storageService.get(this.storageService.boldKey).then((isBold: boolean) => {
+      if (isBold == undefined) {
+        this.storageService.set(this.storageService.boldKey, false);
+        this.sharedService.boldFontWeight = false;
+      } else if (isBold == false) this.sharedService.boldFontWeight = false;
+      else if (isBold == true) this.sharedService.boldFontWeight = true;
+    })
+
+    this.storageService.get(this.storageService.fontSizeKey).then((fontSize: number) => {
+      if (fontSize == undefined) {
+        this.storageService.set(this.storageService.fontSizeKey, 16);
+        this.sharedService.fontSize = 16;
+      } else if (fontSize) this.sharedService.fontSize = fontSize;
+    })
+
+    this.storageService.get(this.storageService.themeColorKey).then((theme: ThemeColors) => {
+      if (theme == undefined) {
+        this.storageService.set(this.storageService.themeColorKey, ThemeColors.blue);
+        this.sharedService.themeColor = ThemeColors.blue;
+      } else if (theme) this.sharedService.themeColor = theme;
+    })
+  }
+
   get_direction() {
     let lang = this.utilService.get_lang();
     if (lang == 'en') {
@@ -72,4 +97,5 @@ export class AppComponent implements OnInit {
     } else {
       return 'rtl';
     }
-  }}
+  }
+}

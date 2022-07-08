@@ -4,7 +4,7 @@ import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { LoadingController, Platform } from '@ionic/angular';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { BackgroundColors, Cities, Customer, Language, Marker } from 'src/app/shared/common';
+import { ThemeColors, Cities, Customer, Language, Marker } from 'src/app/shared/common';
 import { GeoLocationService } from 'src/app/shared/geo-location.service';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -58,7 +58,7 @@ export class CustomerHistoryPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline
   }
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
 
   constructor(

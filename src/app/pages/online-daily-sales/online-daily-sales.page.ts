@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { AlertController, LoadingController, Platform } from '@ionic/angular';
-import { BackgroundColors, getSrSalesUsersResponse, Language } from 'src/app/shared/common';
+import { ThemeColors, getSrSalesUsersResponse, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -46,7 +46,7 @@ export class OnlineDailySalesPage implements OnInit {
 
 
   public get isOnline(){return this.sharedService.isOnline}
-  public get backgroundColor() : BackgroundColors{return this.sharedService.backgroundColor}
+  public get backgroundColor() : ThemeColors{return this.sharedService.themeColor}
   constructor(
     private router: Router,
     private loadingCtrl: LoadingController,

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}">
       <ion-col size="1" class="ion-align-self-center ion-no-padding">
         <ion-buttons>
           <ion-back-button color="light" defaultHref="main"></ion-back-button>
@@ -54,7 +54,7 @@
         <span class="search-icon">
           <ion-icon name="chevron-down-outline"></ion-icon>
         </span>
-        <button [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"  class="search-submit">
+        <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}"  class="search-submit">
           <ion-icon name="search-outline"></ion-icon>
         </button>
       </ion-col>
@@ -131,7 +131,7 @@
       </ion-grid>
     </form>
     <ion-card class="ion-no-margin" *ngIf="customerInfo">
-      <ion-card-header [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}">
+      <ion-card-header [ngStyle]="{'background-color': sharedService.handleThemeColor()}">
         <ion-row class="customerInfo">
           <ion-row>
             <ion-col size="6">

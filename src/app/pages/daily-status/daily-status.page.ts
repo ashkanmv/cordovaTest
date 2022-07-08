@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonDatetime, LoadingController } from '@ionic/angular';
-import { BackgroundColors, Language } from 'src/app/shared/common';
+import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -36,7 +36,7 @@ export class DailyStatusPage implements OnInit {
 
   public get language(): Language { return this.languageService.language; }
   public get isOnline() { return this.sharedService.isOnline; }
-  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+  public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
   constructor(private languageService: LanguageService,
     private storageServiec: StorageService,
