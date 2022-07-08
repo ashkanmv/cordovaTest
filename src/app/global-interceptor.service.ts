@@ -8,20 +8,22 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
+import { SharedService } from './shared/shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GlobalInterceptorService implements HttpInterceptor {
-  constructor(private loadingCtrl: LoadingController) {}
+  constructor(private loadingCtrl: LoadingController,
+    private sharedService: SharedService) { }
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(catchError((x) => this.handleError(x)));
+    return next.handle(req).pipe(tap(() => this.sharedService.isOnline = true), catchError((x) => this.handleError(x)));
     // .pipe(
     //   map((event) => {
     //     if (event.type === HttpEventType.Response) {
@@ -32,6 +34,7 @@ export class GlobalInterceptorService implements HttpInterceptor {
   }
 
   private handleError(err: HttpErrorResponse): Observable<any> {
+    this.sharedService.isOnline = false;
     this.loadingCtrl.dismiss();
     return throwError(err);
   }
