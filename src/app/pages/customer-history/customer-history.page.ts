@@ -297,6 +297,7 @@ export class CustomerHistoryPage implements OnInit {
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
           this.createChart(customerHistory);
+          loading.dismiss();
         });
     else
       this.customerHistoryService
@@ -304,6 +305,7 @@ export class CustomerHistoryPage implements OnInit {
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
           this.createChart(customerHistory);
+          loading.dismiss();
         });
   }
 
@@ -318,6 +320,7 @@ export class CustomerHistoryPage implements OnInit {
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
           this.createChart(customerHistory);
+          loading.dismiss();
         });
     else
       this.customerHistoryService
@@ -325,6 +328,7 @@ export class CustomerHistoryPage implements OnInit {
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
           this.createChart(customerHistory);
+          loading.dismiss();
         });
   }
 
@@ -339,6 +343,7 @@ export class CustomerHistoryPage implements OnInit {
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
           this.createChart(customerHistory);
+          loading.dismiss();
         });
     else
       this.customerHistoryService
@@ -346,6 +351,7 @@ export class CustomerHistoryPage implements OnInit {
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory);
           this.createChart(customerHistory);
+          loading.dismiss();
         });
   }
 
@@ -397,7 +403,6 @@ export class CustomerHistoryPage implements OnInit {
       index++;
       this.virtual_rows.push(v_row2);
     }
-    this.loadingCtrl.dismiss();
   }
 
   rowClick(row: any) {
@@ -441,12 +446,14 @@ export class CustomerHistoryPage implements OnInit {
         .getPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
+          loading.dismiss();
         });
     else
       this.customerHistoryService
         .getkgPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
+          loading.dismiss();
         });
   }
 
@@ -460,12 +467,14 @@ export class CustomerHistoryPage implements OnInit {
         .getSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
+          loading.dismiss();
         });
     else
       this.customerHistoryService
         .getkgSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
+          loading.dismiss();
         });
   }
 
@@ -479,6 +488,7 @@ export class CustomerHistoryPage implements OnInit {
         .getSamplesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
+          loading.dismiss();
         });
     else
       this.customerHistoryService
@@ -488,6 +498,7 @@ export class CustomerHistoryPage implements OnInit {
         )
         .subscribe((data) => {
           this.createModel(data, index + 1);
+          loading.dismiss();
         });
   }
 
@@ -506,7 +517,6 @@ export class CustomerHistoryPage implements OnInit {
       }
       this.selected_ch[index].push(temp);
     }
-    this.loadingCtrl.dismiss();
   }
   columns: any[] = [];
   data: any[] = [];
