@@ -99,7 +99,7 @@
               <ion-icon name="search-outline"></ion-icon>
             </button>
 
-            <ng-select *ngIf="dropdownList.length" [items]="dropdownList" [multiple]="true" bindLabel="itemName"
+            <ng-select  [searchable]="false" *ngIf="dropdownList.length" [items]="dropdownList" [multiple]="true" bindLabel="itemName"
               groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
               [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedItems">
               <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
