@@ -1,38 +1,8 @@
-<!-- <ion-button (click)="dismiss(false)" expand="block" fill="clear" shape="round">
-  close
-</ion-button>
-<ion-buttons>
-  <ion-button (click)="camera()">
-    <ion-icon slot="start" name="add"></ion-icon>
-    {{language.Add_Edit_News.Camera}}
-  </ion-button>
-  <ion-button (click)="gallery()">
-    <ion-icon slot="start" name="add"></ion-icon>
-    {{language.Add_Edit_News.Gallery}}
-  </ion-button>
-</ion-buttons>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <ion-item>
-    <ion-label position="floating">{{language.Add_Edit_News.Title}}</ion-label>
-    <ion-input formControlName="title" type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">{{language.Add_Edit_News.Text}}</ion-label>
-    <ion-input formControlName="text" type="text"></ion-input>
-  </ion-item>
-  <ion-button block color="primary" type="submit" [disabled]="form.invalid">
-    {{language.Add_Edit_News.Submit}}
-  </ion-button>
-</form> -->
-<!-- ------------------- -->
 <ion-header>
   <ion-toolbar>
     <ion-row  class="ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
-        <!-- <ion-buttons>
-          <ion-back-button color="primary" defaultHref=""></ion-back-button>
-        </ion-buttons> -->
         <ion-button fill="clear" (click)="dismiss(false)" >
           <ion-img  
             class="back-button ion-justfy-self-start ion-align-self-cente"
@@ -58,19 +28,8 @@
         ></ion-img>
       </ion-col>
     </ion-row>
-    <ion-grid class="secondary-bg white-text">
-      <ion-row class="ion-justify-content-between">
-        <ion-col size="3" class="ion-no-padding ion-text-start">
-          2022.04.02
-        </ion-col>
-        <ion-col size="3" class="ion-no-padding ion-text-center">
-          Saturday
-        </ion-col>
-        <ion-col size="3" class="ion-no-padding ion-text-end">
-          13 فروردین
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+        <app-date></app-date>
+
   </ion-toolbar>
 </ion-header>
 
@@ -103,7 +62,7 @@
       </ion-row>
       <ion-row class="item-text box-shadow">
         <ion-col  class="ion-no-padding">
-          <ion-textarea  type="text" rows="6" formControlName="text" placeholder="  {{language.Add_Edit_News.Description}}"></ion-textarea>
+          <ion-textarea  type="text" rows="7" formControlName="text" placeholder="  {{language.Add_Edit_News.Description}}"></ion-textarea>
         </ion-col>
       </ion-row>
       <ion-row class="item-submit">

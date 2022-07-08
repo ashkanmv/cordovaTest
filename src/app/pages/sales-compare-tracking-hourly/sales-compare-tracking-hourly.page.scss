@@ -75,6 +75,7 @@ ion-col.segment-change{
             ng-select{
                 width: 100%;
                 height: 10vh;
+                overflow: hidden;
             }
         }
         .search-submit{

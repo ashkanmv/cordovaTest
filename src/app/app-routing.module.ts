@@ -126,13 +126,6 @@ const routes: Routes = [
       ).then((m) => m.TodayPlannedNotBuyingPageModule),
   },
   {
-    path: 'add-item',
-    loadChildren: () =>
-      import('./pages/add-item/add-item.module').then(
-        (m) => m.AddItemPageModule
-      ),
-  },
-  {
     path: 'login',
     loadChildren: () =>
       import('./pages/login/login.module').then((m) => m.LoginPageModule),
