@@ -97,6 +97,10 @@ export class MapComponent implements OnInit {
 
   init() {
     this.plt.ready().then(() => {
+      if (!this.mapContainer?.nativeElement) {
+        this.timerCycle();
+        return
+      }
       const geoapifyAPIKey = this.mapService.geoapifyAPIKey;
 
       this.map = new L.Map(this.mapContainer.nativeElement).setView([33.786271, 51.7933669], 6);
@@ -116,6 +120,7 @@ export class MapComponent implements OnInit {
   }
 
   setPolyline(polylines: Polyline[]) {
+    if (!this.mapContainer?.nativeElement) return;
     polylines.forEach(polyline => {
       let p = L.polyline(polyline.latLng, polyline.options)
         .addTo(this.polylinesLayerGroup);
@@ -123,6 +128,7 @@ export class MapComponent implements OnInit {
   }
 
   setMarkers(markers: Marker[]) {
+    if (!this.mapContainer?.nativeElement) return;
     markers.forEach((m: Marker) => {
       let marker = L.marker([m.latitude, m.longitude], {
         icon: L.icon(m.icon),
@@ -154,6 +160,7 @@ export class MapComponent implements OnInit {
   }
 
   flyTo(mapView: MapView) {
+    if (!this.mapContainer?.nativeElement) return;
     this.map.flyTo([mapView.lat, mapView.lng], mapView.zoom);
   }
 
@@ -171,5 +178,20 @@ export class MapComponent implements OnInit {
     this.layerControl.addOverlay(ASM, "ASM");
     this.layerControl.addOverlay(SSV, "SSV");
     this.layerControl.addOverlay(SR, "SR");
+  }
+
+  stopTimer() {
+    clearInterval(this.timer);
+  }
+
+  timer: any;
+  timerCycle() {
+    this.timer = setInterval(() => {
+      console.log('interval');
+      if (this.mapContainer?.nativeElement) {
+        this.stopTimer();
+        this.init();
+      }
+    }, 1000)
   }
 }

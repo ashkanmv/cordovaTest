@@ -7,7 +7,7 @@
     </ion-col>
     <ion-col size="6" class="ion-text-center white-text">
       <ion-title>
-        <h3><b>{{language.Language.Title}}</b></h3>
+        <h3><b>{{selectedLanguage.Language.Title}}</b></h3>
       </ion-title>
     </ion-col>
     <ion-col size="3"> </ion-col>
@@ -16,13 +16,13 @@
     <ion-img class="img" src="assets/menu/language/Group 1166.png"></ion-img>
   </ion-row>
   <ion-row class="ion-justify-content-center primary-color h-20vh">
-    <p class="ion-align-self-center">{{language.Language.Select}}</p>
+    <p class="ion-align-self-center">{{selectedLanguage.Language.Select}}</p>
   </ion-row>
   <ion-row class="ion-justify-content-center h-10vh">
     <ion-item fill="outline">
-      <ion-select value="english" class="w-50vw">
-        <ion-select-option value="english">{{language.Language.en}}</ion-select-option>
-        <ion-select-option value="persian">{{language.Language.fa}}</ion-select-option>
+      <ion-select value="english" class="w-50vw" [(ngModel)]="language" (ionChange)="languageChanged()">
+        <ion-select-option [value]="'EN'">{{selectedLanguage.Language.en}}</ion-select-option>
+        <ion-select-option [value]="'FR'">{{selectedLanguage.Language.fa}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-row>

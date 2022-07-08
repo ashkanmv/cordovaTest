@@ -36,6 +36,7 @@
       class="ion-margin-top textbox lightBlue-shadow"
       type="password"
       placeholder="{{language.Profile.Current_password}}"
+      [(ngModel)]="currentPassword"
     ></ion-input>
   </ion-row>
   <ion-row class="ion-justify-content-center">
@@ -43,6 +44,7 @@
       class="ion-margin-top textbox lightBlue-shadow"
       type="password"
       placeholder="{{language.Profile.New_password}}"
+      [(ngModel)]="newPassword"
     ></ion-input>
   </ion-row>
   <ion-row class="ion-justify-content-center container">
@@ -50,6 +52,7 @@
       class="ion-margin-top textbox lightBlue-shadow"
       type="password"
       placeholder="{{language.Profile.Re_enter_new_password}}"
+      [(ngModel)]="confirmNewPassword"
       #input
     >
     </ion-input>
@@ -60,9 +63,12 @@
         (click)="showPassword(input)"
     /></span>
   </ion-row>
-  <ion-row class="ion-justify-content-center">
-    <button class="btn submit-btn">
+  <ion-row class="ion-justify-content-center" *ngIf="!loading">
+    <button class="btn submit-btn" (click)="submit()">
       <p>{{language.Profile.Send_Message}}</p>
     </button>
+  </ion-row>
+  <ion-row class="ion-justify-content-center" *ngIf="loading">
+    <ion-spinner color="primary"></ion-spinner>
   </ion-row>
 </ion-content>

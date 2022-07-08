@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-row class="ion-justify-content-center">
       <ion-col size="3" class="ion-align-self-center">
-        <ion-buttons >
+        <ion-buttons>
           <ion-back-button color="primary" defaultHref="main"></ion-back-button>
         </ion-buttons>
       </ion-col>
@@ -18,37 +18,29 @@
 <ion-content [ngStyle]="{'direction' : sharedService.get_direction()}">
   <ion-grid class="ion-margin-top ion-no-padding">
     <ion-row class="ion-justify-content-center ion-margin-vertical">
-      <ion-img
-        class="contact-us"
-        src="assets/menu/contact-us/Contact-us.png"
-      ></ion-img>
+      <ion-img class="contact-us" src="assets/menu/contact-us/Contact-us.png"></ion-img>
     </ion-row>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-center">
-      <ion-input
-        class="ion-margin-top textbox"
-        type="text"
-        placeholder="{{language.Contact_Us.Name}}"
-      ></ion-input>
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+      class=" ion-justify-content-center">
+      <ion-input class="ion-margin-top textbox" type="text" placeholder="{{language.Contact_Us.Name}}"></ion-input>
     </ion-row>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-center">
-      <ion-textarea
-        class="ion-margin-vertical textarea"
-        rows="6"
-        cols="20"
-        placeholder="{{language.Contact_Us.Your_Message}}"
-      ></ion-textarea>
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+      class=" ion-justify-content-center">
+      <ion-textarea class="ion-margin-vertical textarea" rows="6" cols="20"
+        placeholder="{{language.Contact_Us.Your_Message}}"></ion-textarea>
     </ion-row>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-center">
-      <button class="btn submit-btn">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class=" ion-justify-content-center"
+      *ngIf="!loading">
+      <button class="btn submit-btn" (click)="submit()">
         <p>{{language.Contact_Us.Send_Message}}</p>
       </button>
     </ion-row>
+    <ion-row class="ion-justify-content-center" *ngIf="loading">
+      <ion-spinner color="primary"></ion-spinner>
+    </ion-row>
     <ion-row style="height: 20vh">
       <ion-col size="4" class="ion-text-center support-img-col">
-        <ion-img
-          class="support-img"
-          src="assets/menu/contact-us/Support.png"
-        ></ion-img>
+        <ion-img class="support-img" src="assets/menu/contact-us/Support.png"></ion-img>
       </ion-col>
       <ion-col size="4" class="support">
         <h3 class="ion-no-margin"><b>{{language.Contact_Us.Support}}:</b></h3>

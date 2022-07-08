@@ -18,7 +18,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./customer-nearby.page.scss'],
 })
 export class CustomerNearbyPage implements OnInit {
-  showMap = false;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  showMap = false;
   accessSr = false;
   form: FormGroup;
   mapInitSubscription: Subscription;
@@ -28,13 +28,13 @@ export class CustomerNearbyPage implements OnInit {
   public get markers(): Marker[] { return this._markers }
   set markers(v: Marker[]) { this._markers = v }
 
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline;
   }
-  public get backgroundColor(): BackgroundColors{
+  public get backgroundColor(): BackgroundColors {
     return this.sharedService.backgroundColor;
   }
-  public get language() : Language{
+  public get language(): Language {
     return this.languageService.language;
   }
   constructor(
@@ -44,9 +44,9 @@ export class CustomerNearbyPage implements OnInit {
     private storageService: StorageService,
     private mapService: MapService,
     private popoverCtrl: PopoverController,
-    private geoLocation : GeoLocationService,
-    public sharedService :SharedService,
-    private languageService :LanguageService
+    private geoLocation: GeoLocationService,
+    public sharedService: SharedService,
+    private languageService: LanguageService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
       if (initialized) {
@@ -69,10 +69,18 @@ export class CustomerNearbyPage implements OnInit {
     this.mapInitSubscription.unsubscribe();
   }
 
-  getCurrentLocation(){
-    this.geoLocation.getCurrentLocation().then(location=> {
-      this.patchValue('currentLat',location.latitude);
-      this.patchValue('currentLng',location.longitude);
+  getCurrentLocation() {
+    setTimeout(() => {
+      this.patchValue('currentLat', 35.745862);
+      this.patchValue('currentLng', 51.441502);
+      this.changeMapView();
+      this.initialSr();
+      this.initialShopPoint();
+    }, 1000);
+    return
+    this.geoLocation.getCurrentLocation().then(location => {
+      this.patchValue('currentLat', location.latitude);
+      this.patchValue('currentLng', location.longitude);
 
       this.changeMapView();
       this.initialSr();
@@ -87,7 +95,7 @@ export class CustomerNearbyPage implements OnInit {
       selectedDate: [new Date()],
       formDate: [new Date().toISOString()],
       accessSr: [false],
-      selectedDistance: [100],
+      selectedDistance: [500],
       currentLat: [null],
       currentLng: [null],
     });
