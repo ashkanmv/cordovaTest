@@ -3,6 +3,7 @@ import { ToastController } from '@ionic/angular';
 import { PredefinedColors } from '@ionic/core';
 import { ThemeColors } from './common';
 import { LanguageService } from './language.service';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,19 +13,28 @@ export class SharedService {
   private _fontSize: number = 16;
   public get fontSize(): number { return this._fontSize; }
   set fontSize(v: number) {
-    if (v)
+    if (v){
+      this.storageService.set(this.storageService.fontSizeKey,v);
       this._fontSize = v;
+    }
   }
 
   private _boldFontWeight: boolean = false;
   public get boldFontWeight(): boolean { return this._boldFontWeight; }
-  set boldFontWeight(v: boolean) { this._boldFontWeight = v; }
+  set boldFontWeight(v: boolean) { 
+    this.storageService.set(this.storageService.boldKey,v);
+    this._boldFontWeight = v;
+   }
 
   private _themeColor: ThemeColors = ThemeColors.blue;
   public get themeColor(): ThemeColors { return this._themeColor; }
-  set themeColor(v: ThemeColors) { this._themeColor = v; }
+  set themeColor(v: ThemeColors) { 
+    this.storageService.set(this.storageService.themeColorKey,v);
+    this._themeColor = v; 
+  }
 
-  constructor(private toastCtrl: ToastController, private languageService : LanguageService) { }
+  constructor(private toastCtrl: ToastController, private languageService : LanguageService,
+    private storageService : StorageService) { }
 
   toast(color: PredefinedColors, message: string) {
     this.toastCtrl
