@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonDatetime, LoadingController } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
-import { Language } from 'src/app/shared/common';
+import { BackgroundColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
+import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { UtilService } from 'src/app/shared/util.service';
 import { LoadingTruckStatusService } from './loading-truck-status.service';
@@ -30,13 +31,16 @@ export class LoadingTruckStatusPage implements OnInit {
   public get language(): Language {
     return this.languageService.language;
   }
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+
 
   constructor(
     private languageService: LanguageService,
     private storageService: StorageService,
     private loadingTruckService: LoadingTruckStatusService,
     private loadingCtrl: LoadingController,
-    private UtilService: UtilService
+    private UtilService: UtilService,
+    public sharedService: SharedService
   ) { }
 
   

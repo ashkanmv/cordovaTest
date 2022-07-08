@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   language: boolean;
 
   public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
-  public get languageChosen(): Language { return this.languageService.language; }
+  public get selectedLanguage(): Language { return this.languageService.language; }
   constructor(
     private plt: Platform,
     private languageService: LanguageService,

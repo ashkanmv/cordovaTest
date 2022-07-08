@@ -6,6 +6,7 @@ import { LatLngLiteral, LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import {
+  BackgroundColors,
   CommonUtility,
   GetInvoicedResponse,
   GetSrInfoResponse,
@@ -70,6 +71,9 @@ export class GpsTrackingPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
+  public get backgroundColor() : BackgroundColors {
+    return this.sharedService.backgroundColor;
+  }
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -78,7 +82,7 @@ export class GpsTrackingPage implements OnInit {
     private mapService: MapService,
     private loadingCtrl: LoadingController,
     private languageService: LanguageService,
-    private sharedService: SharedService
+    public sharedService: SharedService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe(
       (initialized: boolean) => {

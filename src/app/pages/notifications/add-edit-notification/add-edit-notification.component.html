@@ -28,8 +28,11 @@
 <!-- ------------------- -->
 <ion-header>
   <ion-toolbar>
-    <ion-row class="ion-justify-content-between header ion-no-margin">
+    <ion-row  class="ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
+        <!-- <ion-buttons>
+          <ion-back-button color="primary" defaultHref=""></ion-back-button>
+        </ion-buttons> -->
         <ion-button fill="clear" (click)="dismiss(false)" >
           <ion-img  
             class="back-button ion-justfy-self-start ion-align-self-cente"
@@ -81,11 +84,11 @@
           <!-- </a> -->
           <h3>{{language.Add_Edit_News.AddPhoto}}</h3>
           <ion-buttons>
-            <ion-button (click)="camera()">
+            <ion-button   (click)="camera()">
               <ion-icon slot="start" name="add"></ion-icon>
               {{language.Add_Edit_News.Camera}}
             </ion-button>
-            <ion-button (click)="gallery()">
+            <ion-button  (click)="gallery()">
               <ion-icon slot="start" name="add"></ion-icon>
               {{language.Add_Edit_News.Gallery}}
             </ion-button>
@@ -97,12 +100,12 @@
       </ion-row>
       <ion-row class="item-title box-shadow">
         <ion-col class="ion-no-padding">
-          <ion-input formControlName="title" type="text" placeholder="  {{language.Add_Edit_News.Title}}"></ion-input>
+          <ion-input dir="{{get_direction()}}" formControlName="title" type="text" placeholder="  {{language.Add_Edit_News.Title}}"></ion-input>
         </ion-col>
       </ion-row>
       <ion-row class="item-text box-shadow">
         <ion-col  class="ion-no-padding">
-          <ion-textarea type="text" rows="6" formControlName="text" placeholder="  {{language.Add_Edit_News.Description}}"></ion-textarea>
+          <ion-textarea dir="{{get_direction()}}" type="text" rows="6" formControlName="text" placeholder="  {{language.Add_Edit_News.Description}}"></ion-textarea>
         </ion-col>
       </ion-row>
       <ion-row class="item-submit">

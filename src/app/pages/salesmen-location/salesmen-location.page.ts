@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Data, Router } from '@angular/router';
 import { MapService } from 'src/app/map/map.service';
 import { IonDatetime, PopoverController } from '@ionic/angular';
-import { GetAllChildrenUserResponse, GetSalesmenLocationResponse, Language, Marker } from 'src/app/shared/common';
+import { BackgroundColors, GetAllChildrenUserResponse, GetSalesmenLocationResponse, Language, Marker } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
@@ -58,6 +58,9 @@ export class SalesmenLocationPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
+  public get backgroundColor() : BackgroundColors {
+    return this.sharedService.backgroundColor;
+  }
   constructor(
     private router: Router,
     public popoverctrl: PopoverController,
@@ -67,7 +70,7 @@ export class SalesmenLocationPage implements OnInit {
     private mapService: MapService,
     private languageService: LanguageService,
     private salesmenService: SalesmenLocationService,
-    private sharedService: SharedService
+    public sharedService: SharedService
   ) {
     this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
       // if (initialized && (this.rsmMarkers.length || this.asmMarkers.length || this.ssvMarkers.length || this.srMarkers.length || this.adminMarkers.length))

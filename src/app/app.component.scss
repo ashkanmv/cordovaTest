@@ -59,9 +59,9 @@ ion-menu.md ion-item ion-icon {
   color: #616e7e;
 }
 
-ion-menu.md ion-item ion-label {
-//  font-weight: 500;
-}
+// ion-menu.md ion-item ion-label {
+// //  font-weight: 500;
+// }
 
 ion-menu.ios ion-content {
   --padding-bottom: 20px;
@@ -149,14 +149,21 @@ ion-item ion-label {
 
 
 
+
 .footer-btn-color{
-  background: #41B1F0;
-  border: 3px solid #77CDFE;
+  // background: inherit;
+  // border: 3px solid #77CDFE;
   color: var(--ion-color-light);
   p{
     display: flex;
   }
+
 }
+.lighter {
+  background: #ffffff70;
+  border: 3px solid #dcdcdc93;
+}
+
 
 // LogOut Modal
 

@@ -8,6 +8,7 @@ import { DailyStatusPageRoutingModule } from './daily-status-routing.module';
 
 import { DailyStatusPage } from './daily-status.page';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     IonicModule,
     DailyStatusPageRoutingModule,
-    NgSelectModule
+    NgSelectModule,
+    SharedModule
   ],
   declarations: [DailyStatusPage]
 })

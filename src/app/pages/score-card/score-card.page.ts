@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import { Language } from 'src/app/shared/common';
+import { BackgroundColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { UtilService } from 'src/app/shared/util.service';
@@ -83,12 +83,14 @@ export class ScoreCardPage implements OnInit {
   public get isOnline(){
     return this.sharedService.isOnline;
   }
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+
   constructor(
     private utilService : UtilService,
     private scoreCardService: ScoreCardService,
     private loadingCtrl: LoadingController,
     private languageService: LanguageService,
-    private sharedService : SharedService
+    public sharedService : SharedService
   ) { }
   // old rys
   set_server_status(vale) {

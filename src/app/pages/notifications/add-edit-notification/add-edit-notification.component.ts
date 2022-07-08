@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { Language, News } from 'src/app/shared/common';
+import { BackgroundColors, Language, News } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { NotificationsService } from '../notifications.service';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
@@ -25,6 +25,9 @@ export class AddEditNotificationComponent implements OnInit {
   public get isOnline(){
     return this.sharedService.isOnline;
   }
+  public get backgroundColor() : BackgroundColors{
+    return this.sharedService.backgroundColor;
+  }
   constructor(
     private modalCtrl: ModalController,
     private formBuilder: FormBuilder,
@@ -32,7 +35,7 @@ export class AddEditNotificationComponent implements OnInit {
     private notificationService: NotificationsService,
     private cam: Camera,
     private fileTransfer: FileTransfer,
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     private utilService : UtilService
   ) { }
 

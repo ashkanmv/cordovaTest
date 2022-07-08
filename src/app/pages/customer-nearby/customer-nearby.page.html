@@ -1,13 +1,10 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row class="primary-bg">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}">
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
-        </ion-button>
+        <ion-buttons>
+          <ion-back-button color="light" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col sizeLg="7" class="ion-text-start ion-align-self-center">
         <ion-title class="ion-no-padding white-text ion-align-self-center "
@@ -26,7 +23,7 @@
           trigger="trigger-desc"
         >
           <ng-template>
-            <ion-content disabled class="header-input-popover-title"
+            <ion-content [style.--background]="sharedService.handleBackgroundColor()"  disabled class="header-input-popover-title"
               >{{language.Customer_nearby.Description}}</ion-content
             >
             <ion-content>
@@ -91,19 +88,7 @@
       </ion-col>
     </ion-row>
   </ion-toolbar>
-  <ion-grid class="secondary-bg white-text">
-    <ion-row class="ion-justify-content-between">
-      <ion-col size="3" class="ion-no-padding ion-text-start">
-        2022.04.02
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-center">
-        Saturday
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-end">
-        13 فروردین
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+   <app-date></app-date>
 </ion-header>
 
 <ion-content>

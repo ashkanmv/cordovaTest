@@ -1,22 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row class="primary-bg ion-justify-content-between header ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"></ion-img>
-        </ion-button>
+       <ion-buttons>
+         <ion-back-button color="light" defaultHref="main"></ion-back-button>
+       </ion-buttons>
       </ion-col>
-      <ion-col size="9" class="ion-text-center ion-align-self-center">
+      <ion-col size="8" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text">
           <h3><b>{{language.Salesmen_Location.Title}}</b></h3>
         </ion-title>
       </ion-col>
-      <ion-col class="ion-align-self-center hide" size="1" (click)="show = !show" [ngClass]="{'show-content': show}">
+      <ion-col class="ion-align-self-center hide  ion-no-padding" size="1" (click)="show = !show" [ngClass]="{'show-content': show}">
         <ion-img id="trigger-hide" class="hide" src="\assets\pages\customer-nearby\Hide.png">
         </ion-img>
       </ion-col>
-      <ion-col class="ion-align-self-center wifi" size="1">
+      <ion-col class="ion-align-self-center wifi ion-no-padding margin-right" size="1">
         <ion-img *ngIf="isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet On.png"></ion-img>
         <ion-img *ngIf="!isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet Off.png"></ion-img>
       </ion-col>
@@ -38,7 +37,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid *ngIf="show">
+  <ion-grid class="body-content" *ngIf="show">
     <!-- <form [formGroup]="form"> -->
     <ion-row *ngIf="accessTime">
       <ion-row class="date-picker-container">
@@ -68,8 +67,7 @@
     <ion-row class="salesmen-location-container">
       <div class="salesmen-location-box" *ngIf="accessRsm">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
-          <ion-item>
-            <ion-button class="btn-search primary-bg">
+            <ion-button [style.--background]="sharedService.handleBackgroundColor()"  class="btn-search ion-no-margin">
               <ion-icon name="search-outline"></ion-icon>
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
@@ -88,15 +86,13 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox mode="ios" [(ngModel)]="showRsm" (ionChange)="showDataChanged('rsm',showRsm)"></ion-checkbox>
+            <ion-checkbox  [(ngModel)]="showRsm" (ionChange)="showDataChanged('rsm',showRsm)"></ion-checkbox>
           </ion-item>
-
-        </ion-item>
       </div>
       <div class="salesmen-location-box" *ngIf="accessAsm">
         <ion-item class="salesmen-location ion-no-padding  lightBlue-shadow">
           <ion-item class=" ion-justify-content-between ion-align-items-center ">
-            <ion-button class="btn-search primary-bg">
+            <ion-button [style.--background]="sharedService.handleBackgroundColor()"  class="btn-search ion-no-margin">
               <ion-icon name="search-outline"></ion-icon>
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
@@ -117,13 +113,11 @@
             </ion-item>
             <ion-checkbox [(ngModel)]="showAsm" (ionChange)="showDataChanged('asm',showAsm)"></ion-checkbox>
           </ion-item>
-
         </ion-item>
       </div>
       <div class="salesmen-location-box" *ngIf="accessSsv">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
-          <ion-item>
-            <ion-button class="btn-search primary-bg">
+            <ion-button [style.--background]="sharedService.handleBackgroundColor()"  class="btn-search ion-no-margin">
               <ion-icon name="search-outline"></ion-icon>
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
@@ -142,15 +136,13 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox mode="ios" [(ngModel)]="showSsv" (ionChange)="showDataChanged('ssv',showSsv)"></ion-checkbox>
+            <ion-checkbox  [(ngModel)]="showSsv" (ionChange)="showDataChanged('ssv',showSsv)"></ion-checkbox>
           </ion-item>
 
-        </ion-item>
       </div>
       <div class="salesmen-location-box" *ngIf="accessSr">
         <ion-item class="salesmen-location ion-no-padding lightBlue-shadow">
-          <ion-item>
-            <ion-button class="btn-search primary-bg">
+            <ion-button [style.--background]="sharedService.handleBackgroundColor()"  class="btn-search primary-bg">
               <ion-icon name="search-outline"></ion-icon>
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
@@ -169,10 +161,9 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox mode="ios" [(ngModel)]="showSr" (ionChange)="showDataChanged('sr',showSr)"></ion-checkbox>
+            <ion-checkbox  [(ngModel)]="showSr" (ionChange)="showDataChanged('sr',showSr)"></ion-checkbox>
           </ion-item>
 
-        </ion-item>
       </div>
     </ion-row>
     <!-- </form> -->

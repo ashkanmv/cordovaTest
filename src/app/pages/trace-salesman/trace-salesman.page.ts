@@ -4,7 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
-import { GetSalesmenLocationResponse, GetUserChildrenResponse, Language, MapView, Marker, Polyline } from 'src/app/shared/common';
+import { BackgroundColors, GetSalesmenLocationResponse, GetUserChildrenResponse, Language, MapView, Marker, Polyline } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -49,6 +49,9 @@ export class TraceSalesmanPage implements OnInit {
   public get isOnline() {
     return this.sharedService.isOnline;
   }
+  public get backgroundColor() : BackgroundColors{
+    return this.sharedService.backgroundColor;
+  }
 
   constructor(
     private languageService: LanguageService,
@@ -56,7 +59,7 @@ export class TraceSalesmanPage implements OnInit {
     private storageService: StorageService,
     private formBuilder: FormBuilder,
     private traceService: TraceSalesmanService,
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     private loadingCtrl: LoadingController,
     private persianCalendarService: PersianCalendarService
   ) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import { Language } from 'src/app/shared/common';
+import { BackgroundColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -29,19 +29,18 @@ export class TodayPlannedNotBuyingPage implements OnInit {
   isVisible = undefined;
 
 
-  public get language(): Language {
-    return this.languageService.language;
-  }
+  public get language(): Language { return this.languageService.language;}
 
-  public get isOnline(){
-    return this.sharedService.isOnline;
-  }
+  public get isOnline(){return this.sharedService.isOnline;}
+
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+
   constructor(
     private loadingCtrl: LoadingController,
     private storageService: StorageService,
     private todayPlannedService: TodayPlannedService,
     private languageService: LanguageService,
-    private sharedService: SharedService
+    public sharedService: SharedService
   ) { }
 
   ngOnInit() {

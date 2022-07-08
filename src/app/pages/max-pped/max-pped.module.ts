@@ -8,6 +8,7 @@ import { MaxPPEDPageRoutingModule } from './max-pped-routing.module';
 
 import { MaxPPEDPage } from './max-pped.page';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     IonicModule,
     MaxPPEDPageRoutingModule,
     NgSelectModule,
+    SharedModule
   ],
   declarations: [MaxPPEDPage],
 })

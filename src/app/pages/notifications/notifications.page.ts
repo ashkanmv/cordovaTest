@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController } from '@ionic/angular';
-import { Language, News } from 'src/app/shared/common';
+import { BackgroundColors, Language, News } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -26,7 +26,10 @@ export class NotificationsPage implements OnInit {
     return this.languageService.language;
   }
   public get isOnline(){
-    return this.sharedSerice.isOnline
+    return this.sharedService.isOnline
+  }
+  public get backgroundColor() :BackgroundColors{
+    return this.sharedService.backgroundColor;
   }
 
   constructor(
@@ -34,7 +37,7 @@ export class NotificationsPage implements OnInit {
     private storageService: StorageService,
     private notificationService: NotificationsService,
     private languageService: LanguageService,
-    private sharedSerice: SharedService,
+    public sharedService: SharedService,
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
     private utilService : UtilService
@@ -95,7 +98,7 @@ export class NotificationsPage implements OnInit {
     await loading.present();
 
     this.notificationService.deleteNews(id).subscribe(() => {
-      this.sharedSerice.toast('success', this.language.News.NotificationDeleted);
+      this.sharedService.toast('success', this.language.News.NotificationDeleted);
       this.skip = 0;
       this.all_news = [];
       this.lastPageReached = false;
@@ -153,7 +156,7 @@ export class NotificationsPage implements OnInit {
 
   doInfinite(event) {
     if (this.lastPageReached) {
-      this.sharedSerice.toast('warning', this.language.News.EndOfNotifications);
+      this.sharedService.toast('warning', this.language.News.EndOfNotifications);
       event.target.complete();
       return
     }

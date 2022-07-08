@@ -8,6 +8,7 @@ import { TodayPlannedNotBuyingPageRoutingModule } from './today-planned-not-buyi
 
 import { TodayPlannedNotBuyingPage } from './today-planned-not-buying.page';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     IonicModule,
     TodayPlannedNotBuyingPageRoutingModule,
-    NgSelectModule
+    NgSelectModule,
+    SharedModule
   ],
   declarations: [TodayPlannedNotBuyingPage]
 })

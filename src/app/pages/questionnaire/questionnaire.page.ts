@@ -6,6 +6,7 @@ import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { FileTransfer, FileTransferObject, FileUploadOptions } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { LoadingController } from '@ionic/angular';
 import {
+  BackgroundColors,
   Cities,
   Customer,
   Language,
@@ -39,13 +40,12 @@ export class QuestionnairePage implements OnInit {
   userId: string;
   customerNumber: string;
 
-  public get language(): Language {
-    return this.languageService.language;
-  }
+  public get language(): Language { return this.languageService.language;}
 
-  public get isOnline() {
-    return this.sharedService.isOnline;
-  }
+  public get isOnline() {return this.sharedService.isOnline;}
+
+  public get backgroundColor(): BackgroundColors { return this.sharedService.backgroundColor; }
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -59,7 +59,7 @@ export class QuestionnairePage implements OnInit {
     private utilService: UtilService,
     private cam: Camera,
     private fileTransfer: FileTransfer,
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     private geoLocationService: GeoLocationService
   ) {
     let customerNumber = this.route.snapshot.queryParams['customerNumber'];

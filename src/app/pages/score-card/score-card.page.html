@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row class="primary-bg">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}">
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img class="back-button" src="assets\pages\customer-history\Backward arrow.png"></ion-img>
-        </ion-button>
+        <ion-buttons >
+          <ion-back-button color="light" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col></ion-col>
       <ion-col size="6" class="ion-text-start ion-align-self-center">
@@ -28,31 +28,19 @@
       </ion-col>
     </ion-row>
   </ion-toolbar>
-  <ion-grid class="secondary-bg white-text">
-    <ion-row class="ion-justify-content-between">
-      <ion-col size="3" class="ion-no-padding ion-text-start">
-        2022.04.02
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-center">
-        Saturday
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-end">
-        13 فروردین
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+   <app-date></app-date>
   <ion-col class="ion-no-padding segment-change">
     <ion-segment class="" (ionChange)="segmentChanged($event)" value="category">
-      <ion-segment-button class="category" value="category">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="category" value="category">
         <ion-label>{{language.Score_Card.Segment_category}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button class="channel" value="channel">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="channel" value="channel">
         <ion-label>{{language.Score_Card.Segment_channel}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button class="category%" value="categoryP">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="category%" value="categoryP">
         <ion-label>{{language.Score_Card.Segment_categoryPer}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button class="channel%" value="channelP">
+      <ion-segment-button  [style.--background-checked]="sharedService.handleBackgroundColor()" class="channel%" value="channelP">
         <ion-label>{{language.Score_Card.Segment_channelPer}}</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -64,7 +52,7 @@
     <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="categorySection()">
+          <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="categorySection()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="channels1.length" [items]="channels1" [multiple]="true" bindLabel="GPSChannel"
@@ -122,7 +110,7 @@
     <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="categorySelect2()">
+          <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="categorySelect2()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
@@ -146,7 +134,7 @@
     <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="channelSectionSkus()">
+          <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="channelSectionSkus()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
@@ -201,7 +189,7 @@
     <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="categoryPSection()">
+          <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="categoryPSection()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
@@ -276,7 +264,7 @@
     <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="categorySelect4()">
+          <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="categorySelect4()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
@@ -302,7 +290,7 @@
     <ion-row class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button class="search-submit primary-bg" (click)="channelPSectionSkus()">
+          <button class="search-submit " [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" (click)="channelPSectionSkus()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="sec4SkuSelect.length" [items]="sec4SkuSelect" [multiple]="true" bindLabel="itemName"

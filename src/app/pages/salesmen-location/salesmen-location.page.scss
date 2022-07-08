@@ -28,29 +28,10 @@ ion-title{
     }
 }
 
-ion-popover.hide-drop-down{
-    --max-width:10rem;
-    --offset-x:-10vw;
-    --offset-y:1vh;
 
-    .first{
-        --padding-top: 1rem ;
 
-    }
-    ion-content{
-        --color:#005b90;
-         // font-weight: bold;
-        --padding-top: .9rem ;
-        --padding-bottom: .3rem ;
-        --padding-start: 1.7rem ;
-        &:hover{
-            --background:#0095EB;
-        }
-        &:focus{
-            background: none;
-        }
-
-    }
+ion-grid.body-content{
+    height: 150vh;
 }
 
 
@@ -149,14 +130,14 @@ ion-row{
         }
         ion-item{
             --inner-border-width: 0;
-           ion-checkbox{
-               --size: 1.5rem;
-               --border-color: #0095EB;
-               --border-width: 1px;
-               --border-radius:50px;
-               margin-right: 3vw;
-            }
         }
+        ion-checkbox{
+            --size: 1.5rem;
+            --border-color: #0095EB;
+            --border-width: 1px;
+            --border-radius:50px;
+            margin-right: 3vw;
+         }
     }
    
 }

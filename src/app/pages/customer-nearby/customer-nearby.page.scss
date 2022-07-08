@@ -64,10 +64,10 @@ ion-popover.header-drop-down{
 
 
 ion-popover.description-drop-down{
-    --min-width:55vw;
-    --min-height:22rem;
-    --offset-x:-5vw;
-    --offset-y:1vh;
+    --min-width: 64vw;
+    --min-height: 22rem;
+    --offset-x: 0vw;
+    --offset-y: 1vh;
     >ion-content{
         font-size: 1.2rem;
         --color: var(--ion-color-dark);
@@ -93,7 +93,6 @@ ion-popover.description-drop-down{
         justify-content: center;
         cursor:auto;
         --color:var(--ion-color-light) ;
-        --background:#119ff2;
         text-align: center;
         border-bottom: none;
          // font-weight: bold;

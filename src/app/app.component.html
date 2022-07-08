@@ -21,9 +21,9 @@
               <ion-row
                 class="ion-margin-top ion-align-items-center ion-justify-content-center white-background gps-toggle"
               >
-                <b> {{languageChosen.Menu.en}} </b>
+                <b> {{selectedLanguage.Menu.en}} </b>
                 <ion-toggle color="primary" [(ngModel)]="language" (ionChange)="languageChanged()"></ion-toggle>
-                <b> {{languageChosen.Menu.fa}} </b>
+                <b> {{selectedLanguage.Menu.fa}} </b>
               </ion-row>
             </ion-col>
           </ion-row>
@@ -33,45 +33,45 @@
           <ion-menu-toggle auto-hide="false">
             <ion-item lines="none" routerLink="/main">
               <ion-img src="assets/menu/main-page.png"></ion-img>
-              <ion-label class="ion-margin-horizontal">{{languageChosen.Menu.MainPage}}</ion-label>
+              <ion-label class="ion-margin-horizontal">{{selectedLanguage.Menu.MainPage}}</ion-label>
             </ion-item>
             <ion-item lines="none" routerLink="/profile">
               <ion-img src="assets/menu/profile.png"></ion-img>
-              <ion-label class="ion-margin-horizontal">{{languageChosen.Menu.Profile}}</ion-label>
+              <ion-label class="ion-margin-horizontal">{{selectedLanguage.Menu.Profile}}</ion-label>
             </ion-item>
             <ion-item lines="none" routerLink="/contact-us">
               <ion-img src="assets/menu/contact-us.png"></ion-img>
-              <ion-label class="ion-margin-horizontal">{{languageChosen.Menu.ContactUs}}</ion-label>
+              <ion-label class="ion-margin-horizontal">{{selectedLanguage.Menu.ContactUs}}</ion-label>
             </ion-item>
             <ion-item lines="none" routerLink="/about-app">
               <ion-img src="assets/menu/about-us.png"></ion-img>
-              <ion-label class="ion-margin-horizontal">{{languageChosen.Menu.AboutUs}}</ion-label>
+              <ion-label class="ion-margin-horizontal">{{selectedLanguage.Menu.AboutUs}}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
         <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" >
           <ion-col size="12" class="text-align-center">
             <ion-menu-toggle>
-              <button class="btn footer-btn-color flex-row">
-                <p routerLink="/settings"><ion-icon name="settings-sharp"></ion-icon> {{languageChosen.Menu.Setting}}</p>
-                <p id="open-logOut" >{{languageChosen.Menu.LogOut}}</p>
+              <button class="btn lighter footer-btn-color flex-row">
+                <p routerLink="/settings"><ion-icon name="settings-sharp"></ion-icon> {{selectedLanguage.Menu.Setting}}</p>
+                <p id="open-logOut" >{{selectedLanguage.Menu.LogOut}}</p>
               </button>
               <ion-modal #modal trigger="open-logOut">
                 <ng-template>
                   <ion-content>
                     <ion-item class="title ion-text-center ion-justify-content-center ion-align-items-end">
-                      <ion-title>{{languageChosen.logOut.areYouSure}}</ion-title>
+                      <ion-title>{{selectedLanguage.logOut.areYouSure}}</ion-title>
                     </ion-item>
                     <ion-item class="label ion-text-center ion-justify-content-center  ion-align-items-center  ">
-                      <ion-label>{{languageChosen.logOut.message}}</ion-label>
+                      <ion-label>{{selectedLanguage.logOut.message}}</ion-label>
                     </ion-item>
                     <ion-item class="buttons ion-text-center ion-justify-content-center  ion-align-items-center ">
                       <ion-item>
                         <ion-button class="logOut-btn" (click)="modal.dismiss()">
-                          {{languageChosen.logOut.logOut}} 
+                          {{selectedLanguage.logOut.logOut}} 
                         </ion-button>
                         <ion-button (click)="modal.dismiss()">
-                          {{languageChosen.logOut.cancel}}
+                          {{selectedLanguage.logOut.cancel}}
                         </ion-button>
                       </ion-item>
                     </ion-item>

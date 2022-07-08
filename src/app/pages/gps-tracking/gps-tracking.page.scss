@@ -45,8 +45,7 @@ ion-img .back-button.ios{
 
 
 ion-popover.description-drop-down{
-    // --min-width:55vw;
-    // --min-width:350PX;
+
     --min-width:72%;
     --min-height:22rem;
     --offset-x:-5vw;
@@ -76,7 +75,6 @@ ion-popover.description-drop-down{
         justify-content: center;
         cursor:auto;
         --color:var(--ion-color-light) ;
-        --background:#119ff2;
         text-align: center;
         border-bottom: none;
          // font-weight: bold;

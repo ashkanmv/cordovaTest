@@ -5,6 +5,7 @@
             "Loading": "Please wait...",
             "server_no_value": "The server returns no value",
             "Submit":"Submit",
+            "Main_Page":"Main Page",
         "Customer_History": {
             "Title": "Customer History",
             "gps": "GPS",
@@ -35,12 +36,6 @@
             "Input_select_routeDaily": "RouteDaily",
             "Input_select_customer": "Customer",
             "Input_select_customer_Category": "Customer Category",
-            "Input_text_store": "Store",
-            "Input_text_customer_name": "Customer Name",
-            "Input_text_address": "Address",
-            "Radio_input_breakfast": "Breakfast",
-            "Radio_input_breakfast_yes": "Yes",
-            "Radio_input_breakfast_no": "No",
             "Submit_button": "Submit",
             "Msg_answer_neccesary": "Answer is necesary!",
             "Msg_image_neccesary": "Image is neccesary!",
@@ -76,15 +71,7 @@
             "Promotion_Customer": "Promotion Customer",
             "PPED_MoreThan_5Per": "PPED > 5%",
             "NOT_Buy_2_Weeks": "NOT Buy 2 Weeks",
-            "NOT_Buy_2_Weeks_PPED": "Not Buy 2 Weeks & PPED > 5%",
-            "TRUCK": "TRUCK",
-            "Input_select_date": "Date",
-            "Input_select_RSM": "RSM",
-            "Input_select_ASM": "ASM",
-            "Input_select_SSV": "SSV",
-            "Input_select_SR": "SR",
-            "Radio_input_show_truck": "Show truck",
-            "Radio_input_show_SR": "Show SR"
+            "NOT_Buy_2_Weeks_PPED": "Not Buy 2 Weeks & PPED > 5%"
         },
         "Score_Card": {
             "Title": "Score Cards",
@@ -148,10 +135,6 @@
         },
         "Salesmen_Location": {
             "Title": "Salesmen Location",
-            "managerRed": "Farhad Iranloo",
-            "managerGreen": "Ahmad Safari",
-            "managerYellow": "Sina Ahmadi",
-            "managerBlue": "Kazem Dehghan",
             "Group": "Select All",
             "NoValueSelected": "No value selected!",
             "NoUserAvailable":"No value from server!",
@@ -259,90 +242,336 @@
             "AboutUs":"About Us",
             "Setting":"Setting",
             "LogOut":"LogOut"
+        },
+        "Setting" : {
+            "Title":"Settings",
+            "Language":"Language",
+            "Theme":"Theme",
+            "help":"Help",
+            "frequently_asked_questions":"Frequently Asked Questions",
+            "description_video":"Description Video"
+        },
+        "Contact_Us":{
+            "Title":"Contact Us",
+            "Support":"Support",
+            "Send_Message":"Send Message",
+            "tell":"Tell",
+            "sell":"Sell",
+            "Name":"Name",
+            "Your_Message":"Your Message"
+
+        },
+        "Profile":{
+            "Title":"Profile",
+            "Send_Message":"confirm",
+            "Current_password":"Current password",
+            "New_password":"New password",
+            "Re_enter_new_password":"Re-enter new password"
+        },
+        "About_Us":{
+            "Title":"About app",
+            "Powered_by":"POWERED BY",
+            "for":"For",
+            "Your_version":"Your version :",
+            "copyright":"copyright :",
+            "Terms_of_Use":"Terms of Use",
+            "Privacy_Policy":"Privacy Policy",
+            "Update_New_Version":"Update New Version"
+        },
+        "Language":{
+            "Title":"Language",
+            "Select":"Select your language",
+            "en":"English",
+            "fa":"Persian"
         }
 
     },
     "FR": {
+            "connection_error": "!نمی توان به سرور متصل شد",
+            "gps_error": "!لطفا موقعیت مکانی را روشن کنید",
+            "Loading": "لطفا صبر کنید...",
+            "server_no_value": "سرور هیچ مقداری را برمی گرداند",
+            "Submit":"ثبت",
+            "Main_Page":"صفحه اصلی",
         "Customer_History": {
-            "TitLe": "Customer History"
+            "Title": "اطلاعات پیشین مشتری",
+            "gps": "موقعیت یابی",
+            "Shop_name": "نام فروشگاه",
+            "Shop_code": "کد فروشگاه",
+            "Shop_type": "نوع فروشگاه",
+            "Tell": "شماره تماس",
+            "SR": "نام فروشنده",
+            "Address": "نشانی",
+            "DC":"DC",
+            "Route":"مسیر",
+            "Customer":"نام مشتری",
+            "sales":"فروش ",
+            "PPED":"PPED",
+            "Samples":"نمونه ها",
+            "Qty":"کمیت",
+            "Kg":"کیلوگرم",
+            "msg_no_customer": "!مشتری در محدوده شما یافت نشد",
+            "searching":" در حال جستجو", 
+            "notFound":"جستجوی شما نتیجه ای نداشت", 
+            "typeToSearchText":"جستجو", 
+            "searchPlaceholder":"جستجو"
         },
         "Questionnaire": {
-            "Title": "تستتت",
-            "Input_select_DC": "تستتت",
-            "Input_select_route": "تستتت",
-            "Input_select_routeDaily": "تستتت",
-            "Input_select_customer": "تستتت",
-            "Input_select_customer_Category": "تستتت",
-            "Input_text_store": "تستتت",
-            "Input_text_customer_name": "تستتت",
-            "Input_text_address": "تستتت",
-            "Radio_input_breakfast": "تستتت",
-            "Radio_input_breakfast_yes": "تستتت",
-            "Radio_input_breakfast_no": "تستتت",
-            "Submit_button": "تستتتt"
+            "Title": "پرسشنامه",
+            "Input_select_DC": "DC",
+            "Input_select_route": "مسیر",
+            "Input_select_routeDaily": "مسیر روزانه",
+            "Input_select_customer": "نام مشتری",
+            "Input_select_customer_Category": "دسته بندی مشتری",
+            "Submit_button": "ثبت",
+            "Msg_answer_neccesary":  "!ثبت پاسخ ضروری است",
+            "Msg_image_neccesary": "!ثبت تصویر ضروری است",
+            "Msg_submit": ".اطلاعات با موفقیت ارسال شد",
+            "Msg_update":".اطلاعات با موفقیت بروزرسانی شد",
+            "DC":"DC",
+            "Route":"مسیر",
+            "RouteDaily":"مسیر روزانه",
+            "Customer":"نام مشنری",
+            "CustomerCategory": "دسته بندی مشتری"
         },
         "Gps_Tracking": {
-            "Title": "تستتت",
-            "Description": "تستتت",
-            "Planned(Not_Invoiced_Yet)": "تستتت",
-            "Planned&Invoiced": "تستتت",
-            "OOP_invoiced": "تستتت",
-            "Visited_Not_Buy": "تستتت",
-            "SR": "تستتت",
-            "TRUCK": "تستتت",
-            "Input_select_date": "تستتت",
-            "Input_select_RSM": "تستتت",
-            "Input_select_ASM": "تستتت",
-            "Input_select_SSV": "تستتت",
-            "Input_select_SR": "تستتت",
-            "Radio_input_show_truck": "تستتت",
-            "Radio_input_show_SR": "تستتتR"
+            "Title": "نقشه",
+            "Description": "توصیف",
+            "Planned(Not_Invoiced_Yet)":  "مطابق برنامه و فاکتور نشده",
+            "Planned&Invoiced":  "مطابق برنامه و فاکتور شده",
+            "OOP_invoiced": "خارج از برنامه و فاکتور شده",
+            "Visited_Not_Buy":"بازدید شده و فاکتور نشده ",
+            "SR": "نام فروشنده",
+            "TRUCK": "ماشین پخش",
+            "Input_select_date": "نمایش تاریخ",
+            "Input_select_RSM": "نمایش RSM",
+            "Input_select_ASM": "نمایش ASM",
+            "Input_select_SSV": "نمایش SSV",
+            "Input_select_SR": "نمایش SR",
+            "Radio_input_show_truck": "نمایش ماشین",
+            "Radio_input_show_SR": "نمایش SR"
         },
         "Customer_nearby": {
-            "Title": "تستتتتت",
-            "Description": "تستتتتت",
-            "Normal_Customer": "تستتتتت",
-            "Promotion_Customer": "تستتتتت",
-            "PPED_>_5%": "تستتتتت",
-            "NOT_Buy_2_Weeks": "تستتتتت",
-            "Not_Buy_2_Weeks_&_PPED_>_5%": "تستتتتت",
-            "TRUCK": "تستتتتت",
-            "Input_select_date": "تستتتتت",
-            "Input_select_RSM": "تستتتتت",
-            "Input_select_ASM": "تستتتتت",
-            "Input_select_SSV": "تستتتتت",
-            "Input_select_SR": "تستتتتت",
-            "Radio_input_show_truck": "تستتتتت",
-            "Radio_input_show_SR": "تستتتتتR"
+            "Title": "سوپرمارکتهای مجاور",
+            "Description": "توصیف",
+            "Normal_Customer":  "فروشگاه های عادی",
+            "Promotion_Customer":  "از تخفیف استفاده کرده",
+            "PPED_MoreThan_5Per": "مرجوعی بیش از 5% در 6 هفته اخیر",
+            "NOT_Buy_2_Weeks":"بیشتر از 2 هفته خرید نکرده",
+            "NOT_Buy_2_Weeks_PPED":  "مرجوعی بیش از 5% در 6 هفته اخیر و از تخفیف استفاده کرده"
         },
         "Score_Card": {
-            "Title": "تستتتت",
-            "Segment_category": "تستتتت",
-            "Segment_channel": "تستتتت",
-            "Segment_category%": "تستتتت",
-            "Segment_channel%": "تستتتت",
-            "Radio_input_sales": "تستتتت",
-            "Radio_input_PPED": "تستتتتD"
+            "Title": "گزارش روزانه فروش",
+            "Segment_category": "دسته بندی",
+            "Segment_channel": "کانال",
+            "Segment_categoryPer": "%دسته بندی",
+            "Segment_channelPer": "%کانال",
+            "Radio_input_sales": "فروش",
+            "Radio_input_PPED": "PPED",
+            "group": "همه"
         },
         "login": {
-            "title": "تستتتت",
-            "username": "تستتتت",
-            "password": "تستتتت",
-            "submit": "تستتتت",
-            "UserPassIncorrect": "تستتتت",
-            "RememberMe": "تستتتت",
-            "PoweredBy": "تستتتت",
-            "serial": "تست"
+            "title": "ورود به سیستم",
+            "username": "نام کاربر",
+            "password": "کلیدواژه",
+            "submit": "ورود",
+            "UserPassIncorrect":  "نام کاربری یا رمز عبور اشتباه است",
+            "RememberMe": "مرا بخاطر بسپار",
+            "PoweredBy": "پشتیبانی شده توسط",
+            "serial": "سریال"
         },
         "Menu" : {
             "en":"EN",
             "fa":"FR",
-            "MainPage":"MainPage",
-            "Profile":"Profile",
-            "ContactUs":"Contact Us",
-            "AboutUs":"About Us",
-            "Setting":"Setting",
-            "LogOut":"LogOut"
+            "MainPage":"صفحه اصلی",
+            "Profile":"پروفایل",
+            "ContactUs":"تماس با ما",
+            "AboutUs":"درباره نرم افزار",
+            "Setting":"تنظیمات",
+            "LogOut":"خروج"
         }
+        ,
+        "theme": {
+            "title": "تم",
+            "dark": " تیره",
+            "light": "روشن",
+            "select": "انتخاب",
+            "automatic_dark_mode": "حالت تیره خودکار",
+            "text_size": "اندازه متن",
+            "bold_text": "اندازه متن",
+            "theme_color": "رنگ تم"
+        },
+        "DatePicker": {
+            "confirm": "تایید",
+            "reset": "انصراف",
+            "from": "از تاریخ",
+            "to": "به تاریخ",
+            "Title": "تاریخ"
+        },
+        "Loading_Truck_Status": {
+            "Title": "وضعیت بارگیری و فروش",
+            "dateTitle": "تاریخ",
+            "Group": "همه",
+            "Route":"میبر",
+            "Load":"بار",
+            "Sale":"فروش",
+            "PPED":"PPED",
+            "Remain":"باقی مانده",
+            "SKU":"SKU"
+        },
+        "Online_Sales_Hourly": {
+            "Title":  "فروش ساعتی فروشندگان",
+            "perKilo": "برحسب کیلوگرم",
+            "perInvoices": "برحسب تعداد فاکتور",
+            "group": "همه"
+        },
+        "Online_Sale_Days_Hourly": {
+            "Title": "نمایش فروش ساعتی زماندار",
+            "perKilo": "برحسب کیلوگرم",
+            "perInvoices": "برحسب تعداد فاکتور",
+            "group": "همه"
+        },
+        "Salesmen_Location": {
+            "Title": "موقعیت فروشنده ها",
+            "Group": "انتخاب همه",
+            "NoValueSelected": "!هیچ مقداری انتخاب نشده است",
+            "NoUserAvailable":"هیچ مقداری از طرف سرور باز نمیگردد",
+            "RequestError" : "خطا"
+        },
+        "Sales_hourly_Day_And_Sales_Office": {
+            "Title": "نمایش فروش ساعتی زماندار شهرها",
+            "group": "همه",
+            "DSD_Hourly_City":"برحسب شهر",
+            "DSD_Hourly_Days":"برحسب روز"
+        },
+        "Sales_Compare_Tracking_Hourly": {
+            "Title": "مقایسه فروش ساعتی با میانگین سال قبل",
+            "group": "همه"
+        },
+        "Max_PPED": {
+            "Title":  "بیشترین مرجوعی",
+            "group": "همه",
+            "perCustomer":"برحسب مشتری",
+            "perRoute":"برحسب مسیر",
+            "custmerNumber":"شماره مشتری",
+            "cluster":"Cluster",
+            "storeName":"نام فروشگاه",
+            "sale":"فروش",
+            "pped":"PPED",
+            "per":"%",
+            "routeCode":"کد مسیر",
+            "visitorName":"نام بازدید کننده"
+        },
+        "Today_Planned_Not_Buying": {
+            "Title": "برنامه ریزی فروش امروز",
+            "group": "همه",
+            "Route":"مسیر",
+            "Visitor":"بازدید کننده",
+            "Count":"Count",
+            "Name":"نام",
+            "Number": "تماس",
+            "Address":"نشانی"
+        },
+        "DailyStatus": {
+            "Title": "وضعیت روزانه",
+            "group": "همه",
+            "Tablet":"تبلت",
+            "Truck":"ماشین"
+        },
+        "News": {
+            "Title": "اطلاعیه",
+            "Loading": "...لطفا صبر کنید",
+            "EndOfNotifications": "پایان اعلان ها",
+            "NotificationDeleted": ".اعلان حذف شد",
+            "cancel":"انصراف",
+            "edit":"ویرایش",
+            "confirm":"تایید",
+            "editText":"متن را ویرایش کنید",
+            "enterText":"...متن را وارد کنید"
+        },
+        "Add_Edit_News": {
+            "AddPhoto":".لطفا عکس خود را اضافه کنید",
+            "Camera": "دوربین",
+            "Gallery": "گالری",
+            "ItemName":"Item Name",
+            "Title": "افزودن/ویرایش اخبار",
+            "Description": "توضیحات",
+            "Submit": "ثبت",
+            "OutOfType": "Out OF Type!",
+            "NewsCreated": ".خبر ایجاد شد",
+            "NewsUpdated": ".اخبار به روز شد"
+        },
+        "Online_Daily_Sales": {
+            "Title":"فروش روزانه فروشنده ها",
+            "group": "همه",
+            "UserIdNotFound": ".شناسه کاربری پیدا نشد",
+            "dsd":"DSD",
+            "NON_DSD":"NON_DSD",
+            "Route":"مسیر",
+            "Pln":"Pln",
+            "Inv":"INV",
+            "per":"%",
+            "oor":"OOR",
+            "Total":"Total",
+            "NotINV":"NotINV",
+            "Sale":"فروش",
+            "PPED":"PPED"
+        },
+        "Trace_Salesman" : {
+            "NoLocationFound" : "!مکانی پیدا نشد",
+            "Title": "مسیر حرکت فروشنده ها",
+            "rsm":"RSM",
+            "asm":"ASM",
+            "ssv":"SSV",
+            "sr":"SR"
+        },
+        "logOut" : {
+            "areYouSure":"آیا مطمئن هستید؟",
+            "message":"پیام",
+            "logOut":"خروج",
+            "cancel":"لغو"
+        },
+        "Setting" : {
+            "Title":"تنظیمات",
+            "Language":"زبان ها",
+            "Theme":"تم",
+            "help":"کمک",
+            "frequently_asked_questions":"سوالات متداول",
+            "description_video":"ویدیو توضیحات"
+        },
+        "Contact_Us":{
+            "Title":"تماس با ما",
+            "Support":"پشتیبانی",
+            "Send_Message":".پیام خود را بفرستید",
+            "tell":"شماره تلفن ثابت",
+            "sell":"شماره تلفن همراه",
+            "Name":"نام",
+            "Your_Message":"پیام شما"
+
+        },
+        "Profile":{
+            "Title":"پروفایل",
+            "Send_Message":"تایید",
+            "Current_password":"رمز جاری",
+            "New_password": "رمز جدید",
+            "Re_enter_new_password":"تکرار رمز جدید"
+        },
+        "About_Us":{
+            "Title":"درباره نرم افزار",
+            "Powered_by":"پشتیبانی شده توسط",
+            "for":"برای",
+            "Your_version":": نسخه شما",
+            "copyright":": کپی رایت",
+            "Terms_of_Use":"شرایط استفاده",
+            "Privacy_Policy":"سیاست حفظ حریم خصوصی",
+            "Update_New_Version":"به روز رسانی نسخه جدید"
+        },
+        "Language":{
+            "Title":"زبان",
+            "Select":"زبان خود را انتخاب کنید",
+            "en":"English",
+            "fa":"Persian"
+        }
+
     }
 }

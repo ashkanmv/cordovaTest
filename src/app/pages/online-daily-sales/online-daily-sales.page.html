@@ -1,15 +1,12 @@
 <ion-header>
   <ion-toolbar class="ion-no-padding">
-    <ion-row
-      class="primary-bg ion-justify-content-between header ion-no-margin"
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}"
+      class=" ion-justify-content-between header ion-no-margin"
     >
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
-        </ion-button>
+        <ion-buttons>
+          <ion-back-button color="light" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col size="8" class="ion-text-center ion-align-self-center">
         <ion-title class="white-text ion-no-padding ">
@@ -35,19 +32,7 @@
       </ion-col>
     </ion-row>
   </ion-toolbar>
-  <ion-grid class="secondary-bg white-text">
-    <ion-row class="ion-justify-content-between">
-      <ion-col size="3" class="ion-no-padding ion-text-start">
-        2022.04.02
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-center">
-        Saturday
-      </ion-col>
-      <ion-col size="3" class="ion-no-padding ion-text-end">
-        13 فروردین
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+   <app-date></app-date>
   <ion-col class="ion-no-padding segment-change">
     <ion-segment
       mode="md"
@@ -55,10 +40,10 @@
       (ionChange)="segmentChanged($event)"
       value="DSD"
     >
-      <ion-segment-button class="DSD" value="DSD">
+      <ion-segment-button [style.--background-checked]="sharedService.handleBackgroundColor()"  class="DSD" value="DSD">
         <ion-label>{{language.Online_Daily_Sales.dsd}}</ion-label>
       </ion-segment-button>
-      <ion-segment-button class="NON_DSD" value="NON_DSD">
+      <ion-segment-button [style.--background-checked]="sharedService.handleBackgroundColor()"  class="NON_DSD" value="NON_DSD">
         <ion-label>{{language.Online_Daily_Sales.Title}}</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -70,7 +55,7 @@
     <ion-col class="search-bar ion-no-padding ion-no-margin">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow" *ngIf="showSelect">
-          <button class="search-submit primary-bg" (click)="getSrSalesUsers()">
+          <button [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="search-submit " (click)="getSrSalesUsers()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="dropdownList.length" [items]="dropdownList" [multiple]="true" bindLabel="itemName"
@@ -197,7 +182,7 @@
     <ion-col class="search-bar">
       <ion-row class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow" *ngIf="showSelect">
-          <button class="search-submit primary-bg" (click)="getSrSalesUsersNDSD()">
+          <button [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="search-submit " (click)="getSrSalesUsersNDSD()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select *ngIf="dropdownListN.length" [items]="dropdownListN" [multiple]="true" bindLabel="itemName"

@@ -1,13 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row class="ion-justify-content-between header ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleBackgroundColor()}" class="ion-justify-content-between header ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
-        <ion-button fill="clear" routerLink="/main">
-          <ion-img
-            class="back-button ion-justfy-self-start ion-align-self-cente"
-            src="assets\pages\customer-history\Backward arrow.png"
-          ></ion-img>
-        </ion-button>
+        <ion-buttons routerLink="/main">
+            <ion-img class="back-button" src="\assets\pages\Backward arrow.png"></ion-img>
+        </ion-buttons>
       </ion-col>
       <ion-col size="8" class="ion-text-center">
         <ion-title>
@@ -41,7 +38,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [style.--background]="sharedService.handleBackgroundColor()" [style.--color]="sharedService.handleColor()">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="100" pullMax="200">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
