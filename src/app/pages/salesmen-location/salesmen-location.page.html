@@ -86,7 +86,7 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox  [(ngModel)]="showRsm" (ionChange)="showDataChanged('rsm',showRsm)"></ion-checkbox>
+            <ion-checkbox  [(ngModel)]="showRsm" (ionChange)="showDataChanged()"></ion-checkbox>
           </ion-item>
       </div>
       <div class="salesmen-location-box" *ngIf="accessAsm">
@@ -111,7 +111,7 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox [(ngModel)]="showAsm" (ionChange)="showDataChanged('asm',showAsm)"></ion-checkbox>
+            <ion-checkbox [(ngModel)]="showAsm" (ionChange)="showDataChanged()"></ion-checkbox>
           </ion-item>
         </ion-item>
       </div>
@@ -136,7 +136,7 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox  [(ngModel)]="showSsv" (ionChange)="showDataChanged('ssv',showSsv)"></ion-checkbox>
+            <ion-checkbox  [(ngModel)]="showSsv" (ionChange)="showDataChanged()"></ion-checkbox>
           </ion-item>
 
       </div>
@@ -161,7 +161,7 @@
 
               </ng-select>
             </ion-item>
-            <ion-checkbox  [(ngModel)]="showSr" (ionChange)="showDataChanged('sr',showSr)"></ion-checkbox>
+            <ion-checkbox  [(ngModel)]="showSr" (ionChange)="showDataChanged()"></ion-checkbox>
           </ion-item>
 
       </div>
