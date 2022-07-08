@@ -16,7 +16,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [ngStyle]="{'direction' : sharedService.get_direction()}" >
   <ion-row class="ion-justify-content-center">
     <ion-avatar class="profile-pic ion-margin-top ion-margin-start shadow">
       <img src="assets/menu/Person1.jpg" />
@@ -53,7 +53,7 @@
       #input
     >
     </ion-input>
-    <span class="eye"
+    <span [ngClass]="{'eye-rtl' : languageService.selectedLanguage == 'FR'}" class="eye"
       ><img
         src="assets/menu/profile/Atoms- Icons- Eye Active.png"
         alt=""

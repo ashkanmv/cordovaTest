@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { PredefinedColors } from '@ionic/core';
 import { BackgroundColors } from './common';
+import { LanguageService } from './language.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class SharedService {
   public get backgroundColor(): BackgroundColors { return this._backgroundColor; }
   set backgroundColor(v: BackgroundColors) { this._backgroundColor = v; }
 
-  constructor(private toastCtrl: ToastController) { }
+  constructor(private toastCtrl: ToastController, private languageService : LanguageService) { }
 
   toast(color: PredefinedColors, message: string) {
     this.toastCtrl
@@ -51,5 +52,8 @@ export class SharedService {
   }
   handleColor() {
     return 'var(--ion-color-light)';
+  }
+  get_direction() {
+    return this.languageService.selectedLanguage == 'FR' ? 'rtl' : 'ltr';
   }
 }
