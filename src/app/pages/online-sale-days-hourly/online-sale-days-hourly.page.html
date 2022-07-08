@@ -103,6 +103,7 @@
               <ion-icon name="search-outline"></ion-icon>
             </button>
             <ng-select
+              [searchable]="false"
               *ngIf="dropdownList.length"
               [items]="dropdownList"
               [multiple]="true"
@@ -237,6 +238,7 @@ class="per-invoices-segment   ion-no-padding "
           <ion-icon name="search-outline"></ion-icon>
         </button>
         <ng-select
+          [searchable]="false"
           *ngIf="dropdownListN.length"
           [items]="dropdownListN"
           [multiple]="true"

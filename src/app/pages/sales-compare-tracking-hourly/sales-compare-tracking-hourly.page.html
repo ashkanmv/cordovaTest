@@ -45,6 +45,7 @@
           </button>
 
           <ng-select
+            [searchable]="false"
             *ngIf="dropdownList.length"
             [items]="dropdownList"
             [multiple]="true"

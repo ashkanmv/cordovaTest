@@ -75,7 +75,7 @@
           <button class="search-submit"  [ngStyle]="{'background-color': sharedService.handleThemeColor()}" (click)="getCommutecityT(tabletDate)">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ng-select *ngIf="tabletDropDown.length" [items]="tabletDropDown" [multiple]="true" bindLabel="itemName"
+          <ng-select [searchable]="false" *ngIf="tabletDropDown.length" [items]="tabletDropDown" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
             [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedTabletDc">
 
@@ -161,7 +161,7 @@
           <button class="search-submit"  [ngStyle]="{'background-color': sharedService.handleThemeColor()}" (click)="getCommutecity(truckDate)">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-          <ng-select *ngIf="truckDropDown.length" [items]="truckDropDown" [multiple]="true" bindLabel="itemName"
+          <ng-select [searchable]="false" *ngIf="truckDropDown.length" [items]="truckDropDown" [multiple]="true" bindLabel="itemName"
             groupBy="group" appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false"
             [closeOnSelect]="false" bindValue="itemName" [(ngModel)]="selectedTruckDc">
 

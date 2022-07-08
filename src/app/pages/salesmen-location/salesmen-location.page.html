@@ -61,7 +61,7 @@
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM.png"></ion-img>
             <ion-item>
-              <ng-select *ngIf="rsms.length" [items]="rsms" [multiple]="true" bindLabel="FullName" groupBy="group"
+              <ng-select [searchable]="false" *ngIf="rsms.length" [items]="rsms" [multiple]="true" bindLabel="FullName" groupBy="group"
                 appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
                 bindValue="id" [(ngModel)]="selectedRsm" (change)="loadAsms(true,selectedRsm)">
 
@@ -86,7 +86,7 @@
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-1.png"></ion-img>
             <ion-item>
-              <ng-select *ngIf="asms.length" [items]="asms" [multiple]="true" bindLabel="FullName" groupBy="group"
+              <ng-select [searchable]="false" *ngIf="asms.length" [items]="asms" [multiple]="true" bindLabel="FullName" groupBy="group"
                 appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
                 bindValue="id" [(ngModel)]="selectedAsm" (change)="loadSsvs(true,selectedAsm)">
 
@@ -111,7 +111,7 @@
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-2.png"></ion-img>
             <ion-item>
-              <ng-select *ngIf="ssvs.length" [items]="ssvs" [multiple]="true" bindLabel="FullName" groupBy="group"
+              <ng-select [searchable]="false" *ngIf="ssvs.length" [items]="ssvs" [multiple]="true" bindLabel="FullName" groupBy="group"
                 appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
                 bindValue="id" [(ngModel)]="selectedSsv" (change)="loadSrs(true,selectedSsv)">
 
@@ -136,7 +136,7 @@
             </ion-button>
             <ion-img src="\assets\pages\salesmen-location\RSM-3.png"></ion-img>
             <ion-item>
-              <ng-select *ngIf="srs.length" [items]="srs" [multiple]="true" bindLabel="FullName" groupBy="group"
+              <ng-select [searchable]="false" *ngIf="srs.length" [items]="srs" [multiple]="true" bindLabel="FullName" groupBy="group"
                 appendTo="body" [selectableGroup]="true" [selectableGroupAsModel]="false" [closeOnSelect]="false"
                 bindValue="id" [(ngModel)]="selectedSr" (change)="loadSrs(false,selectedSr)">
 

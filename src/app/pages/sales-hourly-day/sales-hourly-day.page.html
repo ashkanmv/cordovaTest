@@ -101,6 +101,7 @@
             </button>
 
             <ng-select
+              [searchable]="false"
               *ngIf="dropdownList.length"
               [items]="dropdownList"
               [multiple]="true"
@@ -288,6 +289,7 @@
             </button>
 
             <ng-select
+              [searchable]="false"
               *ngIf="dropdownListN.length"
               [items]="dropdownListN"
               [multiple]="true"
