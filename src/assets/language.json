@@ -218,7 +218,9 @@
             "Total": "Total",
             "NotINV": "NotINV",
             "Sale": "Sale",
-            "PPED": "PPED"
+            "PPED": "PPED",
+            "Visitor": "Visitor",
+            "Driver": "Driver"
         },
         "Trace_Salesman": {
             "NoLocationFound": "No location found !",
@@ -538,7 +540,9 @@
             "Total": "Total",
             "NotINV": "NotINV",
             "Sale": "فروش",
-            "PPED": "مرجوعی"
+            "PPED": "مرجوعی",
+            "Visitor": "بازدیدکننده",
+            "Driver": "راننده"
         },
         "Trace_Salesman": {
             "NoLocationFound": "!مکانی پیدا نشد",

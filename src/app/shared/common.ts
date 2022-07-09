@@ -582,6 +582,8 @@ export class Language {
     NotINV: string;
     Sale: string;
     PPED: string;
+    Visitor: string; 
+    Driver: string; 
   }
   Trace_Salesman: {
     NoLocationFound: string;
