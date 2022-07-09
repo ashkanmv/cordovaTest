@@ -44,7 +44,6 @@ export class ScoreCardPage implements OnInit {
   sec4CategorySelect = [];
   sec4SkuSelect = [];
   sec2CategorySelect = [];
-  // old rys
   type1 = "sales";
   server;
   selected_ch3=[];
@@ -92,7 +91,6 @@ export class ScoreCardPage implements OnInit {
     private languageService: LanguageService,
     public sharedService : SharedService
   ) { }
-  // old rys
   set_server_status(vale) {
     this.server = vale;
     this.utilService.set_server(vale);
