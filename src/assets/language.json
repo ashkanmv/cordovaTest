@@ -329,7 +329,7 @@
             "Route": "مسیر",
             "Customer": "نام مشتری",
             "sales": "فروش ",
-            "PPED": "PPED",
+            "PPED": "مرجوعی",
             "Samples": "نمونه ها",
             "Qty": "کمیت",
             "Kg": "کیلوگرم",
@@ -438,7 +438,7 @@
             "Route": "مسیر",
             "Load": "بار",
             "Sale": "فروش",
-            "PPED": "PPED",
+            "PPED": "مرجوعی",
             "Remain": "باقی مانده",
             "SKU": "SKU"
         },
@@ -480,7 +480,7 @@
             "cluster": "Cluster",
             "storeName": "نام فروشگاه",
             "sale": "فروش",
-            "pped": "PPED",
+            "pped": "مرجوعی",
             "per": "%",
             "routeCode": "کد مسیر",
             "visitorName": "نام بازدید کننده"
@@ -538,7 +538,7 @@
             "Total": "Total",
             "NotINV": "NotINV",
             "Sale": "فروش",
-            "PPED": "PPED"
+            "PPED": "مرجوعی"
         },
         "Trace_Salesman": {
             "NoLocationFound": "!مکانی پیدا نشد",
