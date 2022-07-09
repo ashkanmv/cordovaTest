@@ -193,7 +193,7 @@
           </ion-row>
         </div>
         <div class="tablet-table-body-container">
-          <div *ngFor="let row of virtual_rows; let i = index" >
+          <div *ngFor="let row of virtual_rows; let i = index" [ngClass]="{'oddRows' : 3 === i % 4}" >
             <ion-row>
               <ng-container *ngIf="i!=0 &&row.show && (row.type=='a' || row.type=='h')">
 

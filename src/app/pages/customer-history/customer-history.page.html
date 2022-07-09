@@ -131,7 +131,7 @@
       </ion-grid>
     </form>
     <ion-card class="ion-no-margin" *ngIf="customerInfo">
-      <ion-card-header [ngStyle]="{'background-color': sharedService.handleThemeColor()}">
+      <ion-card-header [ngStyle]="{'background-color': sharedService.handleThemeColor(),'direction' : sharedService.get_direction()}">
         <ion-row class="customerInfo">
           <ion-row>
             <ion-col size="6">
