@@ -22,7 +22,6 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
   virtual_rows1 = [];
   srsales1 = [];
   user_list = [];
-  // old rys
   selected_ch1 = [];
 
   public get language(): Language {
@@ -137,7 +136,6 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
       this.srsales1.push(temp.splice(1, 1));
     }
   }
-  // old rys
 
   row_click1(row, index) {
     if (row.type == 'a') {

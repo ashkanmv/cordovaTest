@@ -53,11 +53,7 @@ ion-item{
   --inner-border-width:0;
   --border-style:none;
 }
-//  ng search 
-// arrow removed
-.ng-select.ng-select-single .ng-select-container .ng-arrow-wrapper{
-  display: none;
-}
+
 // border bottom removed
 .ng-select .ng-select-container:after{
   border-bottom: none;

@@ -25,7 +25,6 @@ export class TodayPlannedNotBuyingPage implements OnInit {
   groupbyedData = [];
   virtual_rows1 = [];
   troutes1 = [];
-  // old rys
   isVisible = undefined;
 
 
@@ -188,7 +187,6 @@ export class TodayPlannedNotBuyingPage implements OnInit {
     }
   }
 
-  // old rys
   Show_Load_Detail(row , index)
   {
     if(this.isVisible == index)

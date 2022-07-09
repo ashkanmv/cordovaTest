@@ -423,7 +423,7 @@
             "select": "انتخاب",
             "automatic_dark_mode": "حالت تیره خودکار",
             "text_size": "اندازه متن",
-            "bold_text": "اندازه متن",
+            "bold_text": "وزن فونت",
             "theme_color": "رنگ تم"
         },
         "DatePicker": {

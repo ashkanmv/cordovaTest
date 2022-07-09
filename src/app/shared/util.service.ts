@@ -9,7 +9,6 @@ import { PersianCalendarService } from './persian-calendar.service';
 export class UtilService {
   userLogUrl: string;
   lang;
-  // old rys for score card
   server = true;
 
   constructor(private http: HttpClient) { }
@@ -26,7 +25,6 @@ export class UtilService {
   get_lang() {
     return this.lang;
   }
-  // old rys for score card
   set_server(value) {
     this.server = value;
   }

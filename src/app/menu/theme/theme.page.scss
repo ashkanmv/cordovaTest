@@ -12,9 +12,13 @@ ion-title {
     height: 100%;
 }
 
+
 .back-button {
     max-width: 20px;
 }
+h3{
+    font-size: 1.3rem;
+  }
 
 ion-row.select-theme {
     margin: 20vh 0 10vh;
@@ -28,13 +32,16 @@ ion-row.select-theme {
             display: flex;
             align-items: center;
             flex-direction: column;
-
-            &.light-theme,
-            &.dark-theme {
+       
+            &.light-theme{
                 h3 {
                     color: #205172;
                 }
-
+            }
+            &.dark-theme {
+                h3 {
+                    color: var(--ion-color-light);
+                }
             }
 
         }
@@ -69,11 +76,9 @@ ion-row.theme-options {
         ion-item {
             background: var(--ion-color-light);
             border-radius: 10px;
-             font-weight: bold;
             .option-label{
                 padding: 2rem 0;
                 font-size: 1.3rem;
-                 font-weight: bold;
                 color:#205172 ;
             }
         }

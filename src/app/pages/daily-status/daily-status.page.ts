@@ -23,7 +23,6 @@ export class DailyStatusPage implements OnInit {
   virtual_rows = [];
   commutes_t = [];
   virtual_rows_t = [];
-  // old rys
   selected_dc_t;
   selected_dc;
   selected_ch1 = [];

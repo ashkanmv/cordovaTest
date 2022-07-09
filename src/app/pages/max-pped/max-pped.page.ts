@@ -34,7 +34,6 @@ export class MaxPPEDPage implements OnInit {
   srpped1 = [];
   srpped2 = [];
   user_list = [];
-  // old rys
   user_id;
   isVisible = undefined;
   Load_Detail = [
@@ -269,7 +268,6 @@ export class MaxPPEDPage implements OnInit {
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
   }
-  // old rys
   Show_Load_Detail(row, index) {
     if (this.isVisible == index) {
       this.isVisible = undefined;
