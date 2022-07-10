@@ -1,10 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="header ion-justify-content-center ion-no-margin">
+    <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}"
+      class="header ion-justify-content-center ion-no-margin">
       <ion-col size="1" class="ion-align-self-center">
-          <ion-buttons>
-            <ion-back-button  color="light" defaultHref="main"></ion-back-button>
-          </ion-buttons>
+        <ion-buttons>
+          <ion-back-button color="light" defaultHref="main"></ion-back-button>
+        </ion-buttons>
       </ion-col>
       <ion-col size="9" class="ion-text-center">
         <ion-title>
@@ -33,7 +34,8 @@
               {{item.City}}
             </ion-select-option>
           </ion-select>
-          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline"></ion-icon>
+          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline">
+          </ion-icon>
         </ion-item>
       </ion-row>
       <ion-row class="ion-justify-content-center select-box">
@@ -45,19 +47,21 @@
             <ion-select-option *ngFor="let item of routes" [value]="item.routename">{{item.routename}}
             </ion-select-option>
           </ion-select>
-          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline"></ion-icon>
+          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline">
+          </ion-icon>
         </ion-item>
       </ion-row>
       <ion-row class="ion-justify-content-center select-box">
         <ion-item id="trigger-input-route-daily" lines="none" class="lightBlue-shadow">
-          <ion-select   class="drop-down select-drop-down" placeholder="{{language.Questionnaire.RouteDaily}}"
+          <ion-select class="drop-down select-drop-down" placeholder="{{language.Questionnaire.RouteDaily}}"
             interface="popover" formControlName="RouteDaily" (ionChange)="selectRouteDaily($event)">
             <ion-select-option class="select-label" disabled value="">{{language.Questionnaire.RouteDaily}}
             </ion-select-option>
             <ion-select-option *ngFor="let item of routedailys" [value]="item.RouteID">{{item.Title}}
             </ion-select-option>
           </ion-select>
-          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline"></ion-icon>
+          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline">
+          </ion-icon>
         </ion-item>
       </ion-row>
       <ion-row class="ion-justify-content-center select-box">
@@ -69,7 +73,8 @@
             <ion-select-option *ngFor="let item of customers" [value]="item">{{item.custName}}-{{item.CustCode}}
             </ion-select-option>
           </ion-select>
-          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline"></ion-icon>
+          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline">
+          </ion-icon>
         </ion-item>
       </ion-row>
 
@@ -82,7 +87,8 @@
             <ion-select-option *ngFor="let item of questioncats" [value]="item.QusCatID">{{item.CatName}}
             </ion-select-option>
           </ion-select>
-          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline"></ion-icon>
+          <ion-icon [ngClass]="{'icon-rtl' :languageService.selectedLanguage == 'FR'}" name="chevron-down-outline">
+          </ion-icon>
         </ion-item>
       </ion-row>
     </ion-col>
@@ -92,19 +98,21 @@
   <!-- ==============================questions=================================== -->
   <!-- ==============================questions=================================== -->
 
-  <ion-grid *ngFor="let question of questions; let i = index"
-    class="ion-justify-content-center questions-list">
+  <ion-grid *ngFor="let question of questions; let i = index" class="ion-justify-content-center questions-list">
     <ion-row>
       <ion-label class="questions">{{question.text}}</ion-label>
       <ng-container *ngIf="question.type=='yn' ">
         <ion-list class="radio-input-container ion-align-items-center ion-justify-content-around ">
-          <ion-row *ngFor="let answer of question.answers; let j = index">
-            <ion-list class="radio-input-box ion-align-items-center">
-              <ion-item>
-                <ion-radio mode="md" value="{{answer.text}}" (ionSelect)="radioSelect(i,j)" (click)="radioSelect(i,j)">
-                </ion-radio>
-                <ion-label>{{answer.text}}</ion-label>
-              </ion-item>
+          <ion-row >
+            <ion-list class=" ion-align-items-center">
+              <ion-radio-group>
+                <ion-item class="radio-input-box" *ngFor="let answer of question.answers; let j = index">
+                  <ion-radio mode="md" value="{{answer.text}}" (ionSelect)="radioSelect(i,j)"
+                    (click)="radioSelect(i,j)">
+                  </ion-radio>
+                  <ion-label>{{answer.text}}</ion-label>
+                </ion-item>
+              </ion-radio-group>
             </ion-list>
           </ion-row>
           <ion-row>
@@ -146,6 +154,7 @@
     </ion-row>
   </ion-grid>
   <div class="ion-justify-content-center ion-align-items-center btn-container">
-    <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="btn-submit">{{language.Submit}}</button>
+    <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}"
+      class="btn-submit">{{language.Submit}}</button>
   </div>
 </ion-content>

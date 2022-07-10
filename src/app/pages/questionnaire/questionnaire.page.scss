@@ -51,10 +51,7 @@ ion-row.select-box{
             right:3vw;
         }
         .icon-rtl{
-            color: #e5e5e5;
-            width: 3rem;
-            position: absolute;
-            right: 60vw;
+            right: 85%;
         }
   
     }
@@ -72,11 +69,6 @@ ion-select{
 
 }
 
-ion-popover{
-    ion-select-popover.popover-viewport{
-        --background: blue;
-    }
-}
 
 
 
@@ -132,11 +124,15 @@ ion-list.radio-input-container{
     background: var(--ion-color-light);
     width: 90%;
     border-radius: 10px;
-    display: grid;
-    grid-template-columns: auto auto;
     margin:3vh 4.5vw 0;
-    ion-list.radio-input-box{
-        background: none;      
+    ion-list{
+        background: none;  
+        ion-radio-group{
+            display: grid;
+            grid-template-columns: auto auto;
+            width: 88vw;
+            justify-content: space-around;
+        }    
         ion-label{
             padding:0 1rem;     
             color: #b9b9b9;
