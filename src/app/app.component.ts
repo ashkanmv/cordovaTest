@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
     if (this.language)
       localStorage.setItem('selectedLanguage', 'FR')
     else localStorage.setItem('selectedLanguage', 'EN')
-
+    this.languageService.languageChanged.next(true);
   }
 
   startTracking() {

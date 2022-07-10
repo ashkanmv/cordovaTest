@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Language, Languages } from './common';
 import { StorageService } from './storage.service';
@@ -8,6 +9,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class LanguageService {
+  languageChanged = new Subject<boolean>();
   static _language: any;
   public get selectedLanguage(): string { return localStorage.getItem('selectedLanguage') }
   public get selectedLanguageEnum(): string { return this.selectedLanguage == 'FR' ? Languages[Languages.FR] : Languages[Languages.EN] }

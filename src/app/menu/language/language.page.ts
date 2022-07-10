@@ -21,5 +21,6 @@ export class LanguagePage implements OnInit {
   languageChanged() {
     if (this.language == 'FR') localStorage.setItem('selectedLanguage', 'FR')
     else localStorage.setItem('selectedLanguage', 'EN')
+    this.languageService.languageChanged.next(true);
   }
 }
