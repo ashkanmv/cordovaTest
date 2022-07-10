@@ -18,6 +18,7 @@ import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { SharedModule } from './shared/shared.module';
+import { Autostart } from '@ionic-native/autostart/ngx';
 
 @NgModule({
   declarations: [AppComponent, AddEditNotificationComponent],
@@ -39,6 +40,7 @@ import { SharedModule } from './shared/shared.module';
     FileTransfer,
     File,
     Device,
+    Autostart,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalInterceptorService,

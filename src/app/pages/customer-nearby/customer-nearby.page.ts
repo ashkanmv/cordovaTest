@@ -70,14 +70,6 @@ export class CustomerNearbyPage implements OnInit {
   }
 
   getCurrentLocation() {
-    setTimeout(() => {
-      this.patchValue('currentLat', 35.745862);
-      this.patchValue('currentLng', 51.441502);
-      this.changeMapView();
-      this.initialSr();
-      this.initialShopPoint();
-    }, 1000);
-    return
     this.geoLocation.getCurrentLocation().then(location => {
       this.patchValue('currentLat', location.latitude);
       this.patchValue('currentLng', location.longitude);

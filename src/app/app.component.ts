@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Autostart } from '@ionic-native/autostart/ngx';
 import { Platform } from '@ionic/angular';
 import { ThemeColors } from './shared/common';
 import { Language } from './shared/common';
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit {
     private storageService: StorageService,
     private geoLocationService: GeoLocationService,
     public sharedService: SharedService,
-    private utilService: UtilService
+    private utilService: UtilService,
+    private autoStart : Autostart
   ) { }
   ngOnInit(): void {
     this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false;
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
           if (this.plt.is('cordova')){
             this.startTracking();
             this.setUiCustomization();
+            this.enableAutoStart();
           }
         })
         .catch((error) => {
@@ -99,5 +102,9 @@ export class AppComponent implements OnInit {
     } else {
       return 'rtl';
     }
+  }
+
+  enableAutoStart(){
+    this.autoStart.enable();
   }
 }
