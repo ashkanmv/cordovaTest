@@ -138,7 +138,7 @@
         <ion-col *ngIf="question.type=='tx' " size="12"
           class="text-input-container ion-justify-content-center ion-align-items-center ">
           <ion-row class="ion-justify-content-center">
-            <ion-input [(ngModel)]="txtanswers[i]" type="text"
+            <ion-input [(ngModel)]="txtanswers[i]" (keyup)="answer_textValue(i)" type="text"
               placeholder=".....................................................................................................................................................">
             </ion-input>
           </ion-row>
