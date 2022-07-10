@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, enableProdMode, OnInit } from '@angular/core';
 import { Autostart } from '@ionic-native/autostart/ngx';
 import { Platform } from '@ionic/angular';
 import { ThemeColors } from './shared/common';
@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     private autoStart : Autostart
   ) { }
   ngOnInit(): void {
+    enableProdMode();
     this.languageService.selectedLanguage == 'FR' ? this.language = true : this.language = false;
     this.loadLanguage();
   }
