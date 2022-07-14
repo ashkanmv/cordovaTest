@@ -65,7 +65,7 @@
     <ion-row class="search-bar">
       <ion-col class="search-box ion-justify-content-center">
         <ion-item class="lightBlue-shadow">
-          <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="search-submit">
+          <button [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="search-submit" (click)="getLoadTruckCity()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
           <ng-select [searchable]="false" *ngIf="dropdownList.length" [items]="dropdownList" [multiple]="true" bindLabel="itemName"

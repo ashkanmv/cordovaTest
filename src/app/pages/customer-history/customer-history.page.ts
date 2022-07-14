@@ -362,6 +362,7 @@ export class CustomerHistoryPage implements OnInit {
     this.virtual_rows = [];
     if (!customerHistory?.length) {
       this.sharedService.toast('warning', 'NO Value'); // JSON
+      this.loadingCtrl.dismiss();
       return;
     }
     let index = 1;
