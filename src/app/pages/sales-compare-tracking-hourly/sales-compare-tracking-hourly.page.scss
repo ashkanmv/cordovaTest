@@ -127,17 +127,16 @@ ion-col.segment-change{
 }
 
 ion-col.table-container{
-    overflow-x: scroll;
     ion-grid.table{
-        width: 278vw;
+        width: 100vw;
         ion-col{
-            min-width: 10vw;
+            // min-width: 10vw;
+            width: 7vw;
             height: 5vh;
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
-
         }
         .tbody{
             overflow: scroll;
@@ -154,5 +153,22 @@ ion-col.table-container{
 @media (max-width:519px) {
     .wifi{
       margin-right:  2.3vw  ;
+    }
+}
+@media (max-width:576px) {
+    ion-col.table-container{
+        font-size: 0.75rem;
+        overflow-wrap: anywhere;
+    }
+}
+@media (min-width: 768px) and (max-width: 992px){
+    ion-col.table-container{
+        font-size: medium ;
+    }
+}
+@media (min-width: 576px) and (max-width: 768px){
+    ion-col.table-container{
+    font-size: small ;
+    overflow-wrap: anywhere;
     }
 }
