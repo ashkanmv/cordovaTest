@@ -157,8 +157,7 @@ ion-col.table-container{
 }
 @media (max-width:576px) {
     ion-col.table-container{
-        font-size: 0.75rem;
-        overflow-wrap: anywhere;
+        font-size: 0.7rem;
     }
 }
 @media (min-width: 768px) and (max-width: 992px){
@@ -169,6 +168,5 @@ ion-col.table-container{
 @media (min-width: 576px) and (max-width: 768px){
     ion-col.table-container{
     font-size: small ;
-    overflow-wrap: anywhere;
     }
 }
