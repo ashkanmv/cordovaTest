@@ -77,9 +77,6 @@ export class SalesmenLocationPage implements OnInit {
 
 
   ngOnInit() {
-    setInterval(() => {
-      console.log(this.loadings);
-    }, 2000);
     this.getUserId();
     this.checkAccess();
   }
@@ -171,7 +168,7 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   async loadAsms(byParentUserId: boolean, ids: number[]) {
-    const key = 'rsm';
+    const key = 'asm';
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
       this.removeAllLoadings();
