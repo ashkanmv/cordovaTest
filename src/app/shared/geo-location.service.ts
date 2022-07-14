@@ -5,8 +5,6 @@ import {
   BackgroundGeolocationEvents,
   BackgroundGeolocationResponse,
 } from '@awesome-cordova-plugins/background-geolocation/ngx';
-import { environment } from 'src/environments/environment';
-import { LoginResponse } from './common';
 
 @Injectable({
   providedIn: 'root'

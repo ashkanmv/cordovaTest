@@ -233,8 +233,8 @@
         "logOut": {
             "areYouSure": "ARE YOU SURE?",
             "message": "",
-            "logOut": "LOG OUT",
-            "cancel": "CANCEL"
+            "logOut": "Yes",
+            "cancel": "No"
         },
         "Menu": {
             "en": "EN",
@@ -555,8 +555,8 @@
         "logOut": {
             "areYouSure": "آیا مطمئن هستید؟",
             "message": "",
-            "logOut": "خروج",
-            "cancel": "لغو"
+            "logOut": "بله",
+            "cancel": "خیر"
         },
         "Setting": {
             "Title": "تنظیمات",

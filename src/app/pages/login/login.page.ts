@@ -105,7 +105,6 @@ export class LoginPage implements OnInit {
       .getAccess(this.form.value.Username, this.form.value.Password, this.UUid)
       .subscribe(
         (res: LoginResponse) => {
-          this.isLoading = false;
           if (res.hasbusinesserror == 1 && res.Message == 'UserPassIncorrect') {
             this.sharedService.toast(
               'danger',
@@ -147,6 +146,7 @@ export class LoginPage implements OnInit {
 
       this.stopTracking();
       this.startTracking(loginRes);
+      this.isLoading = false;
       this.router.navigate(['/main'])
     });
   }
@@ -165,7 +165,6 @@ export class LoginPage implements OnInit {
         userName : this.form.value.Username,
         uuid : this.UUid
       }
-      // this.storageService.set('passwordSave', this.form.value.Password);
       this.storageService.set('autoLogin', JSON.stringify(autoLogin));
     }
   }

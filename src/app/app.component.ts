@@ -4,7 +4,6 @@ import { Autostart } from '@ionic-native/autostart/ngx';
 import { LoadingController, Platform } from '@ionic/angular';
 import { ThemeColors } from './shared/common';
 import { Language } from './shared/common';
-import { GeoLocationService } from './shared/geo-location.service';
 import { LanguageService } from './shared/language.service';
 import { SharedService } from './shared/shared.service';
 import { StorageService } from './shared/storage.service';
@@ -27,7 +26,6 @@ export class AppComponent implements OnInit {
     private router :Router,
     private languageService: LanguageService,
     private storageService: StorageService,
-    private geoLocationService: GeoLocationService,
     public sharedService: SharedService,
     private utilService: UtilService,
     private autoStart: Autostart
@@ -45,7 +43,6 @@ export class AppComponent implements OnInit {
         .ready()
         .then(() => {
           if (this.plt.is('cordova')) {
-            this.startTracking();
             this.setUiCustomization();
             this.enableAutoStart();
           }
@@ -61,10 +58,6 @@ export class AppComponent implements OnInit {
       localStorage.setItem('selectedLanguage', 'FR')
     else localStorage.setItem('selectedLanguage', 'EN')
     this.languageService.languageChanged.next(true);
-  }
-
-  startTracking() {
-    this.storageService.get('start_tracking_url').then(url => this.geoLocationService.startTracking(url))
   }
 
   fontSize() {
