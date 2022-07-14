@@ -2,6 +2,7 @@ import { Component, enableProdMode, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Autostart } from '@ionic-native/autostart/ngx';
 import { LoadingController, Platform } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 import { ThemeColors } from './shared/common';
 import { Language } from './shared/common';
 import { LanguageService } from './shared/language.service';
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
   constructor(
     private loadingCtrl: LoadingController,
     private plt: Platform,
-    private router :Router,
+    private router: Router,
     private languageService: LanguageService,
     private storageService: StorageService,
     public sharedService: SharedService,
@@ -113,12 +114,12 @@ export class AppComponent implements OnInit {
     this.storageService.set('RememberUser', false);
     this.storageService.get('user_id').then((user_id) => {
       if (!user_id) return;
-      
+
       let json_user_id = JSON.parse(user_id);
       let user_log = {
         user_id: json_user_id,
         task: 'logout',
-        version: '1.0.9.21'
+        version: environment.Version
       }
       this.utilService.post_user_log(user_log).subscribe();
     });
