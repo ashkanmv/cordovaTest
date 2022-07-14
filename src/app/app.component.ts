@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   startApp = false;
   language: boolean;
 
+  public get disableSplitPane(): boolean { return this.sharedService.disableSplitPane; }
   public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
   public get selectedLanguage(): Language { return this.languageService.language; }
   constructor(

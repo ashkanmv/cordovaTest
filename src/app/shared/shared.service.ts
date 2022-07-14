@@ -9,6 +9,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root',
 })
 export class SharedService {
+  disableSplitPane = false;
   isOnline = false;
   private _fontSize: number = 16;
   public get fontSize(): number { return this._fontSize; }

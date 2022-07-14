@@ -41,6 +41,10 @@ export class LoginPage implements OnInit {
     private loadingCtrl : LoadingController
   ) { }
 
+  ionViewWillEnter() {
+    this.sharedService.disableSplitPane = true;
+  }
+
   ngOnInit() {
     this.loadForm();
     this.plt
@@ -147,6 +151,7 @@ export class LoginPage implements OnInit {
       this.stopTracking();
       this.startTracking(loginRes);
       this.isLoading = false;
+      this.sharedService.disableSplitPane = false;
       this.router.navigate(['/main'])
     });
   }
