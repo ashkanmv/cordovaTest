@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Data, Router } from '@angular/router';
 import { IonDatetime, LoadingController } from '@ionic/angular';
-import { LatLngLiteral, LatLngTuple } from 'leaflet';
+import { LatLngTuple } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import {
@@ -20,6 +19,8 @@ import { StorageService } from 'src/app/shared/storage.service';
 })
 export class GpsTrackingPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+  loadingKey = 'routeSelect';
+  loadings: LoadingController[] = [];
   firstLoad = false;
   CommonUtility = CommonUtility;
   notPlanFLoaded = false;
@@ -63,7 +64,6 @@ export class GpsTrackingPage implements OnInit {
     return this.sharedService.themeColor;
   }
   constructor(
-    private router: Router,
     private formBuilder: FormBuilder,
     private persianCalendarService: PersianCalendarService,
     private storageService: StorageService,
@@ -95,6 +95,7 @@ export class GpsTrackingPage implements OnInit {
   ionViewWillLeave() {
     this.firstLoad = false;
     this.showMap = false;
+    this.removeAllLoadings();
     if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
   }
 
@@ -243,10 +244,7 @@ export class GpsTrackingPage implements OnInit {
   }
 
   async routeSelect() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    await loading.present()
+    this.presentLoading(this.loadingKey);
     this.markers = [];
     this.polylines = [];
     this.mapService.clearMarkers.next(true);
@@ -429,7 +427,7 @@ export class GpsTrackingPage implements OnInit {
     if (flyTo) this.mapView = flyTo;
     if (!this.markers.length) this.sharedService.toast('warning', this.language.Gps_Tracking.No_Value)
     else this.show = false;
-    this.loadingCtrl.dismiss();
+    this.dismissLoading(this.loadingKey);
   }
 
   selectIcon(key: 'orange' | 'red' | 'blue' | 'red_black_circle') {
@@ -704,5 +702,23 @@ export class GpsTrackingPage implements OnInit {
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading
+    });
+    await this.loadings[key].present()
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key].dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
