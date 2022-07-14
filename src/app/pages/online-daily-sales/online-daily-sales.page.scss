@@ -123,16 +123,15 @@ ion-col.DSD-page{
 // DSD----------------------
 ion-col.table-container{
     display: inline-block;
-    overflow: scroll;
     table.container-table{
-        width: 200vw;
+        width: 100vw;
         table-layout: fixed;
         table.main-content-header{
             table-layout: fixed;
-            width: 200vw;
+            width: 100vw;
+            
             th{
-                font-size: 1.5rem;
-                width: 9vw;
+                font-size: 1.1rem;
                 height: 5vh;
                 color: var(--ion-color-dark);
                 span{
@@ -145,9 +144,9 @@ ion-col.table-container{
             width: 100%;
             tr{
                 td.body-content{
-                    width: 20vw;   
+                    width: 10vw;   
                     text-align: center;
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                     height: 6vh;
                     color: var(--ion-color-dark);
                 }
@@ -167,8 +166,6 @@ ion-col.table-container{
                     margin-left: 5vw;
                     display: grid;
                     box-shadow: 1px 3px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) ;
-
-                    // grid-template-rows: 1fr 1fr;
                     justify-content: space-around;
                 tr.detail-box{
                     width: 90vw;
@@ -232,7 +229,6 @@ ion-grid.maingrid{
     color: var(--ion-color-dark);
     .firstrow{
         font-size: 1.8rem;
-         // font-weight: bold;
         padding: .7rem 0;
     }
     .firstColumn{
