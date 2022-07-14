@@ -16,6 +16,7 @@ import { CustomerHistoryService } from './customer-history.service';
   styleUrls: ['./customer-history.page.scss'],
 })
 export class CustomerHistoryPage implements OnInit {
+  loadings: LoadingController[] = [];
   cities: Cities[] = [];
   routes: { routename: string }[] = [];
   customers: Customer[] = [];
@@ -30,7 +31,7 @@ export class CustomerHistoryPage implements OnInit {
   gps = false;
   // show content
   show = true;
-
+  
   // Search
   searching: boolean;
   items: Observable<any[]>;
@@ -124,7 +125,6 @@ export class CustomerHistoryPage implements OnInit {
   get f() {
     return this.form.controls;
   }
-  loadings: LoadingController[] = [];
   async getCustomerByCustNumber(Customer_Number: string) {
     const key = 'getCustomerByCustNumber';
     await this.presentLoading(key);

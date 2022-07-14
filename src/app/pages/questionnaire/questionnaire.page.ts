@@ -10,7 +10,6 @@ import {
   Cities,
   Customer,
   Language,
-  Languages,
   Question,
   Questioncat,
 } from 'src/app/shared/common';
@@ -29,6 +28,7 @@ import { QuestionnaireService } from './questionnaire.service';
   styleUrls: ['./questionnaire.page.scss'],
 })
 export class QuestionnairePage implements OnInit {
+  loadings: LoadingController[] = [];
   form: FormGroup;
   cities: Cities[] = [];
   routes: { routename: string }[] = [];
@@ -40,9 +40,9 @@ export class QuestionnairePage implements OnInit {
   userId: string;
   customerNumber: string;
 
-  public get language(): Language { return this.languageService.language;}
+  public get language(): Language { return this.languageService.language; }
 
-  public get isOnline() {return this.sharedService.isOnline;}
+  public get isOnline() { return this.sharedService.isOnline; }
 
   public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
@@ -75,16 +75,16 @@ export class QuestionnairePage implements OnInit {
       return 'rtl';
     }
   }
-  //
 
   ngOnInit() {
     this.storageService.get('user_id').then((userId) => {
       this.userId = userId;
-      // this.get_cities();
     });
+    this.loadForm();    
+  }
 
-    this.loadForm();
-    // this.getDataFromStorage();
+  ionViewWillLeave() {
+    this.removeAllLoadings();
   }
 
   loadForm() {
@@ -101,69 +101,52 @@ export class QuestionnairePage implements OnInit {
     return this.form.controls;
   }
 
-  // getDataFromStorage() {
-  //   this.storageService
-  //     .get('Customer_Number')
-  //     .then((customerNumber: string) => {
-  //       if (!customerNumber) this.get_cities();
-  //       else this.open_OtherForm(customerNumber);
-  //     });
-  // }
-
   async get_cities() {
+    const key = '';
     this.userId = await this.storageService.get('user_id');
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    this.presentLoading(key);
     this.questionnaireService.getCityByUserId(this.userId).subscribe(
       (cities: Cities[]) => {
         this.cities = cities;
         if (cities.length) this.patchValue('DC', cities[0].City);
 
-        loading.dismiss();
+        this.dismissLoading(key);
       },
-      () => loading.dismiss()
+      () => this.dismissLoading(key)
     );
   }
 
   async selectCity(value: string | any) {
     this.routes = [];
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'selectCity';
+    this.presentLoading(key);
     let cityName = typeof value == 'string' ? value : value.detail.value;
     this.questionnaireService.getRouteByUserId(cityName, this.userId).subscribe(
       (routes: { routename: string }[]) => {
         this.routes = routes;
-        loading.dismiss();
+        this.dismissLoading(key);
       },
-      () => loading.dismiss()
+      () => this.dismissLoading(key)
     );
   }
 
   async selectRoute(value: any) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'selectRoute';
+    this.presentLoading(key);
     this.questionnaireService
       .routedailySelectByRouteByUser(value.detail.value, this.userId)
       .subscribe(
         (data: Data[]) => {
           this.routedailys = data;
-          loading.dismiss();
+          this.dismissLoading(key);
         },
-        () => loading.dismiss()
+        () => this.dismissLoading(key)
       );
   }
 
   async open_OtherForm(customerNumber: string) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'open_OtherForm';
+    this.presentLoading(key);
     this.questionnaireService.getCustomersByNumber(customerNumber).subscribe(
       (customers: Customer[]) => {
         if (customers.length) {
@@ -171,59 +154,53 @@ export class QuestionnairePage implements OnInit {
           this.patchValue('Customer', customers[0]);
         }
 
-        loading.dismiss();
+        this.dismissLoading(key);
       },
-      () => loading.dismiss()
+      () => this.dismissLoading(key)
     );
   }
 
   async selectRouteDaily(value: any) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'selectRouteDaily';
+    this.presentLoading(key);
     this.questionnaireService
       .getCustomersByRouteIdStep(value.detail.value)
       .subscribe(
         (customers: Customer[]) => {
           this.customers = customers;
-          loading.dismiss();
+          this.dismissLoading(key);
         },
-        () => loading.dismiss()
+        () => this.dismissLoading(key)
       );
   }
 
   async selectCustomer(customer: any) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'selectCustomer';
+    this.presentLoading(key);
     this.questioncats = [];
     this.questionnaireService.getQuestionCatsByUserId(this.userId).subscribe(
       (questioncats: Questioncat[]) => {
         this.questioncats = questioncats;
-        loading.dismiss();
+        this.dismissLoading(key);
       },
-      () => loading.dismiss()
+      () => this.dismissLoading(key)
     );
   }
 
   async selectQuestion(value: any) {
     this.answerLogs = [];
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'selectQuestion';
+    this.presentLoading(key);
     this.questionnaireService
       .getQuestionsByCat('fa', value.detail.value)
       .subscribe(
         (questions: Question[]) => {
           this.questions = questions;
           this.getAnswers();
-          loading.dismiss();
+          this.dismissLoading(key);
           this.getAnswers();
         },
-        () => loading.dismiss()
+        () => this.dismissLoading(key)
       );
   }
 
@@ -453,15 +430,13 @@ export class QuestionnairePage implements OnInit {
 
   async onSubmit() {
     this.userId = await this.storageService.get('user_id');
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    loading.present();
+    const key = 'onSubmit';
+    this.presentLoading(key);
     let validationError = this.checkAnswers()
 
     if (validationError) {
       this.sharedService.toast('danger', validationError.message);
-      loading.dismiss();
+      this.dismissLoading(key);
       return
     }
 
@@ -474,7 +449,7 @@ export class QuestionnairePage implements OnInit {
         this.postAnswerlog(temp);
     }).catch(() => {
       this.sharedService.toast('danger', this.language.Gps_error);
-      loading.dismiss()
+      this.dismissLoading(key)
     })
   }
 
@@ -482,7 +457,7 @@ export class QuestionnairePage implements OnInit {
     this.answerLogService.patchAnswerlog(
       createdRows, this.ids.join(','), this.f.DC.value,
       this.f.Route.value, this.f.RouteDaily.value, this.f.QuestionCategory.value).subscribe(() => {
-        this.loadingCtrl.dismiss();
+        this.removeAllLoadings();
         this.sharedService.toast('success', this.language.Questionnaire.Msg_update);
       })
   }
@@ -490,7 +465,7 @@ export class QuestionnairePage implements OnInit {
   postAnswerlog(createdRows) {
     this.answerLogService.postAnswerlog(createdRows, this.f.DC.value,
       this.f.Route.value, this.f.RouteDaily.value, this.f.QuestionCategory.value).subscribe(() => {
-        this.loadingCtrl.dismiss();
+        this.removeAllLoadings();
         this.sharedService.toast('success', this.language.Questionnaire.Msg_submit);
         this.router.navigate(['/'])
       })
@@ -598,5 +573,23 @@ export class QuestionnairePage implements OnInit {
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key].dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
