@@ -33,12 +33,10 @@ ion-menu {
 
 
 
-// 
 .icon-activated{
   color:#0095EB;
   transform: rotate(180deg);
 }
-// REMOVED THE IMPORTENET MARK
 ion-select::part(icon) {
   display: none ;
  }
@@ -46,7 +44,6 @@ ion-select::part(icon) {
  ion-item.select-interface-option{
    text-align: center;
  }
-//  search bottom border
 ion-item{
   --highlight-color-focused: var(--ion-color-light);
   --background: none;
@@ -54,15 +51,12 @@ ion-item{
   --border-style:none;
 }
 
-// border bottom removed
 .ng-select .ng-select-container:after{
   border-bottom: none;
 }
-// padding bottom removed
 .ng-select{
   padding-bottom: 0;
 }
-// header show content 
 .show-content{
   transform: rotate(180deg);
 }
@@ -72,7 +66,7 @@ ion-item{
   --width: 100vw;
 }
 
-// 
+
 
 ion-toggle {
   --background: #a0c5ff;
