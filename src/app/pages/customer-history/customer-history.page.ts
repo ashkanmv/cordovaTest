@@ -98,6 +98,7 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   ionViewDidLeave() {
+    this.removeAllLoadings();
     this.paramSubscription.unsubscribe();
     this.kgqtySubscription.unsubscribe();
     this.typeSubscription.unsubscribe();
@@ -123,60 +124,54 @@ export class CustomerHistoryPage implements OnInit {
   get f() {
     return this.form.controls;
   }
-
+  loadings: LoadingController[] = [];
   async getCustomerByCustNumber(Customer_Number: string) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getCustomerByCustNumber';
+    await this.presentLoading(key);
     this.customerHistoryService.getCustomersByNumber(Customer_Number).subscribe(
       (customers: Customer[]) => {
         this.customers = customers;
         if (!customers.length) return;
         this.patchValue('Customer', customers[0]);
         this.patchValue('Route', customers[0].routename);
-        loading.dismiss();
+        this.dismissLoading(key);
         // this.getAvgs();
         this.typeAndQtyKgSelect();
       },
       () => {
         this.sharedService.toast('danger', 'Could not fetch cities ...');
-        loading.dismiss();
+        this.dismissLoading(key);
       }
     );
   }
 
   async getAvgs() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getAvgs';
+    await this.presentLoading(key);
     this.customerHistoryService.getAvgs().subscribe(
       (avgs: any[]) => {
         this.typeAndQtyKgSelect();
-        loading.dismiss();
+        this.dismissLoading(key);
       },
       () => {
         this.sharedService.toast('danger', 'Could not fetch Avgs ...');
-        loading.dismiss();
+        this.dismissLoading(key);
       }
     );
   }
 
   async getCities() {
+    const key = 'getCities';
     this.cities = [];
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    await this.presentLoading(key);
     this.customerHistoryService.getCities().subscribe(
       (res: Cities[]) => {
         this.cities = res;
-        loading.dismiss();
+        this.dismissLoading(key);
       },
       () => {
         this.sharedService.toast('danger', 'Could not fetch cities ...');
-        loading.dismiss();
+        this.dismissLoading(key);
       }
     );
   }
@@ -186,28 +181,24 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async selectCity(value: any) {
+    const key = 'selectCity';
     this.routes = [];
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    await this.presentLoading(key);
     this.customerHistoryService.getRoutesByCity(value.detail.value).subscribe(
       (res: { routename: string }[]) => {
         this.routes = res;
-        loading.dismiss();
+        this.dismissLoading(key);
       },
       () => {
         this.sharedService.toast('danger', 'Could not fetch routes ...');
-        loading.dismiss();
+        this.dismissLoading(key);
       }
     );
   }
 
   async routeSelect(value: any) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'routeSelect';
+    await this.presentLoading(key);
     this.customerHistoryService
       .getCustomersByRoute(value.detail.value)
       .subscribe(
@@ -224,9 +215,9 @@ export class CustomerHistoryPage implements OnInit {
             });
           this.markers = m;
           this.initialShopPoint(customers);
-          loading.dismiss();
+          this.dismissLoading(key);
         },
-        () => loading.dismiss()
+        () => this.dismissLoading(key)
       );
   }
 
@@ -285,82 +276,76 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async handlePped() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'handlePped';
+    await this.presentLoading(key);
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getPpedByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
-          this.createTotalModel(customerHistory);
+          this.createTotalModel(customerHistory,key);
           this.createChart(customerHistory);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
     else
       this.customerHistoryService
         .getkgPpedByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
-          this.createTotalModel(customerHistory);
+          this.createTotalModel(customerHistory,key);
           this.createChart(customerHistory);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
   async handleSales() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'handleSales';
+    await this.presentLoading(key);
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSalesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
-          this.createTotalModel(customerHistory);
+          this.createTotalModel(customerHistory,key);
           this.createChart(customerHistory);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
     else
       this.customerHistoryService
         .getkgSalesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
-          this.createTotalModel(customerHistory);
+          this.createTotalModel(customerHistory,key);
           this.createChart(customerHistory);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
   async handleSamples() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'handleSamples';
+    await this.presentLoading(key);
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSamplesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
-          this.createTotalModel(customerHistory);
+          this.createTotalModel(customerHistory,key);
           this.createChart(customerHistory);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
     else
       this.customerHistoryService
         .getkgSamplesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
-          this.createTotalModel(customerHistory);
+          this.createTotalModel(customerHistory,key);
           this.createChart(customerHistory);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
   customer_histories: any[] = [];
   virtual_rows: any[] = [];
-  createTotalModel(customerHistory: any[]) {
+  createTotalModel(customerHistory: any[],loadingKey : string) {
     this.customer_histories = [];
     this.virtual_rows = [];
     if (!customerHistory?.length) {
       this.sharedService.toast('warning', 'NO Value'); // JSON
-      this.loadingCtrl.dismiss();
+      this.dismissLoading(loadingKey);
       return;
     }
     let index = 1;
@@ -436,58 +421,52 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async handlePpedCategory(category: string, index: number) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'handlePpedCategory';
+    await this.presentLoading(key);
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
     else
       this.customerHistoryService
         .getkgPpedByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
   async handleSalesCategory(category: string, index: number) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'handleSalesCategory';
+    await this.presentLoading(key);
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
     else
       this.customerHistoryService
         .getkgSalesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
   async handleSamplesCategory(category: string, index: number) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'handleSamplesCategory';
+    await this.presentLoading(key);
     if (this.f.kgqty.value == 'qty')
       this.customerHistoryService
         .getSamplesByCustomerCategory(this.f.Customer.value.CustCode, category)
         .subscribe((data) => {
           this.createModel(data, index + 1);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
     else
       this.customerHistoryService
@@ -497,7 +476,7 @@ export class CustomerHistoryPage implements OnInit {
         )
         .subscribe((data) => {
           this.createModel(data, index + 1);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
@@ -586,10 +565,8 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   async findShop(lat: number, lng: number) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    loading.present();
+    const key = 'findShop';
+    await this.presentLoading(key);
     this.customerHistoryService.findShop(lat, lng).subscribe((res: any[]) => {
       if (!res.length) {
         this.sharedService.toast('danger', this.language.Customer_History.msg_no_customer)
@@ -606,12 +583,30 @@ export class CustomerHistoryPage implements OnInit {
         sr: res[0].Visitor,
         tell: +res[0].Tel,
       };
-      loading.dismiss()
+      this.dismissLoading(key)
       // this.getAvgs();
     })
   }
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key : string){
+    this.loadings[key].dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
