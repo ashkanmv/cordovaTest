@@ -27,7 +27,11 @@
             "searching": "Searching",
             "notFound": "Your search returned no results",
             "typeToSearchText": "Search",
-            "searchPlaceholder": "Search"
+            "searchPlaceholder": "Search",
+            "could_not_fetch_cities":"Could not fetch cities ...",
+            "could_not_fetch_Avgs":"Could not fetch Avgs ...",
+            "could_not_fetch_routes":"Could not fetch routes ...",
+            "no_value":"NO Value"
         },
         "Questionnaire": {
             "Title": "Questionnaire",
@@ -341,7 +345,11 @@
             "searching": " در حال جستجو",
             "notFound": "جستجوی شما نتیجه ای نداشت",
             "typeToSearchText": "جستجو",
-            "searchPlaceholder": "جستجو"
+            "searchPlaceholder": "جستجو",
+            "could_not_fetch_cities":"...شهری دریافت نشد",
+            "could_not_fetch_Avgs":"Could not fetch Avgs ...",
+            "could_not_fetch_routes":"...مسیری دریافت نشد",
+            "no_value":"بدون ارزش"
         },
         "Questionnaire": {
             "Title": "پرسشنامه",

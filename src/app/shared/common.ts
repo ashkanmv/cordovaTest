@@ -391,6 +391,10 @@ export class Language {
     notFound: string;
     typeToSearchText: string;
     searchPlaceholder: string;
+    could_not_fetch_cities: string;
+    could_not_fetch_Avgs: string;
+    could_not_fetch_routes: string;
+    no_value: string;
   };
   Questionnaire: {
     Title: string;
