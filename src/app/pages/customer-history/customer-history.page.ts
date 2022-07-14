@@ -75,9 +75,8 @@ export class CustomerHistoryPage implements OnInit {
     this.paramSubscription = this.activatedRoute.queryParams.subscribe(
       (params: Params) => {
         if (params['customerNumber'])
-          this.Get_CustomerFromMap(params.customerNumber)
+          this.getCustomerByCustNumber(params.customerNumber)
       }
-      // this.form.patchValue({ Customer: params['Customer'] })
     );
     this.input.subscribe((term) => {
       if (!term) return;
@@ -90,7 +89,6 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   ngOnInit() {
-    // if (this.Customer_Number) this.Get_CustomerFromMap(this.Customer_Number);
     this.getCities();
     this.loadForm();
   }
@@ -126,7 +124,7 @@ export class CustomerHistoryPage implements OnInit {
     return this.form.controls;
   }
 
-  async Get_CustomerFromMap(Customer_Number: string) {
+  async getCustomerByCustNumber(Customer_Number: string) {
     const loading = await this.loadingCtrl.create({
       message: this.language.Loading,
     });

@@ -41,11 +41,12 @@
           notFoundText="جستجوی شما نتیجه ای نداشت" typeToSearchText="جستجو" placeholder="Search">
           <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
             <div>
-              <ion-item [routerLink]="['/questionnaire']" [queryParams]="{ customerNumber : item.Number}">
+              <ion-item (click)="getCustomerByCustNumber(item.Number)"> <!--[routerLink]="['/questionnaire']" [queryParams]="{ customerNumber : item.Number}"-->
                 <ion-label class="ion-margin-start">
                   <h2>{{item.FirstName}} {{item.LastName}}</h2>
                   <h4>{{item.Number}}</h4>
                   <h4>{{item.Details}}</h4>
+                  <h4>{{item.CustomerType}}</h4>
                 </ion-label>
               </ion-item>
             </div>
