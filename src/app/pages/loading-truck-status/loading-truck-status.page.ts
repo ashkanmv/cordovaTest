@@ -55,6 +55,10 @@ export class LoadingTruckStatusPage implements OnInit {
     });
   }
 
+  ionViewWillLeave() {
+    this.removeAllLoadings()
+  }
+
   async get_dc() {
     const key = 'get_dc';
     this.presentLoading(key);
@@ -184,7 +188,7 @@ export class LoadingTruckStatusPage implements OnInit {
   }
 
   dismissLoading(key: string) {
-    this.loadings[key].dismiss();
+    this.loadings[key]?.dismiss();
     delete this.loadings[key];
   }
 

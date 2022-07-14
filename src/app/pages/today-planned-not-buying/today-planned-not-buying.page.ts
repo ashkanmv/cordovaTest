@@ -213,7 +213,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
   }
 
   dismissLoading(key: string) {
-    this.loadings[key].dismiss();
+    this.loadings[key]?.dismiss();
     delete this.loadings[key];
   }
 
