@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IonDatetime, LoadingController } from '@ionic/angular';
 import { LatLngTuple } from 'leaflet';
-import { Subscription } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import {
   ThemeColors, CommonUtility, GetInvoicedResponse, GetSrInfoResponse, getUserCildrenResponse, GetVehicleByRouteTimeResponse, Language, MapView, Marker, Polyline, Shop, VisitedNotBuyResponse,
@@ -27,6 +27,8 @@ export class GpsTrackingPage implements OnInit {
   initialShopPointLoaded = false;
   invoicedFLoaded = false;
   visitNotBuyLoaded = false;
+  truckLoaded = false;
+  srLoaded = false;
   notPlanFShopPoints: GetInvoicedResponse[] = [];
   invoicedShopPoints: GetInvoicedResponse[] = [];
   visitNotBuyShopPoints: VisitedNotBuyResponse[] = [];
@@ -52,6 +54,8 @@ export class GpsTrackingPage implements OnInit {
     this._markers = v;
   }
   mapInitSubscription: Subscription;
+  shopsSubscription: Subscription;
+  srAndTruckSubscription: Subscription;
 
   public get language(): Language {
     return this.languageService.language;
@@ -245,9 +249,7 @@ export class GpsTrackingPage implements OnInit {
 
   async routeSelect() {
     this.presentLoading(this.loadingKey);
-    this.markers = [];
     this.polylines = [];
-    this.mapService.clearMarkers.next(true);
     this.mapService.clearPolylines.next(true);
     this.notPlanFLoaded = false;
     this.initialShopPointLoaded = false;
@@ -266,12 +268,13 @@ export class GpsTrackingPage implements OnInit {
       )
       .subscribe((values) => {
         if (values.length) this.patchValue('selectedRoute', values[0]);
-
+        this.unsubscribeObsirvables();
         this.initialShopPoint();
-        this.initialSr();
-        this.initialTruck();
         this.notPlanF();
         this.visitNotBuy();
+        this.initialTruck();
+        this.initialSr();
+        this.startTimers()
       });
   }
 
@@ -408,13 +411,18 @@ export class GpsTrackingPage implements OnInit {
       });
     });
 
+    if (this.srLoaded)
+      markers.push(
+        {
+          latitude: this.srPoints[this.srPoints.length - 1][0],
+          longitude: this.srPoints[this.srPoints.length - 1][1],
+          icon: this.mapService.salesManIcon,
+          description: this.markerDescription('salesman', this.srInfo)
+        })
+
     let flyTo: MapView;
+    console.log(this.allShopPoints);
     this.allShopPoints.forEach((shop) => {
-      flyTo = {
-        lat: +shop.PointLatitude,
-        lng: +shop.PointLongitude,
-        zoom: 13,
-      };
       markers.push({
         latitude: +shop.PointLatitude,
         longitude: +shop.PointLongitude,
@@ -423,6 +431,11 @@ export class GpsTrackingPage implements OnInit {
         description: this.markerDescription('shopPoint', shop),
       });
     });
+    flyTo = {
+      lat: +this.allShopPoints[this.allShopPoints.length -1].PointLatitude,
+      lng: +this.allShopPoints[this.allShopPoints.length -1].PointLongitude,
+      zoom: 13,
+    };
     this.markers = [...this.markers, ...markers];
     if (flyTo) this.mapView = flyTo;
     if (!this.markers.length) this.sharedService.toast('warning', this.language.Gps_Tracking.No_Value)
@@ -496,7 +509,10 @@ export class GpsTrackingPage implements OnInit {
       )
       .subscribe((res) => {
         let srInfo = res[0];
-        if (!srInfo) return;
+        if (!srInfo) {
+          this.sharedService.toast('danger', this.language.Gps_Tracking.NO_SR_Value);
+          return;
+        }
 
         this.getVPByRouteTimeUser(srInfo);
       });
@@ -513,7 +529,10 @@ export class GpsTrackingPage implements OnInit {
         this.f.selectedSr.value.id
       )
       .subscribe((res) => {
-        if (!res.length) return;
+        if (!res.length) {
+          this.sharedService.toast('danger', this.language.Gps_Tracking.NO_SR_Points);
+          return;
+        }
 
         let sr_points: LatLngTuple[] = [];
         res.forEach((srPoint) => sr_points.push([srPoint.lat, srPoint.lng]));
@@ -522,6 +541,10 @@ export class GpsTrackingPage implements OnInit {
 
         if (!this.f.showSr.value)
           return
+        // To handle timer
+        this.mapService.clearMarkers.next(true);
+        this.markers = [];
+
         this.polylines = [
           ...this.polylines,
           {
@@ -529,15 +552,7 @@ export class GpsTrackingPage implements OnInit {
             options: this.mapService.SalesManPolylineOption,
           },
         ];
-        this.markers = [
-          ...this.markers,
-          {
-            latitude: sr_points[sr_points.length - 1][0],
-            longitude: sr_points[sr_points.length - 1][1],
-            icon: this.mapService.salesManIcon,
-            description: this.markerDescription('salesman', srInfo),
-          },
-        ];
+        this.handleDifferentShopPoints();
       });
   }
 
@@ -712,7 +727,7 @@ export class GpsTrackingPage implements OnInit {
   }
 
   dismissLoading(key: string) {
-    this.loadings[key].dismiss();
+    this.loadings[key]?.dismiss();
     delete this.loadings[key];
   }
 
@@ -720,5 +735,31 @@ export class GpsTrackingPage implements OnInit {
     for (const key in this.loadings)
       this.loadings[key].dismiss()
     this.loadings = [];
+  }
+
+  startTimers() {
+    let timer1 = timer(20000, 300000);
+    this.shopsSubscription = timer1.subscribe(t => {
+      this.initialShopPointLoaded = false;
+      this.initialShopPoint();
+      this.notPlanFLoaded = false;
+      this.notPlanF();
+      this.visitNotBuyLoaded = false;
+      this.visitNotBuy();
+    });
+    let timer2 = timer(20000, 60000);
+    this.srAndTruckSubscription = timer2.subscribe(() => {
+      this.polylines = [];
+      this.mapService.clearPolylines.next(true);
+      this.initialTruck();
+      this.initialSr();
+    })
+  }
+
+  unsubscribeObsirvables() {
+    if (this.shopsSubscription)
+      this.shopsSubscription.unsubscribe();
+    if (this.srAndTruckSubscription)
+      this.srAndTruckSubscription.unsubscribe();
   }
 }

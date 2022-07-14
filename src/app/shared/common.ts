@@ -427,6 +427,8 @@ export class Language {
     Radio_input_show_truck: string;
     Radio_input_show_SR: string;
     No_Value: string;
+    NO_SR_Value: string;
+    NO_SR_Points: string;
   };
   Customer_nearby: {
     Title: string;
@@ -582,8 +584,8 @@ export class Language {
     NotINV: string;
     Sale: string;
     PPED: string;
-    Visitor: string; 
-    Driver: string; 
+    Visitor: string;
+    Driver: string;
   }
   Trace_Salesman: {
     NoLocationFound: string;
@@ -635,8 +637,8 @@ export class Language {
     New_password: string;
     Re_enter_new_password: string;
     Password_Miss_Match: string;
-    FillAllFields : string;
-    PasswordChanged : string;
+    FillAllFields: string;
+    PasswordChanged: string;
   }
   About_Us: {
     Title: string;
@@ -654,24 +656,24 @@ export class Language {
     en: string;
     fa: string;
   }
-  MainPage :{
-    Customer_History:string;
-    questionnaire:string;
-    Notification:string;
-    gpsTracking:  string;
-    Online_Daily_Sale:   string;
-    Customer_Nearby:  string;
-    Salesmen_Location:  string;
+  MainPage: {
+    Customer_History: string;
+    questionnaire: string;
+    Notification: string;
+    gpsTracking: string;
+    Online_Daily_Sale: string;
+    Customer_Nearby: string;
+    Salesmen_Location: string;
     Trace_Salesman: string;
-    Daily_Status:string;
-    Today_Planned_Not_Buying:string;
-    Loading_Truck_Status:  string;
-    Score_Cards:string;
-    Online_Sales_Hourly:string;
-    Online_Sales_for_days_Hourly:string;
-    Sales_Campare_Tracking_Hourly:string;
-    Sales_Hourly_Day_and_Sales_Office:string;    
-    Max_PPED:string;
+    Daily_Status: string;
+    Today_Planned_Not_Buying: string;
+    Loading_Truck_Status: string;
+    Score_Cards: string;
+    Online_Sales_Hourly: string;
+    Online_Sales_for_days_Hourly: string;
+    Sales_Campare_Tracking_Hourly: string;
+    Sales_Hourly_Day_and_Sales_Office: string;
+    Max_PPED: string;
   }
 
 }

@@ -63,7 +63,9 @@
             "Input_select_SR": "SR",
             "Radio_input_show_truck": "Show truck",
             "Radio_input_show_SR": "Show SR",
-            "No_Value": "No points available !"
+            "No_Value": "No points available !",
+            "NO_SR_Value":"Sr info not found!",
+            "NO_SR_Points":"Sr points not found!"
         },
         "Customer_nearby": {
             "Title": "Customer nearby",
@@ -375,7 +377,9 @@
             "Input_select_SR": "نمایش SR",
             "Radio_input_show_truck": "نمایش ماشین",
             "Radio_input_show_SR": "نمایش SR",
-            "No_Value": "هیچ نقطه ای پیدا نشد !"
+            "No_Value": "هیچ نقطه ای پیدا نشد !",
+            "NO_SR_Value":"اطلاعات فروشنده پیدا نشد!",
+            "NO_SR_Points":"مسیر فروشنده پیدا نشد!"
         },
         "Customer_nearby": {
             "Title": "سوپرمارکتهای مجاور",
