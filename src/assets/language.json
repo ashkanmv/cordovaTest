@@ -232,7 +232,7 @@
         },
         "logOut": {
             "areYouSure": "ARE YOU SURE?",
-            "message": "Message",
+            "message": "",
             "logOut": "LOG OUT",
             "cancel": "CANCEL"
         },
@@ -554,7 +554,7 @@
         },
         "logOut": {
             "areYouSure": "آیا مطمئن هستید؟",
-            "message": "پیام",
+            "message": "",
             "logOut": "خروج",
             "cancel": "لغو"
         },

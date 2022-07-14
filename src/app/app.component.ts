@@ -1,6 +1,7 @@
 import { Component, enableProdMode, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Autostart } from '@ionic-native/autostart/ngx';
-import { Platform } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
 import { ThemeColors } from './shared/common';
 import { Language } from './shared/common';
 import { GeoLocationService } from './shared/geo-location.service';
@@ -21,13 +22,15 @@ export class AppComponent implements OnInit {
   public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
   public get selectedLanguage(): Language { return this.languageService.language; }
   constructor(
+    private loadingCtrl: LoadingController,
     private plt: Platform,
+    private router :Router,
     private languageService: LanguageService,
     private storageService: StorageService,
     private geoLocationService: GeoLocationService,
     public sharedService: SharedService,
     private utilService: UtilService,
-    private autoStart : Autostart
+    private autoStart: Autostart
   ) { }
   ngOnInit(): void {
     enableProdMode();
@@ -41,7 +44,7 @@ export class AppComponent implements OnInit {
       this.plt
         .ready()
         .then(() => {
-          if (this.plt.is('cordova')){
+          if (this.plt.is('cordova')) {
             this.startTracking();
             this.setUiCustomization();
             this.enableAutoStart();
@@ -105,7 +108,28 @@ export class AppComponent implements OnInit {
     }
   }
 
-  enableAutoStart(){
+  enableAutoStart() {
     this.autoStart.enable();
+  }
+
+  async logout() {
+    const loading = await this.loadingCtrl.create({
+      message: this.selectedLanguage.Loading,
+    });
+    await loading.present();
+    this.storageService.set('RememberUser', false);
+    this.storageService.get('user_id').then((user_id) => {
+      if (!user_id) return;
+      
+      let json_user_id = JSON.parse(user_id);
+      let user_log = {
+        user_id: json_user_id,
+        task: 'logout',
+        version: '1.0.9.21'
+      }
+      this.utilService.post_user_log(user_log).subscribe();
+    });
+    loading.dismiss();
+    this.router.navigate(['/login']);
   }
 }
