@@ -13,6 +13,7 @@ import { ScoreCardService } from './score-card.service';
   styleUrls: ['./score-card.page.scss'],
 })
 export class ScoreCardPage implements OnInit {
+  loadings: LoadingController[] = [];
   categoryRadio: 1 | 2 = 1;
   channelRadio: 1 | 2 = 1;
   categoryPRadio: 1 | 2 = 1;
@@ -46,7 +47,7 @@ export class ScoreCardPage implements OnInit {
   sec2CategorySelect = [];
   type1 = "sales";
   server;
-  selected_ch3=[];
+  selected_ch3 = [];
   type3 = "sales";
 
   color = [
@@ -79,17 +80,17 @@ export class ScoreCardPage implements OnInit {
     return this.languageService.language;
   }
 
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline;
   }
   public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
 
   constructor(
-    private utilService : UtilService,
+    private utilService: UtilService,
     private scoreCardService: ScoreCardService,
     private loadingCtrl: LoadingController,
     private languageService: LanguageService,
-    public sharedService : SharedService
+    public sharedService: SharedService
   ) { }
   set_server_status(vale) {
     this.server = vale;
@@ -98,6 +99,10 @@ export class ScoreCardPage implements OnInit {
 
   ngOnInit() {
     this.getToday();
+  }
+
+  ionViewWillLeave() {
+    this.removeAllLoadings();
   }
 
   //Sec 1
@@ -113,15 +118,13 @@ export class ScoreCardPage implements OnInit {
   }
 
   async getChannels1() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getChannels1';
+    await this.presentLoading(key);
     this.scoreCardService.getChannels().subscribe((channels) => {
-      this.channels1 = channels.map(c=>{
+      this.channels1 = channels.map(c => {
         return {
-          GPSChannel : c.GPSChannel,
-          order : c.order,
+          GPSChannel: c.GPSChannel,
+          order: c.order,
           group: this.language.Score_Card.group
         }
       });
@@ -136,35 +139,31 @@ export class ScoreCardPage implements OnInit {
         });
         this.ms_model_channel = this.ms_data_channel;
         this.selected_category_data = this.ms_data_channel;
-        loading.dismiss();
+        this.dismissLoading(key);
       });
       this.getSales1ByChannel();
     });
   }
 
   async getSales1ByChannel() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getSales1ByChannel';
+    await this.presentLoading(key);
     this.scoreCardService.getSales1ByChannel(this.selected_channel1.join()).subscribe((scorecard) => {
       if (scorecard.length) {
         this.create_total_model1(scorecard);
         this.first_section_data = scorecard;
       }
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
   async getPped1ByChannel() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    loading.present();
+    const key = 'getPped1ByChannel';
+    await this.presentLoading(key);
     this.scoreCardService.getPped1ByChannel(this.selected_channel1.join()).subscribe(
       (scorecard) => {
         this.create_total_model1(scorecard);
-        loading.dismiss();
+        this.dismissLoading(key);
       }
     );
   }
@@ -234,41 +233,35 @@ export class ScoreCardPage implements OnInit {
   }
 
   async categorySelect2() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'categorySelect2';
+    await this.presentLoading(key);
     this.skus2 = [];
     this.scoreCardService.getSkusByCategory(this.selected_category2.join()).subscribe(
       (skus) => {
         this.skus2.push.apply(this.skus2, skus);
-        loading.dismiss();
+        this.dismissLoading(key);
       }
     );
   }
 
   async getPped2ByCatSku() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getPped2ByCatSku';
+    await this.presentLoading(key);
     this.scoreCardService.getPped2ByCatSku(this.selected_category2.join(), this.selected_sku2.join())
       .subscribe(
         scorecard => {
           this.create_model2(scorecard);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
   async get_categories2() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_categories2';
+    await this.presentLoading(key);
     this.scoreCardService.getSales2ByCatSku(this.selected_category2.join(), this.selected_sku2.join()).subscribe(
       scorecard2 => {
         this.create_model2(scorecard2);
-        loading.dismiss();
+        this.dismissLoading(key);
         this.second_section_data = scorecard2;
       },
       (error) => (this.second_section_data = undefined)
@@ -319,16 +312,14 @@ export class ScoreCardPage implements OnInit {
       return;
     }
 
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'show_Category_Percent';
+    await this.presentLoading(key);
 
     this.scoreCardService.getSales3ByChannel(this.selected_channel3.join())
       .subscribe(
         (scorecard3: any) => {
           this.chart_data1 = scorecard3;
-          loading.dismiss();
+          this.dismissLoading(key);
           this.create_total_model3(scorecard3);
           this.third_section_data = scorecard3;
           this.create_chart3();
@@ -446,31 +437,27 @@ export class ScoreCardPage implements OnInit {
   }
 
   async getPped3ByChannel() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getPped3ByChannel';
+    await this.presentLoading(key);
     this.scoreCardService.getPped3ByChannel(this.selected_channel3.join()).subscribe(
       (scorecard: any) => {
         this.create_total_model3(scorecard);
         this.chart_data1 = scorecard;
         this.create_chart3();
-        loading.dismiss();
+        this.dismissLoading(key);
       });
   }
 
   async getSales3ByChannel() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getSales3ByChannel';
+    await this.presentLoading(key);
     this.scoreCardService.getSales3ByChannel(this.selected_channel3.join())
       .subscribe(
         (scorecard: any) => {
           this.create_total_model3(scorecard);
           this.chart_data1 = scorecard;
           this.create_chart3();
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
@@ -487,17 +474,15 @@ export class ScoreCardPage implements OnInit {
       return;
     }
 
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'Show_Channel_Percent';
+    await this.presentLoading(key);
 
     this.Fill_Categroy_Sku_Filters().then((data) => {
       this.scoreCardService.getSales4ByCatSku(this.selected_category4.join(), this.selected_sku4.join()).subscribe(
         (scorecard: any) => {
           this.create_model4(scorecard);
           this.chart_data2 = scorecard;
-          loading.dismiss();
+          this.dismissLoading(key);
           this.fourth_section_data = scorecard;
           this.create_chart4();
         });
@@ -573,15 +558,13 @@ export class ScoreCardPage implements OnInit {
   }
 
   async categorySelect4() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'categorySelect4';
+    await this.presentLoading(key);
     this.skus4 = [];
     this.scoreCardService.getSkusByCategory(this.selected_category4.join())
       .subscribe(skus => {
         this.skus4.push.apply(this.skus4, skus);
-        loading.dismiss();
+        this.dismissLoading(key);
       });
   }
 
@@ -592,30 +575,26 @@ export class ScoreCardPage implements OnInit {
   }
 
   async getSales4ByCatSku() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getSales4ByCatSku';
+    await this.presentLoading(key);
     this.scoreCardService.getSales4ByCatSku(this.selected_category4.join(), this.selected_sku4.join())
       .subscribe((scorecard: any) => {
         this.create_model4(scorecard);
         this.chart_data2 = scorecard;
         this.create_chart4();
-        loading.dismiss();
+        this.dismissLoading(key);
       });
   }
 
   async getPped4ByCatSku() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getPped4ByCatSku';
+    await this.presentLoading(key);
     this.scoreCardService.getPped4ByCatSku(this.selected_category4.join(), this.selected_sku4.join())
       .subscribe((scorecard: any) => {
         this.create_model4(scorecard);
         this.chart_data2 = scorecard;
         this.create_chart4();
-        loading.dismiss();
+        this.dismissLoading(key);
       });
   }
 
@@ -624,13 +603,13 @@ export class ScoreCardPage implements OnInit {
       {
         this.scoreCardService.getCategories().subscribe(
           (categories) => {
-            this.categories2 = categories.map(c=>{
+            this.categories2 = categories.map(c => {
               return {
                 Cat: c.Cat,
                 group: this.language.Score_Card.group
               }
             });
-            
+
             this.categories4 = categories;
             categories.forEach((category, i) => {
               this.selected_category2.push(category.Cat);
@@ -697,5 +676,22 @@ export class ScoreCardPage implements OnInit {
       this.getPped1ByChannel();
   }
 
-  
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
+  }
+
 }
