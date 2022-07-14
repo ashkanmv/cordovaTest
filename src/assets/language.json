@@ -24,7 +24,7 @@
             "Qty": "Qty",
             "Kg": "Kg",
             "msg_no_customer": "There is no customer near you!",
-            "searching": "searching",
+            "searching": "Searching",
             "notFound": "Your search returned no results",
             "typeToSearchText": "Search",
             "searchPlaceholder": "Search"
