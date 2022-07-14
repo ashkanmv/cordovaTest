@@ -50,6 +50,7 @@ export class SalesmenLocationPage implements OnInit {
   mapInitSubscription: Subscription;
   showMap = false;
   selectedDate = new Date().toISOString();
+  loadings: LoadingController[] = [];
   public get language(): Language { return this.languageService.language; }
   public get isOnline() { return this.sharedService.isOnline; }
   public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
@@ -76,11 +77,15 @@ export class SalesmenLocationPage implements OnInit {
 
 
   ngOnInit() {
+    setInterval(() => {
+      console.log(this.loadings);
+    }, 2000);
     this.getUserId();
     this.checkAccess();
   }
 
   ionViewWillLeave() {
+    this.removeAllLoadings()
     this.showMap = false;
     if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
   }
@@ -140,17 +145,19 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   async loadRsms(byParentUserId: boolean, ids: number[]) {
+    const key = 'rsm';
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
+      this.removeAllLoadings();
       return
     }
-    const loading = await this.loadingCtrl.create({
+    this.loadings[key] = await this.loadingCtrl.create({
       message: this.language.Loading,
-      id: 'rsm'
+      id: key
     })
-    await loading.present();
+    await this.loadings[key].present();
 
-    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'rsm', byParentUserId ? ' ' : ids.join()).subscribe(res => {
+    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', key, byParentUserId ? ' ' : ids.join()).subscribe(res => {
       this.selectedRsm = [];
       this.rsms = res;
       this.rsms.forEach((v) => {
@@ -158,23 +165,25 @@ export class SalesmenLocationPage implements OnInit {
         this.selectedRsm.push(v.id);
       });
       this.rsmMarkers = [];
-      this.getSalesmenLocation(this.selectedRsm.join(), 'rsm')
+      this.getSalesmenLocation(this.selectedRsm.join(), key)
       this.loadAsms(true, this.selectedRsm);
     });
   }
 
   async loadAsms(byParentUserId: boolean, ids: number[]) {
+    const key = 'rsm';
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
+      this.removeAllLoadings();
       return
     }
-    const loading = await this.loadingCtrl.create({
+    this.loadings[key] = await this.loadingCtrl.create({
       message: this.language.Loading,
-      id: 'asm'
+      id: key
     })
-    await loading.present();
+    await this.loadings[key].present();
 
-    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'asm', byParentUserId ? ' ' : ids.join())
+    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', key, byParentUserId ? ' ' : ids.join())
       .subscribe(res => {
         this.selectedAsm = [];
         if (byParentUserId)
@@ -184,23 +193,25 @@ export class SalesmenLocationPage implements OnInit {
             v.group = this.language.Salesmen_Location.Group;
             this.selectedAsm.push(v.id);
           });
-        this.getSalesmenLocation(this.selectedAsm.join(), 'asm')
+        this.getSalesmenLocation(this.selectedAsm.join(), key)
         this.loadSsvs(true, this.selectedAsm)
       })
   }
 
   async loadSsvs(byParentUserId: boolean, ids: number[]) {
+    const key = 'ssv';
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
+      this.removeAllLoadings();
       return
     }
-    const loading = await this.loadingCtrl.create({
+    this.loadings[key] = await this.loadingCtrl.create({
       message: this.language.Loading,
-      id: 'ssv'
+      id: key
     })
-    await loading.present();
+    await this.loadings[key].present();
 
-    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'ssv', byParentUserId ? ' ' : ids.join())
+    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', key, byParentUserId ? ' ' : ids.join())
       .subscribe(res => {
         this.selectedSsv = [];
         if (byParentUserId)
@@ -210,23 +221,25 @@ export class SalesmenLocationPage implements OnInit {
             v.group = this.language.Salesmen_Location.Group;
             this.selectedSsv.push(v.id);
           });
-        this.getSalesmenLocation(this.selectedSsv.join(), 'ssv')
+        this.getSalesmenLocation(this.selectedSsv.join(), key)
         this.loadSrs(true, this.selectedSsv);
       })
   }
 
   async loadSrs(byParentUserId: boolean, ids: number[]) {
+    const key = 'sr';
     if (!ids.length) {
       this.sharedService.toast('danger', this.language.Salesmen_Location.NoValueSelected);
+      this.removeAllLoadings();
       return
     }
-    const loading = await this.loadingCtrl.create({
+    this.loadings[key] = await this.loadingCtrl.create({
       message: this.language.Loading,
-      id: 'sr'
+      id: key
     })
-    await loading.present();
+    await this.loadings[key].present();
 
-    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', 'sr', byParentUserId ? ' ' : ids.join())
+    this.salesmenService.getallChildrenUser(byParentUserId ? ids.join() : ' ', key, byParentUserId ? ' ' : ids.join())
       .subscribe(res => {
         this.selectedSr = [];
         if (byParentUserId)
@@ -236,7 +249,7 @@ export class SalesmenLocationPage implements OnInit {
             v.group = this.language.Salesmen_Location.Group;
             this.selectedSr.push(v.id);
           });
-        this.getSalesmenLocation(this.selectedSr.join(), 'sr')
+        this.getSalesmenLocation(this.selectedSr.join(), key)
       })
   }
 
@@ -262,8 +275,9 @@ export class SalesmenLocationPage implements OnInit {
   }
 
   setMarkersOnMap(users: GetSalesmenLocationResponse[], userType: 'rsm' | 'asm' | 'ssv' | 'sr' | 'admin') {
-    if (!users.length){
-      this.loadingCtrl.dismiss(null, null, userType);
+    if (!users.length) {
+      this.loadings[userType]?.dismiss();
+      delete this.loadings[userType];
       return
     }
 
@@ -280,27 +294,31 @@ export class SalesmenLocationPage implements OnInit {
     switch (userType) {
       case 'rsm':
         this.rsmMarkers = markers;
-        this.loadingCtrl.dismiss(null, null, 'rsm')
+        this.loadings[userType]?.dismiss();
+        delete this.loadings[userType];
         break;
       case 'asm':
         this.asmMarkers = markers;
-        this.loadingCtrl.dismiss(null, null, 'asm')
+        this.loadings[userType]?.dismiss();
+        delete this.loadings[userType];
         break;
       case 'ssv':
         this.ssvMarkers = markers;
-        this.loadingCtrl.dismiss(null, null, 'ssv')
+        this.loadings[userType]?.dismiss();
+        delete this.loadings[userType];
         break;
       case 'sr':
         this.srMarkers = markers;
-        this.loadingCtrl.dismiss(null, null, 'sr')
+        this.loadings[userType]?.dismiss();
+        delete this.loadings[userType];
         break;
       case 'admin':
         this.adminMarkers = markers;
-        this.loadingCtrl.dismiss(null, null, 'admin')
+        this.loadings[userType]?.dismiss();
+        delete this.loadings[userType];
         break;
     }
     this.markers = this.checkMarkers();
-
   }
 
   checkMarkers() {
@@ -330,5 +348,11 @@ export class SalesmenLocationPage implements OnInit {
       case 'admin':
         return this.mapService.salesManSdIcon;
     }
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
