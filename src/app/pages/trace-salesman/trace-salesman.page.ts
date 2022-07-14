@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { LatLngTuple } from 'leaflet';
-import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import { ThemeColors, GetSalesmenLocationResponse, GetUserChildrenResponse, Language, MapView, Marker, Polyline } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
@@ -43,6 +42,7 @@ export class TraceSalesmanPage implements OnInit {
   routeMarker: Marker;
   srMarker: Marker;
   markers: Marker[] = [];
+  loadings: LoadingController[] = [];
   public get language(): Language { return this.languageService.language; }
   public get isOnline() { return this.sharedService.isOnline; }
   public get backgroundColor(): ThemeColors { return this.sharedService.themeColor; }
@@ -150,67 +150,58 @@ export class TraceSalesmanPage implements OnInit {
     });
   }
 
-  get f() {return this.form.controls;}
+  get f() { return this.form.controls; }
 
   ionViewWillLeave() {
     this.showMap = false;
+    this.removeAllLoadings();
     // if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
   }
 
   async loadRsms() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    const key = 'loadRsms';
+    await this.presentLoading(key);
     this.traceService.getUserChildren(this.f.userId.value).subscribe(res => {
       this.rsms = res;
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
   async loadAsms(id: string) {
     if (!id) return
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    const key = 'loadAsms';
+    await this.presentLoading(key);
     this.traceService.getUserChildren(id).subscribe(res => {
       this.asms = res;
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
   async loadSsvs(id: string) {
     if (!id) return
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    const key = 'loadSsvs';
+    await this.presentLoading(key);
     this.traceService.getUserChildren(id).subscribe(res => {
       this.ssvs = res;
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
   async loadSrs(id: string) {
     if (!id) return
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    const key = 'loadSrs';
+    await this.presentLoading(key);
     this.traceService.getUserChildren(id).subscribe(res => {
       this.srs = res;
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
   async rsmSelect() {
     if (!this.f.selectedRsm.value)
       return
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    // const key = 'rsmSelect';
+    // await this.presentLoading(key);
     this.rsmPolylines = null;
     this.mapService.clearPolylines.next(true);
     this.mapService.clearMarkers.next(true);
@@ -221,23 +212,21 @@ export class TraceSalesmanPage implements OnInit {
     this.getLocation(this.f.selectedRsm.value?.id).then(locations => {
       if (!locations.length) {
         this.sharedService.toast('warning', this.language.Trace_Salesman.NoLocationFound)
-        loading.dismiss();
+        // this.dismissLoading(key);
         return
       }
 
       this.setPolylines('rsm', locations);
       this.setMarker('rsm', locations)
-      loading.dismiss();
+      // this.dismissLoading(key);
     })
   }
 
   async asmSelect() {
     if (!this.f.selectedAsm.value)
       return
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    // const key = 'asmSelect';
+    // await this.presentLoading(key);
     this.asmPolylines = null;
     this.mapService.clearPolylines.next(true);
     this.mapService.clearMarkers.next(true);
@@ -247,23 +236,21 @@ export class TraceSalesmanPage implements OnInit {
     this.getLocation(this.f.selectedAsm.value?.id).then(locations => {
       if (!locations.length) {
         this.sharedService.toast('warning', this.language.Trace_Salesman.NoLocationFound)
-        loading.dismiss();
+        // this.dismissLoading(key);
         return
       }
 
       this.setPolylines('asm', locations);
       this.setMarker('asm', locations)
-      loading.dismiss();
+      // this.dismissLoading(key);
     })
   }
 
   async ssvSelect() {
     if (!this.f.selectedSsv.value)
       return
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    // const key = 'ssvSelect';
+    // await this.presentLoading(key);
     this.ssvPolylines = null;
     this.mapService.clearPolylines.next(true);
     this.mapService.clearMarkers.next(true);
@@ -272,36 +259,35 @@ export class TraceSalesmanPage implements OnInit {
     this.getLocation(this.f.selectedSsv.value?.id).then(locations => {
       if (!locations.length) {
         this.sharedService.toast('warning', this.language.Trace_Salesman.NoLocationFound)
-        loading.dismiss();
+        // this.dismissLoading(key);
         return
       }
 
       this.setPolylines('ssv', locations);
       this.setMarker('ssv', locations)
-      loading.dismiss();
+      // this.dismissLoading(key);
     })
   }
 
   async srSelect() {
     if (!this.f.selectedSr.value)
       return
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    const key = 'srSelect';
+    await this.presentLoading(key);
     this.srPolylines = null;
     this.mapService.clearPolylines.next(true);
     this.mapService.clearMarkers.next(true);
     this.getLocation(this.f.selectedSr.value?.id).then(locations => {
       if (!locations.length) {
         this.sharedService.toast('warning', this.language.Trace_Salesman.NoLocationFound)
-        loading.dismiss();
+        this.dismissLoading(key);
         return
       }
 
       this.setPolylines('sr', locations);
       this.setMarker('sr', locations)
-      loading.dismiss();
+      this.show = !this.show;
+      this.dismissLoading(key);
     })
   }
 
@@ -441,5 +427,23 @@ export class TraceSalesmanPage implements OnInit {
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key].dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
