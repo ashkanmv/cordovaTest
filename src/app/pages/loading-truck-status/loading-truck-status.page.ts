@@ -15,6 +15,7 @@ import { LoadingTruckStatusService } from './loading-truck-status.service';
 })
 export class LoadingTruckStatusPage implements OnInit {
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+  loadings: LoadingController[] = [];
   userId;
   selected_date = new Date().toISOString();
   IsDetailsShowing = true;
@@ -55,10 +56,8 @@ export class LoadingTruckStatusPage implements OnInit {
   }
 
   async get_dc() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dc';
+    this.presentLoading(key);
     this.loadingTruckService.getUserDc(this.userId)
       .subscribe(
         dcs => {
@@ -66,20 +65,18 @@ export class LoadingTruckStatusPage implements OnInit {
             this.selectedItems.push(dc.City);
             this.dropdownList.push({ "id": i, "itemName": dc.City, "group": this.language.Loading_Truck_Status.Group });
           });
-          loading.dismiss();
+          this.dismissLoading(key);
           this.getLoadTruckCity()
         });
   }
 
   async getLoadTruckCity() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getLoadTruckCity';
+    this.presentLoading(key);
 
     if (!this.selectedItems.length) {
       this.create_total_model1("Empty");
-      loading.dismiss();
+      this.dismissLoading(key);
       return
     }
 
@@ -91,7 +88,7 @@ export class LoadingTruckStatusPage implements OnInit {
           else
             this.create_total_model1('Empty');
 
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
@@ -176,7 +173,24 @@ export class LoadingTruckStatusPage implements OnInit {
     error => {
       this.set_server_status(false);
       console.log(error);
+    }); 
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
     });
-    
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key].dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
