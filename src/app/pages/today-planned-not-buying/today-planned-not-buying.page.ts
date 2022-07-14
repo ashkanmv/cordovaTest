@@ -13,6 +13,7 @@ import { TodayPlannedService } from './today-planned.service';
   styleUrls: ['./today-planned-not-buying.page.scss'],
 })
 export class TodayPlannedNotBuyingPage implements OnInit {
+  loadings: LoadingController[] = [];
   selectedDate = new Date().toISOString();
   userId;
   clusters = [];
@@ -50,34 +51,34 @@ export class TodayPlannedNotBuyingPage implements OnInit {
     })
   }
 
+  ionViewWillLeave() {
+    this.removeAllLoadings();
+  }
+
   async getDc() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    const key = 'getDc';
+    await this.presentLoading(key);
     this.todayPlannedService.getUserDc(this.userId).subscribe(res => {
       this.dcs = res;
       this.dcs.forEach((dc, i) => {
         this.selectedDc.push(dc.City);
         this.dcList.push({ "id": i, "itemName": dc.City, group: this.language.Today_Planned_Not_Buying.group });
       });
-      loading.dismiss();
+      this.dismissLoading(key);
       this.checkClusterAndDcsHasValue();
     })
   }
 
   async getCluster() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    const key = 'getCluster';
+    await this.presentLoading(key);
     this.todayPlannedService.getCluster().subscribe((clusters: any) => {
       this.clusters = clusters;
       this.clusters.forEach((cluster, i) => {
         this.selectedCluster.push(cluster.CustomerType);
         this.clustersList.push({ "id": i, "itemName": cluster.CustomerType, group: this.language.Today_Planned_Not_Buying.group });
       });
-      loading.dismiss();
+      this.dismissLoading(key);
       this.checkClusterAndDcsHasValue();
     })
   }
@@ -89,10 +90,8 @@ export class TodayPlannedNotBuyingPage implements OnInit {
   }
 
   async getTRoutesCity() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    loading.present();
+    const key = 'getTRoutesCity';
+    await this.presentLoading(key);
     this.todayPlannedService.getTRoutesCity(this.userId, this.selectedDate.slice(0, this.selectedDate.length - 6), this.selectedDc.join(), this.selectedCluster.join())
       .subscribe(
         (SrSales: any) => {
@@ -100,7 +99,7 @@ export class TodayPlannedNotBuyingPage implements OnInit {
             this.create_total_model1(SrSales);
           else
             this.create_total_model1('Empty');
-          loading.dismiss();
+          this.dismissLoading(key);
         });
   }
 
@@ -201,4 +200,26 @@ export class TodayPlannedNotBuyingPage implements OnInit {
   //   this.storageService.set('Customer_Number', row.Others[index].CustID);
   //   this.open_customer_history();
   // }
+
+  refresh(){
+    this.checkClusterAndDcsHasValue();
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key].dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
+  }
 }
