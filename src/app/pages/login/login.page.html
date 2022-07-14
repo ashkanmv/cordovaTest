@@ -3,7 +3,7 @@
     <ion-row class="ion-justify-content-center">
       <ion-col size="6" class="ion-text-center">
         <ion-title>
-          <h3><b>Login</b></h3>
+          <h3><b>{{language.login.title}}</b></h3>
         </ion-title>
       </ion-col>
     </ion-row>
@@ -48,7 +48,7 @@
       [disabled]="form.invalid"
       *ngIf="!isLoading"
     >
-      Login
+      {{language.login.loginBtn}}
     </ion-button>
     <div class="">
       <h4>{{UUid}}</h4>

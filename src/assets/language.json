@@ -92,7 +92,9 @@
             "UserPassIncorrect": "Username or password is incorrect",
             "RememberMe": "Remember Me",
             "PoweredBy": "Powered by:",
-            "serial": "Serial : R52J209"
+            "serial": "Serial : R52J209",
+            "loginBtn":"LOGIN"
+
         },
         "theme": {
             "title": "Theme",
@@ -232,7 +234,7 @@
         },
         "logOut": {
             "areYouSure": "ARE YOU SURE?",
-            "message": "",
+            "message": "Message",
             "logOut": "Yes",
             "cancel": "No"
         },
@@ -404,7 +406,8 @@
             "UserPassIncorrect": "نام کاربری یا رمز عبور اشتباه است",
             "RememberMe": "مرا بخاطر بسپار",
             "PoweredBy": "پشتیبانی شده توسط",
-            "serial": "سریال"
+            "serial": "سریال",
+            "loginBtn":"به سیستم وارد شوید"
         },
         "Menu": {
             "en": "EN",
@@ -554,7 +557,7 @@
         },
         "logOut": {
             "areYouSure": "آیا مطمئن هستید؟",
-            "message": "",
+            "message": "پیام",
             "logOut": "بله",
             "cancel": "خیر"
         },

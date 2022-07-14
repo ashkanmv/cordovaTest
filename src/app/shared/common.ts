@@ -456,6 +456,7 @@ export class Language {
     RememberMe: string;
     PoweredBy: string;
     serial: string;
+    loginBtn:string
   };
   theme: {
     title: string;
