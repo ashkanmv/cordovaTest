@@ -22,7 +22,7 @@
                 class="ion-margin-top ion-align-items-center ion-justify-content-center white-background gps-toggle"
               >
                 <b> {{selectedLanguage.Menu.en}} </b>
-                <ion-toggle color="primary" [(ngModel)]="language" (ionChange)="languageChanged()"></ion-toggle>
+                <ion-toggle [(ngModel)]="language" (ionChange)="languageChanged()"></ion-toggle>
                 <b> {{selectedLanguage.Menu.fa}} </b>
               </ion-row>
             </ion-col>

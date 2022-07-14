@@ -39,6 +39,13 @@ ion-input{
 
 ion-toggle{
     padding: 3px 0 ;
+    --background: #a0c5ff;
+  // --background-checked: #3880ff;
+  --background-checked: #a0c5ff;
+  
+  --handle-background: #3880ff;
+  // --handle-background-checked: #a0c5ff;
+  --handle-background-checked: #0095eb;
 }
 
 ion-img{

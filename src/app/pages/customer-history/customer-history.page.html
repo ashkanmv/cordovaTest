@@ -16,7 +16,7 @@
         size="2">
         {{language.Customer_History.gps}}
         <span class="toggle-background">
-          <ion-toggle class="ion-no-padding" color="primary" [(ngModel)]="gps" (ionChange)="gpsChanged()"></ion-toggle>
+          <ion-toggle class="ion-no-padding" [(ngModel)]="gps" (ionChange)="gpsChanged()"></ion-toggle>
         </span>
       </ion-col>
       <ion-col (click)="show=!show" size="1"
