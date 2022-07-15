@@ -12,6 +12,7 @@ import { DailyStatusService } from './daily-status.service';
   styleUrls: ['./daily-status.page.scss'],
 })
 export class DailyStatusPage implements OnInit {
+  loadings: LoadingController[] = [];
   tabletDate;
   truckDate;
   userId;
@@ -41,7 +42,6 @@ export class DailyStatusPage implements OnInit {
     private storageServiec: StorageService,
     private loadingCtrl: LoadingController,
     private dailySalesService: DailyStatusService,
-    private dailyStatusService: DailyStatusService,
     public sharedService: SharedService) { }
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
@@ -69,11 +69,13 @@ export class DailyStatusPage implements OnInit {
     // this.truckDate = this.truckDate.toISOString();
   }
 
+  ionViewWillLeave() {
+    this.removeAllLoadings();
+  }
+
   async get_dc() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dc';
+    await this.presentLoading(key);
     this.dailySalesService.getUserDc(this.userId).subscribe(dcs => {
       dcs.forEach((dc, i) => {
         this.truckDropDown.push({
@@ -83,16 +85,14 @@ export class DailyStatusPage implements OnInit {
         })
         this.selectedTruckDc.push(dc.City);
       });
-      loading.dismiss();
+      this.dismissLoading(key);
       this.getCommutecity(this.truckDate);
     });
   }
 
   async getCommutecity(truckDate: string) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getCommutecity';
+    await this.presentLoading(key);
     this.dailySalesService.getCommutecity(this.userId, truckDate, this.selectedTruckDc.join())
       .subscribe(
         (SrSales: any) => {
@@ -101,7 +101,7 @@ export class DailyStatusPage implements OnInit {
           else
             this.create_total_model1('Empty');
 
-          loading.dismiss()
+          this.dismissLoading(key);
         });
   }
 
@@ -146,10 +146,8 @@ export class DailyStatusPage implements OnInit {
   }
 
   async get_dc_t() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dc_t';
+    await this.presentLoading(key);
     this.dailySalesService.getUserDc(this.userId).subscribe(dcs => {
       dcs.forEach((dc, i) => {
         this.tabletDropDown.push({
@@ -159,16 +157,14 @@ export class DailyStatusPage implements OnInit {
         })
         this.selectedTabletDc.push(dc.City);
       });
-      loading.dismiss();
+      this.dismissLoading(key);
       this.getCommutecityT(this.tabletDate);
     });
   }
 
   async getCommutecityT(tabletDate: string) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getCommutecityT';
+    await this.presentLoading(key);
     this.dailySalesService.getCommutecity_T(this.userId, tabletDate, this.selectedTabletDc.join())
       .subscribe((SrSales: any) => {
         if (SrSales.length)
@@ -176,15 +172,13 @@ export class DailyStatusPage implements OnInit {
         else
           this.create_total_model_t('Empty');
 
-        loading.dismiss()
+        this.dismissLoading(key);
       });
   }
 
   async create_total_model_t(model) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'create_total_model_t';
+    await this.presentLoading(key);
     this.commutes_t = [];
     this.virtual_rows_t = [];
     let keys = Object.keys(model[0]);
@@ -222,7 +216,7 @@ export class DailyStatusPage implements OnInit {
       index++;
       this.virtual_rows_t.push(v_row2);
     }
-    loading.dismiss();
+    this.dismissLoading(key);
   }
 
   tabletDateChanged(selectedDate: string) {
@@ -238,4 +232,21 @@ export class DailyStatusPage implements OnInit {
     this.truckDateChanged(this.truckDate);
   }
 
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
+  }
 }
