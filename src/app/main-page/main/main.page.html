@@ -7,14 +7,14 @@
       <ion-col size="1">
         <ion-img class="notification" src="assets/mainPage/main/notifications-outline.png"></ion-img>
       </ion-col>
-      <ion-col size="8" class="ion-text-center ion-align-self-center" *ngIf="doSearch">
+      <ion-col size="8" class="ion-text-center ion-align-self-center" [ngStyle]="{'display': doSearch ? 'flex' : 'none'}"  >
         <ion-searchbar [placeholder]="language.Main_Page_Search" inputmode="text" type="text" (ionChange)="onSearchChange($event)"
           [debounce]="250"></ion-searchbar>
       </ion-col>
-      <ion-col size="8" class="ion-text-center ion-align-self-center" *ngIf="!doSearch">
+      <ion-col size="8" class="ion-text-center ion-align-self-center" [ngStyle]="{'display': doSearch ? 'none' : 'flex'}">
         <ion-title class="ion-no-padding main-page-Title">{{language.Main_Page}}</ion-title>
       </ion-col>
-      <ion-col size="1" (click)="doSearch = !doSearch">
+      <ion-col size="1" (click)="showSearchBar()">
         <ion-img class="search" src="assets/mainPage/main/search-circle.png"></ion-img>
       </ion-col>
       <ion-col size="1">

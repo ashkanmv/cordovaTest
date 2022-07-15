@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadingController, MenuController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSearchbar, LoadingController, MenuController } from '@ionic/angular';
 import { Access, ThemeColors, Language, PageDetail } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -11,6 +11,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
+  @ViewChild(IonSearchbar, { static: true }) searchBar: IonSearchbar;
   doSearch = false;
   pages: PageDetail[] = [];
   public get language(): Language { return this.languageService.language; }
@@ -198,6 +199,12 @@ export class MainPage implements OnInit {
   }
 
   private _pages: PageDetail[];
+
+  showSearchBar() {
+    this.doSearch = !this.doSearch;
+    if (this.doSearch)
+      this.searchBar.setFocus()
+  }
 
   onSearchChange(e) {
     let search: string = e.detail.value.toLowerCase();
