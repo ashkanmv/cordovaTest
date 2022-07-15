@@ -6,6 +6,7 @@
         "server_no_value": "The server returns no value",
         "Submit": "Submit",
         "Main_Page": "Main Page",
+        "Main_Page_Search":"Search",
         "Customer_History": {
             "Title": "Customer History",
             "gps": "GPS",
@@ -326,6 +327,7 @@
         "server_no_value": "سرور هیچ مقداری را برمی گرداند",
         "Submit": "ثبت",
         "Main_Page": "صفحه اصلی",
+        "Main_Page_Search":"جسست و جو",
         "Customer_History": {
             "Title": "اطلاعات پیشین مشتری",
             "gps": "موقعیت یابی",

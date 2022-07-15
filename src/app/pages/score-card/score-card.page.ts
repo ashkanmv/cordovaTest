@@ -412,21 +412,6 @@ export class ScoreCardPage implements OnInit {
     this.columns2 = labels;
     this.data1 = data;
     this.data2 = data2;
-    // let ctx31 = this.canvas1.nativeElement
-    // let ctx32 = this.canvas2.nativeElement
-    // new Chart(ctx31, {
-    //   type: 'pie',
-    //   data: data31,
-    //   options: {}
-
-    // });
-    // new Chart(ctx32, {
-    //   type: 'pie',
-    //   data: data32,
-    //   options: {}
-
-    // });
-    //your code to be executed after 1 second
   }
 
   categoryPSection() {

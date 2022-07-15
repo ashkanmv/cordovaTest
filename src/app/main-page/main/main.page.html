@@ -7,30 +7,30 @@
       <ion-col size="1">
         <ion-img class="notification" src="assets/mainPage/main/notifications-outline.png"></ion-img>
       </ion-col>
-      <ion-col size="8" class="ion-text-center ion-align-self-center">
+      <ion-col size="8" class="ion-text-center ion-align-self-center" *ngIf="doSearch">
+        <ion-searchbar [placeholder]="language.Main_Page_Search" inputmode="text" type="text" (ionChange)="onSearchChange($event)"
+          [debounce]="250"></ion-searchbar>
+      </ion-col>
+      <ion-col size="8" class="ion-text-center ion-align-self-center" *ngIf="!doSearch">
         <ion-title class="ion-no-padding main-page-Title">{{language.Main_Page}}</ion-title>
       </ion-col>
-      <ion-col size="1">
+      <ion-col size="1" (click)="doSearch = !doSearch">
         <ion-img class="search" src="assets/mainPage/main/search-circle.png"></ion-img>
       </ion-col>
       <ion-col size="1">
-        <ion-img *ngIf="isOnline"
-        class="wifiOn"
-        src="\assets\pages\Wifi\Internet On.png"
-      ></ion-img>
-      <ion-img *ngIf="!isOnline"
-        class="wifiOn"
-        src="\assets\pages\Wifi\Internet Off.png"
-      ></ion-img>      </ion-col>
+        <ion-img *ngIf="isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet On.png"></ion-img>
+        <ion-img *ngIf="!isOnline" class="wifiOn" src="\assets\pages\Wifi\Internet Off.png"></ion-img>
+      </ion-col>
     </ion-row>
   </ion-grid>
   <app-date></app-date>
 </ion-header>
 
 <ion-content>
-  <ion-grid [ngStyle]="{'background-color': sharedService.handleThemeColor()}" class="main-page-content  ion-padding-top">
+  <ion-grid [ngStyle]="{'background-color': sharedService.handleThemeColor()}"
+    class="main-page-content  ion-padding-top">
     <ion-row class="ion-margin-top">
-      <ion-col size="4" class="cols" *ngFor="let page of pages">
+      <ion-col size="4" class="cols" *ngFor="let page of pages" [ngStyle]="{'display': page.display}">
         <div [routerLink]="page.routerLink">
           <ion-img [src]="page.imgSrc"></ion-img>
           <ion-text>
@@ -39,163 +39,5 @@
         </div>
       </ion-col>
     </ion-row>
-    <!-- <ion-row class="ion-margin-top">
-      <ion-col size="4" class="cols">
-        <div routerLink="/customer-history">
-          <ion-img src="assets/mainPage/main/Customer-History.png"></ion-img>
-          <ion-text>
-            <p>Customer History</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/questionnaire">
-          <ion-img src="assets/mainPage/main/Questionnaire.png"></ion-img>
-          <ion-text>
-            <p>Questionnaire</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/notifications">
-          <ion-img src="assets/mainPage/main/Notification.png"></ion-img>
-          <ion-text>
-            <p>Notification</p>
-          </ion-text>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="4" class="cols">
-        <div routerLink="/gps-tracking">
-          <ion-img src="assets/mainPage/main/GPS-Tracking.png"></ion-img>
-          <ion-text>
-            <p>GPS Tracking</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/online-daily-sales">
-          <ion-img src="assets/mainPage/main/Online-Daily-Sale.png"></ion-img>
-          <ion-text>
-            <p>Online Daily Sales</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/customer-nearby">
-          <ion-img src="assets/mainPage/main/Customer-nearby.png"></ion-img>
-          <ion-text>
-            <p>Customer Nearby</p>
-          </ion-text>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="4" class="cols">
-        <div routerLink="/salesmen-location">
-          <ion-img src="assets/mainPage/main/Salesmen Location.png"></ion-img>
-          <ion-text>
-            <p>Salesmen Location</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/trace-salesman">
-          <ion-img src="assets/mainPage/main/Trace-Salesman.png"></ion-img>
-          <ion-text>
-            <p>Trace Salesman</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/daily-status">
-          <ion-img src="assets/mainPage/main/Daily-Status.png"></ion-img>
-          <ion-text>
-            <p>Daily Status</p>
-          </ion-text>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="4" class="cols">
-        <div routerLink="/today-planned-not-buying">
-          <ion-img
-            src="assets/mainPage/main/Today-Planned-Not-buying.png"
-          ></ion-img>
-          <ion-text>
-            <p>Today-Planned/ Not buying</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/loading-truck-status">
-          <ion-img
-            src="assets/mainPage/main/Loading-Truck-Stauts.png"
-          ></ion-img>
-          <ion-text>
-            <p>Loading Truck Status</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/score-card">
-          <ion-img src="assets/mainPage/main/ScoreCard.png"></ion-img>
-          <ion-text>
-            <p>ScoreCard</p>
-          </ion-text>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="4" class="cols">
-        <div routerLink="/online-sales-hourly">
-          <ion-img src="assets/mainPage/main/Online-Sales-Hourly.png"></ion-img>
-          <ion-text>
-            <p>Online Sales Hourly</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/online-sale-days-hourly">
-          <ion-img
-            src="assets/mainPage/main/Online-Sale-for-days-hourly.png"
-          ></ion-img>
-          <ion-text>
-            <p>Online Sale for days hourly</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/sales-compare-tracking-hourly">
-          <ion-img
-            src="assets/mainPage/main/Sales-Campare-Traking-Hourly.png"
-          ></ion-img>
-          <ion-text>
-            <p>Sales Campare Traking Hourly</p>
-          </ion-text>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="4" class="cols">
-        <div routerLink="/sales-hourly-day">
-          <ion-img
-            src="assets/mainPage/main/Sales-hourly_Day-and-Sales-Office.png"
-          ></ion-img>
-          <ion-text>
-            <p>Sales hourly_Day & Sales Office</p>
-          </ion-text>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="cols">
-        <div routerLink="/max-pped">
-          <ion-img src="assets/mainPage/main/Max-PPED.png"></ion-img>
-          <ion-text>
-            <p>Max PPED</p>
-          </ion-text>
-        </div>
-      </ion-col>
-    </ion-row> -->
   </ion-grid>
 </ion-content>

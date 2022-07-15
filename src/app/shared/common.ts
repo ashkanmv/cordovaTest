@@ -327,6 +327,7 @@ export interface PageDetail {
   routerLink: string;
   imgSrc: string;
   title: string;
+  display : string;
 }
 
 export interface AutoLogin {
@@ -369,6 +370,7 @@ export class Language {
   Server_no_value: string;
   Submit: string;
   Main_Page: string;
+  Main_Page_Search: string;
   Customer_History: {
     Title: string;
     gps: string;
