@@ -222,6 +222,8 @@ export class CustomerNearbyPage implements OnInit {
 
   distanceChanged(distance: number) {
     this.patchValue('selectedDistance', distance);
+    this.items.forEach(i=>i.selected = false)
+    this.items.find(i=>i.value == distance).selected = true;
     this.mapService.clearMarkers.next(true);
     this.changeMapView();
   }

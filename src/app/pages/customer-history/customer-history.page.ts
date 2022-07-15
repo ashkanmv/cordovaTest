@@ -139,8 +139,8 @@ export class CustomerHistoryPage implements OnInit {
         this.typeAndQtyKgSelect();
       },
       () => {
-        this.sharedService.toast('danger', 'Could not fetch cities ...');
         this.dismissLoading(key);
+        this.sharedService.toast('danger', this.language.Customer_History.could_not_fetch_cities)
       }
     );
   }
@@ -154,8 +154,8 @@ export class CustomerHistoryPage implements OnInit {
         this.dismissLoading(key);
       },
       () => {
-        this.sharedService.toast('danger', 'Could not fetch Avgs ...');
         this.dismissLoading(key);
+        this.sharedService.toast('danger', this.language.Customer_History.could_not_fetch_Avgs);
       }
     );
   }
@@ -170,8 +170,8 @@ export class CustomerHistoryPage implements OnInit {
         this.dismissLoading(key);
       },
       () => {
-        this.sharedService.toast('danger', 'Could not fetch cities ...');
         this.dismissLoading(key);
+        this.sharedService.toast('danger',this.language.Customer_History.could_not_fetch_cities);
       }
     );
   }
@@ -190,8 +190,8 @@ export class CustomerHistoryPage implements OnInit {
         this.dismissLoading(key);
       },
       () => {
-        this.sharedService.toast('danger', 'Could not fetch routes ...');
         this.dismissLoading(key);
+        this.sharedService.toast('danger', this.language.Customer_History.could_not_fetch_routes);
       }
     );
   }
@@ -344,7 +344,7 @@ export class CustomerHistoryPage implements OnInit {
     this.customer_histories = [];
     this.virtual_rows = [];
     if (!customerHistory?.length) {
-      this.sharedService.toast('warning', 'NO Value'); // JSON
+      this.sharedService.toast('warning', this.language.Customer_History.no_value); // JSON
       this.dismissLoading(loadingKey);
       return;
     }

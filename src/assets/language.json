@@ -24,10 +24,14 @@
             "Qty": "Qty",
             "Kg": "Kg",
             "msg_no_customer": "There is no customer near you!",
-            "searching": "searching",
+            "searching": "Searching",
             "notFound": "Your search returned no results",
             "typeToSearchText": "Search",
-            "searchPlaceholder": "Search"
+            "searchPlaceholder": "Search",
+            "could_not_fetch_cities":"Could not fetch cities ...",
+            "could_not_fetch_Avgs":"Could not fetch Avgs ...",
+            "could_not_fetch_routes":"Could not fetch routes ...",
+            "no_value":"NO Value"
         },
         "Questionnaire": {
             "Title": "Questionnaire",
@@ -94,7 +98,9 @@
             "UserPassIncorrect": "Username or password is incorrect",
             "RememberMe": "Remember Me",
             "PoweredBy": "Powered by:",
-            "serial": "Serial : R52J209"
+            "serial": "Serial : R52J209",
+            "loginBtn":"LOGIN"
+
         },
         "theme": {
             "title": "Theme",
@@ -234,7 +240,7 @@
         },
         "logOut": {
             "areYouSure": "ARE YOU SURE?",
-            "message": "",
+            "message": "Message",
             "logOut": "Yes",
             "cancel": "No"
         },
@@ -341,7 +347,11 @@
             "searching": " در حال جستجو",
             "notFound": "جستجوی شما نتیجه ای نداشت",
             "typeToSearchText": "جستجو",
-            "searchPlaceholder": "جستجو"
+            "searchPlaceholder": "جستجو",
+            "could_not_fetch_cities":"...شهری دریافت نشد",
+            "could_not_fetch_Avgs":"Could not fetch Avgs ...",
+            "could_not_fetch_routes":"...مسیری دریافت نشد",
+            "no_value":"بدون ارزش"
         },
         "Questionnaire": {
             "Title": "پرسشنامه",
@@ -397,7 +407,7 @@
             "Segment_categoryPer": "%دسته بندی",
             "Segment_channelPer": "%کانال",
             "Radio_input_sales": "فروش",
-            "Radio_input_PPED": "PPED",
+            "Radio_input_PPED": "مرجوعی",
             "group": "همه"
         },
         "login": {
@@ -408,7 +418,8 @@
             "UserPassIncorrect": "نام کاربری یا رمز عبور اشتباه است",
             "RememberMe": "مرا بخاطر بسپار",
             "PoweredBy": "پشتیبانی شده توسط",
-            "serial": "سریال"
+            "serial": "سریال",
+            "loginBtn":"به سیستم وارد شوید"
         },
         "Menu": {
             "en": "EN",
@@ -558,7 +569,7 @@
         },
         "logOut": {
             "areYouSure": "آیا مطمئن هستید؟",
-            "message": "",
+            "message": "پیام",
             "logOut": "بله",
             "cancel": "خیر"
         },

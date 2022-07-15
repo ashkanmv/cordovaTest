@@ -59,10 +59,6 @@ ion-menu.md ion-item ion-icon {
   color: #616e7e;
 }
 
-// ion-menu.md ion-item ion-label {
-// //  font-weight: 500;
-// }
-
 ion-menu.ios ion-content {
   --padding-bottom: 20px;
 }
@@ -147,11 +143,18 @@ ion-item ion-label {
   align-items: center; 
 }
 
+ion-toggle{
+  --background: #a0c5ff;
+--background-checked: #a0c5ff;
+
+--handle-background: #0095eb;
+--handle-background-checked: #0095eb;
+}
+
 
 
 
 .footer-btn-color{
-  // border: 3px solid #77CDFE;
   color: var(--ion-color-light);
   p{
     display: flex;

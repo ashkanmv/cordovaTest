@@ -16,7 +16,7 @@
         size="2">
         {{language.Customer_History.gps}}
         <span class="toggle-background">
-          <ion-toggle class="ion-no-padding" color="primary" [(ngModel)]="gps" (ionChange)="gpsChanged()"></ion-toggle>
+          <ion-toggle class="ion-no-padding" [(ngModel)]="gps" (ionChange)="gpsChanged()"></ion-toggle>
         </span>
       </ion-col>
       <ion-col (click)="show=!show" size="1"
@@ -37,8 +37,8 @@
     <ion-row class="search-container" *ngIf="show">
       <ion-col class="ion-justify-content-center search-box lightBlue-shadow" size="12">
         <ng-select class="ion-align-self-center" [items]="items | async" [(ngModel)]="value" [typeahead]="input"
-          loadingText="درحال جست و جو" [loading]="searching" [minTermLength]="2"
-          notFoundText="جستجوی شما نتیجه ای نداشت" typeToSearchText="جستجو" placeholder="Search">
+          loadingText="{{language.Customer_History.searching}}" [loading]="searching" [minTermLength]="2"
+          notFoundText="{{language.Customer_History.notFound}}" typeToSearchText="{{language.Customer_History.typeToSearchText}}" placeholder="{{language.Customer_History.searchPlaceholder}}">
           <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
             <div>
               <ion-item (click)="getCustomerByCustNumber(item.Number)"> <!--[routerLink]="['/questionnaire']" [queryParams]="{ customerNumber : item.Number}"-->

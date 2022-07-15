@@ -122,7 +122,7 @@ ion-col{
            ng-select{
                height: 10vh;
                width: 100%;
-               overflow: hidden;
+               overflow: scroll;
            }
         }
         .search-submit{
