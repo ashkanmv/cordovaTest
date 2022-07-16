@@ -100,6 +100,7 @@ export class GpsTrackingPage implements OnInit {
     this.showMap = false;
     this.removeAllLoadings();
     if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
+    this.unsubscribeObsirvables()
   }
 
   init() {
@@ -410,7 +411,7 @@ export class GpsTrackingPage implements OnInit {
       });
     });
 
-    if (this.srLoaded)
+    if (this.srLoaded){
       markers.push(
         {
           latitude: this.srPoints[this.srPoints.length - 1][0],
@@ -418,8 +419,15 @@ export class GpsTrackingPage implements OnInit {
           icon: this.mapService.salesManIcon,
           description: this.markerDescription('salesman', this.srInfo)
         })
-
-    let flyTo: MapView;
+        let flyTo: MapView;
+        flyTo = {
+          lat: +this.srPoints[this.srPoints.length - 1][0],
+          lng: +this.srPoints[this.srPoints.length - 1][1],
+          zoom: 13,
+        };
+        this.mapView = flyTo;
+      }
+    
     this.allShopPoints.forEach((shop) => {
       markers.push({
         latitude: +shop.PointLatitude,
@@ -429,13 +437,7 @@ export class GpsTrackingPage implements OnInit {
         description: this.markerDescription('shopPoint', shop),
       });
     });
-    flyTo = {
-      lat: +this.allShopPoints[this.allShopPoints.length -1].PointLatitude,
-      lng: +this.allShopPoints[this.allShopPoints.length -1].PointLongitude,
-      zoom: 13,
-    };
     this.markers = [...this.markers, ...markers];
-    if (flyTo) this.mapView = flyTo;
     if (!this.markers.length) this.sharedService.toast('warning', this.language.Gps_Tracking.No_Value)
     else this.show = false;
     this.dismissLoading(this.loadingKey);

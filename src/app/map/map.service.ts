@@ -22,59 +22,59 @@ export class MapService {
   geoapifyAPIKey = '5908d42d2c0344b2af400a77ab03ed10';
   shop_point: IconOptions = {
     iconUrl: 'assets/icon/shop_green.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_NotBuyWeeks: IconOptions = {
     iconUrl: 'assets/icon/shop_green_x.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_Max_PPED: IconOptions = {
     iconUrl: 'assets/icon/shop_green_circle.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_Max_PPED_NotBuy: IconOptions = {
     iconUrl: 'assets/icon/shop_green_circle_x.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_Month_Promotion: IconOptions = {
     iconUrl: 'assets/icon/shop_blue.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_Promo_NotBuyWeeks: IconOptions = {
     iconUrl: 'assets/icon/shop_blue_x.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_Promo_Max_PPED: IconOptions = {
     iconUrl: 'assets/icon/shop_blue_circle.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_Promo_Max_PPED_NotBuy: IconOptions = {
     iconUrl: 'assets/icon/shop_blue_circle_x.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   salesManIcon: IconOptions = {
     iconUrl: 'assets/icon/salesman.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   salesMenRsmIcon: IconOptions = {
     iconUrl: 'assets/icon/salesmen_rsm.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   salesMenAsmIcon: IconOptions = {
     iconUrl: 'assets/icon/salesmen_asm.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   salesMenSsvIcon: IconOptions = {
     iconUrl: 'assets/icon/salesmen_ssv.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   salesMenSrIcon: IconOptions = {
     iconUrl: 'assets/icon/salesmen_sr.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   salesManSdIcon: IconOptions = {
     iconUrl: 'assets/icon/salesman_sd.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   SalesManPolylineOption: PolylineOptions = {
     color: '#A0522D',
@@ -83,7 +83,7 @@ export class MapService {
   };
   TruckIcon: IconOptions = {
     iconUrl: 'assets/icon/truck.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   TruckPolylineOption: PolylineOptions = {
     color: '#6495ED',
@@ -92,19 +92,19 @@ export class MapService {
   };
   shop_red: IconOptions = {
     iconUrl: 'assets/icon/shop_red.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_red_black_circle: IconOptions = {
     iconUrl: 'assets/icon/shop_red_black_circle.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_blue: IconOptions = {
     iconUrl: 'assets/icon/shop_blue.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
   shop_orange: IconOptions = {
     iconUrl: 'assets/icon/shop_orange.png',
-    iconSize: [30, 30],
+    iconSize: [25, 25],
   };
 
   rsmPolylineOption: PolylineOptions = {
@@ -149,7 +149,7 @@ export class MapService {
   private srNearPointsLatlng =
     environment.BaseURL + '/api/v1/gps/srNearPointsLatlng';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getVehicleByRouteTime(
     route_code: string,
