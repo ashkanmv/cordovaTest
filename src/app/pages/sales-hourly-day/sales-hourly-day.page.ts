@@ -14,16 +14,8 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./sales-hourly-day.page.scss'],
 })
 export class SalesHourlyDayPage implements OnInit {
-  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
 
   selectedSegment: string = 'dsd-hourly-city';
-
-  
-
-  confirm() {
-    // this.datetime.nativeEl.confirm();
-    this.datetime.confirm();
-  }
 
   showPerInvoiceDate = false;
   selected_date = new Date().toISOString();
@@ -56,7 +48,6 @@ export class SalesHourlyDayPage implements OnInit {
   dropdownListN = [];
   selectedItemsN = [];
   dropdownSettingsN = {};
-  // @ViewChild('perInvoicesDate') dateTime: IonDatetime;
   public get language(): Language {
     return this.languageService.language;
   }
