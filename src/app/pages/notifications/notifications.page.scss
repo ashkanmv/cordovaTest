@@ -144,18 +144,20 @@ ion-col.notifications{
             left: 2vw;
         }
         ion-card-content{
-            width: 83%;
             display: flex;
-            margin-left: 10vw;
             h4{
                 color: #07073f;
                 font-size: 1rem;
                  font-weight: bold;
-                margin-right: 3vw;
+                margin: 0 2vw;
             }
             img{
-                max-width: 100px;
-                border-radius: 10px;
+                max-width: 160px;
+                height: 105px;
+                border-radius: 25px;
+            }
+            video{
+                max-width: 140px;
             }
         }
     }

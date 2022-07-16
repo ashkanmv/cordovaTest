@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 
-import { IonDatetime, LoadingController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -15,8 +15,6 @@ import { MaxPpedService } from './max-pped.service';
 })
 export class MaxPPEDPage implements OnInit {
   loadings: LoadingController[] = [];
-  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
-  dateNow = new Date();
   selectedSegment: string = 'per-customer';
   selected_fromdate = new Date().toISOString();
   selected_fromdateN = new Date().toISOString();
@@ -282,6 +280,11 @@ export class MaxPPEDPage implements OnInit {
     });
   }
   async row_click2(row) {
+    this.virtual_rows2.forEach((x)=>{
+      if (x.type == 'b' && x.show) {
+        x.show=false        
+      }
+    });
     if (row.type == 'a') {
       if (this.virtual_rows2[row.index + 1].show) {
         this.virtual_rows2[row.index + 1].show = false;

@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { IonDatetime, LoadingController } from '@ionic/angular';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSalesHourlyCityService } from './sr-sales-hourly-city.service';
 import { Data } from '@angular/router';
-import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
@@ -274,6 +273,11 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     }
   }
   row_click1(row, index) {
+    this.virtual_rows1.forEach((x)=>{
+      if (x.type == 'b' && x.show) {
+        x.show=false        
+      }
+    });
     if (row.type == 'a') {
       if (this.virtual_rows1[row.index + 1].show) {
         this.virtual_rows1[row.index + 1].show = false;
@@ -302,6 +306,11 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   }
 
   row_click2(row) {
+    this.virtual_rows2.forEach((x)=>{
+      if (x.type == 'b' && x.show) {
+        x.show=false        
+      }
+    });
     if (row.type == 'a') {
       if (this.virtual_rows2[row.index + 1].show) {
         this.virtual_rows2[row.index + 1].show = false;

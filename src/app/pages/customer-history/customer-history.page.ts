@@ -390,6 +390,11 @@ export class CustomerHistoryPage implements OnInit {
   }
 
   rowClick(row: any) {
+    this.virtual_rows.forEach((x)=>{
+      if (x.type == 'b' && x.show) {
+        x.show=false        
+      }
+    });
     if (row.type == 'a') {
       if (this.virtual_rows[row.index + 1].show) {
         this.virtual_rows[row.index + 1].show = false;

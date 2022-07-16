@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonDatetime, LoadingController } from '@ionic/angular';
-import { format, parseISO } from 'date-fns';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -14,7 +13,6 @@ import { LoadingTruckStatusService } from './loading-truck-status.service';
   styleUrls: ['./loading-truck-status.page.scss'],
 })
 export class LoadingTruckStatusPage implements OnInit {
-  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
   loadings: LoadingController[] = [];
   userId;
   selected_date = new Date().toISOString();

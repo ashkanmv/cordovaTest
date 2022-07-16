@@ -265,6 +265,8 @@ export class MapService {
     params = params.append('time_first', time_first);
     params = params.append('time_end', time_end);
     params = params.append('useriD', userId);
+    params = params.append('_', 1657987896323);
+    params = params.append('filter_type', 1);
     return this.http.get<getVPByRouteResponse[]>(this.visitorPointUrlUser, {
       params,
     });
