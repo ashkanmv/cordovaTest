@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Data, Router } from '@angular/router';
 
-import { IonDatetime, LoadingController, NavController } from '@ionic/angular';
+import { IonDatetime, LoadingController } from '@ionic/angular';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -14,6 +14,7 @@ import { MaxPpedService } from './max-pped.service';
   styleUrls: ['./max-pped.page.scss'],
 })
 export class MaxPPEDPage implements OnInit {
+  loadings: LoadingController[] = [];
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
   dateNow = new Date();
   selectedSegment: string = 'per-customer';
@@ -53,7 +54,6 @@ export class MaxPPEDPage implements OnInit {
 
   constructor(
     private router: Router,
-    private navController: NavController,
     private languageService: LanguageService,
     private storageService: StorageService,
     private srPpedService: MaxPpedService,
@@ -70,6 +70,10 @@ export class MaxPPEDPage implements OnInit {
     });
   }
 
+  ionViewWillLeave() {
+    this.removeAllLoadings();
+  }
+
   dateChanged(segment: 'per-route' | 'per-customer') {
     if (segment == 'per-customer') this.selectedDC();
     else this.selectedDCN();
@@ -81,10 +85,8 @@ export class MaxPPEDPage implements OnInit {
   }
 
   async get_dc() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dc';
+    await this.presentLoading(key);
     this.srPpedService.getUserDc(this.userId).subscribe((dcs: Data[]) => {
       this.dc = dcs;
       for (var i = 0; i < this.dc.length; i++) {
@@ -96,7 +98,7 @@ export class MaxPPEDPage implements OnInit {
       }
       this.selectedItems = this.dropdownList.map((_) => _.itemName);
 
-      loading.dismiss();
+      this.dismissLoading(key);
       this.selectedDC();
     });
   }
@@ -158,10 +160,8 @@ export class MaxPPEDPage implements OnInit {
   }
 
   async get_dcN() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dcN';
+    await this.presentLoading(key);
     this.srPpedService.getUserDc(this.userId).subscribe((dcs: Data[]) => {
       this.dcN = dcs;
       for (var i = 0; i < this.dcN.length; i++)
@@ -171,20 +171,18 @@ export class MaxPPEDPage implements OnInit {
           group: this.language.Max_PPED.group,
         });
       this.selectedItemsN = this.dropdownListN.map((_) => _.itemName);
-      loading.dismiss();
+      this.dismissLoading(key);
       this.selectedDCN();
     });
   }
 
   async selectedDCN() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'selectedDCN';
+    await this.presentLoading(key);
 
     if (!this.selectedItemsN.length) {
       this.create_total_model2('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
       return;
     }
 
@@ -197,19 +195,16 @@ export class MaxPPEDPage implements OnInit {
       .subscribe((srsales: Data[]) => {
         if (srsales.length) this.create_total_model2(srsales);
         else this.create_total_model2('Empty');
-        loading.dismiss();
+        this.dismissLoading(key);
       });
   }
 
   async selectedDC() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'selectedDC';
+    await this.presentLoading(key);
 
     if (!this.selectedItems.length) {
-      // this.create_total_model1('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
       return;
     }
 
@@ -221,8 +216,7 @@ export class MaxPPEDPage implements OnInit {
       )
       .subscribe((srsales: Data[]) => {
         if (srsales.length != 0) this.create_total_model1(srsales);
-        // else this.create_total_model1('Empty');
-        loading.dismiss();
+        this.dismissLoading(key);
       });
   }
 
@@ -281,13 +275,6 @@ export class MaxPPEDPage implements OnInit {
     ];
     this.isVisible = index;
   }
-  //   row_clickCustomer(CustomerNumber) {
-  //     this.storageService
-  //       .set('Customer_Number', CustomerNumber)
-  //       .then((Customer_Number) => {
-  //         this.navController.push(CustomerHistoryPage);
-  //       });
-  //   }
 
   row_clickCustomer(customerCode) {
     this.router.navigate(['/customer-history'], {
@@ -301,10 +288,8 @@ export class MaxPPEDPage implements OnInit {
       } else {
         this.virtual_rows2[row.index + 1].show = true;
       }
-      const loading = await this.loadingCtrl.create({
-        message: this.language.Loading,
-      });
-      await loading.present();
+      const key = 'row_click2';
+      await this.presentLoading(key);
 
       this.srPpedService
         .getSrPpedPerRouteDetail(
@@ -315,7 +300,7 @@ export class MaxPPEDPage implements OnInit {
         )
         .subscribe((customer_histories) => {
           this.create_model2(customer_histories, row.index + 1);
-          loading.dismiss();
+          this.dismissLoading(key);
         });
     }
   }
@@ -323,7 +308,6 @@ export class MaxPPEDPage implements OnInit {
   selected_ch2 = [];
   srpped3 = [];
   create_model2(model, index) {
-    //this.loading.present();
     this.selected_ch2[index] = [];
     if (model[0]) {
       let keys = Object.keys(model[0]);
@@ -334,13 +318,29 @@ export class MaxPPEDPage implements OnInit {
         let temp = Object.keys(ch).map((key) => ch[key]);
         for (var j = 1; j < temp.length; j++) {
           if (temp[j] != null) {
-            //temp[j] = parseFloat(temp[j]).toFixed(2);
             temp[j] = temp[j];
           }
         }
         this.selected_ch2[index].push(temp);
       }
     }
-    //this.loading.dismiss();
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { ThemeColors, Language, News } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
-import { UtilService } from 'src/app/shared/util.service';
 import { AddEditNotificationComponent } from './add-edit-notification/add-edit-notification.component';
 import { NotificationsService } from './notifications.service';
 
@@ -16,6 +14,7 @@ import { NotificationsService } from './notifications.service';
   styleUrls: ['./notifications.page.scss'],
 })
 export class NotificationsPage implements OnInit {
+  loadings: LoadingController[] = [];
   hasAccess = false;
   skip = 0;
   limit = 5;
@@ -25,22 +24,20 @@ export class NotificationsPage implements OnInit {
   public get language(): Language {
     return this.languageService.language;
   }
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline
   }
-  public get backgroundColor() :ThemeColors{
+  public get backgroundColor(): ThemeColors {
     return this.sharedService.themeColor;
   }
 
   constructor(
-    private router: Router,
     private storageService: StorageService,
     private notificationService: NotificationsService,
     private languageService: LanguageService,
     public sharedService: SharedService,
     private loadingCtrl: LoadingController,
-    private modalCtrl: ModalController,
-    private utilService : UtilService
+    private modalCtrl: ModalController
   ) { }
 
   slideOpts = {
@@ -64,10 +61,8 @@ export class NotificationsPage implements OnInit {
 
   async getNews(event?: any) {
     if (!event) {
-      const loading = await this.loadingCtrl.create({
-        message: this.language.Loading
-      });
-      await loading.present();
+      const key = 'getNews';
+      await this.presentLoading(key);
     }
 
     this.notificationService.getNews(this.skip, this.limit)
@@ -81,7 +76,7 @@ export class NotificationsPage implements OnInit {
 
           this.skip += this.limit;
           if (!event) {
-            this.loadingCtrl.dismiss();
+            this.removeAllLoadings();
           } else
             event.target.complete();
         },
@@ -92,10 +87,8 @@ export class NotificationsPage implements OnInit {
   }
 
   async deleteNotification(id: number) {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading
-    });
-    await loading.present();
+    const key = 'deleteNotification';
+    await this.presentLoading(key);
 
     this.notificationService.deleteNews(id).subscribe(() => {
       this.sharedService.toast('success', this.language.News.NotificationDeleted);
@@ -103,14 +96,14 @@ export class NotificationsPage implements OnInit {
       this.all_news = [];
       this.lastPageReached = false;
       this.getNews();
-      loading.dismiss();
+      this.dismissLoading(key);
     })
   }
 
   addNotification() {
     this.modalCtrl.create({
       component: AddEditNotificationComponent,
-      cssClass:"modal-fullscreen"
+      cssClass: "modal-fullscreen"
     }).then(modalEl => {
       modalEl.present();
       return modalEl.onDidDismiss();
@@ -125,11 +118,11 @@ export class NotificationsPage implements OnInit {
     })
   }
 
-  editNews(news : News){
+  editNews(news: News) {
     this.modalCtrl.create({
       component: AddEditNotificationComponent,
-      componentProps : { news },
-      cssClass:"modal-fullscreen"
+      componentProps: { news },
+      cssClass: "modal-fullscreen"
     }).then(modalEl => {
       modalEl.present();
       return modalEl.onDidDismiss();
@@ -168,5 +161,23 @@ export class NotificationsPage implements OnInit {
 
   confirm() {
     return this.modalCtrl.dismiss(null, 'confirm');
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
