@@ -421,7 +421,6 @@ export class GpsTrackingPage implements OnInit {
         })
 
     let flyTo: MapView;
-    console.log(this.allShopPoints);
     this.allShopPoints.forEach((shop) => {
       markers.push({
         latitude: +shop.PointLatitude,
@@ -552,6 +551,7 @@ export class GpsTrackingPage implements OnInit {
             options: this.mapService.SalesManPolylineOption,
           },
         ];
+        this.srLoaded = true;
         this.handleDifferentShopPoints();
       });
   }
