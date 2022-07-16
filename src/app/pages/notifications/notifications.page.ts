@@ -155,13 +155,6 @@ export class NotificationsPage implements OnInit {
     }
     this.getNews(event);
   }
-  cancel() {
-    return this.modalCtrl.dismiss(null, 'cancel');
-  }
-
-  confirm() {
-    return this.modalCtrl.dismiss(null, 'confirm');
-  }
 
   async presentLoading(key: string) {
     this.loadings[key] = await this.loadingCtrl.create({
