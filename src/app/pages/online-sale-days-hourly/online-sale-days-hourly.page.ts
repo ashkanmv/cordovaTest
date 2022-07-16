@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { IonDatetime, LoadingController } from '@ionic/angular';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSalesHourlyCityService } from './sr-sales-hourly-city.service';
 import { Data } from '@angular/router';
-import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
