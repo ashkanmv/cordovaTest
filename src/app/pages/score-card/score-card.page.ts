@@ -18,7 +18,7 @@ export class ScoreCardPage implements OnInit {
   channelRadio: 1 | 2 = 1;
   categoryPRadio: 1 | 2 = 1;
   channelPRadio: 1 | 2 = 1;
-  selectedSegment: string = 'category';
+  selectedSegment: 'category' | 'channel' | 'categoryP' | 'channelP' = 'category';
   categories2 = [];
   skus2 = [];
   scorecards2 = [];
@@ -415,7 +415,7 @@ export class ScoreCardPage implements OnInit {
   }
 
   categoryPSection() {
-    if (this.categoryRadio == 1)
+    if (this.categoryPRadio == 1)
       this.getSales3ByChannel();
     else
       this.getPped3ByChannel();
@@ -677,6 +677,23 @@ export class ScoreCardPage implements OnInit {
     for (const key in this.loadings)
       this.loadings[key].dismiss()
     this.loadings = [];
+  }
+
+  refresh() {
+    switch (this.selectedSegment) {
+      case 'category':
+        this.categorySection();
+        break;
+      case 'channel':
+        this.channelSectionSkus();
+        break;
+      case 'categoryP':
+        this.categoryPSection();
+        break;
+      case 'channelP':
+        this.channelPSectionSkus();
+        break;
+    }
   }
 
 }
