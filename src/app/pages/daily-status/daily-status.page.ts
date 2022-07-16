@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonDatetime, LoadingController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import {  LoadingController } from '@ionic/angular';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -28,7 +28,6 @@ export class DailyStatusPage implements OnInit {
   selected_dc;
   selected_ch1 = [];
   selected_ch_t = [];
-  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
 
 
   selectedSegment: string = 'tablet';
@@ -47,13 +46,6 @@ export class DailyStatusPage implements OnInit {
     this.selectedSegment = event.target.value;
   }
 
-  confirm() {
-    this.datetime.confirm();
-  }
-
-  reset() {
-    this.datetime.reset();
-  }
   ngOnInit() {
     this.storageServiec.get('user_id').then(userId => {
       this.userId = userId;
