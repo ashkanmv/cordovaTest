@@ -137,6 +137,7 @@ ion-col.table-container{
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow-wrap: anywhere;
         }
         .tbody{
             overflow: scroll;
