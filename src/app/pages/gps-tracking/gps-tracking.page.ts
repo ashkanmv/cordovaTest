@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { IonDatetime, LoadingController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { LatLngTuple } from 'leaflet';
 import { Subscription, timer } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
@@ -18,7 +18,6 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./gps-tracking.page.scss'],
 })
 export class GpsTrackingPage implements OnInit {
-  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
   loadingKey = 'routeSelect';
   loadings: LoadingController[] = [];
   firstLoad = false;
