@@ -227,6 +227,11 @@ export class OnlineDailySalesPage implements OnInit {
   }
 
   row_click2(row) {
+    this.virtual_rows2.forEach((x)=>{
+      if (x.type == 'b' && x.show) {
+        x.show=false        
+      }
+    });
     if (row.type == 'a') {
       if (this.virtual_rows2[row.index + 1].show) {
         this.virtual_rows2[row.index + 1].show = false;
