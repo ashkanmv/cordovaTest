@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MapService } from 'src/app/map/map.service';
-import { IonDatetime, LoadingController, PopoverController } from '@ionic/angular';
+import { LoadingController, PopoverController } from '@ionic/angular';
 import { ThemeColors, GetAllChildrenUserResponse, GetSalesmenLocationResponse, Language, Marker } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { PersianCalendarService } from 'src/app/shared/persian-calendar.service';
@@ -16,7 +16,6 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./salesmen-location.page.scss'],
 })
 export class SalesmenLocationPage implements OnInit {
-  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
   showSr = true;
   showRsm = true;
   showAsm = true;
