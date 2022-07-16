@@ -49,38 +49,38 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <ion-row [ngStyle]="{'background-color': sharedService.handleThemeColor()}" >
-          <ion-col size="12" class="text-align-center">
+        <ion-row class="btn-container "  [ngStyle]="{'background-color': sharedService.handleThemeColor()}" >
+          <ion-col size="12" class="text-align-center ion-justify-content-center ion-align-items-end">
             <ion-menu-toggle>
               <button class="btn lighter footer-btn-color flex-row">
                 <p class="settings" routerLink="/settings"><ion-icon name="settings-sharp"></ion-icon> {{selectedLanguage.Menu.Setting}}</p>
                 <p class="logOut" id="open-logOut" >{{selectedLanguage.Menu.LogOut}}</p>
               </button>
-              <ion-modal #modal trigger="open-logOut">
-                <ng-template>
-                  <ion-content>
-                    <ion-item class="title ion-text-center ion-justify-content-center ion-align-items-end">
-                      <ion-title>{{selectedLanguage.logOut.areYouSure}}</ion-title>
-                    </ion-item>
-                    <ion-item class="label ion-text-center ion-justify-content-center  ion-align-items-center  ">
-                      <ion-label>{{selectedLanguage.logOut.message}}</ion-label>
-                    </ion-item>
-                    <ion-item class="buttons ion-text-center ion-justify-content-center  ion-align-items-center ">
-                      <ion-item>
-                        <ion-button class="logOut-btn" (click)="logout();modal.dismiss()">
-                          {{selectedLanguage.logOut.logOut}} 
-                        </ion-button>
-                        <ion-button (click)="modal.dismiss()">
-                          {{selectedLanguage.logOut.cancel}}
-                        </ion-button>
-                      </ion-item>
-                    </ion-item>
-                  </ion-content>
-                </ng-template>
-              </ion-modal>
             </ion-menu-toggle>
           </ion-col>
         </ion-row>
+        <ion-modal #modal trigger="open-logOut">
+          <ng-template>
+            <ion-content>
+              <ion-item class="title ion-text-center ion-justify-content-center ion-align-items-end">
+                <ion-title>{{selectedLanguage.logOut.areYouSure}}</ion-title>
+              </ion-item>
+              <ion-item class="label ion-text-center ion-justify-content-center  ion-align-items-center  ">
+                <ion-label>{{selectedLanguage.logOut.message}}</ion-label>
+              </ion-item>
+              <ion-item class="buttons ion-text-center ion-justify-content-center  ion-align-items-center ">
+                <ion-item>
+                  <ion-button class="logOut-btn" (click)="logout();modal.dismiss()">
+                    {{selectedLanguage.logOut.logOut}} 
+                  </ion-button>
+                  <ion-button (click)="modal.dismiss()">
+                    {{selectedLanguage.logOut.cancel}}
+                  </ion-button>
+                </ion-item>
+              </ion-item>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

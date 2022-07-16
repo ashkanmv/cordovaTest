@@ -59,9 +59,9 @@ ion-menu.md ion-item ion-icon {
   color: #616e7e;
 }
 
-ion-menu.ios ion-content {
-  --padding-bottom: 20px;
-}
+// ion-menu.ios ion-content {
+//   --padding-bottom: 20px;
+// }
 
 ion-menu.ios ion-list {
   padding: 20px 0 0 0;
@@ -177,6 +177,13 @@ ion-toggle{
   border: 3px solid #dcdcdc93;
 }
 
+ion-row.btn-container{
+  // height: 35.2%;
+  height: 54vh;
+  ion-col{
+    display: flex;
+  }
+}
 
 // LogOut Modal
 
