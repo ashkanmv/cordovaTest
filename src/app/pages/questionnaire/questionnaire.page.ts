@@ -71,15 +71,6 @@ export class QuestionnairePage implements OnInit {
       }
     );
   }
-  // added lang and get_lang to utili service
-  get_direction() {
-    let lang = this.utilService.get_lang();
-    if (lang == 'en') {
-      return 'ltr';
-    } else {
-      return 'rtl';
-    }
-  }
 
   ngOnInit() {
     this.storageService.get('user_id').then((userId) => {
