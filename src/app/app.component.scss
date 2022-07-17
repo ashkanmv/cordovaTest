@@ -230,3 +230,14 @@ ion-content{
   }
 }
 }
+
+@media (max-width:500px) {
+  ion-row.btn-container{
+    height: 43%;
+  }
+}
+@media (max-width:370px) {
+  ion-row.btn-container{
+    height: 35%;
+  }
+}
