@@ -1,7 +1,7 @@
 <ion-app *ngIf="startApp" [ngStyle]="{'font-size': fontSize(),'font-weight': isBold() }">
   <ion-split-pane contentId="main-content" [disabled]="disableSplitPane">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
+      <ion-content [style.--background]="sharedService.handleThemeColor()">
         <ion-grid class="secondary-bg menu-header">
           <ion-row class="menu-header">
             <ion-col size="8">

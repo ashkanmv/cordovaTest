@@ -26,8 +26,8 @@
   <app-date></app-date>
 </ion-header>
 
-<ion-content>
-  <ion-grid [ngStyle]="{'background-color': sharedService.handleThemeColor()}"
+<ion-content [style.--background]="sharedService.handleThemeColor()">
+  <ion-grid 
     class="main-page-content  ion-padding-top">
     <ion-row class="ion-margin-top">
       <ion-col size="4" class="cols" *ngFor="let page of pages" [ngStyle]="{'display': page.display}">
