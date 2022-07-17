@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Data, Router } from '@angular/router';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { BackgroundGeolocationResponse } from '@awesome-cordova-plugins/background-geolocation/ngx';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { FileTransfer, FileTransferObject, FileUploadOptions } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { LoadingController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import {
   ThemeColors,
   Cities,
@@ -39,6 +40,7 @@ export class QuestionnairePage implements OnInit {
   txtanswers = [];
   userId: string;
   customerNumber: string;
+  paramSubscription: Subscription;
 
   public get language(): Language { return this.languageService.language; }
 
@@ -49,7 +51,7 @@ export class QuestionnairePage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private questionnaireService: QuestionnaireService,
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
@@ -62,9 +64,12 @@ export class QuestionnairePage implements OnInit {
     public sharedService: SharedService,
     private geoLocationService: GeoLocationService
   ) {
-    let customerNumber = this.route.snapshot.queryParams['customerNumber'];
-    if (customerNumber) this.open_OtherForm(customerNumber);
-    this.get_cities();
+    this.paramSubscription = this.activatedRoute.queryParams.subscribe(
+      (params: Params) => {
+        if (params['customerNumber'])
+          this.open_OtherForm(params['customerNumber']);
+      }
+    );
   }
   // added lang and get_lang to utili service
   get_direction() {
@@ -80,10 +85,13 @@ export class QuestionnairePage implements OnInit {
     this.storageService.get('user_id').then((userId) => {
       this.userId = userId;
     });
+    this.get_cities();
     this.loadForm();    
   }
 
   ionViewWillLeave() {
+    if(this.paramSubscription)
+      this.paramSubscription.unsubscribe()
     this.removeAllLoadings();
   }
 

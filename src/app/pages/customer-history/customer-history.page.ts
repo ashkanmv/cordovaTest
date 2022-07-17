@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Data, Params, Router } from '@angular/router';
-import { LoadingController, Platform } from '@ionic/angular';
+import { ActivatedRoute, Params } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { ThemeColors, Cities, Customer, Language, Marker } from 'src/app/shared/common';
@@ -58,9 +58,7 @@ export class CustomerHistoryPage implements OnInit {
 
 
   constructor(
-    private router: Router,
     private customerHistoryService: CustomerHistoryService,
-    private plt: Platform,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
@@ -131,7 +129,7 @@ export class CustomerHistoryPage implements OnInit {
         this.patchValue('Route', customers[0].routename);
         this.dismissLoading(key);
         // this.getAvgs();
-        this.typeAndQtyKgSelect();
+        // this.typeAndQtyKgSelect();
       },
       () => {
         this.dismissLoading(key);
@@ -278,7 +276,7 @@ export class CustomerHistoryPage implements OnInit {
         .getPpedByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory,key);
-          this.createChart(customerHistory);
+          this.createChart(customerHistory,key);
           this.dismissLoading(key);
         });
     else
@@ -286,7 +284,7 @@ export class CustomerHistoryPage implements OnInit {
         .getkgPpedByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory,key);
-          this.createChart(customerHistory);
+          this.createChart(customerHistory,key);
           this.dismissLoading(key);
         });
   }
@@ -299,7 +297,7 @@ export class CustomerHistoryPage implements OnInit {
         .getSalesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory,key);
-          this.createChart(customerHistory);
+          this.createChart(customerHistory,key);
           this.dismissLoading(key);
         });
     else
@@ -307,7 +305,7 @@ export class CustomerHistoryPage implements OnInit {
         .getkgSalesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory,key);
-          this.createChart(customerHistory);
+          this.createChart(customerHistory,key);
           this.dismissLoading(key);
         });
   }
@@ -320,7 +318,7 @@ export class CustomerHistoryPage implements OnInit {
         .getSamplesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory,key);
-          this.createChart(customerHistory);
+          this.createChart(customerHistory,key);
           this.dismissLoading(key);
         });
     else
@@ -328,7 +326,7 @@ export class CustomerHistoryPage implements OnInit {
         .getkgSamplesByCustomer(this.f.Customer.value.CustCode)
         .subscribe((customerHistory: any) => {
           this.createTotalModel(customerHistory,key);
-          this.createChart(customerHistory);
+          this.createChart(customerHistory,key);
           this.dismissLoading(key);
         });
   }
@@ -499,12 +497,15 @@ export class CustomerHistoryPage implements OnInit {
   columns: any[] = [];
   data: any[] = [];
   pieChartData: any[] = [];
-  createChart(model) {
+  createChart(model,key : string) {
     this.columns = [];
     this.data = [];
     this.pieChartData = [];
 
-    if (!model) return;
+    if (!model?.length) {
+      this.dismissLoading(key);
+      return;
+    }
     let format_model = [];
     let keys = Object.keys(model[0]);
 
