@@ -103,15 +103,6 @@ export class AppComponent implements OnInit {
     })
   }
 
-  get_direction() {
-    let lang = this.utilService.get_lang();
-    if (lang == 'en')
-      return 'ltr';
-    else
-      return 'rtl';
-
-  }
-
   enableAutoStart() {
     this.autoStart.enable();
   }
