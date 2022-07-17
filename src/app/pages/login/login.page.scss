@@ -56,7 +56,6 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    // justify-content: center;
 }
 ion-item.remember-me{
     --background: none;
@@ -69,7 +68,6 @@ ion-item.remember-me{
 ion-item.username,
 ion-item.password{
     width: 90%;
-    // height: 10vh;
     border-radius: 50px;
     margin-bottom: 1rem;
     --border-width:0;
