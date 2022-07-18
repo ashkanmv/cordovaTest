@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MapService } from 'src/app/map/map.service';
 import { LoadingController, PopoverController } from '@ionic/angular';
@@ -15,7 +15,7 @@ import { SharedService } from 'src/app/shared/shared.service';
   templateUrl: './salesmen-location.page.html',
   styleUrls: ['./salesmen-location.page.scss'],
 })
-export class SalesmenLocationPage implements OnInit {
+export class SalesmenLocationPage implements OnInit,OnDestroy {
   showSr = true;
   showRsm = true;
   showAsm = true;
@@ -65,6 +65,10 @@ export class SalesmenLocationPage implements OnInit {
     private loadingCtrl: LoadingController
   ) {
   }
+  ngOnDestroy(): void {
+    this.removeAllLoadings()
+    if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
+  }
 
   ionViewDidEnter() {
     this.showMap = true;
@@ -74,12 +78,6 @@ export class SalesmenLocationPage implements OnInit {
   ngOnInit() {
     this.getUserId();
     this.checkAccess();
-  }
-
-  ionViewWillLeave() {
-    this.removeAllLoadings()
-    this.showMap = false;
-    if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
   }
 
   getUserId() {
