@@ -585,7 +585,7 @@ export class QuestionnairePage implements OnInit {
 
   async presentLoading(key: string) {
     this.loadings[key] = await this.loadingCtrl.create({
-      message: this.language.Loading+ key,
+      message: this.language.Loading,
     });
     await this.loadings[key].present();
   }
