@@ -111,10 +111,10 @@
         <h4>
          {{news.text}}
         </h4>
-        <!-- <img src="" alt="" />
-        <video controls>
+        <img *ngIf="news.type === 'image'" src="https://bi.danone.ir:9002/news/{{news.pic}}" alt="" />
+        <video *ngIf="news.type === 'video'" controls>
           <source src="" type="">
-        </video> -->
+        </video>
       </ion-card-content>
       <p class="time-posted"></p>
 
