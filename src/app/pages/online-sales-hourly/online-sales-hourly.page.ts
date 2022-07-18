@@ -47,7 +47,7 @@ export class OnlineSalesHourlyPage implements OnInit {
   dropdownListN = [];
   selectedItemsN = [];
   dropdownSettingsN = {};
-  // @ViewChild('perInvoicesDate') dateTime: IonDatetime;
+
   public get language(): Language {
     return this.languageService.language;
   }

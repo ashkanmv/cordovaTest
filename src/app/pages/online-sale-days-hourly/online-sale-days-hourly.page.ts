@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
-import { IonDatetime, LoadingController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSalesHourlyCityService } from './sr-sales-hourly-city.service';
 import { Data } from '@angular/router';
@@ -13,6 +13,7 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./online-sale-days-hourly.page.scss'],
 })
 export class OnlineSaleDaysHourlyPage implements OnInit {
+  loadings: LoadingController[] = [];
   showPerInvoiceDate = false;
   selected_date = new Date().toISOString();
   selected_dateN = new Date().toISOString();
@@ -41,7 +42,7 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   dropdownListN = [];
   selectedItemsN = [];
   dropdownSettingsN = {};
-  // @ViewChild('perInvoicesDate') dateTime: IonDatetime;
+
   public get language(): Language {
     return this.languageService.language;
   }
@@ -83,10 +84,8 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
   }
 
   async get_dc() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dc';
+    await this.presentLoading(key);
     try {
       this.SrSalesHourlyService.getUserDc(this.user_id).subscribe(
         (dcs: Data[]) => {
@@ -98,22 +97,20 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
               group: this.language.Online_Sale_Days_Hourly.group,
             });
           this.selectedItems = this.dropdownList.map((_) => _.itemName);
-          loading.dismiss();
+          this.dismissLoading(key);
 
           this.dcSelect();
         }
       );
     } catch (error) {
       alert(error);
-      loading.dismiss();
+      this.dismissLoading(key);
     }
   }
 
   async get_dcN() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dcN';
+    await this.presentLoading(key);
     this.SrSalesHourlyService.getUserDc(this.user_id).subscribe(
       (dcs: Data[]) => {
         this.dcN = dcs;
@@ -125,20 +122,18 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
           });
         }
         this.selectedItemsN = this.dropdownListN.map((_) => _.itemName);
-        loading.dismiss();
+        this.dismissLoading(key);
         this.dcSelectN();
       }
     );
   }
 
   async dcSelect() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'dcSelect';
+    await this.presentLoading(key);
     if (!this.selectedItems.length) {
       this.create_total_model1('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
       return;
     }
 
@@ -149,19 +144,17 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     ).subscribe((srsales: Data[]) => {
       if (srsales.length != 0) this.create_total_model1(srsales);
       else this.create_total_model1('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
   async dcSelectN() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'dcSelect';
+    await this.presentLoading(key);
 
     if (!this.selectedItemsN.length) {
       this.create_total_model1('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
       return;
     }
 
@@ -173,7 +166,7 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
       if (srsales.length) this.create_total_model2(srsales);
       else this.create_total_model2('Empty');
 
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
@@ -334,6 +327,24 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
         this.selected_ch2[index].push(temp);
       }
     }
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 
 }
