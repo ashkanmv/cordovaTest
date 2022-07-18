@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Data, Router } from '@angular/router';
-import { IonDatetime, LoadingController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { Data } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
-import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { StorageService } from 'src/app/shared/storage.service';
 import { SrSalesHourlyCityService } from '../online-sale-days-hourly/sr-sales-hourly-city.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -14,7 +14,7 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./sales-hourly-day.page.scss'],
 })
 export class SalesHourlyDayPage implements OnInit {
-
+  loadings: LoadingController[] = [];
   selectedSegment: string = 'dsd-hourly-city';
 
   showPerInvoiceDate = false;
@@ -26,8 +26,6 @@ export class SalesHourlyDayPage implements OnInit {
   user_list2 = [];
   dc = [];
   dcN: any = [];
-  // selected_dc: any = [];
-  // selected_dcN: any = [];
   today;
   sr1;
   srsales2 = [];
@@ -86,10 +84,8 @@ export class SalesHourlyDayPage implements OnInit {
   }
 
   async get_dcN() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dcN';
+    await this.presentLoading(key);
     this.SrSalesHourlyService.getUserDc(this.user_id).subscribe((dcs) => {
       this.dcN = dcs;
       for (var i = 0; i < this.dcN.length; i++)
@@ -100,19 +96,17 @@ export class SalesHourlyDayPage implements OnInit {
         });
 
       this.selectedItemsN = this.dropdownListN.map((_) => _.itemName);
-      loading.dismiss();
+      this.dismissLoading(key);
       this.dcSelectN();
     });
   }
 
   async dcSelect() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'dcSelect';
+    await this.presentLoading(key);
     if (!this.selectedItems.length) {
       this.create_total_model1('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
       return;
     }
     this.SrSalesHourlyService.getsrsalesuserscityhourlycity(
@@ -125,16 +119,14 @@ export class SalesHourlyDayPage implements OnInit {
       } else {
         this.create_total_model1('Empty');
       }
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
   async get_dc() {
     try {
-      const loading = await this.loadingCtrl.create({
-        message: this.language.Loading,
-      });
-      await loading.present();
+      const key = 'get_dc';
+    await this.presentLoading(key);
       this.SrSalesHourlyService.getUserDc(this.user_id).subscribe(
         (dcs: Data[]) => {
           this.dc = dcs;
@@ -146,7 +138,7 @@ export class SalesHourlyDayPage implements OnInit {
             });
 
           this.selectedItems = this.dropdownList.map((_) => _.itemName);
-          loading.dismiss();
+          this.dismissLoading(key);
           this.dcSelect();
         }
       );
@@ -156,13 +148,11 @@ export class SalesHourlyDayPage implements OnInit {
   }
 
   async dcSelectN() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'dcSelectN';
+    await this.presentLoading(key);
     if (!this.selectedItemsN.length) {
       this.create_total_model1('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
       return;
     }
 
@@ -177,7 +167,7 @@ export class SalesHourlyDayPage implements OnInit {
       } else {
         this.create_total_model2('Empty');
       }
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
@@ -366,5 +356,23 @@ export class SalesHourlyDayPage implements OnInit {
         this.selected_ch2[index].push(temp);
       }
     }
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
