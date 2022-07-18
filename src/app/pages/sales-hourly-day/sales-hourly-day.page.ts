@@ -83,6 +83,10 @@ export class SalesHourlyDayPage implements OnInit {
     });
   }
 
+  ionViewWillLeave() {
+    this.removeAllLoadings();
+  }
+
   async get_dcN() {
     const key = 'get_dcN';
     await this.presentLoading(key);
