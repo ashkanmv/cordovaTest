@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { Subscription } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 import { MapService } from 'src/app/map/map.service';
 import { ThemeColors, Language, MapView, Marker, PopoverItem, Shop } from 'src/app/shared/common';
 import { PopoverComponent } from 'src/app/shared/components/popover/popover.component';
@@ -22,6 +21,7 @@ export class CustomerNearbyPage implements OnInit {
   accessSr = false;
   form: FormGroup;
   mapInitSubscription: Subscription;
+  srSubscription: Subscription;
   shops: Shop[] = [];
   mapView: MapView;
   private _markers: Marker[] = [];
@@ -38,13 +38,12 @@ export class CustomerNearbyPage implements OnInit {
     return this.languageService.language;
   }
   constructor(
-    private router: Router,
     private formBuilder: FormBuilder,
     private persianCalendarService: PersianCalendarService,
     private storageService: StorageService,
     private mapService: MapService,
     private popoverCtrl: PopoverController,
-    private geoLocation: GeoLocationService,
+    private geoLocationService: GeoLocationService,
     public sharedService: SharedService,
     private languageService: LanguageService
   ) {
@@ -67,15 +66,18 @@ export class CustomerNearbyPage implements OnInit {
   ionViewWillLeave() {
     this.showMap = false;
     this.mapInitSubscription.unsubscribe();
+    this.unsubscribeObsirvables();
   }
 
   getCurrentLocation() {
-    this.geoLocation.getCurrentLocation().then(location => {
+    this.unsubscribeObsirvables()
+    this.geoLocationService.getCurrentLocation().then(location => {
       this.patchValue('currentLat', location.latitude);
       this.patchValue('currentLng', location.longitude);
 
       this.changeMapView();
       this.initialSr();
+      this.startTimers();
       this.initialShopPoint();
     })
   }
@@ -87,7 +89,7 @@ export class CustomerNearbyPage implements OnInit {
       selectedDate: [new Date()],
       formDate: [new Date().toISOString()],
       accessSr: [false],
-      selectedDistance: [500],
+      selectedDistance: [this.items.find(_ => _.selected == true).value],
       currentLat: [null],
       currentLng: [null],
     });
@@ -222,10 +224,10 @@ export class CustomerNearbyPage implements OnInit {
 
   distanceChanged(distance: number) {
     this.patchValue('selectedDistance', distance);
-    this.items.forEach(i=>i.selected = false)
-    this.items.find(i=>i.value == distance).selected = true;
-    this.mapService.clearMarkers.next(true);
+    this.items.forEach(i => i.selected = false)
+    this.items.find(i => i.value == distance).selected = true;
     this.changeMapView();
+    this.mapService.clearMarkers.next(true);
   }
 
   changeMapView() {
@@ -281,5 +283,21 @@ export class CustomerNearbyPage implements OnInit {
 
   patchValue(controller: string, value: any) {
     this.form.patchValue({ [controller]: value });
+  }
+
+  startTimers() {
+    let timer1 = timer(20000, 5000);
+    this.srSubscription = timer1.subscribe(() =>
+      this.geoLocationService.getCurrentLocation().then(location => {
+        this.patchValue('currentLat', location.latitude);
+        this.patchValue('currentLng', location.longitude);
+        this.changeMapView();
+        this.initialSr();
+      }));
+  }
+
+  unsubscribeObsirvables() {
+    if (this.srSubscription)
+      this.srSubscription.unsubscribe();
   }
 }
