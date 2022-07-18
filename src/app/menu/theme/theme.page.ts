@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeColors, Language } from 'src/app/shared/common';
+import { ThemeColors, Language, ColorSchemes } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./theme.page.scss'],
 })
 export class ThemePage implements OnInit {
+  ColorSchemes = ColorSchemes;
   public get language(): Language {
     return this.languageService.language;
   }
@@ -33,6 +34,11 @@ export class ThemePage implements OnInit {
     this.sharedService.themeColor = v
   }
 
+  public get colorScheme(): ColorSchemes { return this.sharedService.colorScheme; }
+  set colorScheme(v: ColorSchemes) {
+    this.sharedService.colorScheme = v
+  }
+
   constructor(private languageService: LanguageService,
     public sharedService: SharedService) { }
 
@@ -40,5 +46,10 @@ export class ThemePage implements OnInit {
 
   changeThemeColor(color: ThemeColors) {
     this.themeColor = color;
+  }
+
+  colorSchemeChanged(event){    
+    let value = event.detail.value;
+    this.colorScheme = value;
   }
 }

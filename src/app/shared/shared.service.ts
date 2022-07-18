@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { PredefinedColors } from '@ionic/core';
-import { ThemeColors } from './common';
+import { ColorSchemes, ThemeColors } from './common';
 import { LanguageService } from './language.service';
 import { StorageService } from './storage.service';
 
@@ -14,28 +14,39 @@ export class SharedService {
   private _fontSize: number = 16;
   public get fontSize(): number { return this._fontSize; }
   set fontSize(v: number) {
-    if (v){
-      this.storageService.set(this.storageService.fontSizeKey,v);
+    if (v) {
+      this.storageService.set(this.storageService.FontSize_Key, v);
       this._fontSize = v;
     }
   }
 
   private _boldFontWeight: boolean = false;
   public get boldFontWeight(): boolean { return this._boldFontWeight; }
-  set boldFontWeight(v: boolean) { 
-    this.storageService.set(this.storageService.boldKey,v);
+  set boldFontWeight(v: boolean) {
+    this.storageService.set(this.storageService.Bold_Key, v);
     this._boldFontWeight = v;
-   }
+  }
 
   private _themeColor: ThemeColors = ThemeColors.blue;
   public get themeColor(): ThemeColors { return this._themeColor; }
-  set themeColor(v: ThemeColors) { 
-    this.storageService.set(this.storageService.themeColorKey,v);
-    this._themeColor = v; 
+  set themeColor(v: ThemeColors) {
+    this.storageService.set(this.storageService.ThemeColor_Key, v);
+    this._themeColor = v;
   }
 
-  constructor(private toastCtrl: ToastController, private languageService : LanguageService,
-    private storageService : StorageService) { }
+  private _colorScheme: ColorSchemes = ColorSchemes.light;
+  public get colorScheme(): ColorSchemes { return this._colorScheme; }
+  set colorScheme(v: ColorSchemes) {
+    this.storageService.set(this.storageService.ColorSchemes_Key, v);
+    this._colorScheme = v;
+    if (v == ColorSchemes.dark)
+      document.body.classList.add("dark");
+    else
+      document.body.classList.remove("dark");
+  }
+
+  constructor(private toastCtrl: ToastController, private languageService: LanguageService,
+    private storageService: StorageService) { }
 
   toast(color: PredefinedColors, message: string) {
     this.toastCtrl

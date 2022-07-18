@@ -362,6 +362,11 @@ export enum ThemeColors {
   blue
 }
 
+export enum ColorSchemes {
+  light = 1,
+  dark,
+}
+
 // Language
 export class Language {
   Connection_error: string;

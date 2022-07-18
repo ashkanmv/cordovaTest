@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Autostart } from '@ionic-native/autostart/ngx';
 import { LoadingController, Platform } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
-import { ThemeColors } from './shared/common';
+import { ColorSchemes, ThemeColors } from './shared/common';
 import { Language } from './shared/common';
 import { LanguageService } from './shared/language.service';
 import { SharedService } from './shared/shared.service';
@@ -71,36 +71,43 @@ export class AppComponent implements OnInit {
   }
 
   setUiCustomization() {
-    this.storageService.get(this.storageService.boldKey).then((isBold: boolean) => {
+    this.storageService.get(this.storageService.Bold_Key).then((isBold: boolean) => {
       if (isBold == undefined) {
-        this.storageService.set(this.storageService.boldKey, false);
+        this.storageService.set(this.storageService.Bold_Key, false);
         this.sharedService.boldFontWeight = false;
       } else if (isBold == false) this.sharedService.boldFontWeight = false;
       else if (isBold == true) this.sharedService.boldFontWeight = true;
     })
 
-    this.storageService.get(this.storageService.fontSizeKey).then((fontSize: number) => {
+    this.storageService.get(this.storageService.FontSize_Key).then((fontSize: number) => {
       if (fontSize == undefined) {
-        this.storageService.set(this.storageService.fontSizeKey, 16);
+        this.storageService.set(this.storageService.FontSize_Key, 16);
         this.sharedService.fontSize = 16;
       } else if (fontSize) this.sharedService.fontSize = fontSize;
     })
 
-    this.storageService.get(this.storageService.themeColorKey).then((theme: ThemeColors) => {
+    this.storageService.get(this.storageService.ThemeColor_Key).then((theme: ThemeColors) => {
       if (theme == undefined) {
-        this.storageService.set(this.storageService.themeColorKey, ThemeColors.blue);
+        this.storageService.set(this.storageService.ThemeColor_Key, ThemeColors.blue);
         this.sharedService.themeColor = ThemeColors.blue;
       } else if (theme) this.sharedService.themeColor = theme;
+    })
+
+    this.storageService.get(this.storageService.ColorSchemes_Key).then((colorScheme: ColorSchemes) => {      
+      if (colorScheme == undefined) {
+        this.storageService.set(this.storageService.ColorSchemes_Key, ColorSchemes.light);
+        this.sharedService.colorScheme = ColorSchemes.light;
+      } else if (colorScheme) this.sharedService.colorScheme = colorScheme;
     })
   }
 
   get_direction() {
     let lang = this.utilService.get_lang();
-    if (lang == 'en') {
+    if (lang == 'en')
       return 'ltr';
-    } else {
+    else
       return 'rtl';
-    }
+
   }
 
   enableAutoStart() {

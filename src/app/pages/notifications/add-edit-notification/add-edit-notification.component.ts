@@ -67,10 +67,11 @@ export class AddEditNotificationComponent implements OnInit {
 
 
   getPicture(type: number) {
-    var options = {
+    var options : CameraOptions = {
       sourceType: type,
       destinationType: this.cam.DestinationType.DATA_URL,
       mediaType: this.cam.MediaType.ALLMEDIA,
+      allowEdit : false
     };
 
     this.cam.getPicture(options).then((imageData) => {
@@ -95,6 +96,9 @@ export class AddEditNotificationComponent implements OnInit {
           this.patchValue('fileType', 'other');
           break;
       }      
+
+      console.log(imageData);
+      
 
       if (this.f.fileType.value != 'video' || this.f.fileType.value != 'image') {
         this.sharedService.toast('danger', this.language.Add_Edit_News.OutOfType);

@@ -17,12 +17,12 @@
 </ion-header>
 <ion-content [style.--background]="sharedService.handleThemeColor()" [style.--color]="sharedService.handleColor()">
   <ion-row class="ion-justify-content-center" class="select-theme">
-    <ion-radio-group>
+    <ion-radio-group [value]="colorScheme" (ionChange)="colorSchemeChanged($event)">
       <ion-col class="dark-theme ion-align-items-center" size="6">
         <ion-img src="\assets\menu\theme\Icon awesome-mobile-alt.png"></ion-img>
         <h3>{{language.theme.dark}}</h3>
         <ion-item>
-          <ion-radio name="theme-color" value="{{language.theme.dark}}"></ion-radio>
+          <ion-radio name="theme-color" [value]="ColorSchemes.dark"></ion-radio>
           <h3>{{language.theme.select}}</h3>
         </ion-item>
       </ion-col>
@@ -30,7 +30,7 @@
         <ion-img src="\assets\menu\theme\Icon awesome-mobile-alt-1.png"></ion-img>
         <h3>{{language.theme.light}}</h3>
         <ion-item>
-          <ion-radio name="theme-color" value="{{language.theme.light}}"></ion-radio>
+          <ion-radio name="theme-color" [value]="ColorSchemes.light"></ion-radio>
           <h3>{{language.theme.select}}</h3>
         </ion-item>
       </ion-col>

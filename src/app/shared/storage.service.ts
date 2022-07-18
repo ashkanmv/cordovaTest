@@ -5,9 +5,10 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root',
 })
 export class StorageService {
-  boldKey = 'isBold';
-  fontSizeKey = 'fontSize';
-  themeColorKey = 'themeColor';
+  Bold_Key = 'isBold';
+  FontSize_Key = 'fontSize';
+  ThemeColor_Key = 'themeColor';
+  ColorSchemes_Key = 'colorSchemes';
 
   private _storage: Storage | null = null;
 
