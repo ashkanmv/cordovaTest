@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import { format, parseISO } from 'date-fns';
 import { ThemeColors, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { StorageService } from 'src/app/shared/storage.service';
-import { SrSalesHourlyCityService } from '../online-sale-days-hourly/sr-sales-hourly-city.service';
 import { OnlineSalesHourlyService } from './online-sales-hourly.service';
 
 @Component({
@@ -15,6 +13,7 @@ import { OnlineSalesHourlyService } from './online-sales-hourly.service';
   styleUrls: ['./online-sales-hourly.page.scss'],
 })
 export class OnlineSalesHourlyPage implements OnInit {
+  loadings: LoadingController[] = [];
   showPerInvoiceDate = false;
   selected_date = new Date().toISOString();
   selected_dateN = new Date().toISOString();
@@ -25,8 +24,6 @@ export class OnlineSalesHourlyPage implements OnInit {
   user_list2 = [];
   dc = [];
   dcN: any = [];
-  // selected_dc: any = [];
-  // selected_dcN: any = [];
   today;
   sr1;
   srsales2 = [];
@@ -62,7 +59,7 @@ export class OnlineSalesHourlyPage implements OnInit {
 
   nestedTableIsShowingRow_1: boolean = false;
 
-  public get isOnline(){
+  public get isOnline() {
     return this.sharedService.isOnline;
   }
   constructor(
@@ -70,8 +67,8 @@ export class OnlineSalesHourlyPage implements OnInit {
     private storageService: StorageService,
     private loadingCtrl: LoadingController,
     private SrSales_HourlyService: OnlineSalesHourlyService,
-    public sharedService : SharedService
-  ) {}
+    public sharedService: SharedService
+  ) { }
 
   segmentChanged(event: any) {
     this.selectedSegment = event.target.value;
@@ -95,14 +92,11 @@ export class OnlineSalesHourlyPage implements OnInit {
   }
 
   async get_dcN() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dcN';
+    await this.presentLoading(key);
     this.SrSales_HourlyService.getUserDc(this.user_id).subscribe((dcs) => {
       this.dcN = dcs;
       for (var i = 0; i < this.dcN.length; i++) {
-        // this.selected_dcN.push(this.dcN[i].City);
         this.dropdownListN.push({
           id: i,
           itemName: this.dc[i].City,
@@ -110,17 +104,15 @@ export class OnlineSalesHourlyPage implements OnInit {
         });
       }
       this.selectedItemsN = this.dropdownListN.map((_) => _.itemName);
-      loading.dismiss();
+      this.dismissLoading(key);
       this.SelectedDCN();
     });
   }
 
   async get_dc() {
     try {
-      const loading = await this.loadingCtrl.create({
-        message: this.language.Loading,
-      });
-      await loading.present();
+      const key = 'get_dc';
+      await this.presentLoading(key);
       this.SrSales_HourlyService.getUserDc(this.user_id).subscribe(
         (dcs: Data[]) => {
           this.dc = dcs;
@@ -133,7 +125,7 @@ export class OnlineSalesHourlyPage implements OnInit {
             });
           }
           this.selectedItems = this.dropdownList.map((_) => _.itemName);
-          loading.dismiss();
+          this.dismissLoading(key);
           this.SelectedDC();
         }
       );
@@ -143,10 +135,8 @@ export class OnlineSalesHourlyPage implements OnInit {
   }
 
   async SelectedDCN() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'SelectedDCN';
+    await this.presentLoading(key);
     this.SrSales_HourlyService.getsrsalesuserscityhourlyqty(
       this.user_id,
       this.selectedItemsN.join(),
@@ -157,15 +147,13 @@ export class OnlineSalesHourlyPage implements OnInit {
       } else {
         this.create_total_model1('Empty');
       }
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
   async SelectedDC() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'SelectedDC';
+    await this.presentLoading(key);
 
     if (this.selectedItems.length > 0) {
       this.SrSales_HourlyService.getSrSalesUsers(
@@ -176,11 +164,11 @@ export class OnlineSalesHourlyPage implements OnInit {
         if (srsales.length) {
           this.create_total_model2(srsales);
         }
-        loading.dismiss();
+        this.dismissLoading(key);
       });
     } else {
       this.create_total_model2('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
     }
   }
 
@@ -311,12 +299,12 @@ export class OnlineSalesHourlyPage implements OnInit {
     this.SelectedDC();
     this.SelectedDCN();
   }
-  
+
 
   row_click1(row, index) {
-    this.virtual_rows1.forEach((x)=>{
+    this.virtual_rows1.forEach((x) => {
       if (x.type == 'b' && x.show) {
-        x.show=false        
+        x.show = false
       }
     });
     if (row.type == 'a') {
@@ -338,9 +326,9 @@ export class OnlineSalesHourlyPage implements OnInit {
     }
   }
   row_click2(row) {
-    this.virtual_rows2.forEach((x)=>{
+    this.virtual_rows2.forEach((x) => {
       if (x.type == 'b' && x.show) {
-        x.show=false        
+        x.show = false
       }
     });
     if (row.type == 'a') {
@@ -360,5 +348,23 @@ export class OnlineSalesHourlyPage implements OnInit {
       ];
       this.create_model2(arr, row.index + 1);
     }
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
