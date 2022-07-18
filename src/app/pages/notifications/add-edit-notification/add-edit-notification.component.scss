@@ -139,12 +139,3 @@ ion-row.item-submit{
         margin-top: 1rem;
     }
 }
-
-.box-shadow{   
-    box-shadow:  10px 21px 48px -1px #e3f6ff, 0 6px 20px 0 #E6F5FC;
-  }
-  @media (prefers-color-scheme: dark) {
-    .box-shadow{   
-        box-shadow:  10px 21px 48px -1px #151718, 0 6px 20px 0 #161718;
-      }
-}

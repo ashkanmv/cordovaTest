@@ -36,7 +36,7 @@
 <ion-content  [ngStyle]="{'direction' : sharedService.get_direction()}">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <ion-grid >
-      <ion-row class="item-name-img box-shadow">
+      <ion-row class="item-name-img lightBlue-shadow">
         <ion-row class="item-img">
             <ion-img src="\assets\pages\add-item\Add-Photo.png"></ion-img>
           <h3>{{language.Add_Edit_News.AddPhoto}}</h3>
@@ -55,12 +55,12 @@
           <ion-input type="text" placeholder="{{language.Add_Edit_News.ItemName}}"></ion-input>
         </ion-row>
       </ion-row>
-      <ion-row class="item-title box-shadow">
+      <ion-row class="item-title lightBlue-shadow">
         <ion-col class="ion-no-padding">
           <ion-input  formControlName="title" type="text" placeholder="  {{language.Add_Edit_News.Title}}"></ion-input>
         </ion-col>
       </ion-row>
-      <ion-row class="item-text box-shadow">
+      <ion-row class="item-text lightBlue-shadow">
         <ion-col  class="ion-no-padding">
           <ion-textarea  type="text" rows="7" formControlName="text" placeholder="  {{language.Add_Edit_News.Description}}"></ion-textarea>
         </ion-col>
