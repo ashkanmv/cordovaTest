@@ -13,6 +13,7 @@ import { SrSalesHourlyCityService } from '../online-sale-days-hourly/sr-sales-ho
   styleUrls: ['./sales-compare-tracking-hourly.page.scss'],
 })
 export class SalesCompareTrackingHourlyPage implements OnInit {
+  loadings: LoadingController[] = [];
   selected_date = new Date().toISOString();
   selected_dateN = new Date().toISOString();
   user_id;
@@ -42,7 +43,7 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
     private loadingCtrl: LoadingController,
     private SrSalesHourlyService: SrSalesHourlyCityService,
     public sharedService: SharedService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.storageService.get('user_id').then((user_id) => {
@@ -52,10 +53,8 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
   }
 
   async get_dc() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'get_dc';
+    await this.presentLoading(key);
     try {
       this.SrSalesHourlyService.getUserDc(this.user_id).subscribe(
         (dcs: Data[]) => {
@@ -68,21 +67,19 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
             });
           }
           this.selectedItems = this.dropdownList.map((_) => _.itemName);
-          loading.dismiss();
+          this.dismissLoading(key);
           this.dcSelect();
         }
       );
     } catch (error) {
       alert(error);
-      loading.dismiss();
+      this.dismissLoading(key);
     }
   }
 
   async dcSelect() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'dcSelect';
+    await this.presentLoading(key);
     this.SrSalesHourlyService.getSupervisorCompareTrackingYearHourly(
       this.user_id,
       this.selectedItems.join(),
@@ -90,7 +87,7 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
     ).subscribe((SrSales: Data[]) => {
       if (SrSales.length != 0) this.create_total_model1(SrSales);
       else this.create_total_model1('Empty');
-      loading.dismiss();
+      this.dismissLoading(key);
     });
   }
 
@@ -138,9 +135,9 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
   }
 
   row_click1(row, index) {
-    this.virtual_rows1.forEach((x)=>{
+    this.virtual_rows1.forEach((x) => {
       if (x.type == 'b' && x.show) {
-        x.show=false        
+        x.show = false
       }
     });
     if (row.type == 'a') {
@@ -175,5 +172,23 @@ export class SalesCompareTrackingHourlyPage implements OnInit {
         this.selected_ch1[index].push(temp);
       }
     }
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
