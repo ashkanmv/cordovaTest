@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { LatLngTuple } from 'leaflet';
@@ -17,7 +17,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   templateUrl: './gps-tracking.page.html',
   styleUrls: ['./gps-tracking.page.scss'],
 })
-export class GpsTrackingPage implements OnInit {
+export class GpsTrackingPage implements OnInit, OnDestroy {
   loadingKey = 'routeSelect';
   loadings: LoadingController[] = [];
   firstLoad = false;
@@ -85,6 +85,12 @@ export class GpsTrackingPage implements OnInit {
       }
     );
   }
+  ngOnDestroy() {
+    this.showMap = false;
+    this.removeAllLoadings();
+    if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
+    this.unsubscribeObsirvables()
+  }
 
   ngOnInit() {
     this.loadForm();
@@ -93,14 +99,6 @@ export class GpsTrackingPage implements OnInit {
 
   ionViewDidEnter() {
     this.showMap = true;
-  }
-
-  ionViewWillLeave() {
-    this.firstLoad = false;
-    this.showMap = false;
-    this.removeAllLoadings();
-    if (this.mapInitSubscription) this.mapInitSubscription.unsubscribe();
-    this.unsubscribeObsirvables()
   }
 
   init() {
@@ -411,7 +409,7 @@ export class GpsTrackingPage implements OnInit {
       });
     });
 
-    if (this.srLoaded){
+    if (this.srLoaded) {
       markers.push(
         {
           latitude: this.srPoints[this.srPoints.length - 1][0],
@@ -419,15 +417,15 @@ export class GpsTrackingPage implements OnInit {
           icon: this.mapService.salesManIcon,
           description: this.markerDescription('salesman', this.srInfo)
         })
-        let flyTo: MapView;
-        flyTo = {
-          lat: +this.srPoints[this.srPoints.length - 1][0],
-          lng: +this.srPoints[this.srPoints.length - 1][1],
-          zoom: 13,
-        };
-        this.mapView = flyTo;
-      }
-    
+      let flyTo: MapView;
+      flyTo = {
+        lat: +this.srPoints[this.srPoints.length - 1][0],
+        lng: +this.srPoints[this.srPoints.length - 1][1],
+        zoom: 13,
+      };
+      this.mapView = flyTo;
+    }
+
     this.allShopPoints.forEach((shop) => {
       markers.push({
         latitude: +shop.PointLatitude,

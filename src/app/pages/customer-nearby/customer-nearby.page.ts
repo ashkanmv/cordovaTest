@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PopoverController } from '@ionic/angular';
 import { Subscription, timer } from 'rxjs';
@@ -16,7 +16,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   templateUrl: './customer-nearby.page.html',
   styleUrls: ['./customer-nearby.page.scss'],
 })
-export class CustomerNearbyPage implements OnInit {
+export class CustomerNearbyPage implements OnInit, OnDestroy {
   showMap = false;
   accessSr = false;
   form: FormGroup;
@@ -54,6 +54,12 @@ export class CustomerNearbyPage implements OnInit {
     })
   }
 
+  ngOnDestroy() {
+    this.showMap = false;
+    this.mapInitSubscription.unsubscribe();
+    this.unsubscribeObsirvables();
+  }
+
   ngOnInit() {
     this.loadForm();
     this.checkAccess();
@@ -61,12 +67,6 @@ export class CustomerNearbyPage implements OnInit {
 
   ionViewDidEnter() {
     this.showMap = true;
-  }
-
-  ionViewWillLeave() {
-    this.showMap = false;
-    this.mapInitSubscription.unsubscribe();
-    this.unsubscribeObsirvables();
   }
 
   getCurrentLocation() {
