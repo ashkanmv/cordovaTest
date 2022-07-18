@@ -59,6 +59,10 @@ export class NotificationsPage implements OnInit {
     })
   }
 
+  ionViewWillLeave() {
+    this.removeAllLoadings();
+  }
+
   async getNews(event?: any) {
     if (!event) {
       const key = 'getNews';

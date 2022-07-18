@@ -195,10 +195,6 @@ export class TodayPlannedNotBuyingPage implements OnInit {
       this.isVisible=index;
     
   }
-  // Child_Data(row , index){
-  //   this.storageService.set('Customer_Number', row.Others[index].CustID);
-  //   this.open_customer_history();
-  // }
 
   refresh(){
     this.checkClusterAndDcsHasValue();

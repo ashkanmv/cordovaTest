@@ -83,6 +83,10 @@ export class OnlineSaleDaysHourlyPage implements OnInit {
     });
   }
 
+  ionViewWillLeave() {
+    this.removeAllLoadings();
+  }
+
   async get_dc() {
     const key = 'get_dc';
     await this.presentLoading(key);

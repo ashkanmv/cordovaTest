@@ -86,6 +86,10 @@ export class OnlineSalesHourlyPage implements OnInit {
     });
   }
 
+  ionViewWillLeave() {
+    this.removeAllLoadings();
+  }
+
   distance_select() {
     this.SelectedDC();
     this.SelectedDCN();

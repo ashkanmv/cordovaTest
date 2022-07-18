@@ -54,7 +54,7 @@ export class LoadingTruckStatusPage implements OnInit {
   }
 
   ionViewWillLeave() {
-    this.removeAllLoadings()
+    this.removeAllLoadings();
   }
 
   async get_dc() {

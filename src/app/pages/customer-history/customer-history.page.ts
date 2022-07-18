@@ -42,11 +42,6 @@ export class CustomerHistoryPage implements OnInit {
     return this.languageService.language;
   }
 
-  //ToDo
-  public get Customer_Number(): string {
-    return;
-  }
-
   customerInfo: {
     shopName: string;
     shopCode: number;

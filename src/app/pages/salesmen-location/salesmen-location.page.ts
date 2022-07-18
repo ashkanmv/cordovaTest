@@ -64,10 +64,6 @@ export class SalesmenLocationPage implements OnInit {
     public sharedService: SharedService,
     private loadingCtrl: LoadingController
   ) {
-    // this.mapInitSubscription = this.mapService.mapInitialized.subscribe((initialized: boolean) => {
-    //   if (initialized && (this.rsmMarkers.length || this.asmMarkers.length || this.ssvMarkers.length || this.srMarkers.length || this.adminMarkers.length))
-    //     this.markers = this.checkMarkers()
-    // })
   }
 
   ionViewDidEnter() {
