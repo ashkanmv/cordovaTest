@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Data, Router } from '@angular/router';
-import { AlertController, LoadingController, Platform } from '@ionic/angular';
+import { Data } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { ThemeColors, getSrSalesUsersResponse, Language } from 'src/app/shared/common';
 import { LanguageService } from 'src/app/shared/language.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -13,6 +13,7 @@ import { SrSaleService } from './sr-sale.service';
   styleUrls: ['./online-daily-sales.page.scss'],
 })
 export class OnlineDailySalesPage implements OnInit {
+  loadings: LoadingController[] = [];
   IsDetailsShowing = true;
   IsDCDDetailsShowing = false;
   selectedSegment: string = 'DSD';
@@ -48,29 +49,28 @@ export class OnlineDailySalesPage implements OnInit {
   public get isOnline(){return this.sharedService.isOnline}
   public get backgroundColor() : ThemeColors{return this.sharedService.themeColor}
   constructor(
-    private router: Router,
     private loadingCtrl: LoadingController,
     private storageSevice: StorageService,
     private srSalesService: SrSaleService,
     public sharedService: SharedService,
-    private platform: Platform,
-    private alertCtrl: AlertController,
     private languageService: LanguageService
   ) { }
 
   ngOnInit() {
     this.getUserDc()
   }
+  
+  ionViewWillLeave() {
+    this.removeAllLoadings();
+  }
 
   async getUserDc() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getUserDc';
+    await this.presentLoading(key);
     this.storageSevice.get('user_id').then((userId) => {
       if (!userId) {
         this.sharedService.toast('danger', this.language.Online_Daily_Sales.UserIdNotFound)
-        loading.dismiss();
+        this.dismissLoading(key);
         return
       }
 
@@ -83,7 +83,7 @@ export class OnlineDailySalesPage implements OnInit {
           this.dropdownList.push({ id: index, itemName: city.City, group: this.language.Online_Daily_Sales.group });
         });
         this.showSelect = true;
-        loading.dismiss();
+        this.dismissLoading(key);
         this.getSrSalesUsersNDSD();
         this.getSrSalesUsers();
       });
@@ -99,10 +99,8 @@ export class OnlineDailySalesPage implements OnInit {
   }
 
   async getSrSalesUsers() {
-    const loading = await this.loadingCtrl.create({
-      message: this.language.Loading,
-    });
-    await loading.present();
+    const key = 'getSrSalesUsers';
+    await this.presentLoading(key);
     this.srSalesService
       .getSrSalesUsers(
         this.userId,
@@ -111,7 +109,7 @@ export class OnlineDailySalesPage implements OnInit {
       )
       .subscribe((res) => {
         if (res.length) this.createDsdModal(res);
-        loading.dismiss();
+        this.dismissLoading(key);
       });
   }
 
@@ -279,5 +277,23 @@ export class OnlineDailySalesPage implements OnInit {
 
   tableDetails(item) {
     return typeof item == 'number' ? true : false;
+  }
+
+  async presentLoading(key: string) {
+    this.loadings[key] = await this.loadingCtrl.create({
+      message: this.language.Loading,
+    });
+    await this.loadings[key].present();
+  }
+
+  dismissLoading(key: string) {
+    this.loadings[key]?.dismiss();
+    delete this.loadings[key];
+  }
+
+  removeAllLoadings() {
+    for (const key in this.loadings)
+      this.loadings[key].dismiss()
+    this.loadings = [];
   }
 }
