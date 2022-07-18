@@ -5,6 +5,7 @@ import { LoadingController, Platform } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { ColorSchemes, ThemeColors } from './shared/common';
 import { Language } from './shared/common';
+import { GeoLocationService } from './shared/geo-location.service';
 import { LanguageService } from './shared/language.service';
 import { SharedService } from './shared/shared.service';
 import { StorageService } from './shared/storage.service';
@@ -30,7 +31,8 @@ export class AppComponent implements OnInit {
     private storageService: StorageService,
     public sharedService: SharedService,
     private utilService: UtilService,
-    private autoStart: Autostart
+    private autoStart: Autostart,
+    private geolocationService : GeoLocationService
   ) { }
   ngOnInit(): void {
     enableProdMode();
@@ -131,6 +133,7 @@ export class AppComponent implements OnInit {
       }
       this.utilService.post_user_log(user_log).subscribe();
     });
+    this.geolocationService.stopTracking();
     loading.dismiss();
     this.router.navigate(['/login']);
   }
